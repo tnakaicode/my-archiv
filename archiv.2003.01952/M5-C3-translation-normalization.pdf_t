@@ -1,0 +1,43 @@
+\begin{picture}(0,0)%
+\includegraphics{M5-C3-translation-normalization.pdf}%
+\end{picture}%
+\setlength{\unitlength}{4144sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(6341,1405)(661,-1943)
+\put(4994,-688){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}Normalization}%
+}}}}
+\put(5311,-846){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\Phi_p$}%
+}}}}
+\put(2004,-1271){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$p$}}%
+}}}}
+\put(826,-1411){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$M$}}%
+}}}}
+\put(2335,-922){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}Translation}%
+}}}}
+\put(2572,-1045){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\tau_p$}%
+}}}}
+\put(4258,-1307){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$0$}}%
+}}}}
+\put(3069,-1414){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$M^p$}}%
+}}}}
+\put(6508,-1307){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$0$}}%
+}}}}
+\put(5416,-1879){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$N^p$}%
+}}}}
+\put(3399,-1797){\makebox(0,0)[lb]{\smash{{\SetFigFont{8}{9.6}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}$\Phi_p\circ\tau_p=:\varphi$}%
+}}}}
+\put(4322,-769){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$u$}}%
+}}}}
+\put(6572,-769){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$u$}}%
+}}}}
+\put(4617,-1108){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$z,\zeta,\overline{z},\overline{\zeta},v$}}%
+}}}}
+\put(6872,-1108){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,.69}\blue{$z,\zeta,\overline{z},\overline{\zeta},v$}}%
+}}}}
+\end{picture}%

@@ -1,0 +1,31 @@
+\begin{picture}(0,0)%
+\includegraphics{prolong-jet-1-nontransitive.pdf}%
+\end{picture}%
+\setlength{\unitlength}{4144sp}%
+%
+\begingroup\makeatletter\ifx\SetFigFont\undefined%
+\gdef\SetFigFont#1#2#3#4#5{%
+  \reset@font\fontsize{#1}{#2pt}%
+  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+  \selectfont}%
+\fi\endgroup%
+\begin{picture}(2294,2928)(879,-2967)
+\put(2669,-735){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\green{$\vec{\bf v}^{(1)}$}}%
+}}}}
+\put(1994,-2903){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\blue{$0$}}%
+}}}}
+\put(1342,-2676){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\green{$\vec{\bf v}$}}%
+}}}}
+\put(1332,-1076){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\green{$\vec{\bf v}^{(1)}$}}%
+}}}}
+\put(2070,-965){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\blue{$0$}}%
+}}}}
+\put(2061,-513){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\blue{$\R^4$}}%
+}}}}
+\put(956,-230){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\blue{$J_{1,4}^1$}}%
+}}}}
+\put(2481,-2675){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\green{$\vec{\bf v}$}}%
+}}}}
+\put(2970,-2709){\makebox(0,0)[lb]{\smash{{\SetFigFont{9}{10.8}{\familydefault}{\mddefault}{\updefault}{\color[rgb]{0,0,0}\blue{$M_{\sf LC}$}}%
+}}}}
+\end{picture}%
