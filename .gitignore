@@ -1,0 +1,4 @@
+arXiv.*/*.aux
+arXiv.*/*.log
+arXiv.*/*.out
+arXiv.*/*.synctex.gz
