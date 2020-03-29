@@ -1,0 +1,148 @@
+\begin{thebibliography}{29}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+
+\bibitem[{Belomestny et~al.(2016)Belomestny, Chen, and Wang}]{belomestny16}
+Belomestny, D., Chen, N., Wang, Y., 2016. {U}nbiased {S}imulation of
+  {D}istributions with {E}xplicitly {K}nown {I}ntegral {T}ransforms. Monte
+  Carlo and Quasi-Monte Carlo Methods. Springer Proceedings in Mathematics \&
+  Statistics 163, 229--244.
+
+\bibitem[{Belomestny et~al.(2015)Belomestny, Comte, Genon-Catalot, Masuda, and
+  Rei\ss}]{BCGMR}
+Belomestny, D., Comte, F., Genon-Catalot, V., Masuda, H., Rei\ss, M., 2015.
+  L\'{e}vy matters. {IV}. Vol. 2128 of Lecture Notes in Mathematics. Springer,
+  Cham, estimation for discretely observed L\'{e}vy processes, L\'{e}vy
+  Matters.
+
+\bibitem[{Brosse et~al.(2018{\natexlab{a}})Brosse, Durmus, Meyn, and
+  Moulines}]{brosse2018diffusion}
+Brosse, N., Durmus, A., Meyn, S., Moulines, E., 2018{\natexlab{a}}. Diffusion
+  approximations and control variates for {MCMC}. arXiv preprint
+  arXiv:1808.01665.
+
+\bibitem[{Brosse et~al.(2018{\natexlab{b}})Brosse, Durmus, Moulines,
+  et~al.}]{brosse2018normalizing}
+Brosse, N., Durmus, A., Moulines, {\'E}., et~al., 2018{\natexlab{b}}.
+  Normalizing constants of log-concave densities. Electronic Journal of
+  Statistics 12~(1), 851--889.
+
+\bibitem[{Carr et~al.(2002)Carr, Geman, Madan, and Yor}]{cgmy2002}
+Carr, P., Geman, H., Madan, D.~B., Yor, M., 2002. The fine structure of asset
+  returns: an empirical investigation. J. Bus. 75~(2), 305--333.
+
+\bibitem[{Dalalyan(2017)}]{ad17}
+Dalalyan, A.~S., 2017. {T}heoretical {G}uarantees for {A}pproximate {S}ampling
+  from {S}mooth and {L}og‐concave {D}ensities. J. R. Stat. Soc. B 79~(3),
+  651--676.
+
+\bibitem[{Dedecker and Gou\"{e}zel(2015)}]{dedecker2015}
+Dedecker, J., Gou\"{e}zel, S., 2015. {S}ubgaussian concentration inequalities
+  for geometrically ergodic {M}arkov chains. Electron. Commun. Probab. 20~(64).
+
+\bibitem[{Durmus and Moulines(2017)}]{dm17}
+Durmus, A., Moulines, E., 2017. {N}onasymptotic {C}onvergence {A}nalysis for
+  the {U}nadjusted {L}angevin {A}lgorithm. Ann. Appl. Probab. 27~(3),
+  1551--1587.
+
+\bibitem[{Eberlein et~al.(2010)Eberlein, Glau, and Papapantoleon}]{egp10}
+Eberlein, E., Glau, K., Papapantoleon, A., 2010. {A}nalysis of {F}ourier
+  {T}ransform {V}aluation {F}ormulas and {A}pplications. Applied Mathematical
+  Finance 17~(3), 211--240.
+
+\bibitem[{Gamerman and Lopes(2006)}]{MR2260716}
+Gamerman, D., Lopes, H.~F., 2006. Markov chain {M}onte {C}arlo, 2nd Edition.
+  Texts in Statistical Science Series. Chapman \& Hall/CRC, Boca Raton, FL,
+  stochastic simulation for Bayesian inference.
+
+\bibitem[{Glasserman and Liu(2010)}]{MR2752708}
+Glasserman, P., Liu, Z., 2010. Sensitivity estimates from characteristic
+  functions. Oper. Res. 58~(6), 1611--1623.
+\newline\urlprefix\url{https://doi.org/10.1287/opre.1100.0837}
+
+\bibitem[{Hastings(1970)}]{h70}
+Hastings, W.~K., 1970. Monte {C}arlo sampling methods using {M}arkov chains and
+  their {A}pplications. Biometrika 57, 97--109.
+
+\bibitem[{Havet et~al.(2019)Havet, Lerasle, Moulines, and Vernet}]{havert2019}
+Havet, A., Lerasle, M., Moulines, E., Vernet, E., 2019. A quantitative {M}c
+  {D}iarmid's inequality for geometrically ergodic {M}arkov chains. arXiv
+  preprint arXiv:1907.02809.
+
+\bibitem[{Ibragimov and Linnik(1971)}]{ibragimovlinnik1971}
+Ibragimov, I.~A., Linnik, Y.~V., 1971. {I}ndependent and {S}tationary
+  {S}equences of {R}andom {V}ariables. Walters-Noordhoff, The Netherlands.
+
+\bibitem[{Jarner and Hansen(2000)}]{jarnerhansen2000}
+Jarner, S.~F., Hansen, E., 2000. {G}eometric ergodicity of {M}etropolis
+  algorithms. Stochastic Processes and their Applications 85~(2), 341 -- 361.
+\newline\urlprefix\url{http://www.sciencedirect.com/science/article/pii/S0304414999000824}
+
+\bibitem[{Jarner and Tweedie(2003)}]{jarnertweedie2003}
+Jarner, S.~F., Tweedie, R.~L., 2003. {N}ecessary {C}onditions for {G}eometric
+  and {P}olynomial {E}rgodicity of {R}andom-{W}alk-{T}ype {M}arkov {C}hains.
+  Bernoulli 9~(4), 559--578.
+
+\bibitem[{Jones(2004)}]{jones2004}
+Jones, G.~L., 2004. On the {M}arkov chain central limit theorem. Probability
+  Surveys 1, 299--320.
+
+\bibitem[{Kendall et~al.(2005)Kendall, Liang, and Wang}]{MR2238833}
+Kendall, W.~S., Liang, F., Wang, J.-S. (Eds.), 2005. Markov chain {M}onte
+  {C}arlo. Vol.~7 of Lecture Notes Series. Institute for Mathematical Sciences.
+  National University of Singapore. World Scientific Publishing Co. Pte. Ltd.,
+  Hackensack, NJ, innovations and applications.
+\newline\urlprefix\url{https://doi.org/10.1142/9789812700919}
+
+\bibitem[{Mengersen and Tweedie(1996)}]{mengersetweedie1996}
+Mengersen, K.~L., Tweedie, R.~L., 1996. Rates of convergence of the {H}astings
+  and {M}etropolis algorithms. The Annals of Statistics 24~(1), 101--121.
+
+\bibitem[{Metropolis et~al.(1953)Metropolis, Rosenbluth, Rosenbluth, Teller,
+  and Teller}]{metropolis1953equation}
+Metropolis, N., Rosenbluth, A.~W., Rosenbluth, M.~N., Teller, A.~H., Teller,
+  E., 1953. Equation of state calculations by fast computing machines. The
+  journal of chemical physics 21~(6), 1087--1092.
+
+\bibitem[{Meyn and Tweedie(1993)}]{meyntweedie1993}
+Meyn, S.~P., Tweedie, R.~L., 1993. Markov chains and stochastic stability. New
+  York: Springer-Verlag.
+
+\bibitem[{M\"{u}ller-Gronbach et~al.(2012)M\"{u}ller-Gronbach, Novak, and
+  Ritter}]{MR2933059}
+M\"{u}ller-Gronbach, T., Novak, E., Ritter, K., 2012. Monte
+  {C}arlo-{A}lgorithmen. Springer-Lehrbuch. Springer, Heidelberg.
+\newline\urlprefix\url{https://doi.org/10.1007/978-3-540-89141-3}
+
+\bibitem[{Nolan(2013)}]{nolan2013}
+Nolan, J.~P., 2013. {M}ultivariate {E}lliptically {C}ontoured {S}table
+  {D}istributions: {T}heory and {E}stimation. Comput. Stat. 28~(5), 2067--2089.
+
+\bibitem[{Nolan(2018)}]{nolan2018}
+Nolan, J.~P., 2018. Stable Distributions - Models for Heavy Tailed Data.
+  Birkhauser, Boston, in progress.
+
+\bibitem[{Roberts and Tweedie(1996)}]{robertstweedie1996}
+Roberts, G., Tweedie, R., 1996. Geometric convergence and central limit
+  theorems for multidimensional {H}astings and {M}etropolis algorithms.
+  Biometrika 83, 95--110.
+
+\bibitem[{Sato(1999)}]{sato1999}
+Sato, K.-I., 1999. {L}\'{e}vy {P}rocesses and {I}nfinitely {D}ivisible
+  {D}istributions. Cambridge University Press.
+
+\bibitem[{Tankov(2003)}]{tankov2003financial}
+Tankov, P., 2003. Financial modelling with jump processes. Vol.~2. CRC press.
+
+\bibitem[{Tierney(1994)}]{tierney1994}
+Tierney, L., 1994. Markov chains for exploring posterior distributions. The
+  Annals of Statistics 22~(4), 1701--1762.
+
+\bibitem[{Wintenberger(2017)}]{wintenberger2017}
+Wintenberger, O., 2017. {E}xponential inequalities for unbounded functions of
+  geometrically ergodic {M}arkov chains: applications to quantitative error
+  bounds for regenerative {M}etropolis algorithms. Statistics 51~(1), 222--234.
+
+\end{thebibliography}
