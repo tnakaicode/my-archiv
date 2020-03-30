@@ -23,9 +23,9 @@ if __name__ == '__main__':
         os.makedirs("arXiv." + basename)
     
     print(os.getcwd())
-    os.chdir(base_dir)
-    tar = tarfile.open("../" + opt.file, "r")
-    tar.extractall()
+    #os.chdir(base_dir)
+    tar = tarfile.open(opt.file, "r")
+    tar.extractall(base_dir)
     
     #tar = tarfile.open(tar_name, "w")
     #tar.add("./src/")
