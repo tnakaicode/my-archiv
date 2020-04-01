@@ -10,7 +10,7 @@ from optparse import OptionParser
 if __name__ == '__main__':
     argvs = sys.argv
     parser = OptionParser()
-    parser.add_option("--file", dest="file", default="../../Downloads/2003.04114")
+    parser.add_option("--file", dest="file", default="../../Downloads/1908.03795")
     opt, argc = parser.parse_args(argvs)
     print(opt, argc)
 
