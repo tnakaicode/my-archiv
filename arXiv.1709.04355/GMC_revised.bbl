@@ -1,0 +1,139 @@
+\begin{thebibliography}{DKRV16}
+
+\bibitem[Adl90]{Adler}
+J.R Adler.
+\newblock An introduction to continuity, extrema, and related topics for
+  general gaussian processes.
+\newblock {\em Lecture Notes-Monograph Series}, 12:i--155, 1990.
+
+\bibitem[AKSJ11]{RCW}
+K.~Astala, A.~Kupiainen, E.~Saksman, and P.~Jones.
+\newblock Random conformal weldings.
+\newblock {\em Acta Mathematica}, 207(2):203--254, Dec 2011.
+
+\bibitem[APS17]{APS}
+J.~Aru, E.. Powell, and A.~Sep\'{u}lveda.
+\newblock Liouville measure as a multiplicative cascade via level sets of the
+  gaussian free field.
+\newblock {\em arXiv preprint arXiv:1701.05872}, 2017.
+
+\bibitem[Bar04]{Bar}
+J.~Barral.
+\newblock Techniques for the study of infinite products of independent random
+  functions (random multiplicative multifractal measures iii.
+\newblock {\em Fractal Geometry and Applications: a Jubilee of Benoit
+  Mandelbrot, Proc. Sympos. Pure Math., 72, Part 2}, pages 53--90, 2004.
+
+\bibitem[Ber15a]{Ber}
+N.~Berestycki.
+\newblock An elementary approach to {G}aussian multiplicative chaos.
+\newblock {\em arXiv preprint arXiv:1506.09113}, 2015.
+
+\bibitem[Ber15b]{Berln}
+N.~Berestycki.
+\newblock Introduction to the {G}aussian free field and {L}iouville quantum
+  gravity.
+\newblock {\em Lecture notes}, 2015.
+
+\bibitem[BSS14]{BerSheSun}
+N.~Berestycki, S.~Sheffield, and X.~Sun.
+\newblock Equivalence of {L}iouville measure and {G}aussian free field.
+\newblock {\em arXiv preprint arXiv:1410.5407}, 2014.
+
+\bibitem[DKRV16]{DKRV}
+F.~David, A.~Kupiainen, R.~Rhodes, and V.~Vargas.
+\newblock Liouville quantum gravity on the riemann sphere.
+\newblock {\em Communications in Mathematical Physics}, 342(3):869--907, 2016.
+
+\bibitem[DMS14]{DMS}
+B.~{Duplantier}, J.~{Miller}, and S.~{Sheffield}.
+\newblock {Liouville quantum gravity as a mating of trees}.
+\newblock {\em ArXiv e-prints}, September 2014.
+
+\bibitem[DS11]{DS}
+B.~Duplantier and S.~Sheffield.
+\newblock Liouville quantum gravity and {KPZ}.
+\newblock {\em Inventiones mathematicae}, 185(2):333--393, 2011.
+
+\bibitem[Gar13]{Gar}
+C.~Garban.
+\newblock {Quantum gravity and the KPZ formula. (Bourbaki seminar, after
+  Duplantier-Sheffield)}.
+\newblock {\em Ast\'erisque}, 352:315--354, Sep 2013.
+
+\bibitem[HK71]{HK}
+R~Hoegh-Krohn.
+\newblock {A general class of quantum fields without cut-offs in two space-time
+  dimensions}.
+\newblock {\em Comm. Math. Phys.}, 21(3):244--255, 1971.
+
+\bibitem[HMP10]{TP}
+X.~Hu, J.~Miller, and Y.~Peres.
+\newblock Thick points of the gaussian free field.
+\newblock {\em Annals of Probability}, 38:896--926, 2010.
+
+\bibitem[Kah85]{Kah}
+J-P. Kahane.
+\newblock {Sur le chaos multiplicatif}.
+\newblock {\em Ann. Sci. Math. Qu\'ebec}, 9(2):105--150, 1985.
+
+\bibitem[Kal06]{Kb}
+O.~Kallenberg.
+\newblock {\em Foundations of Modern Probability}.
+\newblock Probability and Its Applications. Springer New York, 2006.
+
+\bibitem[KPZ88]{KPZ}
+V.~G. Knizhnik, A.~M. Polyakov, and A.~B. Zamolodchikov.
+\newblock Fractal structure of {$2$}{D}-quantum gravity.
+\newblock {\em Modern Phys. Lett. A}, 3(8):819--826, 1988.
+
+\bibitem[Mol96]{Molchan}
+G.~M. Molchan.
+\newblock Scaling exponents and multifractal dimensions for independent random
+  cascades.
+\newblock {\em Comm. Math. Phys.}, 179(3):681--702, 1996.
+
+\bibitem[Pey74]{Per}
+J.~Peyri\`ere.
+\newblock Turbulence et dimension de hausdorff.
+\newblock {\em C. R. Acad. Sci. Paris S\`er A}, 278(2):567--569, Dec 1974.
+
+\bibitem[RV10]{RV}
+R.~Robert and V.~Vargas.
+\newblock Gaussian multiplicative chaos revisited.
+\newblock {\em Ann. Probab.}, 38(2):605--631, 2010.
+
+\bibitem[RV11]{RVKPZ}
+R.~Rhodes and V.~Vargas.
+\newblock {KPZ} formula for log-infinitely divisible multifractal random
+  measures.
+\newblock {\em ESAIM: Probability and Statistics}, 15:358--371, 2011.
+
+\bibitem[RV14]{RVrev}
+R.~{Rhodes} and V.~{Vargas}.
+\newblock {Gaussian multiplicative chaos and applications: a review}.
+\newblock {\em Probab. Surveys}, (11):315--392, 2014.
+
+\bibitem[RV16]{RVln}
+R.~Rhodes and V.~Vargas.
+\newblock Lecture notes on gaussian multiplicative chaos and liouville quantum
+  gravity.
+\newblock {\em arXiv preprint arXiv:1602.07323}, 2016.
+
+\bibitem[Sha16]{Sha}
+A.~Shamov.
+\newblock On gaussian multiplicative chaos.
+\newblock {\em J. Funct. Anal.}, 270(9):3224--3261, 2016.
+
+\bibitem[She07]{She}
+S.~Sheffield.
+\newblock Gaussian free fields for mathematicians.
+\newblock {\em Probability theory and related fields}, 139(3-4):521--541, 2007.
+
+\bibitem[ST94]{Sato}
+H.~{Sato} and M.~{Tamashiro}.
+\newblock {Multiplicative chaos and random translation.}
+\newblock {\em Annales de l'institut Henri Poincar\'e, section B},
+  (30:2):245--264, 1994.
+
+\end{thebibliography}
