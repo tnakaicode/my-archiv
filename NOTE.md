@@ -48,34 +48,43 @@ CHAPTER
 
 ## archive PrincipleOfGyrotron.pdf
 
+- La Agusu, T. Idehara, H. Mori, T. Saito, I. Ogawa and S.Mitsudo, Int. J. Infrared Millim. Waves28, 315 (2007)
+- T. Idehara and Y. Shimizu, Phys. Plasmas1, 3145 (1994).
+- O. Dumbrajs, G.S. Nusinovich and A.B. Pavelyev, Int J.Electron.64, 137 (1988).
+- G. S. Nusinovich, Int. J. Electron.51, 457 (1981).
+- E. Borie and B. Jödicke, Int. J. Electron.72, 721 (1992).
+- K. Kreischer, R.J. Temkin, H.R. Fetterman and W. Mulli-gan, IEEE Trans. Microw. Theory Tech.MTT-32, 481(1984).
+- S.H. Gold and A.W. Fliflet, Int. J. Electron.72, 779 (1992)
+
 ## archive Stratton1946.pdf
 
 - THEFIELDEQUATIONS
 - MAXWELL'SEQUATIONS
-  - 1.1 TheFieldVectors
-  - 1.2 ChargeandCurrent
-  - 1.3 DivergenceoftheFieldVectors
-  - 1.4 IntegralFormoftheFieldEquations
+  - 1.1 The Field Vectors
+  - 1.2 Charge and Current
+  - 1.3 Divergence of theFieldVectors
+  - 1.4 Integral Form of the Field Equations
 - MACROSCOPICPROPERTIESOFMATTER
-  - 1.5 TheInductiveCapacitieseand/x
-  - 1.6 ElectricandMagneticPolarization
-  - 1.7 ConductingMedia13UNITSANDDIMENSIONS
+  - 1.5 The Inductive Capacitiese and/x
+  - 1.6 Electricand Magnetic Polarization
+  - 1.7 Conducting Media
+- UNITSANDDIMENSIONS
   - 1.8 M.K.S.orGiorgiSystem
 - THEELECTROMAGNETICPOTENTIALS
-  - 1.9 VectorandScalarPotentials
-  - 1.10 ConductingMedia
-  - 1.11 HertzVectors,orPolarizationPotentials
-  - 1.12 ComplexFieldVectorsandPotentials
+  - 1.9 Vectorand Scalar Potentials
+  - 1.10 Conducting Media
+  - 1.11 HertzVectors,or Polarization Potentials
+  - 1.12 Complex Field Vectors and Potentials
 - BOUNDARYCONDITIONS
-  - 1.13 DiscontinuitiesintheFieldVectors
+  - 1.13 Discontinuities in the Field Vectors
 - COORDINATESYSTEMS
-  - 1.14 UnitaryandReciprocalVectors
-  - 1.15 DifferentialOperators
-  - 1.16 OrthogonalSystems
-  - 1.17 FieldEquationsinGeneralOrthogonalCoordinates
-  - 1.18 PropertiesofSomeElementarySystems
+  - 1.14 Unitary and Reciprocal Vectors
+  - 1.15 Differential Operators
+  - 1.16 Orthogonal Systems
+  - 1.17 Field Equations in General Orthogonal Coordinates
+  - 1.18 Properties of Some Elementary Systems
 - THEFIELDTENSORS
-  - 1.19 OrthogonalTransformationsandTheirInvariants
+  - 1.19 Orthogonal Transformations and Their Invariants
   - 1.20 ElementsofTensorAnalysis
   - 1.21 Space-timeSymmetryoftheFieldEquations
   - 1.22 TheLorentzTransformation
@@ -123,3 +132,19 @@ CHAPTER
   - 3.2 BoundaryConditions
 
 ## archive Theory of Irregular Waveguides with slowy changing parameters.pdf
+
+Table of Contents
+
+- U.S. Board on Geographic Names Transliteration System
+- Chapter I. Method of Small Heterogeneities
+  - p.35 (40)
+- Chapter II. Method of Cross Sections
+  - p.74 (79)
+- Chapter III. Critical Sections. Resonance Frequencies
+  - p.166 (171)
+- Chapter IV. Rectilinear Irregular Waveguides
+  - p.228 (233)
+- Chapter V. Bent Waveguides
+  - p.316 (321)
+- References
+  - p.398 (402)
