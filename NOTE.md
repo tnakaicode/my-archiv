@@ -1,14 +1,27 @@
-# NOTE
+---
+Title: Archive docemuent NOTE
+---
+- [1. arxiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons](#1-arxiv190803795-non-adiabatic-effects-on-electron-beam-quality-for-frequency-tunablegyrotrons)
+- [2. arXiv.1001.0559 JULIUS AND JULIA: MASTERING THE ART OF THE SCHWARZ LEMMA](#2-arxiv10010559-julius-and-julia-mastering-the-art-of-the-schwarz-lemma)
+- [3. archive 047_AO-95-30](#3-archive-047ao-95-30)
+- [4. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf](#4-archive-airbone-antenna-using-geometrical-theory-of-diffraction-and-mompdf)
+- [5. archive Determination of Propagation contents.pdf](#5-archive-determination-of-propagation-contentspdf)
+- [6. archive On the Theory of Corrugated Plane Surface.pdf](#6-archive-on-the-theory-of-corrugated-plane-surfacepdf)
+- [7. archive PrincipleOfGyrotron.pdf](#7-archive-principleofgyrotronpdf)
+  - [7.1. Cavity](#71-cavity)
+  - [7.2. Oscilation of Gyrotron](#72-oscilation-of-gyrotron)
+- [8. archive Stratton1946.pdf](#8-archive-stratton1946pdf)
+- [9. archive Theory of Irregular Waveguides with slowy changing parameters.pdf](#9-archive-theory-of-irregular-waveguides-with-slowy-changing-parameterspdf)
 
-## arxiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons
+## 1. arxiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons
 
 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons
 
-## arXiv.1001.0559 JULIUS AND JULIA: MASTERING THE ART OF THE SCHWARZ LEMMA
+## 2. arXiv.1001.0559 JULIUS AND JULIA: MASTERING THE ART OF THE SCHWARZ LEMMA
 
 tar.gx file is broken
 
-## archive 047_AO-95-30
+## 3. archive 047_AO-95-30
 
 Precise recursive formula forcalculating spot size in optical waveguides and accurate evaluation of splice loss
 
@@ -27,7 +40,7 @@ $$ \begin{aligned}
     \omega^{(n+1)} &= \frac{4 \int x^2 exp( -(\frac{x}{\omega^{(n)}})^2 ) f(x) dx }{\int exp( -(\frac{x}{\omega^{(n)}})^2 ) f(x) dx}^{1/2} \\
 \end{aligned} $$
 
-## archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf
+## 4. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf
 
 CHAPTER
 
@@ -42,11 +55,11 @@ CHAPTER
 - V TRAFFIC ALERT AND COLLISION AVOIDANCE SYSTEM ANALYSIS
 - VI SUMMARY   AND CONCLUSIONS
 
-## archive Determination of Propagation contents.pdf
+## 5. archive Determination of Propagation contents.pdf
 
-## archive On the Theory of Corrugated Plane Surface.pdf
+## 6. archive On the Theory of Corrugated Plane Surface.pdf
 
-## archive PrincipleOfGyrotron.pdf
+## 7. archive PrincipleOfGyrotron.pdf
 
 - La Agusu, T. Idehara, H. Mori, T. Saito, I. Ogawa and S.Mitsudo, Int. J. Infrared Millim. Waves28, 315 (2007)
 - T. Idehara and Y. Shimizu, Phys. Plasmas1, 3145 (1994).
@@ -56,7 +69,7 @@ CHAPTER
 - K. Kreischer, R.J. Temkin, H.R. Fetterman and W. Mulli-gan, IEEE Trans. Microw. Theory Tech.MTT-32, 481(1984).
 - S.H. Gold and A.W. Fliflet, Int. J. Electron.72, 779 (1992)
 
-### Cavity
+### 7.1. Cavity
 
 円筒の入口を狭くし，出口を広くテーパ状にしている．
 入口を狭くすることにより，空胴で発振した電磁波は入口側でカットオフとなり，入口から電子銃側へは電磁波は進行できず，反射して出口側へ進むことになる．
@@ -91,7 +104,28 @@ $$ Q_{diff,min} = \omega L / v_{gr} = 4\pi (L/\lambda)^2 $$
 
 実際は出口での反射による因子がかかり，$Q_{diff}$は$Q_{diff,min}$の２倍程度の値をとることが多い
 
-## archive Stratton1946.pdf
+### 7.2. Oscilation of Gyrotron
+
+ジャイロトロンでの発振を，サイクロトロン放射の立場ではなく，空胴中において電場と相互作用する電子の運動を考え，電子の運動エネルギーの変化から検討することが通常行われている
+
+$$ \frac{d \mathbb{e}}{dt} = -e v \cdot E $$  
+$$ \frac{d p}{dt} = -e E - \frac{e}{cc} v x E $$  
+
+$$ u = \frac{2}{\beta_{\partial 0}^2} (1 - \frac{\gamma}{\gamma_0}) $$  
+$$ \iota = \pi \frac{\beta_{\partial 0}^2}{\beta_{\parallel 0}} (\frac{z}{\lambda}) $$  
+
+弱い相対論的電子ビームに対して，電子の運動は次の２つの方程式で記述される。
+
+$$ \frac{du}{d\iota} = 2Ff(\iota) (1-u)^{n/2} sin(\theta) $$  
+$$ \frac{d\theta}{d\iota} = \Delta - u - nFf(\iota) (1-u)^{n/2-1} cos(\theta) $$  
+
+Fは規格化された電場
+
+$$ F = \frac{E_0}{B_0} \beta_{\partial 0}^{n-4} (\frac{n^{n-1}}{n!2^{n-1}} J_{m+-n} (k_{\partial}R_b)) $$  
+
+$\theta=\omega t -n\phi$で定義され、時間に対してゆっくりと変化する。
+
+## 8. archive Stratton1946.pdf
 
 - THEFIELDEQUATIONS
 - MAXWELL'SEQUATIONS
@@ -166,7 +200,7 @@ $$ Q_{diff,min} = \omega L / v_{gr} = 4\pi (L/\lambda)^2 $$
   - 3.1 EquationsofFieldandPotential
   - 3.2 BoundaryConditions
 
-## archive Theory of Irregular Waveguides with slowy changing parameters.pdf
+## 9. archive Theory of Irregular Waveguides with slowy changing parameters.pdf
 
 Table of Contents
 
