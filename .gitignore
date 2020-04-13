@@ -2,3 +2,8 @@ arXiv.*/*.aux
 arXiv.*/*.log
 arXiv.*/*.out
 arXiv.*/*.synctex.gz
+
+#tmp
+tmp/*
+temp_*/*
+*/temp_*/*
