@@ -1,0 +1,173 @@
+%THEOREMS
+
+{\theorembodyfont{\normalfont\it}
+\theoremheaderfont{\normalfont\bf}
+\newtheorem{thm}{ Theorem}
+\newtheorem{dfn}[thm]{ Definition}
+\newtheorem{lmm}[thm]{ Lemma}
+\newtheorem{exa}[thm]{ Example}
+\newtheorem{crl}[thm]{ Corollary}
+\newtheorem{asm}[thm]{ Assumption}
+\newtheorem{prp}[thm]{ Proposition}
+\newtheorem{cjt}[thm]{ Conjecture}}
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{prf}{ Proof:}}
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{skprf}{ Sketch of the proof.}}
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{outprf}{ Outline of the proof.}}
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{prftyp}{ Proof of Theorem \ref{thm:typicalsubspace}.}}
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{prfconv}{ Proof of Theorem \ref{thm:misoptach}.}}
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{prfdirectOSD}{ Proof of \rThm{OSD}.}}
+
+
+
+{\theorembodyfont{\normalfont}
+\theoremheaderfont{\normalfont\it}
+\newtheorem{rmk}{ Remark.}}
+
+
+
+
+
+%COMMANDS
+
+\renewcommand{\theprf}{}
+\renewcommand{\theprftyp}{}
+\renewcommand{\theoutprf}{}
+\renewcommand{\theprfconv}{}
+\renewcommand{\thermk}{}
+  
+
+\newcommand{\bra}[1]{\mbox{$\langle#1|$}}
+\newcommand{\Bra}[1]{\mbox{$\left\langle#1\right|$}}
+\newcommand{\ket}[1]{\mbox{$|#1\rangle$}}
+\newcommand{\Ket}[1]{\mbox{$\left|#1\right\rangle$}}
+\newcommand{\inpro}[2]{\mbox{$\left\langle#1|#2\right\rangle$}}
+\newcommand{\outpro}[2]{\mbox{$\ket{#1}\!\bra{#2}$}}
+\newcommand{\Outpro}[2]{\mbox{$\Ket{#1}\!\Bra{#2}$}}
+\newcommand{\proj}[1]{\mbox{$\ket{#1}\!\bra{#1}$}}
+\newcommand{\Proj}[1]{\mbox{$\Ket{#1}\!\Bra{#1}$}}
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\Norm}[1]{\left\|#1\right\|}
+\newcommand{\kakko}[1]{\mbox{$\left(#1\right)$}}
+\newcommand{\proof}{\noindent{\bf Proof.}  }
+\newcommand{\ave}[1]{\mbox{$\left\langle#1\right\rangle$}}
+\newcommand{\eq}[1]{Eq.(\ref{eq:#1})}
+\newcommand{\sect}[1]{Sec.\,\ref{sec:#1}}
+\newcommand{\ep}[1]{\noindent{\underline{\bf EP{#1}:}}}
+\newcommand{\alg}[1]{\begin{align}#1\end{align}}
+\newcommand{\rarrow}{\rightarrow}
+\newcommand{\larrow}{\leftarrow}
+\newcommand{\nn}{\nonumber}
+\newcommand{\ca}[1]{{\mathcal #1}}
+\newcommand{\mbb}[1]{{\mathbb #1}}
+\newcommand{\mfk}[1]{{\mathfrak #1}}
+\newcommand{\Tr}[2]{{\rm Tr}_{#1}\left[#2\right]}
+\newcommand{\bthm}[1]{\begin{thm}\label{thm:#1}}
+\newcommand{\ethm}{\end{thm}}
+\newcommand{\rthm}[1]{\ref{thm:#1}}
+\newcommand{\rThm}[1]{Theorem \ref{thm:#1}}
+\newcommand{\blmm}[1]{\begin{lmm}\label{lmm:#1}}
+\newcommand{\elmm}{\end{lmm}}
+\newcommand{\rLmm}[1]{Lemma \ref{lmm:#1}}
+\newcommand{\rlmm}[1]{\ref{lmm:#1}}
+\newcommand{\bdfn}[1]{\begin{dfn}\label{dfn:#1}}
+\newcommand{\edfn}{\end{dfn}}
+\newcommand{\rdfn}[1]{\ref{dfn:#1}}
+\newcommand{\rDfn}[1]{Definition \ref{dfn:#1}}
+\newcommand{\basm}[1]{\begin{asm}\label{asm:#1}}
+\newcommand{\easm}{\end{asm}}
+\newcommand{\bprp}[1]{\begin{prp}\label{prp:#1}}
+\newcommand{\eprp}{\end{prp}}
+\newcommand{\rprp}[1]{\ref{prp:#1}}
+\newcommand{\rPrp}[1]{Proposition \ref{prp:#1}}
+\newcommand{\bcrl}[1]{\begin{crl}\label{crl:#1}}
+\newcommand{\ecrl}{\end{crl}}
+\newcommand{\rcrl}[1]{\ref{crl:#1}}
+\newcommand{\rCrl}[1]{Corollary \ref{crl:#1}}
+\newcommand{\bcjt}[1]{\begin{cjt}\label{cjt:#1}}
+\newcommand{\ecjt}{\end{cjt}}
+\newcommand{\rcjt}[1]{\ref{cjt:#1}}
+\newcommand{\rCjt}[1]{Conjecture \ref{cjt:#1}}
+\newcommand{\bprf}{\begin{prf}}
+\newcommand{\eprf}{\end{prf}}
+\newcommand{\brmk}{\begin{rmk}}
+\newcommand{\ermk}{\end{rmk}}
+\newcommand{\laeq}[1]{\label{eq:#1}}
+\newcommand{\req}[1]{(\ref{eq:#1})}
+\newcommand{\rineq}[1]{Inequality (\ref{eq:#1})}
+\newcommand{\QED}{\hfill$\blacksquare$}
+\newcommand{\lsec}[1]{\label{sec:#1}}
+\newcommand{\rsec}[1]{\ref{sec:#1}}
+\newcommand{\rSec}[1]{Section \ref{sec:#1}}
+\newcommand{\lapp}[1]{\label{app:#1}}
+\newcommand{\rapp}[1]{\ref{app:#1}}
+\newcommand{\rApp}[1]{Appendix \ref{app:#1}}
+\newcommand{\aR}{a_{\scalebox{0.45}{$R$}}}
+\newcommand{\aL}{a_{\scalebox{0.45}{$L$}}}
+\newcommand{\az}{a_{\scalebox{0.45}{$0$}}}
+\newcommand{\bR}{b_{\scalebox{0.45}{$R$}}}
+\newcommand{\bL}{b_{\scalebox{0.45}{$L$}}}
+\newcommand{\bz}{b_{\scalebox{0.45}{$0$}}}
+\newcommand{\cR}{c_{\scalebox{0.45}{$R$}}}
+\newcommand{\cL}{c_{\scalebox{0.45}{$L$}}}
+\newcommand{\cz}{c_{\scalebox{0.45}{$0$}}}
+\newcommand{\sR}{s_{\scalebox{0.45}{$R$}}}
+\newcommand{\sL}{s_{\scalebox{0.45}{$L$}}}
+\newcommand{\sz}{s_{\scalebox{0.45}{$0$}}}
+\newcommand{\baR}{{\bar a}_{\scalebox{0.45}{$R$}}}
+\newcommand{\baL}{{\bar a}_{\scalebox{0.45}{$L$}}}
+\newcommand{\baz}{{\bar a}_{\scalebox{0.45}{$0$}}}
+\newcommand{\bbR}{{\bar b}_{\scalebox{0.45}{$R$}}}
+\newcommand{\bbL}{{\bar b}_{\scalebox{0.45}{$L$}}}
+\newcommand{\bbz}{{\bar b}_{\scalebox{0.45}{$0$}}}
+\newcommand{\bsR}{{\bar s}_{\scalebox{0.45}{$R$}}}
+\newcommand{\bsL}{{\bar s}_{\scalebox{0.45}{$L$}}}
+\newcommand{\bsz}{{\bar s}_{\scalebox{0.45}{$0$}}}
+\newcommand{\haR}{{\hat a}_{\scalebox{0.45}{$R$}}}
+\newcommand{\haL}{{\hat a}_{\scalebox{0.45}{$L$}}}
+\newcommand{\haz}{{\hat a}_{\scalebox{0.45}{$0$}}}
+\newcommand{\hbR}{{\hat b}_{\scalebox{0.45}{$R$}}}
+\newcommand{\hbL}{{\hat b}_{\scalebox{0.45}{$L$}}}
+\newcommand{\hbz}{{\hat b}_{\scalebox{0.45}{$0$}}}
+\newcommand{\conv}{{\rm conv}}
+\newcommand{\red}{\color{red}}
+\newcommand{\blue}{\color{blue}}
+\newcommand{\white}{\color{white}}
+\newcommand{\notations}{\noindent{\it Notations.} }
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\entem}{\end{itemize}}
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\ennum}{\end{enumerate}}
+\newcommand{\bb}{\mathbb}
+\newcommand{\otm}{\otimes}
+\newcommand{\opl}{\oplus}
+\newcommand{\vro}{\varrho}
+\newcommand{\rFig}[1]{Figure \ref{fig:#1}}
+\newcommand{\rfig}[1]{\ref{fig:#1}}
+\newcommand{\SH}{\noindent{\red [START HERE]} }
+\newcommand{\TBA}{{\red @@@} }
+\newcommand{\TBC}{{\red [TO BE CONFIRMED]} }
+\newcommand{\argmax}{\mathop{\rm arg~max}\limits}
+\newcommand{\argmin}{\mathop{\rm arg~min}\limits}
+\newcommand{\prlsection}[1]{{\it{#1}}.---}
+%\newcommand{\dim}{{\rm dim}}
+
+
+ 
