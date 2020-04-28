@@ -1,0 +1,20 @@
+Our goal is to develop RL agents that can generate higher quality results faster as they gain more experience from placing chips. In the following, we explain a novel domain adaptation technique that enables us to train a policy on a set of netlists and then transfer the knowledge to new unseen netlists. 
+
+Training such a policy is a challenging task since the state space across different chips is very large. Different netlists and grid sizes can have very different properties such as number of nodes, sizes of macros, graph topology, port locations, canvass's width and height. Motivated by this observation, we first focused on learning rich representations of the state space. Our intuition was that a policy architecture that is able to transfer placement optimizations across chips, should be able to  encode the state associated with a new unseen chip into a meaningful signal at inference. As such, we train a neural network architecture that is able to predict reward functions on new netlists, with the ultimate goal of using this architecture as the encoder layer of the policy.
+
+We generate a large dataset of chip placements, where the state (refer to Section \ref{} for definition of state) associated with a given chip and placement is the input and the rewards (wierlength and congestion) are the labels. We then train a neural network that can predict the labels given the inputs, tuning the architectures to achieve high prediction accuracy using cross validation. We then use this architecture as $F_{\theta_{enc}}$. 
+
+During inference, when we want to place a newly available netlist, we load the pre-trained weights both $F_{\theta_{enc}}$ and $F_{\theta_{dec}}$, but during fine-tuning, we only train the weights of the decoder. This gives us the flexibility to both use the pre-trained weights (that have learned a rich representation of the input state), and further finetune the decoder weights that need to be heavily optimized for the target placement decisions.  
+
+
+
+
+
+% To be more formal, we train a policy  
+
+% \begin{align}
+%   \label{eqn:cost}
+%   J(\theta) = \mathbb{E}_{G \sim \mathcal{G}, D \sim \pi_\theta(G)}[r_{G,D}]
+%   \approx
+%   \frac{1}{N}\sum_{G} \mathbb{E}_{D \sim \pi_\theta(G)} [r_{G, D}]
+% \end{align}

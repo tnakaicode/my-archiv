@@ -1,0 +1,340 @@
+\begin{thebibliography}{44}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Addanki et~al.(2019)Addanki, Venkatakrishnan, Gupta, Mao, and
+  Alizadeh]{Placeto18}
+Addanki, R., Venkatakrishnan, S.~B., Gupta, S., Mao, H., and Alizadeh, M.
+\newblock Placeto: Learning generalizable device placement algorithms for
+  distributed machine learning.
+\newblock \emph{CoRR}, abs/1906.08879, 2019.
+\newblock URL \url{http://arxiv.org/abs/1906.08879}.
+
+\bibitem[Agnihotri et~al.(2005)Agnihotri, Ono, and Madden]{fengshui2005}
+Agnihotri, A., Ono, S., and Madden, P.
+\newblock Recursive bisection placement: Feng shui 5.0 implementation details.
+\newblock In \emph{Proceedings of the International Symposium on Physical
+  Design}, pp.\  230--232, 01 2005.
+\newblock \doi{10.1145/1055137.1055186}.
+
+\bibitem[{Bo Hu} \& {Marek-Sadowska}(2005){Bo Hu} and
+  {Marek-Sadowska}]{mfar2005}
+{Bo Hu} and {Marek-Sadowska}, M.
+\newblock Multilevel fixed-point-addition-based vlsi placement.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 24\penalty0 (8):\penalty0 1188--1203, Aug 2005.
+\newblock ISSN 1937-4151.
+\newblock \doi{10.1109/TCAD.2005.850802}.
+
+\bibitem[Brenner et~al.(2008)Brenner, Struzyna, and Vygen]{bonnplace2008}
+Brenner, U., Struzyna, M., and Vygen, J.
+\newblock Bonnplace: Placement of leading-edge chips by advanced combinatorial
+  algorithms.
+\newblock \emph{Trans. Comp.-Aided Des. Integ. Cir. Sys.}, 27\penalty0
+  (9):\penalty0 1607–1620, September 2008.
+\newblock ISSN 0278-0070.
+\newblock \doi{10.1109/TCAD.2008.927674}.
+\newblock URL \url{https://doi.org/10.1109/TCAD.2008.927674}.
+
+\bibitem[Breuer(1977)]{MinCutBreuer1977}
+Breuer, M.~A.
+\newblock A class of min-cut placement algorithms.
+\newblock In \emph{Proceedings of the 14th Design Automation Conference}, DAC
+  ’77, pp.\  284–290. IEEE Press, 1977.
+
+\bibitem[{Chen} et~al.(2008){Chen}, {Jiang}, {Hsu}, {Chen}, and
+  {Chang}]{ntuplace32008}
+{Chen}, T., {Jiang}, Z., {Hsu}, T., {Chen}, H., and {Chang}, Y.
+\newblock Ntuplace3: An analytical placer for large-scale mixed-size designs
+  with preplaced blocks and density constraints.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 27\penalty0 (7):\penalty0 1228--1240, July 2008.
+\newblock ISSN 1937-4151.
+\newblock \doi{10.1109/TCAD.2008.923063}.
+
+\bibitem[Chen et~al.(2006)Chen, Jiang, Hsu, Chen, and Chang]{NTUPlacer06}
+Chen, T.-C., Jiang, Z.-W., Hsu, T.-C., Chen, H.-C., and Chang, Y.-W.
+\newblock A high-quality mixed-size analytical placer considering preplaced
+  blocks and density constraints.
+\newblock In \emph{Proceedings of the 2006 IEEE/ACM International Conference on
+  Computer-Aided Design}, ICCAD ’06, pp.\  187–192, New York, NY, USA,
+  2006. Association for Computing Machinery.
+\newblock ISBN 1595933891.
+
+\bibitem[{Cheng} et~al.(2019){Cheng}, {Kahng}, {Kang}, and {Wang}]{RePlAce19}
+{Cheng}, C., {Kahng}, A.~B., {Kang}, I., and {Wang}, L.
+\newblock Replace: Advancing solution quality and routability validation in
+  global placement.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 38\penalty0 (9):\penalty0 1717--1730, 2019.
+
+\bibitem[{Chung-Kuan Cheng} \& {Kuh}(1984){Chung-Kuan Cheng} and
+  {Kuh}]{ResistiveNetwork1984}
+{Chung-Kuan Cheng} and {Kuh}, E.~S.
+\newblock Module placement based on resistive network optimization.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 3\penalty0 (3):\penalty0 218--225, July 1984.
+\newblock ISSN 1937-4151.
+\newblock \doi{10.1109/TCAD.1984.1270078}.
+
+\bibitem[{Fiduccia} \& {Mattheyses}(1982){Fiduccia} and
+  {Mattheyses}]{fiduccia1982}
+{Fiduccia}, C.~M. and {Mattheyses}, R.~M.
+\newblock A linear-time heuristic for improving network partitions.
+\newblock In \emph{19th Design Automation Conference}, pp.\  175--181, June
+  1982.
+\newblock \doi{10.1109/DAC.1982.1585498}.
+
+\bibitem[Gilbert \& Pollak(1968)Gilbert and Pollak]{gilbert1968steiner}
+Gilbert, E.~N. and Pollak, H.~O.
+\newblock Steiner minimal trees.
+\newblock \emph{SIAM Journal on Applied Mathematics}, 16\penalty0 (1):\penalty0
+  1--29, 1968.
+
+\bibitem[Hanan \& Kurtzberg(1972)Hanan and Kurtzberg]{forcedirected1972}
+Hanan, M. and Kurtzberg, J.
+\newblock Placement techniques.
+\newblock In \emph{Design Automation of Digital Systems}, 1972.
+
+\bibitem[{Hsu} et~al.(2011){Hsu}, {Chang}, and
+  {Balabanov}]{weightedaverage2011}
+{Hsu}, M., {Chang}, Y., and {Balabanov}, V.
+\newblock Tsv-aware analytical placement for 3d ic designs.
+\newblock In \emph{2011 48th ACM/EDAC/IEEE Design Automation Conference (DAC)},
+  pp.\  664--669, June 2011.
+
+\bibitem[Huang et~al.(2019)Huang, Xie, Fang, Yu, Ren, Fang, Chen, and
+  Hu]{cnnplacer19}
+Huang, Y., Xie, Z., Fang, G., Yu, T., Ren, H., Fang, S., Chen, Y., and Hu, J.
+\newblock Routability-driven macro placement with embedded cnn-based prediction
+  model.
+\newblock In Teich, J. and Fummi, F. (eds.), \emph{Design, Automation {\&} Test
+  in Europe Conference {\&} Exhibition, {DATE} 2019, Florence, Italy, March
+  25-29, 2019}, pp.\  180--185. {IEEE}, 2019.
+
+\bibitem[{Kahng} et~al.(2005){Kahng}, {Reda}, and {Qinke Wang}]{aplace22005}
+{Kahng}, A.~B., {Reda}, S., and {Qinke Wang}.
+\newblock Architecture and details of a high quality, large-scale analytical
+  placer.
+\newblock In \emph{ICCAD-2005. IEEE/ACM International Conference on
+  Computer-Aided Design, 2005.}, pp.\  891--898, Nov 2005.
+\newblock \doi{10.1109/ICCAD.2005.1560188}.
+
+\bibitem[Karypis \& Kumar(1998)Karypis and Kumar]{hmetis1998}
+Karypis, G. and Kumar, V.
+\newblock A hypergraph partitioning package.
+\newblock In \emph{HMETIS}, 1998.
+
+\bibitem[Kernighan(1985)]{TerminalPropagation1985}
+Kernighan, D.~.
+\newblock A procedure for placement of standard-cell vlsi circuits.
+\newblock In \emph{IEEE TCAD}, 1985.
+
+\bibitem[{Kim} \& {Markov}(2012){Kim} and {Markov}]{complx2012}
+{Kim}, M. and {Markov}, I.~L.
+\newblock Complx: A competitive primal-dual lagrange optimization for global
+  placement.
+\newblock In \emph{DAC Design Automation Conference 2012}, pp.\  747--755, June
+  2012.
+
+\bibitem[Kim et~al.(2010)Kim, Lee, and Markov]{simpl2010}
+Kim, M.-C., Lee, D.-J., and Markov, I.~L.
+\newblock Simpl: An effective placement algorithm.
+\newblock In \emph{Proceedings of the International Conference on
+  Computer-Aided Design}, ICCAD ’10, pp.\  649–656. IEEE Press, 2010.
+\newblock ISBN 9781424481927.
+
+\bibitem[Kim et~al.(2012{\natexlab{a}})Kim, Viswanathan, Alpert, Markov, and
+  Ramji]{MAPLE12}
+Kim, M.-C., Viswanathan, N., Alpert, C.~J., Markov, I.~L., and Ramji, S.
+\newblock Maple: Multilevel adaptive placement for mixed-size designs.
+\newblock In \emph{Proceedings of the 2012 ACM International Symposium on
+  International Symposium on Physical Design}, ISPD, pp.\  193–200, New York,
+  NY, USA, 2012{\natexlab{a}}. Association for Computing Machinery.
+
+\bibitem[Kim et~al.(2012{\natexlab{b}})Kim, Viswanathan, Alpert, Markov, and
+  Ramji]{maple2012}
+Kim, M.-C., Viswanathan, N., Alpert, C.~J., Markov, I.~L., and Ramji, S.
+\newblock Maple: Multilevel adaptive placement for mixed-size designs.
+\newblock In \emph{Proceedings of the 2012 ACM International Symposium on
+  International Symposium on Physical Design}, ISPD ’12, pp.\  193–200, New
+  York, NY, USA, 2012{\natexlab{b}}. Association for Computing Machinery.
+\newblock ISBN 9781450311670.
+\newblock \doi{10.1145/2160916.2160958}.
+\newblock URL \url{https://doi.org/10.1145/2160916.2160958}.
+
+\bibitem[Kirkpatrick et~al.(1983)Kirkpatrick, Gelatt, and
+  Vecchi]{SimulatedAnnealing}
+Kirkpatrick, S., Gelatt, C.~D., and Vecchi, M.~P.
+\newblock Optimization by simulated annealing.
+\newblock \emph{Science}, 220\penalty0 (4598):\penalty0 671--680, 1983.
+\newblock ISSN 0036-8075.
+\newblock \doi{10.1126/science.220.4598.671}.
+\newblock URL \url{https://science.sciencemag.org/content/220/4598/671}.
+
+\bibitem[Lin et~al.(2013)Lin, Chu, Shinnerl, Bustany, and Nedelchev]{polar2013}
+Lin, T., Chu, C., Shinnerl, J.~R., Bustany, I., and Nedelchev, I.
+\newblock Polar: Placement based on novel rough legalization and refinement.
+\newblock In \emph{Proceedings of the International Conference on
+  Computer-Aided Design}, ICCAD ’13, pp.\  357–362. IEEE Press, 2013.
+\newblock ISBN 9781479910694.
+
+\bibitem[Lin et~al.(2019)Lin, Dhar, Li, Ren, Khailany, and Pan]{Dreamplace19}
+Lin, Y., Dhar, S., Li, W., Ren, H., Khailany, B., and Pan, D.~Z.
+\newblock Dreamplace: Deep learning toolkit-enabled gpu acceleration for modern
+  vlsi placement.
+\newblock In \emph{Proceedings of the 56th Annual Design Automation Conference
+  2019}, DAC ’19, 2019.
+
+\bibitem[Lu et~al.(2015)Lu, Chen, Chang, Sha, Huang, Teng, and Cheng]{EPlace15}
+Lu, J., Chen, P., Chang, C.-C., Sha, L., Huang, D. J.-H., Teng, C.-C., and
+  Cheng, C.-K.
+\newblock Eplace: Electrostatics-based placement using fast fourier transform
+  and nesterov’s method.
+\newblock \emph{ACM Trans. Des. Autom. Electron. Syst.}, 20\penalty0 (2), 2015.
+\newblock ISSN 1084-4309.
+
+\bibitem[{Lu} et~al.(2015){Lu}, {Zhuang}, {Chen}, {Chang}, {Chang}, {Wong},
+  {Sha}, {Huang}, {Luo}, {Teng}, and {Cheng}]{EPlacemixed15}
+{Lu}, J., {Zhuang}, H., {Chen}, P., {Chang}, H., {Chang}, C., {Wong}, Y.,
+  {Sha}, L., {Huang}, D., {Luo}, Y., {Teng}, C., and {Cheng}, C.
+\newblock eplace-ms: Electrostatics-based placement for mixed-size circuits.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 34\penalty0 (5):\penalty0 685--698, 2015.
+
+\bibitem[Lu et~al.(2016)Lu, Zhuang, Kang, Chen, and Cheng]{EPLace3D16}
+Lu, J., Zhuang, H., Kang, I., Chen, P., and Cheng, C.-K.
+\newblock Eplace-3d: Electrostatics based placement for 3d-ics.
+\newblock In \emph{Proceedings of the 2016 on International Symposium on
+  Physical Design}, ISPD ’16, New York, NY, USA, 2016. Association for
+  Computing Machinery.
+\newblock ISBN 9781450340397.
+\newblock \doi{10.1145/2872334.2872361}.
+\newblock URL \url{https://doi.org/10.1145/2872334.2872361}.
+
+\bibitem[Nazi et~al.(2019)Nazi, Hang, Goldie, Ravi, and
+  Mirhoseini]{nazi2019gap}
+Nazi, A., Hang, W., Goldie, A., Ravi, S., and Mirhoseini, A.
+\newblock Gap: Generalizable approximate graph partitioning framework, 2019.
+
+\bibitem[Obermeier et~al.(2005)Obermeier, Ranke, and Johannes]{kraftwerk2005}
+Obermeier, B., Ranke, H., and Johannes, F.
+\newblock Kraftwerk: a versatile placement approach.
+\newblock In \emph{ISPD}, pp.\  242--244, 01 2005.
+\newblock \doi{10.1145/1055137.1055190}.
+
+\bibitem[Paliwal et~al.(2019)Paliwal, Gimeno, Nair, Li, Lubin, Kohli, and
+  Vinyals]{REGAL19}
+Paliwal, A.~S., Gimeno, F., Nair, V., Li, Y., Lubin, M., Kohli, P., and
+  Vinyals, O.
+\newblock Regal: Transfer learning for fast optimization of computation graphs.
+\newblock \emph{ArXiv}, abs/1905.02494, 2019.
+
+\bibitem[{Ren-Song Tsay} et~al.(1988){Ren-Song Tsay}, {Kuh}, and {Chi-Ping
+  Hsu}]{proud1988}
+{Ren-Song Tsay}, {Kuh}, E.~S., and {Chi-Ping Hsu}.
+\newblock Proud: a sea-of-gates placement algorithm.
+\newblock \emph{IEEE Design Test of Computers}, 5\penalty0 (6):\penalty0
+  44--56, Dec 1988.
+\newblock ISSN 1558-1918.
+\newblock \doi{10.1109/54.9271}.
+
+\bibitem[Roy et~al.(2007)Roy, Papa, and Markov]{capo2007}
+Roy, J.~A., Papa, D.~A., and Markov, I.~L.
+\newblock \emph{Capo: Congestion-Driven Placement for Standard-cell and RTL
+  Netlists with Incremental Capability}, pp.\  97--133.
+\newblock Springer US, Boston, MA, 2007.
+
+\bibitem[Sarrafzadeh et~al.(2003)Sarrafzadeh, Wang, and Yang]{dragon}
+Sarrafzadeh, M., Wang, M., and Yang, X.
+\newblock \emph{Dragon: A Placement Framework}, pp.\  57--89.
+\newblock Springer, 01 2003.
+\newblock ISBN 978-1-4419-5309-4.
+\newblock \doi{10.1007/978-1-4757-3781-3_3}.
+
+\bibitem[Schulman et~al.(2017)Schulman, Wolski, Dhariwal, Radford, and
+  Klimov]{ppo17}
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., and Klimov, O.
+\newblock Proximal policy optimization algorithms, 2017.
+
+\bibitem[Sechen \& Sangiovanni-Vincentelli(1986)Sechen and
+  Sangiovanni-Vincentelli]{DAC-1986-SechenS}
+Sechen, C. and Sangiovanni-Vincentelli, A.~L.
+\newblock {TimberWolf3.2: a new standard cell placement and global routing
+  package}.
+\newblock In \emph{{DAC}}, pp.\  432--439. {IEEE Computer Society Press}, 1986.
+\newblock \doi{10.1145/318013.318083}.
+
+\bibitem[Shahookar \& Mazumder(1991)Shahookar and Mazumder]{hpwl1991}
+Shahookar, K. and Mazumder, P.
+\newblock Vlsi cell placement techniques.
+\newblock \emph{ACM Comput. Surv.}, 23\penalty0 (2):\penalty0 143–220, June
+  1991.
+\newblock ISSN 0360-0300.
+\newblock \doi{10.1145/103724.103725}.
+\newblock URL \url{https://doi.org/10.1145/103724.103725}.
+
+\bibitem[{Spindler} et~al.(2008){Spindler}, {Schlichtmann}, and
+  {Johannes}]{kraftwerk22008}
+{Spindler}, P., {Schlichtmann}, U., and {Johannes}, F.~M.
+\newblock Kraftwerk2—a fast force-directed quadratic placement approach using
+  an accurate net model.
+\newblock \emph{IEEE Transactions on Computer-Aided Design of Integrated
+  Circuits and Systems}, 27\penalty0 (8):\penalty0 1398--1411, Aug 2008.
+\newblock ISSN 1937-4151.
+\newblock \doi{10.1109/TCAD.2008.925783}.
+
+\bibitem[{Tao Luo} \& {Pan}(2008){Tao Luo} and {Pan}]{dplace2008}
+{Tao Luo} and {Pan}, D.~Z.
+\newblock Dplace2.0: A stable and efficient analytical placement based on
+  diffusion.
+\newblock In \emph{2008 Asia and South Pacific Design Automation Conference},
+  pp.\  346--351, March 2008.
+\newblock \doi{10.1109/ASPDAC.2008.4483972}.
+
+\bibitem[Viswanathan et~al.(2007{\natexlab{a}})Viswanathan, Nam, Alpert,
+  Villarrubia, Ren, and Chu]{rql2007}
+Viswanathan, N., Nam, G.-J., Alpert, C., Villarrubia, P., Ren, H., and Chu, C.
+\newblock Rql: Global placement via relaxed quadratic spreading and
+  linearization.
+\newblock In \emph{Proceedings - Design Automation Conference}, pp.\  453--458,
+  07 2007{\natexlab{a}}.
+\newblock ISBN 978-1-59593-627-1.
+\newblock \doi{10.1145/1278480.1278599}.
+
+\bibitem[Viswanathan et~al.(2007{\natexlab{b}})Viswanathan, Pan, and
+  Chu]{fastplace2007}
+Viswanathan, N., Pan, M., and Chu, C.
+\newblock \emph{FastPlace: An Efficient Multilevel Force-Directed Placement
+  Algorithm}, pp.\  193--228.
+\newblock Springer, 01 2007{\natexlab{b}}.
+\newblock \doi{10.1007/978-0-387-68739-1_8}.
+
+\bibitem[William et~al.(2001)William, Ross, and Lu]{logsumexp2001}
+William, N., Ross, D., and Lu, S.
+\newblock Non-linear optimization system and method for wire length and delay
+  optimization for an automatic electric circuit placer.
+\newblock In \emph{Patent}, 2001.
+
+\bibitem[Zhang \& Chen(2018)Zhang and Chen]{zhang2018link}
+Zhang, M. and Chen, Y.
+\newblock Link prediction based on graph neural networks, 2018.
+
+\bibitem[Zhiyao Xie Duke~Univeristy(2018)]{RouteNet18}
+Zhiyao Xie Duke~Univeristy, Durham, N. U. . Y.-H. H. . G.-Q. F. . H. R. . S.-Y.
+  F. . Y. C. . J.~H.
+\newblock Routenet: Routability prediction for mixed-size designs using
+  convolutional neural network.
+\newblock In \emph{IEEE/ACM International Conference on Computer-Aided Design
+  (ICCAD}, 2018.
+
+\bibitem[Zhou et~al.(2019)Zhou, Roy, Abdolrashidi, Wong, Ma, Xu, Zhong, Liu,
+  Goldie, Mirhoseini, and Laudon]{zhou2019gdp}
+Zhou, Y., Roy, S., Abdolrashidi, A., Wong, D., Ma, P.~C., Xu, Q., Zhong, M.,
+  Liu, H., Goldie, A., Mirhoseini, A., and Laudon, J.
+\newblock Gdp: Generalized device placement for dataflow graphs, 2019.
+
+\end{thebibliography}

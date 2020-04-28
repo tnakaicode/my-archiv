@@ -1,0 +1,612 @@
+%%%%%%%% ICML 2020 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+\pdfinfo{
+  /Title ()
+  /Creator ()
+  /Producer ()
+  /Author ()
+  /Subject ()
+  /Keywords ()
+}
+% Recommended, but optional, packages for figures and better typesetting:
+%\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{booktabs}
+
+% for professional tables
+%\usepackage[ruled,vlined]{algorithm2e}
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2020} with \usepackage[nohyperref]{icml2020} above.
+\usepackage{hyperref}
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+\usepackage[accepted]{icml2020}
+
+% If accepted, instead use the following line for the camera-ready submission:
+%\usepackage[accepted]{icml2020}
+
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+%\icmltitlerunning{Submission and Formatting Instructions for ICML 2020}
+\begin{document}
+
+\twocolumn[
+\icmltitle{Chip Placement with Deep Reinforcement Learning}
+% It is OKAY to include author information, even for blind
+% submissions: the style file will automatically remove it for you
+% unless you've provided the [accepted] option to the icml2020
+% package.
+% List of affiliations: The first argument should be a (short)
+% identifier you will use later to specify author affiliations
+% Academic affiliations should list Department, University, City, Region, Country
+% Industry affiliations should list Company, City, Region, Country
+% You can specify symbols, otherwise they are numbered in order.
+% Ideally, you should not use this facility. Affiliations will be numbered
+% in order of appearance and this is the preferred way.
+% \twocolumn[\icmlauthor{Azalia Mirhoseini*, Anna Goldie*, Mustafa Yazgan, Joe Jiang, Ebrahim Songhori, Shen Wang, Young-Joon Lee}]
+% \twocolumn[\icmlauthor{Omkar Pathak, Eric Johnson, Sungmin Bae, Azade Nazi, Jiwoo Pak, Andy Tong, Kavya Srinivasa, William Hang,  Emre Tuncer, Anand Babu, Quoc Le, James Laudon, Roger Carpenter, Richard Ho, Jeff Dean}]
+\icmlsetsymbol{equal}{*}
+\begin{icmlauthorlist}
+\icmlauthor{Azalia Mirhoseini}{equal}
+\icmlauthor{Anna Goldie}{equal}
+\icmlauthor{Mustafa Yazgan}{}
+\icmlauthor{Joe Jiang}{}
+\icmlauthor{Ebrahim Songhori}{}
+\icmlauthor{Shen Wang}{}
+\icmlauthor{Young-Joon Lee}{}
+\{azalia, agoldie, mustafay, wenjiej, esonghori, shenwang, youngjoonlee\}@google.com
+\vspace{.1in}\\
+\icmlauthor{Eric Johnson}{}
+\icmlauthor{Omkar Pathak}{}
+\icmlauthor{Sungmin Bae}{}
+\icmlauthor{Azade Nazi}{}
+\icmlauthor{Jiwoo Pak}{}
+\icmlauthor{Andy Tong}{}
+\icmlauthor{Kavya Srinivasa}{}
+\icmlauthor{William Hang}{}
+\icmlauthor{Emre Tuncer}{}
+\icmlauthor{Anand Babu}{}
+\icmlauthor{Quoc Le}{}
+\icmlauthor{James Laudon}{}
+\icmlauthor{Richard Ho}{}
+\icmlauthor{Roger Carpenter}{}
+\icmlauthor{Jeff Dean}{}
+\end{icmlauthorlist}
+
+\vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column
+% listing the affiliations and the copyright notice.
+% The command takes one argument, which is text to display at the start of the footnote.
+% The \icmlEqualContribution command is standard text for equal contribution.
+% Remove it (just {}) if you do not need this facility.
+
+%\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
+\printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+\begin{abstract}
+In this work, we present a learning-based approach to chip placement, one of the most complex and time-consuming stages of the chip design process. Unlike prior methods, our approach has the ability to learn from past experience and improve over time. In particular, as we train over a greater number of chip blocks, our method becomes better at rapidly generating optimized placements for previously unseen chip blocks. To achieve these results, we pose placement as a Reinforcement Learning (RL) problem and train an agent to place the nodes of a chip netlist onto a chip canvas. To enable our RL policy to generalize to unseen blocks, we ground representation learning in the supervised task of predicting placement quality. By designing a neural architecture that can accurately predict reward across a wide variety of netlists and their placements, we are able to generate rich feature embeddings of the input netlists. We then use this architecture as the encoder of our policy and value networks to enable transfer learning. Our objective is to minimize PPA (power, performance, and area), and we show that, in under 6 hours, our method can generate placements that are superhuman or comparable on modern accelerator netlists, whereas existing baselines require human experts in the loop and take several weeks.
+
+%While we focus on the placement problem, we believe that the core concept presented in this work, namely that of designing learning-based approaches that become more experienced over time, is also applicable to other domains of chip design, such as architectural and logic design, synthesis, and verification.
+
+
+\end{abstract}
+
+
+
+\section{Introduction}
+
+Rapid progress in AI has been enabled by remarkable advances in computer systems and hardware, but with the end of Moore’s Law and Dennard scaling, the world is moving toward specialized hardware to meet AI’s exponentially growing demand for compute. However, today’s chips take years to design, leaving us with the speculative task of optimizing them for the machine learning (ML) models of 2-5 years from now. Dramatically shortening the chip design cycle would allow hardware to better adapt to the rapidly advancing field of AI. We believe that it is AI itself that will provide the means to shorten the chip design cycle, creating a symbiotic relationship between hardware and AI with each fueling advances in the other.
+
+In this work, we present a learning-based approach to chip placement, one of the most complex and time-consuming stages of the chip design process. The objective is to place a netlist graph of macros (e.g., SRAMs) and standard cells (logic gates, such as NAND, NOR, and XOR) onto a chip canvas, such that power, performance, and area (PPA) are optimized, while adhering to constraints on placement density and routing congestion (described in Sections \ref{section:density} and \ref{section:congestion}). Despite decades of research on this problem, it is still necessary for human experts to iterate for weeks with the existing placement tools, in order to produce solutions that meet multi-faceted design criteria. The problem's complexity arises from the sizes of the netlist graphs (millions to billions of nodes), the granularity of the grids onto which these graphs must be placed, and the exorbitant cost of computing the true target metrics (many hours and sometimes over a day for industry-standard electronic design automation (EDA) tools to evaluate a single design). Even after breaking the problem into more manageable subproblems (e.g., grouping the nodes into a few thousand clusters and reducing the granularity of the grid), the state space is still orders of magnitude larger than recent problems on which learning-based methods have shown success.
+
+To address this challenge, we pose chip placement as a Reinforcement Learning (RL) problem, where we train an agent (e.g., RL policy network) to optimize the placements. In each iteration of training, all of the macros of the chip block are sequentially placed by the RL agent, after which the standard cells are placed by a force-directed method \cite{forcedirected1972, dplace2008,mfar2005,kraftwerk2005,kraftwerk22008,fastplace2007,rql2007}. Training is guided by a fast-but-approximate reward signal for each of the agent's chip placements. 
+
+%Unlike prior work, our method is domain adaptive, meaning that it is capable of learning from past experience and improving over time. In particular, we show that, as our agent is exposed to a greater volume and variety of chips, it becomes both faster and better at generating optimized placements for new chip blocks, bringing us closer to a future in which chip design is performed by artificial agents with more experience than any human designer could ever gain. 
+
+%Over the past decade, specialized hardware has fueled a revolution in machine learning, but to keep up with its insatiable demand for compute, we need rapid advances in the performance of chips and their design cycle. In this work, we seek to use machine learning to accelerate chip design, enabling further machine learning advances. In particular, we focus on the problem of global placement, where the objective is to place the macros and standard cells of a chip netlist onto a grid, such that target metrics (e.g., wirelength, power, and timing) are optimized, while adhering to constraint (e.g., congestion and density). This problem's complexity arises from the size of the netlist graph (millions to billions of nodes), the granularity of the grid onto which that graph must be placed, and the exorbitant cost of computing the true target metrics (typically over 24 hours for industry-standard electronic design automation (EDA) tools). Even after breaking the problem into more manageable subproblems (e.g., grouping the nodes into a few thousand clusters and reducing the granularity of the grid), the state space is still orders of magnitude larger than that of similar problems on which learning-based methods have shown results in other domains. To address this challenge, we developed novel learning methods that can handle the massive state and action spaces, while co-optimizing wirelength and congestion and taking into account density and blockages. Our end-to-end learning-based methods are able to generate superhuman placements in under 24 hours, whereas human experts, in conjunction with EDA tools, take several weeks to generate lower quality results. Our automated ML-based system also enables rapid design space exploration, as the weights of the reward function can be easily adjusted to optimize for different trade-offs in target optimization metrics. 
+
+To our knowledge, the proposed method is the first placement approach with the ability to generalize, meaning that it can leverage what it has learned from placing previous netlists to generate placements for new unseen netlists. In particular, we show that, as our agent is exposed to a greater volume and variety of chips, it becomes both faster and better at generating optimized placements for new chip blocks, bringing us closer to a future in which chip designers are assisted by artificial agents with vast chip placement experience. 
+
+% We believe that the ability of our approach to learn from experience and improve over time unlocks new possibilities for chip designers. While in this work we explored an instance of design space exploration on the placement problem, we believe that our method can be extended to other phases of chip design, including architecture and logic design, synthesis and verification.
+ 
+ We believe that the ability of our approach to learn from experience and improve over time unlocks new possibilities for chip designers. We show that we can achieve superior PPA on real AI accelerator chips (Google TPUs), as compared to state-of-the-art baselines. Furthermore, our methods generate placements that are superior or comparable to human expert chip designers in under 6 hours, whereas the highest-performing alternatives require human experts in the loop and take several weeks for each of the dozens of blocks in a modern chip. Although we evaluate primarily on AI accelerator chips, our proposed method is broadly applicable to any chip placement optimization. 
+ 
+\section{Related Work}
+\label{section:related_work}
+
+Global placement is a longstanding challenge in chip design, requiring multi-objective optimization over circuits of ever-growing complexity. Since the 1960s, many approaches have been proposed, so far falling into three broad categories: 1) partitioning-based methods, 2) stochastic/hill-climbing methods, and 3) analytic solvers. 
+
+Starting in the 1960s, industry and academic labs took a partitioning-based approach to the global placement problem, proposing \cite{MinCutBreuer1977,TerminalPropagation1985,fiduccia1982}, as well as resistive-network based methods \cite{ResistiveNetwork1984,proud1988}. These methods are characterized by a divide-and-conquer approach; the netlist and the chip canvas are recursively partitioned until sufficiently small sub-problems emerge, at which point the sub-netlists are placed onto the sub-regions using optimal solvers. Such approaches are quite fast to execute and their hierarchical nature allows them to scale to arbitrarily large netlists. However, by optimizing each sub-problem in isolation, partitioning-based methods sacrifice quality of the global solution, especially routing congestion. Furthermore, a poor early partition may result in an unsalvageable end placement.
+
+In the 1980s, analytic approaches emerged, but were quickly overtaken by stochastic / hill-climbing algorithms, particularly simulated annealing \cite{SimulatedAnnealing,DAC-1986-SechenS,dragon}. Simulated annealing (SA) is named for its analogy to metallurgy, in which metals are first heated and then gradually cooled to induce, or anneal, energy-optimal crystalline surfaces. SA applies random perturbations to a given placement (e.g., shifts, swaps, or rotations of macros), and then measures their effect on the objective function (e.g., half-perimeter wirelength described in Section~\ref{section:wirelength}). If the perturbation is an improvement, it is applied; if not, it is still applied with some probability, referred to as temperature. Temperature is initialized to a particular value and is then gradually annealed to a lower value. Although SA generates high-quality solutions, it is very slow and difficult to parallelize, thereby failing to scale to the increasingly large and complex circuits of the 1990s and beyond.
+
+The 1990s-2000s were characterized by multi-level partitioning methods \cite{fengshui2005,capo2007}, as well as the resurgence of analytic techniques, such as force-directed methods \cite{dplace2008,mfar2005,kraftwerk2005,kraftwerk22008,fastplace2007,rql2007} and non-linear optimizers \cite{aplace22005,NTUPlacer06}. The renewed success of quadratic methods was due in part to algorithmic advances, but also to the large size of modern circuits (10-100 million nodes), which justified approximating the placement problem as that of placing nodes with zero area. However, despite the computational efficiency of quadratic methods, they are generally less reliable and produce lower quality solutions than their non-linear counterparts.
+
+Non-linear optimization approximates cost using smooth mathematical functions, such as log-sum-exp \cite{logsumexp2001} and weighted-average \cite{weightedaverage2011} models for wirelength, as well as Gaussian \cite{ntuplace32008} and Helmholtz models for density. These functions are then combined into a single objective function using a Lagrange penalty or relaxation. Due to the higher complexity of these models, it is necessary to take a hierarchical approach, placing clusters rather than individual nodes, an approximation which degrades the quality of the placement.
+
+% FastPlace3.0 [Viswanathan et al. 2007b], RQL [Viswanathan et al. 2007a]
+%The analytic techniques define a function approximation of wirelength and density function and optimize it using gradient based methods. The solution to the cost function is the x and y locations of the nodes. 
+
+The last decade has seen the rise of modern analytic techniques, including more advanced quadratic methods \cite{simpl2010,maple2012,complx2012,bonnplace2008,polar2013}, and more recently, electrostatics-based methods like ePlace \cite{EPlace15} and RePlAce \cite{RePlAce19}. Modeling netlist placement as an electrostatic system, ePlace \cite{EPlace15} proposed a new formulation of the density penalty where each node (macro or standard cell) of the netlist is analogous to a positively charged particle whose area corresponds to its electric charge. In this setting, nodes repel each other with a force proportional to their charge (area), and the density function and gradient correspond to the system's potential energy. Variations of this electrostatics-based approach have been proposed to address standard-cell placement \cite{EPlace15} and mixed-size placement \cite{EPlacemixed15,EPLace3D16}. RePlAce \cite{RePlAce19} is a recent state-of-the-art mixed-size placement technique that further optimizes ePlace's density function by introducing a local density function, which tailors the penalty factor for each individual bin size. Section~\ref{section:results} compares the performance of the state-of-the-art RePlAce algorithm against our approach. 
+
+Recent work \cite{cnnplacer19} proposes training a model to predict the number of Design Rule Check (DRC) violations for a given macro placement. DRCs are rules that ensure that the placed and routed netlist adheres to tape-out requirements. To generate macro placements with fewer DRCs, \cite{cnnplacer19} use the predictions from this trained model as the evaluation function in simulated annealing. While this work represents an interesting direction, it reports results on netlists with no more than 6 macros, far fewer than any modern block, and the approach does not include any optimization during the place and the route steps. Due to the optimization, the placement and the routing can change dramatically, and the actual DRC will change accordingly, invalidating the model prediction. In addition, although adhering to the DRC criteria is a necessary condition, the primary objective of macro placement is to optimize for wirelength, timing (e.g. Worst Negative Slack (WNS) and Total Negative Slack (TNS)), power, and area, and this work does not even consider these metrics. 
+
+To address this classic problem, we propose a new category of approach: end-to-end learning-based methods. This type of approach is most closely related to analytic solvers, particularly non-linear ones, in that all of these methods optimize an objective function via gradient updates. However, our approach differs from prior approaches in its ability to learn from past experience to generate higher-quality placements on new chips. Unlike existing methods that optimize the placement for each new chip from scratch, our work leverages knowledge gained from placing prior chips to become better over time. In addition, our method enables direct optimization of the target metrics, such as wirelength, density, and congestion, without having to define convex approximations of those functions as is done in other approaches \cite{RePlAce19,EPlace15}. Not only does our formulation make it easy to incorporate new cost functions as they become available, but it also allows us to weight their relative importance according to the needs of a given chip block (e.g., timing-critical or power-constrained).
+
+Domain adaptation is the problem of training policies that can learn across multiple experiences and transfer the acquired knowledge to perform better on new unseen examples. In the context of chip placement, domain adaptation involves training a policy across a set of chip netlists and applying that trained policy to a new unseen netlist. Recently, domain adaptation for combinatorial optimization has emerged as a trend \cite{zhou2019gdp,REGAL19,Placeto18}. While the focus in prior work has been on using domain knowledge learned from previous examples of an optimization problem to speed up policy training on new problems, we propose an approach that, for the first time, enables the generation of higher quality results by leveraging past experience. Not only does our novel domain adaptation produce better results, it also reduces the training time 8-fold compared to training the policy from scratch.
+
+\section{Methods}
+\label{section:methods}
+
+\subsection{Problem Statement}
+\label{section:problem_statement}
+
+In this work, we target the chip placement optimization problem, in which the objective is to map the nodes of a netlist (the graph describing the chip) onto a chip canvas (a bounded 2D space), such that final power, performance, and area (PPA) is optimized. In this section, we describe an overview of how we formulate the problem as a reinforcement learning (RL) problem, followed by a detailed description of the reward function, action and state representations, policy architecture, and policy updates. 
+
+%Once we finalize the placements using our approach, we evaluate our approach using an industry standard EDA tool to measure wirelength, congestion, timing (WNS and TNS), NVEs, power, and area. 
+
+\subsection{Overview of Our Approach}
+\label{section:overview}
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.98\textwidth]{actions-states-cropped.pdf}
+    \caption{The RL agent (i.e., the policy network) places macros one at a time. Once all macros are placed, the standard cells are placed using a force-directed method. The reward, a linear combination of the approximate wirelength and congestion, are calculated and passed to the agent to optimize its parameters for the next iteration.}
+    \label{fig:placement-actions}
+\end{figure*}
+We take a deep reinforcement learning approach to the placement problem, where an RL agent (policy network) sequentially places the macros; once all macros are placed, a force-directed method is used to produce a rough placement of the standard cells, as shown in Figure~\ref{fig:placement-actions}. RL problems can be formulated as Markov Decision Processes (MDPs), consisting of four key elements:
+\begin{itemize}
+  \item states: the set of possible states of the world (e.g., in our case, every possible partial placement of the netlist onto the chip canvas).
+  \item actions: the set of actions that can be taken by the agent (e.g., given the current macro to place, the available actions are the set of all the locations in the discrete canvas space (grid cells) onto which that macro can be placed without violating any hard constraints on density or blockages).
+  \item state transition: given a state and an action, this is the probability distribution over next states.
+  \item reward: the reward for taking an action in a state. (e.g., in our case, the reward is 0 for all actions except the last action where the reward is a negative weighted sum of proxy wirelength and congestion, subject to density constraints as described in Section~\ref{section:reward}).
+\end{itemize}
+
+In our setting, at the initial state, $s_0$, we have an empty chip canvas and an unplaced netlist. The final state $s_T$ corresponds to a completely placed netlist. At each step, one macro is placed. Thus, $T$ is equal to the total number of macros in the netlist. At each time step $t$, the agent begins in state ($s_t$), takes an action ($a_t$), arrives at a new state ($s_{t+1}$), and receives a reward ($r_t$) from the environment (0 for $t<T$ and negative proxy cost for $t=T$). 
+
+We define $s_t$ to be a concatenation of features representing the state at time $t$, including a graph embedding of the netlist (including both placed and unplaced nodes), a node embedding of the current macro to place, metadata about the netlist (Section~\ref{section:domain_transfer}), and a mask representing the feasibility of placing the current node onto each cell of the grid (Section~\ref{section:density}).
+
+The action space is all valid placements of the $t^{th}$ macro, which is a function of the density mask described in section~\ref{section:density}. Action $a_t$ is the cell placement of the $t^{th}$ macro that was chosen by the RL policy network. 
+
+$s_{t+1}$ is the next state, which includes an updated representation containing information about the newly placed macro, an updated density mask, and an embedding for the next node to be placed. 
+
+In our formulation, $r_t$ is $0$ for every time step except for the final $r_T$, where it is a weighted sum of approximate wirelength and congestion as described in Section~\ref{section:reward}.
+
+Through repeated episodes (sequences of states, actions, and rewards), the policy network learns to take actions that will maximize cumulative reward. We use Proximal Policy Optimization (PPO)~\cite{ppo17} to update the parameters of the policy network, given the cumulative reward for each placement. 
+
+In this section, we define the reward $r$, state $s$, actions $a$, policy network architecture $\pi_{\theta}(a|s)$ parameterized by $\theta$, and finally the optimization method we use to train those parameters.
+
+\subsection{Reward}\label{section:reward}
+Our goal in this work is to minimize power, performance and area, subject to constraints on routing congestion and density. Our true reward is the output of a commercial EDA tool, including wirelength, routing congestion, density, power, timing, and area. However, RL policies require 100,000s of examples to learn effectively, so it is critical that the reward function be fast to evaluate, ideally running in a few milliseconds. In order to be effective, these approximate reward functions must also be positively correlated with the true reward. Therefore, a component of our cost is wirelength, because it is not only much cheaper to evaluate, but also correlates with power and performance (timing). We define approximate cost functions for both wirelength and congestion, as described in Section~\ref{section:wirelength} and Section~\ref{section:congestion}, respectively.
+
+To combine multiple objectives into a single reward function, we take the weighted sum of proxy wirelength and congestion where the weight can be used to explore the trade-off between the two metrics.
+
+While we treat congestion as a soft constraint (i.e., lower congestion improves the reward function), we treat density as a hard constraint, masking out actions (grid cells to place nodes onto) whose density exceeds the target density, as described further in section~\ref{section:density}.
+
+To keep the runtime per iteration small, we apply several approximations to the calculation of the reward function: 
+
+\begin{enumerate}
+  \item We group millions of standard cells into a few thousand clusters using hMETIS~\cite{hmetis1998}, a partitioning technique based on the normalized minimum cut objective. Once all the macros are placed, we use force-directed methods to place the standard cell clusters, as described in section~\ref{section:standard_cell_placement}. Doing so enables us to achieve an approximate but fast standard cell placement that facilitates policy network optimization.
+  \item We discretize the grid to a few thousand grid cells and place the center of macros and standard cell clusters onto the center of the grid cells.
+  \item When calculating wirelength, we make the simplifying assumption that all wires leaving a standard cell cluster  originate at the center of the cluster.
+  \item To calculate routing congestion cost, we only consider the average congestion of the top 10\% most congested grid cells, as described in Section~\ref{section:congestion}.
+\end{enumerate}
+
+\subsubsection{Wirelength}
+\label{section:wirelength}
+Following the literature~\cite{hpwl1991}, we employ half-perimeter wirelength (HPWL), the most commonly used approximation for wirelength. HPWL is defined as the half-perimeter of the bounding boxes for all nodes in the netlist. The HPWL for a given net (edge) $i$ is shown in the equation below:
+
+\begin{eqnarray}
+  \label{eqn:hpwl}
+  HPWL(i) = & (MAX_{b \in i}\{x_b\} - MIN_{b \in i}\{x_b\} + 1) \\ \nonumber 
+         + & (MAX_{b \in i}\{y_b\} - MIN_{b \in i}\{y_b\} + 1) 
+\end{eqnarray}
+
+Here $x_b$ and $y_b$ show the x and y coordinates of the end points of net $i$. The overall HPWL cost is then calculated by taking the normalized sum of all half-perimeter bounding boxes, as shown in Equation \ref{eqn:wirelength_cost}. $q(i)$ is a normalization factor which improves the accuracy of the estimate by increasing the wirelength cost as the number of nodes increases, where $N_{netlist}$ is the number of nets. 
+
+\begin{eqnarray}
+  \label{eqn:wirelength_cost}
+  HPWL(netlist) = \sum_{i=1}^{N_{netlist}}q(i)*HPWL(i)
+\end{eqnarray}
+
+Intuitively, the HPWL for a given placement is roughly the length of its Steiner tree~\cite{gilbert1968steiner}, which is a lower bound on routing cost.
+
+Wirelength also has the advantage of correlating with other important metrics, such as power and timing. Although we don't optimize directly for these other metrics, we observe high performance in power and timing (as shown in Table~\ref{table:replace-comparison}).
+
+\subsubsection{Selection of grid rows and columns}
+\label{section:selecting_rows_and_columns}
+Given the dimensions of the chip canvas, there are many choices to discretize the 2D canvas into grid cells. This decision impacts the difficulty of optimization and the quality of the final placement. We limit the maximum number of rows and columns to 128. We treat choosing the optimal number of rows and columns as a bin-packing problem and rank different combinations of rows and columns by the amount of wasted space they incur. We use an average of 30 rows and columns in the experiments described in Section~\ref{section:results}.
+
+
+%Taking a learning-based approach and jointly optimizing this decision with the downstream placement optimization could be especially effective.
+
+% We describe these heuristics in the appendix, but we recognize that there is definitely room for improvement and believe that this is an area for future work. Taking a learning-based approach and jointly optimizing this decision with the downstream placement optimization could be especially effective.
+
+\subsubsection{Selection of macro order}
+\label{section:selecting_macro_order}
+To select the order in which the macros are placed, we sort macros by descending size and break ties using a topological sort. By placing larger macros first, we reduce the chance of there being no feasible placement for a later macro. The topological sort can help the policy network learn to place connected nodes close to one another. Another potential approach would be to learn to jointly optimize the ordering of macros and their placement, making the choice of which node to place next part of the action space. However, this enlarged action space would significantly increase the complexity of the problem, and we found that this heuristic worked in practice.
+
+\subsubsection{Standard cell placement}
+\label{section:standard_cell_placement}
+To place standard cell clusters, we use an approach similar to classic force-directed methods~\cite{hpwl1991}. We represent the netlist as a system of springs that apply force to each node, according to the $weight\times distance$ formula, causing tightly connected nodes to be attracted to one another. We also introduce a repulsive force between overlapping nodes to reduce placement density. After applying all forces, we move nodes in the direction of the force vector. To reduce oscillations, we set a maximum distance for each move.
+
+\subsubsection{Routing congestion}
+\label{section:congestion}
+We also followed convention in calculating proxy congestion~\cite{MAPLE12}, using a simple deterministic routing based on the locations of the driver and loads on the net. The routed net occupies a certain amount of available routing resources (determined by the underlying semiconductor fabrication technology) for each grid cell which it passes through. We keep track of vertical and horizontal allocations in each grid cell separately. To smoothe the congestion estimate, we run $5\times 1$ convolutional filters in both the vertical and horizontal direction. After all nets are routed, we take the average of the top $10\%$ congestion values, drawing inspiration from the ABA10 metric in MAPLE~\cite{MAPLE12}. The congestion cost in Equation~\ref{eqn:reward} is the top $10\%$ average congestion calculated by this process.
+
+\subsubsection{Density}
+\label{section:density}
+We treat density as a hard constraint, disallowing the policy network from placing macros in locations which would cause density to exceed the target ($max_{density}$) or which would result in infeasible macro overlap. This approach has two benefits: (1) it reduces the number of invalid placements generated by the policy network, and (2) it reduces the search space of the optimization problem, making it more computationally tractable.
+
+A feasible standard cell cluster placement should meet the following criterion: the density of placed items in each grid cell should not exceed a given target density threshold ($max_{density}$). We set this threshold to be $0.6$ in our experiments. To meet this constraint, during each RL step, we calculate the current density mask, a binary $m\times n$ matrix that represents grid cells onto which we can place the center of the current node without violating the density threshold criteria. Before choosing an action from the policy network output, we first take the dot product of the mask and the policy network output and then take the argmax over feasible locations. This approach prevents the policy network from generating placements with overlapping macros or dense standard cell areas.
+
+We also enable blockage-aware placements (such as clock straps) by setting the density function of the blocked areas to $1$.
+
+\subsubsection{Postprocessing}
+\label{section:postprocessing}
+To prepare the placements for evaluation by commercial EDA tools, we perform a greedy legalization step to snap macros onto the nearest legal position while honoring the minimum spacing constraints. We then fix the macro placements and use an EDA tool to place the standard cells and evaluate the placement.  
+
+% the following postprocessing steps: legalization and finetuning. We use a greedy algorithm to legalize our placement and then run simulated annealing, which performs local perturbations (shifts, swaps, and rotations) to produce a final legalized placement, which we pass to a commercial EDA tool for evaluation.
+
+\subsection{Action Representation}
+\label{section:actions}
+For policy optimization purposes, we convert the canvas into a $m\times n$ grid. Thus, for any given state, the action space (or the output of the policy network) is the probability distribution of placements of the current macro over the $m\times n$ grid. The action is the argmax of this probability distribution.
+
+\subsection{State Representation}
+\label{section:states}
+Our state contains information about the netlist graph (adjacency matrix), its node features (width, height, type, etc.), edge features (number of connections), current node (macro) to be placed, and metadata of the netlist and the underlying technology (e.g., routing allocations, total number of wires, macros, and standard cell clusters, etc.). In the following section, we discuss how we process these features to learn effective representations for the chip placement problem.
+
+\section{Domain Transfer: Learning Better Chip Placements from Experience}
+\label{section:domain_transfer}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.95\textwidth]{policy-arch-cropped.pdf}
+    \caption{Policy and value network architecture. An embedding layer encodes information about the netlist adjacency, node features, and the current macro to be placed. The policy and value networks then output a probability distribution over available placement locations and an estimate of the expected reward for the current placement, respectively.}
+    \label{fig:policy-architecture}
+\end{figure*}
+
+Our goal is to develop RL agents that can generate higher quality results as they gain experience placing chips. We can formally define the placement objective function as follows:
+
+\begin{eqnarray}
+  \label{eqn:objective}
+  J(\theta, G) = \frac{1}{K}\sum_{g\sim G}{E_{g,p\sim\pi_\theta}}[R_{p,g}]
+\end{eqnarray}
+
+ Here $J(\theta, G)$ is the cost function.  The agent is parameterized by $\theta$. The dataset of netlist graphs of size $K$ is denoted by $G$ with each individual netlist in the dataset written as $g$. $R_{p,g}$ is the episode reward of a placement $p$ drawn from the policy network applied to netlist $g$.
+
+\begin{eqnarray}\label{eqn:reward}
+R_{p,g} = -Wirelength(p,g) - \lambda~Congestion(p,g)  \\ \nonumber
+S.t. ~density(p,g) \le max_{density}
+\end{eqnarray}
+
+Equation \ref{eqn:reward} shows the reward that we used for policy network optimization, which is the negative weighted average of wirelength and congestion, subject to density constraints. The reward is explained in detail in Section~\ref{section:reward}. In our experiments, congestion weight $\lambda$ is set to 0.01 and the max density threshold is set to 0.6.
+
+\subsection{A Supervised Approach to Enable Transfer Learning}
+
+We propose a novel neural architecture that enables us to train domain-adaptive policies for chip placement. Training such a policy network is a challenging task since the state space encompassing all possible placements of all possible chips is immense. Furthermore, different netlists and grid sizes can have very different properties, including differing numbers of nodes, macro sizes, graph topologies, and canvas widths and heights. To address this challenge, we first focused on learning rich representations of the state space. Our intuition was that a policy network architecture capable of transferring placement optimization across chips should also be able to encode the state associated with a new unseen chip into a meaningful signal at inference time. We therefore proposed training a neural network architecture capable of predicting reward on new netlists, with the ultimate goal of using this architecture as the encoder layer of our policy network.
+
+To train this supervised model, we needed a large dataset of chip placements and their corresponding reward labels. We therefore created a dataset of 10,000 chip placements where the input is the state associated with a given placement and the label is the reward for that placement (wirelength and congestion). We built this dataset by first picking 5 different accelerator netlists and then generating 2,000 placements for each netlist. To create diverse placements for each netlist, we trained a vanilla policy network at various congestion weights (ranging from 0 to 1) and random seeds, and collected snapshots of each placement during the course of policy training. An untrained policy network starts off with random weights and the generated placements are of low quality, but as the policy network trains, the quality of generated placements improves, allowing us to collect a diverse dataset with placements of varying quality. 
+
+To train a supervised model that can accurately predict wirelength and congestion labels and generalize to unseen data, we developed a novel graph neural network architecture that embeds information about the netlist. The role of graph neural networks is to distill information about the type and connectivity of a node within a large graph into low-dimensional vector representations which can be used in downstream tasks. Some examples of such downstream tasks are node classification~\cite{nazi2019gap}, device placement~\cite{zhou2019gdp}, link prediction~\cite{zhang2018link}, and Design Rule Violations (DRCs) prediction~\cite{RouteNet18}.
+
+ We create a vector representation of each node by concatenating the node features. The node features include node type, width, height, and x and y coordinates. We also pass node adjacency information as input to our algorithm. We then repeatedly perform the following updates: 1) each edge updates its representation by applying a fully connected network to an aggregated representation of intermediate node embeddings, and 2) each node updates its representation by taking the mean of adjacent edge embeddings. The node and edge updates are shown in Equation \ref{eq:graphalg}.
+ 
+\begin{eqnarray}\label{eq:graphalg}
+ e_{ij} = & fc_1(concat(fc_0(v_i) | fc_0(v_j) | w^e_{ij})) \\ \nonumber
+ v_i = & mean_{j\in \mathcal{N}(v_i)}(e_{ij})
+\end{eqnarray}
+
+Node embeddings are denoted by $v_i$s for $1<=i<=N$, where $N$ is the total number of macros and standard cell clusters. Vectorized edges connecting nodes $v_i$ and $v_j$ are represented as $e_{ij}$. Both edge ($e_{ij}$) and node ($v_i$) embeddings are randomly initialized and are 32-dimensional. $fc_0$ is a $32\times32$, $fc_1$ is a $65\times 32$ feedforward network and $w^e_{ij}$s are learnable $1x1$ weights corresponding to edges. $\mathcal{N}(v_i)$ shows the neighbors of $v_i$. The outputs of the algorithm are the node and edge embeddings. 
+ 
+
+% \begin{algorithm}[t]
+% \label{ref:algorithm}
+% \SetAlgoLined
+%  {\bf Input}: Netlist's adjacency graph and node types (macros vs. standard cell groups)\\
+%  Vectorized node embeddings are shown with $v_i$s for $1<=i<=n$, where $n$ is the total number of macros and standard cell groups. \\
+%  Vectorized edges connecting nodes $v_i$ and $v_j$ are shown with $e_{ij}$.\\
+%  Both edge and vector embeddings are initialized with random numbers.\vspace{0.1in}. \\ 
+%  $fc_0$ and $fc_1$ are feedforward networks and $w^e_{ij}$s are learnable 1-d weights corresponding to edges.\\
+%   {\bf Output}: Learned node and edge embeddings $v_i$s and $e_{ij}$s.
+%  \hline \vspace{0.1in} 
+%  {\bf Algorithm}:\\
+%  \While{Not converged}{
+%  Update edge: e_{ij} = fc_1(concat(fc_0(v_i) | fc_0(v_j) | w^e_{ij})) \\
+%  Update node: v_i = mean_{j\in N(v_i)}(e_{ij})
+%   }
+%  \caption{Proposed graph neural network to generate embeddings of the netlist.}
+% \end{algorithm}
+
+
+% \begin{algorithm}[t]
+% \label{ref:policyalgorithm}
+% \SetAlgoLined
+%  {\bf Input}: A set of netlists and corresponding canvasses onto which the netlists are placed.\\
+%  {\bf Output}: A pre-trained placement policy.
+%  \hline \vspace{0.1in} 
+%  {\bf Algorithm}:\\
+% 1. Supervised Learning of encoder architecture \\
+% 2. Use architecture from Step 1 as encoder of the policy.\\
+%  \caption{Proposed approach to train domain adaptive placement policies.}
+% \end{algorithm}
+
+Our supervised model consists of: (1) The graph neural network described above that embeds information about node types and the netlist adjacency matrix. (2) A fully connected feedforward network that embeds the metadata, including information about the underlying semiconductor technology (horizontal and vertical routing capacity), the total number of nets (edges), macros, and standard cell clusters, canvas size and number of rows and columns in the grid. (3) A fully connected feedforward network (the prediction layer) whose input is a concatenation of the netlist graph and metadata embedding and whose output is the reward prediction. The netlist graph embedding is created by applying a reduce mean function on the edge embeddings. The supervised model is trained via regression to minimize the weighted sum of the mean squared loss of wirelength and congestion. 
+
+This supervised task allowed us to find the features and architecture necessary to generalize reward prediction across netlists. To incorporate this architecture into our policy network, we removed the prediction layer and then used it as the encoder component of the policy network as shown in Figure \ref{fig:policy-architecture}.
+
+To handle different grid sizes corresponding to different choices of rows and columns, we set the grid size to $128\times 128$, and mask the unused L-shaped section for grid sizes smaller than 128 rows and columns.
+
+To place a new test netlist at inference time, we load the pre-trained weights of the policy network and apply it to the new netlist. We refer to placements generated by a pre-trained policy network with no finetuning as zero-shot placements. Such a placement can be generated in less than a second, because it only requires a single inference step of the pre-trained policy network. We can further optimize placement quality by finetuning the policy network. Doing so gives us the flexibility to either use the pre-trained weights (that have learned a rich representation of the input state) or further finetune these weights to optimize for the properties of a particular chip netlist.  
+
+% \begin{align}
+%   \label{eqn:cost}
+%   J(\theta) = \mathbb{E}_{G \sim \mathcal{G}, D \sim \pi_\theta(G)}[r_{G,D}]
+%   \approx
+%   \frac{1}{N}\sum_{G} \mathbb{E}_{D \sim \pi_\theta(G)} [r_{G, D}]
+% \end{align}
+
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth]{GRL-charts.pdf}
+    \caption{Domain adaptation results. For each block, the zero-shot results, as well as the finetuned results after 2 and 6 hours of training are shown. We also include results for policies trained from scratch. As can be seen in the table, the pre-trained policy network consistently outperforms the policy network that was trained from scratch, demonstrating the effectiveness of learning from training data offline.}
+    \label{fig:generalizationresults}
+\end{figure*}
+\begin{figure*}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{GRL-curve-c.pdf}
+    \caption{Convergence plots for training a policy network from scratch vs. finetuning a pre-trained policy network for a block of Ariane.}
+    \label{fig:convergenceresults}
+\end{figure*}
+
+\subsection{Policy Network Architecture}
+Figure \ref{fig:policy-architecture} depicts an overview of the policy network (modeled by $\pi_{\theta}$ in Equation \ref{eqn:objective}) and the value network architecture that we developed for chip placement. The inputs to these networks are the netlist graph (graph adjacency matrix and node features), the id of the current node to be placed, and the metadata of the netlist and the semiconductor technology. The netlist graph is passed through our proposed graph neural network architecture as described earlier. This graph neural network generates embeddings of (1) the partially placed graph and (2) the current node. We use a simple feedforward network to embed (3) the metadata. These three embedding vectors are then concatenated to form the state embedding, which is passed to a feedforward neural network. The output of the feedforward network is then fed into the policy network (composed of 5 deconvolutions~\footnote{The deconvolutions layers have a 3x3 kernel size with stride 2 and 16, 8, 4, 2, and 1 filter channels respectively.} and Batch Normalization layers) to generate a probability distribution over actions and passed to a value network (composed of a feedforward network) to predict the value of the input state.  
+
+%Note that to represent the partially placed netlist, we pass $-1$ as both x and y coordinates of the unplaced nodes. As the macros get placed in each step, the x and y coordinates (inputs to the graph neural network) of the nodes corresponding to the macros get updated.
+
+\subsection{Policy Network Update: Training Parameters $\theta$}
+\label{section:policy_update}
+In Equation \ref{eqn:objective}, the objective is to train a policy network $\pi_{\theta}$ that maximizes the expected value ($E$) of the reward ($R_{p,g}$) over the policy network's placement distribution. To optimize the parameters of the policy network, we use Proximal Policy Optimization (PPO) \cite{ppo17} with a clipped objective as shown below: 
+\begin{eqnarray}
+  \label{eqn:cost}
+  L^{CLIP}(\theta) = {\hat{E_t}}[min(r_t(\theta)\hat{A_t}, clip(r_t(\theta), 1 - \epsilon, 1 + \epsilon)\hat{A_t})]\nonumber
+\end{eqnarray}
+\vspace{-0.05in}
+where $\hat{E_t}$ represents the expected value at timestep $t$, $r_t$ is the ratio of the new policy and the old policy, and $\hat{A_t}$ is the estimated advantage at timestep $t$.
+
+
+\section{Results}\label{section:results}
+In this section, we evaluate our method and answer the following questions: Does our method enable domain transfer and learning from experience? What is the impact of using pre-trained policies on the quality of result? How does the quality of the generated placements compare to state-of-the-art baselines? We also inspect the visual appearance of the generated placements and provide some insights into why our policy network made those decisions.
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}
+        \centering
+        \includegraphics[width=0.45\linewidth]{datasetsize-vs-performance-cropped.pdf}
+    \end{subfigure}
+    \begin{subfigure}
+        \centering  
+        \includegraphics[width=0.45\linewidth]{finetuned-datasize-cropped.pdf}
+    \end{subfigure}
+    \caption{We pre-train the policy network on three different training datasets (the small dataset is a subset of the medium one, and the medium dataset is a subset of the large one). We then finetune this pre-trained policy network on the same test block and report cost at various training durations (shown on the left of the figure). As the dataset size increases, both the quality of generated placements and time to convergence on the test block improve. The right figure shows  evaluation curves for policies trained on each dataset (each dot in the right figure shows the cost of the placement generated by the policy under training).}
+    \label{fig:trainingsize}
+\end{figure*}
+\begin{figure*}[ht]
+     \centering
+     \begin{subfigure}
+        \centering
+        \includegraphics[width=0.35\textwidth]{zeroshot-visualization-c.pdf}
+        % \caption{Zero-shot placement from our policy network.}
+     \end{subfigure}
+    %  \hfill
+     \begin{subfigure}
+        \centering
+        \includegraphics[width=0.35\textwidth]{finetuned-visualization-c.pdf}
+     %    \caption{Placement after finetuning the policy network for 10 hours.}
+     \end{subfigure}
+        \caption{Visualization of placements. On the left, zero-shot placements from the pre-trained policy and on the right, placements from the finetuned policy are shown. The zero-shot policy placements are generated at inference time on a previously unseen chip. The pre-trained policy network (with no fine-tuning) places the standard cells in the center of the canvas surrounded by macros, which is already quite close to the optimal arrangement and in line with the intuitions of physical design experts.}
+        \label{fig:zeroshot-vs-finetuned}
+\end{figure*}
+
+
+\subsection{Transfer Learning Results}
+
+Figure \ref{fig:generalizationresults} compares the quality of placements generated using pre-trained policies to those generated by training the policy network from scratch. Zero-shot means that we applied a pre-trained policy network to a new netlist with no finetuning, yielding a placement in less than one second. We also show results where we finetune the pre-trained policy network on the details of a particular design for 2 and 12 hours. The policy network trained from scratch takes much longer to converge, and even after 24 hours, the results are worse than what the finetuned policy network achieves after 12 hours, demonstrating that the learned weights and exposure to many different designs are helping us to achieve higher quality placements for new designs in less time.  
+
+Figure \ref{fig:convergenceresults} shows the convergence plots for training from scratch vs. training from a pre-trained policy network for Ariane RISC-V CPU. The pre-trained policy network starts with a lower placement cost at the beginning of the finetuning process. Furthermore, the pre-trained policy network converges to a lower placement cost and does so more than 30 hours faster than the policy network that was trained from scratch.
+
+
+
+% \begin{figure*}\label{fig:donuts}
+%      \centering
+%      \begin{subfigure}
+%          \centering
+%          \includegraphics[width=0.35\textwidth]{human_placement.pdf}
+%      \end{subfigure}
+%      \begin{subfigure}
+%          \centering
+%          \includegraphics[width=0.4\textwidth]{morpheus_with_donuts.pdf}
+%      \end{subfigure}
+%         \caption{Visualized placements: on the left a human expert placement and on the right results from our approach are shown. The red area shows the macro placements and the green area shows the standard cell placements. Our method creates multiple donut shaped placements on macros, surrounded by standard cells.}
+% \end{figure*}
+
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}
+        \centering
+        \includegraphics[width=0.45\textwidth]{human_old_cropped-c.pdf}
+    \end{subfigure}
+    \begin{subfigure}
+        \centering
+         \includegraphics[width=0.45\textwidth]{morpheus_old_cropped-c.pdf} 
+    \end{subfigure}
+    \caption{Human-expert placements are shown on the left and results from our approach are shown on the right. The white area represents macros and the green area represents standard cells. The figures are intentionally blurred as the designs are proprietary.}
+    \label{fig:visualization-plc}
+\end{figure*}
+
+\begin{table*}[ht]
+\centering
+\caption{Experiments to evaluate sample efficiency of Deep RL compared to Simulated Annealing (SA). We replaced our RL policy network with SA and ran 128 different SA experiments for each block, sweeping different hyper-parameters, including min and max temperature, seed, and max step size. The results from the run with minimum cost is reported. The results show proxy wirelength and congestion values for each block. Note that because these proxy metrics are relative, comparisons are only valid for different placements of the same block.}
+%\begin{adjustbox}{\textwidth}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+        & \multicolumn{2}{c|}{Replacing Deep RL with SA in our framework} & \multicolumn{2}{c|}{Ours} \\ \hline
+        & Wirelength              & Congestion              & Wirelength  & Congestion  \\ \hline
+
+Block 1 & 0.048 & 1.21 & 0.047 & 0.87 \\ \hline
+Block 2 & 0.045 & 1.11 & 0.041 & 0.93 \\ \hline
+Block 3 & 0.044 & 1.14 & 0.034 & 0.96 \\ \hline
+Block 4 & 0.030 & 0.87 & 0.024 & 0.78 \\ \hline
+Block 5 & 0.045 & 1.29 & 0.038 & 0.88 \\ \hline
+\end{tabular}
+%\end{adjustbox}
+\label{table:rl-vs-sa}
+\end{table*}
+\subsection{Learning from Larger Datasets} 
+
+
+As we train on more chip blocks, we are able to speed up the training process and generate higher quality results faster. Figure \ref{fig:trainingsize} (left) shows the impact of a larger training set on performance. The training dataset is created from internal TPU blocks. The training data consists of a variety of blocks including memory subsystems, compute units, and control logic. As we increase the training set from 2 blocks to 5 blocks and finally to 20 blocks, the policy network generates better placements both at zero-shot and after being finetuned for the same number of hours. Figure \ref{fig:trainingsize} (right) shows the placement cost on the test data, as the policy network is being (pre-)trained. We can see that for the small training dataset, the policy network quickly overfits to the training data and performance on the test data degrades, whereas it takes longer for the policy network to overfit on largest dataset and the policy network pre-trained on this larger dataset yields better results on the test data. This plot suggests that as we expose the policy network to a greater variety of distinct blocks, while it might take longer for the policy network to pre-train, the policy network becomes less prone to overfitting and better at finding optimized placements for new unseen blocks. 
+
+
+
+
+
+
+
+
+
+\subsection{Visualization Insights} Figure \ref{fig:zeroshot-vs-finetuned} show the placement results for the Ariane RISC-V CPU. On the left, placements from the zero-shot policy network and on the right, placements from the finetuned policy network are shown. The zero-shot placements are generated at inference time on a previously unseen chip. The zero-shot policy network places the standard cells in the center of the canvas surrounded by macros, which is already quite close to the optimal arrangement. After finetuning, the placements of macros become more regularized and the standard cell area in the center becomes less congested.
+
+Figure \ref{fig:visualization-plc} shows the visualized placements: on the left, results from a manual placement, and on the right, results from our approach are shown. The white area shows the macro placements and the green area shows the standard cell placements. Our method creates donut-shaped placements of macros, surrounding standard cells, which results in a reduction in the total wirelength. 
+
+\subsection{Comparing with Baseline Methods}
+ In this section, we compare our method with 3 baselines methods: Simulated Annealing, RePlAce, and human expert baselines. For our method, we use a policy pre-trained on the largest dataset (of 20 TPU blocks) and then finetune it on 5 target unseen blocks denoted by Blocks 1 to 5. Our dataset consists a variety of blocks including memory subsystems, compute units, and control logic. Due to confidentiality, we cannot disclose the details of these blocks, but to give an idea of the scale, each block contains up to a few hundred macros and millions of standard cells.
+
+
+\begin{table*}[t]
+\centering
+\caption{Comparing our method with the state-of-the-art (RePlAce \cite{RePlAce19}) method and manual expert placements using an industry standard electronic design automation (EDA) tool. For all metrics in this table, lower is better. For placements which violate constraints on timing (WNS significantly greater than 100 ps) or congestion (horizontal or vertical congestion greater than 1\%), we render their metrics in gray to indicate that these placements are infeasible.}
+\label{table:replace-comparison}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+Name & Method & \multicolumn{2}{c|}{Timing} & Area & Power & Wirelength & \multicolumn{2}{l|}{Congestion}\\ \hline
+  & & WNS (ps) & TNS (ns) & Total ($\mu m^2$) & Total (W) & (m) & H (\%) & V (\%) \\ \Xhline{4\arrayrulewidth}
+Block 1 & RePlAce &  \textcolor{gray}{374} & \textcolor{gray}{233.7} & \textcolor{gray}{1693139} & \textcolor{gray}{3.70} & \textcolor{gray}{52.14} & \textcolor{gray}{1.82} & \textcolor{gray}{0.06} \\ \hline
+& Manual &	136 &	47.6 & {1680790} & 3.74 & {51.12} &	{0.13} & 0.03  \\ \hline
+& Ours & {84} &	{23.3} & {1681767} & {3.59} & {51.29} & 0.34 & {0.03}
+\\ \Xhline{4\arrayrulewidth}
+Block 2 & RePlAce  & \textcolor{gray}{97} & \textcolor{gray}{6.6} & \textcolor{gray}{785655} & \textcolor{gray}{3.52} &
+\textcolor{gray}{61.07} & \textcolor{gray}{1.58} & \textcolor{gray}{0.06}\\ \hline
+&Manual  &	75 & 98.1 & 830470 & 3.56 & 62.92 &	{0.23} & 0.04\\ \hline
+&Ours  	 &	{59} &	170 & {694757} & {3.13} & {59.11} & 0.45 & {0.03}\\ \Xhline{4\arrayrulewidth}
+ Block 3 & RePlAce  &  \textcolor{gray}{193} & \textcolor{gray}{3.9}& \textcolor{gray}{867390} & \textcolor{gray}{1.36} &
+ \textcolor{gray}{18.84} &
+ \textcolor{gray}{0.19} & \textcolor{gray}{0.05}\\ \hline
+& Manual  &	18 &	{0.2} & 869779 & 1.42 & 20.74 &	0.22 &	0.07\\ \hline
+& Ours &	{11} &	2.2 &  
+{868101} &{1.38} & 20.80  & {0.04} & {0.04}  \\ 
+\Xhline{4\arrayrulewidth}
+Block 4 & RePlAce  & 58 & 11.2 & 944211 & 2.21 & {27.37} & 0.03 & 0.03 \\ \hline
+& Manual &	58 & 17.9 & 947766 & {2.17} & 29.16 & {0.00} &{0.01} \\ \hline
+& Ours & {52} & {0.7} & {942867} & {2.21} & 28.50 & 0.03 &	0.02  \\ 
+\Xhline{4\arrayrulewidth}
+ Block 5 & RePlAce &  156 & 254.6 & 1477283 & 3.24 &
+ 31.83 & 0.04 & 0.03 \\ \hline
+& Manual &	107 &	{97.2} & 1480881 & {3.23} & 37.99  &	{0.00} &	{0.01}\\ \hline
+& Ours   &	{68} &	141.0 & {1472302} & {3.28} & 36.59 & {0.01} &	0.03	\\ \Xhline{4\arrayrulewidth}
+\end{tabular}
+\end{table*}
+
+\textbf{Comparisons with Simulated Annealing:} Simulated Annealing (SA), is known to be a powerful, but slow, optimization method. However, like RL, simulated annealing is capable of optimizing arbitrary non-differentiable cost functions. To show the relative sample efficiency of RL, we ran experiments in which we replaced it with a simulated annealing based optimizer. In these experiments, we use the same inputs and cost function as before, but in each episode, the simulated annealing optimizer places all macros, followed by an FD step to place the standard cell clusters. Each macro placement is accepted according to the SA update rule using an exponential decay annealing schedule \cite{SimulatedAnnealing}. SA takes 18 hours to converge, whereas our method takes no more than 6 hours. To make comparisons fair, we ran multiple SA experiments that sweep different hyper-parameters, including min and max temperature, seed, and max SA episodes, such that SA and RL spend the same amount of CPU-hours in simulation and search a similar number of states. The results from the experiment with minimum cost are reported in Table \ref{table:rl-vs-sa}. As shown in the table, even with additional time, SA struggles to produce high-quality placements compared to our approach, and produces placements with $14.4\%$ higher wirelength and $24.1\%$ higher congestion on average.
+
+\textbf{Comparisons with RePlAce \cite{RePlAce19} and manual baselines:} Table \ref{table:replace-comparison} compares our results with the state-of-the-art method RePlAce \cite{RePlAce19} and manual baselines. The manual baseline is generated by a production chip design team, and involved many iterations of placement optimization, guided by feedback from a commercial EDA tool over a period of several weeks.
+
+With respect to RePlAce, we share the same optimization goals, namely to optimize global placement in chip design, but we use different objective functions. Thus, rather than comparing results from different cost functions, we treat the output of a commercial EDA tool as ground truth. To perform this comparison, we fix the macro placements generated by our method and by RePlAce and allow a commercial EDA tool to further optimize the standard cell placements, using the tool's default settings. We then report total wirelength, timing (worst (WNS) and total (TNS) negative slack), area, and power metrics. As shown in Table \ref{table:replace-comparison}, our method outperforms RePLAce in generating placements that meet the design requirements. Given constraints imposed by the underlying semiconductor technology, placements of these blocks will not be able to meet timing constraints in the later stage of the design flow if the WNS is significantly above 100 ps or if the horizontal or vertical congestion is over 1\%, rendering some RePlAce placements (Blocks 1, 2, 3) unusable. These results demonstrate that our congestion-aware approach is effective in generating high-quality placements that meet design criteria.
+
+
+% significantly outperforms RePlAce on key performance metrics: timing, power, and area. The ability of our method to generate placements that are congestion-aware is especially apparent on congested blocks, i.e., Blocks 1 and 4. A horizontal or vertical congestion level beyond $1\%$ renders the placement invalid. The timing results of our methods are also significantly better than those produced by RePlAce. For placements which violate constraints on timing (WNS significantly greater than 100 ps) or congestion (horizontal or vertical congestion greater than 1\%), we render their metrics in gray to indicate that these placements are infeasible.
+
+
+
+%REMOVE Ours + SA and so this paragraph
+% We also observed that finetuning our results with SA can further improve our performance. We refer to this method as Ours+. In Table \ref{table:replace-comparison}, we also show the effect of using SA to finetune the placements generated by the RL agent. We found that this additional finetuning step is effective for reducing wirelength, but provides less benefit for timing and congestion. We hypothesize that SA is able to explore on top of placements generated by an e.g., RL policy network that has already converged, providing valuable additional performance gains.
+
+RePlAce is faster than our method as it converges in 1 to 3.5 hours, whereas our results were achieved in 3 to 6 hours. However, some of the fundamental advantages of our approach are 1) our method can readily optimize for various non-differentiable cost functions, without the need to formulate closed form or differentiable equivalents of those cost functions. For example, while it is straightforward to model wirelength as a convex function, this is not true for routing congestion or timing. 2) our method has the ability to improve over time as the policy is exposed to more chip blocks, and 3) our method is able to adhere to various design constraints, such as blockages of differing shapes.
+
+Table \ref{table:replace-comparison} also shows the results generated by human expert chip designers. Both our method and human experts consistently generate viable placements, meaning that they meet the timing and congestion design criteria. We also outperform or match manual placements in WNS, area, power, and wirelength. Furthermore, our end-to-end learning-based approach takes less than 6 hours, whereas the manual baseline involves a slow iterative optimization process with experts in the loop and can take multiple weeks. 
+
+\subsection{Discussions}
+
+\textbf{Opportunities for further optimization of our approach:} There are multiple opportunities to further improve the quality of our method. For example, the process of standard cell partitioning, row and column selection, as well as selecting the order in which the macros are placed all can be further optimized. In addition, we would also benefit from a more optimized approach to standard cell placement. Currently, we use a force-directed method to place standard cells due to its fast runtime. However, we believe that more advanced techniques for standard cell placement such as RePlAce \cite{RePlAce19} and DREAMPlace \cite{Dreamplace19} can yield more accurate standard cell placements to guide the policy network training. This is helpful because if the policy network has a clearer signal on how its macro placements affect standard cell placement and final metrics, it can learn to make more optimal macro placement decisions.
+
+\textbf{Implications for a broader class of problems:} This work is just one example of domain-adaptive policies for optimization and can be extended to other stages of the chip design process, such as architecture and logic design, synthesis, and design verification, with the goal of training ML models that improve as they encounter more instances of the problem. A learning based method also enables further design space exploration and co-optimization within the cascade of tasks that compose the chip design process. 
+
+\section{Conclusion}
+In this work, we target the complex and impactful problem of chip placement. We propose an RL-based approach that enables transfer learning, meaning that the RL agent becomes faster and better at chip placement as it gains experience on a greater number of chip netlists. We show that our method outperforms state-of-the-art baselines and can generate placements that are superior or comparable to human experts on modern accelerators. Our method is end-to-end and generates placements in under 6 hours, whereas the strongest baselines require human experts in the loop and take several weeks.
+
+\section{Acknowledgments}
+This project was a collaboration between Google Research and the Google Chip Implementation and Infrastructure (CI2) Team. We would like to thank Cliff Young, Ed Chi, Chip Stratakos, Sudip Roy, Amir Yazdanbakhsh, Nathan Myung-Chul Kim, Sachin Agarwal, Bin Li, Martin Abadi, Amir Salek, Samy Bengio, and David Patterson for their help and support. 
+
+\bibliography{example_paper}
+\bibliographystyle{icml2020}
+\end{document}
+
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019 and 2020. Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.
+% OLD TABLE
+% \begin{table*}[t]
+% \centering
+% \caption{Comparing our method with the state-of-the-art academic (RePlAce \cite{RePlAce19}) method and manual expert placements using an industry standard electronic design automation (EDA) tool. The gray color shows unroutable placements due to high congestion. }
+% \label{table:replace-comparison}
+% \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+% \hline
+% Method & Name & Wirelength (m) & \multicolumn{2}{l|} {Congestion} &  \multicolumn{2}{l|} {Timing}  & Area & Power \\ \hline
+%  &  &  & H (\%) & V (\%) & WNS (ps) & TNS (ns) & Total ($\mu m^2$) & Total (W) \\ \Xhline{3\arrayrulewidth}
+% RePlAce & Block 1 & { 52.14} & {1.82} & {0.06} & {374} & {233.7} & {1693139} & {3.70} \\ \hline
+% Manual & Block 1 & 51.12 &	0.13 &	0.03 &	136	& 47.6	& 1680790 & {NA} \\ \hline
+% Ours  & Block 1 & {51.29} & 0.34 & 0.03 & 84 &	23.3 & {1681767} & {3.59} \\ \hline
+% Ours+SA & Block 1 & {47.43} & {0.10} & {0.03} & {225} & {15.4} & {1678231} & {3.49} \\ \Xhline{3\arrayrulewidth}
+% RePlAce & Block 2 & 27.37 & 0.03 & 0.03 & 58 & 11.2 & 944211 & 2.21 \\ \hline
+% Manual & Block 2 & 29.16 &	0.00 &	0.01 &	58 &	17.9  &				947766  & {NA} \\ \hline
+% Ours  & Block 2 & 28.50	& 0.03 &	0.02 &	52 & 0.7 & {942867} & {2.21} \\ \hline
+% Ours+SA & Block 2 & {26.63} & {0.01} & {0.02} & {21} & {1.1} & {941801} & {2.17} \\ \Xhline{3\arrayrulewidth}
+% RePlAce & Block 3 & 18.84 & 0.19 & 0.05 & 193 & 3.9 & 867390 & 1.36 \\ \hline
+% Manual & Block 3 & 20.50 &	0.52 & 0.09	& 56 & 12.7 & 871844 &{NA} \\ \hline
+% Ours  & Block 3 & 20.80 &	0.04 & 0.04 &	11 &	2.2 & {868101} & {1.38} \\ \hline
+% Ours+SA & Block 3 & {17.84} & {0.16} & {0.05} & {17} & {0.3} & {866376} & {1.34} \\ \Xhline{3\arrayrulewidth}
+% RePlAce & Block 4 & {61.07} & {1.58} & {0.06} & {97} & {6.6} & {785655} & {3.52} \\ \hline
+% Manual & Block 4 & 61.96 &	0.23 &	0.05 &	25 &	8.35 &					786961 & {NA}\\ \hline
+% Ours  & Block 4 & 59.11	& 0.45 & 0.03 &	59 &	170 & {694757} & {3.13} \\ \hline
+% Ours+SA & Block 4 & {57.31} & {0.49} & {0.05} & {64} & 197.2 & {694757} & {3.09} \\ \Xhline{3\arrayrulewidth}
+% RePlAce & Block 5 & {31.83} & 0.04 & 0.03 & 156 & 254.6 & 1477283 & 3.24 \\ \hline
+% Manual & Block 5 & 35.72 &	0.00 &	0.01	& 7 &	92	& 1471338 & {NA}\\ \hline
+% Ours  & Block 5 & 36.59	& 0.01 &	0.03 &	68 &	141.0 & {1472302} & {3.28} \\ \hline
+% Ours+SA& Block 5 & 33.80 & {0.01} & {0.02} & {68} & {156.8} & {1472302} & {3.21} \\ \Xhline{3\arrayrulewidth}
+% \end{tabular}
+% \end{table*}
