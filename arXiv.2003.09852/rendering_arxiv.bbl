@@ -1,0 +1,157 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{atzmon2019controlling}
+Atzmon, M., Haim, N., Yariv, L., Israelov, O., Maron, H., Lipman, Y.:
+  Controlling neural level sets. In: Advances in Neural Information Processing
+  Systems. pp. 2032--2041 (2019)
+
+\bibitem{atzmon2019sal}
+Atzmon, M., Lipman, Y.: Sal: Sign agnostic learning of shapes from raw data.
+  arXiv preprint arXiv:1911.10414  (2019)
+
+\bibitem{shapenet2015}
+Chang, A.X., Funkhouser, T., Guibas, L., Hanrahan, P., Huang, Q., Li, Z.,
+  Savarese, S., Savva, M., Song, S., Su, H., Xiao, J., Yi, L., Yu, F.:
+  {ShapeNet: An Information-Rich 3D Model Repository}. Tech. Rep.
+  arXiv:1512.03012 [cs.GR], Stanford University --- Princeton University ---
+  Toyota Technological Institute at Chicago (2015)
+
+\bibitem{chen2019learning}
+Chen, W., Ling, H., Gao, J., Smith, E., Lehtinen, J., Jacobson, A., Fidler, S.:
+  Learning to predict 3d objects with an interpolation-based differentiable
+  renderer. In: Advances in Neural Information Processing Systems. pp.
+  9605--9616 (2019)
+
+\bibitem{chen2019learningimplicit}
+Chen, Z., Zhang, H.: Learning implicit fields for generative shape modeling.
+  In: Proceedings of the IEEE Conference on Computer Vision and Pattern
+  Recognition. pp. 5939--5948 (2019)
+
+\bibitem{choy20163d}
+Choy, C.B., Xu, D., Gwak, J., Chen, K., Savarese, S.: 3d-r2n2: A unified
+  approach for single and multi-view 3d object reconstruction. In: Proceedings
+  of the European Conference on Computer Vision ({ECCV}) (2016)
+
+\bibitem{foley1996computer}
+Foley, J.D., Van, F.D., Van~Dam, A., Feiner, S.K., Hughes, J.F., Angel, E.,
+  Hughes, J.: Computer graphics: principles and practice, vol. 12110.
+  Addison-Wesley Professional (1996)
+
+\bibitem{genova2018unsupervised}
+Genova, K., Cole, F., Maschinot, A., Sarna, A., Vlasic, D., Freeman, W.T.:
+  Unsupervised training for 3d morphable model regression. In: Proceedings of
+  the IEEE Conference on Computer Vision and Pattern Recognition. pp.
+  8377--8386 (2018)
+
+\bibitem{gropp2020implicit}
+Gropp, A., Yariv, L., Haim, N., Atzmon, M., Lipman, Y.: Implicit geometric
+  regularization for learning shapes (2020)
+
+\bibitem{hart1996sphere}
+Hart, J.C.: Sphere tracing: A geometric method for the antialiased ray tracing
+  of implicit surfaces. The Visual Computer  \textbf{12}(10),  527--545 (1996)
+
+\bibitem{hornik1990universal}
+Hornik, K., Stinchcombe, M., White, H.: Universal approximation of an unknown
+  mapping and its derivatives using multilayer feedforward networks. Neural
+  networks  \textbf{3}(5),  551--560 (1990)
+
+\bibitem{hornik1989multilayer}
+Hornik, K., Stinchcombe, M., White, H., et~al.: Multilayer feedforward networks
+  are universal approximators. Neural networks  \textbf{2}(5),  359--366 (1989)
+
+\bibitem{immel1986radiosity}
+Immel, D.S., Cohen, M.F., Greenberg, D.P.: A radiosity method for non-diffuse
+  environments. Acm Siggraph Computer Graphics  \textbf{20}(4),  133--142
+  (1986)
+
+\bibitem{jiang2019sdfdiff}
+Jiang, Y., Ji, D., Han, Z., Zwicker, M.: Sdfdiff: Differentiable rendering of
+  signed distance fields for 3d shape optimization. arXiv preprint
+  arXiv:1912.07109  (2019)
+
+\bibitem{kajiya1986rendering}
+Kajiya, J.T.: The rendering equation. In: Proceedings of the 13th annual
+  conference on Computer graphics and interactive techniques. pp. 143--150
+  (1986)
+
+\bibitem{kato2018neural}
+Kato, H., Ushiku, Y., Harada, T.: Neural 3d mesh renderer. In: Proceedings of
+  the IEEE Conference on Computer Vision and Pattern Recognition. pp.
+  3907--3916 (2018)
+
+\bibitem{kingma2014adam}
+Kingma, D.P., Ba, J.: Adam: A method for stochastic optimization. arXiv
+  preprint arXiv:1412.6980  (2014)
+
+\bibitem{li2018differentiable}
+Li, T.M., Aittala, M., Durand, F., Lehtinen, J.: Differentiable monte carlo ray
+  tracing through edge sampling. ACM Transactions on Graphics (TOG)
+  \textbf{37}(6),  1--11 (2018)
+
+\bibitem{liu2019dist}
+Liu, S., Zhang, Y., Peng, S., Shi, B., Pollefeys, M., Cui, Z.: Dist: Rendering
+  deep implicit signed distance function with differentiable sphere tracing.
+  arXiv preprint arXiv:1911.13225  (2019)
+
+\bibitem{liu2019soft_b}
+Liu, S., Chen, W., Li, T., Li, H.: Soft rasterizer: Differentiable rendering
+  for unsupervised single-view mesh reconstruction. arXiv preprint
+  arXiv:1901.05567  (2019)
+
+\bibitem{liu2019soft_a}
+Liu, S., Li, T., Chen, W., Li, H.: Soft rasterizer: A differentiable renderer
+  for image-based 3d reasoning. In: Proceedings of the IEEE International
+  Conference on Computer Vision. pp. 7708--7717 (2019)
+
+\bibitem{liu2019learning}
+Liu, S., Saito, S., Chen, W., Li, H.: Learning to infer implicit surfaces
+  without 3d supervision. In: Advances in Neural Information Processing
+  Systems. pp. 8293--8304 (2019)
+
+\bibitem{loper2014opendr}
+Loper, M.M., Black, M.J.: Opendr: An approximate differentiable renderer. In:
+  European Conference on Computer Vision. pp. 154--169. Springer (2014)
+
+\bibitem{mescheder2019occupancy}
+Mescheder, L., Oechsle, M., Niemeyer, M., Nowozin, S., Geiger, A.: Occupancy
+  networks: Learning 3d reconstruction in function space. In: Proceedings of
+  the IEEE Conference on Computer Vision and Pattern Recognition. pp.
+  4460--4470 (2019)
+
+\bibitem{niemeyer2019differentiable}
+Niemeyer, M., Mescheder, L., Oechsle, M., Geiger, A.: Differentiable volumetric
+  rendering: Learning implicit 3d representations without 3d supervision. arXiv
+  preprint arXiv:1912.07372  (2019)
+
+\bibitem{park2019deepsdf}
+Park, J.J., Florence, P., Straub, J., Newcombe, R., Lovegrove, S.: Deepsdf:
+  Learning continuous signed distance functions for shape representation. In:
+  Proceedings of the IEEE Conference on Computer Vision and Pattern
+  Recognition. pp. 165--174 (2019)
+
+\bibitem{paszke2017automatic}
+Paszke, A., Gross, S., Chintala, S., Chanan, G., Yang, E., DeVito, Z., Lin, Z.,
+  Desmaison, A., Antiga, L., Lerer, A.: Automatic differentiation in pytorch
+  (2017)
+
+\bibitem{saito2019pifu}
+Saito, S., Huang, Z., Natsume, R., Morishima, S., Kanazawa, A., Li, H.: Pifu:
+  Pixel-aligned implicit function for high-resolution clothed human
+  digitization. In: Proceedings of the IEEE International Conference on
+  Computer Vision. pp. 2304--2314 (2019)
+
+\bibitem{sitzmann2019scene}
+Sitzmann, V., Zollh{\"o}fer, M., Wetzstein, G.: Scene representation networks:
+  Continuous 3d-structure-aware neural scene representations. In: Advances in
+  Neural Information Processing Systems. pp. 1119--1130 (2019)
+
+\bibitem{yifan2019differentiable}
+Yifan, W., Serena, F., Wu, S., {\"O}ztireli, C., Sorkine-Hornung, O.:
+  Differentiable surface splatting for point-based geometry processing. ACM
+  Transactions on Graphics (TOG)  \textbf{38}(6),  1--14 (2019)
+
+\end{thebibliography}
