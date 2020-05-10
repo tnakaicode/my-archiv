@@ -1,0 +1,798 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{cvpr}
+\usepackage{bm}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{arydshln}
+\usepackage{color}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+
+\cvprfinalcopy % *** Uncomment this line for the final submission
+
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ifcvprfinal\pagestyle{empty}\fi
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{Wavelet Integrated CNNs for Noise-Robust Image Classification}
+
+\author{
+Qiufu Li$^{1,2}$\quad Linlin Shen
+\thanks{Corresponding Author: Linlin Shen.}
+\ $^{1,2}$\quad Sheng Guo$^3$\quad Zhihui Lai$^{1,2}$\\
+$^1$Computer Vision Institute, School of Computer Science \& Software Engineering, Shenzhen University\\
+$^2$Shenzhen Institute of Artificial Intelligence \& Robotics for Society\quad
+$^3$Malong Technologies \\
+{\tt\small \{liqiufu,llshen\}@szu.edu.cn,sheng@malong.com,lai\_zhi\_hui@163.com}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+%\and
+%Linlin Shen\\
+%Computer Vision Institute, Shenzhen University\\
+%Shenzhen
+%518060, China\\
+%{\tt\small llshen@szu.edu.cn}
+}
+
+\maketitle
+\thispagestyle{empty}
+
+%%%%%%%%% ABSTRACT
+\begin{abstract}
+   %Small image noise can cause drastic changes in the output of Convolutional Neural Networks (CNNs),
+   %i.e., the CNNs are with weak noise-robustness.
+   %To suppress the noise effect to the final predication,
+   %we enhance CNNs by upgrading max-pooling, strided-convolution, and average-pooling using Discrete Wavelet Transform (DWT).
+   %We present the general DWT and Inverse DWT (IDWT) layers applicable to various wavelets like Haar, Daubechies and Cohen, etc.,
+   %and design wavelet integrated convolutional network (WaveCNet) using these layers for image classification.
+   %In WaveCNet, feature maps are decomposed into the low-frequency and high-frequency components during the down-sampling.
+   %The low-frequency component saves main information including the basic object structures,
+   %which is transmitted into the subsequent layers to extract robust high-level features.
+   %The high-frequency components, containing the most of data noise,
+   %are dropped during inference to improve the noise-robustness of the WaveCNets.
+   %Our experimental results show that WaveCNets acheve increased accuracy and better noise-robustness in ImageNet classification
+   %across various modern CNN architectures, such as VGG, ResNets, and DenseNet.
+   Convolutional Neural Networks (CNNs) are generally prone to noise interruptions,
+   i.e., small image noise can cause drastic changes in the output.
+   To suppress the noise effect to the final predication,
+   we enhance CNNs by replacing max-pooling, strided-convolution, and average-pooling with Discrete Wavelet Transform (DWT).
+   We present general DWT and Inverse DWT (IDWT) layers applicable to various wavelets like Haar, Daubechies, and Cohen, etc.,
+   and design wavelet integrated CNNs (WaveCNets) using these layers for image classification.
+   In WaveCNets, feature maps are decomposed into the low-frequency and high-frequency components during the down-sampling.
+   The low-frequency component stores main information including the basic object structures,
+   which is transmitted into the subsequent layers to extract robust high-level features.
+   The high-frequency components, containing most of the data noise,
+   are dropped during inference to improve the noise-robustness of the WaveCNets.
+   Our experimental results on ImageNet and ImageNet-C (the noisy version of ImageNet)
+   show that WaveCNets, the wavelet integrated versions of VGG, ResNets, and DenseNet,
+   achieve higher accuracy and better noise-robustness than their vanilla versions.
+\end{abstract}
+
+%%%%%%%%% BODY TEXT
+\section{Introduction}
+\begin{figure}[!tbp]
+	\centering
+	%\includegraphics*[scale=0.65, viewport=26 12 338 327]{figures/Visio-DWT-max_pooling.pdf}
+	\includegraphics*[scale=0.625, viewport=78 536 451 772]{figures/DWT-max_pooling.pdf}
+	\caption{Comparison of max-pooling and wavelet transforms.
+		Max-pooling is a commonly used down-sampling operation in the deep networks,
+		which could easily breaks the basic object structures.
+		Discrete Wavelet Transform (DWT) decomposes an image $\textbf{X}$ into its low-frequency component $\textbf{X}_{ll}$
+		and high-frequency components $\textbf{X}_{lh}, \textbf{X}_{hl}, \textbf{X}_{hh}$.
+		While $\textbf{X}_{lh}, \textbf{X}_{hl}, \textbf{X}_{hh}$ represent image details including most of the noise,
+		$\textbf{X}_{ll}$ is a low resolution version of the data, where the basic object structures are represented.
+		In the figures, the window boundary in area A (AP) and the poles in area B (BP) are broken by max-pooling,
+		while the principal features of these objects are kept in the DWT output (AW and BW).
+		%In addition, the background color of area AP somewhat differs from that of area A and AW,
+		%which may be resulted from the noise accumulation during max-pooling.
+		%Best viewed in color.
+	}\label{fig_DWT}
+\end{figure}
+Drastic changes due to small variations of the input
+can emerge in the output of a well-trained convolutional neural network (CNN) for image classification
+\cite{goodfellow2014explaining, xie2019feature, geirhos2018imagenet}.
+Particularly, the CNN is associated with weak noise-robustness \cite{hendrycks2019benchmarking}.
+Random noise of data is mostly high-frequency components.
+In the field of signal processing,
+transforming the data into different frequency intervals,
+and denoising the components in the high-frequency intervals,
+is an effective way to denoise it \cite{donoho1995noising,donoho1994ideal}.
+The transformation,
+such as Discrete Wavelet Transform (DWT) \cite{mallat1989theory},
+consists of filtering and down-sampling.
+However, the commonly used CNN architectures (VGG, ResNets, and DenseNet, etc.)
+do not perform filtering before the feature map down-sampling.
+
+Without the filtering, down-sampling may result in the aliasing among low-frequency and high-frequency components
+\cite{nyquist1928certain,zhang2019making}.
+In particular, noise in the high-frequency components could be down-sampled into the following feature maps,
+and degrade the noise-robustness of the CNNs.
+Meanwhile, the basic object structures presented in the low-frequency component could be broken, as Fig. \ref{fig_DWT} shows.
+
+In this paper, to suppress the noise effect to the final predication and increase the classification accuracy,
+we integrate wavelet into commonly used CNN architectures.
+We firstly transform DWT and Inverse DWT (IDWT) as general network layers in PyTorch \cite{paszke2017automatic}.
+Then, we design wavelet integrated convolutional network (WaveCNet),
+by replacing the commonly used down-sampling with DWT.
+During down-sampling, WaveCNet eliminates the high-frequency components of the feature maps
+to increase the noise-robustness of the CNNs,
+and then extracts high-level features from the low-frequency component for better classification accuracy.
+Using ImageNet \cite{deng2009imagenet} and ImageNet-C \cite{hendrycks2019benchmarking},
+we evaluate WaveCNets in terms of classification accuracy and noise-robustness, when various wavelets and various CNN architectures are used.
+At last, we explore the application of DWT/IDWT layer in image segmentation.
+In summary:
+\begin{enumerate}
+\setlength{\topsep}{-2ex}
+\setlength{\itemsep}{-0.5ex}
+\item We present general DWT/IDWT layer applicable to various wavelets, which could be used to design end-to-end wavelet integrated deep networks.
+\item We design WaveCNets by replacing existing down-sampling operations with DWT
+	  to improve the classification accuracy and noise-robustness of CNNs.
+\item We evaluate WaveCNets on ImageNet,
+	  and achieve increased accuracy and better noise-robustness.
+\item The proposed DWT/IDWT layer is further integrated into SegNet \cite{badrinarayanan2017segnet}
+	  to improve the segmentation performance of encoder-decoder networks.
+\end{enumerate}
+
+
+\section{Related works}
+\subsection{Noise-robustness}
+When the input image is changed, the output of CNN can be significantly different,
+regardless of whether the change can be easily perceived by human or not
+\cite{goodfellow2014explaining, geirhos2018imagenet, liao2018defense, xie2019feature}.
+While the changes may result from various factors,
+such as shift \cite{zhang2019making,mairal2014convolutional}, rotation \cite{bruna2013invariant_scatnet},
+noise \cite{xie2019feature}, blur \cite{hendrycks2019benchmarking}, manual attack \cite{goodfellow2014explaining}, etc.,
+we focus on the robustness of CNNs to the common noise.
+A high-level representation guided denoiser is designed in \cite{liao2018defense}
+to denoise the contaminated image before inputting it into the CNN,
+which may complicate the whole deep network structure.
+In \cite{xie2019feature}, the authors propose denoising block for CNNs to denoise the feature map
+and suppress the effect of noise on the final prediction.
+However, the authors design their denoising block using the spacial filtering,
+such as Gaussian filtering, mean filtering, and median filtering, etc.,
+which do denoising in the whole frequency domain
+and may break basic object structure contained in the low-frequency component.
+Therefore, their denoising block requires a residual structure for the CNN to converge.
+Recently, a benchmark evaluating CNN performance on noisy images is proposed in \cite{hendrycks2019benchmarking}.
+Our WaveCNets will be evaluated using this benchmark.
+
+The recent studies show that ImageNet-trained CNNs prefer to extract features from object textures
+sensitive to noise \cite{brendel2019approximating, geirhos2018imagenet}.
+Stylized ImageNet \cite{geirhos2018imagenet} is proposed via stylizing ImageNet images with style transfer
+to enable the CNNs to extract more robust features from object structures.
+The noise could be enlarged as the feature maps flow through layers in the CNNs \cite{liao2018defense, xie2019feature},
+resulting in the final wrong predictions.
+These issues may be related to the down-sampling operations ignoring the classic sampling theorem.% in the deep networks.
+
+\subsection{Down-sampling}
+For local connectivity and weight sharing, researchers introduce into deep networks various down-sampling operations,
+such as max-pooling, average-pooling, mixed-pooling, stochastic pooling, and strided-convolution, etc.
+While max-pooling and average-pooling are simple and effective,
+they can erase or dilute details from images \cite{yu2014mixed,zeiler2013stochastic}.
+Although mixed-pooling \cite{yu2014mixed} and stochastic pooling \cite{zeiler2013stochastic} are introduced to address these issues,
+max-pooling, average-pooling, and strided-convolution are still the most widely used operations in CNNs
+\cite{he2016deep,huang2017densely,sandler2018mobilenetv2,simonyan2014very}.
+
+These down-sampling operations usually ignore the classic sampling theorem \cite{azulay2018deep,zhang2019making},
+which could break object structures and accumulate noise.
+Fig. \ref{fig_DWT} shows a max-pooling example.
+Anti-aliased CNNs \cite{zhang2019making} integrate the classic anti-aliasing filtering with the down-sampling.
+The author is surprised at the increased classification accuracy and better noise-robustness.
+Compared to the anti-aliased CNNs, our WaveCNets are significantly different in two aspects:
+(1) While Max operation is still used in anti-aliased CNNs, WaveCNets do not require such operation.
+(2) The low-pass filters used in anti-aliased CNNs are empirically designed based on the row vectors of Pascal's triangle,
+which is ad hoc and no theoretical justifications are given.
+As no up-sampling operation, i.e., reconstruction, of the low-pass filter is available,
+the anti-aliased U-Net \cite{zhang2019making} has to apply the same filtering after normal up-sampling to achieve the anti-aliasing effect.
+In comparison, our WaveCNets are justified by the well defined wavelet theory \cite{daubechies1992ten,mallat1989theory}.
+Both down-sampling and up-sampling can be replaced by DWT and IDWT, respectively.
+
+In deep networks for image-to-image translation tasks, the up-sampling operations,
+such as transposed convolution in U-Net \cite{ronneberger2015u_net} and max-unpooling in SegNet \cite{badrinarayanan2017segnet},
+are widely applied to upgrade the feature map resolution.
+Due to the absence of the strict mathematical terms,
+these up-sampling operations can not precisely recover the original data.
+They do not perform well in the restoration of image details.
+
+\subsection{Wavelets}
+Wavelets \cite{daubechies1992ten,mallat1989theory} are powerful time-frequency analysis tools,
+which have wide applications in signal processing.
+While Discrete Wavelet Transform (DWT) decompose a data into various components in different frequency intervals,
+Inverse DWT (IDWT) could reconstruct the data using the DWT output.
+DWT could be applied for anti-aliasing in signal processing, and we will explore its application in deep networks.
+IDWT could be used for detail restoration in image-to-image tasks.
+%The \`atrous convolution used in DeepLab \cite{chen2014semantic_deeplabv1,chen2018encoder_deeplabv3+} is originally developed in wavelet theory.
+
+Wavelet has been combined with neural network for function approximation \cite{zhang1992wavelet},
+signal representation and classification \cite{szu1992neural}.
+In these early works, the authors apply shallow networks to search the optimal wavelet in wavelet parameter domain.
+Recently, this method is utilized with deeper network for image classification,
+but the network is difficult to train because of the significant amount of computational cost \cite{de2019multi}.
+ScatNet \cite{bruna2013invariant_scatnet} cascades wavelet transform with nonlinear modulus and average pooling,
+to extract a translation invariant feature robust to deformations and preserve high-frequency information for image classification.
+The authors introduce ScatNet when they explore from mathematical and algorithmic perspective how to design the optimal deep network.
+Compared with the CNNs of the same period,
+ScatNet gets better performance on the handwritten digit recognition and texture discrimination tasks.
+However, due to the strict mathematical assumptions, ScatNet can not be easily transferred to other tasks.
+
+In deep learning, wavelets commonly play the roles of image preprocessing or postprocessing
+\cite{huang2017wavelet, liu2018attribute, savareh2019wavelet, yuan2019waveletfcnn}.
+Meanwhile, researchers try to introduce wavelet transforms into the design of deep networks in various tasks
+\cite{liu2018multi,Williams2018Wavelet,duan2017sar,yoo2019photorealistic}, by taking wavelet transforms as sampling operations.
+Multi-level Wavelet CNN (MWCNN) proposed in \cite{liu2018multi} integrates Wavelet Package Transform (WPT)
+into the deep network for image restoration.
+MWCNN concatenates the low-frequency and high-frequency components of the input feature map,
+and processes them in a unified way,
+while the data distribution in these components significantly differs from each other.
+Convolutional-Wavelet Neural Network (CWNN) proposed in \cite{duan2017sar}
+applies dual-tree complex wavelet transform (DT-CWT)
+to suppress the noise and keep the structures for extracting robust features from SAR images.
+The architecture of CWNN contains only two convolution layers.
+While DT-CWT is redundant,
+CWNN takes as its down-sampling output the average value of the multiple components output from DT-CWT.
+Wavelet pooling proposed in \cite{Williams2018Wavelet} is designed using a two-level DWT.
+Its back-propagation performs a one-level DWT and a two-level IDWT, which does not follow the mathematical principle of gradient.
+The authors test their method on various dataset
+(MNIST \cite{lecun1998gradient}, CIFAR-10 \cite{krizhevsky2009learning}, SHVN \cite{netzer2011reading},
+and KDEF \cite{lundqvist1998karolinska}).
+However, their network architectures contain only four or five convolutional layers.
+The authors do not study systematically the potential of the method on standard image dataset like ImageNet \cite{deng2009imagenet}.
+Recently, the application of wavelet transform in image style transfer is studied in \cite{yoo2019photorealistic}.
+In above works, the authors evaluate their methods with only one or two wavelets,
+due to the absence of the general wavelet transform layers.
+
+\section{Our method}
+Our method is trying to apply wavelet transforms to improve the down-sampling operations in deep networks.
+We firstly design the general DWT and IDWT layers.
+
+\subsection{DWT and IDWT layers}
+The key issues in designs of DWT and IDWT layers are the data forward and backward propagations.
+Although the following analysis is for orthogonal wavelet and 1D signal,
+it can be generalized to other wavelets and 2D/3D signal with only slight changes.
+
+\textbf{Forward propagation}\quad
+For a 1D signal $\textbf{s} = \{s_j\}_{j\in\mathbb{Z}}$,
+%$$\textbf{s} = (\cdots, s_{-j}, \cdots, s_{-1}, s_{0}, s_{1}, \cdots, s_{j}, \cdots)^T,$$
+DWT decomposes it into its low-frequency component $\textbf{s}_1 = \{s_{1k}\}_{k\in\mathbb{Z}}$
+%$$\textbf{s}_1 = (\cdots, s_{1,-k}, \cdots, s_{10}, \cdots, s_{1k}, \cdots)^T$$
+and high-frequency component $\textbf{d}_1 = \{d_{1k}\}_{k\in\mathbb{Z}}$,
+%$$\textbf{d}_1 = (\cdots, d_{1,-k}, \cdots, d_{10}, \cdots, d_{1k}, \cdots)^T,$$
+where
+\begin{equation}\label{eq_DWT}
+\left\{
+\begin{array}{l}
+s_{1k} = \sum_j l_{j-2k} s_j, \\
+d_{1k} = \sum_j h_{j-2k} s_j,
+\end{array}
+\right.
+\end{equation}
+and $\textbf{l} = \{l_k\}_{k\in\mathbb{Z}}, \textbf{h} = \{h_k\}_{k\in\mathbb{Z}}$ are the low-pass
+and high-pass filters of an orthogonal wavelet.
+According to Eq. (\ref{eq_DWT}), DWT consists of filtering and down-sampling.
+
+Using IDWT, one can reconstruct $\textbf{s}$ from $\textbf{s}_1, \textbf{d}_1$, where
+\begin{equation}\label{eq_IDWT}
+s_j = \sum_k\left(l_{j-2k} s_{1k} + h_{j-2k} d_{1k}\right).
+\end{equation}
+In expressions with matrices and vectors, Eq. (\ref{eq_DWT}) and Eq. (\ref{eq_IDWT}) can be rewritten as
+\begin{align}
+\label{eq_DWT_M_s}
+&\textbf{s}_1 = \textbf{L}\textbf{s},\quad\textbf{d}_1 = \textbf{H}\textbf{s},\\
+\label{eq_IDWT_M}
+&\textbf{s} = \textbf{L}^T \textbf{s}_1 + \textbf{H}^T \textbf{d}_1,
+\end{align}
+where
+\begin{align}
+%\nonumber to remove numbering (before each equation)
+\textbf{L} &=
+\left(
+\begin{array}{ccccccc}
+	\cdots & \cdots & \cdots &        &        &        &                \\
+	\cdots & l_{-1} &  l_0   &  l_1   & \cdots &        &                \\
+	       &        & \cdots & l_{-1} &  l_0   &  l_1   & \cdots         \\
+	       &        &        &        &        & \cdots & \cdots
+\end{array}
+\right),\\
+\textbf{H} &=
+\left(
+\begin{array}{ccccccc}
+	\cdots & \cdots & \cdots &        &        &        &          \\
+	\cdots & h_{-1} &  h_0   &  h_1   & \cdots &        &          \\
+	       &        & \cdots & h_{-1} &  h_0   &  h_1   & \cdots   \\
+	       &        &        &        &        & \cdots & \cdots
+\end{array}
+\right).
+\end{align}
+
+For 2D signal $\textbf{X}$, the DWT usually do 1D DWT
+on its every row and column, i.e.,
+\begin{align}
+% \nonumber to remove numbering (before each equation)
+\label{eq_DWT_2D_M_ll}
+\textbf{X}_{ll} &= \textbf{L} \textbf{X} \textbf{L}^T, \\
+\label{eq_DWT_2D_M_lh}
+\textbf{X}_{lh} &= \textbf{H} \textbf{X} \textbf{L}^T, \\
+\label{eq_DWT_2D_M_hl}
+\textbf{X}_{hl} &= \textbf{L} \textbf{X} \textbf{H}^T, \\
+\label{eq_DWT_2D_M_hh}
+\textbf{X}_{hh} &= \textbf{H} \textbf{X} \textbf{H}^T,
+\end{align}
+and the corresponding IDWT is implemented with
+\begin{equation}\label{eq_IDWT_2D_M}
+\textbf{X} = \textbf{L}^T \textbf{X}_{ll} \textbf{L}
++ \textbf{H}^T \textbf{X}_{lh} \textbf{L}
++ \textbf{L}^T \textbf{X}_{hl} \textbf{H}
++ \textbf{H}^T \textbf{X}_{hh} \textbf{H}.
+\end{equation}
+
+\textbf{Backward propagation}\quad
+For the backward propagation of DWT, we start from Eq. (\ref{eq_DWT_M_s}) and differentiate it,
+\begin{equation}\label{eq_DWT_bp}
+\frac{\partial \textbf{s}_1}{\partial\textbf{s}} = \textbf{L}^T,\quad \frac{\partial \textbf{d}_1}{\partial\textbf{s}} = \textbf{H}^T.
+\end{equation}
+Similarly, for the back propagation of the 1D IDWT, differentiate Eq. (\ref{eq_IDWT_M}),
+\begin{equation}\label{eq_IDWT_bp}
+\frac{\partial{\textbf{s}}}{\partial{\textbf{s}}_1} = \textbf{L},\quad \frac{\partial{\textbf{s}}}{\partial{\textbf{d}}_1} = \textbf{H}.
+\end{equation}
+
+The forward and backward propagations of 2D/3D DWT and IDWT are slightly more complicated, but similar to that of 1D DWT and IDWT.
+In practice, we choose the wavelets with finite filters, for example,
+Haar wavelet with $\textbf{l} = \frac{1}{\sqrt{2}}\{1,1\}$ and $\textbf{h} = \frac{1}{\sqrt{2}}\{1,-1\}$.
+For finite signal $\textbf{s} \in \mathbb{R}^N$ and  $\textbf{X} \in \mathbb{R}^{N\times N}$,
+the $\textbf{L}, \textbf{H}$ are truncated to be the size of $\lfloor\frac{N}{2}\rfloor\times N$.
+We transform 1D/2D/3D DWT and IDWT as network layers in PyTorch.
+In the layers, we do DWT and IDWT channel by channel for multi-channel data.
+%Our codes will be publicly available for other researchers.
+
+\subsection{WaveCNets}
+Given a noisy 2D data $\textbf{X}$, the random noise mostly show up in its high-frequency components.
+Therefore, as Fig. \ref{fig_denoise_a} shows, the general wavelet based denoising \cite{donoho1995noising,donoho1994ideal}
+consists of three steps:
+(1) decompose the noisy data $\textbf{X}$ using DWT into low-frequency component $\textbf{X}_{ll}$
+and high-frequency components $\textbf{X}_{lh}, \textbf{X}_{hl}, \textbf{X}_{hh}$,
+(2) filter the high-frequency components,
+(3) reconstruct the data with the processed components using IDWT.
+\begin{figure}[bpt]
+	\centering
+	\subfigure[The general denoising approach using wavelet.]{
+		\label{fig_denoise_a}
+		\includegraphics*[scale=0.7, viewport=265 308 585 400]{figures/Visio-down_sampling_of_dwt.pdf}
+	}\\
+	\subfigure[The simplest wavelet based ``denoising'' method, $\text{DWT}_{ll}$.]{
+		\label{fig_denoise_b}
+		\includegraphics*[scale=0.7, viewport=265 228 585 258]{figures/Visio-down_sampling_of_dwt.pdf}
+	}
+	\caption{The general denoising approach based on wavelet transforms and the one used in WaveCNet.}
+	\label{fig_dual_structures}
+\end{figure}
+
+In this paper, we choose the simplest wavelet based ``denoising'', i.e., dropping the high-frequency components,
+as Fig. \ref{fig_denoise_b} shows.
+$\text{DWT}_{ll}$ denotes the transform mapping the feature maps to the low-frequency component.
+We design WaveCNets by replacing the commonly used down-sampling with $\text{DWT}_{ll}$.
+As Fig. \ref{fig_down_sampling_of_dwt} shows, in WaveCNets, max-pooling and average-pooling are directly replaced by $\text{DWT}_{ll}$,
+while strided-convolution is upgrated using convolution with stride of $1$ followed by $\text{DWT}_{ll}$,
+i.e.,
+\begin{align}
+\label{eq_maxpool_up}
+\text{MaxPool}_{s = 2} \rightarrow &\ \text{DWT}_{ll},\\
+\label{eq_conv_up}
+\text{Conv}_{s = 2} \rightarrow &\ \text{DWT}_{ll} \circ \text{Conv}_{s=1},\\
+\label{eq_avgpool_up}
+\text{AvgPool}_{s = 2} \rightarrow &\ \text{DWT}_{ll},
+\end{align}
+where ``$\text{MaxPool}_s$'', ``$\text{Conv}_s$'' and ``$\text{AvgPool}_s$'' denote the max-pooling,
+strided-convolution, and average-pooling with stride $s$, respectively.
+\begin{figure}[t]
+	\centering
+	\includegraphics*[scale=0.85, viewport=25 698 295 785]{figures/Visio-down_sampling_of_dwt.pdf}
+	\caption{(a) Baseline, the down-sampling operations in deep networks.
+	(b) Wavelet integrated down-sampling in WaveCNets.
+	}\label{fig_down_sampling_of_dwt}
+\end{figure}
+
+%$\text{DWT}_{ll}$ consists of low-pass filtering and down-sampling.
+While $\text{DWT}_{ll}$ halves the size of the feature maps,
+it removes their high-frequency components and denoises them.
+The output of $\text{DWT}_{ll}$, i.e., the low-frequency component, saves the main information of the feature map
+to extract the identifiable features.
+During down-sampling of WaveCNets, $\text{DWT}_{ll}$ could resist the noise propagation in the deep networks
+and helps to maintain the basic object structure in the feature maps.
+Therefore, $\text{DWT}_{ll}$ would accelerate the training of deep networks and
+lead to better noise-robustness and increased classification accuracy.
+
+\section{Experiments}
+\begin{table*}[!t]
+	\scriptsize
+	%\small
+	\caption{Top-1 accuracy of WaveCNets on ImageNet validation set.}
+	\label{Tab_WaveCNet_accuracy}
+	\begin{center}
+	\begin{threeparttable}
+		\setlength{\tabcolsep}{1.75mm}{
+			\begin{tabular}{cc||c|cccc|c}\hline
+		\multicolumn{2}{c||}{Wavelet}&{WVGG16bn} &WResNet18&WResNet34&WResNet50&WResNet101 &{WDenseNet121} \\\hline\hline
+\multicolumn{2}{c||}{None (baseline)\tnote{*}}
+							&73.37		     &69.76		&73.30		&76.15		&77.37		&74.65		\\\hline
+\multicolumn{2}{c||}{Haar}
+	 						&74.10 ($+$0.73) &71.47 ($+$1.71)	&74.35 ($+$1.05)	&\textbf{76.89 ($+$0.74)}&78.23 ($+$0.86)	&75.27 ($+$0.62)	\\\hline
+{\multirow{4}{*}{Cohen}}
+&\multicolumn{1}{|c||}{ch2.2}&74.31 ($+$0.94)&\textbf{71.62 ($+$1.86)}	&74.33 ($+$1.03)	&76.41 ($+$0.26)&78.34 ($+$0.97)	&75.36 ($+$0.71)	\\
+&\multicolumn{1}{|c||}{ch3.3}&\textbf{74.40 ($+$1.03)}&71.55 ($+$1.79)	&74.51 ($+$1.21)	&76.71 ($+$0.56)&\textbf{78.51 ($+$1.14)}	&\textbf{75.44 ($+$0.79)}\\
+&\multicolumn{1}{|c||}{ch4.4}&74.02 ($+$0.65)&71.52 ($+$1.76)	&\textbf{74.61 ($+$1.31)}	&76.56 ($+$0.41)&78.47 ($+$1.10)	&75.29 ($+$0.64)	\\
+&\multicolumn{1}{|c||}{ch5.5}&73.67 ($+$0.30)&71.26 ($+$1.50)	&74.34 ($+$1.04)	&76.51 ($+$0.36)	&78.39 ($+$1.02)	&75.01 ($+$0.36)	\\\hline
+{\multirow{5}{*}{Daubechies}}&
+\multicolumn{1}{|c||}{db2} 	 &74.08 ($+$0.71)&71.48 ($+$1.72)	&74.30 ($+$1.00)	&76.27 ($+$0.12)	&78.29 ($+$0.92)	&75.08 ($+$0.43)	\\
+&\multicolumn{1}{|c||}{db3}	 &				 &71.08 ($+$1.32)	&74.11 ($+$0.81)	&76.38 ($+$0.23)	&					&					\\
+&\multicolumn{1}{|c||}{db4}	 &				 &70.35 ($+$0.59)	&73.53 ($+$0.23)	&75.65 ($-$0.50)	&					&					\\
+&\multicolumn{1}{|c||}{db5}	 &				 &69.54 ($-$0.22)	&73.41 ($+$0.11)	&74.90 ($-$1.25)	&					&					\\
+&\multicolumn{1}{|c||}{db6}	 &				 &68.74 ($-$1.02)	&72.68 ($-$0.62)	&73.95 ($-$2.20)	&					&					\\\hline
+			\end{tabular}}
+		\begin{tablenotes}
+			%\tiny
+			\item[*] corresponding to the results of original CNNs, i.e., VGG16bn, ResNets, DenseNet121.
+		\end{tablenotes}
+	\end{threeparttable}
+	\end{center}
+\end{table*}
+The commonly used CNN architectures for image classification,
+such as VGG \cite{simonyan2014very}, ResNets \cite{he2016deep}, DenseNet \cite{huang2017densely},
+compose of various max-pooling, average-pooling, and strided-convolution.
+By upgrading the down-sampling with Eqs. (\ref{eq_maxpool_up}) - (\ref{eq_avgpool_up}),
+we create WaveCNets, including WVGG16bn, WResNets, WDenseNet121.
+Compared with the original CNNs, WaveCNets do not employ additional learnable parameters.
+We evaluate their classification accuracies and noise-robustness
+using ImageNet \cite{deng2009imagenet} and ImageNet-C \cite{hendrycks2019benchmarking}.
+At last, we explore the potential of wavelet integrated deep networks for image segmentation.
+
+\subsection{ImageNet classification}
+ImageNet contains 1.2M training and 50K validation images from 1000 categories.
+On the training set,
+we train WaveCNets when various wavelets are used,
+with the standard training protocols from the publicly available PyTorch \cite{paszke2017automatic} repository.
+Table \ref{Tab_WaveCNet_accuracy} presents the top-1 accuracy of WaveCNets on ImageNet validation set,
+where ``haar'', ``dbx'', and ``chx.y'' denote the Haar wavelet, Daubechies wavelet with approximation order $x$,
+and Cohen wavelet with orders $(x,y)$.
+The length of the wavelet filters increase as the orders increase.
+While Haar and Cohen wavelets are symmetric, Daubechies are not.
+%The supplementary materials present the filters of these wavelets.
+
+In Table \ref{Tab_WaveCNet_accuracy}, parenthesized numbers are accuracy difference compared with the baseline results.
+The baseline results, i.e., the results of the original CNNs, are sourced from the official PyTorch \cite{paszke2017automatic}.
+For all CNN architectures, Haar and Cohen wavelets improve their classification accuracy,
+although the best wavelet varies with CNN.
+For example, Haar and Cohen wavelets improve the accuracy of ResNet18 by $1.50\%$ to $1.86\%$.
+However, the performance of asymmetric Daubechies wavelet gets worse as the approximation order increases.
+Daubechies wavelets with shorter filters (``db2'' and ``db3'') could improve the CNN accuracy,
+while that with longer filters (``db5'' and ``db6'') may reduce the accuracy.
+For example, the top-1 accuracy of WResNet18 decreases from $71.48\%$ to $68.74\%$.
+We conclude that the symmetric wavelets perform better than asymmetric ones in image classification.
+That is the reason why we do not train WVGG16bn, WResNet101, WDenseNet121 with ``db3'', ``db4'', ``db5'', ``db6''.
+
+\begin{figure}[!bpt]
+	\centering
+	\includegraphics*[scale=0.55, viewport=21 2 417 305]{figures/resnet18_loss.pdf}
+	\caption{The loss of ResNet18 and WResNet18(Haar).}
+	\label{fig_loss_resnet18}
+\end{figure}
+\begin{figure*}[!bpt]
+	\centering
+	\subfigure[VGG16bn and WVGG16bn]
+	{\includegraphics*[scale=0.22, viewport=175 65 1070 604]{figures/feature_map_clean/00041584_WVGG16bn.pdf}\label{fig_feature_maps_a}}\hspace{30pt}
+	\subfigure[ResNet18 and WResNet18]
+	{\includegraphics*[scale=0.22, viewport=175 65 1070 604]{figures/feature_map_clean/00009023_WResNet18.pdf}\label{fig_feature_maps_b}}\\
+	\subfigure[ResNet34 and WResNet34]
+	{\includegraphics*[scale=0.22, viewport=175 65 1070 604]{figures/feature_map_clean/00038133_WResNet34.pdf}\label{fig_feature_maps_c}}\hspace{30pt}
+	\subfigure[ResNet50 and WResNet50]
+	{\includegraphics*[scale=0.22, viewport=175 65 1070 604]{figures/feature_map_clean/00014035_WResNet50.pdf}\label{fig_feature_maps_d}}
+	\caption{The feature maps of CNNs (top) and WaveCNets (bottom).}
+	\label{fig_feature_maps}
+\end{figure*}
+We retrain ResNet18 using the standard ImageNet classification training repository in PyTorch.
+In Fig. \ref{fig_loss_resnet18}, we compare the losses of ResNet18 and WResNet18(Haar) during the training procedure.
+Fig. \ref{fig_loss_resnet18} adopts red dashed and green dashed lines to denote the train losses of ResNet18 and WResNet18(Haar), respectively.
+Throughout the whole training procedure, the training loss of WResNet18(Haar) is about $0.08$ lower than that of ResNet18,
+when the two networks employ the same amount of learnable parameters.
+This suggests that wavelet accelerates the training of ResNet18 architecture.
+On the validation set, WResNet18 loss (green solid line) is also always lower than ResNet18 loss (red solid line),
+which lead to the increase of final classification accuracy by $1.71\%$.
+
+Fig. \ref{fig_feature_maps} presents four example feature maps of well trained CNNs and WaveCNets.
+%More examples are shown in supplementary materials.
+In each subfigure, the top row shows the input image with size of $224\times224$ from ImageNet validation set
+and the two feature maps produced by original CNN,
+while the bottom row shows the related information (image, CNN and WaveCNet names) and feature maps produced by the WaveCNet.
+The two feature maps are captured from the 16th output channel of the final layer
+in the network blocks with tensor size of $56\times56$ (middle) and $28\times28$ (right), respectively.
+The feature maps have been enlarged for better illustration.
+
+From Fig. \ref{fig_feature_maps}, one can find
+that the backgrounds of the feature map produced by WaveCNets are cleaner than that produced by CNNs,
+and the object structures in the former are more complete than that in the latter.
+For example, in the top row of Fig. \ref{fig_feature_maps_d},
+the clock boundary in the ResNet50 feature map with size of $56\times56$ are fuzzy,
+and the basic structures of clocks have been totally broken by strong noise in the feature map with size of $28\times28$.
+In the second row,
+the backgrounds of feature maps produced by WResNet50(ch3.3) are very clean,
+and it is easy to figure out the clock structures in the feature map with size of $56\times56$
+and the clock areas in the feature map with size of $28\times28$.
+The above observations illustrate that the down-sampling operations could cause noise accumulation
+and break the basic object structures during CNN inference,
+while DWT in WaveCNets relieves these drawbacks.
+We believe that this is the reason why WaveCNets converge faster in training and ultimately achieve better classification accuracy.
+
+In \cite{zhang2019making}, the author is surprised at the increased classification accuracy of CNNs
+after filtering is integrated into the down-sampling.
+In \cite{geirhos2018imagenet},
+the authors show that ``ImageNet-trained CNNs are strongly biased towards recognising textures rather than shapes''.
+Our experimental results suggest that this may be sourced from the commonly used down-sampling operations,
+which tend to break the object structures and accumulate noise in the feature maps.
+
+\begin{figure}[bpt]
+	\centering
+	\includegraphics*[scale=0.5, viewport=23 8 418 370]{figures/mCE_noise.pdf}
+	\caption{The noise mCE of WaveCNets.}
+	\label{fig_mCE_noise}
+\end{figure}
+\subsection{Noise-robustness}
+In \cite{hendrycks2019benchmarking},
+the authors corrupt the ImageNet validation set using 15 visual corruptions with five severity levels,
+to create ImageNet-C and test the robustness of ImageNet-trained classifiers to the input corruptions.
+The 15 corruptions are sourced from four categories,
+i.e., noise (Gaussian noise, shot noise, impulse noise),
+blur (defocus blur, frosted glass blur, motion blur, zoom blur),
+weather (snow, frost, fog, brightness), and digital (contrast, elastic, pixelate, JPEG-compression).
+$E_{s,c}^f$ denotes the top-1 error of a trained classifier $f$ on corruption type $c$ at severity level $s$.
+The authors present the Corruption Error $\text{CE}_c^f$, computed with
+\begin{align}
+\label{eq_CE}
+\text{CE}_c^f &= \sum_{s=1}^5 E_{s,c}^f\left/\sum_{s=1}^5 E_{s,c}^{\text{AlexNet}}\right.,
+\end{align}
+to evaluate the performance of a trained classifier $f$.
+In Eq. (\ref{eq_CE}), the authors normalize the error using the top-1 error of AlexNet \cite{krizhevsky2012imagenet}
+to adjust the difference of various corruptions.
+
+In this section, we use the noise part (750K images, 50K $\times$ 3 $\times$ 5) of ImageNet-C
+and
+\begin{align}
+\label{eq_mCE_noise}
+\text{mCE}_{\text{noise}}^f &= \dfrac{1}{3}\left(\text{CE}_{\text{Gaussian}}^f
++ \text{CE}_{\text{shot}}^f + \text{CE}_{\text{impulse}}^f\right)
+\end{align}
+to evaluate the noise-robustness of WaveCNet $f$.
+
+\begin{figure*}[bpt]
+	\centering
+	\subfigure[Gaussian noise]
+	{\includegraphics*[scale=0.22, viewport=175 65 1062 608]{figures/feature_map_noise/guassian_ResNet18.pdf}
+	\label{fig_feature_map_noise_a}}\hspace{30pt}
+	\subfigure[Impulse noise]
+	{\includegraphics*[scale=0.22, viewport=175 65 1068 608]{figures/feature_map_noise/impulse_ResNet18.pdf}
+	\label{fig_feature_map_noise_b}}
+	\caption{The feature maps sourced from clean (top) and noisy (bottom) images.}
+	\label{fig_feature_map_noise}
+\end{figure*}
+We test the top-1 errors of WaveCNets and AlexNet on each noise corruption type $c$ at each level of severity $s$,
+when WaveCNets and AlexNet are trained on the clean ImageNet training set.
+Then, we compute $\text{mCE}_{\text{noise}}^{\text{WaveCNet}}$ according to Eqs. (\ref{eq_CE}) and (\ref{eq_mCE_noise}).
+%The supplementary material contains the detailed results.
+In Fig. \ref{fig_mCE_noise}, we show the noise mCEs of WaveCNets for different network architectures and various wavelets.
+The ``baseline'' corresponds to the noise mCEs of original CNN architectures,
+while ``dbx'', ``chx.y'' and ``haar'' correspond to the mCEs of WaveCNets with different wavelets.
+Except VGG16bn, our method obviously increase the noise-robustness of the CNN architectures for image classification.
+For example, the noise mCE of ResNet18 (with navy blue color and down triangle marker in Fig. \ref{fig_mCE_noise})
+decreases from $88.97$ (``baseline'') to $80.38$ (``ch2.2'').
+One can find that the all wavelets including ``db5'' and ``db6'' improve the noise-robustness of ResNet18, ResNet34, and ResNet50,
+although the classification accuracy of the WResNets with ``db5'' and ``db6'' for the clean images may be lower than that of the original ResNets.
+It means that our methods indeed increase the noise-robustness of these network architectures.
+
+Fig. \ref{fig_feature_map_noise} shows two example feature maps for well trained ResNet18 and WResNet18
+with noisy images as input.
+In every subfigure, the first row shows the clean image with size of $224\times224$ from ImageNet validation set
+and feature maps generated by ResNet18 and WResNet18(ch2.2), respectively.
+The second row shows the image added with Gaussian or impulse noise and the feature maps generated by the two networks.
+These feature maps are captured from the 16th output channel of the last layer in the network blocks with tensor size of $56\times56$.
+From the two examples, one can find that it is difficult for the original CNN to suppress noise,
+while WaveCNet could suppress the noise and maintain the object structure during its inference.
+For example, in Fig. \ref{fig_feature_map_noise_a},
+the bottle structures in the two feature maps generated by ResNet18 and WResNet18(ch2.2) are complete,
+when the clean porcelain bottle image is fed into the networks.
+However, after the image is corrupted by Gaussian noise,
+the ResNet18 feature map contains very strong noise and the bottle structure vanishs,
+while the basic structure could still be observed from the WResNet18 feature map.
+This advantage improves the robustness of WaveCNets against different noise.
+
+The noise-robustness of VGG16bn is inferior to that of ResNet34,
+although they achieve similar accuracy ($73.37\%$ and $73.30\%$).
+Our method can not significantly improve the noise-robustness of VGG16bn,
+although it can increase the accuracy by $1.03\%$.
+It means that the VGG16bn may be not a proper architecture in terms of noise-robustness.
+
+\subsection{Comparison with other wavelet based down-sampling}
+\begin{figure}[bpt]
+	\centering
+	\subfigure[Average mode \cite{duan2017sar}.]{
+		\label{fig_wavelet_integrated_modes_b}
+		\includegraphics*[scale=0.725, viewport=267 130 585 155]{figures/Visio-down_sampling_of_dwt.pdf}
+	}\\
+	\subfigure[Concatenation mode \cite{liu2018multi}.]{
+		\label{fig_wavelet_integrated_modes_a}
+		\includegraphics*[scale=0.725, viewport=267 179 585 204]{figures/Visio-down_sampling_of_dwt.pdf}
+	}
+	\caption{Wavelet integrated down-sampling in various modes.}
+	\label{fig_wavelet_integrated_modes}
+\end{figure}
+Different with our DWT based down-sampling (Fig. \ref{fig_denoise_b}),
+there are other wavelet integrated down-sampling modes in literatures.
+In \cite{duan2017sar}, the authors adopt as down-sampling output the average value of the multiple components of wavelet transform,
+as Fig. \ref{fig_wavelet_integrated_modes_b} shows.
+In \cite{liu2018multi}, the authors concatenate all the components output from DWT, and process them in a unified way,
+as Fig. \ref{fig_wavelet_integrated_modes_a} shows.
+
+Here, taking ResNet18 as backbone, we compare our wavelet integrated down-sampling with the previous approaches,
+in terms of classification accuracy and noise-robustness.
+%although they are used for different tasks in previous literatures.
+We rebuild ResNet18 using the three down-sampling modes shown in Fig. \ref{fig_denoise_b} and Fig. \ref{fig_wavelet_integrated_modes},
+and denote them as WResNet18, WResNet18\_A, and WResNet18\_C, respectively.
+We train them on ImageNet when various wavelets are used.
+Table \ref{Tab_result_other_modes} shows the accuracy on ImageNet
+and the noise mCEs on the ImageNet-C.
+Generally, the networks using wavelet based down-sampling achieve better accuracy and noise mCE
+than that of original network, ResNet18 ($69.76\%$ accuracy and $88.97$ mCE).
+\begin{table}
+\scriptsize
+	\caption{Comparison with other wavelet based down-sampling.}
+	\label{Tab_result_other_modes}
+\begin{center}
+\setlength{\tabcolsep}{1.00mm}{
+\begin{tabular}{l|cccccc|c}\hline
+\multicolumn{1}{c|}{\multirow{2}{*}{Network}} &\multicolumn{6}{c|}{Top-1 Accuracy (higher is better)} & \multirow{2}{*}{Params.}\\\cline{2-7}
+						 					&haar	&ch2.2	&ch3.3	&ch4.4	&ch5.5	&db2 	&\\\hline
+					     WResNet18			&71.47	&71.62		&71.55		&71.52		&71.26		&71.48	&\textbf{11.69}M\\
+		WResNet18\_A \cite{duan2017sar} 	&70.06	&69.24		&69.91		&69.98		&70.31		&70.52	&11.69M\\
+		WResNet18\_C \cite{liu2018multi} 	&\textbf{71.94}	&\textbf{71.75}		&\textbf{71.66}		&\textbf{71.99}		&\textbf{72.03}		
+						 					&\textbf{71.88}	&21.62M\\\cdashline{1-8}[2pt/2pt]
+						 WResNet34			&74.35	&74.33		&74.51		&74.61		&74.34		&74.30	&21.80M\\\hline\hline
+						 \multirow{2}{*}{ } &\multicolumn{6}{c|}{Noise mCE (lower is better)} & \\\hline
+						 %&haar	&ch2.2	&ch3.3	&ch4.4	&ch5.5	&db2 	&\\
+						 WResNet18 			&\textbf{80.91}	&\textbf{80.38}		&\textbf{81.02}		&82.19		&83.77		&82.54	& \\
+		WResNet18\_A \cite{duan2017sar} 	&83.17	&86.02		&86.07		&85.22		&82.96		&84.01	& \\
+		WResNet18\_C \cite{liu2018multi} 	&81.79	&83.67		&83.51		&\textbf{82.13}		&\textbf{82.60}		
+						 					&\textbf{80.11}	& \\\cdashline{1-8}[2pt/2pt]
+						 WResNet34			&76.64	&77.61		&74.30		&76.19		&76.00		&72.73	& \\\hline
+\end{tabular}}
+\end{center}
+\end{table}
+
+Similar to WResNet18, the number of parameters of WResNet18\_A is the same with that of original ResNet18.
+However, the added high-frequency components in the feature maps damage the information contained in the low-frequency component,
+because of the high-frequency noise.
+WResNet18\_A performs the worst among the networks using wavelet based down-sampling.
+
+Due to the tensor concatenation,
+WResNet18\_C employs much more parameters ($21.62 \times 10^6$) than WResNet18 and WResNet18\_A ($11.69 \times 10^6$).
+WResNet18\_C thus increase the accuracy of WResNet18 by $0.11\%$ to $0.77\%$, when various wavelets are used.
+However, due to the included noise,
+the concatenation does not evidently improve the noise-robustness.
+In addition, the amount of parameters for WResNet18\_C is almost the same with that for WResNet34 ($21.80\times10^6$),
+while the accuracy and noise mCE of WResNet34 are obviously superior to that of WResNet18\_C.
+
+%In brief, our wavelet integrated down-sampling used in WaveCNets is proper for increasing CNN performance.
+
+\subsection{Image segmentation}
+The main contributions of our method are the DWT and IDWT layers.
+IDWT is a useful up-sampling approach to recover the data details.
+With IDWT, WaveCNets can be easily transferred to image-to-image translation tasks.
+We now test their applications in semantic image segmentation.
+
+\begin{figure}[bpt]
+	\centering
+	\subfigure[SegNet]{
+		\label{fig_dual_structure_Pooling_Unpooling}
+		\includegraphics*[scale=0.5, viewport=72 479 285 561]{figures/dual_structures.pdf}
+	}\hspace{10pt}
+	\subfigure[WaveUNets]{
+		\label{fig_dual_structure_DWT_IDWT}
+		\includegraphics*[scale=0.5, viewport=72 380 285 462]{figures/dual_structures.pdf}
+	}\hspace{25pt}
+	\caption{Down-sampling and up-sampling used in SegNet and WaveUNet.}\label{fig_dual_structures}
+\end{figure}
+To restore details in image segmentation, we design WaveUNets
+by replacing the max-pooling and max-unpooling in SegNet \cite{badrinarayanan2017segnet} with DWT and IDWT.
+SegNet adopts encoder-decoder architecture and uses VGG16bn as its encoder backbone.
+In its decoder, SegNet recovers the feature map resolution using max-unpooling,
+as Fig. \ref{fig_dual_structure_Pooling_Unpooling} shows.
+While max-unpooling only recover very limited details,
+IDWT can recover most of the data details.
+In the encoder, WaveUNets decompose the feature maps into various frequency components,
+as Fig. \ref{fig_dual_structure_DWT_IDWT} shows.
+While the low-frequency components are used to extract high-level features,
+the high-frequency components are stored and transmitted to the decoder for
+resolution restoration with IDWT.
+%Please see supplementary materials for more detailed descriptions about SegNet and WaveUNets.
+
+We evaluate WaveUNets and SegNet using CamVid \cite{brostow2009semantic} dataset.
+CamVid contains 701 road scene images (367, 101, and 233 for the training, validation, and test).
+In \cite{badrinarayanan2017segnet}, the authors train the SegNet using an extended CamVid training set containing 3433 images,
+which achieved $60.10\%$ mIoU on the CamVid test set.
+We train SegNet and WaveUNet with various wavelets using only 367 CamVid training images.
+Table \ref{Tab_IoU_CamVid} shows the mIoU on the CamVid test set.
+Our WaveUNets get higher mIoU and achieve the best result ($64.23\%$) with Haar wavelet.
+
+In Fig. \ref{Fig_Segmentation_Comparison}, we present a visual example for SegNet and WaveUNet segmentations.
+Fig. \ref{Fig_Segmentation_Comparison} shows the example image, its manual annotation,
+a region consisting of ``building'', ``tree'', ``sky'' and ``pole'', and the segmentation results achieved using SegNet and WaveUNet.
+The region has been enlarged with colored segmentation results for better illustration.
+From the figure, one can find in the segmentation result that WaveUNet keeps the basic structure of ``tree'', ``pole'', and ``building''
+and restores the object details, such as the ``tree'' branches and the ``pole''.
+The segmentation result of WaveUNet matches the image region much better than that of SegNet,
+even corrects the annotation noise about ``building'' and ``tree'' in the ground truth.
+\begin{table}[!t]
+	\scriptsize
+	\caption{Results on CamVid test set.}
+	\label{Tab_IoU_CamVid}
+	\begin{center}
+	\begin{threeparttable}
+	\setlength{\tabcolsep}{1.00mm}{
+	\begin{tabular}{r|cc|cccccc}\hline
+	\multirow{2}{*}{Network} &  \multicolumn{2}{c|}{SegNet} &  \multicolumn{6}{c}{Our WaveUNets} \\\cline{2-9}
+    & {\cite{badrinarayanan2017segnet}} &  Ours &haar&ch2.2&ch3.3&ch4.4&ch5.5&db2       \\ \hline
+	mIoU & 60.10  & 57.89& \textbf{64.23}  &   63.35 &  62.90 &  63.76 & 63.61 &  63.78\\ \hline
+	\end{tabular}}
+	\end{threeparttable}
+	\end{center}
+\end{table}
+\begin{figure}[bpt]
+	\centering
+	\includegraphics*[scale=0.7, viewport=40 616 382 776]{figures/Visio-detail_comparison.pdf}
+	\caption{Comparison of SegNet and WaveUNet segmentations.}
+	\label{Fig_Segmentation_Comparison}
+\end{figure}
+
+%We will present detail researches about WaveUNets
+%for image segmentation with various CNN backbones on different image datasets in the future works.
+
+\section{Conclusions}
+We transform Discrete Wavelet Transform (DWT) and Inverse DWT (IDWT) into general network layers,
+and design wavelet integrated convolutional networks (WaveCNets) for image classification.
+Being able to well keep object structures and suppress data noise during network inference,
+WaveCNets achieve higher image classification accuracy and better noise-robustness
+for various commonly used network architectures.
+
+%In future, we will extend our method to more network architectures for various image tasks,
+%such as encoder-decoder for image segmentation.
+%More applications like robustness to adversarial examples will be explored as well.
+
+\section*{Acknowledgments}
+The work was supported by the Natural Science Foundation of China under grants no. 61672357, 91959108 and U1713214,
+and the Science and Technology Project of Guangdong Province under grant no. 2018A050501014.
+
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+
+
+\clearpage
+\include{supplementary_material}
+
+\end{document}

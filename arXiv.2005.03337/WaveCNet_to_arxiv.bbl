@@ -1,0 +1,249 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{azulay2018deep}
+Aharon Azulay and Yair Weiss.
+\newblock Why do deep convolutional networks generalize so poorly to small
+  image transformations?
+\newblock {\em arXiv preprint arXiv:1805.12177}, 2018.
+
+\bibitem{badrinarayanan2017segnet}
+Vijay Badrinarayanan, Alex Kendall, and Roberto Cipolla.
+\newblock Segnet: A deep convolutional encoder-decoder architecture for image
+  segmentation.
+\newblock {\em IEEE transactions on PAMI}, 39(12):2481--2495, 2017.
+
+\bibitem{brendel2019approximating}
+Wieland Brendel and Matthias Bethge.
+\newblock Approximating cnns with bag-of-local-features models works
+  surprisingly well on imagenet.
+\newblock {\em arXiv preprint arXiv:1904.00760}, 2019.
+
+\bibitem{brostow2009semantic}
+Gabriel~J Brostow, Julien Fauqueur, and Roberto Cipolla.
+\newblock Semantic object classes in video: A high-definition ground truth
+  database.
+\newblock {\em Pattern Recognition Letters}, 30(2):88--97, 2009.
+
+\bibitem{bruna2013invariant_scatnet}
+Joan Bruna and St{\'e}phane Mallat.
+\newblock Invariant scattering convolution networks.
+\newblock {\em IEEE transactions on PAMI}, 35(8):1872--1886, 2013.
+
+\bibitem{daubechies1992ten}
+Ingrid Daubechies.
+\newblock {\em Ten lectures on wavelets}, volume~61.
+\newblock Siam, 1992.
+
+\bibitem{de2019multi}
+DDN De~Silva, HWMK Vithanage, KSD Fernando, and ITS Piyatilake.
+\newblock Multi-path learnable wavelet neural network for image classification.
+\newblock {\em arXiv preprint arXiv:1908.09775}, 2019.
+
+\bibitem{deng2009imagenet}
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei.
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock In {\em 2009 IEEE conference on computer vision and pattern
+  recognition}, pages 248--255. Ieee, 2009.
+
+\bibitem{donoho1995noising}
+David~L Donoho.
+\newblock De-noising by soft-thresholding.
+\newblock {\em IEEE transactions on information theory}, 41(3):613--627, 1995.
+
+\bibitem{donoho1994ideal}
+David~L Donoho and Jain~M Johnstone.
+\newblock Ideal spatial adaptation by wavelet shrinkage.
+\newblock {\em biometrika}, 81(3):425--455, 1994.
+
+\bibitem{duan2017sar}
+Yiping Duan, Fang Liu, Licheng Jiao, Peng Zhao, and Lu Zhang.
+\newblock Sar image segmentation based on convolutional-wavelet neural network
+  and markov random field.
+\newblock {\em Pattern Recognition}, 64:255--267, 2017.
+
+\bibitem{geirhos2018imagenet}
+Robert Geirhos, Patricia Rubisch, Claudio Michaelis, Matthias Bethge, Felix~A
+  Wichmann, and Wieland Brendel.
+\newblock Imagenet-trained cnns are biased towards texture; increasing shape
+  bias improves accuracy and robustness.
+\newblock {\em arXiv preprint arXiv:1811.12231}, 2018.
+
+\bibitem{goodfellow2014explaining}
+Ian~J Goodfellow, Jonathon Shlens, and Christian Szegedy.
+\newblock Explaining and harnessing adversarial examples.
+\newblock {\em arXiv preprint arXiv:1412.6572}, 2014.
+
+\bibitem{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem{hendrycks2019benchmarking}
+Dan Hendrycks and Thomas Dietterich.
+\newblock Benchmarking neural network robustness to common corruptions and
+  perturbations.
+\newblock {\em arXiv preprint arXiv:1903.12261}, 2019.
+
+\bibitem{huang2017densely}
+Gao Huang, Zhuang Liu, Laurens Van Der~Maaten, and Kilian~Q Weinberger.
+\newblock Densely connected convolutional networks.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 4700--4708, 2017.
+
+\bibitem{huang2017wavelet}
+Huaibo Huang, Ran He, Zhenan Sun, and Tieniu Tan.
+\newblock Wavelet-srnet: A wavelet-based cnn for multi-scale face super
+  resolution.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 1689--1697, 2017.
+
+\bibitem{krizhevsky2009learning}
+Alex Krizhevsky, Geoffrey Hinton, et~al.
+\newblock Learning multiple layers of features from tiny images.
+\newblock Technical report, Citeseer, 2009.
+
+\bibitem{krizhevsky2012imagenet}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  1097--1105, 2012.
+
+\bibitem{lecun1998gradient}
+Yann LeCun, L{\'e}on Bottou, Yoshua Bengio, Patrick Haffner, et~al.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
+
+\bibitem{liao2018defense}
+Fangzhou Liao, Ming Liang, Yinpeng Dong, Tianyu Pang, Xiaolin Hu, and Jun Zhu.
+\newblock Defense against adversarial attacks using high-level representation
+  guided denoiser.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 1778--1787, 2018.
+
+\bibitem{liu2018multi}
+Pengju Liu, Hongzhi Zhang, Kai Zhang, Liang Lin, and Wangmeng Zuo.
+\newblock Multi-level wavelet-cnn for image restoration.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition Workshops}, pages 773--782, 2018.
+
+\bibitem{liu2018attribute}
+Yunfan Liu, Qi Li, and Zhenan Sun.
+\newblock Attribute enhanced face aging with wavelet-based generative
+  adversarial networks.
+\newblock {\em arXiv preprint arXiv:1809.06647}, 2018.
+
+\bibitem{lundqvist1998karolinska}
+Daniel Lundqvist, Anders Flykt, and Arne {\"O}hman.
+\newblock The karolinska directed emotional faces (kdef).
+\newblock {\em CD ROM from Department of Clinical Neuroscience, Psychology
+  section, Karolinska Institutet}, 91:630, 1998.
+
+\bibitem{mairal2014convolutional}
+Julien Mairal, Piotr Koniusz, Zaid Harchaoui, and Cordelia Schmid.
+\newblock Convolutional kernel networks.
+\newblock In {\em Advances in neural information processing systems}, pages
+  2627--2635, 2014.
+
+\bibitem{mallat1989theory}
+Stephane~G Mallat.
+\newblock A theory for multiresolution signal decomposition: the wavelet
+  representation.
+\newblock {\em IEEE Transactions on Pattern Analysis \& Machine Intelligence},
+  (7):674--693, 1989.
+
+\bibitem{netzer2011reading}
+Yuval Netzer, Tao Wang, Adam Coates, Alessandro Bissacco, Bo Wu, and Andrew~Y
+  Ng.
+\newblock Reading digits in natural images with unsupervised feature learning.
+\newblock 2011.
+
+\bibitem{nyquist1928certain}
+Harry Nyquist.
+\newblock Certain topics in telegraph transmission theory.
+\newblock {\em Transactions of the American Institute of Electrical Engineers},
+  47(2):617--644, 1928.
+
+\bibitem{paszke2017automatic}
+Adam Paszke, Sam Gross, Soumith Chintala, Gregory Chanan, Edward Yang, Zachary
+  DeVito, Zeming Lin, Alban Desmaison, Luca Antiga, and Adam Lerer.
+\newblock Automatic differentiation in pytorch.
+\newblock 2017.
+
+\bibitem{ronneberger2015u_net}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on MICCAI}, pages 234--241.
+  Springer, 2015.
+
+\bibitem{sandler2018mobilenetv2}
+Mark Sandler, Andrew Howard, Menglong Zhu, Andrey Zhmoginov, and Liang-Chieh
+  Chen.
+\newblock Mobilenetv2: Inverted residuals and linear bottlenecks.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 4510--4520, 2018.
+
+\bibitem{savareh2019wavelet}
+Behrouz~Alizadeh Savareh, Hassan Emami, Mohamadreza Hajiabadi, Seyed~Majid
+  Azimi, and Mahyar Ghafoori.
+\newblock Wavelet-enhanced convolutional neural network: a new idea in a deep
+  learning paradigm.
+\newblock {\em Biomedical Engineering/Biomedizinische Technik}, 64(2):195--205,
+  2019.
+
+\bibitem{simonyan2014very}
+Karen Simonyan and Andrew Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem{szu1992neural}
+Harold~H Szu, Brian~A Telfer, and Shubha~L Kadambe.
+\newblock Neural network adaptive wavelets for signal representation and
+  classification.
+\newblock {\em Optical Engineering}, 31(9):1907--1917, 1992.
+
+\bibitem{Williams2018Wavelet}
+Travis Williams and Robert Li.
+\newblock Wavelet pooling for convolutional neural networks.
+\newblock In {\em International Conference on Learning Representations}, 2018.
+
+\bibitem{xie2019feature}
+Cihang Xie, Yuxin Wu, Laurens van~der Maaten, Alan~L Yuille, and Kaiming He.
+\newblock Feature denoising for improving adversarial robustness.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 501--509, 2019.
+
+\bibitem{yoo2019photorealistic}
+Jaejun Yoo, Youngjung Uh, Sanghyuk Chun, Byeongkyu Kang, and Jung-Woo Ha.
+\newblock Photorealistic style transfer via wavelet transforms.
+\newblock {\em arXiv preprint arXiv:1903.09760}, 2019.
+
+\bibitem{yu2014mixed}
+Dingjun Yu, Hanli Wang, Peiqiu Chen, and Zhihua Wei.
+\newblock Mixed pooling for convolutional neural networks.
+\newblock In {\em International Conference on Rough Sets and Knowledge
+  Technology}, pages 364--375. Springer, 2014.
+
+\bibitem{yuan2019waveletfcnn}
+Binhang Yuan, Chen Wang, Fei Jiang, Mingsheng Long, Philip~S Yu, and Yuan Liu.
+\newblock Waveletfcnn: A deep time series classification model for wind turbine
+  blade icing detection.
+\newblock {\em arXiv preprint arXiv:1902.05625}, 2019.
+
+\bibitem{zeiler2013stochastic}
+Matthew~D Zeiler and Rob Fergus.
+\newblock Stochastic pooling for regularization of deep convolutional neural
+  networks.
+\newblock {\em arXiv preprint arXiv:1301.3557}, 2013.
+
+\bibitem{zhang1992wavelet}
+Qinghua Zhang and Albert Benveniste.
+\newblock Wavelet networks.
+\newblock {\em IEEE transactions on Neural Networks}, 3(6):889--898, 1992.
+
+\bibitem{zhang2019making}
+Richard Zhang.
+\newblock Making convolutional networks shift-invariant again.
+\newblock {\em arXiv preprint arXiv:1904.11486}, 2019.
+
+\end{thebibliography}

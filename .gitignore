@@ -4,6 +4,6 @@ arXiv.*/*.out
 arXiv.*/*.synctex.gz
 
 #tmp
-#tmp/*
+tmp/*
 temp_*/*
 */temp_*/*

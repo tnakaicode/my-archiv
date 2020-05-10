@@ -21,16 +21,19 @@ if __name__ == '__main__':
     parser = OptionParser()
     parser.add_option("--tar", dest="tar", default="../../Downloads/1908.03795")
     parser.add_option("--url", dest="url", default="https://arxiv.org/e-print/2005.03337")
+    parser.add_option("--name", dest="name", default="2005.03337")
     opt, argc = parser.parse_args(argvs)
     print(opt, argc)
 
-    filename, url_name, sub_name = split_filename(opt.url)
-    print(opt.url)
-    res = requests.get(opt.url, stream=True)
-    with open("./tmp/" + filename, 'wb') as fp:
+    URL = "https://arxiv.org/e-print/" + opt.name
+    filename, url_name, sub_name = split_filename(URL)
+    print(URL)
+    res = requests.get(URL, stream=True)
+    tar_file = "./tmp/" + filename
+    with open(tar_file, 'wb') as fp:
         shutil.copyfileobj(res.raw, fp)
 
-    basename = os.path.basename(opt.url)
+    basename = os.path.basename(tar_file)
     base_dir = "arXiv." + basename
     dirnum = len(glob.glob(base_dir))
     print(basename)
@@ -40,22 +43,5 @@ if __name__ == '__main__':
     
     print(os.getcwd())
     #os.chdir(base_dir)
-    tar = tarfile.open(opt.file, "r")
+    tar = tarfile.open(tar_file, "r")
     tar.extractall(base_dir)
-    
-    #tar = tarfile.open(tar_name, "w")
-    #tar.add("./src/")
-    #tar.close()
-    #
-    # python -m tarfile -c monty.tar  spam.txt eggs.txt
-    # python -m tarfile -c monty.tar life-of-brian_1979/
-    # python -m tarfile -e monty.tar
-    # python -m tarfile -e monty.tar  other-dir/
-    # python -m tarfile -l monty.tar
-    # 
-    # Compression
-    # tar -zcvf filename.tar.gz directoryname
-    #
-    # Thaw
-    # tar -zxvf filename.tar.gz
-    #
