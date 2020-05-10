@@ -25,7 +25,7 @@ if __name__ == '__main__':
     opt, argc = parser.parse_args(argvs)
     print(opt, argc)
 
-    URL = opt.url
+    URL = "https://arxiv.org/e-print/" + opt.name
     filename, url_name, sub_name = split_filename(URL)
     print(URL)
     res = requests.get(URL, stream=True)
