@@ -1,0 +1,4002 @@
+\begin{thebibliography}{1000}
+\newcommand{\noopsort}[1]{}
+\newcommand{\printfirst}[2]{#1}
+\newcommand{\singleletter}[1]{#1}
+\newcommand{\switchargs}[2]{#2#1}
+
+\bibitem{GG28}
+G.~Gamow, Z. Phys. 51 (1928), pp. 204--212.
+
+\bibitem{SAJ39}
+A.J.F. Siegert, Phys. Rev. 56 (1939), pp. 750--752.
+
+\bibitem{ME06}
+E.~Majorana, EJTP 3 (2006), pp. 293--303.
+
+\bibitem{HF58}
+H.~Feshbach, Ann. Phys. 5 (1958), pp. 357 -- 390.
+
+\bibitem{HF62}
+H.~Feshbach, Ann. Phys. 19 (1962), pp. 287 -- 313.
+
+\bibitem{CCT68}
+C.~Cohen-Tannoudji, \emph{Cargese Lectures in Physics}, Gordon and Breach, New
+  York, 1968.
+
+\bibitem{CCT98}
+C.~Cohen-Tannoudji, J.~Dupnot-Roc, and G.~Grynberg, \emph{Atom-photon
+  Interactions: Basic Processes and Applications}, Wiley-VCH, Berlin, 1998.
+
+\bibitem{APW72}
+P.W. Anderson, Science 177 (1972), pp. 393--396.
+
+\bibitem{LTD52}
+T.D. Lee and C.N. Yang, Phys. Rev. 87 (1952), pp. 410--419.
+
+\bibitem{MEF78}
+M.E. Fisher, Phys. Rev. Lett. 40 (1978), pp. 1610--1613.
+
+\bibitem{SE26}
+E.~Schr{\"o}dinger, Ann. Phys. 384 (1926), pp. 489--527.
+
+\bibitem{AR05}
+A.~Ruschhaupt, F.~Delgado, and J.G. Muga, J. Phys. A 38 (2005), pp. L171--L176.
+
+\bibitem{REG07}
+R.~El-Ganainy, K.G. Makris, D.N. Christodoulides, and Z.H. Musslimani, Opt.
+  Lett. 32 (2007), pp. 2632--2634.
+
+\bibitem{KCL14}
+C.L. Kane and T.C. Lubensky, Nat. Phys. 10 (2014), p.~39.
+
+\bibitem{HSD16}
+S.D. Huber, Nat. Phys. 12 (2016), p. 621.
+
+\bibitem{YNJ09}
+Y.N. Joglekar and S.J. Wolf, Eur. J. Phys. 30 (2009), pp. 661--675.
+
+\bibitem{RH96}
+H.~Risken, \emph{The Fokker-Planck Equation: Methods of Solutions and
+  Applications}, Springer-Verlag, Berlin, 1996.
+
+\bibitem{GCW04}
+C.W. Gardiner, \emph{Handbook of Stochastic Methods}, Springer-Verlag, Berlin,
+  2004.
+
+\bibitem{MMC13}
+M.C. Marchetti, J.F. Joanny, S.~Ramaswamy, T.B. Liverpool, J.~Prost, M.~Rao,
+  and R.A. Simha, Rev. Mod. Phys. 85 (2013), pp. 1143--1189.
+
+\bibitem{CI13}
+I.~Carusotto and C.~Ciuti, Rev. Mod. Phys. 85 (2013), pp. 299--366.
+
+\bibitem{JXZ16}
+J.X. Zhu, \emph{Bogoliubov-de Gennes Method and Its Applications}, Springer,
+  Berlin, 2016.
+
+\bibitem{CDT92}
+D.T. Colbert and W.H. Miller, J. Chem. Phys. 96 (1992), pp. 1982--1991.
+
+\bibitem{NM98}
+N.~Moiseyev, Phys. Rep. 302 (1998), pp. 212 -- 293.
+
+\bibitem{GV76}
+V.~Gorini, A.~Kossakowski, and E.C.G. Sudarshan, J. Math. Phys. 17 (1976), pp.
+  821--825.
+
+\bibitem{LG76}
+G.~Lindblad, Comm. Math. Phys. 48 (1976), pp. 119--130.
+
+\bibitem{MU89}
+M.~Ueda, Quant. Opt. J. Euro. Opt. Soc. PB 1 (1989), p. 131.
+
+\bibitem{UM90}
+M.~Ueda, Phys. Rev. A 41 (1990), pp. 3875--3890.
+
+\bibitem{DJ92}
+J.~Dalibard, Y.~Castin, and K.~M\o{}lmer, Phys. Rev. Lett. 68 (1992), pp.
+  580--583.
+
+\bibitem{DR92}
+R.~Dum, P.~Zoller, and H.~Ritsch, Phys. Rev. A 45 (1992), pp. 4879--4887.
+
+\bibitem{GCH92}
+G.C. Hegerfeldt and T.S. Wilser, \emph{Classical and Quantum Systems}, in
+  \emph{Proceedings of the Second International Wigner Symposium}, World
+  Scientific, Singapore, 1992.
+
+\bibitem{HC93}
+H.~Carmichael, \emph{An Open System Approach to Quantum Optics}, Springer,
+  Berlin, 1993.
+
+\bibitem{MH17}
+L.~Feng, R.~El-Ganainy, and L.~Ge, Nat. Photon. 11 (2017), pp. 752--762.
+
+\bibitem{EG18}
+R.~El-Ganainy, K.G. Makris, M.~Khajavikhan, Z.H. Musslimani, S.~Rotter, and
+  D.N. Christodoulides, Nat. Phys. 14 (2018), p.~11.
+
+\bibitem{Mirieaar7709}
+M.A. Miri and A.~Al{\`u}, Science 363 (2019).
+
+\bibitem{Mae1501595}
+G.~Ma and P.~Sheng, Sci. Adv. 2 (2016).
+
+\bibitem{CSA16}
+S.A. Cummer, J.~Christensen, and A.~Al{\`u}, Nature Rev. Mater. 1 (2016), p.
+  16001.
+
+\bibitem{FZN19}
+F.~Zangeneh-Nejad and R.~Fleury, Reviews in Physics 4 (2019), p. 100031.
+
+\bibitem{CMB07rev}
+C.M. Bender, Rep. Prog. Phys. 70 (2007), pp. 947--1018.
+
+\bibitem{PD07}
+P.~Dorey, C.~Dunning, and R.~Tateo, J. Phys. A 40 (2007), pp. R205--R283.
+
+\bibitem{SKO19}
+S.K. {\"O}zdemir, S.~Rotter, F.~Nori, and L.~Yang, Nat. Mater. 18 (2019), pp.
+  783--798.
+
+\bibitem{JGM04}
+J.~Muga, J.~Palao, B.~Navarro, and I.~Egusquiza, Phys. Rep. 395 (2004), pp. 357
+  -- 426.
+
+\bibitem{CH15}
+H.~Cao and J.~Wiersig, Rev. Mod. Phys. 87 (2015), pp. 61--111.
+
+\bibitem{RS17}
+S.~Rotter and S.~Gigan, Rev. Mod. Phys. 89 (2017), p. 015005.
+
+\bibitem{DAJ14}
+A.J. Daley, Adv. Phys. 63 (2014), pp. 77--149.
+
+\bibitem{KS16}
+S.~Kuhr, Natl. Sci. Rev. 3 (2016), pp. 170--172.
+
+\bibitem{DH10}
+H.~Deng, H.~Haug, and Y.~Yamamoto, Rev. Mod. Phys. 82 (2010), pp. 1489--1537.
+
+\bibitem{MM12}
+M.~M{\"u}ller, S.~Diehl, G.~Pupillo, and P.~Zoller, \emph{Engineered open
+  systems and quantum simulations with atoms and ions}, in \emph{Advances in
+  Atomic, Molecular, and Optical Physics}, P.~Berman, E.~Arimondo, and C.~Lin,
+  eds., Advances In Atomic, Molecular, and Optical Physics, Vol.~61, Academic
+  Press,  2012, pp. 1 -- 80.
+
+\bibitem{RH13}
+H.~Ritsch, P.~Domokos, F.~Brennecke, and T.~Esslinger, Rev. Mod. Phys. 85
+  (2013), pp. 553--601.
+
+\bibitem{Sieberer_2016}
+L.M. Sieberer, M.~Buchhold, and S.~Diehl, Rep. Prog. Phys. 79 (2016), p.
+  096001.
+
+\bibitem{WH19}
+H.~{Weimer}, A.~{Kshetrimayum}, and R.~{Or{\'u}s}, arXiv:1907.07079  (2019).
+
+\bibitem{AM14}
+M.~Aspelmeyer, T.J. Kippenberg, and F.~Marquardt, Rev. Mod. Phys. 86 (2014),
+  pp. 1391--1452.
+
+\bibitem{Schneider_2016}
+C.~Schneider, K.~Winkler, M.D. Fraser, M.~Kamp, Y.~Yamamoto, E.A. Ostrovskaya,
+  and S.~H\"ofling, Rep. Prog. Phys. 80 (2016), p. 016503.
+
+\bibitem{KVV16}
+V.V. Konotop, J.~Yang, and D.A. Zezyulin, Rev. Mod. Phys. 88 (2016), p. 035002.
+
+\bibitem{Chou_2011}
+T.~Chou, K.~Mallick, and R.K.P. Zia, Rep. Prog. Phys. 74 (2011), p. 116601.
+
+\bibitem{Marchetti2013}
+M.C. Marchetti, J.F. Joanny, S.~Ramaswamy, T.B. Liverpool, J.~Prost, M.~Rao,
+  and R.A. Simha, Rev. Mod. Phys. 85 (2013), pp. 1143--1189.
+
+\bibitem{BCWJ97}
+C.W.J. Beenakker, Rev. Mod. Phys. 69 (1997), pp. 731--808.
+
+\bibitem{Fyodorov_2003}
+Y.V. Fyodorov and H.J. Sommers, J. Phys. A 36 (2003), pp. 3303--3347.
+
+\bibitem{MGE10}
+G.E. Mitchell, A.~Richter, and H.A. Weidenm\"uller, Rev. Mod. Phys. 82 (2010),
+  pp. 2845--2901.
+
+\bibitem{CDM00}
+C.D. Meyer, \emph{Matrix Analysis and Applied Linear Algebra}, Society for
+  Industrial and Applied Mathematics, Philadelphia, 2000.
+
+\bibitem{LVA79}
+L.V. Ahlfors, \emph{Complex Analysis}, McGraw-Hill, New York, 1979.
+
+\bibitem{TK80}
+T.~Kato, \emph{Perturbation Theory for Linear Operators}, Springer, New York,
+  1966.
+
+\bibitem{WDH12}
+W.D. Heiss, J. Phys. A 45 (2012), p. 444016.
+
+\bibitem{EAC55}
+E.A. Coddington and N.~Levinson, \emph{Theory of Ordinary Differential
+  Equations}, McGraw-Hill, New York, 1979.
+
+\bibitem{Heiss2010}
+W.D. Heiss, Eur. Phys. J. D 60 (2010), pp. 257--261.
+
+\bibitem{FV08}
+F.~Verstraete, V.~Murg, and J.I. Cirac, Adv. Phys. 57 (2008), pp. 143--224.
+
+\bibitem{BCH15}
+B.C. Hall, \emph{Lie Groups, Lie Algebras, and Representations: An Elementary
+  Introduction}, Springer, New York, 2015.
+
+\bibitem{FK95}
+K.~Fujikawa, Phys. Rev. A 52 (1995), pp. 3299--3307.
+
+\bibitem{RB97}
+R.~Bhatia, \emph{Matrix Analysis}, Springer, New York, 1997.
+
+\bibitem{JF97}
+J.~Feinberg and A.~Zee, Nucl. Phys. B 504 (1997), pp. 579 -- 608.
+
+\bibitem{ZG18}
+Z.~Gong, Y.~Ashida, K.~Kawabata, K.~Takasan, S.~Higashikawa, and M.~Ueda, Phys.
+  Rev. X 8 (2018), p. 031079.
+
+\bibitem{HN96}
+N.~Hatano and D.R. Nelson, Phys. Rev. Lett. 77 (1996), pp. 570--573.
+
+\bibitem{VJM79}
+J.M. Varah, SIAM J. Numer. Anal. 16 (1979), pp. 216--222.
+
+\bibitem{Reichel1992}
+L.~Reichel and L.N. Trefethen, Linear Algebra Appl. 162-164 (1992), p. 153.
+
+\bibitem{HW15}
+H.~Watanabe and M.~Oshikawa, Phys. Rev. Lett. 114 (2015), p. 251603.
+
+\bibitem{BS87}
+S.~Banach, \emph{Theory of Linear Operations}, North-Holland, Amsterdam, 1987.
+
+\bibitem{KGM08}
+K.G. Makris, R.~El-Ganainy, D.N. Christodoulides, and Z.H. Musslimani, Phys.
+  Rev. Lett. 100 (2008), p. 103904.
+
+\bibitem{KS082}
+S.~Klaiman, U.~G\"unther, and N.~Moiseyev, Phys. Rev. Lett. 101 (2008), p.
+  080402.
+
+\bibitem{RCE10}
+C.E. R{\"u}ter, K.G. Makris, R.~El-Ganainy, D.N. Christodoulides, M.~Segev, and
+  D.~Kip, Nat. Phys. 6 (2010), pp. 192--195.
+
+\bibitem{YA18}
+Y.~Ashida and M.~Ueda, Phys. Rev. Lett. 120 (2018), p. 185301.
+
+\bibitem{KG19}
+G.~Kerg, K.~Goyette, M.P. Touzel, G.~Gidel, E.~Vorontsov, Y.~Bengio, and
+  G.~Lajoie, arXiv:1905.12080  (2019).
+
+\bibitem{WJ19}
+J.~Wiersig, Phys. Rev. Research 1 (2019), p. 033182.
+
+\bibitem{LTD57}
+T.D. Lee, R.~Oehme, and C.N. Yang, Phys. Rev. 106 (1957), pp. 340--345.
+
+\bibitem{LTD65}
+T.D. Lee and L.~Wolfenstein, Phys. Rev. 138 (1965), pp. B1490--B1496.
+
+\bibitem{ZMC10}
+M.C. Zheng, D.N. Christodoulides, R.~Fleischmann, and T.~Kottos, Phys. Rev. A
+  82 (2010), p. 010103.
+
+\bibitem{KP79}
+K.~{Petermann}, IEEE J. Quant. Electron. 15 (1979), pp. 566--570.
+
+\bibitem{HWA90}
+W.A. Hamel and J.P. Woerdman, Phys. Rev. Lett. 64 (1990), pp. 1506--1509.
+
+\bibitem{SAL58}
+A.L. Schawlow and C.H. Townes, Phys. Rev. 112 (1958), pp. 1940--1949.
+
+\bibitem{MVB03}
+M.V. Berry, J. Mod. Opt. 50 (2003), pp. 63--81.
+
+\bibitem{LZ16}
+Z.~Lin, A.~Pick, M.~Lon\ifmmode~\check{c}\else \v{c}\fi{}ar, and A.W.
+  Rodriguez, Phys. Rev. Lett. 117 (2016), p. 107402.
+
+\bibitem{WTT59}
+T.T. Wu, Phys. Rev. 115 (1959), pp. 1390--1404.
+
+\bibitem{TH92}
+T.~Hollowood, Nucl. Phys. B 384 (1992), pp. 523 -- 540.
+
+\bibitem{BCM98}
+C.M. Bender and S.~Boettcher, Phys. Rev. Lett. 80 (1998), pp. 5243--5246.
+
+\bibitem{CMB02}
+C.M. Bender, M.V. Berry, and A.~Mandilara, J. Phys. A 35 (2002), p. L467.
+
+\bibitem{AM10}
+A.~Mostafazadeh, Int. J. Geom. Meth. Mod. Phys. 7 (2010), pp. 1191--1306.
+
+\bibitem{PW43}
+W.~Pauli, Rev. Mod. Phys. 15 (1943), pp. 175--207.
+
+\bibitem{JC85}
+J.L. Cardy, Phys. Rev. Lett. 54 (1985), pp. 1354--1356.
+
+\bibitem{PD01}
+P.~Dorey, C.~Dunning, and R.~Tateo, J. Phys. A 34 (2001), pp. 5679--5704.
+
+\bibitem{AM02}
+A.~Mostafazadeh, J. Math. Phys. 43 (2002), pp. 205--214.
+
+\bibitem{AM022}
+A.~Mostafazadeh, J. Math. Phys. 43 (2002), pp. 2814--2816.
+
+\bibitem{WE60}
+E.P. Wigner, J. Math. Phys. 1 (1960), pp. 409--413.
+
+\bibitem{Mostafazadeh_2005}
+A.~Mostafazadeh, J. Phys. A 38 (2005), pp. 3213--3234.
+
+\bibitem{AM09}
+A.~Mostafazadeh, Phys. Rev. Lett. 102 (2009), p. 220402.
+
+\bibitem{WJP69}
+J.P. Williams, Proc. Am. Math. Soc. 20 (1969), pp. 121 -- 123.
+
+\bibitem{FGS92}
+F.G. Scholtz, H.B. Geyer, and F.J.W. Hahne, Ann. Phys. 213 (1992), pp. 74 --
+  101.
+
+\bibitem{TYA89}
+T.Y. Azizov and I.S. Iokhvidov, \emph{Linear Operators in Spaces with
+  Indefinite Metric}, Wiley, Chichester, 1989.
+
+\bibitem{WCT10}
+C.T. West, T.~Kottos, and T.~Prosen, Phys. Rev. Lett. 104 (2010), p. 054102.
+
+\bibitem{BM10}
+B.~Midya, B.~Roy, and R.~Roychoudhury, Phys. Lett. A 374 (2010), pp. 2605 --
+  2607.
+
+\bibitem{LZ11}
+Z.~Lin, H.~Ramezani, T.~Eichelkraut, T.~Kottos, H.~Cao, and D.N.
+  Christodoulides, Phys. Rev. Lett. 106 (2011), p. 213901.
+
+\bibitem{NS16}
+S.~Nixon and J.~Yang, Phys. Rev. A 93 (2016), p. 031802.
+
+\bibitem{GvG91}
+G.~von Gehlen, J. Phys. A 24 (1991), pp. 5371--5399.
+
+\bibitem{OAC09}
+O.A. Castro-Alvaredo and A.~Fring, J. Phys. A 42 (2009), p. 465211.
+
+\bibitem{VP90}
+V.~Pasquier and H.~Saleur, Nucl. Phys. B 330 (1990), pp. 523 -- 556.
+
+\bibitem{FCA87}
+F.C. Alcaraz, M.N. Barber, M.T. Batchelor, R.J. Baxter, and G.R.W. Quispel, J.
+  Phys. A 20 (1987), pp. 6397--6409.
+
+\bibitem{KC072}
+C.~Korff and R.~Weston, J. Phys. A 40 (2007), pp. 8845--8872.
+
+\bibitem{CK08}
+C.~Korff, J. Phys. A 41 (2008), p. 295206.
+
+\bibitem{CMB05}
+C.M. Bender, H.F. Jones, and R.J. Rivers, Phys. Lett. B 625 (2005), pp. 333 --
+  340.
+
+\bibitem{YA17nc}
+Y.~Ashida, S.~Furukawa, and M.~Ueda, Nat. Commun. 8 (2017), p. 15791.
+
+\bibitem{IY16}
+Y.~Ikhlef, J.L. Jacobsen, and H.~Saleur, Phys. Rev. Lett. 116 (2016), p.
+  130601.
+
+\bibitem{NS90}
+N.~Seiberg, Prog. Theor. Phys. Supp. 102 (1990), pp. 319--349.
+
+\bibitem{EC04}
+E.~Caliceti, S.~Graffi, and J.~Sj\"ostrand, J. Phys. A 38 (2004), pp. 185--193.
+
+\bibitem{Berry2004}
+M.~Berry, Czech. J. Phys. 54 (2004), pp. 1039--1047.
+
+\bibitem{Heiss_2004}
+W.D. Heiss, J. Phys. A 37 (2004), pp. 2455--2464.
+
+\bibitem{YDR96}
+D.R. Yarkony, Rev. Mod. Phys. 68 (1996), pp. 985--1013.
+
+\bibitem{HD16}
+D.~Heiss, Nat. Phys. 12 (2016), pp. 823--824.
+
+\bibitem{Pancharatnam1958}
+S.~Pancharatnam, Proc. Ind. Aca. Sci. 48 (1958), pp. 227--244.
+
+\bibitem{Berry_1998}
+M.V. Berry and D.H.J. O'Dell, J. Phys. A 31 (1998), pp. 2093--2101.
+
+\bibitem{Heiss1999}
+W.~Heiss, Eur. Phys. J. D 7 (1999), pp. 1--4.
+
+\bibitem{PE00}
+E.~Persson, I.~Rotter, H.J. St\"ockmann, and M.~Barth, Phys. Rev. Lett. 85
+  (2000), pp. 2478--2481.
+
+\bibitem{DC01}
+C.~Dembowski, H.D. Gr\"af, H.L. Harney, A.~Heine, W.D. Heiss, H.~Rehfeld, and
+  A.~Richter, Phys. Rev. Lett. 86 (2001), pp. 787--790.
+
+\bibitem{DC03}
+C.~Dembowski, B.~Dietz, H.D. Gr\"af, H.L. Harney, A.~Heine, W.D. Heiss, and
+  A.~Richter, Phys. Rev. Lett. 90 (2003), p. 034101.
+
+\bibitem{NRG02}
+R.G. Nazmitdinov, K.N. Pichugin, I.~Rotter, and P.~\ifmmode~\check{S}\else
+  \v{S}\fi{}eba, Phys. Rev. B 66 (2002), p. 085322.
+
+\bibitem{RI00}
+I.~Rotter, E.~Persson, K.~Pichugin, and P.~\ifmmode~\check{S}\else
+  \v{S}\fi{}eba, Phys. Rev. E 62 (2000), pp. 450--461.
+
+\bibitem{AKM05}
+M.~Avinun-Kalish, M.~Heiblum, O.~Zarchin, D.~Mahalu, and V.~Umansky, Nature 436
+  (2005), pp. 529--533.
+
+\bibitem{LYA00}
+A.~Levy~Yeyati and M.~B\"uttiker, Phys. Rev. B 62 (2000), pp. 7307--7315.
+
+\bibitem{GT15}
+T.~Gao, E.~Estrecho, K.Y. Bliokh, T.C.H. Liew, M.D. Fraser, S.~Brodbeck,
+  M.~Kamp, C.~Schneider, S.~H\"ofling, Y.~Yamamoto, F.~Nori, Y.S. Kivshar, A.G.
+  Truscott, R.G. Dall, and E.A. Ostrovskaya, Nature 526 (2015), pp. 554--558.
+
+\bibitem{ZJ18}
+J.~Zhang, B.~Peng, S.K. {\"O}zdemir, K.~Pichler, D.O. Krimer, G.~Zhao, F.~Nori,
+  Y.x. Liu, S.~Rotter, and L.~Yang, Nat. Photon. 12 (2018), p. 479.
+
+\bibitem{AZ01}
+Z.~Ahmed, Phys. Rev. A 64 (2001), p. 042716.
+
+\bibitem{AZ012}
+Z.~Ahmed, Phys. Lett. A 282 (2001), pp. 343 -- 348.
+
+\bibitem{LSS10}
+S.~Longhi, Phys. Rev. A 81 (2010), p. 022102.
+
+\bibitem{DK15}
+K.~Ding, Z.Q. Zhang, and C.T. Chan, Phys. Rev. B 92 (2015), p. 235310.
+
+\bibitem{ZB15}
+B.~Zhen, C.W. Hsu, Y.~Igarashi, L.~Lu, I.~Kaminer, A.~Pick, S.L. Chua, J.D.
+  Joannopoulos, and M.~Solja\v{c}i\'c, Nature 525 (2015), pp. 354--358.
+
+\bibitem{CA16}
+A.~Cerjan, A.~Raman, and S.~Fan, Phys. Rev. Lett. 116 (2016), p. 203902.
+
+\bibitem{N60}
+M.A. Naimark, Am. Math. Soc. 16 (1960), p. 103.
+
+\bibitem{MA15}
+A.~Mostafazadeh, \emph{Physics of Spectral Singularities}, in \emph{Geometric
+  Methods in Physics}, Springer International Publishing, Cham, 2015, pp.
+  145--165.
+
+\bibitem{LDJ19}
+D.J. Luitz and F.~Piazza, Phys. Rev. Research 1 (2019), p. 033051.
+
+\bibitem{AY73}
+A.~{Yariv}, IEEE J. Quant. Electron. 9 (1973), pp. 919--933.
+
+\bibitem{HAH91}
+H.A. {Haus} and W.~{Huang}, Proc. IEEE 79 (1991), pp. 1505--1518.
+
+\bibitem{Gordon00}
+J.P. Gordon and H.~Kogelnik, Proc. Natl. Acad. Sci. 97 (2000), pp. 4541--4550.
+
+\bibitem{RS82}
+R.~{Stolen} and J.~{Bjorkholm}, IEEE J. Quant. Electron. 18 (1982), pp.
+  1062--1072.
+
+\bibitem{Magunov_2000}
+A.I. Magunov, I.~Rotter, and S.I. Strakhova, J. Phys. B 34 (2000), pp. 29--47.
+
+\bibitem{BCM68}
+C.M. Bender and T.T. Wu, Phys. Rev. Lett. 21 (1968), pp. 406--409.
+
+\bibitem{BCM69}
+C.M. Bender and T.T. Wu, Phys. Rev. 184 (1969), pp. 1231--1260.
+
+\bibitem{MK05}
+M.~Kulishov, J.M. Laniel, N.~B\'{e}langer, J.~Azana, and D.V. Plant, Opt.
+  Express 13 (2005), pp. 3068--3078.
+
+\bibitem{Longhi_2011}
+S.~Longhi, J. Phys. A 44 (2011), p. 485302.
+
+\bibitem{MMA12}
+M.A. Miri, A.B. Aceves, T.~Kottos, V.~Kovanis, and D.N. Christodoulides, Phys.
+  Rev. A 86 (2012), p. 033801.
+
+\bibitem{CG132}
+G.~Castaldi, S.~Savoia, V.~Galdi, A.~Al\`u, and N.~Engheta, Phys. Rev. Lett.
+  110 (2013), p. 173901.
+
+\bibitem{LS102}
+S.~Longhi, Phys. Rev. A 82 (2010), p. 031801.
+
+\bibitem{CYD11}
+Y.D. Chong, L.~Ge, and A.D. Stone, Phys. Rev. Lett. 106 (2011), p. 093902.
+
+\bibitem{LF142}
+L.~Feng, X.~Zhu, S.~Yang, H.~Zhu, P.~Zhang, X.~Yin, Y.~Wang, and X.~Zhang, Opt.
+  Express 22 (2014), pp. 1760--1767.
+
+\bibitem{LF13}
+L.~Feng, Y.L. Xu, W.S. Fegadolli, M.H. Lu, J.E.B. Oliveira, V.R. Almeida, Y.F.
+  Chen, and A.~Scherer, Nat. Mater. 12 (2013), pp. 108--113.
+
+\bibitem{RA12pt}
+A.~Regensburger, C.~Bersch, M.A. Miri, G.~Onishchukov, D.N. Christodoulides,
+  and U.~Peschel, Nature 488 (2012), pp. 167--171.
+
+\bibitem{YY142}
+Y.~Yan and N.C. Giebink, Adv. Opt. Mater. 2 (2014), pp. 423--427.
+
+\bibitem{FR15}
+R.~Fleury, D.~Sounas, and A.~Alu, Nat. Commun. 6 (2015), p. 5905.
+
+\bibitem{MP16}
+P.~Miao, Z.~Zhang, J.~Sun, W.~Walasik, S.~Longhi, N.M. Litchinitser, and
+  L.~Feng, Science 353 (2016), pp. 464--467.
+
+\bibitem{WJ11}
+J.~Wiersig, A.~Ebersp\"acher, J.B. Shim, J.W. Ryu, S.~Shinohara, M.~Hentschel,
+  and H.~Schomerus, Phys. Rev. A 84 (2011), p. 023845.
+
+\bibitem{MK14}
+M.~Kim, K.~Kwon, J.~Shim, Y.~Jung, and K.~Yu, Opt. Lett. 39 (2014), pp.
+  2423--2426.
+
+\bibitem{PB16}
+B.~Peng, S.K. {\"O}zdemir, M.~Liertzer, W.~Chen, J.~Kramer, H.~Yilmaz,
+  J.~Wiersig, S.~Rotter, and L.~Yang, Proc. Natl. Acad. Sci. 113 (2016), pp.
+  6845--6850.
+
+\bibitem{WZ16}
+Z.J. Wong, Y.L. Xu, J.~Kim, K.~O'Brien, Y.~Wang, L.~Feng, and X.~Zhang, Nat.
+  Photon. 10 (2016), p. 796.
+
+\bibitem{BP14}
+B.~Peng, S.K. {\" O}zdemir, F.~Lei, F.~Monifi, M.~Gianfreda, G.L. Long, S.~Fan,
+  F.~Nori, C.M. Bender, and L.~Yang, Nat. Phys. 10 (2014), pp. 394--398.
+
+\bibitem{BM19}
+M.~Brandenbourger, X.~Locsin, E.~Lerner, and C.~Coulais, Nat. Commun. 10
+  (2019), p. 4608.
+
+\bibitem{Fleury516}
+R.~Fleury, D.L. Sounas, C.F. Sieck, M.R. Haberman, and A.~Al{\`u}, Science 343
+  (2014), pp. 516--519.
+
+\bibitem{CW17}
+W.~Chen, S.K. {\"O}zdemir, G.~Zhao, J.~Wiersig, and L.~Yang, Nature 548 (2017),
+  p. 192.
+
+\bibitem{HH17}
+H.~Hodaei, A.U. Hassan, S.~Wittek, H.~Garcia-Garcia, R.~El-Ganainy, D.N.
+  Christodoulides, and M.~Khajavikhan, Nature 548 (2017), p. 192.
+
+\bibitem{Demange_2011}
+G.~Demange and E.M. Graefe, J. Phys. A 45 (2011), p. 025303.
+
+\bibitem{THS72}
+T.H. Schucan and H.A. Weidenmuller, Ann. Phys. 73 (1972), pp. 108 -- 135.
+
+\bibitem{Heiss_2008}
+W.D. Heiss, J. Phys. A 41 (2008), p. 244010.
+
+\bibitem{CPY16}
+P.Y. Chen and J.~Jung, Phys. Rev. Applied 5 (2016), p. 064018.
+
+\bibitem{ZS16}
+S.~Zhang, Z.~Yong, Y.~Zhang, and S.~He, Sci. Rep. 6 (2016), p. 24487.
+
+\bibitem{WJ142}
+J.~Wiersig, Phys. Rev. Lett. 112 (2014), p. 203901.
+
+\bibitem{LZP16}
+Z.P. Liu, J.~Zhang, S.K. \"Ozdemir, B.~Peng, H.~Jing, X.Y. L\"u, C.W. Li,
+  L.~Yang, F.~Nori, and Y.x. Liu, Phys. Rev. Lett. 117 (2016), p. 110802.
+
+\bibitem{CPY18}
+P.Y. Chen, M.~Sakhdari, M.~Hajizadegan, Q.~Cui, M.M.C. Cheng, R.~El-Ganainy,
+  and A.~Al{\`u}, Nat. Electron. 1 (2018), p. 297.
+
+\bibitem{LW18}
+W.~Langbein, Phys. Rev. A 98 (2018), p. 023805.
+
+\bibitem{ZM19}
+M.~Zhang, W.~Sweeney, C.W. Hsu, L.~Yang, A.D. Stone, and L.~Jiang, Phys. Rev.
+  Lett. 123 (2019), p. 180501.
+
+\bibitem{LHK18}
+H.K. Lau and A.A. Clerk, Nat. Commun. 9 (2018), p. 4320.
+
+\bibitem{HH14}
+H.~Hodaei, M.A. Miri, M.~Heinrich, D.N. Christodoulides, and M.~Khajavikhan,
+  Science 346 (2014), pp. 975--978.
+
+\bibitem{LF14}
+L.~Feng, Z.J. Wong, R.M. Ma, Y.~Wang, and X.~Zhang, Science 346 (2014), pp.
+  972--975.
+
+\bibitem{HH162}
+H.~Hodaei, M.A. Miri, A.U. Hassan, W.E. Hayenga, M.~Heinrich, D.N.
+  Christodoulides, and M.~Khajavikhan, Laser Photonics Rev. 10 (2016), pp.
+  494--499.
+
+\bibitem{LW17}
+W.~Liu, M.~Li, R.S. Guzzon, E.J. Norberg, J.S. Parker, M.~Lu, L.A. Coldren, and
+  J.~Yao, Nat. Commun. 8 (2017), p. 15389.
+
+\bibitem{CA172}
+A.~Cerjan and S.~Fan, Phys. Rev. Lett. 118 (2017), p. 253902.
+
+\bibitem{BB18}
+B.~Baum, M.~Lawrence, D.~Barton, J.~Dionne, and H.~Alaeian, Phys. Rev. B 98
+  (2018), p. 165418.
+
+\bibitem{HWD01}
+W.~Heiss and H.~Harney, Eur. Phys. J. D 17 (2001), pp. 149--151.
+
+\bibitem{DB19}
+B.~D\'ora and C.P. Moca, Phys. Rev. Lett. 124 (2020), p. 136802.
+
+\bibitem{SN1990}
+N.~Seiberg, Prog. Theor. Phys. Suppl. 102 (1990), pp. 319--349.
+
+\bibitem{CH08}
+H.~Cartarius, J.~Main, and G.~Wunner, Phys. Rev. A 77 (2008), p. 013618.
+
+\bibitem{BMV84}
+M.V. Berry, Proc. R. Soc. London A. 392 (1984), pp. 45--57.
+
+\bibitem{DC04}
+C.~Dembowski, B.~Dietz, H.D. Gr\"af, H.L. Harney, A.~Heine, W.D. Heiss, and
+  A.~Richter, Phys. Rev. E 69 (2004), p. 056216.
+
+\bibitem{LR09}
+R.~Lefebvre, O.~Atabek, M.~\ifmmode~\check{S}\else \v{S}\fi{}indelka, and
+  N.~Moiseyev, Phys. Rev. Lett. 103 (2009), p. 123003.
+
+\bibitem{UR12}
+R.~Uzdin and N.~Moiseyev, Phys. Rev. A 85 (2012), p. 031804.
+
+\bibitem{MAA05}
+A.A. Mailybaev, O.N. Kirillov, and A.P. Seyranian, Phys. Rev. A 72 (2005), p.
+  014104.
+
+\bibitem{RJW12}
+J.W. Ryu, S.Y. Lee, and S.W. Kim, Phys. Rev. A 85 (2012), p. 042101.
+
+\bibitem{JH18}
+J.~{H{\"o}ller}, N.~{Read}, and J.G.E. {Harris}, arXiv:1809.07175  (2018).
+
+\bibitem{ZQ18}
+Q.~Zhong, M.~Khajavikhan, D.N. Christodoulides, and R.~El-Ganainy, Nat. Commun.
+  9 (2018), p. 4808.
+
+\bibitem{HWD98}
+W.D. Heiss, M.~M\"uller, and I.~Rotter, Phys. Rev. E 58 (1998), pp. 2894--2901.
+
+\bibitem{Uzdin_2011}
+R.~Uzdin, A.~Mailybaev, and N.~Moiseyev, J. Phys. A 44 (2011), p. 435302.
+
+\bibitem{GEM13}
+E.M. Graefe, A.A. Mailybaev, and N.~Moiseyev, Phys. Rev. A 88 (2013), p.
+  033842.
+
+\bibitem{MT15}
+T.J. Milburn, J.~Doppler, C.A. Holmes, S.~Portolan, S.~Rotter, and P.~Rabl,
+  Phys. Rev. A 92 (2015), p. 052124.
+
+\bibitem{GS16}
+S.N. Ghosh and Y.D. Chong, Sci. Rep. 6 (2016), p. 19837.
+
+\bibitem{HX2016}
+H.~Xu, D.~Mason, L.~Jiang, and J.G.E. Harris, Nature 537 (2016), p.~80.
+
+\bibitem{HAU17}
+A.U. Hassan, B.~Zhen, M.~Solja\ifmmode \check{c}\else
+  \v{c}\fi{}i\ifmmode~\acute{c}\else \'{c}\fi{}, M.~Khajavikhan, and D.N.
+  Christodoulides, Phys. Rev. Lett. 118 (2017), p. 093002.
+
+\bibitem{DJ16}
+J.~Doppler, A.A. Mailybaev, J.~B{\"o}hm, U.~Kuhl, A.~Girschik, F.~Libisch, T.J.
+  Milburn, P.~Rabl, N.~Moiseyev, and S.~Rotter, Nature 537 (2016), p.~76.
+
+\bibitem{LJM14}
+J.M. Lee, S.~Factor, Z.~Lin, I.~Vitebskiy, F.M. Ellis, and T.~Kottos, Phys.
+  Rev. Lett. 112 (2014), p. 253902.
+
+\bibitem{SWR19}
+W.R. Sweeney, C.W. Hsu, S.~Rotter, and A.D. Stone, Phys. Rev. Lett. 122 (2019),
+  p. 093901.
+
+\bibitem{ZXL18}
+X.L. Zhang, S.~Wang, B.~Hou, and C.T. Chan, Phys. Rev. X 8 (2018), p. 021066.
+
+\bibitem{YJW18}
+J.W. Yoon, Y.~Choi, C.~Hahn, G.~Kim, S.H. Song, K.Y. Yang, J.Y. Lee, Y.~Kim,
+  C.S. Lee, J.K. Shin, \emph{et~al.}, Nature 562 (2018), p.~86.
+
+\bibitem{ZXL19}
+X.L. Zhang, T.~Jiang, and C.~Chan, Light Sci. Appl. 8 (2019), pp. 1--9.
+
+\bibitem{LTE16}
+T.E. Lee, Phys. Rev. Lett. 116 (2016), p. 133903.
+
+\bibitem{PX18}
+X.~Piao, S.~Yu, and N.~Park, Phys. Rev. Lett. 120 (2018), p. 203901.
+
+\bibitem{BKY19}
+K.Y. Bliokh and F.~Nori, Phys. Rev. Lett. 123 (2019), p. 054301.
+
+\bibitem{KH98}
+H.~Kuratsuji and S.~Kakigi, Phys. Rev. Lett. 80 (1998), pp. 1888--1891.
+
+\bibitem{YS16}
+S.~Yu, X.~Piao, and N.~Park, Sci. Rep. 6 (2016), p. 37754.
+
+\bibitem{XY17}
+Y.~Xu, S.T. Wang, and L.M. Duan, Phys. Rev. Lett. 118 (2017), p. 045701.
+
+\bibitem{MZH08}
+Z.H. Musslimani, K.G. Makris, R.~El-Ganainy, and D.N. Christodoulides, Phys.
+  Rev. Lett. 100 (2008), p. 030402.
+
+\bibitem{GA09}
+A.~Guo, G.J. Salamo, D.~Duchesne, R.~Morandotti, M.~Volatier-Ravat, V.~Aimez,
+  G.A. Siviloglou, and D.N. Christodoulides, Phys. Rev. Lett. 103 (2009), p.
+  093902.
+
+\bibitem{KB17}
+K.~Bertoldi, V.~Vitelli, J.~Christensen, and M.~van Hecke, Nat. Rev. Mater. 2
+  (2017), p. 17066.
+
+\bibitem{CHL18}
+C.H. Lee, S.~Imhof, C.~Berger, F.~Bayer, J.~Brehm, L.W. Molenkamp,
+  T.~Kiessling, and R.~Thomale, Commun. Phys. 1 (2018), p.~39.
+
+\bibitem{GS08}
+S.~Ganguli, D.~Huh, and H.~Sompolinsky, Proc. Natl. Acad. Sci. 105 (2008), pp.
+  18970--18975.
+
+\bibitem{XH18}
+H.~Xiong and Y.~Wu, Appl. Phys. Rev. 5 (2018), p. 031305.
+
+\bibitem{CH17}
+C.~Hang and G.~Huang, Adv. Phys. X 2 (2017), pp. 737--783.
+
+\bibitem{EAJM69}
+E.A.J. {Marcatili}, Bell Syst. Tech. J. 48 (1969), pp. 2071--2102.
+
+\bibitem{GE72}
+E.~Garmire, H.~Stoll, A.~Yariv, and R.G. Hunsperger, Appl. Phys. Lett. 21
+  (1972), pp. 87--88.
+
+\bibitem{YC92}
+Y.~{Chen}, A.W. {Snyder}, and D.N. {Payne}, IEEE J. Quant. Electron. 28 (1992),
+  pp. 239--245.
+
+\bibitem{Malomed:96}
+B.A. Malomed, G.D. Peng, and P.L. Chu, Opt. Lett. 21 (1996), pp. 330--332.
+
+\bibitem{YX13}
+X.~Yin and X.~Zhang, Nat. Mater. 12 (2013), p. 175.
+
+\bibitem{SY14}
+Y.~Sun, W.~Tan, H.q. Li, J.~Li, and H.~Chen, Phys. Rev. Lett. 112 (2014), p.
+  143903.
+
+\bibitem{RH10}
+H.~Ramezani, T.~Kottos, R.~El-Ganainy, and D.N. Christodoulides, Phys. Rev. A
+  82 (2010), p. 043803.
+
+\bibitem{CL14}
+L.~Chang, X.~Jiang, S.~Hua, C.~Yang, J.~Wen, L.~Jiang, G.~Li, G.~Wang, and
+  M.~Xiao, Nat. Photon. 8 (2014), p. 524.
+
+\bibitem{Berry_2008}
+M.V. Berry, J. Phys. A 41 (2008), p. 244007.
+
+\bibitem{LS09}
+S.~Longhi, Phys. Rev. Lett. 103 (2009), p. 123601.
+
+\bibitem{WM15}
+M.~Wimmer, M.A. Miri, D.~Christodoulides, and U.~Peschel, Sci. Rep. 5 (2015),
+  p. 17760.
+
+\bibitem{SAA10}
+A.A. Sukhorukov, Z.~Xu, and Y.S. Kivshar, Phys. Rev. A 82 (2010), p. 043818.
+
+\bibitem{RD11}
+R.~Driben and B.A. Malomed, Opt. Lett. 36 (2011), pp. 4323--4325.
+
+\bibitem{PB14}
+B.~Peng, S.K. {\"O}zdemir, S.~Rotter, H.~Yilmaz, M.~Liertzer, F.~Monifi, C.M.
+  Bender, F.~Nori, and L.~Yang, Science 346 (2014), pp. 328--332.
+
+\bibitem{BM14}
+M.~Brandstetter, M.~Liertzer, C.~Deutsch, P.~Klang, J.~Sch{\"o}berl, H.E.
+  T{\"u}reci, G.~Strasser, K.~Unterrainer, and S.~Rotter, Nat. Commun. 5
+  (2014), pp. 1--7.
+
+\bibitem{JJD75}
+J.D. Jackson, \emph{Classical Electrodynamics}, Wiley, New York, 1975.
+
+\bibitem{DD04}
+D.~Dragoman and M.~Dragoman, \emph{Quantum-Classical Analogies}, Springer,
+  Berlin, 2004.
+
+\bibitem{FR14}
+R.~Fleury, D.L. Sounas, and A.~Al\`u, Phys. Rev. Lett. 113 (2014), p. 023903.
+
+\bibitem{MKG14}
+K.G. Makris, L.~Ge, and H.E. T\"ureci, Phys. Rev. X 4 (2014), p. 041044.
+
+\bibitem{MKG15}
+K.G. Makris, Z.H. Musslimani, D.N. Christodoulides, and S.~Rotter, Nat. Commun.
+  6 (2015), p. 7257.
+
+\bibitem{MKG17}
+K.G. Makris, A.~Brandst{\"o}tter, P.~Ambichl, Z.H. Musslimani, and S.~Rotter,
+  Light: Sci. and Appl. 6 (2017), p. e17035.
+
+\bibitem{RAA13}
+A.~Regensburger, M.A. Miri, C.~Bersch, J.~N\"ager, G.~Onishchukov, D.N.
+  Christodoulides, and U.~Peschel, Phys. Rev. Lett. 110 (2013), p. 223902.
+
+\bibitem{GL12}
+L.~Ge, Y.D. Chong, and A.D. Stone, Phys. Rev. A 85 (2012), p. 023802.
+
+\bibitem{MF16}
+F.~Monticone, C.A. Valagiannopoulos, and A.~Al\`u, Phys. Rev. X 6 (2016), p.
+  041018.
+
+\bibitem{BF29}
+F.~Bloch, Zeit. Phys. 52 (1929), pp. 555--600.
+
+\bibitem{XYL16}
+Y.L. Xu, W.S. Fegadolli, L.~Gan, M.H. Lu, X.P. Liu, Z.Y. Li, A.~Scherer, and
+  Y.F. Chen, Nat. Commun. 7 (2016), p. 11319.
+
+\bibitem{GBJ95}
+J.~Gea-Banacloche, Y.Q. Li, S.Z. Jin, and M.~Xiao, Phys. Rev. A 51 (1995), pp.
+  576--584.
+
+\bibitem{SJ112}
+J.~Sheng, X.~Yang, H.~Wu, and M.~Xiao, Phys. Rev. A 84 (2011), p. 053820.
+
+\bibitem{JS15}
+J.~Sheng, J.~Wang, M.A. Miri, D.N. Christodoulides, and M.~Xiao, Opt. Express
+  23 (2015), pp. 19777--19782.
+
+\bibitem{WJ112}
+J.~Wen, S.~Du, H.~Chen, and M.~Xiao, Appl. Phys. Lett. 98 (2011), p. 081108.
+
+\bibitem{RH12}
+H.~Ramezani, D.N. Christodoulides, V.~Kovanis, I.~Vitebskiy, and T.~Kottos,
+  Phys. Rev. Lett. 109 (2012), p. 033902.
+
+\bibitem{HFDM08}
+F.D.M. Haldane and S.~Raghu, Phys. Rev. Lett. 100 (2008), p. 013904.
+
+\bibitem{RS08}
+S.~Raghu and F.D.M. Haldane, Phys. Rev. A 78 (2008), p. 033834.
+
+\bibitem{WZ08}
+Z.~Wang, Y.D. Chong, J.D. Joannopoulos, and M.~Solja\ifmmode \check{c}\else
+  \v{c}\fi{}i\ifmmode~\acute{c}\else \'{c}\fi{}, Phys. Rev. Lett. 100 (2008),
+  p. 013905.
+
+\bibitem{WZ09}
+Z.~Wang, Y.~Chong, J.D. Joannopoulos, and M.~Solja\v{c}i\'{c}, Nature 461
+  (2009), pp. 772--775.
+
+\bibitem{LL14}
+L.~Lu, J.D. Joannopoulos, and M.~Solja\v{c}i\'{c}, Nat. Photon. 8 (2014), pp.
+  821--829.
+
+\bibitem{KAB17}
+A.B. Khanikaev and G.~Shvets, Nat. Photon. 11 (2017), pp. 763--773.
+
+\bibitem{KF12}
+K.~Fang, Z.~Yu, and S.~Fan, Nat. Photon. 6 (2012), pp. 782--787.
+
+\bibitem{MH13}
+M.~Hafezi, S.~Mittal, J.~Fan, A.~Migdall, and J.M. Taylor, Nat. Photon. 7
+  (2013), pp. 1001--1005.
+
+\bibitem{MCR13}
+M.C. Rechtsman, J.M. Zeuner, Y.~Plotnik, Y.~Lumer, D.~Podolsky, F.~Dreisow,
+  S.~Nolte, M.~Segev, and A.~Szameit, Nature 496 (2013), pp. 196--200.
+
+\bibitem{KYB19}
+K.Y. Bliokh, D.~Leykam, M.~Lein, and F.~Nori, Nat. Commun. 10 (2019), p. 580.
+
+\bibitem{WS17}
+S.~Weimann, M.~Kremer, Y.~Plotnik, Y.~Lumer, S.~Nolte, K.G. Makris, M.~Segev,
+  M.C. Rechtsman, and A.~Szameit, Nat. Mater. 16 (2017), p. 433.
+
+\bibitem{ZH18}
+H.~Zhou, C.~Peng, Y.~Yoon, C.W. Hsu, K.A. Nelson, L.~Fu, J.D. Joannopoulos,
+  M.~Solja{\v c}i{\'c}, and B.~Zhen, Science 359 (2018), pp. 1009--1012.
+
+\bibitem{AC19}
+A.~Cerjan, S.~Huang, M.~Wang, K.P. Chen, Y.~Chong, and M.C. Rechtsman, Nat.
+  Photon. 13 (2019), pp. 623--628.
+
+\bibitem{SWP79}
+W.P. Su, J.R. Schrieffer, and A.J. Heeger, Phys. Rev. Lett. 42 (1979), pp.
+  1698--1701.
+
+\bibitem{SAP08}
+A.P. Schnyder, S.~Ryu, A.~Furusaki, and A.W.W. Ludwig, Phys. Rev. B 78 (2008),
+  p. 195125.
+
+\bibitem{HYC11}
+Y.C. Hu and T.L. Hughes, Phys. Rev. B 84 (2011), p. 153101.
+
+\bibitem{HS13}
+H.~Schomerus, Opt. Lett. 38 (2013), pp. 1912--1914.
+
+\bibitem{CP15}
+C.~Poli, M.~Bellec, U.~Kuhl, F.~Mortessagne, and H.~Schomerus, Nat. Commun. 6
+  (2015), p. 6710.
+
+\bibitem{RMS09}
+M.S. Rudner and L.S. Levitov, Phys. Rev. Lett. 102 (2009), p. 065703.
+
+\bibitem{ZJM15}
+J.M. Zeuner, M.C. Rechtsman, Y.~Plotnik, Y.~Lumer, S.~Nolte, M.S. Rudner,
+  M.~Segev, and A.~Szameit, Phys. Rev. Lett. 115 (2015), p. 040402.
+
+\bibitem{SH18}
+H.~Shen, B.~Zhen, and L.~Fu, Phys. Rev. Lett. 120 (2018), p. 146402.
+
+\bibitem{HG18}
+G.~Harari, M.A. Bandres, Y.~Lumer, M.C. Rechtsman, Y.D. Chong, M.~Khajavikhan,
+  D.N. Christodoulides, and M.~Segev, Science 359 (2018).
+
+\bibitem{BM18}
+M.A. Bandres, S.~Wittek, G.~Harari, M.~Parto, J.~Ren, M.~Segev, D.N.
+  Christodoulides, and M.~Khajavikhan, Science 359 (2018).
+
+\bibitem{ZH192}
+H.~Zhao, X.~Qiao, T.~Wu, B.~Midya, S.~Longhi, and L.~Feng, Science 365 (2019),
+  pp. 1163--1166.
+
+\bibitem{AK09}
+A.~Kitaev, AIP Conf. Proc. 1134 (2009), p.~22.
+
+\bibitem{ANP18}
+N.P. Armitage, E.J. Mele, and A.~Vishwanath, Rev. Mod. Phys. 90 (2018), p.
+  015001.
+
+\bibitem{WMM15}
+M.~Wimmer, A.~Regensburger, M.A. Miri, C.~Bersch, D.N. Christodoulides, and
+  U.~Peschel, Nat. Commun. 6 (2015), p. 7782.
+
+\bibitem{FU61}
+U.~Fano, Phys. Rev. 124 (1961), pp. 1866--1 878.
+
+\bibitem{AFK11}
+F.K. Abdullaev, Y.V. Kartashov, V.V. Konotop, and D.A. Zezyulin, Phys. Rev. A
+  83 (2011), p. 041805.
+
+\bibitem{MAE11}
+A.E. Miroshnichenko, B.A. Malomed, and Y.S. Kivshar, Phys. Rev. A 84 (2011), p.
+  012123.
+
+\bibitem{PH11}
+H.~Schomerus, Phys. Rev. A 83 (2011), p. 030101.
+
+\bibitem{FC95}
+F.~Cooper, A.~Khare, and U.~Sukhatme, Phys. Rep. 251 (1995), pp. 267 -- 385.
+
+\bibitem{KA89}
+A.~Khare and U.~Sukhatme, J. Phys. A 22 (1989), pp. 2847--2860.
+
+\bibitem{MMA13}
+M.A. Miri, M.~Heinrich, R.~El-Ganainy, and D.N. Christodoulides, Phys. Rev.
+  Lett. 110 (2013), p. 233902.
+
+\bibitem{HM14}
+M.~Heinrich, M.A. Miri, S.~St{\"u}tzer, R.~El-Ganainy, S.~Nolte, A.~Szameit,
+  and D.N. Christodoulides, Nat. Commun. 5 (2014), p. 3698.
+
+\bibitem{EGR15}
+R.~El-Ganainy, L.~Ge, M.~Khajavikhan, and D.N. Christodoulides, Phys. Rev. A 92
+  (2015), p. 033818.
+
+\bibitem{DS15}
+S.~Ding and G.P. Wang, J. Appl. Phys. 118 (2015), p. 123104.
+
+\bibitem{SA112}
+A.~Szameit, M.C. Rechtsman, O.~Bahat-Treidel, and M.~Segev, Phys. Rev. A 84
+  (2011), p. 021806.
+
+\bibitem{Gutierrez:16}
+O.I.Z. Guti\'{e}rrez, L.F.S. Mendoza, and B.M. Rodr\'{i}guez-Lara, Opt. Express
+  24 (2016), pp. 3989--3998.
+
+\bibitem{DMJ12}
+D.M. Jovi\'{c}, C.~Denz, and M.R. Beli\'{c}, Opt. Lett. 37 (2012), pp.
+  4455--4457.
+
+\bibitem{SP01}
+P.~Sebbah, \emph{Waves and Imaging Through Complex Media}, Springer, New York,
+  2001.
+
+\bibitem{PAM88}
+P.A. Mello, P.~Pereyra, and N.~Kumar, Ann. Phys. 181 (1988), pp. 290 -- 317.
+
+\bibitem{MTh92}
+T.~Martin and R.~Landauer, Phys. Rev. B 45 (1992), pp. 1742--1755.
+
+\bibitem{OL31}
+L.~Onsager, Phys. Rev. 37 (1931), pp. 405--426.
+
+\bibitem{GL15}
+L.~Ge, K.G. Makris, D.N. Christodoulides, and L.~Feng, Phys. Rev. A 92 (2015),
+  p. 062135.
+
+\bibitem{CYD10}
+Y.D. Chong, L.~Ge, H.~Cao, and A.D. Stone, Phys. Rev. Lett. 105 (2010), p.
+  053901.
+
+\bibitem{Miri:12}
+M.A. Miri, P.~LiKamWa, and D.N. Christodoulides, Opt. Lett. 37 (2012), pp.
+  764--766.
+
+\bibitem{YCH11}
+C.H. Yi, S.H. Lee, M.W. Kim, J.~Cho, J.~Lee, S.Y. Lee, J.~Wiersig, and C.M.
+  Kim, Phys. Rev. A 84 (2011), p. 041803.
+
+\bibitem{RF16}
+R.~{Fleury}, D.L. {Sounas}, and A.~{Al\`u}, IEEE J. Quant. Electron. 22 (2016),
+  pp. 121--129.
+
+\bibitem{LM12}
+M.~Liertzer, L.~Ge, A.~Cerjan, A.D. Stone, H.E. T\"ureci, and S.~Rotter, Phys.
+  Rev. Lett. 108 (2012), p. 173901.
+
+\bibitem{LSY08}
+S.Y. Lee, J.W. Ryu, J.B. Shim, S.B. Lee, S.W. Kim, and K.~An, Phys. Rev. A 78
+  (2008), p. 015805.
+
+\bibitem{HEJ84}
+E.J. Heller, Phys. Rev. Lett. 53 (1984), pp. 1515--1518.
+
+\bibitem{LSB02}
+S.B. Lee, J.H. Lee, J.S. Chang, H.J. Moon, S.W. Kim, and K.~An, Phys. Rev.
+  Lett. 88 (2002), p. 033903.
+
+\bibitem{RNB02}
+N.B. Rex, H.E. Tureci, H.G.L. Schwefel, R.K. Chang, and A.~Douglas~Stone, Phys.
+  Rev. Lett. 88 (2002), p. 094102.
+
+\bibitem{Gmachl:02}
+C.~Gmachl, E.E. Narimanov, F.~Capasso, J.N. Baillargeon, and A.Y. Cho, Opt.
+  Lett. 27 (2002), pp. 824--826.
+
+\bibitem{WJ06}
+J.~Wiersig, Phys. Rev. Lett. 97 (2006), p. 253901.
+
+\bibitem{Tureci:02}
+H.E. Tureci and A.D. Stone, Opt. Lett. 27 (2002), pp. 7--9.
+
+\bibitem{Altmann_2008}
+E.G. Altmann, G.D. Magno, and M.~Hentschel, Europhys. Lett. 84 (2008), p.
+  10008.
+
+\bibitem{SQH11}
+Q.H. Song, L.~Ge, J.~Wiersig, J.B. Shim, J.~Unterhinninghofen,
+  A.~Ebersp\"acher, W.~Fang, G.S. Solomon, and H.~Cao, Phys. Rev. A 84 (2011),
+  p. 063843.
+
+\bibitem{RB12}
+B.~Redding, L.~Ge, Q.~Song, J.~Wiersig, G.S. Solomon, and H.~Cao, Phys. Rev.
+  Lett. 108 (2012), p. 253902.
+
+\bibitem{LSY04}
+S.Y. Lee, S.~Rim, J.W. Ryu, T.Y. Kwon, M.~Choi, and C.M. Kim, Phys. Rev. Lett.
+  93 (2004), p. 164102.
+
+\bibitem{HMI14}
+M.I. Hussein, M.J. Leamy, and M.~Ruzzene, Appl. Mech. Rev. 66 (2014), 040802.
+
+\bibitem{SR16}
+R.~S{\"u}sstrunk and S.D. Huber, Proc. Natl. Acad. Sci. U.S.A. 113 (2016), pp.
+  E4767--E4775.
+
+\bibitem{YT19}
+T.~Yoshida and Y.~Hatsugai, Phys. Rev. B 100 (2019), p. 054109.
+
+\bibitem{TCL15}
+T.C. Lubensky, C.L. Kane, X.~Mao, A.~Souslov, and K.~Sun, Rep. Prog. Phys. 78
+  (2015), p. 073901.
+
+\bibitem{YTW15}
+Y.T. Wang, P.G. Luan, and S.~Zhang, New J. Phys. 17 (2015), p. 073031.
+
+\bibitem{KT15}
+T.~Kariyado and Y.~Hatsugai, Sci. Rep. 5 (2015), p. 18107.
+
+\bibitem{CA18}
+A.~Cerjan, M.~Xiao, L.~Yuan, and S.~Fan, Phys. Rev. B 97 (2018), p. 075128.
+
+\bibitem{CRC78}
+C.~Calladine, Int. J. Solids Struct. 14 (1978), pp. 161 -- 172.
+
+\bibitem{WY18}
+Y.~Wang, B.~Yousefzadeh, H.~Chen, H.~Nassar, G.~Huang, and C.~Daraio, Phys.
+  Rev. Lett. 121 (2018), p. 194301.
+
+\bibitem{TG19}
+G.~Trainiti, Y.~Xia, J.~Marconi, G.~Cazzulani, A.~Erturk, and M.~Ruzzene, Phys.
+  Rev. Lett. 122 (2019), p. 124301.
+
+\bibitem{GA19}
+A.~{Ghatak}, M.~{Brandenbourger}, J.~{van Wezel}, and C.~{Coulais},
+  arXiv:1907.11619  (2019).
+
+\bibitem{SDL17}
+D.L. Sounas and A.~Al\`u, Nat. Photonics 11 (2017), p. 774.
+
+\bibitem{FC01}
+F.~Casas, J.A. Oteo, and J.~Ros, J. Phys. A 34 (2001), pp. 3379--3388.
+
+\bibitem{CBG16}
+B.G.g. Chen, B.~Liu, A.A. Evans, J.~Paulose, I.~Cohen, V.~Vitelli, and C.D.
+  Santangelo, Phys. Rev. Lett. 116 (2016), p. 135501.
+
+\bibitem{CC16}
+C.~Coulais, D.~Sounas, and A.~Al\`u, Nature 542 (2017), p. 461.
+
+\bibitem{GSD13}
+M.~Schenk and S.D. Guest, Proc. Natl. Acad. Sci. U.S.A. 110 (2013), pp.
+  3276--3281.
+
+\bibitem{NJ15}
+J.~Ningyuan, C.~Owens, A.~Sommer, D.~Schuster, and J.~Simon, Phys. Rev. X 5
+  (2015), p. 021031.
+
+\bibitem{CWP18}
+C.W. Peterson, W.A. Benalcazar, T.L. Hughes, and G.~Bahl, Nature 555 (2018), p.
+  346.
+
+\bibitem{SI18}
+S.~Imhof, C.~Berger, F.~Bayer, J.~Brehm, L.W. Molenkamp, T.~Kiessling,
+  F.~Schindler, C.H. Lee, M.~Greiter, T.~Neupert, and R.~Thomale, Nat. Phys. 14
+  (2018), pp. 925--929.
+
+\bibitem{ZXX20}
+X.X. Zhang and M.~Franz, Phys. Rev. Lett. 124 (2020), p. 046401.
+
+\bibitem{AVV15}
+V.V. Albert, L.I. Glazman, and L.~Jiang, Phys. Rev. Lett. 114 (2015), p.
+  173902.
+
+\bibitem{EM19}
+M.~Ezawa, Phys. Rev. B 99 (2019), p. 201411.
+
+\bibitem{HR19}
+R.~Haenel, T.~Branch, and M.~Franz, Phys. Rev. B 99 (2019), p. 235110.
+
+\bibitem{WKC09}
+W.K. Chen, \emph{The Circuits and Filters Handbook}, CRC Press, Inc., Boca
+  Raton, FL, USA, 2009.
+
+\bibitem{SJ2011}
+J.~Schindler, A.~Li, M.C. Zheng, F.M. Ellis, and T.~Kottos, Phys. Rev. A 84
+  (2011), p. 040101.
+
+\bibitem{CKA99}
+C.K. Alexander and M.~Sadiku, \emph{Fundamentals of Electric Circuits},
+  McGraw-Hill Higher Education, New York, 1999.
+
+\bibitem{EM19b}
+M.~Ezawa, Phys. Rev. B 99 (2019), p. 201411(R).
+
+\bibitem{YS18a}
+S.~Yao and Z.~Wang, Phys. Rev. Lett. 121 (2018), p. 086803.
+
+\bibitem{TH19}
+T.~Helbig, T.~Hofmann, S.~Imhof, M.~Abdelghany, T.~Kiessling, L.W. Molenkamp,
+  C.H. Lee, A.~Szameit, M.~Greiter, and R.~Thomale. arXiv:1907.11562.
+
+\bibitem{HT19}
+T.~Hofmann, T.~Helbig, C.H. Lee, M.~Greiter, and R.~Thomale, Phys. Rev. Lett.
+  122 (2019), p. 247702.
+
+\bibitem{ZQB20}
+Q.B. Zeng, Y.B. Yang, and Y.~Xu, Phys. Rev. B 101 (2020), p. 020201(R).
+
+\bibitem{EM19c}
+M.~Ezawa, Phys. Rev. B 100 (2019), p. 165419.
+
+\bibitem{MCT68}
+C.T. MacDonald, J.H. Gibbs, and A.C. Pipkin, Biopolymers 6 (1968), pp. 1--25.
+
+\bibitem{MCT69}
+C.T. MacDonald and J.H. Gibbs, Biopolymers 7 (1969), pp. 707--725.
+
+\bibitem{MRM72}
+R.M. May, Nature 238 (1972), pp. 413--414.
+
+\bibitem{NDR98}
+D.R. Nelson and N.M. Shnerb, Phys. Rev. E 58 (1998), pp. 1383--1403.
+
+\bibitem{SJ76}
+J.~Schnakenberg, Rev. Mod. Phys. 48 (1976), pp. 571--585.
+
+\bibitem{SH91}
+H.~Spohn, \emph{Large Scale Dynamics of Interacting Particles}, Springer,
+  Heidelberg, 1991.
+
+\bibitem{MA17}
+A.~Murugan and S.~Vaikuntanathan, Nat. Commun. 8 (2017), p. 13881.
+
+\bibitem{DK2018}
+K.~Dasbiswas, K.K. Mandadapu, and S.~Vaikuntanathan, Proc. Natl. Aca. Sci. USA
+  115 (2018), pp. E9031--E9040.
+
+\bibitem{RJ2013}
+J.~Ren and N.A. Sinitsyn, Phys. Rev. E 87 (2013), p. 050101.
+
+\bibitem{FS70}
+F.~Spitzer, Adv. Math. 5 (1970), pp. 246 -- 290.
+
+\bibitem{KS84}
+S.~Katz, J.L. Lebowitz, and H.~Spohn, J. Stat. Phys. 34 (1984), pp. 497--537.
+
+\bibitem{BD98}
+B.~Derrida, Phys. Rep. 301 (1998), pp. 65 -- 83.
+
+\bibitem{CT98}
+T.~Chou, Phys. Rev. Lett. 80 (1998), pp. 85--88.
+
+\bibitem{ZAA07}
+A.~Zilman, S.~Di~Talia, B.T. Chait, M.P. Rout, and M.O. Magnasco, PLOS Comp.
+  Bio. 3 (2007), pp. 1--10.
+
+\bibitem{JTT09}
+T.~Jovanovic-Talisman, J.~Tetenbaum-Novatt, A.S. McKenney, A.~Zilman,
+  R.~Peters, M.P. Rout, and B.T. Chait, Nature 457 (2009), p. 1023.
+
+\bibitem{KT102}
+T.~Karzig and F.~von Oppen, Phys. Rev. B 81 (2010), p. 045317.
+
+\bibitem{CT99}
+T.~Chou, J. Chem. Phys. 110 (1999), pp. 606--615.
+
+\bibitem{Evans_1996}
+M.R. Evans, Europhys. Lett. 36 (1996), pp. 13--18.
+
+\bibitem{DC00}
+D.~Chowdhury, L.~Santen, and A.~Schadschneider, Phys. Rep. 329 (2000), pp. 199
+  -- 329.
+
+\bibitem{RK06}
+K.~Rajan and L.F. Abbott, Phys. Rev. Lett. 97 (2006), p. 188104.
+
+\bibitem{DD87}
+D.~Dhar, Phase Transit. 9 (1987), pp. 51--86.
+
+\bibitem{GLH92}
+L.H. Gwa and H.~Spohn, Phys. Rev. A 46 (1992), pp. 844--854.
+
+\bibitem{KD95}
+D.~Kim, Phys. Rev. E 52 (1995), pp. 3512--3524.
+
+\bibitem{ST99}
+T.~Sasamoto, J. Phys. A 32 (1999), pp. 7109--7131.
+
+\bibitem{dG05}
+J.~de~Gier and F.H.L. Essler, Phys. Rev. Lett. 95 (2005), p. 240601.
+
+\bibitem{Kandel_1990}
+D.~Kandel, E.~Domany, and B.~Nienhuis, J. Phys. A 23 (1990), pp. L755--L762.
+
+\bibitem{BR08}
+R.J. Baxter, \emph{Exactly Solved Models in Statistical Mechanics}, Dover, New
+  York, 2008.
+
+\bibitem{DB98}
+B.~Derrida and J.L. Lebowitz, Phys. Rev. Lett. 80 (1998), pp. 209--213.
+
+\bibitem{Derrida_1999}
+B.~Derrida and M.R. Evans, J. Phys. A 32 (1999), pp. 4833--4850.
+
+\bibitem{CG12}
+G.L. Celardo, F.~Borgonovi, M.~Merkli, V.I. Tsifrinovich, and G.P. Berman, J.
+  Phys. Chem. C 116 (2012), pp. 22105--22111.
+
+\bibitem{CG14}
+G.L. Celardo, G.G. Giusteri, and F.~Borgonovi, Phys. Rev. B 90 (2014), p.
+  075113.
+
+\bibitem{AA16non}
+A.~Amir, N.~Hatano, and D.R. Nelson, Phys. Rev. E 93 (2016), p. 042310.
+
+\bibitem{NDR19}
+H.~Tanaka and D.R. Nelson, Phys. Rev. E 99 (2019), p. 062406.
+
+\bibitem{LAJ10}
+A.J. Lotka, J. Phys. Chem. 14 (1910), pp. 271--274.
+
+\bibitem{VVJ28}
+J.~Volterra, J. Cons. Perm. Int. Explor. Mer 3 (1928), p.~1.
+
+\bibitem{Bender_2007}
+C.M. Bender, D.D. Holm, and D.W. Hook, J. Phys. A 40 (2007), pp. F793--F804.
+
+\bibitem{GVL85}
+V.L. Girko, Theory Probab. Its Appl. 29 (1985), pp. 694--706.
+
+\bibitem{JG65}
+J.~Ginibre, J. Math. Phys. 6 (1965), pp. 440--449.
+
+\bibitem{BZD97}
+Z.D. Bai, Ann. Probab. 25 (1997), pp. 494--529.
+
+\bibitem{TT10}
+T.~Tao, V.~Vu, and M.~Krishnapur, Ann. Probab. 38 (2010), pp. 2023--2065.
+
+\bibitem{SHJ88}
+H.J. Sommers, A.~Crisanti, H.~Sompolinsky, and Y.~Stein, Phys. Rev. Lett. 60
+  (1988), pp. 1895--1898.
+
+\bibitem{AM16}
+M.~Arjovsky, A.~Shah, and Y.~Bengio, \emph{Unitary evolution recurrent neural
+  networks}, in \emph{ICML}, 2016, pp. 1120--1128.
+
+\bibitem{VE17}
+E.~Vorontsov, C.~Trabelsi, S.~Kadoury, and C.~Pal, \emph{On orthogonality and
+  learning recurrent networks with long term dependencies}, in
+  \emph{Proceedings of the 34th International Conference on Machine
+  Learning-Volume 70}, 2017, pp. 3570--3578.
+
+\bibitem{GMS09}
+M.S. Goldman, Neuron 61 (2009), pp. 621--634.
+
+\bibitem{HG12}
+G.~Hennequin, T.P. Vogels, and W.~Gerstner, Phys. Rev. E 86 (2012), p. 011909.
+
+\bibitem{HM09}
+M.~Hofheinz, H.~Wang, M.~Ansmann, R.C. Bialczak, E.~Lucero, M.~Neeley,
+  A.~O'connell, D.~Sank, J.~Wenner, J.M. Martinis, \emph{et~al.}, Nature 459
+  (2009), p. 546.
+
+\bibitem{EC11}
+C.~Eichler, D.~Bozyigit, C.~Lang, M.~Baur, L.~Steffen, J.M. Fink, S.~Filipp,
+  and A.~Wallraff, Phys. Rev. Lett. 107 (2011), p. 113601.
+
+\bibitem{RM18}
+M.~Rossi, D.~Mason, J.~Chen, Y.~Tsaturyan, and A.~Schliesser, Nature 563
+  (2018), p.~53.
+
+\bibitem{OCAD10}
+A.D. O'Connell, M.~Hofheinz, M.~Ansmann, R.C. Bialczak, M.~Lenander, E.~Lucero,
+  M.~Neeley, D.~Sank, H.~Wang, M.~Weides, \emph{et~al.}, Nature 464 (2010), p.
+  697.
+
+\bibitem{SK11}
+K.~Stannigel, P.~Rabl, A.S. S\o{}rensen, M.D. Lukin, and P.~Zoller, Phys. Rev.
+  A 84 (2011), p. 042341.
+
+\bibitem{MDE112}
+D.~McClelland, N.~Mavalvala, Y.~Chen, and R.~Schnabel, Laser Photon. Rev. 5
+  (2011), pp. 677--696.
+
+\bibitem{VE172}
+E.~Verhagen and A.~Al{\`u}, Nat. Phys. 13 (2017), p. 922.
+
+\bibitem{TJD112}
+J.D. Teufel, T.~Donner, D.~Li, J.W. Harlow, M.~Allman, K.~Cicak, A.J. Sirois,
+  J.D. Whittaker, K.W. Lehnert, and R.W. Simmonds, Nature 475 (2011), p. 359.
+
+\bibitem{WYP19}
+Y.P. Wang, J.W. Rao, Y.~Yang, P.C. Xu, Y.S. Gui, B.M. Yao, J.Q. You, and C.M.
+  Hu, Phys. Rev. Lett. 123 (2019), p. 127202.
+
+\bibitem{MF07}
+F.~Marquardt, J.P. Chen, A.A. Clerk, and S.M. Girvin, Phys. Rev. Lett. 99
+  (2007), p. 093902.
+
+\bibitem{DJM08}
+J.M. Dobrindt, I.~Wilson-Rae, and T.J. Kippenberg, Phys. Rev. Lett. 101 (2008),
+  p. 263602.
+
+\bibitem{GS09}
+S.~Gr{\"o}blacher, K.~Hammerer, M.R. Vanner, and M.~Aspelmeyer, Nature 460
+  (2009), p. 724.
+
+\bibitem{TJD11}
+J.D. Teufel, D.~Li, M.~Allman, K.~Cicak, A.~Sirois, J.~Whittaker, and
+  R.~Simmonds, Nature 471 (2011), pp. 204--208.
+
+\bibitem{VE12}
+E.~Verhagen, S.~Del{\'e}glise, S.~Weis, A.~Schliesser, and T.J. Kippenberg,
+  Nature 482 (2012), p.~63.
+
+\bibitem{HJ14}
+H.~Jing, S.K. \"Ozdemir, X.Y. L\"u, J.~Zhang, L.~Yang, and F.~Nori, Phys. Rev.
+  Lett. 113 (2014), p. 053604.
+
+\bibitem{DWS16}
+D.W. Sch{\"o}nleber, A.~Eisfeld, and R.~El-Ganainy, New J. Phys. 18 (2016), p.
+  045014.
+
+\bibitem{KVK16}
+K.V. Kepesidis, T.J. Milburn, J.~Huber, K.G. Makris, S.~Rotter, and P.~Rabl,
+  New J. Phys 18 (2016), p. 095003.
+
+\bibitem{JH15}
+H.~Jing, S.K. {\"O}zdemir, Z.~Geng, J.~Zhang, X.Y. L{\"u}, B.~Peng, L.~Yang,
+  and F.~Nori, Sci. Rep. 5 (2015), p. 9663.
+
+\bibitem{ZJ152}
+J.~Zhang, B.~Peng, S.K. \"Ozdemir, Y.x. Liu, H.~Jing, X.y. L\"u, Y.l. Liu,
+  L.~Yang, and F.~Nori, Phys. Rev. B 92 (2015), p. 115407.
+
+\bibitem{JH17}
+H.~Jing, S.~{\"O}zdemir, H.~L{\"u}, and F.~Nori, Sci. Rep. 7 (2017), p. 3386.
+
+\bibitem{LXY15}
+X.Y. L\"u, H.~Jing, J.Y. Ma, and Y.~Wu, Phys. Rev. Lett. 114 (2015), p. 253601.
+
+\bibitem{LH17}
+H.~L\"u, S.K. \"Ozdemir, L.M. Kuang, F.~Nori, and H.~Jing, Phys. Rev. Applied 8
+  (2017), p. 044020.
+
+\bibitem{ZD17}
+D.~Zhang, X.Q. Luo, Y.P. Wang, T.F. Li, and J.~You, Nat. Commun. 8 (2017), p.
+  1368.
+
+\bibitem{OsA16}
+A.~Osada, R.~Hisatomi, A.~Noguchi, Y.~Tabuchi, R.~Yamazaki, K.~Usami,
+  M.~Sadgrove, R.~Yalla, M.~Nomura, and Y.~Nakamura, Phys. Rev. Lett. 116
+  (2016), p. 223601.
+
+\bibitem{OsA18}
+A.~Osada, A.~Gloppe, R.~Hisatomi, A.~Noguchi, R.~Yamazaki, M.~Nomura,
+  Y.~Nakamura, and K.~Usami, Phys. Rev. Lett. 120 (2018), p. 133602.
+
+\bibitem{busse_1970}
+F.H. Busse, J. Fluid Mech. 44 (1970), p. 441–460.
+
+\bibitem{ZS09}
+S.~Zhang, L.~Yin, and N.~Fang, Phys. Rev. Lett. 102 (2009), p. 194301.
+
+\bibitem{PCM11}
+C.M. Park, J.J. Park, S.H. Lee, Y.M. Seo, C.K. Kim, and S.H. Lee, Phys. Rev.
+  Lett. 107 (2011), p. 194301.
+
+\bibitem{LZ00}
+Z.~Liu, X.~Zhang, Y.~Mao, Y.Y. Zhu, Z.~Yang, C.T. Chan, and P.~Sheng, Science
+  289 (2000), pp. 1734--1736.
+
+\bibitem{FN06}
+N.~Fang, D.~Xi, J.~Xu, M.~Ambati, W.~Srituravanich, C.~Sun, and X.~Zhang, Nat.
+  Mater. 5 (2006), p. 452.
+
+\bibitem{YZ08}
+Z.~Yang, J.~Mei, M.~Yang, N.H. Chan, and P.~Sheng, Phys. Rev. Lett. 101 (2008),
+  p. 204301.
+
+\bibitem{Lee_2009}
+S.H. Lee, C.M. Park, Y.M. Seo, Z.G. Wang, and C.K. Kim, J. Phys. Condens.
+  Mater. 21 (2009), p. 175704.
+
+\bibitem{LZ12}
+Z.~Liang and J.~Li, Phys. Rev. Lett. 108 (2012), p. 114301.
+
+\bibitem{XY13}
+Y.~Xie, B.I. Popa, L.~Zigoneanu, and S.A. Cummer, Phys. Rev. Lett. 110 (2013),
+  p. 175501.
+
+\bibitem{LZ13}
+Z.~Liang, T.~Feng, S.~Lok, F.~Liu, K.B. Ng, C.H. Chan, J.~Wang, S.~Han, S.~Lee,
+  and J.~Li, Sci. Rep. 3 (2013), p. 1614.
+
+\bibitem{SRA01}
+R.A. Shelby, D.R. Smith, and S.~Schultz, Science 292 (2001), pp. 77--79.
+
+\bibitem{SVM07}
+V.M. Shalaev, Nat. Photon. 1 (2007), p.~41.
+
+\bibitem{LSH10}
+S.H. Lee, C.M. Park, Y.M. Seo, and C.K. Kim, Phys. Rev. B 81 (2010), p. 241102.
+
+\bibitem{CJ12}
+J.~Christensen and F.J.G. de~Abajo, Phys. Rev. Lett. 108 (2012), p. 124301.
+
+\bibitem{GCVM14}
+V.M. Garc\'{\i}a-Chocano, J.~Christensen, and J.~S\'anchez-Dehesa, Phys. Rev.
+  Lett. 112 (2014), p. 144301.
+
+\bibitem{PJJ15}
+J.J. Park, C.M. Park, K.J.B. Lee, and S.H. Lee, Appl. Phys. Lett. 106 (2015),
+  p. 051901.
+
+\bibitem{KN15}
+N.~Kaina, F.~Lemoult, M.~Fink, and G.~Lerosey, Nature 525 (2015), p.~77.
+
+\bibitem{SK19}
+K.~Sone and Y.~Ashida, Phys. Rev. Lett. 123 (2019), p. 205502.
+
+\bibitem{SK192}
+K.~{Sone}, Y.~{Ashida}, and T.~{Sagawa}, arXiv:1912.09055  (2019).
+
+\bibitem{AY17}
+Y.~Aur\'egan and V.~Pagneux, Phys. Rev. Lett. 118 (2017), p. 174301.
+
+\bibitem{WM14}
+M.~Willatzen and J.~Christensen, Phys. Rev. B 89 (2014), p. 041201.
+
+\bibitem{ZX14}
+X.~Zhu, H.~Ramezani, C.~Shi, J.~Zhu, and X.~Zhang, Phys. Rev. X 4 (2014), p.
+  031042.
+
+\bibitem{SDL15}
+D.L. Sounas, R.~Fleury, and A.~Al\`u, Phys. Rev. Applied 4 (2015), p. 014005.
+
+\bibitem{CJ16}
+J.~Christensen, M.~Willatzen, V.R. Velasco, and M.H. Lu, Phys. Rev. Lett. 116
+  (2016), p. 207601.
+
+\bibitem{SC16}
+C.~Shi, M.~Dubois, Y.~Chen, L.~Cheng, H.~Ramezani, Y.~Wang, and X.~Zhang, Nat.
+  Commun. 7 (2016), p. 11110.
+
+\bibitem{DK162}
+K.~Ding, G.~Ma, M.~Xiao, Z.Q. Zhang, and C.T. Chan, Phys. Rev. X 6 (2016), p.
+  021007.
+
+\bibitem{RE17}
+E.~{Rivet}, S.~{Karkar}, and H.~{Lissek}, IEEE Trans. Contl. Sys. Tech. 25
+  (2017), pp. 63--72.
+
+\bibitem{RE18}
+E.~Rivet, A.~Brandst{\"o}tter, K.G. Makris, H.~Lissek, S.~Rotter, and
+  R.~Fleury, Nat. Phys. 14 (2018), p. 942.
+
+\bibitem{ZW18}
+W.~Zhu, X.~Fang, D.~Li, Y.~Sun, Y.~Li, Y.~Jing, and H.~Chen, Phys. Rev. Lett.
+  121 (2018), p. 124501.
+
+\bibitem{Vicsek1995}
+T.~Vicsek, A.~Czir{\'o}k, E.~Ben-Jacob, I.~Cohen, and O.~Shochet, Phys. Rev.
+  Lett. 75 (1995), pp. 1226--1229.
+
+\bibitem{Vicsek2012}
+T.~Vicsek and A.~Zafeiris, Phys. Rep. 517 (2012), pp. 71--140.
+
+\bibitem{Brugues2014}
+J.~Brugu{\'{e}}s and D.~Needleman, Proc. Natl. Acad. Sci. U.S.A. 111 (2014),
+  pp. 18496--18500.
+
+\bibitem{Saw2017}
+T.B. Saw, A.~Doostmohammadi, V.~Nier, L.~Kocgozlu, S.~Thampi, Y.~Toyama,
+  P.~Marcq, C.T. Lim, J.M. Yeomans, and B.~Ladoux, Nature 544 (2017), pp.
+  212--216.
+
+\bibitem{Kawaguchi2017}
+K.~Kawaguchi, R.~Kageyama, and M.~Sano, Nature 545 (2017), pp. 327--331.
+
+\bibitem{Nishiguchi2018}
+D.~Nishiguchi, I.S. Aranson, A.~Snezhko, and A.~Sokolov, Nat. Commun. 9 (2018),
+  p. 4486.
+
+\bibitem{Palacci2013}
+J.~Palacci, S.~Sacanna, A.P. Steinberg, D.J. Pine, and P.M. Chaikin, Science
+  339 (2013), pp. 936--939.
+
+\bibitem{Jiang2010}
+H.R. Jiang, N.~Yoshinaga, and M.~Sano, Phys. Rev. Lett. 105 (2010), p. 268302.
+
+\bibitem{Toner1995}
+J.~Toner and Y.~Tu, Phys. Rev. Lett. 75 (1995), pp. 4326--4329.
+
+\bibitem{Toner1998}
+J.~Toner and Y.~Tu, Phys. Rev. E 58 (1998), pp. 4828--4858.
+
+\bibitem{Toner2005}
+J.~Toner, Y.~Tu, and S.~Ramaswamy, Ann. Phys. 318 (2005), pp. 170--244.
+
+\bibitem{Bertin2006}
+E.~Bertin, M.~Droz, and G.~Gr{\'{e}}goire, Phys. Rev. E 74 (2006), p. 022101.
+
+\bibitem{Peshkov2014}
+A.~Peshkov, E.~Bertin, F.Ginelli, and H.~Chat{\'e}, Eur. Phys. J. Spec. Top.
+  223 (2014), pp. 1315--1344.
+
+\bibitem{Farrell2012}
+F.D. Farrell, M.C. Marchetti, D.~Marenduzzo, and J.~Tailleur, Phys. Rev. Lett.
+  108 (2012), p. 248101.
+
+\bibitem{Suzuki2015}
+R.~Suzuki, C.A. Weber, E.~Frey, and A.R. Bausch, Nat. Phys. 11 (2015), pp.
+  839--843.
+
+\bibitem{Souslov2018}
+A.~Souslov, K.~Dasbiswas, M.~Fruchart, S.~Vaikuntanathan, and V.~Vitelli, Phys.
+  Rev. Lett. 122 (2019), p. 128001.
+
+\bibitem{SC20}
+C.~{Scheibner}, W.T.M. {Irvine}, and V.~{Vitelli}, arXiv:2001.04969  (2020).
+
+\bibitem{SC202}
+C.~Scheibner, A.~Souslov, D.~Banerjee, P.~Surowka, W.T. Irvine, and V.~Vitelli,
+  Nat. Phys. 16 (2020), pp. 475--480.
+
+\bibitem{HJJ58}
+J.J. Hopfield, Phys. Rev. 112 (1958), pp. 1555--1567.
+
+\bibitem{YY02}
+Y.~Yamamoto, F.~Tassone, and H.~Cao, \emph{Semiconductor Cavity Quantum
+  Electrodynamics}, Springer, New York, 2002.
+
+\bibitem{KA07}
+A.V. Kavokin, J.J. Baumberg, G.~Malpuech, and F.P. Laussy,
+  \emph{Microcavities}, Oxford Science Publications, Oxford, 2007.
+
+\bibitem{JK06}
+J.~Kasprzak, M.~Richard, S.~Kundermann, A.~Baas, P.~Jeambrun, J.~Keeling,
+  F.~Marchetti, M.~Szyma{\'n}ska, R.~Andr{\'e}, J.~Staehli, V.~Savona,
+  P.~Littlewood, B.~Deveaud, and L.~Dang, Nature 443 (2006), p. 409.
+
+\bibitem{BT14}
+T.~Byrnes, N.Y. Kim, and Y.~Yamamoto, Nat. Phys. 10 (2014), pp. 803--813.
+
+\bibitem{Gross1961}
+E.P. Gross, Nuovo Cimento 20 (1961), pp. 454--477.
+
+\bibitem{Pitaevskii61}
+L.P. Pitaevskii, Sov. Phys. JETP 13 (1961), p. 451.
+
+\bibitem{VS95}
+V.~Savona, L.~Andreani, P.~Schwendimann, and A.~Quattropani, Solid State
+  Commun. 93 (1995), pp. 733 -- 739.
+
+\bibitem{KG99}
+G.~Khitrova, H.M. Gibbs, F.~Jahnke, M.~Kira, and S.W. Koch, Rev. Mod. Phys. 71
+  (1999), pp. 1591--1639.
+
+\bibitem{LWE64}
+W.E. Lamb, Phys. Rev. 134 (1964), pp. A1429--A1450.
+
+\bibitem{WM07}
+M.~Wouters and I.~Carusotto, Phys. Rev. Lett. 99 (2007), p. 140402.
+
+\bibitem{BF162}
+F.~Baboux, L.~Ge, T.~Jacqmin, M.~Biondi, E.~Galopin, A.~Lema\^{\i}tre,
+  L.~Le~Gratiet, I.~Sagnes, S.~Schmidt, H.E. T\"ureci, A.~Amo, and J.~Bloch,
+  Phys. Rev. Lett. 116 (2016), p. 066402.
+
+\bibitem{ZL15}
+L.~Zhang, W.~Xie, J.~Wang, A.~Poddubny, J.~Lu, Y.~Wang, J.~Gu, W.~Liu, D.~Xu,
+  X.~Shen, Y.G. Rubo, B.L. Altshuler, A.V. Kavokin, and Z.~Chen, Proc. Acad.
+  Natl. Sci. 112 (2015), pp. E1516--E1519.
+
+\bibitem{LJY15}
+J.Y. Lien, Y.N. Chen, N.~Ishida, H.B. Chen, C.C. Hwang, and F.~Nori, Phys. Rev.
+  B 91 (2015), p. 024511.
+
+\bibitem{CIY16}
+I.Y. Chestnov, S.S. Demirchyan, A.P. Alodjants, Y.G. Rubo, and A.V. Kavokin,
+  Sci. Rep. 6 (2016), p. 19551.
+
+\bibitem{HR192}
+R.~{Hanai} and P.B. {Littlewood}, arXiv:1908.03243  (2019).
+
+\bibitem{KM13}
+M.~Kulkarni and A.~Lamacraft, Phys. Rev. A 88 (2013), p. 021603.
+
+\bibitem{RG15}
+T.~Karzig, C.E. Bardyn, N.H. Lindner, and G.~Refael, Phys. Rev. X 5 (2015), p.
+  031001.
+
+\bibitem{NAV15}
+A.V. Nalitov, D.D. Solnyshkov, and G.~Malpuech, Phys. Rev. Lett. 114 (2015), p.
+  116401.
+
+\bibitem{KA05}
+A.~Kavokin, G.~Malpuech, and M.~Glazov, Phys. Rev. Lett. 95 (2005), p. 136601.
+
+\bibitem{HJE99}
+J.E. Hirsch, Phys. Rev. Lett. 83 (1999), pp. 1834--1837.
+
+\bibitem{KYK04}
+Y.K. Kato, R.C. Myers, A.C. Gossard, and D.D. Awschalom, Science 306 (2004),
+  pp. 1910--1913.
+
+\bibitem{CL07}
+C.~Leyder, M.~Romanelli, J.P. Karr, E.~Giacobino, T.C.H. Liew, M.M. Glazov,
+  A.V. Kavokin, G.~Malpuech, and A.~Bramati, Nat. Phys. 3 (2007), pp. 628--631.
+
+\bibitem{SK18}
+S.~Klembt, T.H. Harder, O.A. Egorov, K.~Winkler, R.~Ge, M.A. Bandres,
+  M.~Emmerling, L.~Worschech, T.C.H. Liew, M.~Segev, C.~Schneider, and
+  S.~H\"ofling, Nature 562 (2018), pp. 552--556.
+
+\bibitem{TMS13}
+M.S. Tame, K.~McEnery, S.~{\"O}zdemir, J.~Lee, S.~Maier, and M.~Kim, Nat. Phys.
+  9 (2013), pp. 329--340.
+
+\bibitem{BDJ03}
+D.J. Bergman and M.I. Stockman, Phys. Rev. Lett. 90 (2003), p. 027402.
+
+\bibitem{Benisty:11}
+H.~Benisty, A.~Degiron, A.~Lupu, A.D. Lustrac, S.~Ch\'{e}nais, S.~Forget,
+  M.~Besbes, G.~Barbillon, A.~Bruyant, S.~Blaize, and G.~L\'{e}rondel, Opt.
+  Express 19 (2011), pp. 18004--18019.
+
+\bibitem{Lupu:13}
+A.~Lupu, H.~Benisty, and A.~Degiron, Opt. Express 21 (2013), pp. 21651--21668.
+
+\bibitem{AH14}
+H.~Alaeian and J.A. Dionne, Phys. Rev. B 89 (2014), p. 075136.
+
+\bibitem{AH142}
+H.~Alaeian and J.A. Dionne, Phys. Rev. A 89 (2014), p. 033829.
+
+\bibitem{Huang:14}
+C.~Huang, F.~Ye, Y.V. Kartashov, B.A. Malomed, and X.~Chen, Opt. Lett. 39
+  (2014), pp. 5443--5446.
+
+\bibitem{HLM18}
+H.~Louren\c{c}o-Martins, P.~Das, L.H.G. Tizei, R.~Weil, and M.~Kociak, Nat.
+  Phys. 14 (2018), pp. 360--364.
+
+\bibitem{TA19}
+A.~Tuniz, T.~Wieduwilt, and M.A. Schmidt, Phys. Rev. Lett. 123 (2019), p.
+  213903.
+
+\bibitem{JHP19}
+J.H. Park, A.~Ndao, W.~Cai, L.Y. Hsu, A.~Kodigala, T.~Lepetit, Y.H. Lo, and
+  B.~Kant\'e. arXiv:1904.01073.
+
+\bibitem{AY00}
+Y.~Alhassid, Rev. Mod. Phys. 72 (2000), pp. 895--968.
+
+\bibitem{SVV08}
+V.V. Shamshutdinova, K.N. Pichugin, I.~Rotter, and B.F. Samsonov, Phys. Rev. A
+  78 (2008), p. 062712.
+
+\bibitem{DS95}
+S.~Datta, \emph{Electronic Transport in Mesoscopic Systems}, Cambridge
+  University Press, Cambridge, 1995.
+
+\bibitem{IR09}
+I.~Rotter, J. Phys. A 42 (2009), p. 153001.
+
+\bibitem{DRH54}
+R.H. Dicke, Phys. Rev. 93 (1954), pp. 99--110.
+
+\bibitem{DL76}
+L.~Durand, Phys. Rev. D 14 (1976), pp. 3174--3185.
+
+\bibitem{GV11}
+V.~Gurarie, Phys. Rev. B 83 (2011), p. 085426.
+
+\bibitem{VK17}
+V.~Kozii and L.~Fu, arXiv:1708.05841  (2017).
+
+\bibitem{SH182}
+H.~Shen and L.~Fu, Phys. Rev. Lett. 121 (2018), p. 026403.
+
+\bibitem{YoT18}
+T.~Yoshida, R.~Peters, and N.~Kawakami, Phys. Rev. B 98 (2018), p. 035141.
+
+\bibitem{ZHG19}
+H.G. {Zirnstein}, G.~{Refael}, and B.~{Rosenow}, arXiv:1901.11241  (2019).
+
+\bibitem{MY20}
+Y.~Michishita, T.~Yoshida, and R.~Peters, Phys. Rev. B 101 (2020), p. 085122.
+
+\bibitem{SB78}
+B.~Simon, Int. J. Quantum Chem. 14 (1978), pp. 529--542.
+
+\bibitem{CAJ19}
+A.J. Cohen, H.~Luo, K.~Guther, W.~Dobrautz, D.P. Tew, and A.~Alavi, J. Chem.
+  Phys. 151 (2019), p. 061101.
+
+\bibitem{CS83}
+S.~Chandrasekhar, \emph{The Mathematical Theory of Black Holes}, Oxford
+  University Press, New York, 1983.
+
+\bibitem{PG33}
+G.~P{\"o}schl and E.~Teller, Z. Phys. 83 (1933), p. 143.
+
+\bibitem{FV84}
+V.~Ferrari and B.~Mashhoon, Phys. Rev. D 30 (1984), pp. 295--304.
+
+\bibitem{Berti_2009}
+E.~Berti, V.~Cardoso, and A.O. Starinets, Classical and Quant. Grav. 26 (2009),
+  p. 163001.
+
+\bibitem{RK75}
+K.~Rza\ifmmode~\dot{z}\else \.{z}\fi{}ewski, K.~W\'odkiewicz, and
+  W.~\ifmmode~\dot{Z}\else \.{Z}\fi{}akowicz, Phys. Rev. Lett. 35 (1975), pp.
+  432--434.
+
+\bibitem{NP10}
+P.~Nataf and C.~Ciuti, Nat. Commun. 1 (2010), p.~72.
+
+\bibitem{DF07}
+F.~Dimer, B.~Estienne, A.S. Parkins, and H.J. Carmichael, Phys. Rev. A 75
+  (2007), p. 013804.
+
+\bibitem{TEG13}
+E.G.D. Torre, S.~Diehl, M.D. Lukin, S.~Sachdev, and P.~Strack, Phys. Rev. A 87
+  (2013), p. 023831.
+
+\bibitem{MC08}
+C.~Maschler, I.B. Mekhov, and H.~Ritsch, Eur. Phys. J. D 46 (2008), pp.
+  545--560.
+
+\bibitem{BK10}
+K.~Baumann, C.~Guerlin, F.~Brennecke, and T.~Esslinger, Nature 464 (2010), pp.
+  1301--1306.
+
+\bibitem{HC14}
+C.~Hamner, C.~Qu, Y.~Zhang, J.~Chang, M.~Gong, C.~Zhang, and P.~Engels, Nat.
+  Commun. 5 (2014), pp. 1--8.
+
+\bibitem{YA20}
+Y.~{Ashida}, A.~{Imamoglu}, J.~{Faist}, D.~{Jaksch}, A.~{Cavalleri}, and
+  E.~{Demler}, arXiv:2003.13695  (2020).
+
+\bibitem{CGL09}
+G.L. Celardo and L.~Kaplan, Phys. Rev. B 79 (2009), p. 155108.
+
+\bibitem{FVV96}
+V.V. Flambaum, A.A. Gribakina, and G.F. Gribakin, Phys. Rev. A 54 (1996), pp.
+  2066--2079.
+
+\bibitem{VVS92}
+V.~Sokolov and V.~Zelevinsky, Ann. Phys. 216 (1992), pp. 323 -- 350.
+
+\bibitem{VA06}
+A.~Volya and V.~Zelevinsky, Phys. Rev. C 74 (2006), p. 064314.
+
+\bibitem{BM07}
+M.~Bortz and J.~Stolze, Phys. Rev. B 76 (2007), p. 014304.
+
+\bibitem{YA19A}
+Y.~Ashida, T.~Shi, R.~Schmidt, H.R. Sadeghpour, J.I. Cirac, and E.~Demler,
+  Phys. Rev. A 100 (2019), p. 043618.
+
+\bibitem{TO10}
+O.~Tsyplyatyev, J.~von Delft, and D.~Loss, Phys. Rev. B 82 (2010), p. 092203.
+
+\bibitem{Rotter_1991}
+I.~Rotter, Rep. Prog. Phys. 54 (1991), pp. 635--682.
+
+\bibitem{VA05}
+A.~Volya and V.~Zelevinsky, Phys. Rev. Lett. 94 (2005), p. 052501.
+
+\bibitem{IR01}
+I.~Rotter, Phys. Rev. E 64 (2001), p. 036213.
+
+\bibitem{SM07}
+M.~Scheibner, T.~Schmidt, L.~Worschech, A.~Forchel, G.~Bacher, T.~Passow, and
+  D.~Hommel, Nat. Phys. 3 (2007), pp. 106--110.
+
+\bibitem{FJ14}
+J.~Fransson, M.G. Kang, Y.~Yoon, S.~Xiao, Y.~Ochiai, J.~Reno, N.~Aoki, and
+  J.~Bird, Nano Lett. 14 (2014), pp. 788--793.
+
+\bibitem{NG12}
+G.T. Noe~II, J.H. Kim, J.~Lee, Y.~Wang, A.K. W{\'o}jcik, S.A. McGill, D.H.
+  Reitze, A.A. Belyanin, and J.~Kono, Nat. Phys. 8 (2012), pp. 219--224.
+
+\bibitem{TE63}
+T.~Ericson, Ann. Phys. 23 (1963), pp. 390 -- 414.
+
+\bibitem{HAW90}
+H.A. Weidenm{\"u}ller, Nucl. Phys. A 518 (1990), pp. 1 -- 12.
+
+\bibitem{MM09}
+M.~M\"uller and I.~Rotter, Phys. Rev. A 80 (2009), p. 042705.
+
+\bibitem{YA95}
+A.~Yacoby, M.~Heiblum, D.~Mahalu, and H.~Shtrikman, Phys. Rev. Lett. 74 (1995),
+  pp. 4047--4050.
+
+\bibitem{SR97}
+R.~Schuster, E.~Buks, M.~Heiblum, D.~Mahalu, V.~Umansky, and H.~Shtrikman,
+  Nature 385 (1997), pp. 417--420.
+
+\bibitem{GML03}
+M.L.L.d. Guevara, F.~Claro, and P.A. Orellana, Phys. Rev. B 67 (2003), p.
+  195335.
+
+\bibitem{MT03}
+T.~Morimoto, Y.~Iwase, N.~Aoki, T.~Sasaki, Y.~Ochiai, A.~Shailos, J.P. Bird,
+  M.P. Lilly, J.L. Reno, and J.A. Simmons, Appl. Phys. Lett. 82 (2003), pp.
+  3952--3954.
+
+\bibitem{PVI04}
+V.I. Puller, L.G. Mourokh, A.~Shailos, and J.P. Bird, Phys. Rev. Lett. 92
+  (2004), p. 096802.
+
+\bibitem{YY09}
+Y.~Yoon, M.G. Kang, T.~Morimoto, L.~Mourokh, N.~Aoki, J.L. Reno, J.P. Bird, and
+  Y.~Ochiai, Phys. Rev. B 79 (2009), p. 121304.
+
+\bibitem{GG15}
+G.G. Giusteri, F.~Mattiotti, and G.L. Celardo, Phys. Rev. B 91 (2015), p.
+  094301.
+
+\bibitem{BJP12}
+J.P. Brantut, J.~Meineke, D.~Stadler, S.~Krinner, and T.~Esslinger, Science 337
+  (2012), pp. 1069--1071.
+
+\bibitem{DH15}
+D.~Husmann, S.~Uchino, S.~Krinner, M.~Lebrat, T.~Giamarchi, T.~Esslinger, and
+  J.P. Brantut, Science 350 (2015), pp. 1498--1501.
+
+\bibitem{LM19}
+M.~Lebrat, S.~H\"ausler, P.~Fabritius, D.~Husmann, L.~Corman, and T.~Esslinger,
+  Phys. Rev. Lett. 123 (2019), p. 193605.
+
+\bibitem{CL19}
+L.~Corman, P.~Fabritius, S.~H\"ausler, J.~Mohan, L.H. Dogra, D.~Husmann,
+  M.~Lebrat, and T.~Esslinger, Phys. Rev. A 100 (2019), p. 053605.
+
+\bibitem{WEP56}
+E.P. Wigner, \emph{Results and Theory of Resonance Absorption}, in
+  \emph{Proceedings of the Conference on Neutron Physics by Time-of-Flight},
+  Oak Ridge National Laboratory, Oak Ridge, 1956.
+
+\bibitem{PCE65}
+C.E. Porter, \emph{Statistical Theory of Spectra: Fluctuations}, Academic
+  Press, New York, 1965.
+
+\bibitem{KPE10}
+P.E. Koehler, F.~Be\ifmmode \check{c}\else
+  \v{c}\fi{}v\'a\ifmmode~\check{r}\else \v{r}\fi{},
+  M.~Krti\ifmmode~\check{c}\else \v{c}\fi{}ka, J.A. Harvey, and K.H. Guber,
+  Phys. Rev. Lett. 105 (2010), p. 072502.
+
+\bibitem{Pikulin_2012}
+D.I. Pikulin, J.P. Dahlhaus, M.~Wimmer, H.~Schomerus, and C.W.J. Beenakker, New
+  J. Phys. 14 (2012), p. 125011.
+
+\bibitem{UN69}
+N.~Ullah, J. Math. Phys. 10 (1969), pp. 2099--2103.
+
+\bibitem{DFJ62}
+F.J. Dyson, J. Math. Phys. 3 (1962), pp. 140--156.
+
+\bibitem{VVS88}
+V.~Sokolov and V.~Zelevinsky, Phys. Lett. B 202 (1988), pp. 10 -- 14.
+
+\bibitem{VVS89}
+V.~Sokolov and V.~Zelevinsky, Nucl. Phys. A 504 (1989), pp. 562 -- 588.
+
+\bibitem{MPA68}
+P.A. Moldauer, Phys. Rev. 171 (1968), pp. 1164--1169.
+
+\bibitem{KP85}
+P.~Kleinwachter and I.~Rotter, Phys. Rev. C 32 (1985), pp. 1742--1744.
+
+\bibitem{KU08}
+U.~Kuhl, R.~H\"ohmann, J.~Main, and H.J. St\"ockmann, Phys. Rev. Lett. 100
+  (2008), p. 254101.
+
+\bibitem{CHL91}
+C.H. Lewenkopf and H.A. Weidenm{\"u}ller, Ann. Phys. 212 (1991), pp. 53--83.
+
+\bibitem{GM90}
+M.~Gutzwiller, \emph{Chaos in Classical and Quantum Mechanics},
+  Springer-Verlag, Berlin, 1990.
+
+\bibitem{AM96}
+M.~Aymar, C.H. Greene, and E.~Luc-Koenig, Rev. Mod. Phys. 68 (1996), pp.
+  1015--1123.
+
+\bibitem{DG90}
+G.~Dattoli, A.~Torre, and R.~Mignani, Phys. Rev. A 42 (1990), pp. 1467--1475.
+
+\bibitem{CY10}
+Y.~Choi, S.~Kang, S.~Lim, W.~Kim, J.R. Kim, J.H. Lee, and K.~An, Phys. Rev.
+  Lett. 104 (2010), p. 153601.
+
+\bibitem{AGA06}
+G.A. Alvarez, E.P. Danieli, P.R. Levstein, and H.M. Pastawski, J. Chem. Phys.
+  124 (2006), p. 194507.
+
+\bibitem{DAD08}
+A.D. Dente, R.A. Bustos-Mar\'un, and H.M. Pastawski, Phys. Rev. A 78 (2008), p.
+  062116.
+
+\bibitem{CP072}
+P.~Cejnar, S.~Heinze, and M.~Macek, Phys. Rev. Lett. 99 (2007), p. 100601.
+
+\bibitem{ETJ63}
+E.T. {Jaynes} and F.W. {Cummings}, Proc. IEEE 51 (1963), pp. 89--109.
+
+\bibitem{JJ95}
+J.~Javanainen and J.~Ruostekoski, Phys. Rev. A 52 (1995), pp. 3033--3046.
+
+\bibitem{YA15}
+Y.~Ashida and M.~Ueda, Phys. Rev. Lett. 115 (2015), p. 095301.
+
+\bibitem{BWS09}
+W.S. Bakr, J.I. Gillen, A.~Peng, S.~F{\"o}lling, and M.~Greiner, Nature 462
+  (2009), pp. 74--77.
+
+\bibitem{GAP14}
+G.A. Pavliotis, \emph{Stochastic Processes and Applications: Diffusion
+  Processes, the Fokker-Planck and Langevin Equations}, Springer, New York,
+  2014.
+
+\bibitem{BA12}
+A.~Barchielli and M.~Gregoratti, Phil. Trans. R. Soc. A 370 (2012), pp.
+  5364--5385.
+
+\bibitem{PA16}
+A.~Purkayastha, A.~Dhar, and M.~Kulkarni, Phys. Rev. A 93 (2016), p. 062114.
+
+\bibitem{FD19}
+D.~Farina and V.~Giovannetti, Phys. Rev. A 100 (2019), p. 012107.
+
+\bibitem{Cattaneo_2019}
+M.~Cattaneo, G.L. Giorgi, S.~Maniscalco, and R.~Zambrini, New J. Phys. 21
+  (2019), p. 113045.
+
+\bibitem{ZR60}
+R.~Zwanzig, J. Chem. Phys. 33 (1960), pp. 1338--1341.
+
+\bibitem{BHJ93}
+H.J. Briegel and B.G. Englert, Phys. Rev. A 47 (1993), pp. 3311--3329.
+
+\bibitem{TJM14}
+J.M. Torres, Phys. Rev. A 89 (2014), p. 052133.
+
+\bibitem{GEM08}
+E.M. Graefe, H.J. Korsch, and A.E. Niederle, Phys. Rev. Lett. 101 (2008), p.
+  150408.
+
+\bibitem{YA16crit}
+Y.~Ashida, S.~Furukawa, and M.~Ueda, Phys. Rev. A 94 (2016), p. 053615.
+
+\bibitem{WHM10}
+H.~Wiseman and G.~Milburn, \emph{Quantum Measurement and Control}, Cambridge
+  University Press, Cambridge, England, 2010.
+
+\bibitem{NG92}
+N.~Gisin and I.C. Percival, J. Phys. A 25 (1992), pp. 5677--5691.
+
+\bibitem{MJC87}
+M.~Collett, R.~Loudon, and C.~Gardiner, J. Mod. Opt. 34 (1987), pp. 881--902.
+
+\bibitem{MGJ93}
+H.M. Wiseman and G.J. Milburn, Phys. Rev. A 47 (1993), pp. 1652--1666.
+
+\bibitem{KJ06}
+K.~Jacobs and D.A. Steck, Contemp. Phys. 47 (2006), pp. 279--303.
+
+\bibitem{BA13}
+A.~Bassi, K.~Lochan, S.~Satin, T.P. Singh, and H.~Ulbricht, Rev. Mod. Phys. 85
+  (2013), pp. 471--527.
+
+\bibitem{YA17}
+Y.~Ashida and M.~Ueda, Phys. Rev. A 95 (2017), p. 022124.
+
+\bibitem{DAJ09}
+A.J. Daley, J.M. Taylor, S.~Diehl, M.~Baranov, and P.~Zoller, Phys. Rev. Lett.
+  102 (2009), p. 040402.
+
+\bibitem{DS15A}
+S.~Dhar, S.~Dasgupta, A.~Dhar, and D.~Sen, Phys. Rev. A 91 (2015), p. 062115.
+
+\bibitem{GZ17}
+Z.~Gong, S.~Higashikawa, and M.~Ueda, Phys. Rev. Lett. 118 (2017), p. 200401.
+
+\bibitem{WP09}
+P.~W\"urtz, T.~Langen, T.~Gericke, A.~Koglbauer, and H.~Ott, Phys. Rev. Lett.
+  103 (2009), p. 080404.
+
+\bibitem{BG13}
+G.~Barontini, R.~Labouvie, F.~Stubenrauch, A.~Vogler, V.~Guarrera, and H.~Ott,
+  Phys. Rev. Lett. 110 (2013), p. 035302.
+
+\bibitem{LR16}
+R.~Labouvie, B.~Santra, S.~Heun, and H.~Ott, Phys. Rev. Lett. 116 (2016), p.
+  235302.
+
+\bibitem{RJ07}
+J.~Rubinstein, P.~Sternberg, and Q.~Ma, Phys. Rev. Lett. 99 (2007), p. 167003.
+
+\bibitem{NMC12}
+N.M. Chtchelkatchev, A.A. Golubov, T.I. Baturina, and V.M. Vinokur, Phys. Rev.
+  Lett. 109 (2012), p. 150405.
+
+\bibitem{Moll_2018}
+N.~Moll, P.~Barkoutsos, L.S. Bishop, J.M. Chow, A.~Cross, D.J. Egger,
+  S.~Filipp, A.~Fuhrer, J.M. Gambetta, M.~Ganzhorn, A.~Kandala, A.~Mezzacapo,
+  P.~M{\"u}ller, W.~Riess, G.~Salis, J.~Smolin, I.~Tavernelli, and K.~Temme,
+  Quant. Sci. Tech. 3 (2018), p. 030503.
+
+\bibitem{PD10}
+D.~Poulin, Phys. Rev. Lett. 104 (2010), p. 190401.
+
+\bibitem{BT12}
+T.~Barthel and M.~Kliesch, Phys. Rev. Lett. 108 (2012), p. 230504.
+
+\bibitem{KM14b}
+M.~Kliesch, C.~Gogolin, and J.~Eisert, \emph{Lieb-$\mathrm{R}$obinson bounds
+  and the simulation of time-evolution of local observables in lattice
+  systems}, in \emph{Many-Electron Approaches in Physics, Chemistry and
+  Mathematics}, Springer, Cham,  2014, pp. 301--318.
+
+\bibitem{LY20}
+Y.~{Li}, X.~{Chen}, A.W.W. {Ludwig}, and M.P.A. {Fisher}, arXiv:2003.12721
+  (2020).
+
+\bibitem{MM20}
+M.~Motta, C.~Sun, A.T. Tan, M.J. O'Rourke, E.~Ye, A.J. Minnich, F.G.
+  Brand{\~a}o, and G.K.L. Chan, Nat. Phys. 16 (2020), pp. 205--210.
+
+\bibitem{LTE14}
+T.E. Lee and C.K. Chan, Phys. Rev. X 4 (2014), p. 041001.
+
+\bibitem{KS14}
+K.~Stannigel, P.~Hauke, D.~Marcos, M.~Hafezi, S.~Diehl, M.~Dalmonte, and
+  P.~Zoller, Phys. Rev. Lett. 112 (2014), p. 120406.
+
+\bibitem{WAC15}
+A.C.J. Wade, J.F. Sherson, and K.~M\o{}lmer, Phys. Rev. Lett. 115 (2015), p.
+  060401.
+
+\bibitem{WAC16}
+A.C.J. Wade, J.F. Sherson, and K.~M\o{}lmer, Phys. Rev. A 93 (2016), p. 023610.
+
+\bibitem{KW17}
+W.~Kozlowski, S.F. Caballero-Benitez, and I.B. Mekhov, Sci. Rep. 7 (2017), p.
+  42597.
+
+\bibitem{YA18therm}
+Y.~Ashida, K.~Saito, and M.~Ueda, Phys. Rev. Lett. 121 (2018), p. 170402.
+
+\bibitem{JJS18}
+J.J.W.H. S\o{}rensen, M.~Dalgaard, A.H. Kiilerich, K.~M\o{}lmer, and J.F.
+  Sherson, Phys. Rev. A 98 (2018), p. 062317.
+
+\bibitem{MK18}
+M.~Knap, Phys. Rev. B 98 (2018), p. 184416.
+
+\bibitem{LY18}
+Y.~Li, X.~Chen, and M.P.A. Fisher, Phys. Rev. B 98 (2018), p. 205136.
+
+\bibitem{CA19}
+A.~Chan, R.M. Nandkishore, M.~Pretko, and G.~Smith, Phys. Rev. B 99 (2019), p.
+  224307.
+
+\bibitem{SB19}
+B.~Skinner, J.~Ruhman, and A.~Nahum, Phys. Rev. X 9 (2019), p. 031009.
+
+\bibitem{YF20}
+Y.~Fuji and Y.~Ashida, arXiv:2004.11957  (2020).
+
+\bibitem{MN19}
+N.~{Matsumoto}, K.~{Kawabata}, Y.~{Ashida}, S.~{Furukawa}, and M.~{Ueda},
+  arXiv:1912.09045  (2019).
+
+\bibitem{KW16}
+W.~Kozlowski, S.F. Caballero-Benitez, and I.B. Mekhov, Phys. Rev. A 94 (2016),
+  p. 012123.
+
+\bibitem{LC19}
+L.~Corman, P.~Fabritius, S.~H\"ausler, J.~Mohan, L.H. Dogra, D.~Husmann,
+  M.~Lebrat, and T.~Esslinger, Phys. Rev. A 100 (2019), p. 053605.
+
+\bibitem{LDA19}
+D.A. {Lidar}, arXiv:1902.00967  (2019).
+
+\bibitem{Prosen_2015}
+T.~Prosen, J. Phys. A 48 (2015), p. 373001.
+
+\bibitem{NS08}
+N.~Syassen, D.M. Bauer, M.~Lettner, T.~Volz, D.~Dietze, J.J.
+  Garc{\'\i}a-Ripoll, J.I. Cirac, G.~Rempe, and S.~D{\"u}rr, Science 320
+  (2008), pp. 1329--1331.
+
+\bibitem{YB13}
+B.~Yan, S.A. Moses, B.~Gadway, J.P. Covey, K.R. Hazzard, A.M. Rey, D.S. Jin,
+  and J.~Ye, Nature 501 (2013), pp. 521--525.
+
+\bibitem{ZB14}
+B.~Zhu, B.~Gadway, M.~Foss-Feig, J.~Schachenmayer, M.L. Wall, K.R.A. Hazzard,
+  B.~Yan, S.A. Moses, J.P. Covey, D.S. Jin, J.~Ye, M.~Holland, and A.M. Rey,
+  Phys. Rev. Lett. 112 (2014), p. 070404.
+
+\bibitem{EU15}
+U.~Eismann, L.~Khaykovich, S.~Laurent, I.~Ferrier-Barbut, B.S. Rem, A.T. Grier,
+  M.~Delehaye, F.~Chevy, C.~Salomon, L.C. Ha, and C.~Chin, Phys. Rev. X 6
+  (2016), p. 021025.
+
+\bibitem{PYS15}
+Y.S. Patil, S.~Chakram, and M.~Vengalattore, Phys. Rev. Lett. 115 (2015), p.
+  140402.
+
+\bibitem{TT17}
+T.~Tomita, S.~Nakajima, I.~Danshita, Y.~Takasu, and Y.~Takahashi, Sci. Adv. 3
+  (2017), p. e1701513.
+
+\bibitem{YT20}
+Y.~{Takasu}, T.~{Yagami}, Y.~{Ashida}, R.~{Hamazaki}, Y.~{Kuno}, and
+  Y.~{Takahashi}, arXiv:2004.05734  (2020).
+
+\bibitem{Faisal_1981}
+F.H.M. Faisal and J.V. Moloney, J. Phys. B 14 (1981), pp. 3603--3620.
+
+\bibitem{Graefe_2010}
+E.M. Graefe, M.~H{\"o}ning, and H.J. Korsch, J. Phys. A 43 (2010), p. 075306.
+
+\bibitem{KGZ14}
+K.G. Zloshchastiev and A.~Sergi, J. Mod. Opt. 61 (2014), pp. 1298--1308.
+
+\bibitem{ABJ20}
+B.J. {\'A}vila, C.~Ventura-Vel{\'a}zquez, R.d.J. Le{\'o}n-Montiel, Y.N.
+  Joglekar, and B.~Rodriguez-Lara, Sci. Rep. 10 (2020), pp. 1--8.
+
+\bibitem{CCL20}
+C.L. Cortes, M.~Otten, and S.K. Gray, J. Chem. Phys. 152 (2020), p. 084105.
+
+\bibitem{EA18}
+S.~Echeverri-Arteaga, H.~Vinck-Posada, and E.A. G{\'o}mez, Optik 171 (2018),
+  pp. 413--420.
+
+\bibitem{Varguet_2019}
+H.~Varguet, B.~Rousseaux, D.~Dzsotjan, H.R. Jauslin, S.~Gu{\'{e}}rin, and G.C.
+  des Francs, J. Phys. B 52 (2019), p. 055404.
+
+\bibitem{SAM19}
+A.M. Shalaby, Int .J. Mod. Phys. A 34 (2019), p. 1950090.
+
+\bibitem{SAM192}
+A.M. {Shalaby}, arXiv:1911.03571  (2019).
+
+\bibitem{AJ20}
+J.~Alexandre, J.~Ellis, and P.~Millington, Phys. Rev. D 101 (2020), p. 085015.
+
+\bibitem{AJ202}
+J.~Alexandre, J.~Ellis, P.~Millington, and D.~Seynaeve, Phys. Rev. D 101
+  (2020), p. 035008.
+
+\bibitem{AJ19}
+J.~Alexandre, J.~Ellis, P.~Millington, and D.~Seynaeve, Phys. Rev. D 99 (2019),
+  p. 075024.
+
+\bibitem{TG03}
+T.~Giamarchi, \emph{Quantum Physics in One Dimension}, Oxford University Press,
+  Oxford, 2004.
+
+\bibitem{YAbook}
+Y.~Ashida, \emph{Quantum Many-Body Physics in Open Systems: Measurement and
+  Strong Correlations}, Springer, Singapore, 2020.
+
+\bibitem{NM18}
+M.~Nakagawa, N.~Kawakami, and M.~Ueda, Phys. Rev. Lett. 121 (2018), p. 203001.
+
+\bibitem{ZAB86}
+A.B. Zamolodchikov, JETP Lett. 43 (1986), pp. 730--732.
+
+\bibitem{OAC17}
+O.A. Castro-Alvaredo, B.~Doyon, and F.~Ravanini, J. Phys. A 50 (2017), p.
+  424002.
+
+\bibitem{FP93}
+P.~Fendley, H.~Saleur, and A.B. Zamolodchikov, Int. J. Mod. Phys. A 08 (1993),
+  pp. 5717--5750.
+
+\bibitem{GV07}
+G.~Vidal, Phys. Rev. Lett. 98 (2007), p. 070201.
+
+\bibitem{IA04}
+I.~Affleck, W.~Hofstetter, D.R. Nelson, and U.~Schollw{\"o}ck, J. Stat. Mech.
+  Theor. Exp. 2004 (2004), p. P10003.
+
+\bibitem{LAS18}
+J.A.S. Lourenco, R.L. Eneias, and R.G. Pereira, Phys. Rev. B 98 (2018), p.
+  085126.
+
+\bibitem{Yoshi20}
+T.~{Yoshimura}, K.~{Bidzhiev}, and H.~{Saleur}, arXiv:2002.08478  (2020).
+
+\bibitem{MG76}
+M.~Gaudin, J. Phys. (France) 37 (1976), p. 1087.
+
+\bibitem{RWR63}
+R.~Richardson, Phys. Lett. 3 (1963), pp. 277 -- 279.
+
+\bibitem{RDA18}
+D.A. Rowlands and A.~Lamacraft, Phys. Rev. Lett. 120 (2018), p. 090401.
+
+\bibitem{GA18}
+A.~Ghatak and T.~Das, Phys. Rev. B 97 (2018), p. 014512.
+
+\bibitem{YK19}
+K.~Yamamoto, M.~Nakagawa, K.~Adachi, K.~Takasan, M.~Ueda, and N.~Kawakami,
+  Phys. Rev. Lett. 123 (2019), p. 123601.
+
+\bibitem{SJP16}
+P.~San-Jose, J.~Cayao, E.~Prada, and R.~Aguado, Sci. Rep. 6 (2016), p. 21427.
+
+\bibitem{ZQB16}
+Q.B. Zeng, B.~Zhu, S.~Chen, L.~You, and R.~L\"u, Phys. Rev. A 94 (2016), p.
+  022119.
+
+\bibitem{SN19}
+N.~Shibata and H.~Katsura, Phys. Rev. B 99 (2019), p. 174303.
+
+\bibitem{YT192}
+T.~Yoshida, K.~Kudo, and Y.~Hatsugai, Sci. Rep. 9 (2019), pp. 1--8.
+
+\bibitem{GC19}
+C.X. {Guo}, X.R. {Wang}, and S.P. {Kou}, arXiv:1907.06699  (2019).
+
+\bibitem{BA00}
+A.~Beige, D.~Braun, B.~Tregenna, and P.L. Knight, Phys. Rev. Lett. 85 (2000),
+  pp. 1762--1765.
+
+\bibitem{ZP14}
+P.~Zanardi and L.~Campos~Venuti, Phys. Rev. Lett. 113 (2014), p. 240406.
+
+\bibitem{BM20}
+B.~Militello and A.~Napoli, Phys. Lett. A 384 (2020), p. 126355.
+
+\bibitem{ZG20}
+Z.~Gong, N.~Yoshioka, N.~Shibata, and R.~Hamazaki, Phys. Rev. A 101 (2020), p.
+  052122.
+
+\bibitem{JJGR09}
+J.J. Garcia-Ripoll, S.~D{\" u}rr, N.~Syassen, D.M. Bauer, M.~Lettner, G.~Rempe,
+  and J.I. Cirac, New J. Phys. 11 (2009), p. 013053.
+
+\bibitem{DSG09}
+S.~D\"urr, J.J. Garc\'{\i}a-Ripoll, N.~Syassen, D.M. Bauer, M.~Lettner, J.I.
+  Cirac, and G.~Rempe, Phys. Rev. A 79 (2009), p. 023614.
+
+\bibitem{PB07}
+B.~Paredes, T.~Keilmann, and J.I. Cirac, Phys. Rev. A 75 (2007), p. 053611.
+
+\bibitem{DS10}
+S.~Diehl, M.~Baranov, A.J. Daley, and P.~Zoller, Phys. Rev. Lett. 104 (2010),
+  p. 165301.
+
+\bibitem{MOROZ2010491}
+S.~Moroz and R.~Schmidt, Ann. Phys. 325 (2010), pp. 491 -- 513.
+
+\bibitem{ZZ20}
+Z.~Zhou, Z.~Wang, H.~Zhong, Y.~Luo, H.~Chen, and J.~Tan, Phys. Lett. A 384
+  (2020), p. 126197.
+
+\bibitem{NM202}
+M.~Nakagawa, N.~Tsuji, N.~Kawakami, and M.~Ueda, Phys. Rev. Lett. 124 (2020),
+  p. 147203.
+
+\bibitem{NM20}
+M.~{Nakagawa}, N.~{Kawakami}, and M.~{Ueda}, arXiv:2003.14202  (2020).
+
+\bibitem{BB20}
+B.~{Buca}, C.~{Booker}, M.~{Medenjak}, and D.~{Jaksch}, arXiv:2004.05955
+  (2020).
+
+\bibitem{PL20}
+L.~{Pan}, X.~{Wang}, X.~{Cui}, and S.~{Chen}, arXiv:2003.08864  (2020).
+
+\bibitem{YS17}
+S.~Yin, G.Y. Huang, C.Y. Lo, and P.~Chen, Phys. Rev. Lett. 118 (2017), p.
+  065701.
+
+\bibitem{DB192}
+B.~D{\'o}ra, M.~Heyl, and R.~Moessner, Nat. Commun. 10 (2019), p. 2254.
+
+\bibitem{PX20}
+P.~Xue, L.~Xiao, D.~Qu, K.~Wang, H.W. Li, J.Y. Dai, B.~D{\'o}ra, M.~Heyl,
+  R.~Moessner, and W.~Yi, arXiv:2004.05928  (2020).
+
+\bibitem{MF11}
+C.~Lacroix, P.~Mendels, and F.~Mila (eds.), \emph{Introduction to Frustrated
+  Magnetism: Materials, Experiments, Theory}, Springer, Heidelberg, 2011.
+
+\bibitem{LRA98}
+R.A. Lehrer and D.R. Nelson, Phys. Rev. B 58 (1998), pp. 12385--12403.
+
+\bibitem{FT98}
+T.~Fukui and N.~Kawakami, Phys. Rev. B 58 (1998), pp. 16051--16056.
+
+\bibitem{OT10}
+T.~Oka and H.~Aoki, Phys. Rev. B 81 (2010), p. 033103.
+
+\bibitem{PA20}
+A.~Panda and S.~Banerjee, Phys. Rev. B 101 (2020), p. 184201.
+
+\bibitem{TK19}
+K.~{Takasan}, M.~{Nakagawa}, and N.~{Kawakami}, arXiv:1908.06107  (2019).
+
+\bibitem{LDA16}
+L.~D'Alessio, Y.~Kafri, A.~Polkovnikov, and M.~Rigol, Adv. Phys. 65 (2016), pp.
+  239--362.
+
+\bibitem{GF10}
+F.~Gerbier and Y.~Castin, Phys. Rev. A 82 (2010), p. 013615.
+
+\bibitem{PH10}
+H.~Pichler, A.J. Daley, and P.~Zoller, Phys. Rev. A 82 (2010), p. 063605.
+
+\bibitem{SJ14}
+J.~Schachenmayer, L.~Pollet, M.~Troyer, and A.J. Daley, Phys. Rev. A 89 (2014),
+  p. 011601.
+
+\bibitem{ST20}
+T.~Shirai and T.~Mori, Phys. Rev. E 101 (2020), p. 042116.
+
+\bibitem{BA20}
+A.~B\'acsi, C.P. Moca, and B.~D\'ora, Phys. Rev. Lett. 124 (2020), p. 136401.
+
+\bibitem{HP16}
+P.~Hayden, S.~Nezami, X.L. Qi, N.~Thomas, M.~Walter, and Z.~Yang, J. High
+  Energy Phys. 2016 (2016), p.~9.
+
+\bibitem{BL17}
+L.~Banchi, D.~Burgarth, and M.J. Kastoryano, Phys. Rev. X 7 (2017), p. 041015.
+
+\bibitem{NA17}
+A.~Nahum, J.~Ruhman, S.~Vijay, and J.~Haah, Phys. Rev. X 7 (2017), p. 031016.
+
+\bibitem{XC19}
+X.~Cao, A.~Tilloy, and A.D. Luca, SciPost Phys. 7 (2019), p.~24.
+
+\bibitem{TQ20}
+Q.~Tang and W.~Zhu, Phys. Rev. Research 2 (2020), p. 013022.
+
+\bibitem{GS20}
+S.~{Goto} and I.~{Danshita}, arXiv:2001.03400  (2020).
+
+\bibitem{KH14}
+H.~Kim, T.N. Ikeda, and D.A. Huse, Phys. Rev. E 90 (2014), p. 052105.
+
+\bibitem{LY19}
+Y.~Li, X.~Chen, and M.P.A. Fisher, Phys. Rev. B 100 (2019), p. 134306.
+
+\bibitem{RMTbook}
+M.L. Metha, \emph{Random Matrices}, Academic Press, New York, 1990.
+
+\bibitem{EKB97}
+K.B. Efetov, Phys. Rev. Lett. 79 (1997), pp. 491--494.
+
+\bibitem{EKB972}
+K.B. Efetov, Phys. Rev. B 56 (1997), pp. 9630--9648.
+
+\bibitem{KS04}
+K.~Splittorff and J.~Verbaarschot, Nucl. Phys. B 683 (2004), pp. 467 -- 507.
+
+\bibitem{AG18}
+G.~Akemann, M.~Cikovic, and M.~Venker, Comm. Math. Phys. 362 (2018), pp.
+  1111--1141.
+
+\bibitem{AG19}
+G.~Akemann, M.~Kieburg, A.~Mielke, and T.~Prosen, Phys. Rev. Lett. 123 (2019),
+  p. 254101.
+
+\bibitem{LACT19}
+B.~Lacroix-A-Chez-Toine, J.A.M. Garz\'on, C.S.H. Calva, I.P. Castillo,
+  A.~Kundu, S.N. Majumdar, and G.~Schehr, Phys. Rev. E 100 (2019), p. 012137.
+
+\bibitem{DS19}
+S.~Denisov, T.~Laptyeva, W.~Tarnowski, D.~Chrusinski, and K.~Zyczkowski, Phys.
+  Rev. Lett. 123 (2019), p. 140403.
+
+\bibitem{CT19}
+T.~Can, V.~Oganesyan, D.~Orgad, and S.~Gopalakrishnan, Phys. Rev. Lett. 123
+  (2019), p. 234103.
+
+\bibitem{WK20}
+K.~Wang, F.~Piazza, and D.J. Luitz, Phys. Rev. Lett. 124 (2020), p. 100604.
+
+\bibitem{FYV97}
+Y.V. Fyodorov, B.A. Khoruzhenko, and H.J. Sommers, Phys. Rev. Lett. 79 (1997),
+  pp. 557--560.
+
+\bibitem{KSJ98}
+K.S. Johnson, J.H. Thywissen, N.H. Dekker, K.K. Berggren, A.P. Chu, R.~Younkin,
+  and M.~Prentiss, Science 280 (1998), pp. 1583--1586.
+
+\bibitem{MKO99}
+M.K. Oberthaler, R.~Abfalterer, S.~Bernet, C.~Keller, J.~Schmiedmayer, and
+  A.~Zeilinger, Phys. Rev. A 60 (1999), pp. 456--472.
+
+\bibitem{AT03}
+A.~Turlapov, A.~Tonyushkin, and T.~Sleator, Phys. Rev. A 68 (2003), p. 023408.
+
+\bibitem{RS05}
+R.~St\"utzle, M.C. G\"obel, T.~H\"orner, E.~Kierig, I.~Mourachko, M.K.
+  Oberthaler, M.A. Efremov, M.V. Fedorov, V.P. Yakovlev, K.A.H. van Leeuwen,
+  and W.P. Schleich, Phys. Rev. Lett. 95 (2005), p. 110405.
+
+\bibitem{LHP17}
+H.P. L\"uschen, P.~Bordia, S.S. Hodgman, M.~Schreiber, S.~Sarkar, A.J. Daley,
+  M.H. Fischer, E.~Altman, I.~Bloch, and U.~Schneider, Phys. Rev. X 7 (2017),
+  p. 011034.
+
+\bibitem{RB16}
+B.~Rauer, P.~Gri\ifmmode~\check{s}\else \v{s}\fi{}ins, I.E. Mazets,
+  T.~Schweigler, W.~Rohringer, R.~Geiger, T.~Langen, and J.~Schmiedmayer, Phys.
+  Rev. Lett. 116 (2016), p. 030402.
+
+\bibitem{GT08}
+T.~Gericke, P.~Wurtz, D.~Reitz, T.~Langen, and H.~Ott, Nat. Phys. 4 (2008), pp.
+  949--953.
+
+\bibitem{BP11}
+P.~Barmettler and C.~Kollath, Phys. Rev. A 84 (2011), p. 041606.
+
+\bibitem{WD11}
+D.~Witthaut, F.~Trimborn, H.~Hennig, G.~Kordas, T.~Geisel, and S.~Wimberger,
+  Phys. Rev. A 83 (2011), p. 063608.
+
+\bibitem{VI14}
+I.~Vidanovic, D.~Cocks, and W.~Hofstetter, Phys. Rev. A 89 (2014), p. 053614.
+
+\bibitem{Barredo1021}
+D.~Barredo, S.~de~L{\'e}s{\'e}leuc, V.~Lienhard, T.~Lahaye, and A.~Browaeys,
+  Science 354 (2016), pp. 1021--1023.
+
+\bibitem{Endres1024}
+M.~Endres, H.~Bernien, A.~Keesling, H.~Levine, E.R. Anschuetz, A.~Krajenbrink,
+  C.~Senko, V.~Vuletic, M.~Greiner, and M.D. Lukin, Science 354 (2016), pp.
+  1024--1027.
+
+\bibitem{LTE12}
+T.E. Lee, H.~H\"affner, and M.C. Cross, Phys. Rev. Lett. 108 (2012), p. 023602.
+
+\bibitem{BH17}
+H.~Bernien, S.~Schwartz, A.~Keesling, H.~Levine, A.~Omran, H.~Pichler, S.~Choi,
+  A.S. Zibrov, M.~Endres, M.~Greiner, V.~Vuletic, and M.D. Lukin, Nature 551
+  (2017), pp. 579--584.
+
+\bibitem{YA19L}
+Y.~Ashida, T.~Shi, R.~Schmidt, H.R. Sadeghpour, J.I. Cirac, and E.~Demler,
+  Phys. Rev. Lett. 123 (2019), p. 183001.
+
+\bibitem{SP12}
+P.~Schau{\ss}, M.~Cheneau, M.~Endres, T.~Fukuhara, S.~Hild, A.~Omran, T.~Pohl,
+  C.~Gross, S.~Kuhr, and I.~Bloch, Nature 491 (2012), pp. 87--91.
+
+\bibitem{AC12}
+C.~Ates, B.~Olmos, W.~Li, and I.~Lesanovsky, Phys. Rev. Lett. 109 (2012), p.
+  233003.
+
+\bibitem{EB14}
+B.~Everest, M.R. Hush, and I.~Lesanovsky, Phys. Rev. B 90 (2014), p. 134306.
+
+\bibitem{KT06}
+T.~Kraemer, M.~Mark, P.~Waldburger, J.~Danzl, C.~Chin, B.~Engeser, A.~Lange,
+  K.~Pilch, A.~Jaakkola, H.C. N{\"a}gerl, and R.~Grimm, Nature 440 (2006), pp.
+  315--318.
+
+\bibitem{RA07}
+A.~Rapp, G.~Zar\'and, C.~Honerkamp, and W.~Hofstetter, Phys. Rev. Lett. 98
+  (2007), p. 160405.
+
+\bibitem{CYC11}
+Y.C. Chen, K.K. Ng, and M.F. Yang, Phys. Rev. B 84 (2011), p. 092503.
+
+\bibitem{HS132}
+S.~Haroche, Rev. Mod. Phys. 85 (2013), pp. 1083--1102.
+
+\bibitem{IR15}
+R.~{Islam}, R.~{Ma}, P.M. {Preiss}, M.E. {Tai}, A.~{Lukin}, M.~{Rispoli}, and
+  M.~{Greiner}, Nature 528 (2015), pp. 77--83.
+
+\bibitem{PPM152}
+P.M. Preiss, R.~Ma, M.E. Tai, J.~Simon, and M.~Greiner, Phys. Rev. A 91 (2015),
+  p. 041602.
+
+\bibitem{SJF10}
+J.F. Sherson, C.~Weitenberg, M.~Endres, M.~Cheneau, I.~Bloch, and S.~Kuhr,
+  Nature 467 (2010), pp. 68--72.
+
+\bibitem{EM11}
+M.~{Endres}, M.~{Cheneau}, T.~{Fukuhara}, C.~{Weitenberg}, P.~{Schau{\ss}},
+  C.~{Gross}, L.~{Mazza}, M.C. {Ba{\~n}uls}, L.~{Pollet}, I.~{Bloch}, and
+  S.~{Kuhr}, Science 334 (2011), pp. 200--203.
+
+\bibitem{FT15}
+T.~Fukuhara, S.~Hild, J.~Zeiher, P.~Schau\ss{}, I.~Bloch, M.~Endres, and
+  C.~Gross, Phys. Rev. Lett. 115 (2015), p. 035302.
+
+\bibitem{PM16f}
+M.F. Parsons, A.~Mazurenko, C.S. Chiu, G.~Ji, D.~Greif, and M.~Greiner, Science
+  353 (2016), pp. 1253--1256.
+
+\bibitem{TJS16}
+J.S. Tang, Y.T. Wang, S.~Yu, D.Y. He, J.S. Xu, B.H. Liu, G.~Chen, Y.N. Sun,
+  K.~Sun, Y.J. Han, \emph{et~al.}, Nat. Photon. 10 (2016), p. 642.
+
+\bibitem{LX17}
+L.~Xiao, X.~Zhan, Z.H. Bian, K.K. Wang, X.~Zhang, X.P. Wang, J.~Li,
+  K.~Mochizuki, D.~Kim, N.~Kawakami, W.~Yi, H.~Obuse, B.C. Sanders, and P.~Xue,
+  Nat. Phys. 13 (2017), pp. 1117--1123.
+
+\bibitem{NaM19}
+M.~Naghiloo, M.~Abbasi, Y.N. Joglekar, and K.~Murch, Nat. Phys. 15 (2019), pp.
+  1232--1236.
+
+\bibitem{Quiroz-Juarez:19}
+M.A. Quiroz-Ju\'{a}rez, A.~Perez-Leija, K.~Tschernig, B.M. Rodr\'{i}guez-Lara,
+  O.S.M. {n}a Loaiza, K.~Busch, Y.N. Joglekar, and R.~de~J.~Le\'{o}n-Montiel,
+  Photon. Res. 7 (2019), pp. 862--867.
+
+\bibitem{CW20}
+W.~Cao, X.~Lu, X.~Meng, J.~Sun, H.~Shen, and Y.~Xiao, Phys. Rev. Lett. 124
+  (2020), p. 030401.
+
+\bibitem{SCW20}
+S.C. Wein, J.W. Ji, Y.F. Wu, F.K. Asadi, R.~Ghobadi, and C.~Simon,
+  arXiv:2004.04786  (2020).
+
+\bibitem{PYS14}
+Y.S. Patil, S.~Chakram, L.M. Aycock, and M.~Vengalattore, Phys. Rev. A 90
+  (2014), p. 033422.
+
+\bibitem{AA16}
+A.~Alberti, C.~Robens, W.~Alt, S.~Brakhane, M.~Karski, R.~Reimann, A.~Widera,
+  and D.~Meschede, New J. Phys. 18 (2016), p. 053010.
+
+\bibitem{SS192}
+S.~Subhankar, Y.~Wang, T.C. Tsui, S.L. Rolston, and J.V. Porto, Phys. Rev. X 9
+  (2019), p. 021002.
+
+\bibitem{MM19}
+M.~McDonald, J.~Trisnadi, K.X. Yao, and C.~Chin, Phys. Rev. X 9 (2019), p.
+  021001.
+
+\bibitem{JE03}
+J.~Eschner, G.~Morigi, F.~Schmidt-Kaler, and R.~Blatt, J. Opt. Soc. Am. B 20
+  (2003), pp. 1003--1015.
+
+\bibitem{BF13}
+F.~Brennecke, R.~Mottl, K.~Baumann, R.~Landig, T.~Donner, and T.~Esslinger,
+  Proc. Natl. Aca. Sci. USA 110 (2013), pp. 11763--11767.
+
+\bibitem{MG16}
+G.~Mazzucchi, W.~Kozlowski, S.F. Caballero-Benitez, T.J. Elliott, and I.B.
+  Mekhov, Phys. Rev. A 93 (2016), p. 023632.
+
+\bibitem{Dogra1496}
+N.~Dogra, M.~Landini, K.~Kroeger, L.~Hruby, T.~Donner, and T.~Esslinger,
+  Science 366 (2019), pp. 1496--1499.
+
+\bibitem{RCEI18}
+E.I. Rodr\'{\i}guez~Chiacchio and A.~Nunnenkamp, Phys. Rev. A 97 (2018), p.
+  033618.
+
+\bibitem{KM11}
+M.~Kliesch, T.~Barthel, C.~Gogolin, M.~Kastoryano, and J.~Eisert, Phys. Rev.
+  Lett. 107 (2011), p. 120501.
+
+\bibitem{PT14}
+T.~Prosen, Phys. Rev. Lett. 112 (2014), p. 030603.
+
+\bibitem{MM08}
+M.~Mohseni, P.~Rebentrost, S.~Lloyd, and A.~Aspuru-Guzik, J. Chem. Phys. 129
+  (2008), p. 174106.
+
+\bibitem{IA94}
+A.~Imamoglu, Phys. Rev. A 50 (1994), pp. 3650--3653.
+
+\bibitem{BHP07}
+H.P. Breuer, Phys. Rev. A 75 (2007), p. 022103.
+
+\bibitem{PJ08}
+J.~Piilo, S.~Maniscalco, K.~H\"ark\"onen, and K.A. Suominen, Phys. Rev. Lett.
+  100 (2008), p. 180402.
+
+\bibitem{dVI17}
+I.~de~Vega and D.~Alonso, Rev. Mod. Phys. 89 (2017), p. 015001.
+
+\bibitem{RT16}
+T.~Ramos, B.~Vermersch, P.~Hauke, H.~Pichler, and P.~Zoller, Phys. Rev. A 93
+  (2016), p. 062104.
+
+\bibitem{Dorda_2017}
+A.~Dorda, M.~Sorantin, W.~von~der Linden, and E.~Arrigoni, New J. Phys. 19
+  (2017), p. 063005.
+
+\bibitem{YA18B}
+Y.~Ashida, T.~Shi, M.C. Ba\~nuls, J.I. Cirac, and E.~Demler, Phys. Rev. B 98
+  (2018), p. 024103.
+
+\bibitem{YZ18}
+Z.~Yan, L.~Pollet, J.~Lou, X.~Wang, Y.~Chen, and Z.~Cai, Phys. Rev. B 97
+  (2018), p. 035148.
+
+\bibitem{UW99}
+U.~Weiss, \emph{Quantum Dissipative Systems}, World Scientific, Singapore,
+  1999.
+
+\bibitem{CAO81}
+A.O. Caldeira and A.J. Leggett, Phys. Rev. Lett. 46 (1981), pp. 211--214.
+
+\bibitem{SA83}
+A.~Schmid, Phys. Rev. Lett. 51 (1983), pp. 1506--1509.
+
+\bibitem{GF85}
+F.~Guinea, V.~Hakim, and A.~Muramatsu, Phys. Rev. Lett. 54 (1985), pp.
+  263--266.
+
+\bibitem{LAJ87}
+A.J. Leggett, S.~Chakravarty, A.T. Dorsey, M.P.A. Fisher, A.~Garg, and
+  W.~Zwerger, Rev. Mod. Phys. 59 (1987), pp. 1--85.
+
+\bibitem{WKG75}
+K.G. Wilson, Rev. Mod. Phys. 47 (1975), pp. 773--840.
+
+\bibitem{BR03}
+R.~Bulla, N.H. Tong, and M.~Vojta, Phys. Rev. Lett. 91 (2003), p. 170601.
+
+\bibitem{BCA10}
+C.A. B\"usser, G.B. Martins, L.~Costa~Ribeiro, E.~Vernek, E.V. Anda, and
+  E.~Dagotto, Phys. Rev. B 81 (2010), p. 045111.
+
+\bibitem{NK81}
+N.~Kawakami and A.~Okiji, Phys. Lett. A 86 (1981), pp. 483 -- 486.
+
+\bibitem{AN83}
+N.~Andrei, K.~Furuya, and J.H. Lowenstein, Rev. Mod. Phys. 55 (1983), pp.
+  331--402.
+
+\bibitem{SP89}
+P.~Schlottmann, Phys. Rep. 181 (1989), pp. 1 -- 119.
+
+\bibitem{STL08}
+T.L. Schmidt, P.~Werner, L.~M\"uhlbacher, and A.~Komnik, Phys. Rev. B 78
+  (2008), p. 235110.
+
+\bibitem{WP09d}
+P.~Werner, T.~Oka, and A.J. Millis, Phys. Rev. B 79 (2009), p. 035320.
+
+\bibitem{SM09}
+M.~Schir\'o and M.~Fabrizio, Phys. Rev. B 79 (2009), p. 153302.
+
+\bibitem{WP10}
+P.~Werner, T.~Oka, M.~Eckstein, and A.J. Millis, Phys. Rev. B 81 (2010), p.
+  035108.
+
+\bibitem{CG13}
+G.~Cohen, E.~Gull, D.R. Reichman, A.J. Millis, and E.~Rabani, Phys. Rev. B 87
+  (2013), p. 195108.
+
+\bibitem{BS14}
+S.~Bera, A.~Nazir, A.W. Chin, H.U. Baranger, and S.~Florens, Phys. Rev. B 90
+  (2014), p. 075110.
+
+\bibitem{FS15}
+S.~Florens and I.~Snyman, Phys. Rev. B 92 (2015), p. 195106.
+
+\bibitem{BCZ17}
+Z.~Blunden-Codd, S.~Bera, B.~Bruognolo, N.O. Linden, A.W. Chin, J.~von Delft,
+  A.~Nazir, and S.~Florens, Phys. Rev. B 95 (2017), p. 085104.
+
+\bibitem{AFB05}
+F.B. Anders and A.~Schiller, Phys. Rev. Lett. 95 (2005), p. 196801.
+
+\bibitem{LB14}
+B.~Lechtenberg and F.B. Anders, Phys. Rev. B 90 (2014), p. 045117.
+
+\bibitem{NM15}
+M.~Nuss, M.~Ganahl, E.~Arrigoni, W.~von~der Linden, and H.G. Evertz, Phys. Rev.
+  B 91 (2015), p. 085127.
+
+\bibitem{DB17}
+B.~D\'ora, M.A. Werner, and C.P. Moca, Phys. Rev. B 96 (2017), p. 155116.
+
+\bibitem{YA18L}
+Y.~Ashida, T.~Shi, M.C. Ba\~nuls, J.I. Cirac, and E.~Demler, Phys. Rev. Lett.
+  121 (2018), p. 026805.
+
+\bibitem{CZ14}
+Z.~Cai, U.~Schollw\"ock, and L.~Pollet, Phys. Rev. Lett. 113 (2014), p. 260403.
+
+\bibitem{dVA15}
+I.~de~Vega and M.C. Ba\~nuls, Phys. Rev. A 92 (2015), p. 052116.
+
+\bibitem{TC20}
+T.~Chen, V.~Balachandran, C.~Guo, and D.~Poletti, arXiv:2004.05017  (2020).
+
+\bibitem{EM09}
+M.~Esposito, U.~Harbola, and S.~Mukamel, Rev. Mod. Phys. 81 (2009), pp.
+  1665--1702.
+
+\bibitem{FWR90}
+W.R. Frensley, Rev. Mod. Phys. 62 (1990), pp. 745--791.
+
+\bibitem{MMA97}
+M.A. Mu\~noz, G.~Grinstein, and Y.~Tu, Phys. Rev. E 56 (1997), pp. 5101--5105.
+
+\bibitem{OG04}
+G.~\'Odor, Rev. Mod. Phys. 76 (2004), pp. 663--724.
+
+\bibitem{PT12}
+T.~Prosen, Phys. Rev. Lett. 109 (2012), p. 090404.
+
+\bibitem{PA19}
+A.~Pick, S.~Silberstein, N.~Moiseyev, and N.~Bar-Gill, Phys. Rev. Research 1
+  (2019), p. 013015.
+
+\bibitem{HJ20}
+J.~{Huber}, P.~{Kirton}, S.~{Rotter}, and P.~{Rabl}, arXiv:2003.02265  (2020).
+
+\bibitem{PT08}
+T.~Prosen, New J. Phys 10 (2008), p. 043026.
+
+\bibitem{SN19b}
+N.~Shibata and H.~Katsura, Phys. Rev. B 99 (2019), p. 224432.
+
+\bibitem{CEB2013}
+C.E. Bardyn, M.A. Baranov, C.V. Kraus, E.~Rico, A.~\.Imamo\v{g}lu, P.~Zoller,
+  and S.~Diehl, New J. Phys. 15 (2013), p. 085001.
+
+\bibitem{LS20}
+S.~Lieu, M.~McGinley, and N.R. Cooper, Phys. Rev. Lett. 124 (2020), p. 040401.
+
+\bibitem{CEB2018}
+C.E. Bardyn, L.~Wawer, A.~Altland, M.~Fleischhauer, and S.~Diehl, Phys. Rev. X
+  8 (2018), p. 011035.
+
+\bibitem{BRJ892}
+R.J. Baxter, J. Stat. Phys. 57 (1989), pp. 1--39.
+
+\bibitem{RJB89}
+R.~Baxter, Phys. Lett. A 140 (1989), pp. 155 -- 157.
+
+\bibitem{Fendley_2014}
+P.~Fendley, J. Phys. A 47 (2014), p. 075001.
+
+\bibitem{KM17}
+M.~Klett, H.~Cartarius, D.~Dast, J.~Main, and G.~Wunner, Phys. Rev. A 95
+  (2017), p. 053626.
+
+\bibitem{JH182}
+H.~Jiang, C.~Yang, and S.~Chen, Phys. Rev. A 98 (2018), p. 052116.
+
+\bibitem{LE20}
+E.~Lee, H.~Lee, and B.J. Yang, Phys. Rev. B 101 (2020), p. 121109.
+
+\bibitem{BECbook}
+L.P. Pitaevskii and S.~Stringari, \emph{Bose Einstein Condensation}, Oxford
+  University Press, Oxford, England, 2003.
+
+\bibitem{CC01}
+C.~Ciuti, P.~Schwendimann, and A.~Quattropani, Phys. Rev. B 63 (2001), p.
+  041303.
+
+\bibitem{BNR14}
+N.R. Bernier, E.G. Dalla~Torre, and E.~Demler, Phys. Rev. Lett. 113 (2014), p.
+  065303.
+
+\bibitem{OT20}
+T.~Ohashi, S.~Kobayashi, and Y.~Kawaguchi, Phys. Rev. A 101 (2020), p. 013625.
+
+\bibitem{MA18}
+A.~McDonald, T.~Pereg-Barnea, and A.A. Clerk, Phys. Rev. X 8 (2018), p. 041031.
+
+\bibitem{AN19}
+C.C. Wanjura, M.~Brunelli, and A.~Nunnenkamp, arXiv:1909.11647  (2019).
+
+\bibitem{SMS04}
+M.S. Swanson, J. Math. Phys. 45 (2004), pp. 585--601.
+
+\bibitem{DFP12}
+P.~Di~Francesco, P.~Mathieu, and D.~S{\'e}n{\'e}chal, \emph{Conformal field
+  theory}, Springer-Verlag, New York, 1997.
+
+\bibitem{AAB84}
+A.~Belavin, A.~Polyakov, and A.~Zamolodchikov, Nucl. Phys. B 241 (1984), pp.
+  333 -- 380.
+
+\bibitem{VMA70}
+M.A. Virasoro, Phys. Rev. D 1 (1970), pp. 2933--2936.
+
+\bibitem{FD84}
+D.~Friedan, Z.~Qiu, and S.~Shenker, Phys. Rev. Lett. 52 (1984), pp. 1575--1578.
+
+\bibitem{CJL85}
+J.L. Cardy, Phys. Rev. Lett. 54 (1985), pp. 1354--1356.
+
+\bibitem{BHWJ86}
+H.W.J. Bl\"ote, J.L. Cardy, and M.P. Nightingale, Phys. Rev. Lett. 56 (1986),
+  pp. 742--745.
+
+\bibitem{PC04}
+P.~Calabrese and J.~Cardy, J. Stat. Mech. (2004) (2004), p. P06002.
+
+\bibitem{DB15}
+D.~Bianchini, O.~Castro-Alvaredo, B.~Doyon, E.~Levi, and F.~Ravanini, J. Phys.
+  A 48 (2015), p. 04FT01.
+
+\bibitem{JC10}
+J.~Cardy and P.~Calabrese, J. Stat. Mech. 2010 (2010), p. P04023.
+
+\bibitem{OK15}
+K.~Ohmori and Y.~Tachikawa, J. Stat. Mech. 2015 (2015), p. P04010.
+
+\bibitem{CR2017}
+R.~Couvreur, J.L. Jacobsen, and H.~Saleur, Phys. Rev. Lett. 119 (2017), p.
+  040601.
+
+\bibitem{PYC19}
+P.Y. Chang, J.S. You, X.~Wen, and S.~Ryu, arXiv:1909.01346  (2019).
+
+\bibitem{AMF88}
+M.F. Atiyah, Publications Math{\'e}matiques de l'IH{\'E}S 68 (1988), pp.
+  175--186.
+
+\bibitem{GM89}
+G.~Moore and N.~Seiberg, Phys. Lett. B 220 (1989), pp. 422 -- 430.
+
+\bibitem{EF04}
+E.~Ardonne, P.~Fendley, and E.~Fradkin, Ann. Phys. 310 (2004), pp. 493 -- 551.
+
+\bibitem{GM1991}
+G.~Moore and N.~Read, Nucl. Phys. B 360 (1991), pp. 362 -- 396.
+
+\bibitem{LMA05}
+M.A. Levin and X.G. Wen, Phys. Rev. B 71 (2005), p. 045110.
+
+\bibitem{FA2007}
+A.~Feiguin, S.~Trebst, A.W.W. Ludwig, M.~Troyer, A.~Kitaev, Z.~Wang, and M.H.
+  Freedman, Phys. Rev. Lett. 98 (2007), p. 160409.
+
+\bibitem{CG09}
+C.~Gils, S.~Trebst, A.~Kitaev, A.W.W. Ludwig, M.~Troyer, and Z.~Wang, Nat.
+  Phys. 5 (2009), pp. 834--839.
+
+\bibitem{EA11}
+E.~Ardonne, J.~Gukelberger, A.W.W. Ludwig, S.~Trebst, and M.~Troyer, New J.
+  Phys. 13 (2011), p. 045006.
+
+\bibitem{FDMH1988}
+F.D.M. Haldane and E.H. Rezayi, Phys. Rev. Lett. 60 (1988), pp. 956--959.
+
+\bibitem{VG1997}
+V.~Gurarie, M.~Flohr, and C.~Nayak, Nucl. Phys. B 498 (1997), pp. 513 -- 538.
+
+\bibitem{SHS2007}
+S.H. Simon, E.H. Rezayi, N.R. Cooper, and I.~Berdnikov, Phys. Rev. B 75 (2007),
+  p. 075317.
+
+\bibitem{EA2011}
+E.~Ardonne, J.~Gukelberger, A.W.W. Ludwig, S.~Trebst, and M.~Troyer, New J.
+  Phys. 13 (2011), p. 045006.
+
+\bibitem{MHF2012}
+M.H. Freedman, J.~Gukelberger, M.B. Hastings, S.~Trebst, M.~Troyer, and
+  Z.~Wang, Phys. Rev. B 85 (2012), p. 045414.
+
+\bibitem{LL20}
+L.~Lootens, R.~Vanhove, J.~Haegeman, and F.~Verstraete, Phys. Rev. Lett. 124
+  (2020), p. 120601.
+
+\bibitem{HD92}
+H.~Dorn and H.J. Otto, Phys. Lett. B 291 (1992), pp. 39 -- 43.
+
+\bibitem{AZ96}
+A.~Zamolodchikov and A.~Zamolodchikov, Nucl. Phys. B 477 (1996), pp. 577 --
+  605.
+
+\bibitem{MP13}
+M.~Picco, R.~Santachiara, J.~Viti, and G.~Delfino, Nucl. Phys. B 875 (2013),
+  pp. 719 -- 737.
+
+\bibitem{KW59}
+W.~Kohn, Phys. Rev. 115 (1959), pp. 809--821.
+
+\bibitem{AVI63}
+V.I. Arnol'd, Russ. Math. Surv. 18 (1963), p.~9.
+
+\bibitem{EJ15}
+J.~Eisert, M.~Friesdorf, and C.~Gogolin, Nat. Phys. 11 (2015), p. 124–130.
+
+\bibitem{MF92}
+M.~Fannes, B.~Nachtergaele, and R.F. Werner, Commun. Math. Phys. 144 (1992),
+  pp. 443--490.
+
+\bibitem{perez07mps}
+D.~Perez-Garc{\'\i}a, F.~Verstraete, M.M. Wolf, and J.I. Cirac, Quantum Inf.
+  Comput. 7 (2007), p. 401.
+
+\bibitem{NCM74}
+C.M. Newman, Commun. Pur. Appel. Math. 27 (1974), pp. 143--159.
+
+\bibitem{LEH81}
+E.H. Lieb and A.D. Sokal, Comm. Math. Phys. 80 (1981), pp. 153--179.
+
+\bibitem{WBB12}
+B.B. Wei and R.B. Liu, Phys. Rev. Lett. 109 (2012), p. 185701.
+
+\bibitem{PX15}
+X.~Peng, H.~Zhou, B.B. Wei, J.~Cui, J.~Du, and R.B. Liu, Phys. Rev. Lett. 114
+  (2015), p. 010601.
+
+\bibitem{FC13}
+C.~Flindt and J.P. Garrahan, Phys. Rev. Lett. 110 (2013), p. 050601.
+
+\bibitem{BK17}
+K.~Brandner, V.F. Maisi, J.P. Pekola, J.P. Garrahan, and C.~Flindt, Phys. Rev.
+  Lett. 118 (2017), p. 180601.
+
+\bibitem{FME65}
+M.E. Fisher, Vol. VU C (University of Colorado Press 1965)  (1965).
+
+\bibitem{MH18}
+M.~Heyl, Rep. Prog. Phys. 81 (2018), p. 054001.
+
+\bibitem{HM13}
+M.~Heyl, A.~Polkovnikov, and S.~Kehrein, Phys. Rev. Lett. 110 (2013), p.
+  135704.
+
+\bibitem{JP17}
+P.~Jurcevic, H.~Shen, P.~Hauke, C.~Maier, T.~Brydges, C.~Hempel, B.P. Lanyon,
+  M.~Heyl, R.~Blatt, and C.F. Roos, Phys. Rev. Lett. 119 (2017), p. 080501.
+
+\bibitem{NF18}
+N.~Fl\"aschner, D.~Vogel, M.~Tarnowski, B.S. Rem, D.S. L\"uhmann, M.~Heyl, J.C.
+  Budich, L.~Mathey, K.~Sengstock, and C.~Weitenberg, Nat. Phys. 14 (2018), p.
+  265–268.
+
+\bibitem{WK19}
+K.~Wang, X.~Qiu, L.~Xiao, X.~Zhan, Z.~Bian, W.~Yi, and P.~Xue, Phys. Rev. Lett.
+  122 (2019), p. 020501.
+
+\bibitem{GXY19}
+X.Y. Guo, C.~Yang, Y.~Zeng, Y.~Peng, H.K. Li, H.~Deng, Y.R. Jin, S.~Chen,
+  D.~Zheng, and H.~Fan, Phys. Rev. Applied 11 (2019), p. 044080.
+
+\bibitem{ZL18c}
+L.~Zhou, Q.h. Wang, H.~Wang, and J.~Gong, Phys. Rev. A 98 (2018), p. 022129.
+
+\bibitem{CJD64}
+J.D. Cloizeaux, Phys. Rev. 135 (1964), pp. A685--A697.
+
+\bibitem{BC2007}
+C.~Brouder, G.~Panati, M.~Calandra, C.~Mourougane, and N.~Marzari, Phys. Rev.
+  Lett. 98 (2007), p. 046402.
+
+\bibitem{WTB13}
+T.B. Wahl, H.H. Tu, N.~Schuch, and J.I. Cirac, Phys. Rev. Lett. 111 (2013), p.
+  236805.
+
+\bibitem{ZG2019}
+Z.~Gong, N.~Kura, M.~Sato, and M.~Ueda. arXiv:1904.12464.
+
+\bibitem{GZ18}
+Z.~Gong and M.~Ueda, Phys. Rev. Lett. 121 (2018), p. 250601.
+
+\bibitem{ZW19}
+Z.~Wang and K.R.A. Hazzard, arXiv:1908.03997  (2019).
+
+\bibitem{EA15}
+E.~Altman and R.~Vosk, Annu. Rev. Cond. Matt. Phys. 6 (2015), pp. 383--409.
+
+\bibitem{VF06}
+F.~Verstraete and J.I. Cirac, Phys. Rev. B 73 (2006), p. 094423.
+
+\bibitem{US11}
+U.~Schollw{\"o}ck, Ann. Phys. 326 (2011), pp. 96 -- 192.
+
+\bibitem{BN17}
+N.~Bultinck, D.J. Williamson, J.~Haegeman, and F.~Verstraete, Phys. Rev. B 95
+  (2017), p. 075108.
+
+\bibitem{XWT17}
+W.T. Xu and G.M. Zhang, Phys. Rev. B 95 (2017), p. 195122.
+
+\bibitem{EJ10}
+J.~Eisert, M.~Cramer, and M.B. Plenio, Rev. Mod. Phys. 82 (2010), pp. 277--306.
+
+\bibitem{WMM08}
+M.M. Wolf and J.I. Cirac, Commun. Math. Phys. 279 (2008), pp. 147--168.
+
+\bibitem{VF10}
+F.~Verstraete and J.I. Cirac, Phys. Rev. Lett. 104 (2010), p. 190405.
+
+\bibitem{SO15}
+O.~Szehr, D.~Reeb, and M.M. Wolf, Commun. Math. Phys. 333 (2015), pp. 565--595.
+
+\bibitem{GM18}
+C.~Yang, F.C. Binder, V.~Narasimhachar, and M.~Gu, Phys. Rev. Lett. 121 (2018),
+  p. 260602.
+
+\bibitem{GI19}
+I.~Glasser, R.~Sweke, N.~Pancotti, J.~Eisert, and I.~Cirac, \emph{Expressive
+  power of tensor-network factorizations for probabilistic modeling}, in
+  \emph{Advances in Neural Information Processing Systems 32}, H.~Wallach,
+  H.~Larochelle, A.~Beygelzimer, F.~d~Alch\'{e}-Buc, E.~Fox, and R.~Garnett,
+  eds., Curran Associates, Inc.,  2019, pp. 1498--1510.
+
+\bibitem{FGSLB15}
+F.G.S.L. Brand{\~{a}}o and M.~Horodecki, Commun. Math. Phys. 333 (2015), pp.
+  761--798.
+
+\bibitem{NWA76}
+N.W. Ashcroft and N.D. Mermin, \emph{Solid State Physics}, Holt, Rinehart, and
+  Winston, New York, 1976.
+
+\bibitem{KR15}
+R.~Kennedy and C.~Guggenheim, Phys. Rev. B 91 (2015), p. 245148.
+
+\bibitem{MK08}
+M.~Karoubi, \emph{K-theory}, Springer, Berlin, 2008.
+
+\bibitem{MJE08}
+J.E. Moore, Y.~Ran, and X.G. Wen, Phys. Rev. Lett. 101 (2008), p. 186805.
+
+\bibitem{KKv80}
+K.v. Klitzing, G.~Dorda, and M.~Pepper, Phys. Rev. Lett. 45 (1980), pp.
+  494--497.
+
+\bibitem{TDJ82}
+D.J. Thouless, M.~Kohmoto, M.P. Nightingale, and M.~den Nijs, Phys. Rev. Lett.
+  49 (1982), pp. 405--408.
+
+\bibitem{CCK16}
+C.K. Chiu, J.C.Y. Teo, A.P. Schnyder, and S.~Ryu, Rev. Mod. Phys. 88 (2016), p.
+  035005.
+
+\bibitem{XD10}
+D.~Xiao, M.C. Chang, and Q.~Niu, Rev. Mod. Phys. 82 (2010), pp. 1959--2007.
+
+\bibitem{BAB13}
+B.A. Bernevig and T.L. Hughes, \emph{Topological Insulators and Topological
+  Superconductors}, Princeton University Press, Princeton, 2013.
+
+\bibitem{KCL05}
+C.L. Kane and E.J. Mele, Phys. Rev. Lett. 95 (2005), p. 146802.
+
+\bibitem{FL06}
+L.~Fu and C.L. Kane, Phys. Rev. B 74 (2006), p. 195312.
+
+\bibitem{FL07}
+L.~Fu, C.L. Kane, and E.J. Mele, Phys. Rev. Lett. 98 (2007), p. 106803.
+
+\bibitem{FL07b}
+L.~Fu and C.L. Kane, Phys. Rev. B 76 (2007), p. 045302.
+
+\bibitem{BBA06}
+B.A. Bernevig, T.L. Hughes, and S.C. Zhang, Science 314 (2006), pp. 1757--1761.
+
+\bibitem{AYK01}
+A.Y. Kitaev, Phys. Usp. 44 (2001), p. 131.
+
+\bibitem{WX11}
+X.~Wan, A.M. Turner, A.~Vishwanath, and S.Y. Savrasov, Phys. Rev. B 83 (2011),
+  p. 205101.
+
+\bibitem{SM13}
+S.~Matsuura, P.Y. Chang, A.P. Schnyder, and S.~Ryu, New J. Phys 15 (2013), p.
+  065001.
+
+\bibitem{HBN81a}
+H.~Nielsen and M.~Ninomiya, Nucl. Phys. B 185 (1981), pp. 20 -- 40.
+
+\bibitem{HBN81b}
+H.~Nielsen and M.~Ninomiya, Nucl. Phys. B 193 (1981), pp. 173 -- 194.
+
+\bibitem{Chernodub_2017}
+M.N. Chernodub, J. Phys. A 50 (2017), p. 385001.
+
+\bibitem{AA97}
+A.~Altland and M.R. Zirnbauer, Phys. Rev. B 55 (1997), pp. 1142--1161.
+
+\bibitem{TJCY10}
+J.C.Y. Teo and C.L. Kane, Phys. Rev. B 82 (2010), p. 115120.
+
+\bibitem{ZH19}
+H.~Zhou and J.Y. Lee, Phys. Rev. B 99 (2019), p. 235112.
+
+\bibitem{KK19c}
+K.~Kawabata, K.~Shiozaki, M.~Ueda, and M.~Sato, Phys. Rev. X 9 (2019), p.
+  041015.
+
+\bibitem{FS09}
+M.~Sato, Y.~Takahashi, and S.~Fujimoto, Phys. Rev. Lett. 103 (2009), p. 020401.
+
+\bibitem{ZL19}
+Z.~Li and R.S.K. Mong, arXiv:1911.02697  (2019).
+
+\bibitem{BDS20}
+D.S. Borgnia, A.J. Kruchkov, and R.J. Slager, Phys. Rev. Lett. 124 (2020), p.
+  056802.
+
+\bibitem{LR14}
+B.~Zhu, R.~L\"u, and S.~Chen, Phys. Rev. A 89 (2014), p. 062102.
+
+\bibitem{MS15}
+S.~Malzard, C.~Poli, and H.~Schomerus, Phys. Rev. Lett. 115 (2015), p. 200402.
+
+\bibitem{CY15}
+C.~Yuce, Phys. Lett. A 379 (2015), pp. 1213 -- 1218.
+
+\bibitem{PSJ16}
+P.~San-Jose, J.~Cayao, E.~Prada, and R.~Aguado, Sci. Rep. 6 (2016), p. 21427.
+
+\bibitem{LD17}
+D.~Leykam, K.Y. Bliokh, C.~Huang, Y.D. Chong, and F.~Nori, Phys. Rev. Lett. 118
+  (2017), p. 040401.
+
+\bibitem{NX18}
+X.~Ni, D.~Smirnova, A.~Poddubny, D.~Leykam, Y.~Chong, and A.B. Khanikaev, Phys.
+  Rev. B 98 (2018), p. 165129.
+
+\bibitem{YC18}
+C.~Yuce, Phys. Rev. A 97 (2018), p. 042118.
+
+\bibitem{LS18}
+S.~Lieu, Phys. Rev. B 97 (2018), p. 045106.
+
+\bibitem{ZL18}
+L.~Zhou, Q.h. Wang, H.~Wang, and J.~Gong, Phys. Rev. A 98 (2018), p. 022129.
+
+\bibitem{LC18}
+C.~Li, X.Z. Zhang, G.~Zhang, and Z.~Song, Phys. Rev. B 97 (2018), p. 115436.
+
+\bibitem{RMJ82}
+M.J. Rice and E.J. Mele, Phys. Rev. Lett. 49 (1982), pp. 1455--1459.
+
+\bibitem{YZ19}
+Z.~Yang and J.~Hu, Phys. Rev. B 99 (2019), p. 081102(R).
+
+\bibitem{CJ19}
+J.~Carlstr\"om, M.~St\aa{}lhammar, J.C. Budich, and E.J. Bergholtz, Phys. Rev.
+  B 99 (2019), p. 161115(R).
+
+\bibitem{TK18}
+K.~Takata and M.~Notomi, Phys. Rev. Lett. 121 (2018), p. 213902.
+
+\bibitem{HY93}
+Y.~Hatsugai, Phys. Rev. Lett. 71 (1993), pp. 3697--3700.
+
+\bibitem{EP16}
+E.~Prodan and H.~Schulz-Baldes, \emph{Bulk and Boundary Invariants for Complex
+  Topological Insulators: From K-Theory to Physics}, Springer, Berlin, 2016.
+
+\bibitem{YX18}
+Y.~Xiong, J. Phys. Commun. 2 (2018), p. 035043.
+
+\bibitem{JL19}
+L.~Jin and Z.~Song, Phys. Rev. B 99 (2019), p. 081103(R).
+
+\bibitem{KFK18}
+F.K. Kunst, E.~Edvardsson, J.C. Budich, and E.J. Bergholtz, Phys. Rev. Lett.
+  121 (2018), p. 026808.
+
+\bibitem{ON19}
+N.~Okuma and M.~Sato, Phys. Rev. Lett. 123 (2019), p. 097701.
+
+\bibitem{KZ19}
+K.~Zhang, Z.~Yang, and C.~Fang, arXiv:1910.01131  (2019).
+
+\bibitem{NO20}
+N.~Okuma, K.~Kawabata, K.~Shiozaki, and M.~Sato, Phys. Rev. Lett. 124 (2020),
+  p. 086801.
+
+\bibitem{YS18b}
+S.~Yao, F.~Song, and Z.~Wang, Phys. Rev. Lett. 121 (2018), p. 136802.
+
+\bibitem{KY19}
+K.~Yokomizo and S.~Murakami, Phys. Rev. Lett. 123 (2019), p. 066404.
+
+\bibitem{TR19}
+C.H. Lee and R.~Thomale, Phys. Rev. B 99 (2019), p. 201103(R).
+
+\bibitem{VD93}
+D.~Vanderbilt and R.D. King-Smith, Phys. Rev. B 48 (1993), pp. 4442--4455.
+
+\bibitem{KFK19}
+F.K. Kunst and V.~Dwivedi, Phys. Rev. B 99 (2019), p. 245116.
+
+\bibitem{DV16}
+V.~Dwivedi and V.~Chua, Phys. Rev. B 93 (2016), p. 134304.
+
+\bibitem{KII19}
+K.I. Imura and Y.~Takane, Phys. Rev. B 100 (2019), p. 165430.
+
+\bibitem{LCH19}
+C.H. Liu, H.~Jiang, and S.~Chen, Phys. Rev. B 99 (2019), p. 125103.
+
+\bibitem{LCH19b}
+C.H. Liu and S.~Chen, Phys. Rev. B 100 (2019), p. 144106.
+
+\bibitem{RK18}
+K.~Roychowdhury and M.J. Lawler, Phys. Rev. B 98 (2018), p. 094432.
+
+\bibitem{GJ19}
+L.~Li, C.H. Lee, and J.~Gong, Phys. Rev. B 100 (2019), p. 075403.
+
+\bibitem{CCW19}
+C.C. Wojcik, X.Q. Sun, T.~Bzdu\v{s}ek, and S.~Fan, arXiv:1911.12748  (2019).
+
+\bibitem{AG192}
+A.~Ghatak and T.~Das, J. Phys. Cond. Matt. 31 (2019), p. 263001.
+
+\bibitem{DB02}
+D.~Bernard and A.~LeClair, J. Phys. A: Math. Gen. 35 (2002), pp. 2555--2567.
+
+\bibitem{EK11}
+K.~Esaki, M.~Sato, K.~Hasebe, and M.~Kohmoto, Phys. Rev. B 84 (2011), p.
+  205128.
+
+\bibitem{SM12}
+M.~Sato, K.~Hasebe, K.~Esaki, and M.~Kohmoto, Prog. Theor. Phys. 127 (2012),
+  pp. 937--974.
+
+\bibitem{RJDH19}
+J.D.H. {Rivero} and L.~{Ge}, arXiv:1903.02231  (2019).
+
+\bibitem{DB01}
+D.~Bernard and A.~LeClair, arXiv:cond-mat/0110649  (2001).
+
+\bibitem{HF20}
+F.~Harper, R.~Roy, M.S. Rudner, and S.~Sondhi, Annu. Rev. Cond. Matt. Phys. 11
+  (2020), p. 345.
+
+\bibitem{KT12}
+T.~Kitagawa, Quantum Inf. Process. 11 (2012), pp. 1107--1148.
+
+\bibitem{HF17}
+R.~Roy and F.~Harper, Phys. Rev. B 96 (2017), p. 155118.
+
+\bibitem{JYL19}
+J.Y. Lee, J.~Ahn, H.~Zhou, and A.~Vishwanath, Phys. Rev. Lett. 123 (2019), p.
+  206404.
+
+\bibitem{LS15}
+S.~Longhi, D.~Gatti, and G.D. Valle, Sci. Rep. 5 (2015), p. 13376.
+
+\bibitem{FKK20}
+F.~Terrier and F.K. Kunst, arXiv:2003.11042  (2020).
+
+\bibitem{Longhi:15}
+S.~Longhi, Opt. Lett. 40 (2015), pp. 5694--5697.
+
+\bibitem{HSAR15}
+S.A.R. Horsley, M.~Artoni, and G.C. La~Rocca, Nat. Photon. 9 (2015), p. 436.
+
+\bibitem{PL96}
+L.~Poladian, Phys. Rev. E 54 (1996), pp. 2963--2975.
+
+\bibitem{JX16}
+X.~Jiang, C.~Yang, H.~Wu, S.~Hua, L.~Chang, Y.~Ding, Q.~Hua, and M.~Xiao, Sci.
+  Rep. 6 (2016), p. 38972.
+
+\bibitem{Nazari:14}
+F.~Nazari, N.~Bender, H.~Ramezani, M.~Moravvej-Farshi, D.N. Christodoulides,
+  and T.~Kottos, Opt. Express 22 (2014), pp. 9574--9584.
+
+\bibitem{LS152}
+S.~Lanneb{\`e}re and M.G. Silveirinha, Nat. Commun. 6 (2015), pp. 1--7.
+
+\bibitem{LB09}
+B.~Liang, B.~Yuan, and J.c. Cheng, Phys. Rev. Lett. 103 (2009), p. 104301.
+
+\bibitem{LF143}
+F.~Li, P.~Anzel, J.~Yang, P.G. Kevrekidis, and C.~Daraio, Nat. Commun. 5
+  (2014), pp. 1--6.
+
+\bibitem{TY182}
+Y.~Tokura and N.~Nagaosa, Nat. Commun. 9 (2018), pp. 1--14.
+
+\bibitem{HY15}
+Y.~Hadad, D.L. Sounas, and A.~Alu, Phys. Rev. B 92 (2015), p. 100304.
+
+\bibitem{Shaltout:15}
+A.~Shaltout, A.~Kildishev, and V.~Shalaev, Opt. Mater. Express 5 (2015), pp.
+  2459--2467.
+
+\bibitem{RP97}
+P.~Roux, J.~de~Rosny, M.~Tanter, and M.~Fink, Phys. Rev. Lett. 79 (1997), pp.
+  3170--3173.
+
+\bibitem{WQ15}
+Q.~Wang, Y.~Yang, X.~Ni, Y.L. Xu, X.C. Sun, Z.G. Chen, L.~Feng, X.p. Liu, M.H.
+  Lu, and Y.F. Chen, Sci. Rep. 5 (2015), pp. 1--10.
+
+\bibitem{US12b}
+U.~Seifert, Rep. Prog. Phys. 75 (2012), p. 126001.
+
+\bibitem{JJH15}
+J.H. Jiang, M.~Kulkarni, D.~Segal, and Y.~Imry, Phys. Rev. B 92 (2015), p.
+  045309.
+
+\bibitem{MS18}
+S.~Maayani, R.~Dahan, Y.~Kligerman, E.~Moses, A.U. Hassan, H.~Jing, F.~Nori,
+  D.N. Christodoulides, and T.~Carmon, Nature 558 (2018), pp. 569--572.
+
+\bibitem{ZH20}
+H.~{Zhang}, R.~{Huang}, S.D. {Zhang}, Y.~{Li}, C.W. {Qiu}, F.~{Nori}, and
+  H.~{Jing}, arXiv:2003.04246  (2020).
+
+\bibitem{BP19}
+P.~{Bredol}, H.~{Boschker}, D.~{Braak}, and J.~{Mannhart}, arXiv:1912.11948
+  (2019).
+
+\bibitem{WH49}
+W.~Heisenberg, \emph{The physical principles of the quantum theory}, Dover, New
+  York, 1949.
+
+\bibitem{BM28}
+M.~Born and V.~Fock, Z. Phys. 51 (1928), pp. 165--180.
+
+\bibitem{CM11}
+M.~Campisi, P.~H\"anggi, and P.~Talkner, Rev. Mod. Phys. 83 (2011), pp.
+  771--791.
+
+\bibitem{AY61}
+Y.~Aharonov and D.~Bohm, Phys. Rev. 122 (1961), pp. 1649--1658.
+
+\bibitem{SD17}
+S.~Deffner and S.~Campbell, J. Phys. A 50 (2017), p. 453001.
+
+\bibitem{LM45}
+L.~Mandelstam and I.~Tamm, J. Phys. USSR 122 (1945), pp. 249--254.
+
+\bibitem{AJ90}
+J.~Anandan and Y.~Aharonov, Phys. Rev. Lett. 65 (1990), pp. 1697--1700.
+
+\bibitem{WWK81}
+W.K. Wootters, Phys. Rev. D 23 (1981), pp. 357--362.
+
+\bibitem{SD13}
+S.~Deffner and E.~Lutz, J. Phys. A 46 (2013), p. 335302.
+
+\bibitem{LBL98}
+N.~Margolus and L.B. Levitin, Physica D 120 (1998), pp. 188--195, proceedings
+  of the Fourth Workshop on Physics and Consumption.
+
+\bibitem{SS19}
+S.~Sun and Y.~Zheng, Phys. Rev. Lett. 123 (2019), p. 180403.
+
+\bibitem{BCM09}
+C.M. Bender and D.C. Brody, \emph{Optimal Time Evolution for Hermitian and
+  Non-Hermitian Hamiltonians}, in \emph{Time in Quantum Mechanics - Vol. 2},
+  G.~Muga, A.~Ruschhaupt, and A.~del Campo, eds., Springer Berlin Heidelberg,
+  Berlin, Heidelberg (2009), pp. 341--361.
+
+\bibitem{RU12}
+R.~Uzdin, U.~G\"unther, S.~Rahav, and N.~Moiseyev, J. Phys. A 45 (2012), p.
+  415304.
+
+\bibitem{BSL94}
+S.L. Braunstein and C.M. Caves, Phys. Rev. Lett. 72 (1994), pp. 3439--3443.
+
+\bibitem{DS13}
+S.~Deffner and E.~Lutz, Phys. Rev. Lett. 111 (2013), p. 010402.
+
+\bibitem{PDP16}
+D.P. Pires, M.~Cianciaruso, L.C. C\'eleri, G.~Adesso, and D.O. Soares-Pinto,
+  Phys. Rev. X 6 (2016), p. 021031.
+
+\bibitem{KF19}
+K.~Funo, N.~Shiraishi, and K.~Saito, New J. Phys. 21 (2019), p. 013006.
+
+\bibitem{SB18}
+B.~Shanahan, A.~Chenu, N.~Margolus, and A.~del Campo, Phys. Rev. Lett. 120
+  (2018), p. 070401.
+
+\bibitem{OM18}
+M.~Okuyama and M.~Ohzeki, Phys. Rev. Lett. 120 (2018), p. 070402.
+
+\bibitem{SN18}
+N.~Shiraishi, K.~Funo, and K.~Saito, Phys. Rev. Lett. 121 (2018), p. 070601.
+
+\bibitem{TMC06}
+T.M. Cover and J.A. Thomas, \emph{{Elements of Information Theory, 2nd
+  Edition}}, Wiley-Interscience, New York, 2006.
+
+\bibitem{AD18}
+S.~Ito and A.~Dechant, arXiv:1810.06832  (2018).
+
+\bibitem{BAC15}
+A.C. Barato and U.~Seifert, Phys. Rev. Lett. 114 (2015), p. 158101.
+
+\bibitem{GTR16}
+T.R. Gingrich, J.M. Horowitz, N.~Perunov, and J.L. England, Phys. Rev. Lett.
+  116 (2016), p. 120601.
+
+\bibitem{HY19}
+Y.~Hasegawa and T.~Van~Vu, Phys. Rev. Lett. 123 (2019), p. 110602.
+
+\bibitem{HJM20}
+J.M. Horowitz and T.R. Gingrich, Nat. Phys. 16 (2020), pp. 15--20.
+
+\bibitem{KL19}
+K.~Liu, Z.~Gong, and M.~Ueda, arXiv:1912.11797  (2019).
+
+\bibitem{GOD19}
+D.~Gu\'ery-Odelin, A.~Ruschhaupt, A.~Kiely, E.~Torrontegui,
+  S.~Mart\'{\i}nez-Garaot, and J.G. Muga, Rev. Mod. Phys. 91 (2019), p. 045001.
+
+\bibitem{MVB09}
+M.V. Berry, J. Phys. A 42 (2009), p. 365303.
+
+\bibitem{IS11}
+S.~Ib\'a\~nez, S.~Mart\'{\i}nez-Garaot, X.~Chen, E.~Torrontegui, and J.G. Muga,
+  Phys. Rev. A 84 (2011), p. 023415.
+
+\bibitem{TBT13}
+B.T. Torosov, G.~Della~Valle, and S.~Longhi, Phys. Rev. A 87 (2013), p. 052502.
+
+\bibitem{RU11}
+R.~Uzdin, A.~Mailybaev, and N.~Moiseyev, J. Phys. A 44 (2011), p. 435302.
+
+\bibitem{MVB11}
+M.V. Berry and R.~Uzdin, J. Phys. A 44 (2011), p. 435303.
+
+\bibitem{LG17}
+G.~Li, H.T. Quan, and Z.C. Tu, Phys. Rev. E 96 (2017), p. 012144.
+
+\bibitem{FK20}
+K.~Funo, N.~Lambert, F.~Nori, and C.~Flindt, Phys. Rev. Lett. 124 (2020), p.
+  150603.
+
+\bibitem{TK20}
+K.~Takahashi, K.~Fujii, Y.~Hino, and H.~Hayakawa, Phys. Rev. Lett. 124 (2020),
+  p. 150602.
+
+\bibitem{RJ10}
+J.~Ren, P.~H\"anggi, and B.~Li, Phys. Rev. Lett. 104 (2010), p. 170601.
+
+\bibitem{ST11}
+T.~Sagawa and H.~Hayakawa, Phys. Rev. E 84 (2011), p. 051110.
+
+\bibitem{JG09}
+J.~Gemmer, M.~Michel, and G.~Mahler, \emph{Quantum Thermodynamics},
+  Springer-Verlag, Berlin, 2009.
+
+\bibitem{SV16}
+S.~Vinjanampathy and J.~Anders, Contemporary Physics 57 (2016), pp. 545--579.
+
+\bibitem{JG16}
+J.~Goold, M.~Huber, A.~Riera, L.~del Rio, and P.~Skrzypczyk, J. Phys. A 49
+  (2016), p. 143001.
+
+\bibitem{KR13}
+R.~Kosloff, Entropy 15 (2013), pp. 2100--2128.
+
+\bibitem{BFGSL13}
+F.G.S.L. Brand\~ao, M.~Horodecki, J.~Oppenheim, J.M. Renes, and R.W. Spekkens,
+  Phys. Rev. Lett. 111 (2013), p. 250404.
+
+\bibitem{JO13}
+M.~Horodecki and J.~Oppenheim, Nat. Commun. 4 (2013), p. 2059.
+
+\bibitem{PS14}
+P.~Skrzypczyk, A.J. Short, and S.~Popescu, Nat. Commun. 5 (2014), p. 4185.
+
+\bibitem{LM15}
+M.~Lostaglio, K.~Korzekwa, D.~Jennings, and T.~Rudolph, Phys. Rev. X 5 (2015),
+  p. 021001.
+
+\bibitem{MPM15}
+G.~Gour, M.P. M{\"u}ller, V.~Narasimhachar, R.W. Spekkens, and N.Y. Halpern,
+  Phys. Rep. 583 (2015), pp. 1 -- 58.
+
+\bibitem{RN15}
+R.~Nandkishore and D.A. Huse, Ann. Rev. Cond. Matt. Phys. 6 (2015), pp. 15--38.
+
+\bibitem{Funoreview}
+K.~Funo, M.~Ueda, and T.~Sagawa, \emph{Quantum Fluctuation Theorems}, in
+  \emph{Thermodynamics in the Quantum Regime: Fundamental Aspects and New
+  Directions}, F.~Binder, L.A. Correa, C.~Gogolin, J.~Anders, and G.~Adesso,
+  eds., Springer, Cham (2018), pp. 249--273.
+
+\bibitem{JC11}
+C.~Jarzynski, Annu. Rev. Condens. Matter Phys. 2 (2011), pp. 329--351.
+
+\bibitem{HT00}
+H.~Tasaki, arXiv:cond-mat/0009244  (2000).
+
+\bibitem{JK00}
+J.~Kurchan, arXiv:cond-mat/0007360  (2000).
+
+\bibitem{CGE99}
+G.E. Crooks, Phys. Rev. E 60 (1999), pp. 2721--2726.
+
+\bibitem{JC97}
+C.~Jarzynski, Phys. Rev. Lett. 78 (1997), pp. 2690--2693.
+
+\bibitem{TP07}
+P.~Talkner, E.~Lutz, and P.~H\"anggi, Phys. Rev. E 75 (2007), p. 050102.
+
+\bibitem{SA15}
+S.~An, J.N. Zhang, M.~Um, D.~Lv, Y.~Lu, J.~Zhang, Z.Q. Yin, H.T. Quan, and
+  K.~Kim, Nat. Phys. 11 (2015), pp. 193--199.
+
+\bibitem{DSSA15}
+S.~Deffner and A.~Saxena, Phys. Rev. Lett. 114 (2015), p. 150601.
+
+\bibitem{SD16}
+B.~Gardas, S.~Deffner, and A.~Saxena, Sci. Rep. 6 (2016), p. 23408.
+
+\bibitem{JG13}
+J.~Gong and Q.~hai Wang, J. Phys. A 46 (2013), p. 485302.
+
+\bibitem{WBB18}
+B.B. Wei, Phys. Rev. E 97 (2018), p. 012114.
+
+\bibitem{CM09}
+M.~Campisi, P.~Talkner, and P.~H\"anggi, Phys. Rev. Lett. 102 (2009), p.
+  210401.
+
+\bibitem{TA12}
+T.~Albash, S.~Boixo, D.A. Lidar, and P.~Zanardi, New J. Phys. 14 (2012), p.
+  123016.
+
+\bibitem{HJM12}
+J.M. Horowitz, Phys. Rev. E 85 (2012), p. 031110.
+
+\bibitem{HFWJ13}
+F.W.J. Hekking and J.P. Pekola, Phys. Rev. Lett. 111 (2013), p. 093602.
+
+\bibitem{GZ16}
+Z.~Gong, Y.~Ashida, and M.~Ueda, Phys. Rev. A 94 (2016), p. 012107.
+
+\bibitem{MG18}
+G.~Manzano, J.M. Horowitz, and J.M.R. Parrondo, Phys. Rev. X 8 (2018), p.
+  031037.
+
+\bibitem{SM14}
+M.~Silaev, T.T. Heikkil\"a, and P.~Virtanen, Phys. Rev. E 90 (2014), p. 022103.
+
+\bibitem{LF16}
+F.~Liu and J.~Xi, Phys. Rev. E 94 (2016), p. 062133.
+
+\bibitem{YEK16}
+Y.E. Kraus and O.~Zilberberg, Nat. Phys. 12 (2016), pp. 624--626.
+
+\bibitem{REG19}
+S.K. \"Ozdemir and R.~El-Ganainy, Nat. Photon. 13 (2019), pp. 660--662.
+
+\bibitem{TP16}
+P.~Titum, E.~Berg, M.S. Rudner, G.~Refael, and N.H. Lindner, Phys. Rev. X 6
+  (2016), p. 021013.
+
+\bibitem{HH20}
+H.~Hu, B.~Huang, E.~Zhao, and W.V. Liu, Phys. Rev. Lett. 124 (2020), p. 057001.
+
+\bibitem{CR20}
+R.~Chen, C.Z. Chen, J.H. Gao, B.~Zhou, and D.H. Xu, Phys. Rev. Lett. 124
+  (2020), p. 036803.
+
+\bibitem{NQ85}
+Q.~Niu, D.J. Thouless, and Y.S. Wu, Phys. Rev. B 31 (1985), pp. 3372--3377.
+
+\bibitem{HN98}
+N.~Hatano and D.R. Nelson, Phys. Rev. B 58 (1998), pp. 8384--8390.
+
+\bibitem{LS19}
+S.~Longhi, Phys. Rev. Lett. 122 (2019), p. 237601.
+
+\bibitem{AE79}
+E.~Abrahams, P.W. Anderson, D.C. Licciardello, and T.V. Ramakrishnan, Phys.
+  Rev. Lett. 42 (1979), pp. 673--676.
+
+\bibitem{KK20}
+K.~Kawabata and S.~Ryu, arXiv:2005.00604  (2020).
+
+\bibitem{SA80}
+S.~Aubry and G.~Andr\'e, Ann. Israel Phys. Soc 3 (1980), p. 133.
+
+\bibitem{GT91}
+T.~Geisel, R.~Ketzmerick, and G.~Petschel, Phys. Rev. Lett. 66 (1991), pp.
+  1651--1654.
+
+\bibitem{JH19}
+H.~Jiang, L.J. Lang, C.~Yang, S.L. Zhu, and S.~Chen, Phys. Rev. B 100 (2019),
+  p. 054301.
+
+\bibitem{CY14}
+C.~Yuce, Phys. Lett. A 378 (2014), pp. 2024 -- 2028.
+
+\bibitem{HAK16}
+A.K. Harter, T.E. Lee, and Y.N. Joglekar, Phys. Rev. A 93 (2016), p. 062101.
+
+\bibitem{KYE12}
+Y.E. Kraus, Y.~Lahini, Z.~Ringel, M.~Verbin, and O.~Zilberberg, Phys. Rev.
+  Lett. 109 (2012), p. 106402.
+
+\bibitem{LLJ12}
+L.J. Lang, X.~Cai, and S.~Chen, Phys. Rev. Lett. 108 (2012), p. 220401.
+
+\bibitem{GS13}
+S.~Ganeshan, K.~Sun, and S.~Das~Sarma, Phys. Rev. Lett. 110 (2013), p. 180403.
+
+\bibitem{PE15}
+E.~Prodan, Phys. Rev. B 91 (2015), p. 245104.
+
+\bibitem{LJ09}
+J.~Li, R.L. Chu, J.K. Jain, and S.Q. Shen, Phys. Rev. Lett. 102 (2009), p.
+  136806.
+
+\bibitem{GCW09}
+C.W. Groth, M.~Wimmer, A.R. Akhmerov, J.~Tworzyd\l{}o, and C.W.J. Beenakker,
+  Phys. Rev. Lett. 103 (2009), p. 196805.
+
+\bibitem{JH09}
+H.~Jiang, L.~Wang, Q.f. Sun, and X.C. Xie, Phys. Rev. B 80 (2009), p. 165316.
+
+\bibitem{GHM10}
+H.M. Guo, G.~Rosenberg, G.~Refael, and M.~Franz, Phys. Rev. Lett. 105 (2010),
+  p. 216601.
+
+\bibitem{XWL19}
+X.W. Luo and C.~Zhang, arXiv:1912.10652  (2019).
+
+\bibitem{DWZ20}
+D.W. Zhang, L.Z. Tang, L.J. Lang, H.~Yan, and S.L. Zhu, China Phys. Mech.
+  Astron. 63 (2020), p. 267062.
+
+\bibitem{LZT20}
+L.Z. Tang, L.F. Zhang, G.Q. Zhang, and D.W. Zhang, arXiv:2005.13205  (2020).
+
+\bibitem{SF19b}
+F.~Song, S.~Yao, and Z.~Wang, Phys. Rev. Lett. 123 (2019), p. 246801.
+
+\bibitem{OT09}
+T.~Oka and H.~Aoki, Phys. Rev. B 79 (2009), p. 081406.
+
+\bibitem{KT10b}
+T.~Kitagawa, E.~Berg, M.~Rudner, and E.~Demler, Phys. Rev. B 82 (2010), p.
+  235114.
+
+\bibitem{KT10}
+T.~Kitagawa, M.S. Rudner, E.~Berg, and E.~Demler, Phys. Rev. A 82 (2010), p.
+  033429.
+
+\bibitem{JL11}
+L.~Jiang, T.~Kitagawa, J.~Alicea, A.R. Akhmerov, D.~Pekker, G.~Refael, J.I.
+  Cirac, E.~Demler, M.D. Lukin, and P.~Zoller, Phys. Rev. Lett. 106 (2011), p.
+  220402.
+
+\bibitem{CMD15}
+M.D. Caio, N.R. Cooper, and M.J. Bhaseen, Phys. Rev. Lett. 115 (2015), p.
+  236403.
+
+\bibitem{BJC16}
+J.C. Budich and M.~Heyl, Phys. Rev. B 93 (2016), p. 085416.
+
+\bibitem{WC17}
+C.~Wang, P.~Zhang, X.~Chen, J.~Yu, and H.~Zhai, Phys. Rev. Lett. 118 (2017), p.
+  185701.
+
+\bibitem{LL18}
+C.~Yang, L.~Li, and S.~Chen, Phys. Rev. B 97 (2018), p. 060304(R).
+
+\bibitem{McM18}
+M.~McGinley and N.R. Cooper, Phys. Rev. Lett. 121 (2018), p. 090401.
+
+\bibitem{LZ18}
+L.~Zhang, L.~Zhang, S.~Niu, and X.J. Liu, Science Bulletin 63 (2018), pp.
+  1385--1391.
+
+\bibitem{GD12}
+D.~Gross, V.~Nesme, H.~Vogts, and R.F. Werner, Commun. Math. Phys. 310 (2012),
+  pp. 419--454.
+
+\bibitem{HS19}
+S.~Higashikawa, M.~Nakagawa, and M.~Ueda, Phys. Rev. Lett. 123 (2019), p.
+  066403.
+
+\bibitem{KW19}
+K.~Wang, X.~Qiu, L.~Xiao, X.~Zhan, Z.~Bian, B.C. Sanders, W.~Yi, and P.~Xue,
+  Nat. Commun. 10 (2019), p. 2293.
+
+\bibitem{DK16}
+D.~Kim, M.~Ken, N.~Kawakami, and H.~Obuse, arXiv:1609.09650  (2016).
+
+\bibitem{ZX17}
+X.~Zhan, L.~Xiao, Z.~Bian, K.~Wang, X.~Qiu, B.C. Sanders, W.~Yi, and P.~Xue,
+  Phys. Rev. Lett. 119 (2017), p. 130501.
+
+\bibitem{LX20}
+L.~Xiao, T.~Deng, K.~Wang, G.~Zhu, Z.~Wang, W.~Yi, and P.~Xue, Nat. Phys.
+  (2020).
+
+\bibitem{AJK13}
+J.K. Asb\'oth and H.~Obuse, Phys. Rev. B 88 (2013), p. 121406.
+
+\bibitem{CY15b}
+C.~Yuce, Eur. Phys. J. D 69 (2015), p. 184.
+
+\bibitem{ZL18b}
+L.~Zhou and J.~Gong, Phys. Rev. B 98 (2018), p. 205417.
+
+\bibitem{BH20b}
+B.~H\"ockendorf, A.~Alvermann, and H.~Fehske, Phys. Rev. Research 2 (2020), p.
+  023235.
+
+\bibitem{ZL20}
+L.~Zhou, Phys. Rev. B 101 (2020), p. 014306.
+
+\bibitem{ZX20}
+X.~Zhang and J.~Gong, Phys. Rev. B 101 (2020), p. 045415.
+
+\bibitem{HW20}
+H.~Wu and J.H. An, arXiv:2003.08055  (2020).
+
+\bibitem{RMS13}
+M.S. Rudner, N.H. Lindner, E.~Berg, and M.~Levin, Phys. Rev. X 3 (2013), p.
+  031005.
+
+\bibitem{PHC16}
+H.C. Po, L.~Fidkowski, T.~Morimoto, A.C. Potter, and A.~Vishwanath, Phys. Rev.
+  X 6 (2016), p. 041070.
+
+\bibitem{HF17b}
+F.~Harper and R.~Roy, Phys. Rev. Lett. 118 (2017), p. 115301.
+
+\bibitem{BH20}
+B.~H\"ockendorf, A.~Alvermann, and H.~Fehske, arXiv:2004.03290  (2020).
+
+\bibitem{XQ19}
+X.~Qiu, T.S. Deng, Y.~Hu, P.~Xue, and W.~Yi, iScience 20 (2019), pp. 392--401.
+
+\bibitem{BWA17}
+W.A. Benalcazar, B.A. Bernevig, and T.L. Hughes, Science 357 (2017), pp.
+  61--66.
+
+\bibitem{BWA17b}
+W.A. Benalcazar, B.A. Bernevig, and T.L. Hughes, Phys. Rev. B 96 (2017), p.
+  245115.
+
+\bibitem{SZ17}
+Z.~Song, Z.~Fang, and C.~Fang, Phys. Rev. Lett. 119 (2017), p. 246402.
+
+\bibitem{LJ17}
+J.~Langbehn, Y.~Peng, L.~Trifunovic, F.~von Oppen, and P.W. Brouwer, Phys. Rev.
+  Lett. 119 (2017), p. 246401.
+
+\bibitem{SF18}
+F.~Schindler, A.M. Cook, M.G. Vergniory, Z.~Wang, S.S.P. Parkin, B.A. Bernevig,
+  and T.~Neupert, Science Advances 4 (2018).
+
+\bibitem{KE18b}
+E.~Khalaf, Phys. Rev. B 97 (2018), p. 205136.
+
+\bibitem{FSZW18}
+F.~Schindler, Z.~Wang, M.G. Vergniory, A.M. Cook, A.~Murani, S.~Sengupta, A.Y.
+  Kasumov, R.~Deblock, S.~Jeon, I.~Drozdov, H.~Bouchiat, S.~Gu\'eron,
+  A.~Yazdani, B.A. Bernevig, and T.~Neupert, Nat. Phys. 14 (2018), pp.
+  918--924.
+
+\bibitem{SNK19}
+S.N. Kempkes, M.R. Slot, J.J. van~den Broeke, P.~Capiod, W.A. Benalcazar,
+  D.~Vanmaekelbergh, D.~Bercioux, I.~Swart, and C.M. Smith, Nat. Mater. 18
+  (2019), pp. 1292--1297.
+
+\bibitem{MSG18}
+M.~Serra-Garcia, V.~Peri, R.~S\"usstrunk, O.R. Bilal, T.~Larsen, L.G.
+  Villanueva, and S.D. Huber, Nature 555 (2018), pp. 342--345.
+
+\bibitem{HX18}
+H.~Xue, Y.~Yang, F.~Gao, Y.~Chong, and B.~Zhang, Nat. Mater. 18 (2018), pp.
+  108--112.
+
+\bibitem{XN18}
+X.~Ni, M.~Weiner, A.~Al\`u, and A.B. Khanikaev, Nat. Mater. 18 (2018), pp.
+  113--120.
+
+\bibitem{AEH19}
+A.E. Hassan, F.K. Kunst, A.~Moritz, G.~Andler, E.J. Bergholtz, and
+  M.~Bourennane, Nat. Photon. 13 (2019), pp. 697--700.
+
+\bibitem{JHJ19}
+X.~Zhang, H.X. Wang, Z.K. Lin, Y.~Tian, B.~Xie, M.H. Lu, Y.F. Chen, and J.H.
+  Jiang, Nat. Phys. 15 (2019), pp. 582--588.
+
+\bibitem{LT19}
+T.~Liu, Y.R. Zhang, Q.~Ai, Z.~Gong, K.~Kawabata, M.~Ueda, and F.~Nori, Phys.
+  Rev. Lett. 122 (2019), p. 076801.
+
+\bibitem{LXW19}
+X.W. Luo and C.~Zhang, Phys. Rev. Lett. 123 (2019), p. 073601.
+
+\bibitem{LL19}
+C.H. Lee, L.~Li, and J.~Gong, Phys. Rev. Lett. 123 (2019), p. 016805.
+
+\bibitem{EE19}
+E.~Edvardsson, F.K. Kunst, and E.J. Bergholtz, Phys. Rev. B 99 (2019), p.
+  081302(R).
+
+\bibitem{EM19a}
+M.~Ezawa, Phys. Rev. B 99 (2019), p. 121411(R).
+
+\bibitem{ZZ19}
+Z.~Zhang, M.~Rosendo~L\'opez, Y.~Cheng, X.~Liu, and J.~Christensen, Phys. Rev.
+  Lett. 122 (2019), p. 195501.
+
+\bibitem{OE90}
+E.~Ott, C.~Grebogi, and J.A. Yorke, Phys. Rev. Lett. 64 (1990), pp. 1196--1199.
+
+\bibitem{RMM76}
+R.M. May, Nature 261 (1976), pp. 459--467.
+
+\bibitem{AJA05}
+J.A. Acebr\'on, L.L. Bonilla, C.J. P\'erez~Vicente, F.~Ritort, and R.~Spigler,
+  Rev. Mod. Phys. 77 (2005), pp. 137--185.
+
+\bibitem{LZ20}
+L.~Zdeborov\'a, Nat. Phys.  (2020).
+
+\bibitem{KV16}
+V.~Khemani, A.~Lazarides, R.~Moessner, and S.L. Sondhi, Phys. Rev. Lett. 116
+  (2016), p. 250401.
+
+\bibitem{EDV16}
+D.V. Else, B.~Bauer, and C.~Nayak, Phys. Rev. Lett. 117 (2016), p. 090402.
+
+\bibitem{GZHR18}
+Z.~Gong, R.~Hamazaki, and M.~Ueda, Phys. Rev. Lett. 120 (2018), p. 040404.
+
+\bibitem{GFM19}
+F.M. Gambetta, F.~Carollo, M.~Marcuzzi, J.P. Garrahan, and I.~Lesanovsky, Phys.
+  Rev. Lett. 122 (2019), p. 015701.
+
+\bibitem{BZ19}
+B.~Zhu, J.~Marino, N.Y. Yao, M.D. Lukin, and E.A. Demler, New J. Phys. 21
+  (2019), p. 073028.
+
+\bibitem{WX19}
+W.~Xi, Z.H. Zhang, Z.C. Gu, and W.Q. Chen, arXiv:1911.01590  (2019).
+
+\bibitem{DH09}
+D.~Holt and D.~Rumynin, Algebra I -- Advanced Linear Algebra (MA251) Lecture
+  Notes  (2009).
+
+\bibitem{FL10}
+L.~Fidkowski, Phys. Rev. Lett. 104 (2010), p. 130502.
+
+\bibitem{JHPC78}
+J.~Colpa, Physica A 93 (1978), pp. 327 -- 353.
+
+\bibitem{MR13}
+R.~Shindou, R.~Matsumoto, S.~Murakami, and J.i. Ohe, Phys. Rev. B 87 (2013), p.
+  174427.
+
+\bibitem{BB11}
+B.~Baumgartner, arXiv:1106.6189  (2011).
+
+\end{thebibliography}
