@@ -2,6 +2,8 @@ arXiv.*/*.aux
 arXiv.*/*.log
 arXiv.*/*.out
 arXiv.*/*.synctex.gz
+arXiv.*/*.dvi
+#arXiv.*/*.pdf
 
 #tmp
 tmp/*
