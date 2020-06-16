@@ -1,0 +1,70 @@
+\begin{thebibliography}{10}
+
+\bibitem{al2}
+{\sc Aigerman, N., Kovalsky, S.~Z., and Lipman, Y.}
+\newblock Spherical orbifold tutte embeddings.
+\newblock {\em ACM Trans. Graph. 36}, 4 (2017), 90:1--90:13.
+
+\bibitem{al0}
+{\sc Aigerman, N., and Lipman, Y.}
+\newblock Orbifold tutte embeddings.
+\newblock {\em ACM Trans. Graph. 34}, 6 (2015), 190:1--190:12.
+
+\bibitem{al1}
+{\sc Aigerman, N., and Lipman, Y.}
+\newblock Hyperbolic orbifold tutte embeddings.
+\newblock {\em ACM Trans. Graph. 35}, 6 (2016), 217:1--217:14.
+
+\bibitem{bps}
+{\sc Bobenko, A.~I., Pinkall, U., and Springborn, B.~A.}
+\newblock Discrete conformal maps and ideal hyperbolic polyhedra.
+\newblock {\em Geom. Topol. 19}, 4 (2015), 2155--2215.
+
+\bibitem{cl}
+{\sc Chow, B., and Luo, F.}
+\newblock Combinatorial {R}icci flows on surfaces.
+\newblock {\em J. Differential Geom. 63}, 1 (2003), 97--129.
+
+\bibitem{keenan}
+{\sc Crane, K.}
+\newblock \url{https://www.cs.cmu.edu/~kmcrane/Projects/ModelRepository/}.
+
+\bibitem{hk1}
+{\sc Hass, J., and Koehl, P.}
+\newblock Automatic {A}lignment of {G}enus-{Z}ero {S}urfaces.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell. 36}, 3 (2014), 466--478.
+
+\bibitem{jklg}
+{\sc Jin, M., Kim, J., Luo, F., and Gu, X.}
+\newblock Discrete surface ricci flow.
+\newblock {\em IEEE Trans Vis Comput Graph 14}, 5 (2008), 1030--1043.
+
+\bibitem{kazhdan}
+{\sc Kazhdan, M.}
+\newblock \url{http://www.cs.jhu.edu/~misha/Code/ConformalizedMCF/}.
+
+\bibitem{ksbc}
+{\sc Kazhdan, M., Solomon, J., and Ben-Chen, M.}
+\newblock Can mean-curvature flow be modified to be non-singular?
+\newblock {\em Comput. Graph. Forum 31}, 5 (2012), 1745--1754.
+
+\bibitem{om}
+{\sc RWTH-Aachen-University}.
+\newblock \url{http://www.openmesh.org/}.
+
+\bibitem{ssp}
+{\sc Springborn, B., Schr\"{o}der, P., and Pinkall, U.}
+\newblock Conformal equivalence of triangle meshes.
+\newblock {\em ACM Trans. Graph. 27}, 3 (2008), 77:1--77:11.
+
+\bibitem{zzglg}
+{\sc Zhang, M., Zeng, W., Guo, R., Luo, F., and Gu, X.~D.}
+\newblock Survey on discrete surface {R}icci flow.
+\newblock {\em J. Comput. Sci. Tech. 30}, 3 (2015), 598--613.
+
+\bibitem{thingi10k}
+{\sc Zhou, Q., and Jacobson, A.}
+\newblock Thingi10k: {A} dataset of 10,000 3d-printing models,
+  \url{https://ten-thousand-models.appspot.com/}.
+
+\end{thebibliography}
