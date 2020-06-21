@@ -1,0 +1,68 @@
+\begin{thebibliography}{10}
+
+\bibitem{vae}
+D.~P. Kingma and M.~Welling, ``Auto-encoding variational bayes,'' in {\em 2nd
+  International Conference on Learning Representations, {ICLR} 2014, Banff, AB,
+  Canada, April 14-16, 2014, Conference Track Proceedings}, 2014.
+
+\bibitem{burda2015importance}
+Y.~Burda, R.~Grosse, and R.~Salakhutdinov, ``Importance weighted
+  autoencoders,'' {\em arXiv preprint arXiv:1509.00519}, 2015.
+
+\bibitem{nice}
+L.~Dinh, D.~Krueger, and Y.~Bengio, ``{NICE:} non-linear independent components
+  estimation,'' in {\em 3rd International Conference on Learning
+  Representations, {ICLR} 2015, San Diego, CA, USA, May 7-9, 2015, Workshop
+  Track Proceedings}, 2015.
+
+\bibitem{betavae}
+I.~Higgins, L.~Matthey, A.~Pal, C.~Burgess, X.~Glorot, M.~Botvinick,
+  S.~Mohamed, and A.~Lerchner, ``beta-vae: Learning basic visual concepts with
+  a constrained variational framework,'' in {\em 5th International Conference
+  on Learning Representations, {ICLR} 2017, Toulon, France, April 24-26, 2017,
+  Conference Track Proceedings}, 2017.
+
+\bibitem{chen2018isolating}
+T.~Q. Chen, X.~Li, R.~B. Grosse, and D.~K. Duvenaud, ``Isolating sources of
+  disentanglement in variational autoencoders,'' in {\em Advances in Neural
+  Information Processing Systems}, pp.~2610--2620, 2018.
+
+\bibitem{vlae}
+X.~Chen, D.~P. Kingma, T.~Salimans, Y.~Duan, P.~Dhariwal, J.~Schulman,
+  I.~Sutskever, and P.~Abbeel, ``Variational lossy autoencoder,'' in {\em 5th
+  International Conference on Learning Representations, {ICLR} 2017, Toulon,
+  France, April 24-26, 2017, Conference Track Proceedings}, 2017.
+
+\bibitem{kingma2016improved}
+D.~P. Kingma, T.~Salimans, R.~Jozefowicz, X.~Chen, I.~Sutskever, and
+  M.~Welling, ``Improved variational inference with inverse autoregressive
+  flow,'' in {\em Advances in neural information processing systems},
+  pp.~4743--4751, 2016.
+
+\bibitem{chen2018pixelsnail}
+X.~Chen, N.~Mishra, M.~Rohaninejad, and P.~Abbeel, ``Pixelsnail: An improved
+  autoregressive generative model,'' in {\em International Conference on
+  Machine Learning}, pp.~864--872, 2018.
+
+\bibitem{cover2012elements}
+T.~M. Cover and J.~A. Thomas, {\em Elements of information theory}.
+\newblock John Wiley \& Sons, 2012.
+
+\bibitem{oord2017neural}
+A.~v.~d. Oord, O.~Vinyals, and K.~Kavukcuoglu, ``Neural discrete representation
+  learning,'' {\em arXiv preprint arXiv:1711.00937}, 2017.
+
+\bibitem{rezende2015variational}
+D.~Rezende and S.~Mohamed, ``Variational inference with normalizing flows,'' in
+  {\em International Conference on Machine Learning}, pp.~1530--1538, 2015.
+
+\bibitem{tomczak2018vae}
+J.~Tomczak and M.~Welling, ``Vae with a vampprior,'' in {\em International
+  Conference on Artificial Intelligence and Statistics}, pp.~1214--1223, 2018.
+
+\bibitem{bauer2019resampled}
+M.~Bauer and A.~Mnih, ``Resampled priors for variational autoencoders,'' in
+  {\em The 22nd International Conference on Artificial Intelligence and
+  Statistics}, pp.~66--75, 2019.
+
+\end{thebibliography}
