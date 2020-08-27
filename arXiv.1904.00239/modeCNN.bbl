@@ -1,0 +1,272 @@
+\begin{thebibliography}{10}
+
+\bibitem{lecun1998gradient}
+Yann LeCun, L{\'e}on Bottou, Yoshua Bengio, and Patrick Haffner.
+\newblock Gradient-based learning applied to document recognition.
+\newblock {\em Proceedings of the IEEE}, 86(11):2278--2324, 1998.
+
+\bibitem{Krizhevsky2012}
+Alex Krizhevsky, Ilya Sutskever, and Geoffrey~E Hinton.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  1097--1105, 2012.
+
+\bibitem{he2015delving}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Delving deep into rectifiers: Surpassing human-level performance on
+  imagenet classification.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 1026--1034, 2015.
+
+\bibitem{cirecsan2013mitosis}
+Dan~C Cire{\c{s}}an, Alessandro Giusti, Luca~M Gambardella, and J{\"u}rgen
+  Schmidhuber.
+\newblock Mitosis detection in breast cancer histology images with deep neural
+  networks.
+\newblock In {\em International Conference on Medical Image Computing and
+  Computer-assisted Intervention}, pages 411--418. Springer, 2013.
+
+\bibitem{dosovitskiy2015flownet}
+Alexey Dosovitskiy, Philipp Fischer, Eddy Ilg, Philip Hausser, Caner Hazirbas,
+  Vladimir Golkov, Patrick Van Der~Smagt, Daniel Cremers, and Thomas Brox.
+\newblock Flownet: Learning optical flow with convolutional networks.
+\newblock In {\em Proceedings of the IEEE International Conference on Computer
+  Vision}, pages 2758--2766, 2015.
+
+\bibitem{lin2018application}
+Chern-Sheng Lin, Yu-Chia Huang, Shih-Hua Chen, Yu-Liang Hsu, and Yu-Chen Lin.
+\newblock The application of deep learning and image processing technology in
+  laser positioning.
+\newblock {\em Applied Sciences}, 8(9):1542, 2018.
+
+\bibitem{hofer2017scale}
+Lucas~R Hofer, Rocco~V Dragone, and Andrew~D MacGregor.
+\newblock Scale factor correction for gaussian beam truncation in second moment
+  beam radius measurements.
+\newblock {\em Optical Engineering}, 56(4):043110, 2017.
+
+\bibitem{kogelnik1966laser}
+Herwig Kogelnik and Tingye Li.
+\newblock Laser beams and resonators.
+\newblock {\em Applied Optics}, 5(10):1550--1567, 1966.
+
+\bibitem{bozinovic2013terabit}
+Nenad Bozinovic, Yang Yue, Yongxiong Ren, Moshe Tur, Poul Kristensen, Hao
+  Huang, Alan~E Willner, and Siddharth Ramachandran.
+\newblock Terabit-scale orbital angular momentum mode division multiplexing in
+  fibers.
+\newblock {\em Science}, 340(6140):1545--1548, 2013.
+
+\bibitem{wang2012terabit}
+Jian Wang, Jeng-Yuan Yang, Irfan~M Fazal, Nisar Ahmed, Yan Yan, Hao Huang,
+  Yongxiong Ren, Yang Yue, Samuel Dolinar, Moshe Tur, and A.
+\newblock Terabit free-space data transmission employing orbital angular
+  momentum multiplexing.
+\newblock {\em Nature Photonics}, 6(7):488, 2012.
+
+\bibitem{lasers}
+Anthony~E. Siegman.
+\newblock {\em Lasers}.
+\newblock University Science Books, 1986.
+
+\bibitem{zhao2015capacity}
+Ningbo Zhao, Xiaoying Li, Guifang Li, and Joseph~M Kahn.
+\newblock Capacity limits of spatially multiplexed free-space communication.
+\newblock {\em Nature Photonics}, 9(12):822, 2015.
+
+\bibitem{Trichili2016}
+Abderrahmen Trichili, Carmelo Rosales-Guzm{\'a}n, Angela Dudley, Bienvenu
+  Ndagano, Amine~Ben Salem, Mourad Zghal, and Andrew Forbes.
+\newblock Optical communication beyond orbital angular momentum.
+\newblock {\em Scientific Reports}, 6:27674, 2016.
+
+\bibitem{chen2016there}
+Mingzhou Chen, Kishan Dholakia, and Michael Mazilu.
+\newblock Is there an optimal basis to maximise optical information transfer?
+\newblock {\em Scientific Reports}, 6:22821, 2016.
+
+\bibitem{Ndagano2017}
+Bienvenu Ndagano, Nokwazi Mphuthi, Giovanni Milione, and Andrew Forbes.
+\newblock Comparing mode-crosstalk and mode-dependent loss of laterally
+  displaced orbital angular momentum and hermite--gaussian modes for free-space
+  optical communication.
+\newblock {\em Optics Letters}, 42(20):4175--4178, 2017.
+
+\bibitem{cox2019resilience}
+Mitchell~A Cox, Luthando Maqondo, Ravin Kara, Giovanni Milione, Ling Cheng, and
+  Andrew Forbes.
+\newblock The resilience of hermite-and laguerre-gaussian modes in turbulence.
+\newblock {\em arXiv preprint arXiv:1901.07203}, 2019.
+
+\bibitem{Krenn2014}
+Mario Krenn, Robert Fickler, Matthias Fink, Johannes Handsteiner, Mehul Malik,
+  Thomas Scheidl, Rupert Ursin, and Anton Zeilinger.
+\newblock Communication with spatially modulated light through turbulent air
+  across vienna.
+\newblock {\em New Journal of Physics}, 16(11):113028, 2014.
+
+\bibitem{Krenn2016}
+Mario Krenn, Johannes Handsteiner, Matthias Fink, Robert Fickler, Rupert Ursin,
+  Mehul Malik, and Anton Zeilinger.
+\newblock Twisted light transmission over 143 km.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  113(48):13648--13653, 2016.
+
+\bibitem{Doster2017}
+Timothy Doster and Abbie~T Watnik.
+\newblock Machine learning approach to oam beam demultiplexing via
+  convolutional neural networks.
+\newblock {\em Applied Optics}, 56(12):3386--3396, 2017.
+
+\bibitem{tian2018turbo}
+Qinghua Tian, Zhe Li, Kang Hu, Lei Zhu, Xiaolong Pan, Qi~Zhang, Yongjun Wang,
+  Feng Tian, Xiaoli Yin, and Xiangjun Xin.
+\newblock Turbo-coded 16-ary oam shift keying fso communication system
+  combining the cnn-based adaptive demodulator.
+\newblock {\em Optics Express}, 26(21):27849--27864, 2018.
+
+\bibitem{Lohani2018}
+Sanjaya Lohani, Erin~M Knutson, Matthew O’Donnell, Sean~D Huver, and Ryan~T
+  Glasser.
+\newblock On the use of deep neural networks in optical communications.
+\newblock {\em Applied Optics}, 57(15):4180--4190, 2018.
+
+\bibitem{ross2013laser}
+T~Sean Ross and Society of~Photo-optical Instrumentation~Engineers.
+\newblock {\em Laser Beam Quality Metrics}.
+\newblock SPIE Press Bellingham, 2013.
+
+\bibitem{macadam1992narrow}
+KB~MacAdam, A~Steinbach, and Carl Wieman.
+\newblock A narrow-band tunable diode laser system with grating feedback, and a
+  saturated absorption spectrometer for cs and rb.
+\newblock {\em American Journal of Physics}, 60(12):1098--1111, 1992.
+
+\bibitem{sivaprakasam1996mode}
+S~Sivaprakasam, Ranita Saha, P~Anantha Lakshmi, and Ranjit Singh.
+\newblock Mode hopping in external-cavity diode lasers.
+\newblock {\em Optics Letters}, 21(6):411--413, 1996.
+
+\bibitem{saliba2009mode}
+Sebastian~D Saliba, Mark Junker, Lincoln~D Turner, and Robert~E Scholten.
+\newblock Mode stability of external cavity diode lasers.
+\newblock {\em Applied Optics}, 48(35):6692--6700, 2009.
+
+\bibitem{forbes2016creation}
+Andrew Forbes, Angela Dudley, and Melanie McLaren.
+\newblock Creation and detection of optical modes with spatial light
+  modulators.
+\newblock {\em Advances in Optics and Photonics}, 8(2):200--227, 2016.
+
+\bibitem{schmidt2011real}
+Oliver~A Schmidt, Christian Schulze, Daniel Flamm, Robert Br{\"u}ning, Thomas
+  Kaiser, Siegmund Schr{\"o}ter, and Michael Duparr{\'e}.
+\newblock Real-time determination of laser beam quality by modal decomposition.
+\newblock {\em Optics Express}, 19(7):6741--6748, 2011.
+
+\bibitem{lyu2017fast}
+Meng Lyu, Zhiquan Lin, Guowei Li, and Guohai Situ.
+\newblock Fast modal decomposition for optical fibers using digital holography.
+\newblock {\em Scientific Reports}, 7(1):6556, 2017.
+
+\bibitem{jouppi2017datacenter}
+Norman~P Jouppi, Cliff Young, Nishant Patil, David Patterson, Gaurav Agrawal,
+  Raminder Bajwa, Sarah Bates, Suresh Bhatia, Nan Boden, Al~Borchers, et~al.
+\newblock In-datacenter performance analysis of a tensor processing unit.
+\newblock In {\em 2017 ACM/IEEE 44th Annual International Symposium on Computer
+  Architecture (ISCA)}, pages 1--12. IEEE, 2017.
+
+\bibitem{konforti1988phase}
+Naim Konforti, Emanuel Marom, and S-T Wu.
+\newblock Phase-only modulation with twisted nematic liquid-crystal spatial
+  light modulators.
+\newblock {\em Optics letters}, 13(3):251--253, 1988.
+
+\bibitem{matsumoto2008generation}
+Naoya Matsumoto, Taro Ando, Takashi Inoue, Yoshiyuki Ohtake, Norihiro Fukuchi,
+  and Tsutomu Hara.
+\newblock Generation of high-quality higher-order laguerre-gaussian beams using
+  liquid-crystal-on-silicon spatial light modulators.
+\newblock {\em JOSA A}, 25(7):1642--1651, 2008.
+
+\bibitem{arrizon2007pixelated}
+Victor Arriz{\'o}n, Ulises Ruiz, Rosibel Carrada, and Luis~A Gonz{\'a}lez.
+\newblock Pixelated phase computer holograms for the accurate encoding of
+  scalar complex fields.
+\newblock {\em JOSA A}, 24(11):3500--3507, 2007.
+
+\bibitem{200Modes}
+Carmelo Rosales-Guzm{\'a}n, Nkosiphile Bhebhe, Nyiku Mahonisi, and Andrew
+  Forbes.
+\newblock Multiplexing 200 spatial modes with a single hologram.
+\newblock {\em Journal of Optics}, 19(11):113501, 2017.
+
+\bibitem{slmbook}
+Carmelo Rosales-Guzm{\'a}n and Andrew Forbes.
+\newblock {\em How to shape light with spatial light modulators}.
+\newblock SPIE Press, 2017.
+
+\bibitem{pytorch}
+Adam Paszke, Sam Gross, Soumith Chintala, Gregory Chanan, Edward Yang, Zachary
+  DeVito, Zeming Lin, Alban Desmaison, Luca Antiga, and Adam Lerer.
+\newblock Automatic differentiation in pytorch.
+\newblock {\em OpenReview}, 2017.
+
+\bibitem{deng2009imagenet}
+Jia Deng, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li~Fei-Fei.
+\newblock Imagenet: A large-scale hierarchical image database.
+\newblock In {\em Computer Vision and Pattern Recognition, 2009. CVPR 2009.
+  IEEE Conference on}, pages 248--255. Ieee, 2009.
+
+\bibitem{yosinski2014transferable}
+Jason Yosinski, Jeff Clune, Yoshua Bengio, and Hod Lipson.
+\newblock How transferable are features in deep neural networks?
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  3320--3328, 2014.
+
+\bibitem{Simonyan2014}
+Karen Simonyan and Andrew Zisserman.
+\newblock Very deep convolutional networks for large-scale image recognition.
+\newblock {\em arXiv preprint arXiv:1409.1556}, 2014.
+
+\bibitem{He2016}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
+  Pattern Recognition}, pages 770--778, 2016.
+
+\bibitem{huang2017densely}
+Gao Huang, Zhuang Liu, Laurens Van Der~Maaten, and Kilian~Q Weinberger.
+\newblock Densely connected convolutional networks.
+\newblock In {\em CVPR}, volume~1, page~3, 2017.
+
+\bibitem{iandola2016squeezenet}
+Forrest~N Iandola, Song Han, Matthew~W Moskewicz, Khalid Ashraf, William~J
+  Dally, and Kurt Keutzer.
+\newblock Squeezenet: Alexnet-level accuracy with 50x fewer parameters and< 0.5
+  mb model size.
+\newblock {\em arXiv preprint arXiv:1602.07360}, 2016.
+
+\bibitem{kingma2014adam}
+Diederik~P Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em arXiv preprint arXiv:1412.6980}, 2014.
+
+\bibitem{wilson2017marginal}
+Ashia~C Wilson, Rebecca Roelofs, Mitchell Stern, Nati Srebro, and Benjamin
+  Recht.
+\newblock The marginal value of adaptive gradient methods in machine learning.
+\newblock In {\em Advances in Neural Information Processing Systems}, pages
+  4148--4158, 2017.
+
+\bibitem{wu2015deep}
+Ren Wu, Shengen Yan, Yi~Shan, Qingqing Dang, and Gang Sun.
+\newblock Deep image: Scaling up image recognition.
+\newblock {\em arXiv preprint arXiv:1501.02876}, 2015.
+
+\bibitem{bergstra2012random}
+James Bergstra and Yoshua Bengio.
+\newblock Random search for hyper-parameter optimization.
+\newblock {\em Journal of Machine Learning Research}, 13(Feb):281--305, 2012.
+
+\end{thebibliography}
