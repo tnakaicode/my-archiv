@@ -1,0 +1,1522 @@
+
+%% bare_adv.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See: 
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the advanced use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE Computer
+%% Society journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+% IEEEtran V1.7 and later provides for these CLASSINPUT macros to allow the
+% user to reprogram some IEEEtran.cls defaults if needed. These settings
+% override the internal defaults of IEEEtran.cls regardless of which class
+% options are used. Do not use these unless you have good reason to do so as
+% they can result in nonIEEE compliant documents. User beware. ;)
+%
+%\newcommand{\CLASSINPUTbaselinestretch}{1.0} % baselinestretch
+%\newcommand{\CLASSINPUTinnersidemargin}{1in} % inner side margin
+%\newcommand{\CLASSINPUToutersidemargin}{1in} % outer side margin
+%\newcommand{\CLASSINPUTtoptextmargin}{1in}   % top text margin
+%\newcommand{\CLASSINPUTbottomtextmargin}{1in}% bottom text margin
+
+
+
+
+%
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
+
+
+% For Computer Society journals, IEEEtran defaults to the use of 
+% Palatino/Palladio as is done in IEEE Computer Society journals.
+% To go back to Times Roman, you can use this code:
+%\renewcommand{\rmdefault}{ptm}\selectfont
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % The IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+
+\usepackage{booktabs}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later.
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+\graphicspath{{Figures/png/}} %looks for images in the folder Figures. This directory must be in the same location as the tex file
+
+%\graphicspath{{Figures/pdfs/}} %looks for images in the folder Figures. This directory must be in the same location as the tex file
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+\setlength{\arrayrulewidth}{.5mm}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{2}
+
+%\definecolor{mywhite}{rgb}{2.55,2.55,2.55}
+%\definecolor{lightgray}{rgb}{0.83, 0.83, 0.83}
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%\usepackage{acronym}
+% acronym.sty was written by Tobias Oetiker. This package provides tools for
+% managing documents with large numbers of acronyms. (You don't *have* to
+% use this package - unless you have a lot of acronyms, you may feel that
+% such package management of them is bit of an overkill.)
+% Do note that the acronym environment (which lists acronyms) will have a
+% problem when used under IEEEtran.cls because acronym.sty relies on the
+% description list environment - which IEEEtran.cls has customized for
+% producing IEEE style lists. A workaround is to declared the longest
+% label width via the IEEEtran.cls \IEEEiedlistdecl global control:
+%
+% \renewcommand{\IEEEiedlistdecl}{\IEEEsetlabelwidth{SONET}}
+% \begin{acronym}
+%
+% \end{acronym}
+% \renewcommand{\IEEEiedlistdecl}{\relax}% remember to reset \IEEEiedlistdecl
+%
+% instead of using the acronym environment's optional argument.
+% The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/acronym
+
+
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+% Also highly recommended is Mark Wooding's extremely powerful MDW tools,
+% especially mdwmath.sty and mdwtab.sty which are used to format equations
+% and tables, respectively. The MDWtools set is already installed on most
+% LaTeX systems. The lastest version and documentation is available at:
+% http://www.ctan.org/pkg/mdwtools
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+%\usepackage{eqparbox}
+% Also of notable interest is Scott Pakin's eqparbox package for creating
+% (automatically sized) equal width boxes - aka "natural width parboxes".
+% Available at:
+% http://www.ctan.org/pkg/eqparbox
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+% NOTE: PDF thumbnail features are not required in IEEE papers
+%       and their use requires extra complexity and work.
+%\ifCLASSINFOpdf
+%  \usepackage[pdftex]{thumbpdf}
+%\else
+%  \usepackage[dvips]{thumbpdf}
+%\fi
+% thumbpdf.sty and its companion Perl utility were written by Heiko Oberdiek.
+% It allows the user a way to produce PDF documents that contain fancy
+% thumbnail images of each of the pages (which tools like acrobat reader can
+% utilize). This is possible even when using dvi->ps->pdf workflow if the
+% correct thumbpdf driver options are used. thumbpdf.sty incorporates the
+% file containing the PDF thumbnail information (filename.tpm is used with
+% dvips, filename.tpt is used with pdftex, where filename is the base name of
+% your tex document) into the final ps or pdf output document. An external
+% utility, the thumbpdf *Perl script* is needed to make these .tpm or .tpt
+% thumbnail files from a .ps or .pdf version of the document (which obviously
+% does not yet contain pdf thumbnails). Thus, one does a:
+% 
+% thumbpdf filename.pdf 
+%
+% to make a filename.tpt, and:
+%
+% thumbpdf --mode dvips filename.ps
+%
+% to make a filename.tpm which will then be loaded into the document by
+% thumbpdf.sty the NEXT time the document is compiled (by pdflatex or
+% latex->dvips->ps2pdf). Users must be careful to regenerate the .tpt and/or
+% .tpm files if the main document changes and then to recompile the
+% document to incorporate the revised thumbnails to ensure that thumbnails
+% match the actual pages. It is easy to forget to do this!
+% 
+% Unix systems come with a Perl interpreter. However, MS Windows users
+% will usually have to install a Perl interpreter so that the thumbpdf
+% script can be run. The Ghostscript PS/PDF interpreter is also required.
+% See the thumbpdf docs for details. The latest version and documentation
+% can be obtained at.
+% http://www.ctan.org/pkg/thumbpdf
+\usepackage{multirow}
+\usepackage{pbox}
+
+% NOTE: PDF hyperlink and bookmark features are not required in IEEE
+%       papers and their use requires extra complexity and work.
+% *** IF USING HYPERREF BE SURE AND CHANGE THE EXAMPLE PDF ***
+% *** TITLE/SUBJECT/AUTHOR/KEYWORDS INFO BELOW!!           ***
+\newcommand\MYhyperrefoptions{bookmarks=true,bookmarksnumbered=true,
+pdfpagemode={UseOutlines},plainpages=false,pdfpagelabels=true,
+colorlinks=true,linkcolor={black},citecolor={black},urlcolor={black},
+pdftitle={Bare Demo of IEEEtran.cls for Computer Society Journals},%<!CHANGE!
+pdfsubject={Typesetting},%<!CHANGE!
+pdfauthor={Michael D. Shell},%<!CHANGE!
+pdfkeywords={Computer Society, IEEEtran, journal, LaTeX, paper,
+             template}}%<^!CHANGE!
+%\ifCLASSINFOpdf
+%\usepackage[\MYhyperrefoptions,pdftex]{hyperref}
+%\else
+%\usepackage[\MYhyperrefoptions,breaklinks=true,dvips]{hyperref}
+%\usepackage{breakurl}
+%\fi
+% One significant drawback of using hyperref under DVI output is that the
+% LaTeX compiler cannot break URLs across lines or pages as can be done
+% under pdfLaTeX's PDF output via the hyperref pdftex driver. This is
+% probably the single most important capability distinction between the
+% DVI and PDF output. Perhaps surprisingly, all the other PDF features
+% (PDF bookmarks, thumbnails, etc.) can be preserved in
+% .tex->.dvi->.ps->.pdf workflow if the respective packages/scripts are
+% loaded/invoked with the correct driver options (dvips, etc.). 
+% As most IEEE papers use URLs sparingly (mainly in the references), this
+% may not be as big an issue as with other publications.
+%
+% That said, Vilar Camara Neto created his breakurl.sty package which
+% permits hyperref to easily break URLs even in dvi mode.
+% Note that breakurl, unlike most other packages, must be loaded
+% AFTER hyperref. The latest version of breakurl and its documentation can
+% be obtained at:
+% http://www.ctan.org/pkg/breakurl
+% breakurl.sty is not for use under pdflatex pdf mode.
+%
+% The advanced features offer by hyperref.sty are not required for IEEE
+% submission, so users should weigh these features against the added
+% complexity of use.
+% The package options above demonstrate how to enable PDF bookmarks
+% (a type of table of contents viewable in Acrobat Reader) as well as
+% PDF document information (title, subject, author and keywords) that is
+% viewable in Acrobat reader's Document_Properties menu. PDF document
+% information is also used extensively to automate the cataloging of PDF
+% documents. The above set of options ensures that hyperlinks will not be
+% colored in the text and thus will not be visible in the printed page,
+% but will be active on "mouse over". USING COLORS OR OTHER HIGHLIGHTING
+% OF HYPERLINKS CAN RESULT IN DOCUMENT REJECTION BY THE IEEE, especially if
+% these appear on the "printed" page. IF IN DOUBT, ASK THE RELEVANT
+% SUBMISSION EDITOR. You may need to add the option hypertexnames=false if
+% you used duplicate equation numbers, etc., but this should not be needed
+% in normal IEEE work.
+% The latest version of hyperref and its documentation can be obtained at:
+% http://www.ctan.org/pkg/hyperref
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+%\title{Hermite-Gaussian Mode Determination with Convolution Neural Networks}
+\title{Hermite-Gaussian Mode Detection via Convolution Neural Networks}
+
+%Elliptically Invariant Laser Beam Scale Factor for Gaussian Beam Truncation
+
+%Elliptically Invariant Laser Beam Scale Factor for Gaussian Beam Truncation
+
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+%
+%\IEEEcompsocitemizethanks is a special \thanks that produces the bulleted
+% lists the Computer Society journals use for "first footnote" author
+% affiliations. Use \IEEEcompsocthanksitem which works much like \item
+% for each affiliation group. When not in compsoc mode,
+% \IEEEcompsocitemizethanks becomes like \thanks and
+% \IEEEcompsocthanksitem becomes a line break with idention. This
+% facilitates dual compilation, although admittedly the differences in the
+% desired content of \author between the different types of papers makes a
+% one-size-fits-all approach a daunting prospect. For instance, compsoc 
+% journal papers have the author affiliations above the "Manuscript
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+%\author{L.R.~Hofer,
+%        R.V.~Dragone, A.D.~MacGregor% <-this % stops a space
+        %DataRay Inc., 1675 Market St., Redding, United States of America, 96001
+        
+% \author{\IEEEauthorblockN{L.R. Hofer\IEEEauthorrefmark{1},
+%L.~Jones\IEEEauthorrefmark{1}, 
+%J.~Goedert\IEEEauthorrefmark{1}, 
+%and R.V.~Dragone\IEEEauthorrefmark{1}}
+
+ \author{\IEEEauthorblockN{L.R. Hofer\IEEEauthorrefmark{1},
+L.W.~Jones\IEEEauthorrefmark{1}, 
+J.L.~Goedert\IEEEauthorrefmark{1}, 
+and R.V.~Dragone\IEEEauthorrefmark{1}}\\
+\IEEEauthorblockA{\IEEEauthorrefmark{1}DataRay Inc., 1675 Market St., Redding, CA, 96001, USA}
+% <-this % stops an unwanted space
+\thanks{Corresponding author: L.R. Hofer (email: lhofer@dataray.com).
+This work was supported by DataRay Inc.}}
+%\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem M. Shell was with the Department
+%of Electrical and Computer Engineering, Georgia Institute of Technology, Atlanta,
+%GA, 30332.\protect\\
+% note need leading \protect in front of \\ to get a newline within \thanks as
+% \\ is fragile and will error, could use \hfil\break instead.
+%E-mail: see http://www.michaelshell.org/contact.html
+%\IEEEcompsocthanksitem J. Doe and J. Doe are with Anonymous University.}% <-this % stops a space
+%\thanks{Manuscript received April 19, 2005; revised August 26, 2015.}
+
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+\markboth{}%
+{Shell \MakeLowercase{\textit{et al.}}: Bare Advanced Demo of IEEEtran.cls for IEEE Computer Society Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+% The publisher's ID mark at the bottom of the page is less important with
+% Computer Society journal papers as those publications place the marks
+% outside of the main text columns and, therefore, unlike regular IEEE
+% journals, the available text space is not reduced by their presence.
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% or like this to get the Computer Society new two part style.
+%\IEEEpubid{\makebox[\columnwidth]{\hfill 0000--0000/00/\$00.00~\copyright~2015 IEEE}%
+%\hspace{\columnsep}\makebox[\columnwidth]{Published by the IEEE Computer Society\hfill}}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark (Computer Society journal
+% papers don't need this extra clearance.)
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+%A convolution neural network has been implemented to detect Hermite-Gaussian (HG) laser modes. HG modes are a complete set of solutions to the free-space paraxial wave equation and are often the physical solutions for stable laser cavity modes. Furthermore, HG modes can be mode-multiplexed to significantly increase the information capacity of optical communication systems. Since, both optical communication and cavity tuning applications benefit from a machine vision determination of HG modes,convolution neural networks were applied and their hyperparameters subsequently tuned to detect the lowest twenty-one unique HG modes with a greater than 99\% accuracy. Since the effectiveness of a CNN is dependent on the diversity of its training data, extensive simulated and experimental datasets were created for training, validation and testing.
+
+% for Computer Society papers, we must declare the abstract and index terms
+% PRIOR to the title within the \IEEEtitleabstractindextext IEEEtran
+% command as these need to go into the title area created by \maketitle.
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+Hermite-Gaussian (HG) laser modes are a complete set of solutions to the free-space paraxial wave equation in Cartesian coordinates and represent a close approximation to physically-realizable laser cavity modes. Additionally, HG modes can be mode-multiplexed to significantly increase the information capacity of optical communication systems due to their orthogonality. Since, both cavity tuning and optical communication applications benefit from a machine vision determination of HG modes, convolution neural networks were implemented to detect the lowest twenty-one unique HG modes with an accuracy greater than 99\%. As the effectiveness of a CNN is dependent on the diversity of its training data, extensive simulated and experimental datasets were created for training, validation and testing.
+
+\end{abstract}
+
+%Hermite-Gaussian (HG) laser modes are a complete set of solutions to the free-space paraxial wave equation and often represent the best physical solution for stable laser cavity modes.
+%Convolution neural networks (CNN) were implemented to detect Hermite-Gaussian (HG) laser modes---which are a complete set of solutions to the free-space paraxial wave equation. HG modes are often the best physical solution for stable laser cavity modes and furthermore, can be mode-multiplexed to significantly increase the information capacity of optical communication systems. Since, both optical communication and cavity tuning applications benefit from a machine vision determination of HG modes, convolution neural networks were applied to detect the lowest twenty-one unique HG modes with an accuracy greater than 99\%. The effectiveness of a CNN is dependent on the diversity of its training data and therefore extensive simulated and experimental datasets were created for training, validation and testing.
+%
+%Hermite-Gaussian (HG) laser modes are a complete set of solutions to the free-space paraxial wave equation and often represent the best physical solution for stable laser cavity modes. Due their orthoganility, HG modes can be mode-multiplexed to significantly increase the information capacity of optical communication systems. Since, both optical communication and cavity tuning applications benefit from a machine vision determination of HG modes, convolution neural networks were applied to detect the lowest twenty-one unique HG modes with an accuracy greater than 99\%. The effectiveness of a CNN is dependent on the diversity of its training data and therefore extensive simulated and experimental datasets were created for training, validation and testing.
+
+% Note that keywords are not normally used for peerreview papers.
+%\begin{IEEEkeywords}
+%Computer Society, IEEE, IEEEtran, journal, \LaTeX, paper, template.
+%\end{IEEEkeywords}
+}
+
+
+% make the title area
+\maketitle
+
+
+% To allow for easy dual compilation without having to reenter the
+% abstract/keywords data, the \IEEEtitleabstractindextext text will
+% not be used in maketitle, but will appear (i.e., to be "transported")
+% here as \IEEEdisplaynontitleabstractindextext when compsoc mode
+% is not selected <OR> if conference mode is selected - because compsoc
+% conference papers position the abstract like regular (non-compsoc)
+% papers do!
+\IEEEdisplaynontitleabstractindextext
+% \IEEEdisplaynontitleabstractindextext has no effect when using
+% compsoc under a non-conference mode.
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+\ifCLASSOPTIONcompsoc
+\IEEEraisesectionheading{\section*{Introduction}\label{sec:introduction}}
+\else
+%\section{Introduction}
+\label{sec:introduction}
+\fi 
+% Computer Society journal (but not conference!) papers do something unusual
+% with the very first section heading (almost always called "Introduction").
+% They place it ABOVE the main text! IEEEtran.cls does not automatically do
+% this for you, but you can achieve this effect with the provided
+% \IEEEraisesectionheading{} command. Note the need to keep any \label that
+% is to refer to the section immediately after \section in the above as
+% \IEEEraisesectionheading puts \section within a raised box.
+
+%Automatic control and thus must be and even mode hop. Generally, the laser must be tuned each morning to the correct frequency and must also run single-mode in terms of frequency and spatial mode. Through the laser driver and temperature controller the laser can be tuned. Previously, this was done by hand since although the frequency could be read from the wavemeter and whether it was running single-mode in frequency space could be easily determined from an oscilliscope, determining the spatial mode of the laser was somewhat more difficult. Beam profiling cameras have made it possible to observe what mode the laser is in, but an easy to implement algorithmic approach was needed to determine the mode. 
+%
+%
+%One example in which higher-modes can arise is in self-built external cavity diode lasers often used in atomic physics. These lasers utilize cheap diodes in conjunction with a variably positioned diffraction grating. T to tune the frequency of the laser. Tuning the laser requires a careful
+%
+%One of these processes is the identification of modal content in laser beams. Modal content is important when designing optical systems and although some systems utilize higher-order modes, a significant portion of laser applications require the TEM$_{00}$ fundamental mode. Thus, the laser cavity must be tuned such that only TEM$_{00}$ modal content is produced. However, in certain laser, setups such as an self-built external cavity diode lasers often found in atomic physics labs, the laser can drift due to enviromental condition and even mode hop. Generally, the laser must be tuned each morning to the correct frequency and must also run single-mode in terms of frequency and spatial mode. Through the laser driver and temperature controller the laser can be tuned. Previously, this was done by hand since although the frequency could be read from the wavemeter and whether it was running single-mode in frequency space could be easily determined from an oscilliscope, determining the spatial mode of the laser was somewhat more difficult. Beam profiling cameras have made it possible to observe what mode the laser is in, but an easy to implement algorithmic approach was needed to determine the mode. 
+
+
+
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps (small caps for compsoc).
+% 
+% form to use if the first word consists of a single letter:
+% \IEEEPARstart{A}{demo} file is ....
+% 
+% form to use if you need the single drop letter followed by
+% normal text (unknown if ever used by the IEEE):
+% \IEEEPARstart{A}{}demo file is ....
+% 
+% Some journals put the first two words in caps:
+% \IEEEPARstart{T}{his demo} file is ....
+% 
+% Here we have the typical use of a "T" for an initial drop letter
+% and "HIS" in caps to complete the first word.
+
+
+
+%\label{sect:intro}  % \label{} allows reference to this secti
+
+%\section*{Introduction}\label{sect:intro}  % \label{} allows reference to this secti
+Convolution neural networks (CNN) \cite{lecun1998gradient} have seen a resurgence in the last decade \cite{Krizhevsky2012} due to their ability to classify images with near human or better than human accuracy \cite{he2015delving}. These developments have revolutionized machine vision applications from cancer detection \cite{cirecsan2013mitosis} to optics \cite{dosovitskiy2015flownet}. One area of optics research in which CNNs are proving useful \cite{lin2018application} is laser beam profiling—where either a CCD or CMOS camera is used to determine the centroid, radius \cite{hofer2017scale} and quality of a laser beam (M$^2$) among other metrics. Since, a laser beam's M$^2$ value is closely related to its modal content, determining the beam's dominant HG mode with a CNN is of significant interest. Furthermore, using CNNs to identify the HG \cite{kogelnik1966laser} mode of a beam has applications ranging from optical communications to atomic physics. 
+
+Mode-multiplexing can significantly increase the information capacity of optical communication systems\cite{bozinovic2013terabit, wang2012terabit} through use of Hermite-Gaussian (HG) and Laguerre-Gaussian (LG) modes whose respective constituent modes propagate independently of one another due to their orthogonality---HG as well as LG modes comprise a complete orthogonal basis set \cite{lasers}. Much attention has been given to modes that carry orbital angular momentum (OAM); however, Zhao \textit{et al.} suggested that OAM modes do not necessarily increase the information capacity of a system in comparison to non-OAM modes and furthermore, OAM modes are often more adversely affected by turbulence\cite{zhao2015capacity}. Although Trichili \textit{et al.} showed that the full LG basis set of modes can encode information when multiplexing and demultiplexing data \cite{Trichili2016}, HG modes propagate information in a free-space optical communication network with an equal information capacity \cite{chen2016there} to LG modes and can experience lower mode loss and lower mode cross-talk \cite{Ndagano2017, cox2019resilience}. Since previous work has demonstrated the ability of deep neural networks to identify both OAM \cite{Krenn2014, Krenn2016, Doster2017, tian2018turbo} and LG modes \cite{Lohani2018}, extending the use of CNNs to identify HG modes provides another route to mode-multiplexing with potentially lower error rates. 
+
+Even though higher-order HG modes are useful in optical communications, they are problematic in optical setups that require only the fundamental TEM$_{00}$ \cite{ross2013laser} mode. As an example, self-built external cavity diode lasers \cite{macadam1992narrow}, often found in atomic physics labs, rely on a laser diode and diffraction grating which form an external cavity. The laser must be carefully tuned via temperature, current and grating position to produce the correct frequency and TEM$_{00}$ spatial mode. Since the laser can mode-hop to oscillate in higher transverse (HG) modes \cite{sivaprakasam1996mode, saliba2009mode} during tuning, any automated tuning procedure would require a determination of the HG mode. This makes a machine vision HG mode characterization tool eminently useful. 
+
+In this paper, convolution neural networks (CNN) are used to accurately determine the Hermite-Gaussian mode of a laser beam. As CNNs require substantial amounts of labeled data, two separate datasets were created. First, a simulated dataset was generated for both training and validation of the CNN, whereas a second experimental dataset was created---using a spatial light modulator (SLM) and beam profiler---to test the CNN's ability to generalize to new data and adapt to experimental conditions. The mathematical form of HG modes is first described, followed by the simulated dataset, the SLM optical setup and the experimental dataset. Finally, the CNNs are detailed along with the training methods used to achieve the best classification of the HG modes.
+
+\begin{figure}%[h]
+\centering %centers the graphic
+\includegraphics[width=.5\textwidth]{example.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{Intensity distributions of the lowest 36 Hermite-Gaussian modes. When considering rotational transformations, only 21 unique modes (bordered subplots) remain.} %square brackets set table of contents caption and the squiggly brackets set the in text caption
+\label{fig:modes} %sets a label to be used for further references
+\end{figure}
+
+ In contrast to other state-of-the-art-mode detection techniques \cite{forbes2016creation}, which utilize computer generated holograms in all-optical setups \cite{schmidt2011real}, the method developed requires little to no optics and is additionally devoid of physically imposed constraints which limit the number of modes other methods can detect (e.g. the number of modes a single hologram can successfully demultiplex). Although single image evaluation times can be longer for the CNN mode detection method in comparison to all-optical techniques \cite{lyu2017fast}, recent advances in both CNN software architecture and processing chips designed for deep learning \cite{jouppi2017datacenter} should substantially lower evaluation times in the future.
+
+
+
+\section*{Hermite-Gaussian Modes}\label{sec:hg}
+
+The HG modes represent a set of solutions to the free-space paraxial wave equation in Cartesian coordinates \cite{lasers}. Along one dimension a HG mode's electric field is
+
+\begin{align}
+u_n(x, z)=&\left(\frac{2}{\pi}\right)^{\frac{1}{4}}\left( \frac{e^{-i(2n+1)\psi(z)}}{2^nn!w(z)}\right)^{\frac{1}{2}} \nonumber \\
+&\times H_n\left(\frac{\sqrt{2}x}{w(z)}\right)e^{-i\frac{kx^2}{2R(z)}-\frac{x^2}{w^2(z)}}
+\label{1DHE}
+\end{align}
+
+\noindent where $n$ is the mode of the higher-order beam, $k$ is the wave vector and $H_n$ is a Hermite polynomial of order $n$. The radius of the beam $w(z)$ at a given location $z$ along the axis of propagation is 
+
+\begin{equation}
+w(z)=w_0\left[1+\left(z/z_R\right)^2\right]^\frac{1}{2}
+\end{equation}
+
+\noindent where $w_0$ is the radius of the beam at the beam waist and the Rayleigh length is defined as $z_R=\pi w_0^2/\lambda$---with the wavelength of the beam denoted by $\lambda$. The Gouy phase is given by $\psi(z)=\tan^{-1}\left(z/z_R\right)$ and lastly, the radius of curvature is $R(z)=z\left[1+\left(z_R/z\right)^2\right]$. 
+
+The HG mode's two-dimensional electric field is given by
+
+\begin{equation}
+u_{nm}(x, y, z)=u_n(x, z)u_m(y, z)
+\label{eq:2DHE1}
+\end{equation}
+
+\noindent where $u_m(y, z)$ has a similar form to Eq.~\ref{1DHE}. The intensity distribution of the HG mode (see Fig.~\ref{fig:modes}) can be determined \cite{ross2013laser} via
+
+\begin{equation}
+I(x,y,z)=u_{nm}(x, y, z)u_{nm}^*(x, y, z)
+\end{equation}
+
+\noindent and the phase distribution $\phi(x, y, z)$ is calculated by taking the angle of $u_{nm}(x, y, z)$ in the complex plane.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Simulated Data}\label{sec:simulated}
+Convolution neural networks require significant amounts of labeled data to properly train and thus a simulated dataset was generated using Eq.~\ref{eq:2DHE1}. A Python program was written to generate arbitrary HG mode electric field distributions from which their respective intensity and phase distributions were obtained. Since the accuracy of the CNN and its ability to generalize to new data increases with the diversity of its training set, the simulated data was generated to cover a parameter space consisting of the beam's radii along the major and minor axes ($w_{0x}$, $w_{0y}$), the beam's centroid ($x_0$, $y_0$) and the orientation of the beam $\theta$. The beam's amplitude was not included in the parameter space since the resulting image is normalized before passing into the CNN. Furthermore, the beams were simulated at the beam waist since the beam's position along the axis of propagation does not generate unique data. Rather than mapping the beam parameter space, each of the parameters was randomized within physically realizable bounds.
+
+First, the bounds for the beam radii were determined.  To resolve an HG mode along one axis, a dark pixel should be seen on either side of each HG lobe thus requiring a minimum of $\left(2n+3\right)$ pixels---with the assumption that the lobe spacing is quasi-sinusoidal. This in turn results in a minimum input radius of
+
+\begin{equation}
+w_{0\text{min}}=\sqrt{2}p_w\left(2n+3\right)
+\label{eq:wmin}
+\end{equation}
+
+\noindent where $\sqrt{2}p_w$ is the maximum distance (at a beam orientation of $\theta=\pi/4$) across a square pixel with width $p_w$. The maximum beam radius along both the major and minor axes is given by $w_{\text{max}}=s_l/3$, where $s_l$ is the simulated sensor size; larger radii would cause significant portions of the beam's power to be located off the simulated sensor. However, the HG beam radius increases with the mode order $n$ even though the input radius $w_0$ remains constant (see Fig.~\ref{fig:scaling}a) \cite{lasers}. Therefore, a scaling factor $\beta$ is numerically determined for each HG mode (see Fig.~\ref{fig:scaling}b) and multiplied with the desired output radius to give the correct input radius. Thus, the maximum input radius is
+
+\begin{equation}
+w_{0\text{max}}(n)=\frac{1}{3}s_l\beta(n)\text{.}
+\end{equation}
+
+\noindent Using $w_{0\text{min}}$ and $w_{0\text{max}}(n)$ a random radius can be generated for both the major and minor axes after which a random orientation for the beam is chosen with $0\leq \theta \leq 2\pi$.
+
+\begin{figure}
+\centering %centers the graphic
+\includegraphics[width=.5\textwidth]{scaling.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{ (a) Ratio of the measured Hermite-Gaussian (HG) beam radius $w_{\sigma}$ and its respective input beam radius $w_0$ (see Eq.~\ref{1DHE}) as a function of the HG mode $n$ along a single axis. Both input radii with the HG scaling factor (diamonds) and without the scaling factor (circles) are shown. (b) The HG radius scaling factor $\beta$ as a function of the mode $n$.} %square brackets set table of contents caption and the squiggly brackets set the in text caption
+\label{fig:scaling} %sets a label to be used for further references
+\end{figure}
+
+After choosing the beam radii and orientation, valid bounds for the centroid are found such that the beam does not exceed the dimensions of the simulated sensor. Since the centroid values are given with respect to the image axes rather than the beam's major and minor axes, the beam radii along the image axes are calculated as follows
+
+\begin{equation}
+w_x=\pm\sqrt{w_{0x}^2\cos^2\theta+w_{0y}^2\sin^2\theta}
+\end{equation}
+
+\begin{equation}
+w_y=\pm\sqrt{w_{0x}^2\sin^2\theta+w_{0y}^2\cos^2\theta}
+\end{equation}
+
+\noindent and the bounds for $x_0$ are then given by
+
+\begin{equation}
+x_{0\text{bounds}}=\pm\left(s_l/2-\alpha w_x\right)
+\end{equation}
+
+
+\noindent with a similar equation for the $y_0$ bounds except that $w_x$ is replaced by $w_y$. Due to the HG modes extending towards infinity, the radius is scaled by $\alpha=1.5$ such that a majority of the beam's power is incident on the simulated sensor. Using the centroid bounds, random values for the centroid are generated.
+
+After generating a randomized beam, the maximum amplitude is scaled to one and Gaussian noise added to simulate experimental conditions. The standard deviation of the noise is itself randomly pulled from a Gaussian distribution which has a standard deviation of $\sigma=0.02$ and replicates real noise values seen on a sensor. After the noise has been added, the images are saved as PNGs (224$\times$224 pixels) which both compresses and scales the data between 0 and unity. A training dataset and a validation dataset (see Fig.~\ref{fig:simulated_data}) are generated with 300 and 200 images respectively for each of the lowest twenty-one unique HG modes (see Fig.~\ref{fig:modes}).
+
+\begin{figure}%[h]
+\centering %centers the graphic
+\includegraphics[width=.45\textwidth]{simulated_modes.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{Subset of the simulated beams used to train and validate the convolution neural network. The simulated beams are given random values for the beam radii, beam centroid and orientation of the beam. Additionally, Gaussian noise is added to each image to approximate real-world conditions.}%square brackets set table of contents caption and the squiggly brackets set the in text caption
+\label{fig:simulated_data} %sets a label to be used for further references
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Experimental Data}
+To further validate the CNNs' effectiveness, an optical setup was constructed to create HG beams and acquire their images (see Fig.~\ref{fig:experiment_setup}). A single mode fiber-coupled laser with a 675 nm wavelength and an initial diameter of 1 mm was used as the source and passed first through a polarizer, which ensured the beam was linearly polarized along a single axis, followed by a lambda half-waveplate. The beam was then expanded to 9 mm in diameter and was incident on a spatial light modulator (SLM) at a slight angle with the preceding half-waveplate used to orient the beam's polarization parallel to the SLM's vertical axis. Computer generated holograms (CGH) with blazed gratings were loaded onto the SLM to create the HG modes. Following the SLM, the beam passed through a 400 mm aspheric focusing lens which separated the different diffraction orders---arising due to the CGH's blazed grating---near the focus and an aperture then allowed only the first-order beam to be imaged by the beam profiling camera.% in the Fourier plane of the lens. 
+
+\begin{figure}%[h]
+\centering %centers the graphic
+\includegraphics[width=.5\textwidth]{slm_setup.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{Optical setup for generating arbitrary Hermite-Gaussian beams. A 675 nm fiber-coupled laser beam exits the fiber-coupler and immediately passes through a polarizer followed by a $\lambda$/2 half-waveplate (HWP) both in rotation mounts. The beam is expanded through a series of lenses and is then incident on the SLM. The HWP preceding the SLM is rotated to align the beam polarization parallel with the vertical axis of the SLM. A complex-amplitude modulation hologram is applied to the SLM and the reflected beam then passes through a 400 mm lens which allows the various diffraction orders—due to the hologram's blazed grating—to be separated at the lens' focus. Finally, the first-order diffracted beam is separated via an aperture and imaged with a beam profiling camera.} %square brackets set table of contents caption and the squiggly brackets set the in text caption
+\label{fig:experiment_setup} %sets a label to be used for further references 
+\end{figure}
+
+The optical setup centered on the spatial light modulator which enabled the phase of the electric field to be modulated on a per-pixel basis through the use of nematic liquid crystals \cite{konforti1988phase}. A Meadowlark Optics SLM was used with a resolution of 1920$\times$1152, square pixels of width 9.2 $\mu$m and a fill factor of 95.7\%. Although phase-only modulation holograms can be used to create higher-order modes \cite{matsumoto2008generation}, Arrizon \textit{et al.} demonstrated that both the phase and amplitude of the outgoing beam can be modulated with a phase-only SLM \cite{arrizon2007pixelated} through the use of complex amplitude modulation (CAM) holograms (see Fig.~\ref{fig:exp_holo}c-d). 
+
+CAM holograms produce better quality HG modes than phase-only holograms \cite{200Modes} and were utilized to generate the experimental dataset (see Fig.~\ref{fig:exp_holo}a-b). The HG amplitude and phase distributions were calculated through Eq.~\ref{eq:2DHE1} and then used in the CAM hologram. Similar to the simulation dataset, the beam parameters of the holograms, including the beam radii and the orientation of the beam, were randomized to increase the diversity of the experimental dataset. Because the quality of the output HG beam deteriorated when the SLM's input beam was not centered on the hologram's centroid, the centroid position was kept constant.
+
+The CAM holograms \cite{slmbook} contained a blazed grating which created various diffraction orders clearly seen at the focal plane of the lens following the SLM. The aperture near the focal plane isolated the first diffraction order---which contained the best representation of the HG beam---and an image was subsequently acquired by a beam profiling camera placed in the lens' Fourier-plane. During acquisition of the experimental dataset, the camera's software automatically adjusted the image exposure and between 115-120 randomized images with dimensions of 256$\times$256 pixels were recorded for each of the twenty-one HG modes. 
+
+\begin{figure}%[h]
+\centering %centers the graphic
+\includegraphics[width=.45\textwidth]{experimental_modes.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{(a)-(b) Sample of the experimental dataset images used in testing the convolution neural networks with each image consisting of 256$\times$256 pixels. (c)-(d) The complex amplitude modulation (CAM) hologram used to generate the corresponding intensity distribution above. Note, the blazed grating frequency in each CAM hologram has been decreased by 80\% to increase its visibility.} %square brackets set table of contents caption and the squiggly brackets set the in text caption
+\label{fig:exp_holo} %sets a label to be used for further references
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Convolution Neural Network}
+In keeping with the simulation and data aquistion programs, a Pythonic approach to implementing the CNNs was taken with PyTorch's \cite{pytorch} deep learning framework. PyTorch has popular CNNs pretrained on the ImageNet dataset \cite{deng2009imagenet}, which allowed transfer learning \cite{yosinski2014transferable} to be taken advantage of and significantly shortened the training time required for a CNN. Although several successful CNN architectures have been put forth in recent years including AlexNet \cite{Krizhevsky2012}, VGG\cite{Simonyan2014} and ResNet \cite{He2016} among others \cite{huang2017densely, iandola2016squeezenet} ResNet was chosen, as it achieves more accurate results on the ImageNet dataset compared to older CNNs such as AlexNet. Additionally, ResNet has several million fewer parameters than a VGG CNN with comparable depth which decreases the training time and, when deployed, the evaluation time per image. However, ResNet itself has several implementations differing primarily with regards to the depth of the neural network and 18, 34, 50, 101, and 152 layer pretrained variants are available with PyTorch. Generally, a deeper neural network can achieve higher accuracies; however, deeper networks also have far more parameters and thus require longer training times, take more system memory, and increase single image evaluation times. Therefore, we opted to work with the smaller ResNet versions: ResNet18 and ResNet34. Furthermore, the CNNs were trained in the cloud with Google Compute Engine's Deep Learning virtual machine utilizing a Tesla P100 NVIDIA GPU. 
+
+After choosing the ResNet models, several parameters were set to achieve maximum accuracy on the simulated and experimental data sets. Cross entropy loss was utilized as the loss function for every CNN trained, whereas both Adam \cite{kingma2014adam} (an adaptive optimizer) and stochastic gradient descent (SGD) were used for the optimizer function. However, after initial testing, we found, in keeping with recent literature \cite{wilson2017marginal}, that SGD was better able to generalize and achieved higher accuracy results on the experimental dataset than Adam. Thus, the following CNNs were trained using SGD with momentum as the optimizer. 
+
+Lastly, data transforms were used throughout both the training and validation steps. Since increasing the diversity of the CNN's training data increases the CNN's ability to generalize to new data, two transforms were used during training. In the first transform, the images were randomly cropped between 0.08 and 1.0 of the initial image size after which they were given a random aspect ratio between 3/4 and 4/3 and finally resized to 224$\times$224 pixels. The second transform randomly flipped 50\% of the images along the horizontal axis before normalizing them and passing them into the CNN. During validation, the input data was not substantially altered; rather, the images were cropped to 224$\times$224 pixels about the center of the image to match the CNN's expected input size and then normalized before entering the CNN.
+
+The image resolution of 224$\times$224 pixel was chosen to match the input layer of the pre-trained ResNet CNNs.
+Although higher resolution images can increase a CNN's classification accuracy \cite{wu2015deep}, they simultaneously increase both training and single image evaluation times. Therefore, to mitigate potentially detrimental effects on the classification accuracy due to the image resolution, both the simulated and experimental datasets were constructed such that the dominant features (lobes) of the modes were always resolvable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Results}
+
+Once the loss and optimizer functions along with the data transforms were determined, the CNNs hyperparameters including the batch size (in this case, the number of images fed into the CNN at a time), learning rate and momentum were tuned. Initially, the CNNs were trained for forty epochs (number of times the entire dataset is passed through the CNN) with a batch size of eight, a momentum of $\mu=0.9$ and constant learning rates of \{0.1, 0.01, 0.001, 0.0001\} (see Table~\ref{table:fixed_results}). A constant learning rate of 0.001 was optimal for ResNet18 and a maximal accuracy of 99.56\% was achieved on the experimental dataset, with a corresponding accuracy of 99.31\% on the simulation dataset (see Fig.~\ref{fig:results}a). For ResNet34 a constant learning rate of 0.0001 proved best (see Fig.~\ref{fig:results}b) yielding a maximum accuracy of 98.45\% on the experimental dataset and a coinciding accuracy of 99.29\% on the simulation dataset. ResNet18 alone was subsequently used as it achieved similar accuracy to ResNet34 and its smaller size decreased training and evaluation times.  After training, the ResNet18 evaluated images in approximately 100 milliseconds on a CPU and 5 milliseconds when utilizing the GPU.
+
+\begin{table}
+\centering
+{\scriptsize
+\begin{tabular}{lccccc}
+\toprule
+    Model &  Learning Rate &  Best Exp. Acc. (\%) &  Best Corr. Acc. (\%) &  Time (m) \\
+\midrule
+ ResNet18 &         0.1 &               31.19 &                66.10 &      43.1 \\
+ ResNet18 &         0.01 &               56.46 &                91.07 &      39.8 \\
+ ResNet18 &         0.001 &               99.56 &                99.31 &      39.5 \\
+ ResNet18 &         0.0001 &               90.74 &                98.31 &      39.7 \\
+ ResNet34 &         0.1 &               37.70 &                65.88 &      56.7 \\
+ ResNet34 &         0.01 &               29.56 &                96.74 &      50.4 \\
+ ResNet34 &         0.001 &               98.57 &                97.43 &      50.3 \\
+ ResNet34 &         0.0001 &               98.45 &                99.29 &      50.3 \\
+\bottomrule
+\end{tabular}
+}
+  \caption{\label{table:fixed_results}The initial results of the convolution neural networks with fixed learning rates are shown. Each CNN has a batch size of eight and a momentum of $\mu$=0.9. A model's best accuracy on the experimental dataset along with the corresponding accuracy on the simulated dataset is given in addition to the total time (minutes) to train the model for forty epochs. Note that the highest accuracy ResNet18 and ResNet34 CNNs display oscillatory behavior around the asymptote (see Fig.~\ref{fig:results}a-b).}
+\end{table}
+
+Although the CNNs achieved fairly high results on both the simulated and experimental datasets, their accuracies on the experimental dataset failed to reach satisfactory asymptotes but rather oscillated substantially from epoch to epoch---indicating the hyperparameters were not properly tuned to target a local minimum. This is problematic if the training dataset is altered slightly. As an example, a second random simulated dataset was generated (utilizing the same bounds as the first), and used to train a set of CNNs with same hyperparameters as above. In this case, the best accuracy achieved for a ResNet18 CNN (learning rate of 0.001) dropped to 98.05\% and 99.31\% on the experimental and simulated datasets respectively.
+
+\begin{figure}%[h]
+\centering %centers the graphic
+\includegraphics[width=.5\textwidth]{results.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{(a) Accuracy of a ResNet18 convolution neural network (CNN) as a function of the epoch with a constant learning rate of 0.001, momentum of $\mu$=0.9 and batch size of eight. The best accuracy achieved on the experimental dataset was 99.56\%. (b) Accuracy of a ResNet34 CNN as a function of the epoch for a constant learning rate of 0.0001. The momentum and batch size were the same as in (a), whereas the highest accuracy attained on the experimental dataset was 98.45\%. (c) Accuracy of the ResNet18 CNN as a function of the epoch with a batch size of eight and momentum of $\mu$=0.9. The learning rate was initially set to 0.001 and reduced by an order of magnitude every ten epochs. Although the maximum experimental accuracy (96.74\%) was reduced, it oscillated far less than (a) or (b) and was fairly asymptotic.} %square brackets set table of contents caption and the squiggly brackets set the in text caption
+\label{fig:results} %sets a label to be used for further references 
+\end{figure}
+
+To better target a local minimum during training, a step scheduler was employed in which the learning rate was decreased by an order of magnitude every ten epochs. This was tested for a series of CNNs with batch size eight, momentum of $\mu$=0.9 and initial learning rates of \{0.1, 0.01, 0.001, 0.0001\}. The best performing CNN (see Fig.~\ref{fig:results}c) had an initial learning rate of 0.001 and resulted in an accuracy of 96.74\% on the experimental dataset and 98.86\% on the simulation dataset. Even though the best ResNet18 CNN trained with a fixed learning rate had higher accuracies, the CNN trained with the step scheduler showed substantially lower amplitude oscillations around the asymptote demonstrating a local minimum was more effectively reached.
+
+\begin{table}
+\centering
+{\scriptsize
+\begin{tabular}{lccccc}
+\toprule
+ Learning Rate &  Momentum &  Batch Size &  Best Exp. Acc. (\%) &  Corr. Acc. (\%) \\
+\midrule
+      0.014367 &  0.864872 &   64 &               99.44 &           99.57 \\
+      0.025743 &  0.357709 &   16 &               99.21 &           99.55 \\
+      0.069024 &  0.135448 &   64 &               98.81 &           99.55 \\
+      0.014746 &  0.283051 &   16 &               98.77 &           99.17 \\
+      0.035026 &  0.776323 &   32 &               98.53 &           98.90 \\
+\bottomrule
+\end{tabular}
+}
+  \caption{\label{table:random_results}Results from the optimized ResNet18 convolution neural networks which utilized a hyperparameter random search in conjunction with a step scheduler. The initial learning rate was randomized between 0.1 and 0.001, the momentum was bounded by 0 and 1 and the batch size was set to 2$^l$, where $l$ was an integer given by $3\leq l \leq 8$. The best accuracy on the experimental dataset along with the corresponding accuracy on the simulation dataset is given for each model (see Fig.~\ref{fig:results2}a for accuracy vs. epoch).}
+\end{table}
+
+In an effort to achieve both the high accuracy of the fixed learning rate run and the asymptotic behavior of the scheduled run, a random search \cite{bergstra2012random} of the hyperparameters was employed in conjunction with the step scheduler. The scheduler decreased the learning rate by a factor of ten every seven epochs and bounds were set for each hyperparameter with an initial learning rate between 0.1 and 0.001, a momentum of $0\leq \mu \leq 1$ and a batch size of $2^l$ where $l$ is an integer given by $3\leq l \leq 8$. Fifty different sets of hyperparameters were randomly chosen from within these bounds and then trained for thirty epochs each (see Table~\ref{table:random_results}). The CNN with the highest accuracy (learning rate 0.0143673, momentum $\mu$= 0.864872, batch size of 64) on the experimental data attained an accuracy of 99.44\% and a corresponding accuracy of 99.57\% on the simulated dataset (see Fig.~\ref{fig:results2}a). Thus, the overall accuracy was slightly higher than for the CNN trained with a fixed learning rate; however, just as importantly, the accuracy on both the simulation and experimental datasets become asymptotic indicating a local minimum was satisfactorily reached. 
+
+\begin{figure}%[h]
+\centering %centers the graphic
+\includegraphics[width=.5\textwidth]{results2.pdf} %puts in the graphic from the Figures folder
+\caption[Table of Contents Figure Caption]{(a) Accuracy of a ResNet18 CNN as a function of the epoch with a batch size of 64 and momentum of $\mu$=0.864872. The learning rate was initially set to 0.0143673 and reduced by an order of magnitude every seven epochs. Note that the overall accuracy achieved---99.44\% on the experimental dataset, 99.57\% on the simulated dataset---was slightly better than the CNN trained with the fixed learning rate (see Fig.~\ref{fig:results}a) and furthermore displayed minimal oscillations around the asymptote indicating a local minimum was more effectively reached. (b) Accuracy of a ResNet18 CNN as a function of the epoch with the same hyperparameters as (a), but without pretraining on ImageNet. The best accuracy achieved was 31.31\% on the experimental dataset corresponding to 92.40\% on the simulation dataset; thus, pretraining in (a) significantly increased the CNN's accuracy in comparison to the non-pretrained CNN in (b).} %square brackets set table of contents caption and the squiggly brackets set the in text caption Thus, forgoing pretraining significantly reduced the CNN's ability to generalize to real-world data.
+\label{fig:results2} %sets a label to be used for further references
+\end{figure}
+
+Finally, the highest accuracy CNN from the random search was utilized without pretraining to determine the effect of transfer learning. The ResNet18 CNN was trained for sixty epochs with an initial learning rate of 0.0143673, momentum of $\mu$=0.864872 and batch size of 64 (see Fig.~\ref{fig:results2}b). The CNN obtained a maximum accuracy of 31.31\% on the experimental dataset and a corresponding accuracy of 92.40\% on the simulation dataset---which was substantially lower than pretrained model's accuracies for both datasets. Furthermore, the relative accuracy difference between the non-pretrained CNN and the pretrained CNN was significantly larger on the experimental dataset than the simulation dataset. This indicates that pretraining increased the overall accuracy of the CNN and additionally had an outsized impact on the CNN's ability to generalize to real world data.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Conclusion}
+We have demonstrated that a convolution neural network (CNN) can be used to classify the lowest twenty-one unique Hermite-Gaussian (HG) modes with an accuracy of 99.44\%. The primary CNN used was an eighteen layer ResNet variant trained with a step scheduler for the learning rate and hyperparameters tuned with a random search. To facilitate in training the CNN, a large simulated dataset of HG modes was created in which each of the beam's parameters including orientation, centroid and radii were randomized within physically realizable bounds. Furthermore, an experimental dataset of HG modes was acquired through an optical setup utilizing a spatial light modulator and was used to test the CNN's ability to generalize to real-world data and experimental conditions. 
+
+As stated previously, the trained CNN could be used to automatically tune the transverse HG mode output of a laser cavity or detect HG modes in optical communications. Since the current training dataset contains unique modes in random orientations, a beam under evaluation can be determined irrespective of orientation which is particularly useful in a laboratory setting. If the application of the CNN were solely optical communications, a dataset could also be constructed using all the modes (not only the unique ones); however, this would require a further bound on the orientation of the beams in the simulated dataset and additionally the beam would need to be correctly oriented with respect to the camera when the CNN is deployed.
+
+In the future, a larger data set of modes could be both simulated and experimentally acquired. Moreover, superpositions of various HG modes could also be labeled as individual classes for input into the CNN. This would allow the data in a multiplexed beam to be determined without explicitly demultiplexing the beam with optics. However, this is bounded by the finite number of classes a CNN can accurately classify---which is problematic as the number of classes grows exponentially with the modes in the multiplexed beam.
+
+\section*{Funding}
+This work was supported by DataRay Inc.
+
+\section*{Acknowledgments}
+L. Hofer would like to thank both Alex Christoph and John Cadigan for helpful discussions on convolution neural networks.
+
+\section*{References}
+
+%\bibliography{literature}{}
+\bibliography{bibliography}{}
+\bibliographystyle{unsrt}
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+%\ifCLASSOPTIONcaptionsoff
+%  \newpage
+%\fi
+
+
+%We create CAM holograms following \cite{slmbook} to generate our experimental dataset. However, the CAM holograms require both the amplitude and phase information of the desired beam, thus we use the same Python program from Sec~\ref{} to create the electric field distributions and thus aquire the needed amplitude and phase information. Similar to the simulation dataset, we randomize certain beam parameters to increase the diversity of our data. We randomize the beam radius along the major and minor axes as well as the orientation of the beam. However, we keep the centroid at a constant position on the hologram. We center the beam incident on the SLM such that the beam centroid and hologram centroid coincide. Moving the hologram centroid relative to the incident beam causes deterition in the output hologram since, the light reflected from the hologram is no longer quasi-uniform.  Since the CAM holograms following the method from \cite{arrizon2007pixelated} contain a blazed grating roughly in the shape of the desired HG beam which creates various diffraction orders clearly seen near the focal plane of the lens following the SLM. The aperture near the focal plane separates the first diffraction order---the best representation of the HG beam---and an image is subsequently acquired by the camera placed in the lens' Fourier-plane. 
+
+%The magic of the setup comes from the use of the spatial light modulator which enables the phase of the electric field to be modulated on a per-pixel basis through the use of nematic liquid crystal. We used a Meadowlark Optics SLM with a resolution of  1920$\times$1152 and square pixels of width 9.2 $\mu$m. Although the SLM only modulates the phase incident beam's phase, both amplitude and phase can be modifiedStructured light can be carefully created and manipulated through the careful choice of computer generated holograms. Although phase-only modulation holograms can be used to create higher-order modes\cite{matsumoto2008generation},  Rosales-Guzm*an \textit{et al.} \cite{200Modes} showed that complex-amplitude modulation (CAM) holograms \cite{arrizon2007pixelated} produce better quality Hermite-Gaussian beam representations. Following the steps laid out in \cite{slmbook} we create CAM holograms. The blazed grating inherent in the CAM hologram creates various diffraction orders which can be seen after the beam reflected from the SLM passes through a focusing lens. The focusing lens separates the various diffraction orders, after which the first-order is separated with an aperture and then imaged with a beam profiling camera. 
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+
+
+
+%\begin{table}
+%\centering
+
+%\begin{tabular}{|p{\dimexpr.333\linewidth-2\tabcolsep}|p{\dimexpr.333\linewidth-2\tabcolsep}|p{\dimexpr.333\linewidth-2\tabcolsep}|}
+
+%\hline
+%\textbf{Noise Reduction} & \textbf{Uncorrected Percentage Error (\%)} & \textbf{Corrected Percentage Error (\%)}\\
+
+%\hline
+
+%Thresholding & 2.21  & 0.05\\
+
+
+%\hline
+
+%Software Aperture & 2.58  & 0.20\\
+
+%\hline
+
+%Thresholding \& Software Aperture & 4.06  & 0.09\\
+
+%\hline
+%\end{tabular}
+%\caption[Table of Contents Description]{Text Description}
+%\label{table}
+%\end{table}
+
+%\begin{table}
+%\centering
+%\rowcolors{2}{mywhite}{lightgray}
+%\begin{tabular}{|p{\dimexpr.333\linewidth-2\tabcolsep}|p{\dimexpr.333\linewidth-2\tabcolsep}|p{\dimexpr.333\linewidth-2\tabcolsep}|}
+
+%\hline
+%\textbf{Test} & \textbf{Uncorrected Percent Error (\%)} & \textbf{Corrected Percent Error (\%)}\\
+
+%\hline
+
+%Thresholding & 2.19 & 0.07\\
+ 
+%\hline
+
+%Software Aperture & 2.58 & 0.20\\
+ 
+% \hline
+ 
+%\pbox{20cm}{Thresholding \& \\ Software Aperture} & 4.06 & 0.11\\
+ 
+ %\hline
+ 
+%\end{tabular}
+
+%\caption[Error Table]{The average error for the uncorrected beam radii and the average error for the radii corrected by the scale factor. The results are shown for the three tests performed on both the radially symmetric and elliptical beams (see Fig.~\ref{fig:results}). However, for the radially symmetric beams in the thresholding test, the average error is calculated by using the data after the error becomes asymptotic (see Fig.~\ref{fig:results}a).}
+%\label{tab:error}
+
+%\end{table}
+
+%The error for the first set of calculated beam radii exhibited exponentially decaying behavior becoming asymptotic at a radius of 30$p_w$ (see Fig.~\ref{fig:results}a) with an average error of 2.61\% (uncorrected) and 0.05\% (corrected). The smaller beams had fewer illuminated pixels and the second moment calculation was dominated by the comparitavely large amounts of noise leading to the greater error. For the second set of beams, the error was approximately constant with an average of 2.56\% for the uncorrected radii and 0.19\% for the corrected radii. Likewise, the third set of beams had an average uncorrected error of 4.06\% and a corrected error of 0.07\%. The error for the corrected radii was over an order of magnitude lower than the error for the uncorrected radii across all three sets of beams; thus, as predicted, the scale factor significantly improved the accuracy of the second moment beam radius measurements. Whereas the first and second tests demonstrated the scale factor independently corrects for beam truncation due to either thresholding or the software aperture, the third test showed it can correct for them simultaneously. Indeed, the first test showed that thresholding and the software aperture are needed in conjunction since thresholding alone was unable to return accurate beam measurements for small beams. Although the uncorrected error was significantly higher when both thresholding and the software aperture were used (due to the combination of systematic errors), the corrected error was of the same order as when only thresholding or the software aperture were employed; thus demonstrating an accuracy improvement of over fifty times.
+
+%The error for the first set of calculated beam radii exhibited exponentially decaying behavior becoming asymptotic at a radius of 30$p_w$ (see Fig.~\ref{fig:results}a) with an average error of 2.61\% (uncorrected) and 0.05\% (corrected). %The large error was due to the noise that remained after thresholding. 
+%For the larger beams the small amount of remaining noise was insignificant compared to the beam itself, whereas the smaller beams had fewer illuminated pixels and the second moment calculation was dominated by the comparitavely large amounts of noise.
+%For the second set of beams, the error was approximately constant with an average of 2.56\% for the uncorrected radii and 0.19\% for the corrected radii. Likewise, the third set of beams had an average uncorrected error of 4.06\% and a corrected error of 0.07\%.The error for the corrected radii was over an order of magnitude lower than the error for the uncorrected radii across all three sets of beams; thus, as predicted, the scale factor significantly improved the accuracy of the second moment beam radius measurements. Whereas the first and second tests demonstrated the scale factor independently corrects for beam truncation due to either thresholding or the software aperture, the third test showed it can correct for them simultaneously.  Therefore, thresholding and the software aperture are needed in conjunction since thresholding alone is unable to return accurate beam measurements for small beams. Although the uncorrected error was significantly higher when both thresholding and the software aperture were used (due to the combination of systematic errors), % from both noise reduction techniques, 
+%the error corrected error was of the same order as when only thresholding or the software aperture were employed; thus demonstrating an accuracy improvement of over fifty times.
+
+%Three sets of beams were generated and analyzed with different software settings to determine the effectiveness of the scale factor in correcting the beam radius. % for thresholding only, the software aperture only, and thresholding and the software aperture in conjunction. 
+%The first set of beam radii were calculated with only thresholding applied, whereas the second set of beams were calculated with only the software aperture employed. For the third set of beams, the radii were calculated with both thresholding and the software aperture turned on in the beam analysis software. Gaussian noise with a mean of $\mu=0.02a_m$ and a standard deviation of $\sigma_n=0.002a_m$ was added to the first and third set of beams to simulate noise on the image sensor. Since the second set of beams were analyzed without the use of thresholding, the scale factor reduced to Eq.~\ref{psi_beta} and had no dependence on noise; therefore, for these beams no noise was added. The error for the first set of calculated beam radii exhibited exponentially decaying behavior becoming asymptotic at a radius of 30$p_w$ (see Fig.~\ref{fig:results}a) with an average error of 2.61\% (uncorrected) and 0.05\% (corrected). %for the average uncorrected and corrected errors respectively. 
+%For the second set of beams, the error was approximately constant with an average of 2.56\% for the uncorrected radii and 0.19\% for the corrected radii. Likewise, the third set of beams had an average uncorrected error of 4.06\% and a corrected error of 0.07\%.
+
+%Although the uncorrected error for the third set of beams was significantly higher that the first two beam sets, since the systematic errors from both noise reduction techniques were combined, the error of the corrected beams was similar to that of the first two beam sets demonstrating an accuracy improvement of over fifty times.% showing that the scale factor corrects for both thresholding and the software aperture simultaneously.
+
+%The beam analysis software calculated the radii of the generated beams in three different ways to determine the effectiveness of the scale factor correction. % for both thresholding and the software aperture. 
+%In the first mode, only thresholding was applied (see Fig.~\ref{fig:results}a); in the second mode, only the software aperture was used (see Fig.~\ref{fig:results}b); and in the last mode, thresholding and the software aperture were utilized together (see Fig.~\ref{fig:results}c and Fig.~\ref{fig:elliptical_plot}). Gaussian noise with a mean of $\mu=0.02a_m$ and a standard deviation of $\sigma_n=0.002a_m$ was added to the beams undergoing testing with the first and third modes to simulate noise on the image sensor. Since the second mode didn't use thresholding, the scale factor reduced to Eq.~\ref{psi_beta} and had no dependence on noise; therefore, for beams utilizing the second mode, noise was not added to the generated beams.
+
+%Three sets of beams were generated and analyzed to determine the effectiveness of the scale factor. % for thresholding only, the software aperture only, and thresholding and the software aperture in conjunction. 
+%Whereas the first set of beam's radii were calculated with only thresholding applied to the beam data, the second set of beams radii had only the software aperture applied before the radii were calculated. Gaussian noise with a mean of $\mu=0.02a_m$ and a standard deviation of $\sigma_n=0.002a_m$ was added to the first and third set of beams to simulate noise on the image sensor. Since the second set of beams were analyzed without the use of thresholding, the scale factor reduced to Eq.~\ref{psi_beta} and had no dependence on noise; therefore, for these beams no noise was added. The error for the first set of beam's calculated radii (uncorrected and corrected) exhibited exponentially decaying behavior, but quickly became asymptotic at a radius of 30$p_w$ (see Fig.~\ref{fig:results}a). For  Once the error become asymptotic, it had values of 2.61\% and 0.05\% for the average uncorrected and corrected errors respectively. When the beams were analyzed with the software aperture mode, they returned an approximately constant error with average errors of 2.56\% (uncorrected) and 0.19\% (corrected). The analysis software's third mode, utilizing thresholding and the software and aperture in conjunction, returned approximately constant uncorrected error (average 4.06\%) for all the beams generated but was significantly higher than the uncorrected error found with the first two modes, since the systematic errors from both noise reduction techniques were combined; however, the error of the corrected beams at 0.07\% was similar to that of the first two runs demonstrating an accuracy improvement of over fifty times.% showing that the scale factor corrects for both thresholding and the software aperture simultaneously.
+
+%both radially symmetric and elliptical beams were tested to determine if the scale factor was, as derived, invariant to the ellipticity of the TEM$_{00}$ Gaussian beam.
+
+%
+%At each pixel the beam's intensity value was rounded to an integer to better approximate a real image sensor's ADC levels. 
+%Simulations were used to test the scale factor with a simulated image sensor of $512\times512$ pixels. Each pixel had dimensions of $p_w\times p_w$, where $p_w=5.5~\mu$m, which gave a sensor length of $s_l=512p_w$. The simulated sensor was 16 bit, which yielded a total of $a_m=65536$ analog-to-digital converter (ADC) levels and  Various TEM$_{00}$ Gaussian beams were generated and scaled so that the peak amplitude was the full 65536 ADC value. Additionally, at each pixel the intensity value was rounded to an integer to better approximate a real image sensor's ADC levels.  
+
+%A lower beam radius bound of $w_l(z)=10p_w$ ($.02s_l$) was used during beam generation, whereas the upper beam radius bound was defined as $w_u(z)=.25 s_l$. These bounds were used to define a set of twenty beam radii as
+
+%\begin{equation}
+%w_{p}(z)=w_l(z)+p\Delta w \text{,}
+%\label{radii}
+%\end{equation}
+
+%\noindent where $p=0$, 1, 2, 3. . . 20 and $\Delta w$ is given as
+
+%\begin{equation}
+%\Delta w=\frac{\left|w_u(z)-w_l(z)\right|}{20}\text{.}
+%\label{delta_w}
+%\end{equation}
+
+%\noindent The first set of generated beams were radially symmetric with both $w_{x}(z)$ and $w_{y}(z)$ set equal to Eq.~\ref{radii}. The second set of beams were elliptical, with $w_{x}(z)$ set equal to Eq.~\ref{radii} and $w_{y}(z)$ held constant at $w_{y}(z)=w_u$ for all twenty beams. 
+
+
+%\begin{equation}
+%P=\iint I(r) r \,dr\,d\theta\text{.}%=\iint I_0e^{-\gamma b^2} \,dr\,d\theta
+%\label{power1}
+%\end{equation}
+
+%\noindent Adding integration limits to Eq.~\ref{power1} %with $0\leq \theta \leq 2\pi$ and $0\leq r \leq R$ 
+%gives . The radius $r_i$ of the software aperture is found by first specifying the ratio $\beta$ of the power within the software aperture $P_{I}$ to the total power across the sensor
+
+%\begin{figure}
+%\centering %centers the graphic
+%\includegraphics[width=.65\linewidth]{inclusion.png} %puts in the graphic from the Figures folder
+%\caption[Inclusion Region]{A radially symmetric Gaussian beam with noise bounded by the inclusion region (solid line).}
+%\label{fig:inclusion} %sets a label to be used for further references
+%\end{figure}
+
+
+%\noindent giving the radius of the inclusion region in region $R'$ as a function of the ratio of the total power included.
+
+%, but is based off some scalar times the beam width. 
+
+%Laser beam's have become essential research and industry tools in the last few decades and in keeping with their various uses, various beam quality metrics have been proposed. A few such metrics are the Strehl ratio, the vertical power in the bucket, horizontal power in the bucket and $M^2$. The $M^2$ beam quality factor developed by Siegman \textit{et al.} has become the de facto method for determing the quality of a laser beam. ** When measuring $M^2$, the beam width is measured at multiple locations along the beam's axis of propogation. The widths are then fitted to a hyperbolic curve and the fitted values compared to those of a perfect TEM$_{00}$ gaussian beam.
+
+%CCD sensors have become the standard beam radius measurement tool due to their ability to return a two dimensional beam intensity profile. Simpler beam profiling devices move a slit through the beam, but return only a one dimensional intensity profile. Clip levels (a percentage of the beam's peak intensity) are then set to define the beam's edges and calculate the beam radius %\cite{siegman3}. Although the clip level method can be used with two dimensional profile returned by CCD sensors, a more accurate beam measurement technique ---utilizing the full two dimensional beam profile--- is the second moment. The radius of the beam $w_{\sigma}(z)$ is given by the second moment as %\cite{ISO1}
+
+%The resolution of a CCD sensor limits the size of the beam that can be accurately measured. Although Eq.~\ref{sigma1} shows a continuous intensity distribution, the sensor's pixels sample the beam's intensity distribution at discrete distances and thus return a discretized intensity distribution. Loce \textit{et al.} \cite{loce1} determined through Fourier analysis that approximately fifteen samples of a Gaussian beam's intensity distribution are needed to reduce error in the first moment and He \textit{et al.} \cite{he2} demonstrated with simulations that a Gaussian beam should cover fifteen pixels to significantly reduce error in the second moment. Therefore, measuring a laser beam with a CCD image sensor restricts the minimum beam size able to be accurately profiled to 15$p_w$, where $p_w$ is the width of one pixel.
+
+%used simulations to show a Gaussian beam covering fifteen pixels significantly reduces the error in the second moment. 
+
+%To reduce noise, a thresholding algorithm should be applied to the image sensor data before either a software aperture or the second moment measurement \cite{ISO3}. Thresholding entails sampling an unilluminated portion of the sensor (e.g. the four corners) to determine the mean $\mu$ and standard deviation $\sigma_n$ of the background noise which are used to calculate a threshold intensity value. Pixels with an intensity less than the threshold are considered unilluminated, whereas pixels with an intensity greater than the threshold value are used in the second moment measurement. A pixel $I(x, y)$ is considered illuminated when
+
+%Ma \textit{et al.} \cite{ma} found that the optimal threshold level should be $n=3$ when determining the centroid; however, r
+
+%Although different software aperture shapes can be used, this paper will refer to a software aperture that matches the intensity profile of a beam. Therefore a radially symmetric beam will have a circular software aperture and a elliptical beam will have an elliptical aperture.
+%Obviously, this contrains the width of the beam measured on a image sensor to one half of the sensor width.
+%  approximately two times the beam width
+
+%\noindent Nominally, the radius limit $R$ would extend to infinity for the total power; however, the sensor imposes finite limits on the integral. Furthermore, the thresholding performed before setting the software aperture truncates the beam; thus the thresholding radius (see Eq.~\ref{r1}) can be used for the total power limit so that $R=r_t$. For the power in the software aperture $R=r_s$ and together they give
+
+%Since the tails of the Gaussian have been cutoff by the threshold comparison $R=r_t$ for the total power, whereas f
+
+%\noindent Nominally, these limits extend to infinity, whereas in practice they are defined by the data aperature. Futhermore, on a real sensor, each pixel has finite dimensions $\Delta x \times \Delta y$ so that Eq.~\ref{sigma_x}-Eq.~\ref{bar_y} are no longer continous, but can be represented by Riemann sums:
+
+%Thresholding and the software aperture together provided a substantial improvement in the beam radius measurement, irrespective of beam size.
+
+%The fThresholding and the software aperture should be applied in conjunction for the highest noise reduction of the CCD sensor and to correct for the broadest range of beams. 
+
+%were significantly more accurate than the uncorrected beam radii.
+
+%The third test demonstrated that the softwarewhen thresholding and the software aperture are used together, small beams can be measured since the noisy pixels left after thresholding are substantially reduced by the software aperture. 
+
+
+
+%The first two runs demonstrated that the scale factor is a versatile and well suited to either thresholding or the software aperture. The third test is more akin to real world conditions in that both thresholding and the software aperture were used. Although the asymptotic
+
+
+%The first test showed that although for larger beams the scale factor in conjunction with thresholding alone is able to return highly accurate beam measurements, small beams are subject to substantial error. %Additionally, for larger beams the thresholding portion of the scale factor provided significant correction irrespective of the software aperture. 
+%Similarily, the second test demonstrated that the software aperture portion of the scale factor significantly improved accuracy even without thresholding. The third test showed that the systematic error from both noise reduction methods was additive; however, the full scale factor (accounting for truncation of the beam from both thresholding and the software aperture) reduced irrespective of the additive error. 
+
+%\begin{figure}
+%\centering %centers the graphic
+%\includegraphics[width=1\linewidth]{test2.png} %puts in the graphic from the Figures folder
+%\caption[Simulation Results]{(a) The radius percent error as a function of the beam radius for the radially symmetric beams, but using only thresholding. Both the uncorrected error (triangles) and the corrected error (diamonds) showed decaying exponential behavior but quickly approached their asymptotes. (b) The radius percent error as a function of the beam radius for the elliptical beams with only thresholding used. (c) The radius percent error as a function of the beam radius using only the software aperture for the radially symmetric beams. (d) The radius percent error as a function of the beam radius for the elliptical beams with only the software aperture used. (e) The radius percent error as a function of the beam radius for the radially symmetric beams using both thresholding and the software aperture.  (f) The radius percent error as a function of the beam radius for the elliptical beams using both thresholding and the software aperture. 
+%} 
+%\label{fig:results} 
+%\end{figure}
+
+%Thresholding of CCD sensor data, as a pre-measurement process, has application not only in beam width determination. Rather, the optimum value for $n$ has application in astronomy with star measurement, and laser printers, both of which use the first moment to determine the centroid (i.e. location) of the the beam
+
+
+%The derivation of the scaling-factor is based on a TEM$_{00}$ Gaussian beam which has a time-averaged intensity profile $I(r)$ represented by
+
+%\begin{equation}
+%I(r)=I_0e^{-\gamma r^2}\text{.}
+%\label{symmetric_dist}
+%\end{equation}
+
+%\noindent where $I_0$ is the peak intensity of the beam, $\gamma$ is defined as
+
+%\begin{equation}
+%\gamma= \frac{2}{w^2(z)}\text{.}
+%\label{gamma}
+%\end{equation}
+
+%\noindent and $w(z)$ is the radius of the beam when the intensity is 1/$e^2$. 
+
+%\noindent which is the radius at which the Gaussian beam is truncated by the threshold comparison. In actuality, the Gaussian distribution of background noise causes some of the values slightly below the 
+
+
+
+%The ISO Standard states that a hard optical aperture should contain at least 99\% of the beam's power and we include 99\% of the beam's power for the software aperture as well. % The lastest ISO 11146 standard dictates a square software aperture centered on the beam, with a width three times that of the beam. However, this contains far more information than needed, and noise in the extraneous portions of the sensor used will corrupt the quality of the beam measurement.
+
+%Additionally, the following derivation is made with the assumption that all the power on the sensor is the beam. Although most of the noise is removed by the fine correction factor, a portion remains, but is small enough to be ignored for most beams**. % and can be dealt with using the procedure in Appendix~\ref{}. 
+
+%for an elliptical beam can be carried out in region $S'$ to yield $\psi(\nu)$. %This result can be transformed back to region $S$ using Eq.~\ref{ytransform} so that
+
+%\begin{equation}
+%w_{y}(z)=w_{\sigma}(z)\psi(\nu)
+%\end{equation}
+
+%\begin{equation}
+%w_{x}(z)=\frac{1}{\alpha}w_{\sigma}(z)\psi(\nu)
+%\end{equation}
+
+%with the radially symmetric beams returning an average uncorrected error of 2.575\% and an average corrected error of 0.20\%. The average uncorrected error for the elliptical beams was 2.576\%, whereas the average corrected error was 0.21\%.%For the radially symmetric beams (see Fig.~\ref{fig:results}e) the average uncorrected error was 4.064\% and the average corrected error was 0.106\%. For the elliptical run the average percent error for the uncorrected beam radii was 4.05\%, whereas the error for the corrected beam radii was 0.099\% (see Fig.~\ref{fig:results}f). %with a value of 2.193\% for the uncorrected error and 0.073\% for the corrected error. For the elliptical beams, the error was approximately constant for the various ellipticities tested (see Fig.~\ref{fig:results}b) with an average of 2.187\% for the uncorrected error and an average of .097\% for the corrected error.
+
+
+%, since the ISO 11146 standard dictates that $w(z)\geq 10p_w$.
+% since the ISO 11146 manual states that $w(z)\leq.2
+
+
+%that can be used to measure the widths of the laser beam in the different $z$ planes. One of the simplier methods utilizes either a scanning slit device or a knife edge device to determine the beam width. The scanning slit or knife-edge is moved through the beam and a time-averaged intensity profile is returned. The width of the beam is calculated as the difference between the two points where the beam intersects the clip level. The clip level is an intensity of some set percentage of the beam's peak intensity. Siegman et al. \cite{siegman3} determined that the optimal clip level should be set between 8.5\% and 11.6\% of the beam's peak intensity. A more complex method for analyzing determing laser beam width is to use a CCD or CMOS image sensor. Image sensors afford advantages over the scanning slit devices in that a full 2D profile of the beam can be imaged, rather than just the profile along one axis, and the second moment (variance) used to determine the beam width. The second moment determines the measured beam width with the following equation
+
+%\begin{table}
+%\centering
+%\rowcolors{2}{mywhite}{lightgray}
+%\begin{tabular}{|p{\dimexpr.2\linewidth-2\tabcolsep}|p{\dimexpr.79\linewidth-2\tabcolsep}|}
+
+%\hline
+%first item & second item\\
+
+%\hline
+
+%third item & fourth item\\
+
+%\hline
+%\end{tabular}
+%\caption[Table of Contents Description]{Text Description}
+%\label{table}
+%\end{table}
+
+%the fine correction, but not the inclusion region, was used. The second test used the inclusion region, but not the fine correction factor.  In the third test, the inclusion region and the fine correction were both used. Gaussian noise was added to the Gaussian beams in both the first and third tests to replicate a real sensor. The mean of the Gaussian noise added was $\mu=.02I_0$ and the standard deviation of the noise was $\sigma_n=.002I_0$\ ($k=.002)$. No Gaussian noise was added to the beams in the second test
+%For the first test ---with only the fine correction used--- t
+
+
+%\begin{equation}
+%w_{\sigma}(z)=\sqrt{2}\sigma_r(z)\text{,}
+%\label{m_radius}
+%\end{equation}
+
+%\noindent where $\sigma_r(z)$ can be defined by 
+
+%\begin{equation}
+%\sigma_r^2(z)=\frac{\displaystyle \iint r^2I(r, z)r \,dr\,d\theta}{\displaystyle \iint I(r, z)r \,dr\,d\theta}\text{.}
+%\label{sigma1}
+%\end{equation}
+
+%\noindent and $I(r, z)$ is the time averaged intensity distribution. 
+
+%However, image sensors are subject to certain limitations, some of which must be overcome in order for the sensor to be used. First, since the sensor is comprised of pixels, the data will be discretized. For larger beams the discretization has a minimal effect, but for smaller beams, the discretization of the beam can have a drastic effect on the beam width calculations. Loce et al. used Fourier analysis to determine that the minimum amount of data for a second moment calculation should be. The ISO standard \cite{ISO1} dictates that beams no smaller than 10$p_w$ should be imaged on a sensor. 
+
+%In addition to discretization, the image sensor will have noise on each pixel. There are several different types of noise present. The second moment weights data far from the center of the beam more heavily than that near the beam. Therefore, noise data at the edges of the sensor will have significant impact on the accuracy of beam measurements. Noise algorithms must be utilized to reduce the sensor noise and return useful beam width measurements. Generally, the first step is to apply some type of threshold to the sensor data. Pixels falling below the threshold are considered unilluminated and not used in further calculations, whereas pixels above the threshold level are considered to be valid beam data. The threshold must be set significantly high so that the noise most of the noise is removed, but not so high as to truncate substantial portions of the beam. Theoretical work and simulations have been done to determine the optimal threshold level \cite{he1} and the ISO Standard \cite{ISO3} gives a directive on the threshold level as well.
+
+%Another source of CCD sensor error is in aperturing. If the beam is significantly large in comparison to the sensor surface, then the beam will be effectively truncated. The ISO Standard states that the laser beam undergoing measurement should have a width no greater than .5$s_l$ where $s_l$ is the sensor length. However, beyond the hard aperture of the sensor, a data aperture may be programmatically used. If the beam is small in comparison to the sensor, then only a portion of the sensor surrounding the beam can be used for beam measurement. This is called a software aperture. Although the ISO standard dictates a software aperture of rectangular proportions and three times the beam width, Ross makes the point that this is completely arbitrary and a better sized software aperture can be used. We suggest a software aperture that matches the shape of the beam (see Fig.~\ref{}).
+
+
+
+
+
+
+%Although this method provides the best estimation of beam width, the $r^2$ term in the denominator of Eq.~\ref{sigma1} causes the noise to be heavily weighted, especially noise far from the center of the Gaussian (e.g. in the wings of the CCD or CMOS sensor). When taking measurements of a laser beam with a CCD or CMOS based camera, noise is inherent in the measurement due to ambient light or scattering. Multiple methods have been set forth to account for the noise on the image sensor, but each method contributes to the measurements sytematic error. Statistical error of the second moment measurement has been rigorously addressed by T.S. Ross. In particular, he address statistical error relating to the analog-to-digital converter. Additionally, he discusses error associated with data aperturing. Noise reduction algorithms are necessary to take second moment measurements, and in this paper we address systematic errors inherent in the noise reduction algorithms and derive a correction factor to return more accurate beam measurements.
+
+%The $M^2$ factor assumes a perfect TEM$_{00}$ beam, which it compares to the measured beam to determine it's quality. The TEM$_{00}$ beam is one of the most common beams measured, and the $M^2$ beam quality factor will show multi-mode content from the beam.
+
+%There are several devices and methods that can be used to measure the width of a laser beam. One of the simpliest is the scanning slit device in conjunction with the clip level method. A scanning slit device consists of a moving slit in front of a photodiode. As the slit moves through the beam, the photodiodes voltage is recorded and an intensity profile along the slits axis of movement can be discerned. The clip level method assumes a perfect TEM$_{00}$ beam. The width is said to be the difference between the two points where the beam's intensity falls to 1/$e^2$ of the peak value. The clip level definition of the beam width finds the difference between the two positions at which the TEM$_{00}$ Gaussian beam's intensity profile crosses the 1/$e^2$ threshold. 
+
+%A more complex device for analyzing a laser beam profile and determing the width is a beam profiler with either a a CCD or CMOS image sensor. Image sensors afford advantages over the scanning slit devices in that a full 2D profile of the beam can be imaged, rather than just the profile along one axis. Additionally, with two dimensional data, more advanced techniques can be used to determine the beam width, the foremost of those being the second moment (variance) method. The second moment determines the measured beam width with the following equation
+
+
+%\begin{align}
+% \frac{w_{x}(z)}{w_{y}(z)}&=\frac{a}{b} \label{ratio}\\
+%  w_{x}(z)&=\frac{a}{b}w_{y}(z) \label{x_width}\\
+%  w_{x}^2(z)&=\left(\frac{a}{b}\right)^2w_{y}^2(z)\text{.}
+%  \label{xayb_relation}
+%\end{align}
+
+%Lastly, whereas $\gamma$ is used in the original derivation, $\tau$ is used for elliptical coordinates. 
+
+%\section{First Algebraic Simplification}\label{algebra1}
+%\begin{align}
+%\sigma^2(z)&=\frac{\frac{1-e^{-\gamma b^2}\left(\gamma b^2+1\right)}{\gamma}}{1-e^{-\gamma b^{2}}} \\
+%&=\frac{1-e^{-\gamma b^2}\left(\gamma b^2+1\right)}{\gamma \left(1-e^{-\gamma b^{2}}\right)}\\
+%&=\frac{e^{\gamma b^2}-\left(\gamma b^2+1\right)}{\gamma \left(e^{\gamma b^{2}}-1\right)}\\
+%&=\frac{\left(e^{\gamma b^2}-1\right)-\gamma b^2}{\gamma \left(e^{\gamma b^{2}}-1\right)}\\
+%
+%&=\frac{1}{\gamma}-\frac{b^2}{e^{\gamma b^2}-1}
+%\label{sigma_last} 
+%\end{align}
+
+%\section{Second Algebraic Simplification}\label{algebra2}
+
+%\begin{align}
+%\sigma^2(z)&=\frac{1}{\gamma}-\frac{\frac{1}{\gamma}\ln\left(\frac{1}{1-\beta}\right)}{e^{\ln\left(\frac{1}{1-\beta}\right)}-1} \nonumber \\
+%&=\frac{1}{\gamma}\left(1-\frac{\ln\left(\frac{1}{1-\beta}\right)}{\frac{1}{1-\beta}-1}\right) \nonumber \\
+%&=\frac{1}{\gamma}\left(1+\frac{\ln\left(1-\beta\right)}{\frac{1}{1-\beta}-1}\right)\\
+%&=\frac{1}{\gamma}\left(1+\frac{\left(1-\beta\right)\ln\left(1-\beta\right)}{1-\left(1-\beta\right)}\right)\\
+%&=\frac{1}{\gamma}\left(1-\frac{\left(\beta-1\right)\ln\left(1-\beta\right)}{\beta}\right)\\
+%&=\frac{1}{\gamma}\left(\frac{\beta-\left(\beta-1\right)\ln\left(1-\beta\right)}{\beta}\right)
+%\end{align}
+
+%\begin{equation}
+%\sigma_x(z)=\frac{\displaystyle \iint \left(x-\bar{x}\right)^2I(x, y) \,dx\,dy}{\displaystyle \iint I(x, y) \,dx\,dy}
+%\label{sigma_x}
+%\end{equation}
+
+%\noindent and
+
+%\begin{equation}
+%\sigma_y(z)=\frac{\displaystyle \iint \left(y-\bar{y}\right)^2I(x, y) \,dx\,dy}{\displaystyle \iint I(x, y) \,dx\,dy}\text{.}
+%\end{equation}
+
+%\noindent $\bar{x}$ and $\bar{y}$ are defined as
+
+%\begin{equation}
+%\bar{x}=\frac{\displaystyle \iint xI(x, y) \,dx\,dy}{\displaystyle \iint I(x, y) \,dx\,dy}
+%\end{equation}
+
+%\noindent and
+
+%\begin{equation}
+%\bar{y}=\frac{\displaystyle \iint yI(x, y) \,dx\,dy}{\displaystyle \iint I(x, y) \,dx\,dy}\text{.}
+%\label{bar_y}
+%\end{equation}
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+% However, the Computer Society has been known to put floats at the bottom.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+
+
+
+
+%\section{Correction Factor and Noise}
+%The purpose of the 99\% inclusion region is to remove noise in the wings of the sensor that will adversely affect the second moment measurement. However, this means some portion of the total power is due to noise, and not only cutting off the edges of the Gaussian beam's distribution. To account for this, we can make an estimate of the percentage of the power that is noise.
+%\\\\
+%According to the ISO 11146 standard the noise, the mean of the noise should be found and thresholding applied. Generally an unilluminated portion of the sensor (e.g. the four corners) is used to determine the mean and standard deviation of the noise. Once the mean and standard deviation have been found, thresholding is applied. Any pixel whose ADC count falls under $n$ standard deviations above the mean (where $2\geq n \geq 4$) is set to 0. Additionally, all the remaining pixels have the mean subtracted. This means that only pixels with noise above $n$ standard deviations above the mean are left. We can use the Gaussian distribution to estimate how much of the total power is due to these pixels.
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+
+
+% you can choose not to have a title for an appendix
+% if you want by leaving the argument blank
+
+
+
+% use section* for acknowledgment
+%\ifCLASSOPTIONcompsoc
+  % The Computer Society usually uses the plural form
+%  \section*{Acknowledgments}
+%\else
+  % regular IEEE prefers the singular form
+
+
+
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+%\begin{IEEEbiography}{Michael Shell}
+%Biography text here.
+%\end{IEEEbiography}
+
+% if you will not have a photo at all:
+%\begin{IEEEbiographynophoto}{John Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+%\begin{IEEEbiographynophoto}{Jane Doe}
+%Biography text here.
+%\end{IEEEbiographynophoto}
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+\end{document}
+
+
