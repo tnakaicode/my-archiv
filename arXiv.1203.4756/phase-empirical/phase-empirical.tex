@@ -1,0 +1,417 @@
+\chapter{Approximate Fourier phase knowledge for non-negative
+  signals---first success\footnotemark}
+\label{cha:appr-four-phase-first}
+
+\footnotetext{The material presented in this chapter was published in
+  \shortcite{osherovich09fast}.}
+
+As was mentioned in Chapter~\ref{cha:found-optim-meth}, classical
+continuous optimization
+methods are known to fail miserably when applied to the phase
+retrieval problem. In Section~\ref{cha:appr-four-phase-explanation} we
+shall give an explanation for this failure for a wide class of
+methods---monotone line-search optimization algorithms. In this
+chapter, however, we develop a new reconstruction method based on a
+Quasi-Newton optimization algorithm for a variation of the classical
+phase retrieval problem where very little additional information about the
+Fourier phase is available. In many situations, this information is
+readily available or can be obtained by an appropriate experimental
+arrangement.
+
+A more extended discussion on some possible ways to obtain a rough
+phase estimate is delayed until
+Section~\ref{sec:approx-phase1-conclusions}. Here we demonstrate that
+a rough (up to $\pi$ radians) phase estimate allows us to develop a
+new method whose convergence rate is several orders of magnitude
+faster than that of the current reconstruction techniques. Unlike
+current methods, which are based on alternating projections, our
+approach is based on continuous optimization. Therefore, besides fast
+convergence, our method allows a great deal of flexibility in choosing
+appropriate objective functions as well as introducing additional
+information or prior assumptions about the sought signal like, for
+example, smoothness. The speed of
+convergence is important in many applications. For example, in microscopy a
+real-time algorithm would have a clear advantage. The ability to
+incorporate additional information may have an even greater effect: starting
+from a vast improvement in the reconstruction speed and going all the
+way to the very chances of successful reconstruction.
+
+
+\section{Developing an efficient optimization method}
+\label{sec:approx-phase1-devel-cont-optim}
+
+Let us start by formulating the optimization problem for real
+non-negative signals. The very common formulation is as follows
+\begin{equation}
+  \label{eq:approx-phase1-1}
+  \begin{split}
+    \min_{x} &\quad \||FPx| - r\|^{2} \,,   \\
+    \mathrm{subject\ to} &\quad x\geq 0 \,, 
+  \end{split}
+\end{equation}
+where $F$ denotes the Fourier transform operator (a matrix in the discrete case),
+$P$ represents zero-padding (note that any support information can be
+represented as zero-padding), and $r$ denotes the measured Fourier
+magnitude. 
+
+Of
+course, there is an endless number of ways to choose the objective
+function. The particular choice  may affect the convergence speed
+and numerical stability. However, in our view, it is more important to
+choose the objective function that properly reflects the underlying
+physical phenomena. For example, the choice of
+Equation~\eqref{eq:approx-phase1-1} is especially suitable when the
+measured quantity is $r$ and the noise in the measurements has
+a (close to) Gaussian distribution with zero mean.
+
+As we have already seen, applying a Newton-type method to the problem
+in Equation~\eqref{eq:approx-phase1-1} fails. However, we have not
+introduced yet the additional information available in the
+setup we consider here---the approximate Fourier phase. Let us consider one
+pixel in the Fourier domain.  If the phase is known to lie within
+a certain interval $[\alpha,\beta]$, the correct complex number must
+belong to the arc $\hat{A}\hat{B}$ defined by $\alpha$ and $\beta$ as
+depicted in Figure~\ref{fig:phase-interval}. Even with this additional
+information, the problem still remains non-convex and cannot directly be solved
+efficiently. However, if we perform a \emph{convex relaxation}. That
+is, if we relax our requirements on the Fourier modulus and let the
+complex number lie in the convex region $\mathcal{C}$ defined by
+$\alpha$ and $\beta$ as shown in Figure~\ref{fig:convex-area}, the
+problem now becomes convex.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:phase-interval}
+    \includegraphics[width=0.4\textwidth]{phase_interval_beforeconvexrelax}}%
+  \qquad%
+  \subfloat[]{\label{fig:convex-area}
+    \includegraphics[width=0.4\textwidth]{phase_convexrelax}}
+  \caption[Convex relaxation of phase bounds]{Convex relaxation: (a)
+    the original phase uncertainty interval results in an arc of a
+    circle of known radius; (b) after relaxation, the allowed region
+    is convex.}
+  \label{fig:convex}
+\end{figure}
+
+Note that $\mathcal{C}$ is the smallest convex region that contains
+the original constraint (the arc $\hat{A}\hat{B}$). The formal
+definition of the relaxed problem is as follows:
+\begin{equation}
+  \label{eq:approx-phase1-convex-func}
+  \begin{split}
+    \min &\quad d^{2}(FPx, \mathcal{C})\\
+    \mathrm{subject\ to} &\quad x\geq 0
+  \end{split}
+\end{equation}
+where $d(a,\mathcal{C})$ denotes the Euclidean distance from point $a$
+to the convex set $\mathcal{C}$ (see
+Definition~\ref{def:current-1}). From our experience,  a few
+dozen iterations are sufficient to solve this convex problem (see
+Figure~\ref{fig:stage1}). Of course, the solution does not usually match the
+original image because both the phase and the magnitude may vary
+significantly. However, we suggest the following method for the
+solutions of the original problem.
+\begin{description}
+\item[Stage 1:] Starting with a random\footnote{In fact, $x^{0}$ can
+    be chosen in any reasonable way, as our method is insensitive to
+    the choice of the starting point.} $x^{0}$,
+solve the problem defined by Equation~(\ref{eq:approx-phase1-convex-func}).
+\item[Stage 2:] Use the solution obtained in Stage 1 (denoted $x^{1}$)
+  as the starting point for the minimization problem that
+  combines both the convex and non-convex parts, as defined below
+  \begin{equation}
+    \label{eq:approx-phase1-min-func}
+    \begin{split}
+      \min & \quad \||FPx|-r\|^{2} + d^{2}(FPx, \mathcal{C})\\
+      \mathrm{subject\ to} &\quad x \geq 0
+    \end{split}
+  \end{equation}
+\end{description}
+
+More precisely, in our implementation we use the unconstrained
+minimization formulation, that is , instead of
+Equations~\eqref{eq:approx-phase1-convex-func} and
+\eqref{eq:approx-phase1-min-func} we minimize the following
+convex, and non-convex functionals, respectively.
+\begin{align}
+  \label{eq:approx-phase1-4}
+  E_c(x) & = d^{2}(FPx, \mathcal{C}) + \|[x]_{-}\|^{2}\,, \\
+  E(x) & = \||FPx|-r\|^{2} + \mu_{1}d^{2}(FPx, \mathcal{C}) + \mu_{2}\|[x]_{-}\|^{2}
+  \,,  \label{eq:approx-phase1-5}
+\end{align}
+where $[x]_{-}$ is defined as follows
+\begin{equation}
+  \label{eq:approx-phase1-6}
+  [x]_{-}=
+  \begin{cases}
+    0,& x\geq 0 \,. \\
+    x,& x < 0 \,. 
+  \end{cases}
+\end{equation}
+The weights $\mu_{1}$, and $\mu_{2}$ are usually set to unity.
+Results of our simulations are presented in the next section.
+
+
+
+\section{Simulations and Results}
+\label{sec:approx-phase1-results}
+Due to the high dimensionality of the problem (especially in the 3D
+case) we  limit our choice to methods that do not require the
+Hessian matrix or its approximation.  Hence, in our implementation we
+use a modified version of the SESOP
+algorithm~\shortcite{narkiss05sequential} and the L-BFGS
+method~\shortcite{liu89limited}. Both algorithms demonstrate very similar
+results. The main difference is that SESOP guarantees that
+there are two Fourier transforms per iteration just like in the GS and
+HIO methods. The L-BFGS method, on the other hand, cannot guarantee
+that. However, in practice the average number of the Fourier
+transforms per iteration is
+very close to that of SESOP and HIO.
+
+The method was tested across a variety of data. In this section we
+present some of these examples. The first example is a molecule of
+caffeine whose 3D model along with a 2D projection of its electron density, and
+the corresponding Fourier magnitudes are shown in
+Figure~\ref{fig:caffeine}. This information was obtained from a
+PDB\footnote{See http://www.pdb.org for more
+  information.} (protein database) file. In addition, we use a
+``natural'' image which represents a class of images with rich texture
+and tight support. Moreover, it may be easier to estimate the visual
+reconstruction quality of such images. This image and its Fourier
+modulus are given in Figure~\ref{fig:lena}.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:caffeine-pdb}%
+    \includegraphics[height=.35\linewidth]{approx_phase/caffeinePDB}}%
+  \hspace{.18\linewidth}
+  \subfloat[]{\label{fig:caffeine-2drho}%
+    \includegraphics[width=.35\linewidth]{approx_phase/2Drho_hires}}\\
+  \subfloat[]{\label{fig:caffeine-3dfourier}%
+    \includegraphics[width=.35\linewidth]{approx_phase/3DFourier}}%
+  \hspace{.15\linewidth}
+  \subfloat[]{\label{fig:caffeine-2dfourier}%
+  \includegraphics[width=.35\linewidth]{approx_phase/2DFourier}}
+\caption[Caffeine molecule]{Caffeine molecule: (a) 3D model (PDB), (b) 2D projection of
+  its electron density; and their corresponding Fourier magnitudes:
+  (c) 3D, and (d) 2D.  }
+  \label{fig:caffeine}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:lena-image}%
+    \includegraphics[width=.35\linewidth]{approx_phase/lena128.png}}
+  \hspace{.15\linewidth}
+  \subfloat[]{\label{fig:lena-fourier}%
+    \includegraphics[width=.35\linewidth]{approx_phase/lena128Fourier}}
+  \caption[A natural image (Lena)]{A natural image (Lena): (a) original image, and (b) its
+    Fourier magnitude.}
+\label{fig:lena}
+\end{figure}
+Note that we assume that a rectilinear sampling is available in the 3D
+case. In practice, however, the sensors measure a two-dimensional
+slice of the 3D volume. Provided that a sufficient number of such
+slices were measured, an interpolation can be used to form a
+rectilinear array of measurements~\shortcite{miao01approach}. However, the
+slices can be incorporated directly into our minimization scheme. This
+will be addressed in future work.
+
+In our experiments we tested a phase uncertainty of up to 3 radians. The
+bounds were chosen at random at every measured pixel (voxel) such that
+the true phase had a uniform distribution inside the interval. The
+starting point ($x^{0}$) was also chosen randomly. Of course, there is
+an obvious way to make a more educated guess: by choosing the middle
+of the uncertainty interval, however, this choice will generally violate the
+object domain constraints. Fortunately, our experiments indicate that
+the starting point has little influence on the reconstruction. In all cases the
+reconstructed images obtained with our method were visually
+indistinguishable from the original. Therefore, we only present the values
+of $E_c(x)$ and $E(x)$ as defined in
+Equations~\eqref{eq:approx-phase1-4} and~\eqref{eq:approx-phase1-5}
+to visualize the progress of the first and the second stages,
+respectively. The second stage is compared with the HIO algorithm for
+which the error term is $E(x)$ without the phase bounds constraint,
+that is,
+\begin{equation}
+  \label{eq:1}
+  E_{\mathrm{HIO}}=\||FPx|-r\|^2 + \|[x]_{-}\|^{2} \ .
+\end{equation}
+The first experiment is as follows. First, we run 60 iterations of
+Stage 1, that is, the convex problem defined
+by~\eqref{eq:approx-phase1-convex-func}. The
+progress of different images is shown in Figure~\ref{fig:stage1}. In
+the second stage we run 200 iterations of our algorithm (SESOP)
+starting at the solution obtained in the previous stage ($x^{1}$). To
+compare the convergence rate with current methods, we ran twice
+the HIO algorithm: once, starting at $x^{0}$, whereby the algorithm is
+unaware of the additional phase information. Another run was started
+at $x^{1}$, hence, the phase information was made (indirectly) available
+to the algorithm. The results for 2D and 3D reconstruction of the
+caffeine molecule are shown in Figures.~\ref{fig:stage2_caff2d}
+and~\ref{fig:stage2_caff3d}, respectively. The results of the natural
+image are shown in~\ref{fig:stage2_lena}.
+
+
+It is evident from these results that our method significantly
+outperforms the HIO algorithm is all experiments. Moreover, its
+superiority for the ``Lena'' image is tremendous. 
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:stage1}%
+    \includegraphics[width=0.4\linewidth]{approx_phase/stage1_convergence}}%
+  \hspace{.1\linewidth}
+  \subfloat[]{\label{fig:stage2_caff2d}%
+    \includegraphics[width=0.4\linewidth]{approx_phase/stage2_caff2d}}\\
+  \subfloat[]{\label{fig:stage2_caff3d}%
+    \includegraphics[width=0.4\linewidth]{approx_phase/stage2_caff3d}}
+  \hspace{.1\linewidth}
+  \subfloat[]{\label{fig:stage2_lena}%
+    \includegraphics[width=0.4\linewidth]{approx_phase/stage2_lena}}
+  \caption[Reconstruction with approximately known
+  phase]{Reconstruction results: (a) stage 1 convergence rate, (b)
+    stage 2 convergence rate of the 2D caffeine model, stage 2 of the
+    3D caffeine model, and (d) stage 2 of Lena.}
+  \label{fig:stage2}
+\end{figure}
+
+In addition to the examples shown in this chapter we have studied
+a number of other examples. Based on our observations we conclude that
+our algorithm demonstrates a significantly better convergence rate so
+long as
+the interval of phase uncertainty is not too close to $\pi$
+radians.%  Otherwise, the algorithm may stagnate at local minima. At
+% this moment is seems that images with tight support give better gain
+% in the convergence rate.
+
+Besides the fast convergence rate, our method allows us to incorporate
+additional information about the image or the noise distribution in
+the measurements. For example, in practice  we measure
+$r^2$ and not $r$, and the noise distribution is Poissonian rather than
+Gaussian. In this case the
+maximum-likelihood criterion implies the functional for the error
+measure in the Fourier domain to be as follows:
+\begin{equation}
+  \label{eq:approx-phase1-poisson-func}
+  E_P(x) = \mathbf{1}^T \left(
+    |FPx|^2-r^2\ln\left(|FPx|^2\right)
+  \right).
+\end{equation}
+To demonstrate the performance of our method we contaminated the
+measurements ($r^2$) of the ``Lena'' image with Poissonian noise such that
+the signal to noise ratio (SNR) was 53.6 dB. The phase uncertainty was
+3 radians as before. First, we started by solving the convex problem,
+as defined by Equation~(\ref{eq:approx-phase1-convex-func}). The solution obtained
+was then used as the starting point for the second stage of our
+method using  the non-convex functional defined in
+Equation~(\ref{eq:approx-phase1-poisson-func}). The HIO algorithm also started at
+this solution. In addition to using the objective function that fits
+the noise distribution we also included a regularization term in the
+object space. In this example, we used the total variation
+functional~\shortcite{rudin92nonlinear}
+\begin{equation}
+  \label{eq:total-variation}
+ \mathrm{TV}(x) = \int |\nabla x|\,, 
+\end{equation}
+with a small weight. Total variation is a good prior for a broad range
+of images, especially for images that are approximately piece-wise
+constant. In our case, introduction of this regularization added about
+3 dB to the reconstruction SNR. The reconstruction results are shown in
+Figure~\ref{fig:reconstruction-noise}. Our method achieved the SNR of
+30dB, while the HIO algorithm produced a significantly inferior
+result. Its SNR was only 16.7dB.
+\begin{figure}[t]
+  \centering
+  \subfloat[]{\label{fig:lena-reconstruction-us}%
+    \includegraphics[width=0.35\linewidth]%
+    {approx_phase/lena_reconstruction_noisePoisson_30e5photons.png}}
+  \hspace{.1\linewidth}
+  \subfloat[]{\label{fig:lena-reconstruction-hio}%
+    \includegraphics[width=0.35\linewidth]%
+    {approx_phase/lena_HIOreconstruction_noisePoisson_30e5photons.png}}
+\caption[Reconstruction from noisy data]{Reconstruction from noisy
+  data: (a) our method (30dB), and (b) HIO (16.7dB).}
+\label{fig:reconstruction-noise}
+\end{figure}
+Note that the SNR values given above were obtained using different
+measures. The  SNR in the measurements was
+obtained with respect to the measured intensity, that is,
+\emph{squared} Fourier magnitude, while the SNR values reported for the
+reconstruction results was measured with respect to the image
+magnitude. More correct would be to measure it with respect to the
+image intensity---in this case the reported SNR should be multiplied by
+approximately 2. Hence, our reconstruction provides SNR that is better
+than the SNR of the measurement. This improvement was achieved with
+the aid of the regularization term (TV)---something that is impossible
+to incorporate into methods based on alternating projections. 
+
+It is also worthwhile to note that
+Poissonian noise of small intensity can be well approximated by
+Gaussian noise. However, if one uses the objective function implied by
+the Gaussian noise in $r^2$, that is,
+\begin{equation}
+  \label{eq:3}
+  \||FPx|^2 - r^2\|^2 \,, 
+\end{equation}
+the reconstruction results are a few dB's worse than those we got with
+the proper choice of the objective function. 
+
+\section{Concluding remarks}
+\label{sec:approx-phase1-conclusions}
+In this chapter we presented the first successful method based on
+continuous optimization for the phase retrieval problem for
+non-negative objects whose phase is known to lie within a certain
+interval.  It is important to note, however, that straightforward
+incorporation of this information does not lead automatically to a
+successful method of reconstruction. Therefore, we designed a
+two-stage algorithm.  At the first stage we perform convex relaxation
+and solve the resulting convex problem. At the second stage the
+original objective function is re-introduced into the scheme and the
+reconstruction continues from the solution of the first stage.  The
+algorithm demonstrates a significantly better convergence rate compared
+to current reconstruction methods. Moreover, in contrast to these
+methods, our technique is flexible enough to allow incorporation of
+additional information. Practical examples of such information include
+measurement noise distribution and  knowledge that the sought image
+is piece-wise smooth.
+
+It is worthwhile to discuss possible sources of the approximate
+Fourier phase information. Probably, most obvious way to obtain it is
+to introduce into the scene an object whose Fourier transform is
+known. In this case the recorded data is the modulus of a sum of two
+complex numbers, one of which is known, and we are actually required
+to perform some sort of holographic/interferometric
+reconstruction. However, unlike in the classical
+holograph/interferometry, the known object must not be known
+precisely. This is a very important property, because calibrating and
+maintaining an interferometer so as to keep the reference beam with
+high precision during a series of experiments is a time-consuming and
+expensive procedure. We shall return to the holographic setup in
+Chapters~\ref{cha:phase-retr-holography}
+and~\ref{cha:design-bound-phase}.
+But there are other sources
+of the phase information that do not require a physical modification
+of the experiments. For example, as explained
+in~\shortcite[Section~5.2]{goodman05introduction}, an ideal lens can perform the
+Fourier transform. This property can be used to test lenses by
+illuminating them with a known beam and measuring the resulting
+intensity in the Fourier plane. By reconstructing the illuminating
+beam from this intensity and comparing it with the actual beam, one
+can estimate the quality of the lens. Note that the imperfections in
+the lens production affect directly the Fourier phase by diverting it
+from the known expected values. Another possible way to obtain a phase
+estimate is to use current reconstruction methods such as HIO in 
+situations where they are known to be able to reconstruct the sought
+signal. If a successful reconstruction is guaranteed, at some point
+the phase must be close enough to the true value, and if we manage to
+identify such a moment, then we can switch to our algorithm and get a faster
+reconstruction. As a last resort, the whole interval of $2\pi$ radians
+can be split into several, small enough, intervals and each one can be
+tested separately. In this case, once a correct partitioning is found
+our method will recover the image. This approach is closely related to
+combinatorial optimization, as we have to choose a correct combination
+of the phase intervals. Thus it is very important that an assessment
+of the current hypothesis (a particular choice of the phase intervals)
+can be performed very fast.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

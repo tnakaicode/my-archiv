@@ -1,0 +1,583 @@
+\chapter{Approximate Fourier phase data for arbitrary
+  signals---why does it help?\footnotemark{}}
+\label{cha:appr-four-phase-explanation}
+
+\footnotetext{The material presented in this chapter was published in \shortcite{osherovich11approximate}.}
+
+In the previous chapter we presented an algorithm for fast phase
+retrieval in situations where a rough Fourier phase estimate is
+available. Our experiments demonstrated excellent convergence rates for
+phase uncertainty intervals of up to $\pi$ radians. This algorithm is
+potentially important, as it is the first successful application of
+continuous optimization technique to the phase retrieval problem.
+However, these  results were purely empirical---no explanation
+has been provided so far about why and when this method is expected to
+solve the problem . Moreover, all these results were obtained for
+real-valued non-negative signals. When we tried to apply the method to
+complex-valued signals the results were less encouraging. The reason
+for this gap lies in our experimental setup: the phase uncertainty intervals
+were generated independently for each pixel in the Fourier
+space, ignoring the conjugate symmetry exhibited by real-valued
+signals in the Fourier domain. Hence, the \textit{effective} phase
+uncertainty 
+in our previous experiments was approximately $\pi/2$ radians and not
+$\pi$. After we refined the allowed phase uncertainty interval, the
+results in both the real-valued and complex-valued cases returned to be
+excellent. This chapter provides an explanation for this phenomenon.
+
+
+Thus, in this section we continue to evaluate the importance of
+approximate phase information in the phase retrieval problem. However,
+now we address more theoretical questions, the main one being
+when and why a rough phase estimate (up to $\pi/2$ radians) can lead
+to a guaranteed reconstruction by the algorithm presented in the
+previous section. Our main discovery is that the above phase
+uncertainty limit practically guarantees a successful reconstruction
+by \textit{any} reasonable algorithm for the reason described
+below. This is 
+an  important property as it allows development of very
+efficient algorithms whose reconstruction time is orders of magnitude
+faster than that of the current method of choice---the Hybrid
+Input-Output (HIO) algorithm. We have already presented one such
+algorithm in the previous section, however, we believe that its
+results can be further improved by using more sophisticated interior
+point methods. Using the new algorithms we were able to reconstruct
+signals that cannot be successfully reconstructed by HIO, namely,
+complex-valued signals without tight support information.
+
+Additionally, we provide a heuristic explanation of why continuous
+optimization methods such as gradient descent or Newton-type algorithms
+fail when applied to the phase retrieval problem and how the
+approximate phase information can remedy this situation. We actually
+show the reason for the failure for a very large family of optimization
+methods---monotone line-search optimization algorithms.
+Notwithstanding this failure in the general case, we argue that a
+rough phase estimate leads to an important property: local minima of a
+functional associated with the phase retrieval problem are likely to
+be global minima. This is the reason for our previous claim: chances
+are that \textit{any} algorithm capable of finding a local minimum
+will successfully reconstruct the image.
+
+Additional numerical simulations are provided in
+Section~\ref{sec:approx-phase2-results} to demonstrate the validity of our analysis
+and success of our reconstruction method.
+
+
+
+
+\section{Optimization methods: the problem and the remedy}
+\label{sec:optim-meth-probl}
+Let  $z$ represent the true (unknown) signal, with
+$\hat{z}$ being its Fourier transform, in accordance with our
+notational conventions. The current estimate (obtained after $k$
+iterations) is denoted by $x^{k}$. With this notation, the
+classical phase retrieval problem reads: find $x$ such that
+$|Fx|=|\hat{z}|$ subject to certain constraints in the object
+domain. When the Fourier phase is known to lie within a given interval
+$[\alpha,\beta]$ ($\alpha$, and $\beta$ are vectors of appropriate
+size) the problem to be solved is: find $x$ such that $|Fx| =
+|\hat{z}|$ and $\alpha \leq \angle(Fx) \leq \beta$ subject to certain
+constraints in the object domain. Note that such $x$ is not
+necessarily equal to $z$; even when the Fourier domain data is
+sufficiently ``oversampled'', the reconstruction in the classical
+phase retrieval problem is not
+unique~\shortcite{hayes82reconstruction}, and it may not be unique
+even when the Fourier phase estimates are available. 
+
+Let us now try to understand why the classical Newton-type and
+gradient descent methods fail for the phase retrieval
+problem. Actually, we can address a very wide family of optimization
+methods that includes these two methods---monotone line-search
+algorithms. Each iteration of these algorithms has a common 3-step
+template:
+\begin{description}
+\item[Step 1:] Find a descent direction $p^{k}$.
+\item[Step 2:] Along that direction find a step-length $\Delta^{k}$
+  that sufficiently decreases the objective function value.
+\item[Step 3:] Move to the new location: $x^{k+1} = x^{k}+\Delta^{k}p^{k}$.
+\end{description}
+Descent direction is defined as a vector whose
+inner product with the gradient is negative (for obvious reasons). This
+guarantees that there always exists a step along that direction that decreases the
+objective function value.
+
+To be specific we choose the most popular objective
+function for the discrepancy minimization in the Fourier domain:
+\begin{equation}
+  \label{eq:approx-phase2-1}
+  f(x) = \frac{1}{2}
+  \left\|
+    |Fx| - |\hat{z}|
+  \right\|^{2}\ .
+\end{equation}
+The gradient of $f(x)$ is given by (see
+Chapter~\ref{cha:found-optim-meth}):
+\begin{equation}
+  \label{eq:approx-phase2-2}
+  \nabla f(x) = 
+  x - F^{-1}
+  \left(
+    |\hat{z}|\circ\frac{Fx}{|Fx|}
+  \right)\,.
+\end{equation}
+As before, $a\circ b$ and $\frac{a}{b}$ denote the Hadamard (element-wise)
+product and quotient, respectively. It is interesting to note that the
+signal $F^{-1}\left(|\hat{z}|\circ\frac{Fx}{|Fx|}\right)$ has a clear
+physical meaning: it is obtained from $x$ by substituting the (wrong)
+Fourier magnitude $|Fx|$ with the correct one $|\hat{z}|$. Thus, it is
+nothing but the signal denoted by $y$ in
+Figure~\ref{fig:current-fienup-alg}. However, the main observation
+about the gradient is that $\nabla f(x)=0$ if and only if
+$|Fx|=|\hat{z}|$, that is, if and only if $x$ is a solution.  Of course,
+this is true only if there are no additional constraints. In practice,
+however, the optimization is done while respecting certain restrictions on
+$x$. The constraints are often implemented as penalty functions that
+augment the original functional, and the augmented gradient may
+vanish when $|Fx|\not=|\hat{z}|$. Also, we may find ourselves in a
+situation where no feasible descent direction exists, if the
+constraints are kept as ideal barriers. Such situations
+usually 
+indicate a local minimum and make further progress by such standard
+optimization methods impossible.  In this discussion we are being
+deliberately vague about the exact nature of the object domain
+constraints and enforcement thereof in the optimization process. We
+only assume that imposing these constraints on an image estimate will
+take that estimate to be closer\footnote{``Closer'' here refers to the
+Euclidean distance, however it can be readily generalized to other
+metrics.} to the true signal---a natural
+assumption for monotone optimization.
+
+Let us now consider a single element in the Fourier
+domain. Using our notation, the true value is $\hat{z}_{i}$, whose
+magnitude $|\hat{z}_{i}|$ is known and whose phase $\theta_{i}$ is
+unknown. We distinguish three possible scenarios where $|\hat{x}_{i}|
+\not= \hat{z}_{i}$. First, the
+Fourier magnitude of the current estimate is smaller than
+$|\hat{z}_{i}|$ and the phase
+error $\alpha_{i}$ is greater than $\pi/2$ radians. Second, the current
+Fourier magnitude is greater than $|\hat{z}_{i}|$ (phase error is
+unimportant in this case). Finally, the third possibility: the
+current estimated Fourier magnitude is less than $|\hat{z}_{i}|$ and
+the phase 
+error $\alpha_{i}$ is less than $\pi/2$ radians. These scenarios are
+illustrated in Figures~\ref{fig:wrong-direction},
+\ref{fig:large-magnitude}, and~\ref{fig:small-magnitude}, respectively.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:wrong-direction}
+    \includegraphics[width=0.45\textwidth{}]{bad_dir}
+  }
+  \quad{}
+  \subfloat[]{%
+    \label{fig:large-magnitude}
+    \includegraphics[width=0.45\textwidth]{good_dir1}}
+  \quad{}
+  \subfloat[Small magnitude: good direction.]{%
+    \label{fig:small-magnitude}
+    \includegraphics[width=0.45\textwidth]{good_dir2}}
+  \caption[Three possible scenarios in the Fourier domain]{Three
+    possible scenarios in the Fourier domain: (a) small magnitude =
+    bad direction, (b) large magnitude = good direction, and (c) small
+    magnitude = good direction.}
+  \label{fig:possible-scenarios}
+\end{figure}
+Recall also that, by Equation~\eqref{eq:approx-phase2-2}, we know that the gradient
+descent direction is always taking us from $\hat{x}$ towards $\hat{y}$
+(see Equation~\eqref{eq:approx-phase2-2} and Figure~\ref{fig:possible-scenarios}).
+Let us consider the first case. In the Fourier domain, when we move
+from $\hat{x}_{i}$ towards $\hat{y}_{i}$ we are actually moving away
+from the correct value $\hat{z}_{i}$ (see
+Figure~\ref{fig:wrong-direction}).  Therefore, due to the unitarity of
+$F$, $x$ is pulled farther away from $z$. On the other hand, object
+domain constraints shall pull us towards the correct value, as assumed
+before. Hence, the two forces may cancel each other, resulting thereby
+in the stagnation of the algorithm. In numerical tests this stagnation
+is observed in all but very tiny problems. Worse still, it
+happens at very early stages, long before the reconstruction algorithm
+gets close to the correct value. Hence, the results are usually
+worthless.  In the second case, where the magnitude of the current
+estimate is greater than the correct value $\hat{z}_{i}$, moving from
+$\hat{x}_{i}$ towards $\hat{y}_{i}$ will necessarily bring us closer
+to the correct value $\hat{z}_{i}$ (see
+Figure~\ref{fig:large-magnitude}). The last case is more
+interesting. If the estimated Fourier magnitude is sufficiently
+smaller than the correct one, and the phase error $\alpha_{i}$ is less
+than $\pi/2$ radians, then moving along the gradient descent
+direction, that is, from $\hat{x}_{i}$ towards $\hat{y}_{i}$, will get us
+closer to $\hat{z}_{i}$, so long as we do not pass the point
+$\hat{z}_{i}'$ which is the projection of $\hat{z}_{i}$ onto the line
+segment $[0, \hat{y}_{i}]$ as shown in
+Figure~\ref{fig:small-magnitude}.  Note that the fact that moving from
+$\hat{z}'_{i}$ towards $\hat{y}_{i}$ takes us farther away from the
+correct value $\hat{z}_{i}$ keeps us from claiming that any
+optimization algorithm will necessarily converge to a
+solution. However, in the discussion that follows we prove that the
+situation where an optimization algorithm gets stuck at some $x$ such
+that all $\hat{x}_{i}$ lie between $\hat{z}'_{i}$ and $\hat{y}_{i}$ is
+impossible. In fact, we argue below that in the situation where the Fourier
+phase errors are limited by $\pi/2$ radians any local minimum is
+likely to be a global one. That is, any algorithm capable of finding a
+(constrained) local minimum can be expected to solve the phase
+retrieval problem in this case. To give a reasoning behind this claim
+we must be more specific about the constraints in the object
+domain. As will be evident from the argument below, our assumptions
+are very general and fit all commonly encountered cases.
+
+Let us
+consider the most frequent object domain constraint: limited support
+information.
+\begin{equation}
+  \label{eq:phase-approx2-3}
+  x_{o} = 0, \quad \forall o\in\mathcal{O}\ ,
+\end{equation}
+where $\mathcal{O}$ denotes the set of off-support locations, where
+$z$ is known to be zero. Note that zero-padding is a special case of
+such support information. In certain situations the sought signal can
+be assumed to be real non-negative. In these situations the above constraint
+can be extended by the non-negativity requirement:
+\begin{equation}
+  \label{eq:phase-approx2-4}
+  x_{s} \geq 0, \quad \forall s\not\in\mathcal{O}\ .
+\end{equation}
+What is important for our discussion is that in both cases the set of
+all feasible signals ($\mathcal{Z}$) is a convex set that contains a
+proper cone $\mathcal{K}$. That is, if $x$ and $y$ are feasible, then
+$\lambda x + \gamma y$ is also feasible for any non-negative scalars
+$\lambda, \gamma$. $\mathcal{Z}$ contains 
+$\mathcal{K}$ but not necessarily equals it, but this is
+unimportant in the following discussion. Let us now consider the
+minimization of the objective function from Equation~\eqref{eq:approx-phase2-1}
+subject to the following two conditions: first, the set of object
+domain constraints is convex and contains the proper cone
+$\mathcal{K}$; second, the phase error (of all elements) in the
+Fourier domain is bounded by $\pi/2$, that is, $|\angle(\hat{x}) -
+\angle(\hat{z})| \leq \pi/2-\epsilon$ for some small positive
+$\epsilon$.  Obviously, the Fourier domain constraints define a convex
+set which is a proper cone too (a Cartesian product of proper
+cones). Hence, the optimization in this case is done over a convex
+set. Assume now that the algorithm converges at some local minimum
+$x$ which is not a solution (global minimum). Following a basic
+theorem from constrained-optimization 
+theory we conclude that the following inequality must hold for any
+feasible point $w$ (see, for example,~\shortcite{bertsekas99nonlinear}):
+\begin{equation}
+  \label{eq:approx-phase2-5}
+  \langle \nabla f(x), (w-x)\rangle \geq 0\ .
+\end{equation}
+In words, that means that no feasible descent direction exists at the
+point $x$. Let us consider a (small) subset of all feasible points: $w
+= \lambda z + \gamma x$, where $\lambda,\gamma\geq 0$ (note that $x$
+and $z$ are feasible by definition, hence, $x,z\in\mathcal{K}$ which
+implies that $w\in \mathcal {K}$). The choice of this subset of
+feasible directions is stipulated by the fact that the phase error of
+$w$ in all frequencies is less than or equal to the phase error of
+$x$ (it is strictly smaller when $\lambda\not=0$). With $w$ as above,
+Equation~\eqref{eq:approx-phase2-5} becomes
+\begin{equation}
+  \label{eq:approx-phase2-6}
+  \langle \nabla f(x), (w-x) \rangle =
+  \lambda\langle\nabla f(x), z\rangle +
+  (\gamma - 1) \langle\nabla f(x),x\rangle\ .
+\end{equation}
+If $\langle\nabla f(x),x \rangle < 0$, we can set $\lambda=0$,
+$\gamma=2$ and get a feasible descent direction (this is, actually,
+scaling up of $x$). If  $\langle\nabla f(x),x \rangle > 0$ we can set
+$\lambda =0$, $\gamma=0.5$ and, again, get a feasible descent
+direction (scaling down of $x$). Hence, any local minimum must
+obey $\langle\nabla f(x),x \rangle = 0$ (we shall call such $x$
+\textit{optimally scaled}). In this situation, the sign of the
+left-hand size of 
+Equation~\eqref{eq:approx-phase2-5} depends solely on the sign of the inner product
+$\langle\nabla f(x), z\rangle$. It is more convenient to consider the
+above inner product in the Fourier domain. Due to unitarity of $F$ we have:
+\begin{align}
+  \label{eq:approx-phase2-7}
+  \langle\nabla f(x), z\rangle
+  & = \langle F\nabla f(x), Fz\rangle \\
+  & = \sum_{i} (|\hat{x}_{i}|
+  -|\hat{z}_{i}|)\,|\hat{z}_{i}|\cos\alpha_{i}\label{eq:approx-phase2-8}
+  \ .
+\end{align}
+Recall that the above formula is considered in
+the context of an optimally scaled $x$, that is:
+\begin{align}
+  \label{eq:approx-phase2-9}
+  0 = \langle   \nabla f(x), x\rangle
+  & = \langle F \nabla f(x), Fx\rangle \\
+  & = \sum_{i} (|\hat{x}_{i}|
+  -|\hat{z}_{i}|)\,|\hat{x}_{i}|\label{eq:approx-phase2-10}
+  \ .
+\end{align}
+For our following discussion, it is convenient to consider
+Equations~\eqref{eq:approx-phase2-8} and \eqref{eq:approx-phase2-10} as \textit{weighted sums} of
+$|\hat{x_{i}}|-|\hat{z}_{i}|$. Thus, for example, it becomes obvious
+that an $x$ that belongs to the convex region $\mathcal{C}$ (see
+Figure~\ref{fig:convex-area}), as was required in the 
+algorithm in Chapter~\ref{cha:appr-four-phase-first}, cannot be a
+local minimum unless $|\hat{x}| = |\hat{z}|$ (which makes it a global
+one), because this is the only way to get zero by summing non-positive
+numbers associated with strictly positive weights. This explains
+the success of the algorithm. However, even without the
+restrictions on $|\hat{x}|$ used in the original algorithm, we can
+expect the sum in Equation~\eqref{eq:approx-phase2-8} to be negative.  To
+understand why let 
+us split it into three disjoint sets of indices,
+\begin{multline}
+  \label{eq:approx-phase2-11}
+  \sum_{i} (|\hat{x}_{i}|
+  -|\hat{z}_{i}|)\,|\hat{z}_{i}|\cos\alpha_{i} =
+  \sum_{i\in\mathcal{B}}(|\hat{x}_{i}|
+  -|\hat{z}_{i}|)\,|\hat{z}_{i}|\cos\alpha_{i} +\\
+  \sum_{i\in\mathcal{S}}(|\hat{x}_{i}|
+  -|\hat{z}_{i}|)\,|\hat{z}_{i}|\cos\alpha_{i} +
+  \sum_{i\in\mathcal{A}}(|\hat{x}_{i}|
+  -|\hat{z}_{i}|)\,|\hat{z}_{i}|\cos\alpha_{i}
+  \ ,
+\end{multline}
+where $\mathcal{B} = \{i \ |\ |\hat{x}_{i}| > |\hat{z}_{i}|\}$,
+$\mathcal{S} =\{i \ |\ |\hat{x}_{i}| \leq |\hat{z}_{i}|\cos\alpha_{i}\}$,
+and $\mathcal{A} =\{i \ |\ |\hat{z}_{i}|\cos\alpha_{i} < |\hat{x}_{i}|
+<|\hat{z}_{i}|\}$. With this subdivision it is easy to compare the sum
+in Equation~\eqref{eq:approx-phase2-8} (for which a negative sign indicates
+the presence of a
+feasible descent direction) and the sum in Equation~\eqref{eq:approx-phase2-10}
+(which is zero). The weight in these weighted sums 
+changes from 
+$|\hat{x}_{i}|$ in~\eqref{eq:approx-phase2-10} to $|\hat{z}_{i}|\cos\alpha_{i}$ in
+\eqref{eq:approx-phase2-8}. Hence, for 
+$i\in\mathcal B$, $|\hat{x}_{i}|-|\hat{z}_{i}|$ is positive and its
+weight has decreased, thus, pulling the total sum towards a negative
+value. For $i\in\mathcal S$, $|\hat{x}_{i}|-|\hat{z}_{i}|$ is
+negative, and its weight has increased, thus again contributing to
+the negativeness of the result. The only subset of indices that
+increases the sum is $i\in\mathcal A$. From our experience it is very
+unlikely to encounter a situation where the contribution of
+$i\in\mathcal A$ outweighs the joint contribution of $i\in\mathcal B$
+and $i\in\mathcal S$. Hence it is very unlikely to get stuck in a local
+minimum with no descent direction. Note also that if the phase error
+of all frequencies of $x$ is strictly less than $\pi/2$ radians then the
+sum in Equation~\eqref{eq:approx-phase2-8} must be zero for $x$ to be a local
+minimum,  because if the direction towards $w$ is an ascent direction,
+one can simply reverse it to get a descent direction.
+
+This discussion provides a heuristic explanation why a carefully designed
+optimization method can be expected to converge to a  global
+minimum, that is, to solve the phase retrieval problem when the Fourier
+phase is known up to $\pi/2$ radians and the object domain constraints
+are given in the form of (possibly loose) support information.
+
+\section{Experimental results}
+\label{sec:approx-phase2-results}
+The method was tested on many images with consistent results. Here,
+for demonstration purposes, we chose a natural image with a lot of
+features so as to allow easy perception of the reconstruction quality
+by the naked eye. We demonstrate our results on two different cases: one
+with loose support information, that is, part of the image is zero and
+we do not know that a priori; another with tight support.  Both
+images are complex-valued and their original size is $128\times128$
+pixels, padded with zeros to the size of $256\times256$
+pixels.  The intensity (squared magnitude) of the images (without the
+zero-padding) is shown in
+Figure~\ref{fig:lena-images}.
+
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:lena-loosesupport}
+    \includegraphics{lenaP_128}
+  }
+  \qquad{}
+  \subfloat[]{
+    \label{fig:lena-tightsupport}
+    \includegraphics{lena_128}
+  }
+  \caption[Test images]{Test images (intensity): (a) loose support,
+    (b) tight support.}
+  \label{fig:lena-images}
+\end{figure}
+All our experiments show that the phase distribution in the object
+domain does not affect the reconstruction. Therefore, the actual phase
+distribution was chosen to be random to avoid any possible assumptions
+of smoothness.  We compared three
+reconstruction methods.  First, a slight modification of the
+quasi-Newton method from Chapter~\ref{cha:appr-four-phase-first}.
+Second, we created the following
+phase-aware modification of the HIO algorithm (PA-HIO). When the
+Fourier phase is known to lie in the interval $[\alpha,\beta]$,
+PA-HIO's correction in the Fourier domain forces the current estimate
+$\hat{x}$ to lie on the arc $\hat{A}\hat{B}$ (see
+Figure~\ref{fig:convexrelaxation}), hence $\hat{y}$ (see
+Figure~\ref{fig:projection-fourier}) is the point closest to $\hat{x}$
+that lies on the arc $\hat{A}\hat{B}$. The third algorithm is the
+classical HIO method without any alterations. In fact, we tested also
+a phase-aware modification of the GS algorithm, however, its results were
+consistently worse than those of PA-HIO, so we omit them.
+The current modification of our method uses only one
+stage. That is, we abandoned the first stage that was  used
+in the original method from Chapter~\ref{cha:appr-four-phase-first} to
+find a 
+feasible $x$ by solving the convex problem in the original
+algorithm. This stage is no longer necessarily because the phase
+bounds in the Fourier domain are the main reasons for success. The
+additional restrictions on $|\hat{x}|$ used in the original method can
+be viewed as heuristic constraint added (with smaller weight) for the
+reasons given in the discussion that follows
+Equation~\eqref{eq:approx-phase2-10}. This also made the choice of the initial $x$
+straightforward: $x^{0}=0$.
+
+
+We first demonstrate how the phase uncertainty interval affects our
+ability to reconstruct the images. A set of 51 uncertainty intervals
+was chosen in the range from zero to 2.5 radians. For each interval of
+uncertainty its endpoints were chosen at random so that the true phase
+was uniformly distributed inside it. We ran our quasi-Newton
+optimization algorithm one hundred times (each time generating new
+phase bounds), checking at each run whether it was successful
+or not.  A run was considered successful if the error in the Fourier
+domain (as defined by Equation~\eqref{eq:approx-phase2-1}) was below $0.5\times
+10^{-6}$ after 1000 iterations. As is evident from
+Figure~\ref{fig:rec-success-rate} the reconstruction always succeeded as
+long as the phase uncertainty was below $\pi/2$, in perfect agreement with
+our analysis. It is also evident that, for images with tight support
+information, successful reconstruction can be expected even for
+significantly rougher phase estimation. Moreover, the algorithm
+converges very fast and the 
+above threshold is usually reached after 250-300 iterations for the
+loose-support image and only 80 iterations for the image with tight
+support as is apparent from Figure~\ref{fig:rec-speed-losesup} and
+\ref{fig:rec-speed-tightsup}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth{}]{approx_phase2/lenacommon_successrate}
+  \caption[Success rate of our method]{Reconstruction success rate of our method as a function of
+    phase uncertainty interval.}
+  \label{fig:rec-success-rate}
+\end{figure}
+
+Next, we demonstrate in detail the reconstruction results in the case
+where the Fourier phase uncertainty interval is 1.57 radians. Note
+that without the phase bounds the HIO method cannot reconstruct images
+with loose support. Images with tight support information are usually
+reconstructed successfully, though they may undergo some trivial
+transformation, for example, axis reversal. As is evident from
+Figure~\ref{fig:rec-results} our methods (quasi-Newton and PA-HIO)
+produce very good visual quality. HIO, on the other hand has problems
+with the loose-support image (as expected) but the second case seems
+to yield acceptable quality. However, visual assessment does not
+provide full insight into the quality of reconstruction and tells
+nothing about its speed. Quantitative results are given in
+Figure~\ref{fig:rec-speed-losesup}
+and \ref{fig:rec-speed-tightsup}, from which
+it is evident that our quasi-Newton method significantly outperforms
+HIO and PA-HIO
+in terms of speed.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{%
+    \label{fig:padded-we-rec}
+    \includegraphics{approx_phase2/lenapadded-recourmet-250iter}}%
+  \qquad{}%
+  \subfloat[]{%
+    \label{fig:padded-pahio-rec}
+    \includegraphics{approx_phase2/lenapadded-recpahio-1000iter}}%
+  \qquad{}%
+  \subfloat[]{%
+    \label{fig:padded-hio-rec}
+    \includegraphics{approx_phase2/lenapadded-rechio-1000iter}}\\
+  \subfloat[]{%
+    \label{fig:tight-we-rec}
+    \includegraphics{approx_phase2/lena-recourmet-250iter}}%
+  \qquad{}%
+  \subfloat[]{%
+    \label{fig:tight-pahio-rec}
+    \includegraphics{approx_phase2/lena-recpahio-1000iter}}%
+  \qquad{}%
+  \subfloat[]{%
+    \label{fig:tight-hio-rec}
+    \includegraphics{approx_phase2/lena-rechio-1000iter}}\\
+  \caption[Reconstruction results for phase uncertainty of 1.57
+  radians]{Reconstruction results with phase uncertainty interval of
+    1.57 radians.
+
+    Upper row---loose support: (a) our method (after 250
+    iterations), (b) PA-HIO (after 1000 iterations), and (c) HIO
+    (after 1000 iterations).
+
+    Lower row---tight support: (d) our method
+    (after 80 iterations), (e) PA-HIO (after 1000 iterations), and (f)
+    HIO (after 1000 iterations).}
+  \label{fig:rec-results}
+\end{figure}
+It is important to point out two things before evaluating the
+quantitative results presented in Figures~\ref{fig:rec-speed-losesup},
+and \ref{fig:rec-speed-tightsup}. First, all presented methods are
+iterative by nature and every one of them uses two Fourier transforms
+per iteration. Hence, comparing the number of iterations is well
+justified and gives a good estimation of the reconstruction speed
+because the Fourier transforms constitute the major computational
+burden. Second, it is obvious that images with loose support lead to
+non-unique solutions. Hence, a small value of the objective function
+does not necessarily mean small error in the object domain. This
+explains the results in Figure~\ref{fig:rec-speed-losesup}. Another
+important observation is that the HIO and PA-HIO methods do not
+enforce the off-support areas (padding) to be zero. Hence, these
+methods may give a large error in the Fourier domain, while the error
+in the object domain (after we discard the off-support parts) may be
+small. This phenomena is also evident in
+Figure~\ref{fig:rec-speed-losesup}, and \ref{fig:rec-speed-tightsup}.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.5\textwidth]{approx_phase2/lenapadded_convergence_fourierdomain}}
+  \subfloat[]{
+    \includegraphics[width=0.5\textwidth]{approx_phase2/lenapadded_convergence_objectdomain}}
+  \caption[Error behavior in the case of loose support]{Error behavior in the case of loose support:
+    (a) Fourier domain error $\||Fx| - |\hat{z}|\|^{2}$,
+    (b) object domain error $\|x| - |z|\|^{2}$.}
+  \label{fig:rec-speed-losesup}
+\end{figure}
+
+\begin{figure}[H]
+  \centering{}
+  \subfloat[]{
+    \includegraphics[width=0.5\textwidth]{approx_phase2/lena_convergence_fourierdomain}}
+   \subfloat[]{
+    \includegraphics[width=0.5\textwidth]{approx_phase2/lena_convergence_objectdomain}}
+  \caption[Error behavior in the case of tight support]{Error behavior in the case of tight support:
+    (a) Fourier domain error: $\||Fx| - |\hat{z}|\|^{2}$,
+    (b) object domain error: $\|x| - |z|\|^{2}$.}
+  \label{fig:rec-speed-tightsup}
+\end{figure}
+
+\section{Concluding remarks}
+\label{sec:approx-phase2-conclusions}
+In this chapter we presented a new analysis explaining
+why continuous optimization methods fail when applied to the phase
+retrieval problem. On the basis of this observation we gave a
+heuristic explanation why local minima of a functional associated with
+the phase retrieval problem can be expected to be global ones in the
+situation where the Fourier phase error does not surpass $\pi/2$
+radians. This, in turn, opens the door for continuous optimization
+methods whose rate of convergence and ability to incorporate
+additional information in the computational scheme significantly
+exceeds those of HIO. We also present such an algorithm and demonstrate
+that its reconstruction speed is significantly faster than that of
+HIO, even when the phase constraints are also employed in the latter.
+
+The analysis and the methods developed in this chapter are used in the
+next chapter to perform phase retrieval in situations where the
+Fourier phase uncertainty is greater than $\pi/2$ radians by using
+a type of bootstrapping approach.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 
+
+
+

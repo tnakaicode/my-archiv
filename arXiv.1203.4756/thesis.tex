@@ -1,0 +1,142 @@
+\documentclass[12pt,a4paper,twoside,BCOR=1cm]{scrreprt}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mathtools}
+\usepackage{grffile}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{newapave}
+\usepackage{xcolor}
+\usepackage{hyperref} 
+\usepackage{setspace}
+\usepackage{units}
+\usepackage[stable,perpage,symbol*,multiple]{footmisc}
+\usepackage[tracking=true,kerning=true,spacing=true,babel]{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[final]{pdfpages}
+
+%\synctex=1
+
+
+
+\hypersetup{
+ colorlinks=true,
+ citecolor=teal,
+ linkcolor=blue,
+ urlcolor=cyan,
+ hyperfigures=true}
+
+\graphicspath{%
+{figs/illustrations/}%
+{figs/input/}%
+{figs/results/}%
+{figs/presentation/}%
+} 
+
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{defn}{Definition}[chapter]
+
+
+% Add some helper macros.
+\DeclareMathOperator*{\vect}{\mathrm{vec}}
+\renewcommand\Re{\operatorname{Re}}
+\renewcommand\Im{\operatorname{Im}}
+
+
+%\title{Numerical methods for phase retrieval}
+%\author{Eliyahu Osherovich}
+%\date{\today{}}
+
+
+\begin{document}
+
+
+% \maketitle
+\include{front/cover}
+\pagenumbering{roman}
+\include{front/front}
+\include{front/acknowledgments}
+
+\tableofcontents
+\listoffigures
+%\listoftables
+
+
+
+\begin{abstract}
+  In this work we consider the problem of reconstruction of a signal
+  from the magnitude of its Fourier transform, also known as phase
+  retrieval. The problem arises in many areas of astronomy,
+  crystallography, optics, and coherent diffraction imaging (CDI). Our
+  main goal is to develop an efficient reconstruction method based on
+  continuous optimization techniques. Unlike current reconstruction
+  methods, which are based on alternating projections, our approach
+  leads to a much faster and more robust method. However, all previous
+  attempts to employ continuous optimization methods, such as
+  Newton-type algorithms, to the phase retrieval problem failed. In this
+  work we provide an explanation for this failure, and based on this
+  explanation we devise a sufficient condition that allows development
+  of new reconstruction methods---approximately known Fourier phase. We
+  demonstrate that a rough (up to $\pi/2$ radians) Fourier phase
+  estimate practically guarantees successful reconstruction by any
+  reasonable method. We also present a new reconstruction method whose
+  reconstruction time is orders of magnitude faster than that of the
+  current method-of-choice in phase retrieval---Hybrid Input-Output
+  (HIO). Moreover, our method is capable of successful reconstruction
+  even in the situations where HIO is known to fail. We also extended
+  our method to other applications: Fourier domain holography, and
+  interferometry.
+
+  Additionally we\footnote{The work on sub-wavelength CDI was done in
+    collaboration with Prof. M.~Segev's group from the Technion
+    Physics Department, Solid State Institute.} developed a new
+  sparsity-based method for sub-wavelength CDI. Using this method we
+  demonstrated experimental resolution exceeding several times the
+  physical limit imposed by the diffraction light properties (so
+  called diffraction limit).
+\end{abstract}
+
+\cleardoublepage{}
+\pagenumbering{arabic}
+
+%\begin{doublespacing}
+
+\include{intro/intro}
+
+%\include{physics/physics}
+
+\include{mathematics/mathematics}
+
+\include{current_methods/current_methods}
+
+\include{optimization/optimization}
+
+\include{phase-empirical/phase-empirical}
+
+\include{phase-theory/phase-theory}
+
+\include{phase-holography/phase-holography}
+
+\include{boundary/boundary}
+
+\include{sparsity/sparsity}
+
+\include{afterword/afterword}
+
+\bibliographystyle{newapave}
+\bibliography{My_Library}
+
+%\end{doublespacing}
+%\includepdf[pages=-]{hebrew_reversed.pdf}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

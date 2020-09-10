@@ -1,0 +1,321 @@
+
+
+\chapter{Introduction}
+\label{cha:introduction}
+
+\section{Motivation}
+\label{sec:motivation}
+Recent development of nanotechnology has resulted in great interest in
+imaging techniques suitable for visualization of nano-structures.  One
+of the most promising techniques for such high resolution imaging is
+Coherent Diffraction Imaging (CDI). In CDI, a highly coherent beam of
+X-rays or electrons is incident on a specimen, generating a
+diffraction pattern.  Under certain conditions the diffracted
+wavefront is approximately equal (within a scale factor) to the
+Fourier transform of the specimen.  After being recorded by a CCD
+sensor, the diffraction pattern is used to reconstruct the
+specimen~\shortcite{sayre52implications,miao99extending,quiney10coherent}.
+Effectively, in CDI we replace the objective lens of a typical
+microscope with a software algorithm. The advantage in using no lenses
+is that the final image is aberration-free and the final resolution is
+only diffraction and dose limited, that is, dependent only on the
+wavelength, aperture size and exposure time. This process is
+illustrated in Figure~\ref{fig:cdi-process}.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{cnt2_cdi_simulation}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{cnt2_cdi_fourier}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{cnt2_cdi_reconstruction}
+  }
+  \caption[CDI process]{CDI process: a specimen (a) scatters a wave of
+    X-rays or electrons that otherwise diffracts freely; the
+    diffraction pattern (b) is used for an algorithmic reconstruction
+    (c) of the original specimen. Illustrations taken
+    from~\shortcite{wikipedia11coherent}.}
+  \label{fig:cdi-process}
+\end{figure}
+The method has been successfully applied to visualizing a variety of
+nano-structures, such as carbon nano-tubes~\shortcite{zuo03atomic},
+defects inside nano-crystals~\shortcite{pfeifer06three-dimensional},
+proteins, and
+more~\shortcite{neutze00potential,chapman06high-resolution,chapman07femtosecond}.
+Furthermore, exactly the same problem---the reconstruction of a signal
+from the magnitude of its Fourier transform---arises in may other
+areas of science. Notable examples include astronomy, crystallography,
+and speckle interferometry.
+
+It is important to note that, due to the physical nature of the
+sensor, we are limited to recording only the intensity (squared
+amplitude) of the diffracted wave, hence its phase is lost. As will
+be shown later, this loss of the phase leaves us with highly incomplete
+data, which makes the problem of reconstruction hard.
+
+
+
+\section{Data acquisition model}
+\label{sec:data-acqu-model}
+Of course, in the real world, the sought object $x(t)$ and its Fourier
+transform (denoted by $\hat{x}(\omega)$) are both continuous functions
+of $t$ and $w$, respectively, where $t$ and $w$ are multidimensional
+coordinate vectors. Furthermore, the support of $x(t)$ is limited,
+which means that $\hat{x}(\omega)$ is spread over all frequencies:
+from $-\infty$ to $\infty$.  However, during the data acquisition
+process we capture only a finite extent in the Fourier domain and all
+further processing is done on digital computers. This naturally leads
+to discrete approximations of $x(t)$ and $\hat{x}(\omega)$, that are
+well justified in  view of the finite resolution that stems from
+the measurements and, in general, from the fact that all optical
+systems have resolution limits. Given that $x[n]$ (an adequate
+sampling of $x(t)$) contains $N$ points (for simplicity we assume that
+$x$ is one-dimensional---generalization for the multi-dimensional case
+is straightforward) we assume that $x[n]$ vanishes outside the interval
+$[0,N-1]$. Furthermore, if we assume, without loss of generality, that
+the physical extent of $x$ is unity we immediately conclude that the
+sampling rate in the Fourier domain must be $1/N$ to acquire the
+measurements that are related to $x[n]$ via the Discrete Fourier
+Transform (DFT). However, a more thorough examination of the problem
+yields a higher sampling rate requirement. Recall that we record only
+the intensity of the diffraction pattern. This intensity can be
+represented as follows:
+\begin{equation}
+  \label{eq:intro-1}
+  I(\omega) =
+  |\hat{x}(\omega)|^{2}=\bar{\hat{x}}(\omega)\circ\hat{x}(\omega)\,, 
+\end{equation}
+where the overbar denotes the complex conjugate and $\circ$ denotes
+element-wise multiplication. Hence, the inverse Fourier transform of
+the measured intensity $I(\omega)$ results in the auto-correlation
+function (denoted by $\star$) of the sought object,
+\begin{equation}
+  \label{eq:intro-2}
+  \mathcal{F}^{-1}[I(\omega)] = x(t)\star x(t) \,. 
+\end{equation}
+Obviously, the autocorrelation $x(t)\star x(t)$ has support that is
+twice as large as the support of $x(t)$ (in each dimension),
+therefore, the diffraction pattern intensity must be sampled with the
+rate two times higher than $1/N$ to capture all the information about
+the auto-correlation function. To this end, we always assume that the
+signal $x(t)$ (or $x[n]$) is ``padded'' with zeros so that its
+size is doubled (in each dimension). This requirement is an
+approximation to the physical constraint on $x(t)$ having finite
+support. Without adding it into the reconstruction scheme, the problem
+would be severely undetermined with multiple solutions that are
+unrelated to the original signal $x$. To illustrate the last claim, one
+can imagine the case where $x[n]$ is reconstructed from its Fourier
+magnitude without additional constraints. Obviously, $\emph{any}$
+choice of the Fourier phase will give rise to a valid solution which,
+unfortunately,  has little to do  with the sought signal. 
+
+\section{Reconstruction from incomplete Fourier data}
+\label{sec:reconstr-from-incomp}
+Before we proceed to the main subject of this work---the
+reconstruction of a signal from the magnitude of its Fourier
+transform---let us consider a number of toy problems, where we
+evaluate the importance of different parts of the Fourier transform.
+
+The Fourier transform is, in general, complex. There are two common
+representations of a complex number: one is the sum of its real
+($\Re$) and
+imaginary ($\Im$) parts
+\begin{equation}
+  \label{eq:intro-3}
+  z = \Re + j\Im \,, 
+\end{equation}
+and the other is the product of its magnitude ($r$) and the complex
+exponent of its phase $e^{j\phi}$, 
+\begin{equation}
+  \label{eq:intro-4}
+  z = re^{j\phi} \,. 
+\end{equation}
+From these formulas it is not clear whether one part of the
+representation is more important
+than the other. Below we demonstrate that the real and the
+imaginary parts carry about equal amount of information and the loss
+of one of them can often be recovered. However, the  phase carries
+most of the information, and consequently, its loss is more difficult to
+overcome. 
+
+\subsection{Reconstruction from the real part}
+\label{sec:reconstr-from-real}
+Let us assume that $x[n]$ is a real one-dimensional signal\footnote{A
+  generalization to a complex multidimensional  $x$ is
+  straightforward.}. Furthermore, we assume that $x$ vanishes outside
+the interval $[0,N-1]$, specifically, we assume that
+$x[n]=0$ for $n = -1, -2, \ldots, -(N-1)$. Recall that any real signal
+can be represented uniquely as a sum of two signals
+\begin{equation}
+  \label{eq:intro-5}
+  x = x_{e}+x_{o} \,, 
+\end{equation}
+where $x_{e}$ is even and $x_{o}$ is odd\footnote{In the complex case,
+  $x_{e}$ is Hermitian, and $x_{o}$ is anti-Hermitian.}
+(see Figure~\ref{fig:even-odd}).  It can be easily
+shown that
+\begin{equation}
+  \label{eq:intro-6}
+  x_{e} = \frac{x[n] + x[-n]}{2}\,, \quad x_{o}=\frac{x[n] - x[-n]}{2}
+  \,. 
+\end{equation}
+Recall also that the Fourier transform of an even signal is real and
+that of an odd signal is purely imaginary. Hence, we conclude that the
+real part of $\hat{x}$ is nothing but the Fourier transform of
+$x_{e}$. Thus, we can obtain the even part $x_{e}$ by the inverse
+Fourier transform of the real part of $\hat{x}$.  Furthermore,
+reconstructing $x$ from $x_{e}$ is trivial---we should take the right-hand
+side ($n\geq0$) of $x_{e}$ multiplied by two everywhere except the
+origin (see Figure~\ref{fig:even-odd}).
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.8\textwidth{}]{signal}
+  }\\
+  \subfloat[]{
+    \includegraphics[width=0.8\textwidth{}]{signalrev}
+  }\\
+  \subfloat[]{
+    \includegraphics[width=0.8\textwidth{}]{signal_even}
+  }\\
+  \subfloat[]{
+    \includegraphics[width=0.8\textwidth{}]{signal_odd}
+  }
+  \caption[Signal decomposition into even and odd parts]{Signal decomposition into even and odd parts: (a) original
+    signal $x[n]$, (b) its reversed version $x[-n]$, (c) the even
+    part, and (d) the odd part.}
+  \label{fig:even-odd}
+\end{figure}
+
+\subsection{Reconstruction from the imaginary part}
+\label{sec:reconstr-from-imag}
+The reconstruction from the imaginary part is also easy. The method is
+very similar to the reconstruction from the real part. The only
+difference is that now we obtain the odd part of the sought
+signal. But, again, taking the right-hand side of $x_{o}$ and multiplying
+it by two we obtain the original signal $x$ everywhere besides the
+origin.
+
+For the most general case, where $x$ is complex, it is easy to show
+that the missing imaginary part leads to almost perfect
+reconstruction---only $\Im(x[0])$ is lost. Similarly, when
+reconstructing from the imaginary part of $\hat{x}$---only $\Re(x[n])$
+is lost. Therefore, we can conclude that the real and the imaginary
+parts of the Fourier transform carry the same amount of information and
+losing either one of them can be easily overcome if $x[n]$ is
+sufficiently padded with zeros and vanishes for $n<0$.
+
+
+\subsection{Reconstruction from the phase}
+\label{sec:reconstr-from-phase}
+Now we switch to the second (polar) representation of complex numbers and
+consider first the situation where the magnitude is lost, namely,
+reconstruction from the Fourier phase. Several researchers
+(see~\shortcite{hayes82reconstruction,hayes80signal,millane96multidimensional,millane90phase,oppenheim81importance})
+showed that sufficiently padded signals can be reconstructed from the
+Fourier phase. However, the reconstruction is possible only up to
+a scale factor, that is, one obtains  $\alpha x$ for some
+real positive scalar $\alpha$. Furthermore, is was shown that this is
+the only type of non-uniqueness possible in signal reconstruction from
+the Fourier phase~\shortcite{hayes80signal}.
+
+It seems that all previous works used a variation of the method
+of alternating projections (see
+Section~\ref{sec:gerchb-saxt-meth}). However, the problem can easily
+be represented as linear programming, for which much more efficient
+algorithms exist. Actually, we solve a variation of this problem, where
+the Fourier phase is known to lie within  certain interval in
+Chapters~\ref{cha:appr-four-phase-first} and
+\ref{cha:appr-four-phase-explanation}, and our method is much faster
+than the method of alternating projections. 
+
+\subsection{Reconstruction from the magnitude}
+\label{sec:reconstr-from-magn}
+We finally arrive at the case that is the main subject of this
+research---reconstruction from the Fourier magnitude alone. It turns
+out that this case of incomplete Fourier information is the most
+difficult among the four possibilities considered here. This
+phenomenon can be related to the fact that the Fourier phase carries
+the majority of the information in a signal. As an informal ``proof''
+of the latter claim, look at Figure~\ref{fig:phase-importance}, where
+we exchange the Fourier phase between two different images, while
+keeping the Fourier magnitude intact. The results show, unmistakably,
+an exchange of the images.
+
+It turns out that this problem is very different in the
+one-dimensional case and in the multi-dimensional case. The former
+suffers from multiplicity of possible solutions (no matter how much
+padding we use in $x$), while the latter is usually less prone to
+multiple solutions (aside from trivial transformations: lateral
+shifts, axis reversal, and constant phase factor), but finding a
+solution is very difficult. An explanation for this phenomenon is
+given in Chapter~\ref{cha:math-found}.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[height=0.4\textheight{}]{dog}
+  }\qquad{}
+  \subfloat[]{
+    \includegraphics[height=0.4\textheight{}]{cat}
+  }\\
+  \subfloat[]{
+    \includegraphics[height=0.4\textheight{}]{dogMag_catPhase}
+  }\qquad{}
+  \subfloat[]{
+    \includegraphics[height=0.4\textheight{}]{catMag_dogPhase}
+  }
+  \caption[The importnace of phase in signals]{The importnace of phase in signals---given two images (a) a
+    dog, and (b) a cat, we exchange their Fourier phase while keeping
+    the magnitude. The results, unmistakably, show the cat instead of
+    the dog (c), and the dog instead of the cat (d).}
+  \label{fig:phase-importance}
+\end{figure}
+
+\section{A short overview}
+\label{sec:short-overview}
+After this short introduction we are ready to proceed to the main
+part of this work. In the next chapter we present the mathematical
+foundations of the phase retrieval problem: our main concern is
+uniqueness of the reconstruction, moreover, we demonstrate why
+the one-dimensional and the multi-dimensional cases behave extremely
+differently. In Chapter~\ref{cha:curr-reconstr-meth} we present the
+methods that are used today for phase retrieval. These chapters are
+based on a compilation of known facts and do not contain our original
+research. Our development starts in
+Chapter~\ref{cha:found-optim-meth}, where we introduce machinery for
+efficient optimization of a real function of complex
+argument. Moreover, we find and analyze the eigen-decomposition of the
+Hessian of one of the most frequently used objective function in phase
+retrieval. Chapters~\ref{cha:appr-four-phase-first} and
+\ref{cha:appr-four-phase-explanation} are dedicated to a variant of
+the phase retrieval problem where the Fourier phase is not lost
+completely, but rather a rough estimate of it is available. We demonstrate
+empirically and then prove mathematically that this scenario leads to
+a new family of algorithms that are orders of magnitude faster than
+the existing methods. The ideas from these chapters are taken into the
+new field of the Fourier domain holography in
+Chapters~\ref{cha:phase-retr-holography}, and
+\ref{cha:design-bound-phase} where we develop a new method of
+reconstruction and present guide rules for a reference beam design
+that lead to fast and robust reconstruction. A new type of prior
+knowledge---image sparsity---is exploited in
+Chapter~\ref{cha:bandw-extr-using} where we present a CDI with
+resolution several times higher than the maximal theoretical
+limit. Finally, in Chapter~\ref{cha:afterword} we present concluding
+remarks and provide reference to the works that was done in the course
+of this Ph.D. research but have not been included in this thesis. For
+example, we used Fienup's Hybrid Input-Output algorithm (see
+Section~\ref{sec:fienup-algor-phase}) for creation of Grassmanian
+matrices~\shortcite{osherovich09designing}---an interesting work
+that was left outside because it is not related to the phase retrieval
+problem. 
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

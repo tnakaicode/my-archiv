@@ -1,0 +1,718 @@
+\chapter{Mathematical foundations}
+\label{cha:math-found}
+
+In this chapter we review some mathematical properties of the phase
+retrieval problem. Our main concern is the uniqueness properties of the solution,
+which turns to be different in the one-dimensional and
+multi-dimensional cases.
+
+\section{One-dimensional signals}
+\label{sec:one-dimensional-signals}
+
+\subsection{Continuous-time case}
+\label{sec:continuous-case}
+
+
+
+What can be said about two signals $g_{1}(t)$ and $g_{2}(t)$ having
+the same power spectrum? Obviously,
+\begin{equation}
+  \label{eq:28}
+  |\hat{g}_{1}(\omega)|^{2} = |\hat{g}_{2}(\omega)|^{2}
+\end{equation}
+means that
+\begin{equation}
+  \label{eq:29}
+  |\hat{g}_{1}(\omega)| = |\hat{g}_{2}(\omega)|\,.
+\end{equation}
+This, in turn, leads to the following relation
+\begin{equation}
+  \label{eq:30}
+  \hat{g}_{2}(\omega) = \hat{g}_{1}(\omega)e^{j\phi(\omega)}\,.
+\end{equation}
+for some real-valued function $\phi(\omega)$. Hence, if $g_{2}(t)$ has
+the same power spectrum as $g_{1}(t)$, then $g_{2}(t)$ must be a
+result of passing $g_{1}(t)$ through an all-pass filter. Moreover, it
+means that there are infinitely many (an uncountable set of) functions
+having the same power spectrum, because any choice of $\phi(\omega)$ will
+lead to some function
+\begin{equation}
+  \label{eq:31}
+  g_{2}(t) =
+  \frac{1}{2\pi}\int_{-\infty}^{\infty}\hat{g}_{1}(\omega)e^{j\phi(\omega)}
+  e^{j\omega t}\, \mathrm{d} \omega \ .
+\end{equation}
+This observation, however, is not particularly helpful as we are not
+interested in \textit{arbitrary} signals. Our interest is limited to
+signals that are physically feasible. Such signals, for example,
+must have finite support and finite energy. That is, we assume that
+\begin{equation}
+  \label{eq:7}
+  g(t) = 0, \quad \text{for } |t|> \frac{T}{2}\,,
+\end{equation}
+and
+\begin{equation}
+  \label{eq:10}
+  \int^{T/2}_{-T/2}|g(t)|^{2}\,\mathrm{d}(t) < \infty \,. 
+\end{equation}
+Under these restrictions it is not clear anymore that there still exist
+infinitely many signals having the same power spectrum.\footnote{Here
+  we do not count the trivial multiplication by a phase factor.} Nevertheless,
+it was shown that even under these conditions the number of signals
+having the same power spectrum can be infinite. A fairly complete
+treatment of this problem is given
+by~\shortciteA{hofstetter64construction} who considered the problem from a
+different point of view: finding of all possible time-limited signals
+having the same autocorrelation function as a given signal. However,
+it is exactly the same problem due to the direct connection between
+the autocorrelation and the power spectrum.  Although Hofstetter's
+work was done for continuous-time (analogue) signals and not for
+discrete signals that we encounter in computer algorithms, we believe it is
+more instructive to start with this case and proceed then to the
+discrete version of the problem. Hence, we present next the main
+results and derivations found in~\shortcite{hofstetter64construction}.
+
+Under the conditions~\eqref{eq:7} and~\eqref{eq:10}, $g(t)$ is
+absolutely integrable
+\begin{equation}
+  \label{eq:11}
+  \int^{T/2}_{-T/2}|g(t)|\,\mathrm{d}(t) < \infty \ .
+\end{equation}
+and its Laplace transform,
+\begin{equation}
+  \label{eq:12}
+  G(s) \equiv \mathcal{L}[g(t)] =
+  \int^{T/2}_{-T/2}g(t)e^{-st}\,\mathrm{d}(t)\,, 
+\end{equation}
+converges for all complex $s = \sigma + j\omega$. The function $G(s)$
+is thus analytic in the entire $s$ plane and, because of
+Equation~\eqref{eq:10}, square integrable. The signal $g(t)$ can
+always be recovered from $G(s)$ by means of the inverse
+transform% \footnote{Mathematically, Equation~\eqref{eq:13} is
+  % interpreted in the sense of convergence almost everywhere. However,
+  % for signals that represent physical quantities, the equality can be
+  % assumed in a full and unconditional fashion.}
+\begin{equation}
+  \label{eq:13}
+  g(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}G(j\omega)e^{j\omega
+    t}\, \mathrm{d}\omega \,. 
+\end{equation}
+From the definition of the Laplace transform, it is obvious that it is
+a generalization of the Fourier transform, and the relation between
+the two is very simple:
+\begin{equation}
+  \label{eq:95}
+  \hat{g}(\omega) = \mathcal{F}[g(t)] =
+  \mathcal{L}[g(t)]\Big\vert_{s=j\omega}=G(j\omega)\,. 
+\end{equation}
+
+With these preliminaries in hand we proceed to the autocorrelation
+function of $g(t)$ defined as
+\begin{equation}
+  \label{eq:14}
+  r(\tau) \equiv g(t)\star g(t) =
+  \int^{T/2}_{-T/2}\bar{g}(t)g(t+\tau)\,\mathrm{d}\tau\ .
+\end{equation}
+It can be readily shown that $r(\tau)$ also has finite support: it
+vanishes outside the interval $[-T, T]$. Moreover, similarly to
+$g(t)$, $r(\tau)$ is square and absolutely integrable. Therefore, its
+Laplace transform,
+\begin{equation}
+  \label{eq:15}
+  R(s) = \int^{T}_{-T}r(\tau) e^{-s\tau}\, \mathrm{d}\tau \,, 
+\end{equation}
+exists, and  is analytic in the entire $s$ plane. Of course, it and can be used to
+recover $r(\tau)$ by the means of the inverse
+transform
+\begin{equation}
+  \label{eq:16}
+  r(\tau) =
+  \frac{1}{2\pi}\int^{\infty}_{-\infty}R(j\omega)e^{j\omega\tau}\,
+  \mathrm{d}\omega\ .
+\end{equation}
+Since our main goal is to design signals with the same autocorrelation
+function, we need to find the relation between the Laplace transform of
+a signal and the Laplace transform of its autocorrelation
+function. The development is straightforward
+\begin{align}
+  \label{eq:19}
+  R(s)
+  & = \int^{\infty}_{-\infty} (g(t)\star g(t)) e^{-s\tau}\,\mathrm{d}\tau \\
+  & = \int^{\infty}_{-\infty}
+  \left[
+    \int^{\infty}_{-\infty} \bar{g}(t) g(t+\tau)\, \mathrm{d}t
+  \right]  e^{-s\tau} \,\mathrm{d}\tau\\
+  & =  \int^{\infty}_{-\infty} \bar{g}(t) e^{st}\, \mathrm{d} t
+  \int^{\infty}_{-\infty}g(t+\tau) e^{-s(t+\tau)}\, \mathrm{d} \tau\label{eq:21}\\
+  & =  \overline{G(-\bar{s})}G(s)\label{eq:22} \ .
+\end{align}
+In the transition from \eqref{eq:21} to \eqref{eq:22} we used the fact
+that
+\begin{equation}
+  \label{eq:23}
+  \mathcal{L}[\bar{g}(t)] = \overline{G(\bar{s})}\ .
+\end{equation}
+Hence, if two signals $g_{1}(t)$, and $g_{2}(t)$ have the same
+autocorrelation function they must obey the following equality for all $s$:
+\begin{equation}
+  \label{eq:18}
+  \overline{G_{1}(-\bar{s})}G_{1}(s) = \overline{G_{2}(-\bar{s})}G_{2}(s) \ .
+\end{equation}
+This includes  $s = j\omega$, which gives the equality between their
+power spectra
+\begin{equation}
+  \label{eq:24}
+  \begin{split}
+    \overline{G_{1}(-\overline{(j\omega)})}G_{1}(j\omega) & =
+    \overline{G_{2}(-\overline{(j\omega)})}G_{2}(j\omega) \\
+    \overline{G_{1}(j\omega)}G_{1}(j\omega) & =
+    \overline{G_{2}(j\omega)}G_{2}(j\omega)\\
+    |G_{1}(j\omega)|^{2} & =  |G_{2}(j\omega)|^{2} \ ,
+  \end{split}
+\end{equation}
+as expected.
+
+The necessity to introduce the Laplace transform will become clear
+after we present a family of all-pass filters that preserve the
+support bounds of $g(t)$.  It is shown
+in~\shortcite{hofstetter64construction} that if $s_{0}$ is a zero of
+$G_{1}(s)$, that is, if 
+\begin{equation}
+  \label{eq:17}
+  G_{1}(s_{0}) = \int_{-\infty}^{\infty}g_{1}(t)e^{-s_{0}t}\,
+  \mathrm{d}t = 0 \ ,
+\end{equation}
+then the all-pass filter $h(t)$ whose transfer function $H(s)$ is
+given by
+\begin{equation}
+  \label{eq:20}
+  H(s) = \frac{s+\bar{s}_{0}}{s - s_{0}}
+\end{equation}
+will not spread a given signal $g_{1}(t)$ outside the original
+interval $[-T/2, T/2]$. It is easy to verify that
+\begin{equation}
+  \label{eq:32}
+  |H(j\omega)|^{2} = H(j\omega)\overline{H(j\omega)} =
+  \left(
+    \frac{j\omega+\bar s_{0}}{j\omega - s_{0}}
+  \right)
+  \left(
+    \frac{-j\omega + s_{0}}{-j\omega - \bar s_{0}}
+  \right)  = 1 \ .
+\end{equation}
+Hence, $h(t)$ is indeed an all-pass filter because $|H(j\omega)| = 1$. To
+demonstrate that $h(t)$ preserves the support, let us find its
+explicit representation. To this end, it is more convenient to split
+it into the following two filters
+\begin{equation}
+  \label{eq:33}
+  H(s) = 1 + \frac{s_{0} + \bar s_{0}}{s - s_{0}}.
+\end{equation}
+In this form, it is easy to see that the impulse response $h(t)$ that
+corresponds to $H(s)$ is given by
+\begin{align}
+  \label{eq:34}
+  h(t)
+  & = \frac{1}{2\pi}\int_{-\infty}^{\infty}
+  \left(
+    1 + \frac{s_{0} + \bar s_{0}}{j\omega - s_{0}}
+  \right) e^{j\omega t}\, \mathrm{d} \omega\\
+  & = \delta(t) + \frac{s_{0} + \bar s_{0}}{2\pi}
+  e^{s_{0}t}\int_{-\infty}^{\infty}
+  \frac{e^{j\omega t - s_{0}t}}{j\omega  - s_{0}}\, \mathrm{d}
+  \omega\\
+  & = \delta(t) + (s_{0} + \bar s_{0})e^{s_{0}t}U(t)\, ,
+\end{align}
+where $U(t)$ denotes the Heaviside step function. Hence, if a
+time-limited input $g_{1}(t)$ were provided to the system described by
+$H(s)$, the output $g_{2}(t)$ would be $g_{1}(t)$ plus the convolution
+of $g_{1}(t)$ with the filter $h_{1}(t) = (s_{0} +
+\bar s_{0})e^{s_{0}t}U(t)$. To show that the output $g_{2}(t)$ vanishes
+outside the interval $[-T/2,T/2]$ we must show that the latter term
+(convolution) vanishes outside this interval. The proof is
+straightforward:
+\begin{align}
+  g_{21}(t)
+  & = g_{1}(t)\otimes h_{1}(t)\\
+  & = \int_{-T/2}^{T/2}g_{1}(\tau)h_{1}(t-\tau)\,\mathrm{d}\tau\\
+  & =
+  \begin{dcases}
+    0 & \text{if $t < - \frac{T}{2}$}\,, \\
+    (s_{0}+\bar s_{0}) \int_{-T/2}^{t}
+    g_{1}(\tau)e^{s_{0}(t-\tau)}\,\mathrm{d}\tau & \text{if $-\frac{T}{2}\leq t
+    \leq \frac{T}{2}$}\,,  \\
+    (s_{0}+\bar s_{0})\int_{-T/2}^{T/2}
+    g_{1}(\tau)e^{s_{0}(t-\tau)}\,\mathrm{d}\tau &  \text{if $t >
+      \frac{T}{2}$}\,, 
+  \end{dcases}
+\end{align}
+where $\otimes$ denotes convolution.
+Note that $g_{21}(t)$ vanishes for $t > T/2$, because the last line in
+the above equation reads
+\begin{equation}
+  \begin{split}
+    (s_{0}+\bar s_{0})\int_{-T/2}^{T/2}
+    g_{1}(\tau)e^{s_{0}(t-\tau)}\,\mathrm{d}\tau
+    & =   (s_{0}+\bar s_{0}) e^{s_{0}t}\int_{-T/2}^{T/2}
+    g_{1}(\tau)e^{s_{0}\tau}\,\mathrm{d}\tau \\
+    & = (s_{0}+\bar s_{0}) e^{s_{0}t} G_{1}(s_{0}) \,, 
+  \end{split}
+\end{equation}
+and $s_{0}$ is a root of $G_{1}(s)$. Hence, the support of $g_{2}$ is
+not wider than the support of $g_{1}$,
+that is, it vanishes outside the interval $[-T/2, T/2]$. It is important
+to emphasize the way $G_{2}(s)$ (equivalently,  $g_{2}(t)$) is
+obtained from $G_{1}(s)$ (equivalently,  $g_{1}(t)$):
+\begin{equation}
+  \label{eq:25}
+  G_{2}(s) = G_{1}(s)\frac{s+\bar s_{0}}{s-s_{0}}\,,
+\end{equation}
+where $s_{0}$ is a root of $G_{1}(s)$. This formula gives an obvious
+way to obtain a new time-limited signal $g_{2}(t)$ from a given
+time-limited signal $g_{1}(t)$ such that the autocorrelation of the
+two is equal. The algorithm is really simple, indeed:
+\begin{enumerate}
+\item Laplace transform $g_{1}(t)$ to obtain $G_{1}(s)$
+\item Choose $k$ non-zero roots of $G_{1}(s)$:
+  $\left\{s_{i}\right\}_{i=1}^{k}$ and replace them with their
+  negative conjugates, to obtain $G_{2}(s)$
+  \begin{equation}
+    \label{eq:26}
+     G_{2}(s)=G_{1}(s)\prod_{i=1}^{k}\frac{s+\bar s_{i}}{s-s_{i}}
+  \end{equation}
+\item Inverse Laplace transform $G_{2}(s)$ to obtain $g_{2}(s)$
+\end{enumerate}
+The fact that the new signal $g_{2}(t)$ vanishes outside the interval
+$[-T/2, T/2]$ was proven above. The fact that the two signals have
+the same autocorrelation function and, hence, the same power spectrum
+is readily obtained by simple calculations:
+\begin{equation}
+  \label{eq:96}
+  \begin{split}
+    \mathcal{L}[g_{2}(t)\star g_{2}(t)]
+    & = \overline{ G_{2}(-\bar s)}G_{2}(s)\\
+    & =
+    \overline{\left(
+        G_{1}(-\bar s)\prod_{i=1}^{k}\frac{-\bar s+\bar s_{i}}{-\bar s-s_{i}}
+      \right)} G_{1}(s)\prod_{i=1}^{k}\frac{s+\bar s_{i}}{s-s_{i}}\\
+    & = \overline{G_{1}(-\bar s)}\prod_{i=1}^{k}\frac{-s+s_{i}}{-s-\bar s_{i}}
+    G_{1}(s)\prod_{i=1}^{k}\frac{s+\bar s_{i}}{s-s_{i}}\\
+    & = \overline{G_{1}(-\bar s)}G_{1}(s)
+    \prod_{i=1}^{k}\frac{s-s_{i}}{s+\bar s_{i}}
+    \prod_{i=1}^{k}\frac{s+\bar s_{i}}{s-s_{i}} \\
+    & =  \overline{G_{1}(-\bar s)}G_{1}(s)\\
+    & = \mathcal{L}[g_{1}(t)\star g_{1}(t)] \,. 
+  \end{split}
+\end{equation}
+This, actually, leads us to an algorithm for generating new time-limited 
+signals, all having the same autocorrelation function. The algorithm
+simply replaces one or more non-zero roots of the Laplace transform of a
+given signal with their negative conjugates. Moreover, it can be
+proven that this approach can generate \emph{all possible} signals
+with provided time support and autocorrelation function. A rigorous
+proof of the last statement actually expands the current result to an
+infinite set of roots. The proof is not difficult but we do not
+present it here. The interested reader can find it in
+\shortcite{hofstetter64construction}. For our discussion it is more
+important to note that a set of $k$ non-zero roots of $G_{1}(s)$ gives
+rise to $2^{k}$ new signals with the same time support and autocorrelation
+function. Of course, depending on additional constraints, some of
+these signals may not be feasible. For example, if our attention is
+restricted to real-valued signals, the zeros of $G_{1}(s)$ must occur in
+conjugate pairs. Hence, to generate a new real-valued signal we must
+replace the corresponding pair and not a single root.
+
+Below we present a number of examples of this technique (from
+\shortcite{hofstetter64construction})
+\begin{description}
+\item[Example 1]
+  Assume that $a < 0$ and let $g_{1}(t)$ be given by
+  \begin{equation}
+    \label{eq:27}
+    g_{1}(t) =
+    \begin{dcases}
+      0 & \text{if $|t| >1$}\,,\\
+      -e^{at} & \text{if $-1\leq t < 0$}\,,\\
+      e^{at} & \text{if $0 < t \leq 1$}\,.
+    \end{dcases}
+  \end{equation}
+  Calculating its Laplace transform gives us
+  \begin{equation}
+    \label{eq:113}
+    \begin{split}
+      G_{1}(s)
+      & = \int_{-1}^{0}-e^{(a-s)t}\,\mathrm{d}t +
+      \int_{0}^{1}e^{(a-s)t}\,\mathrm{d}t \\
+      & = 2\frac{1-\cosh(s-a)}{s-a}\,.
+    \end{split}
+  \end{equation}
+  Since $G_{1}(a)=0$, we can create a new signal $g_{2}(t)$ by passing
+  $g_{1}(t)$ through the all-pass filter given by
+  \begin{equation}
+    \label{eq:36}
+    H(s) = \frac{s+a}{s-a}\,.
+  \end{equation}
+  The impulse response of this filter is
+  \begin{equation}
+    \label{eq:37}
+    h(t) = \delta(t) + 2aU(t)e^{at}\,.
+  \end{equation}
+  Hence, the output of the filter is
+  \begin{equation}
+    \label{eq:38}
+    g_{2}(t) =
+    \begin{dcases}
+      0  & \text{if $|t| > 1$}\,,\\
+      -e^{at}(2at+2a+1) & \text{if $-1\leq t < 0$}\,,\\
+      e^{at}(2at-2a+1) & \text{if $ 0 < t \leq 1$}
+    \end{dcases}
+  \end{equation}
+  Figure~\ref{fig:math-example1} below depicts the two signals
+  $g_{1}(t)$, $g_{2}(t)$, and their common autocorrelation function.
+  \begin{figure}[H]
+    \centering
+    \subfloat[]{
+      \includegraphics[width=0.45\textwidth{}]{samePowerSpecExample1_g1}
+    }\qquad{}
+    \subfloat[]{
+      \includegraphics[width=0.45\textwidth{}]{samePowerSpecExample1_g2}
+    }\\
+    \subfloat[]{
+      \includegraphics[width=0.45\textwidth{}]{samePowerSpecExample1_g1g2autocorr}
+    }
+    \caption[Two pulses with the same autocorrelation]{Example 1: two pulses (a), and (b), and their common
+      autocorrelation function (c).}
+    \label{fig:math-example1}
+  \end{figure}
+\item[Example 2]
+  Let $g_{1}(t)$ be given by
+  \begin{equation}
+    \label{eq:35}
+    g_{1}(t) =
+    \begin{dcases}
+      0 & \text{if $|t| > 1$},\\
+      e^{at} & \text{if $|t| \leq 1$}.
+    \end{dcases}
+  \end{equation}
+  Then
+  \begin{equation}
+    \label{eq:39}
+    G_{1}(t) = \int_{-1}^{1} e^{(a-s)t}\,\mathrm{d}t = 2\frac{\sinh(s-a)}{s-a}.
+  \end{equation}
+  The zeros of $G_{1}$ are located at the points $s_{k}$ given by
+  \begin{equation}
+    \label{eq:40}
+    s_{k}=a + jk\pi, \qquad k = \pm 1, \pm 2.
+  \end{equation}
+  We can construct a real-valued signal having the same support and
+  autocorrelation function as $g_{1}(t)$ by letting
+  \begin{equation}
+    \label{eq:41}
+    G_{2}(s)=G_{1}(s)H(s),
+  \end{equation}
+  where
+  \begin{equation}
+    \label{eq:114}
+    \begin{split}
+      H(s)
+      & = \frac{s + a - j\pi}{s-a-j\pi}\cdot\frac{s+a-j\pi}{s-a+j\pi}\\
+      & = \frac{(s+a)^{2}+\pi^{2}}{(s-a)^{2}+\pi^{2}}.
+    \end{split}
+  \end{equation}
+  The impulse response $h(t)$ of this all-pass filter is easily found
+  to be
+  \begin{equation}
+    \label{eq:43}
+    h(t) =  \delta(t) + 4aU(t)e^{at}
+    \left(
+      \cos(\pi t)+\frac{a}{\pi}\sin(\pi t) \,, 
+    \right)
+  \end{equation}
+  and the convolution between $g_{1}(t)$ and $h(t)$ yields the result
+  \begin{equation}
+    \label{eq:44}
+    g_{2}(t) =
+    \begin{dcases}
+      0 & \text{if $|t| > 1$}\,, \\
+      \frac{4a}{\pi}e^{at}
+      \left(
+        \frac{a}{\pi}\cos(\pi t) - \sin(\pi t) + \frac{a}{\pi}
+      \right) + e^{at} & \text{if $|t| \leq 1$} \,. 
+    \end{dcases}
+  \end{equation}
+  Figure~\ref{fig:math-example2} depicts the signals $g_{1}(t)$,
+  $g_{2}(t)$; and their common autocorrelation function.
+   \begin{figure}[H]
+     \centering
+     \subfloat[]{
+      \includegraphics[width=0.45\textwidth{}]{samePowerSpecExample2_g1}
+    }\qquad{}
+    \subfloat[]{
+      \includegraphics[width=0.45\textwidth{}]{samePowerSpecExample2_g2}
+    }\\
+    \subfloat[]{
+      \includegraphics[width=0.45\textwidth{}]{samePowerSpecExample2_g1g2autocorr}
+    }
+    \caption[Two pulses with the same autocorrelation]{Example 2:  two pulses (a), and (b), and their common
+      autocorrelation function (c).}
+    \label{fig:math-example2}
+  \end{figure}
+\end{description}
+
+\subsection{Discrete-time case}
+\label{sec:discrete-case}
+The derivations in the previous section describe completely the theory
+of continuous-time one-dimensional signals. However, for algorithms
+that run on a digital computer, we need a similar theory for
+discrete-time signals, that is, for $g(t)$ that is specified on a
+finite set of points
+\begin{equation}
+  \label{eq:1}
+  g(t) = \sum_{n}g_{n}\delta(t-t_{n})\,,
+\end{equation}
+where $t_{n} = n\Delta$. The corresponding Fourier
+transform is, of course, the Discrete-Time Fourier Transform (DTFT)
+\begin{equation}
+  \label{eq:2}
+  G(\omega) = \sum_{-\infty}^{\infty}g[n]e^{-j\omega n} \,. 
+\end{equation}
+By replacing $e^{-jw}$ with $z$ we obtain
+\begin{equation}
+  \label{eq:42}
+  G(z) = \sum_{-\infty}^{\infty}g[n]z^{n}\,, 
+\end{equation}
+which is, of course, the usual $z$-transform of $g[n]$.\footnote{The notation
+  where $G(z)$ is a polynomial in $z$ is common in
+  geophysics. Electrical engineers, usually use $z^{-1}$ instead of
+  $z$.} As before, $g[n]$ is assumed to have finite support. However,
+this time it is more convenient to assume that the support is bounded
+by $0$ and $N$, therefore, the summing limits in the
+above formula should be replaced as follows
+\begin{equation}
+  \label{eq:45}
+  G(z) = \sum_{n=0}^{N}g[n]z^{n}\,. 
+\end{equation}
+In this form the discrete $z$-transform looks almost exactly like the
+continuous Laplace transform (see Equation~\eqref{eq:12}). Similarly
+to Equation~\eqref{eq:18}, it is easy
+to show that the $z$-transform of $g[n]$'s autocorrelation (denoted by $R(z)$) reads
+\begin{equation}
+  \label{eq:46}
+  R(z) = \overline{G(1/\bar z)}G(z) =
+  \bar G(z^{-1}) G(z)\,. 
+\end{equation}
+Note the different notation: $\overline{G(z)}$, and $\bar
+G(z)$, the former means that $G(z)$ is computed and then conjugated,
+the latter means that the coefficients of the polynomial $G(z)$ are
+conjugated. That is
+\begin{equation}
+  \label{eq:118}
+  \overline{G(z)} = \overline{
+    \left(
+      \sum_{n=0}^{N}g[n]z^{n}
+    \right)} \,,
+  \quad
+  \bar G(z) =  \sum_{n=0}^{N}\bar g[n]z^{n} \,. 
+\end{equation}
+In other words, because
+$G(z)$ is a polynomial in $z$, it can always be presented as a product
+of simple factors
+\begin{equation}
+  \label{eq:116}
+  G(z) = A\prod_{k=1}^{N}(z-z_{k}) \,, 
+\end{equation}
+where $A$ is a scalar, and $z_{k}$'s are the roots of
+$G(z)$. Similarly, 
+\begin{equation}
+  \label{eq:119}
+  \bar G(z^{-1}) = \bar A \prod_{k=1}^{N}
+  \left(
+    z^{-1}-\bar z_{k}
+  \right) \,.
+\end{equation}
+This
+yields
+\begin{equation}
+  \label{eq:117}
+  R(z) = |A|^{2}\prod_{k=1}^{N}(z-z_{k})
+  \left(
+    z^{-1} - \bar z_{k}
+  \right) \,. 
+\end{equation}
+Obviously, both $z_{k}$, and $1/\bar z_{k}$ are roots of $R(z)$.
+Hence, if we consider a
+new signal $g_{2}[n]$ whose $z$-transform is given by
+\begin{equation}
+  \label{eq:115}
+  G_{2}(z)= G(z)\frac{z - 1/\bar {z}_{k}}{z - z_{k}} |z_{k}| \,, 
+\end{equation}
+where $z_{k}$ is a non-zero root of $G(z)$,
+then the auto-correlations of $g_{2}[n]$ and $g[n]$ will be
+equal, and so will be their power spectra. To show this, consider the
+$z$-transform of $g_{2}[n]$'s autocorrelation (denoted by $R_{2}(z)$):
+\begin{equation}
+  \label{eq:120}
+  \begin{split}
+    R_{2}(z)
+    & =  \overline{G_{2}(1/\bar z)}G_{2}(z)\\
+    & =  \overline{
+      \left(
+        G(1/\bar z)\frac{1/\bar z - 1/\bar z_{k}}{1/\bar
+          z - z_{k}}
+      \right)|z_{k}|}
+    G(z)\frac{z - 1/\bar {z}_{k}}{z - z_{k}}|z_{k}|\\
+    & = R(z)
+    \left(
+      \frac{1/ z - 1/z_{k}} {1/z - \bar z_{k}}
+    \right)
+    \left(
+      \frac{z - 1/\bar {z}_{k}}{z - z_{k}}
+    \right)|z_{k}|^{2}\\
+    & = R(z) \,. 
+  \end{split}
+\end{equation}
+By applying the inverse $z$-transform we immediately conclude that
+$g_{2}[n]$ and $g[n]$ have the same auto-correlation:
+\begin{equation}
+  \label{eq:121}
+  r_{2}[n]\equiv g_{2}[n]\star g_{2}[n]= g[n]\star g[n]\equiv r[n]
+  \,. 
+\end{equation}
+
+This analysis leads to a simple conclusion: each non-zero and
+non-unitary ($|z_{k}|\not = 1$) root of $G(z)$ gives rise to two
+possible solutions whose auto-correlation is the same. Hence, for a
+general one-dimensional signal, whose support spreads over $N+1$
+samples, there can be up to $2^{N}$ different signals\footnote{Here we
+  do not count the trivial solutions that are obtained by multiplying
+  by a constant phase factor.}  within the same support and same
+auto-correlation. Of course, similarly, to the continuous-time case
+that we considered in the previous section, in the case of real (and,
+probably, non-negative) signal $g[n]$ the number of possible solutions
+may be smaller because not all roots of $G(z)$ can be exchanged
+freely---some will result in complex (or, probably, negative) signals.
+
+Another important observation is that if a solution $x[n]$ has been bound,
+then \emph{all} other solutions can be obtained from it by
+systematically replacing the roots of $X[n]$, as described in
+Equation~\eqref{eq:117}.\footnotemark[1]{}
+
+Finally, recall that the sampling is done in the Fourier
+domain. Hence, to capture $R(z)$ (the $z$-transform of $g[n]$'s
+auto-correlation), we must sample it at $2N+1$ points. This requirement
+directly follows from the fact that $R(z)$ is ``almost a polynomial'',
+that is, 
+\begin{equation}
+  \label{eq:122}
+  R(z) = \frac{P_{2N}(z)}{z^{N}} \,, 
+\end{equation}
+where $P_{2N}(z)$ is a polynomial of degree $2N$. From
+Equation~\eqref{eq:117}, we have
+\begin{equation}
+  \label{eq:123}
+  P_{2N} =  |A|^{2}\prod_{k=1}^{N}(z-z_{k})
+  \left(
+    1 - z\bar z_{k}
+  \right) \,.
+\end{equation}
+Due to the uniqueness of the interpolation polynomial (see, for
+example~\shortcite{dahlquist08numerical}), it is sufficient to sample
+$P_{2N}$ at $2N+1$ points to fully determine its coefficients, and, thus,
+to determine $R(z)$. For practical reasons the samples should be
+performed at the points that correspond to the DFT frequencies. Hereon
+we finish our treatment of the one-dimensional case and switch to
+multi-dimensional signals.
+
+\section{Multi-dimensional signals}
+\label{sec:multi-dimens-case}
+The analysis in the two- or higher-dimensional case
+is very similar to what we have done in the one-dimensional case. The
+main result is a straightforward generalization of
+Equation~\eqref{eq:46}. That is, given a two-dimensional time-discrete
+signal $g[n_{1}, n_{2}]$, whose support is given by
+$[0,N_{1}]\times[0,N_{2}]$, the $z$-transform of its autocorrelation is
+given by
+\begin{equation}
+  \label{eq:124}
+  R(z_{1}, z_{2}) = \overline{G(1/\bar z_{1}, 1/\bar z_{2})}G(z_{1}, z_{2}) =
+  \bar G(z_{1}^{-1},z_{2}^{-1} ) G(z_{1}, z_{2})\,,
+\end{equation}
+where $G(z_{1}, z_{2})$ is the two-dimensional $z$-transform of
+$g[n_{1}, n_{2}]$. From this formula we can easily find a way to
+generate a signal whose autocorrelation function is equal to that
+of $g[n_{1}, n_{2}]$. Let us assume that $G(z_{1}, z_{2})$ can be
+represented as a product of two polynomials of lower degree:
+\begin{equation}
+  \label{eq:125}
+  G(z_{1}, z_{2}) = P(z_{1}, z_{2})Q(z_{1}, z_{2}) \,. 
+\end{equation}
+Assume further that the degree of $Q(z_{1}, z_{2})$ in $z_{1}$ and
+$z_{2}$ is $d_{1}$ and $d_{2}$, respectively.
+Now we have
+\begin{equation}
+  \label{eq:126}
+  \begin{split}
+    R(z_{1}, z_{2})
+    & = \bar G(z_{1}^{-1},z_{2}^{-1} ) G(z_{1}, z_{2})\\
+    & = \bar P(1/z_{1}, 1/z_{2}) \bar Q(1/z_{1}, 1/z_{2}) P(z_{1},
+    z_{2})Q(z_{1}, z_{2})\\
+    & = \bar P(1/z_{1}, 1/z_{2})Q(z_{1}, z_{2})
+    P(z_{1},z_{2}) \bar Q(1/z_{1}, 1/z_{2})\\
+    & = \bar G_{2}(1/z_{1}, 1/z_{2}) G_{2}(z_{1}, z_{2})\,, 
+  \end{split}
+\end{equation}
+where
+\begin{equation}
+  \label{eq:127}
+  G_{2}(z_{1}, z_{2}) = P(z_{1},z_{2}) \bar Q(1/z_{1}, 1/z_{2})z_{1}^{d_{1}}z_{2}^{d_{2}}.
+\end{equation}
+Now, by applying the inverse $z$-transform to  $G_{2}(z_{1},z_{2})$, we
+obtain a new signal $g_{2}[n_{1}, n_{2}]$ whose autocorrelation is
+equal to the autocorrelation of $g[n_{1}, n_{2}]$. Note that the
+multiplicative factor $z_{1}^{d_{1}}z_{2}^{d_{2}}$ makes $G_{2}(z_{1},
+z_{2})$ a proper polynomial in $z_{1}$ and $z_{2}$ whose degrees vary
+from $0$ to $N_{1}$, and from $0$ to $N_{2}$, respectively. Hence, it ``shifts''
+$g_{2}[n_{1}, n_{2}]$ to the same support region $[0,N_{1}]\times
+[0,N_{2}]$ as occupied by $g_[n_{1}, n_{2}]$. Obviously
+$g_{2}[n_{1}, n_{2}]\not=g_{1}[n_{1}, n_{2}]$ whenever
+\begin{equation}
+  \label{eq:128}
+  \bar Q(1/z_{1}, 1/z_{2})z_{1}^{d_{1}}z_{2}^{d_{2}}
+  \not = Q(z_{1}, z_{2})\,. 
+\end{equation}
+A similar result was obtained in~\shortcite{hayes82reconstruction},
+however, the authors there considered only real-valued signals, and
+their approach was slightly different from ours.
+
+So far, the development is essentially the same as we have seen in the
+one-dimensional case. The main result is also very similar: each
+factor of $G(z_{1},z_{2})$ can give rise to two different solutions
+(when inequality \eqref{eq:128} hold). The main difference however,
+stems from the fact that multi-variate polynomials are, usually,
+\emph{irreducible}, that is they cannot be factorized.
+More specifically, the set of reducible
+multi-variate polynomials is of measure zero. This fact was proved
+in~\shortcite{hayes82reconstruction} for polynomials with real coefficients,
+however, its generalization to polynomials with complex coefficient
+is straightforward. In practical terms, this means that the
+chances of getting a reducible two- or three-dimensional polynomial are
+zero. This, in turn, means that the phase retrieval problem in the
+multi-dimensional case has, usually, a unique solution (up to the
+trivial transformations: lateral shifts, axis reversal, and constant
+phase factor).
+
+Despite this ``almost always'' guaranteed uniqueness one must apply a
+critical judgment for every specific case, because physical signals may
+not be considered ``purely random''. For example, the reducibility in
+the $z$-space has a clear physical meaning: if
+$G(z_{1},z_{2})=P(z_{1},z_{2})Q(z_{1},z_{2})$ then, $g[n_{1},n_{2}] =
+p[n_{1},n_{2}]\otimes q[n_{1},n_{2}]$, where $\otimes$ denotes
+convolution. Hence, if the sought signal is a result of a convolution of
+some signal $p$ with a non-symmetric kernel $q$, the reconstruction
+will not be unique (even without counting the trivial
+transformations).
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

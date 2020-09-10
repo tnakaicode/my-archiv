@@ -1,0 +1,1203 @@
+\chapter{Fundamental developments in optimization
+  methods\footnotemark{}}
+\label{cha:found-optim-meth}
+
+\footnotetext{The material presented in this section is currently in
+  preparation for submission to a journal.}
+
+Our research actually started with an idea to develop an efficient
+phase retrieval method based on continuous optimization
+technique. Unlike the current methods, described in the previous
+chapter, the continuous optimization approach can potentially provide significantly
+faster convergence rates and, probably even more important, can allow
+easy introduction of additional knowledge/assumptions into the
+computational scheme. The latter is especially difficult in the
+projection-based framework that is used in the current methods.
+
+However, continuous optimization techniques, such as gradient descent
+or Newton-type methods, cannot be applied directly
+because the objective function $f(z)$ is a real-valued function of
+complex variables: $f:\mathbb{C}^{n} \mapsto \mathbb{R}$. Therefore, its
+derivatives (of any order) with respect to $z$ are
+not defined, as we show below. This can be circumvented by treating the
+real and the imaginary parts of $z$ separately, that is, by looking at
+the function $g:\mathbb R^{n}\times\mathbb R^{n} \mapsto \mathbb R$,
+where $z = x+jy$, and $f(z) = f(z(x,y)) = g(x,y)$. This approach is
+viable and widely applied, though it may be more convenient to work
+with the original variable $z$ (and its complex conjugate $\bar{z}$)
+rather than with its real and imaginary parts: $x$, and $y$. Moreover,
+because most modern computer languages provide native support for
+complex variables, this approach may be more efficient as well. Hence,
+in the subsequent sections we shall develop an alternative definition
+of the gradient and Hessian. Before that, let us demonstrate that
+$f(z)$ is not differentiable with respect to $z$, except in the trivial
+case where $f(z)$ is constant.
+ 
+\begin{lem}
+  \label{lem:nondiffer}
+  Let $f(z)$ be a real function of complex argument $z$, then
+  $f(z)$ cannot be holomorphic unless it is constant.
+\end{lem}
+\begin{proof}[Proof]
+  Let us denote the complex argument $z=x+jy$ and $f(z) =
+  u(z)+jv(z) = u(x,y) + jv(x,y)$, where $x$, $y$, $u$, and $v$ are
+  real. If $f(z)$ is holomorphic it must satisfy the
+  Cauchy-Riemann equations
+  \begin{equation}
+    \label{eq:math-1111}
+    \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\,,\qquad
+    \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\,. 
+  \end{equation}
+  However, $f(z)$ is real, hence $v(x,y) = 0$ which, in
+  turn means that
+  \begin{equation}
+    \label{eq:math-2222}
+    \frac{\partial u}{\partial x} = \frac{\partial u}{\partial y} = 0
+    \,. 
+  \end{equation}
+  Thus $u(x,y)$ is a constant and so is $f(z)$.
+\end{proof}
+Before proceeding to the next section it is pertinent to define the
+following partial derivatives: $\partial f/\partial z$, and  $\partial
+f/\partial \bar{z}$. Let $f(z) = h(z, \bar{z}) = u(x,y) + jv(x,y)$. If
+$f(z)$ is real, that is, if $v(x,y) = 0$, then
+\begin{equation}
+  \label{eq:61}
+  \begin{split}
+    \frac{\partial f}{\partial z} & = \frac{1}{2}
+    \left(
+      \frac{\partial u}{\partial x} - j\frac{\partial u}{\partial y}
+    \right)\,, \\
+    \frac{\partial f}{\partial \bar z} & = \frac{1}{2}
+    \left(
+      \frac{\partial u}{\partial x} + j\frac{\partial u}{\partial y}
+    \right) \,.  
+  \end{split} 
+\end{equation}
+The above derivatives are, sometimes, called the Wirtinger derivatives
+or Wirtinger operators~\shortcite{wirtinger27zur}.
+
+\section{Complex gradient}
+\label{sec:complex-gradient}
+Let us consider the first differential of a differentiable function
+$g: \mathbb R^{n} \mapsto \mathbb R$
+\begin{equation}
+  \label{eq:math-3333}
+  \mathrm{d}g = \langle \nabla g, \mathrm{d}x \rangle \,,
+\end{equation}
+where $\langle \cdot,\cdot\rangle$ denotes the usual inner product.
+This formula can be used for definition of a function's gradient (see,
+for example, \shortcite{magnus99matrix}).  However, this approach is not
+feasible in our case because the derivatives $\partial f/\partial
+z_{i}$ are not defined, unless $f(z)$ is holomorphic. And this, of
+course, is not possible except for some trivial cases where $f(z)$ is
+constant, as was shown in Lemma~\ref{lem:nondiffer}. Therefore,
+we suggest the following new definition for a real scalar function of
+a complex vector $f:\mathbb C^{n} \mapsto \mathbb R$
+\begin{equation}
+  \label{eq:58}
+  \mathrm{d}f = \Re \langle \nabla f, \mathrm{d}z \rangle \,,
+\end{equation}
+where $\Re$ denotes the real part of a complex number. This definition
+preserves the most important properties of the gradient as we shall
+see later.
+
+Now, to obtain an expression for $\nabla f$, we use an
+alternative form for the first differential using the partial derivatives
+$\partial f/\partial z$, $\partial f/\partial \bar z$, as was done
+in~\shortcite{brandwood83complex},
+\begin{equation}
+  \label{eq:63}
+  \mathrm{d}f =
+  \left(
+    \nabla_{z}f
+  \right) ^{T}\mathrm{d} z +
+  \left(
+    \nabla_{\bar z}f
+  \right) ^{T}\mathrm{d} \bar z \,,
+\end{equation}
+where
+\begin{equation}
+  \label{eq:60}
+  \nabla_{z}f =
+  \begin{bmatrix}
+    \frac{\partial f}{\partial z_{1}}\\
+    \frac{\partial f}{\partial z_{2}}\\
+    \vdots\\
+    \frac{\partial f}{\partial z_{n}}\\
+  \end{bmatrix} \,, 
+  \qquad
+  \nabla_{\bar{z}}f =
+  \begin{bmatrix}
+    \frac{\partial f}{\partial \bar{z}_{1}}\\
+    \frac{\partial f}{\partial \bar{z}_{2}}\\
+    \vdots\\
+    \frac{\partial f}{\partial \bar{z}_{n}}\\
+  \end{bmatrix} \,. 
+\end{equation}
+That is, the function $f(z)$ is assumed to be a function of two
+\textit{independent} vectors $z$, $\bar z$. From
+Equation~\eqref{eq:61}, it is obvious that
+\begin{equation}
+  \label{eq:64}
+  \overline{\nabla_{z}f} =  \nabla_{\bar{z}}f \,. 
+\end{equation}
+Therefore, from Equation~\eqref{eq:63} we obtain
+\begin{equation}
+  \label{eq:65}
+  \begin{split}
+    \mathrm{d}f
+    & =
+    \left(
+      \nabla_{z}f
+    \right) ^{T}\mathrm{d} z +
+    \left(
+      \nabla_{\bar z}f
+    \right) ^{T}\mathrm{d} \bar z\\
+    & =  \left(
+      \nabla_{z}f
+    \right) ^{T}\mathrm{d} z +
+    \overline{\left(
+        \nabla_{z}f
+      \right)} ^{T}\mathrm{d} \bar z\\
+    & = \left(
+      \nabla_{z}f
+    \right) ^{T}\mathrm{d} z +
+    \overline{\left(
+        \nabla_{ z}f
+      \right) ^{T}\mathrm{d}  z}\\
+    & = 2 \Re \left( \left(
+      \nabla_{z}f
+    \right) ^{T}\mathrm{d} z \right) \\
+    & = \Re \left\langle
+    2\nabla_{\bar z}f, \mathrm{d} z \right\rangle \,.
+  \end{split}
+\end{equation}
+Hence, according to our definition in Equation~\eqref{eq:58}, the
+gradient of $f$ reads
+\begin{equation}
+  \label{eq:59}
+  \nabla f(z) = 2 \nabla_{\bar{z}}f \,.
+\end{equation}
+Note that~\citeauthor{brandwood83complex} in his
+paper~\citeyear{brandwood83complex} arrived at a 
+slightly different definition: $\nabla f(z) = \nabla_{\bar{z}}f$,
+which is incorrect. However, being different by only the factor
+of two, it works in many situations because most algorithm use the
+gradient direction only to perform a line search, while its length is used
+exclusively as a termination criterion. 
+
+The following two theorems from~\shortcite{brandwood83complex} prove
+that  both definitions are consistent with the main gradient
+properties used in optimization: (a) the gradient defines the
+direction of maximal ascent, and (b) the gradient being zero is a
+necessary and sufficient condition to determine a stationary point of
+$f(z)$.
+
+\begin{thm}
+  \label{thm:optimizatoin-stationary}
+  Let $f:\mathbb C^{n} \mapsto \mathbb R$ be a real-valued scalar
+  function of a complex vector $z$. Let $f(z) = h(z, \bar{z})$, where
+  $h: \mathbb C \times \mathbb C \mapsto \mathbb R$ is a real-valued
+  scalar function of two complex vector variables and $h$ is analytic
+  with respect to $z_{i}$ and $\bar{z}_{i}$. Then either of the
+  conditions $\nabla_{z}h=0$ or $\nabla_{\bar{z}}h=0$ is necessary and
+  sufficient to determine a stationary point of $f$.
+\end{thm}
+\begin{proof}[Proof]
+  We can always express $f$ as a function of $2n$ real variables
+  $x_{k}$, and $y_{k}$, by using $z_{k}=x_{k}+jy_{k}$:  $f(z) =
+  u(x,y)$. Therefore, $u(x,y)$ (and hence $f(z)$) is stationary if,
+  and only if, $\partial u/\partial x_{k} = \partial
+  u/\partial y_{k} = 0$ for all $k$. From Equation~\eqref{eq:61} we immediately
+  conclude that
+  \begin{equation}
+    \label{eq:62}
+    \begin{split}
+      \frac{\partial u}{\partial x_{k}} =  \frac{\partial u}{\partial y_{k}}
+      = 0 
+      & \Leftrightarrow \frac{\partial h}{\partial z_{i}}\\
+      \frac{\partial u}{\partial x_{k}} =  \frac{\partial u}{\partial y_{k}}
+      = 0 
+      & \Leftrightarrow \frac{\partial h}{\partial \bar z_{k}}
+    \end{split}
+  \end{equation}
+  Hence, $f(z)$ has a stationary point if and only if $\nabla_{z}(f) =
+  0$. Similarly $\nabla_{\bar z}f=0$ is also necessary and sufficient
+  to determine a stationary point of $f(z)$.
+\end{proof}
+
+\begin{thm}
+  \label{thm:optimizatoin-steepestdir}
+  Let $f(z)$ and $h(z, \bar z)$ be two functions as defined in
+  Theorem~\ref{thm:optimizatoin-stationary}, then the gradient $\nabla
+  f \equiv 2\nabla_{\bar z}f$ defines the direction of the maximal
+  rate of change of $f$ with $z$.
+\end{thm}
+\begin{proof}[Proof]
+  Consider Equations~\eqref{eq:58} and~\eqref{eq:65} that define the
+  gradient $\nabla f$. Obviously
+  \begin{equation}
+    \label{eq:70}
+    |\mathrm{d} f| =
+    \left|
+      \Re
+      \left\langle
+        2\nabla_{\bar z}f, \mathrm{d} z
+      \right\rangle
+    \right|
+    \leq
+    \left|
+      \left\langle
+        2\nabla_{\bar z}f, \mathrm{d} z
+      \right\rangle
+    \right| \,. 
+  \end{equation}
+\end{proof}
+Furthermore, according to the Cauchy-Schwarz inequality
+\begin{equation}
+  \label{eq:71}
+  \left|
+      \left\langle
+        2\nabla_{\bar z}f, \mathrm{d} z
+      \right\rangle
+    \right|
+    \leq
+    \| 2\nabla_{\bar z}f \|\, \| \mathrm{d} z \| \,.
+\end{equation}
+It is easy to verify that the equality in Equations~\eqref{eq:70}
+and~\eqref{eq:71} holds if, and only if, $\nabla_{\bar z}f=\alpha
+\mathrm{d} z$ for some real positive scalar $\alpha$.
+
+Note that the result of Theorem~\ref{thm:optimizatoin-steepestdir}
+follows from our \textit{definition} of the gradient via the first
+differential: $\mathrm{d}f = \Re \langle \nabla f, \mathrm{d}z
+\rangle$, and not from its particular formula.
+% In fact, it can be used
+% to prove Theorem~\ref{thm:optimizatoin-stationary} too.
+
+\section{Complex Hessian}
+\label{sec:complex-hessian}
+The Hessian can also be obtained by treating the function $f:\mathbb
+C^{n}\mapsto \mathbb R$ as a
+function of $2n$ real variables that are the real and the imaginary part
+of $f$'s complex argument $f(z) = u(x,y)$. Then, using
+Equation~\eqref{eq:61}, one can express it as partial derivatives with
+respect to $z$ and
+$\bar z$. However, this time the order of variables is more
+important. For example, in~\shortcite{van_den_bos94complex}, the author
+defines the following two vectors $v\in\mathbb C^{2n}$, $w\in\mathbb R^{2n}$
+\begin{equation}
+  \label{eq:72}
+  v = 
+  \begin{bmatrix}
+     z_{1}\\
+     \bar{z}_{1}\\
+      z_{2}\\
+      \bar{z}_{2}\\
+     \vdots\\
+     z_{n}\\
+     \bar{z}_{n}
+   \end{bmatrix}, \qquad
+   w = 
+   \begin{bmatrix}
+      x_{1}\\
+      y_{1}\\
+      x_{2}\\
+      y_{2}\\
+     \vdots\\
+     x_{n}\\
+     y_{n}
+   \end{bmatrix} \,.
+\end{equation}
+Using this definition, and the fact that
+\begin{equation}
+  \label{eq:74}
+  \begin{bmatrix}
+    z_{n}\\
+    \bar{z}_{n}
+  \end{bmatrix}
+  =
+  \begin{pmatrix*}[r]
+    1 & j \\
+    1 & -j
+  \end{pmatrix*}
+  \begin{bmatrix}
+    x_{k}\\
+    y_{k}
+  \end{bmatrix} \,, 
+\end{equation}
+we immediately obtain 
+\begin{equation}
+  \label{eq:75}
+  v = Aw \,, 
+\end{equation}
+where $A$ is a block-diagonal matrix
+\begin{equation}
+  \label{eq:76}
+  A = \mathrm{diag}
+  \left(
+    \begin{pmatrix*}[r]
+      1 & j \\
+      1 & -j
+    \end{pmatrix*}
+  \right) \,. 
+\end{equation}
+Hence~\citeauthor{van_den_bos94complex} easily concludes that
+\begin{equation}
+  \label{eq:73}
+  \nabla^{2}_{w}f =
+  A^{*}
+  \left(
+    \nabla^{2}_{v}f
+  \right) A \,. 
+\end{equation}
+Furthermore, by using $A^{-1} = \frac{1}{2}A^{*}$, the relation can be
+reversed
+\begin{equation}
+  \label{eq:77}
+  \nabla^{2}_{v}f =
+  \frac{1}{4}
+  A
+  \left(
+    \nabla^{2}_{w}f
+  \right) A^{*} \,. 
+\end{equation}
+
+However, we are not interested in the Hessian \textit{per se} because
+we specifically aim for large-scale problems. Our
+goal is to find an expression for the Hessian-vector product.  To this
+end we consider the first differential of the gradient (again, by
+treating $z$ and $\bar{z}$ as independent variables),
+\begin{equation}
+  \label{eq:78}
+  \mathrm{d} (\nabla f) =  \left(\nabla^{2}f\right) \mathrm{d} z =
+    \left(
+      \nabla_{z}(\nabla f)
+    \right) \mathrm{d} z +
+    \left(
+      \nabla_{\bar z}(\nabla f)
+    \right) \mathrm{d} \bar z \,. 
+\end{equation}
+Hence, multiplying a vector $a$ with the Hessian $\nabla^{2}f$ reads
+\begin{equation}
+  \label{eq:79}
+  \left(
+    \nabla^{2}f
+  \right) a =
+  \left(
+    \nabla_{z}(\nabla f)
+  \right)  a +
+  \left(
+    \nabla_{\bar z}(\nabla f)
+  \right)  \bar a \,. 
+\end{equation}
+In the next section we will see how to apply this formula to an
+objective function associated with phase retrieval.
+\section{Application to the  phase retrieval problem}
+\label{sec:appl-phase-retr}
+
+
+To exemplify our development with application to the phase retrieval
+problem, let us use the following objective function
+\begin{equation}
+  \label{eq:math-1}
+  E(s) = \frac{1}{2}\| |\hat{s}| - r\|^{2}\,,
+\end{equation}
+where $\hat{s}$ denotes the Fourier transform of a signal $s$, $r$
+denotes the measured  magnitude of the Fourier transform, and $\|\cdot\|$
+denotes the standard $l_{2}$ vector norm. Note, that $s$ and $r$ are not
+necessarily one-dimensional vectors, hence, strictly speaking, the
+$l_{2}$ norm is not properly defined in all cases. A proper notation would
+be
+\begin{equation}
+  \label{eq:math-2}
+  E(s) = \|\vect(|\hat{s}| - r)\|^{2}\,, 
+\end{equation}
+where the operator $\vect(\cdot)$ is a simple
+rearrangement of a multidimensional argument into a column vector in
+some predefined order. For example, let $s$ be a two-dimensional
+$m\times n$ signal (matrix) with  $s_{i}$ being its $i$-th column.
+Then, $\vect(s)$ is an $mn\times 1$ vector:
+\begin{equation}
+  \label{eq:math-3}
+  \vect(s) =
+  \begin{bmatrix}
+    s_{1} \\
+    s_{2} \\
+    \vdots\\
+    s_{n}
+  \end{bmatrix} \,.
+\end{equation}
+Thus, in our convention the $\vect()$ operator transforms a matrix into a column
+vector by stacking the matrix columns. Of course,
+this operator is defined for signals of arbitrary (finite) dimensionality.
+For the sake of brevity, hereinafter we shall use $s$ and $\vect(s)$
+interchangeably and the appropriate form should be clear from the context.
+Let us now review the objective function defined by
+Equation~\eqref{eq:math-1}
+\begin{equation}
+  \label{eq:math-4}
+  \begin{split}
+    E(x)
+    & = \frac{1}{2} \| |\hat{s}| - r \|^{2}\\
+    & = \frac{1}{2} \| |\mathcal{F}[s]| - r \|^{2}\\
+    & = \frac{1}{2} \| |Fs| - r \|^{2} \,.
+  \end{split}
+\end{equation}
+Here, $\mathcal{F}[s]$ denotes the Discrete Fourier Transform (DFT)
+operator applied to a (multidimensional) signal $s$, and $F$
+represents the corresponding matrix, in the sense that
+\begin{equation}
+  \label{eq:math-5}
+  \vect(\mathcal{F}[s]) = F\vect(s) \,. 
+\end{equation}
+We introduce the DFT matrix $F$ just for mathematical notation. In
+practice, however, the DFT transform is performed by the Fast Fourier
+Transform (FFT) algorithm that never creates this matrix. Note also
+that $Fs$ means, actually, $F\vect(s)$, however, the shorter notation
+is used, as we mentioned earlier. Consider now the final form of the
+objective function we obtained in Equation~\eqref{eq:math-4}---it can
+be viewed as a non-linear function of a complex argument $z\equiv
+Fs$.%\footnote{We depart from our usual notation $Fs = \hat{s}$ to
+  % stress that $z$ is complex-valued.}
+\begin{equation}
+  \label{eq:math-6}
+  E(s) = \frac{1}{2} \| |Fs| - r\|^{2} = f(Fs) = f(z)\,.
+\end{equation}
+Hence,  $f:\mathbb C^{n} \mapsto \mathbb R$, where $n$ is the number
+of elements in $Fs$ (equal to that in $s$, of course).  With the
+theory developed in the previous section we can now find the gradient of
+our objective function.
+\begin{equation}
+  \label{eq:math-10}
+  \begin{split}
+    \mathrm{d} (E(s))
+    & = \mathrm{d} f(z)\\
+    & = \Re \langle \nabla f, \mathrm{d} z \rangle\\
+    & = \Re \langle \nabla f, \mathrm{d}(Fs) \rangle\\
+    & = \Re \langle \nabla f, F \mathrm{d} s \rangle\\
+    & = \Re \langle F^{*} \nabla f, \mathrm{d} s \rangle\\
+  \end{split} \,. 
+\end{equation}
+Hence, using our definition we obtain
+\begin{equation}
+  \label{eq:math-11}
+  \nabla E(s) = F^{*}\nabla f(z) \,,
+\end{equation}
+where $F^{*}$ denotes the Hermitian (conjugate) transpose of $F$. Now,
+by using  Equation~\eqref{eq:math-4}, we have
+\begin{equation}
+  \label{eq:66}
+  f(z) = \frac{1}{2} \| |z| - r\|^{2} \,.
+\end{equation}
+From which we obtain
+\begin{equation}
+  \label{eq:67}
+  \begin{split}
+    \nabla f
+    & = 2 \nabla_{\bar z} f\\
+    & = 2 \nabla_{\bar z} \left(\frac{1}{2} \| |z| - r\|^{2}\right)\\
+    & = 2 (|z| - r) \circ \nabla_{\bar z} \left(|z|\right)\\
+    & =  2 (|z| - r) \circ \nabla_{\bar z} \left((z\bar
+      z)^{\frac{1}{2}}\right)\\
+    & = 2 (|z| - r) \circ z^{\frac{1}{2}} \circ
+    \frac{1}{2}\bar{z}^{\frac{1}{2}}\\
+    & = \left(z - r\circ
+      \frac{z^{\frac{1}{2}}}{\bar{z}^{\frac{1}{2}}}\right)\\
+    & =
+    \left(
+      z - r\circ \frac{z}{|z|}
+    \right) \,. 
+  \end{split}
+\end{equation}
+Here $\circ$ denotes the element-wise (Hadamard) product. Moreover,
+note that $r$, and $z$ are vectors, therefore quotients, and
+exponents, like $z/|z|$, and $z^{\frac{1}{2}}$, are assumed to be
+performed element-wise. This minor abuse of notation improves
+readability, therefore we use it instead of introducing some special
+notation. Substituting the above result into
+Equation~\eqref{eq:math-11} we obtain (by using $z=Fs$)
+\begin{equation}
+  \label{eq:68}
+  \begin{split}
+    \nabla E(s)
+    & = F^{*}\nabla f(z)\\
+    & = F^{*} \left(
+      z - r\circ \frac{z}{|z|}
+    \right) \\
+    & = F^{*} \left(
+      Fs - r\circ \frac{Fs}{|Fs|}
+    \right) \\
+    & = s - F^{-1}
+    \left(
+      r\circ \frac{Fs}{|Fs|}
+    \right)\,. 
+  \end{split}
+\end{equation}
+In this derivation we used the fact that $F$ is unitary,
+therefore $F^{-1} = F^{*}$. The expression for $\nabla E(s)$
+is remarkable because it bears a clear physical meaning, which will be
+discussed in the following chapters. Meanwhile we proceed
+with developments required for our optimization approach.
+
+We already have the gradient of our objective function. Hence, we can
+deploy a variety of powerful optimization routines, such as
+Quasi-Newton methods. However, our choice should be limited to those
+that do not form a full approximation to the Hessian matrix because
+typical signals may easily contain $10^{6}\text{--}10^{9}$ elements
+which renders the problem of Hessian storage too costly for a
+typical computer. In the following chapters we use the excellent
+Quasi-Newtonian method called L-BFGS, which uses limited memory to
+store an approximation to the Hessian matrix~\cite{liu89limited}.
+However, to also allow for more powerful optimization methods we shall
+consider the second derivatives of the objective function. Our main
+goal is to devise the Hessian-vector product formula that is used in
+many large scale optimization methods, for example, in the Conjugate
+Gradients (CG) method~\cite{hestenes52methods}, and in the Sequential
+Subspace Optimization (SESOP) method~\shortcite{narkiss05sequential}.
+To this end we consider the first differential of the gradient $\nabla
+E(s)$
+\begin{equation}
+  \label{eq:math-12}
+  \begin{split}
+    \mathrm{d}(\nabla E)
+    & = \mathrm{d} \left( F^{*}\nabla f \right)\\
+    & = F^{*} \mathrm{d} \left( \nabla f \right)\\
+    & = F^{*} \left( \nabla^{2}f \right) \mathrm{d} z \\
+    & = F^{*} \left( \nabla^{2}f \right) \mathrm{d} (Fs) \\
+    & = F^{*} \left( \nabla^{2}f\right) F \mathrm{d} s \,. 
+  \end{split}
+\end{equation}
+Hence, according to the definition of the Hessian we get
+\begin{equation}
+  \label{eq:math-13}
+  \nabla^{2}E(s) = F^{*}\left(\nabla^{2}f(z)\right)F \,.
+\end{equation}
+Recall that the Hessian $\nabla^{2}f(z)$ has not been defined,
+instead we focus on the Hessian-vector product. Based on our
+development we can compute $(\nabla^{2}E(s))a$ for any vector $a$
+\begin{equation}
+  \label{eq:80}
+  (\nabla^{2}E(s))a = F^{-1}\left(\nabla^{2}f(z)\right)Fa =
+  F^{*}\left[(\nabla^{2}f(z)) (Fa)\right]\,. 
+\end{equation}
+The brackets in the last expression are added to emphasize the order of
+efficient computation: first, the Fourier transform $\hat{a}=Fa$ is computed;
+second, the Hessian-vector product $(\nabla^{2}f(z))\hat{a}$ is
+computed (described below); finally, the result undergoes an inverse
+Fourier transform. It is important to note that the first and the
+third steps in the above calculation are independent of the objective
+function and only the second step has this dependence. Let us now
+devise the formula for the Hessian-vector product
+$(\nabla^{2}f(z))a$. Using Equation~\eqref{eq:79} we have
+\begin{equation}
+  \label{eq:81}
+  \begin{split}
+   \left(
+    \nabla^{2}f
+  \right) a
+  & =
+  \left(
+    \nabla_{z}(\nabla f)
+  \right)  a +
+  \left(
+    \nabla_{\bar z}(\nabla f)
+  \right)  \bar a \\
+  & = \left(\nabla_{z} \left(
+      z -  r\circ z^\frac{1}{2} \circ \bar{z}^{-\frac{1}{2}}
+    \right)\right) a
+  +  \left(\nabla_{\bar z} \left(
+      z -  r\circ z^\frac{1}{2} \circ \bar{z}^{-\frac{1}{2}}
+    \right)\right) \bar a \\
+  & = \mathrm{diag}
+  \left(
+    1 - \frac{r}{2|z|}
+  \right) a
+  +
+  \mathrm{diag}
+  \left(
+    \frac{r\circ z^{2}}{2|z|^{3}} 
+  \right) \bar a \\
+  & = \left(
+    1 - \frac{r}{2|z|}
+  \right)\circ a
+  +
+  \left(
+    \frac{r\circ z^{2}}{2|z|^{3}} 
+  \right) \circ \bar a\,.
+  \end{split}
+\end{equation}
+Note that we again use the quotient and exponent, like $r/z$ and
+$z^{2}$ in the element-wise manner.
+
+\subsection{Special properties}
+\label{sec:special-properties}
+
+Let us consider some mathematical properties of the gradient and the
+Hessian of our objective function. First, let us look at the equation
+that defines the Newton direction $d$
+\begin{equation}
+  \label{eq:69}
+  \left(
+    \nabla^{2}E
+  \right) d
+  = -\nabla E \,. 
+\end{equation}
+Even if we assume that the Hessian $\nabla^{2}E$ is
+invertible, finding $d$ is not straightforward as we do not form
+$\nabla^{2}E$ explicitly. Fortunately, the Hessian-vector product
+routine is sufficient. For example, we can use the CG method to find
+$d$. However, this will require a fair amount of iterations. To find a
+better (faster) way, let us consider the product $(\nabla^{2}E) \nabla
+E$
+\begin{equation}
+  \label{eq:82}
+  \begin{split}
+    (\nabla^{2}E)\nabla E
+    & = F^{*}\left(\nabla^{2}f(z)\right)F\nabla E\\
+    & = F^{*}\left(\nabla^{2}f(z)\right)FF^{*}\nabla f\\
+    & = F^{*}\left(\nabla^{2}f(z)\right)\nabla f\\
+    & = F^{*}\left(\nabla^{2}f(z)\right) \left( z - r\circ
+      \frac{z}{|z|}\right)\\
+    & = F^{*}
+    \left(
+      \left(
+        1 - \frac{r}{2|z|}
+      \right)
+      \circ
+      \left(
+          z - r\circ
+          \frac{z}{|z|}
+        \right)
+      + 
+      \frac{r\circ z^{2}}{2|z|^{3}} 
+      \circ
+      \overline{
+        \left(
+          z - r\circ
+          \frac{z}{|z|}
+        \right)
+      }
+    \right) \\
+    & = F^{*}
+    \left(
+      z - \frac{r\circ z}{2|z|} - \frac{r\circ z}{|z|} +
+      \frac{r^{2}\circ z}{2|z|^{2}} + \frac{r\circ z}{2|z|} -
+      \frac{r^{2}\circ z}{2|z|^{2}}
+    \right) \\
+    & = F^{*}
+    \left(
+      z - \frac{r\circ z}{|z|}
+    \right) \\
+    & = \nabla E \,. 
+  \end{split}
+\end{equation}
+% Hence, we got
+% \begin{equation}
+%   \label{eq:83}
+%   (\nabla^{2}E)\nabla E = \nabla E \,. 
+% \end{equation}
+Namely, the gradient $\nabla E$ is an eigenvector of the Hessian
+$\nabla^{2}E$ with the corresponding eigenvalue equal to one. This
+means that $-\nabla E$ is the Newton step. That is, the
+gradient descent method is equivalent to the Newton method in this
+case.  Let us consider a single gradient descent (Newton) step with
+unit step-length
+\begin{equation}
+  \label{eq:84}
+  s - \nabla E(s) = F^{-1}
+  \left(
+    r\circ \frac{Fs}{|Fs|}
+  \right) \,. 
+\end{equation}
+Consider the above result from a physical point of view: the current
+signal estimate $s$ undergoes the Fourier transform $Fs$, then the
+(generally incorrect) magnitude $|Fs|$ is replaced with the correct one $r$,
+and the resulting signal is inverse transformed by $F^{-1}$. This is
+exactly the projection step that we saw in
+Chapter~\ref{cha:curr-reconstr-meth}. Is then  a single gradient descent
+step enough to solve the phase retrieval problem? The answer is yes,
+though the result is usually meaningless because it does not satisfy
+additional constraints that are usually imposed on the sought signal,
+for example, support information. The relation between the projection
+and the gradient descent has long been known
+(see~\cite{fienup82phase}), however, the relation to the Newton method
+is new, to the best of our knowledge.
+
+We have found one eigenvalue (1) and eigenvector ($\nabla E$) of the
+Hessian.  We may get even deeper insight into the problem if we
+look at the eigendecomposition of the Hessian. To this end we need the
+full Hessian matrix. It can be obtained, using our Hessian-vector
+product,  for the real-valued
+case, that is $s\in\mathbb R^{n}$. Consider the Hessian-vector product for some real vector $t$
+\begin{equation}
+  \label{eq:86}
+  \begin{split}
+    (\nabla^{2}E)t
+    & = F^{*}(\nabla^{2}f)Ft\\
+    & = F^{*}(\nabla^{2}f)(Ft)\\
+    & = F^{*}
+    \left(
+      \mathrm{diag}
+      \left(
+        1 - \frac{r}{2|\hat{s}|}
+      \right) (Ft)
+      +
+      \mathrm{diag}
+      \left(
+        \frac{r\circ \hat{s}^{2}}{2|\hat{s}|^{3}} 
+      \right)
+      \left(
+        \overline{Ft}
+      \right)
+    \right)\\
+    & =  F^{*}
+    \left(
+      \mathrm{diag}
+      \left(
+        1 - \frac{r}{2|\hat{s}|}
+      \right) F
+      +
+      \mathrm{diag}
+      \left(
+        \frac{r\circ \hat{s}^{2}}{2|\hat{s}|^{3}} 
+      \right)
+      \bar F
+    \right) t \\
+    & =  F^{*}
+    \left(
+      \mathrm{diag}
+      \left(
+        1 - \frac{r}{2|\hat{s}|}
+      \right) F
+      +
+      \mathrm{diag}
+      \left(
+        \frac{r\circ \hat{s}^{2}}{2|\hat{s}|^{3}} 
+      \right)
+      F^{*}
+    \right) t \,.
+  \end{split}
+\end{equation}
+Hence, we obtain
+\begin{equation}
+  \label{eq:87}
+  \begin{split}
+    \nabla^{2}E
+    & =
+    F^{*}\mathrm{diag}\left(1 - \frac{r}{2|\hat{s}|}\right) F
+    + 
+    F^{*}\mathrm{diag}\left(\frac{r\circ \hat{s}^{2}}{2|\hat{s}|^{3}}\right)F^{*}
+    \\
+    & = I -  F^{*}\mathrm{diag}\left(\frac{r}{2|\hat{s}|}\right) F
+    +
+    F^{*}\mathrm{diag}\left(\frac{r\circ \hat{s}^{2}}{2|\hat{s}|^{3}}\right)F^{*}
+\end{split}
+\end{equation}
+In this form, it is easy to perform an eigenanalysis of the Hessian. The
+main results are proven in the following two theorems.
+\begin{thm}
+  \label{thm:hessian-eigenvalues}
+  Let $\nabla^{2} E$ be as defined in Equation~\eqref{eq:87}, where
+  $\hat{s}$ represents the Fourier transform of a real signal $s$, and $r$ denotes
+  the absolute value of the Fourier transform of a real signal. Then, the
+  eigenvalues of the Hessian are given by
+  \begin{equation}
+    \label{eq:88}
+    \lambda(\nabla^{2}E) = 1 - \frac{r}{2|\hat{s}|} \pm \frac{r}{2|\hat{s}|} \,.
+  \end{equation}
+\end{thm}
+\begin{proof}[Proof]
+  To prove the claim we must recall certain properties of the DFT
+  matrix $F$.
+  \begin{enumerate}
+  \item $F$ is unitary: $F^{*}F = FF^{*}=I$.
+  \item $F$ is symmetric: $F^{T}=F$.
+  \item if $t$ is real, then $Ft$ is Hermitian, that is, conjugate symmetric.
+  \item $F^{2}$ is a permutation matrix that ``reverses'' its
+    argument. As a consequence, if $t$ is real, then
+    $F^{2}(Ft)=\overline{Ft}$.
+  \item Applying the Fourier transform four times results in the
+    original signal, namely $F^{4}=I$. 
+  \end{enumerate}
+  Now, let us consider a real signal $t$, and the following matrix $A$
+  obtained from it
+  \begin{equation}
+    \label{eq:89}
+    \begin{split}
+      A
+      & = F^{*} \mathrm{diag}(Ft) F^{*}\\
+      & = F^{*} F^4 \mathrm{diag}(Ft) F^{4} F^{*}\\
+      & = F^{*} F^{2} F^{2} \mathrm{diag}(Ft)F^{2} F^{2} F^{*} \\
+      & = F \mathrm{diag}(\overline{Ft})F\\
+      & = \overline{\bar{F} \mathrm{diag}(Ft) \bar{F}}\\
+      & = \overline{F^{*} \mathrm{diag}(Ft) F^{*}}\\
+      & = \bar{A} \,. 
+    \end{split}
+  \end{equation}
+  We find that  $A$ is symmetric. Therefore,  $A^{2}$ can be written
+  as follows:
+  \begin{equation}
+    \label{eq:90}
+    \begin{split}
+      A^{2}
+      & = AA\\
+      & = A \bar A \\
+      & = F^{*} \mathrm{diag}(Ft) F^{*}  F
+      \mathrm{diag}(\overline{Ft})F\\
+      & = F^{*} \mathrm{diag} (|Ft|^{2}) F \,. 
+    \end{split}
+  \end{equation}
+  Thus, the eigenvalues of $A^{2}$ are $|Ft|^{2}$, and the
+  eigenvalues of $A$ are $\pm|Ft|$. Moreover, the matrix can be written
+  as
+  \begin{equation}
+    \label{eq:91}
+    A = \sqrt{A^{2}} = F^{*} \mathrm{diag} (\pm|Ft|) F \,.  
+  \end{equation}
+  In this form, it is obvious that our proof is complete once we note
+  that $(r\circ z^{2})/(2|z|^{3})=Ft$ for some real vector $t$. This is
+  quite obvious, because $(r\circ z^{2})/(2|z|^{3})$ is Hermitian, hence
+  the inverse Fourier transform will result in a real vector.
+\end{proof}
+
+Note that this proof does not tell us whether '$+$' or '$-$' should be
+taken in Equation~\eqref{eq:88}, and it says nothing about the
+eigenvectors of the Hessian. These questions will be addressed in
+Theorem~\ref{thm:hessian-eigenanalysis}. However, this result can
+already provide some interesting insights into the problem. First,
+about half (see below) of the Hessian eigenvalues are unity (these
+correspond to the choice of '$+$' in Equation~\eqref{eq:88}); the rest
+are equal $1-r/|\hat{s}|$.  Furthermore, if an exact solution is
+found, that is, if $|\hat{s}| = r$, then the eigenvalues of the
+Hessian become $1$ and $0$, with multiplicities equal, respectively,
+to the number of pluses and minuses in Equation~\eqref{eq:88}.  Hence,
+about half of the eigenvalues will be zero at a solution, which might
+make the problem quite difficult because the Hessian is highly singular
+at a solution and ill-conditioned in its neighborhood. Another
+observation shows that if $|\hat{s}| > r$ (the relation is taken
+element-wise), then the Hessian is positive definite, which is
+beneficial in optimization problem.
+
+We next  prove a theorem that is much stronger than
+Theorem~\ref{thm:hessian-eigenvalues}. This time we devise an
+unambiguous expression for the Hessian eigenvalues and also 
+find its eigenvectors. The complete derivation is split into the
+following two theorems.
+\begin{thm}
+  \label{thm:hessian-eigenanalysis-1}
+  Let $\hat{t}\in\mathbb C^{n}$ be the Fourier transform of a real-valued signal
+  $t$ (either one- or multi-dimensional): $\hat{t}= Ft$. Let us also
+  denote by $\mathcal{K} = \{k_{1}, k_{2},\ldots, k_{n_{1}}\}$ and
+  $\mathcal L = \{l_{1}, l_{2}, \ldots, l_{n_{1}}\}$ the two sets of
+  indices that are exchanged upon an application of the permutation
+  matrix $F^{2}$, while $\mathcal{M}=\{m_{1}, m_{2},\ldots,
+  m_{n_{2}}\}$, where $n_{2} = n - 2n_{1}$, 
+  is the set of indices that are invariant under the
+  permutation $F^{2}$. That is, if $e_{i}$ is the $i$-th column
+  of the identity matrix $I_{n}$, then
+  \begin{equation}
+    \label{eq:92}
+    \begin{split}
+      F^{2}e_{k_{i}}  & =
+      e_{l_{i}}, \quad \forall i\in 1,2, \ldots,  n_{1} \,. \\
+      F^{2}e_{l_{i}}  & =
+      e_{k_{i}}, \quad \forall i\in 1,2, \ldots,  n_{1} \,. \\
+      F^{2}e_{m_{i}}  & =
+      e_{m_{i}}, \quad \forall i\in 1,2, \ldots n_{2} \,. 
+    \end{split}
+  \end{equation}
+  Then, the eigenvalues of the matrix $C =
+  \mathrm{diag}(\hat{t})F^{2}$ are as follows
+  \begin{equation}
+    \label{eq:94}
+    \begin{cases}
+      \lambda_{i} = \hat{t}_{i} & \text{if } i\in \mathcal{M} \,, \\
+      \lambda_{i} = |\hat{t}_{i}| & \text{if } i\in \mathcal{K} \,, \\
+      \lambda_{i} = -|\hat{t}_{i}| & \text{if } i\in \mathcal{L} \,. \\
+    \end{cases}
+  \end{equation}
+  The corresponding eigenvectors of $C$ are given by
+  \begin{equation}
+    \label{eq:97}
+    \begin{cases}
+      v_{m_{j}} = e_{m_{j}} & \text{for } j=1,2,\ldots, n_{2} \,, \\
+      v_{k_{j}} = e_{k_{j}} + a_{k_{j}}e_{l_{j}} &\text{for } j = 1,2,\ldots,
+      n_1 \,, \\
+      v_{l_{j}} = e_{k_{j}} - a_{l_{j}}e_{l_{j}} &\text{for } j = 1,2,\ldots,
+       n_1 \,,
+    \end{cases}
+  \end{equation}
+  where
+  \begin{equation}
+    \label{eq:105}
+    a_{k_{j}} = a_{l_{j}}
+    = \frac{|\hat{t}_{k_{j}}|}{\hat{t}_{k_{j}}}
+    = \frac{|\hat{t}_{l_{j}}|}{\bar{\hat{t}}_{l_{j}}} \,. 
+  \end{equation}
+\end{thm}
+Before we proceed to the proof, note that the set $\mathcal{M}$ is
+defined uniquely---it includes the zero-frequency and the
+half-Nyquist
+frequencies. The latter present if, and only if, the number
+of samples, along some dimension, is even. The two other sets:
+$\mathcal{K}$, and $\mathcal{L}$ are not unique---one can exchange
+$k_{j}$ and $l_{j}$. This non-uniqueness, however, does not have any
+special effect. The theorem, in fact, claims that the conjugate
+symmetric signal $\hat{t}$ defines uniquely the set of eigenvalues
+and eigenvectors of $C$ in the following manner. If $\hat{t}_{i}$
+has no conjugate counterpart (zero frequency, or half-Nyquist
+frequency) then it contributes the eigenvalue $\hat{t}_{i}$ and the
+corresponding eigenvector $e_{i}$. If, on the other hand,
+$\hat{t}_{i}, \quad i = k_{j}$ has a conjugate counterpart, then
+the pair  $\hat{t}_{i}=\hat{t}_{k_{j}}$, and $\bar{\hat{t}}_{i} =
+\hat{t}_{l_{j}}$ contributes two eigenvalues:
+$|\hat{t}_{i}|$, and $-|\hat{t}_{i}|$ along with the corresponding
+eigenvectors
+
+\begin{proof}[Proof]
+  Let us start with $i\in\mathcal{M}$:
+  \begin{equation}
+    \label{eq:98}
+    \begin{split}
+      Ce_{m_{j}}
+      & = \mathrm{diag}(\hat{t})F^{2}e_{m_{j}}\\
+      & = \mathrm{diag}(\hat{t})e_{m_{j}}\\
+      & = \hat{t}_{m_{j}}e_{m_{j}} \,,
+    \end{split}
+  \end{equation}
+  which completes the proof for this case. Let us now consider
+  $i\in\mathcal{K}$, that is, $i=k_{j}$:
+  \begin{equation}
+    \label{eq:99}
+    \begin{split}
+      \lambda_{i}v_{i}
+      & = \lambda_{k_{j}}v_{k_{j}} \\
+      & = Cv_{k_{j}}\\
+      & = \mathrm{diag}(\hat{t})F^{2}(e_{k_{j}} + a_{k_{j}} e_{l_{j}})\\
+      & = \mathrm{diag}(\hat{t})(F^{2}e_{k_{j}} +
+      a_{k_{j}}F^{2}e_{l_j})\\
+      & =  \mathrm{diag}(\hat{t})(e_{l_{j}} + a_{k_{j}}e_{k_{j}})\\
+      & = \hat{t}_{l_{j}} e_{l_{j}} +
+      a_{k_{j}}\hat{t}_{k_{j}}e_{k_{j}} \\
+      & = \bar{\hat{t}}_{k_{j}} e_{l_{j}} +
+      a_{k_{j}}\hat{t}_{k_{j}}e_{k_{j}} \,. 
+    \end{split}
+  \end{equation}
+  Hence, we have
+  \begin{equation}
+    \label{eq:100}
+    \begin{split}
+      \lambda_{k_{j}} & = a_{k_{j}}\hat{t}_{k_{j}} \,, \\
+      \lambda_{k_{j}} a_{k_{j}} & = \bar{\hat{t}}_{k_{j}} \,,
+    \end{split}
+  \end{equation}
+  which leads immediately to
+  \begin{equation}
+    \label{eq:101}
+    a^{2}_{k_{j}}\hat{t}_{k_{j}} =  \bar{\hat{t}}_{k_{j}}
+    \Rightarrow
+    a^{2}_{k_{j}} = \frac{\bar{\hat{t}}_{k_{j}}}{\hat{t}_{k_{j}}}
+    \Rightarrow
+    a_{k_{j}} =  \pm \frac{|\hat{t}_{k_{j}}|}{\hat{t}_{k_{j}}}
+    \,. 
+  \end{equation}
+  To decide upon the sign of $a_{k_{j}}$ in this equation, we use the
+  fact that  $\lambda_{k_{j}}$ is positive, according to the
+  definition in Equation~\eqref{eq:94}.  Now, if we look at
+  Equation~\eqref{eq:100}, we immediately obtain $\lambda_{k_{j}} =
+  a_{k_{j}}\hat{t}_{k_{j}} = \pm|\hat{t}_{k_{j}}|$, hence, we must choose '$+$'. The proof
+  for the last case, $i\in\mathcal{L}$, is very similar.
+  \begin{equation}
+    \label{eq:102}
+    \begin{split}
+      \lambda_{i}v_{i}
+      & = \lambda_{l_{j}}v_{l_{j}} \\
+      & = Cv_{l_{j}}\\
+      & = \mathrm{diag}(\hat{t})F^{2}(e_{k_{j}} - a_{l_{j}} e_{l_{j}})\\
+      & = \mathrm{diag}(\hat{t})(F^{2}e_{k_{j}} - a_{l_{j}}F^{2}e_{l_j})\\
+      & =  \mathrm{diag}(\hat{t})(e_{l_{j}} - a_{l_{j}}e_{k_{j}})\\
+      & = \hat{t}_{l_{j}} e_{l_{j}} - a_{l_{j}}\hat{t}_{k_{j}}e_{k_{j}} \\
+      & = \hat{t}_{l_{j}} e_{l_{j}} - a_{l_{j}}\bar{\hat{t}}_{l_{j}}e_{k_{j}} \,.  
+    \end{split}
+  \end{equation}
+  Hence, we have
+  \begin{equation}
+    \label{eq:103}
+    \begin{split}
+      \lambda_{l_{j}} & = -a_{l_{j}}\bar{\hat{t}}_{l_{j}} \,, \\
+      -\lambda_{l_{j}} a_{l_{j}} & = \hat{t}_{l_{j}} \,,
+    \end{split}
+  \end{equation}
+  which gives us
+  \begin{equation}
+    \label{eq:104}
+    a_{l_{j}} = \pm\frac{|\hat{t}_{l_{j}}|}{\bar{\hat{t}}_{l_{j}}}.
+  \end{equation}
+  Again, we must choose '$+$', because $\lambda_{l_{j}} =
+  -a_{l_{j}}\bar{\hat{t}}_{l_{j}}=-|\hat t_{l_{j}}|$ must be
+  negative. It is worthwhile to note that the eigenvectors $v_{i}$ are
+  mutually orthogonal.
+\end{proof}
+
+Now we can prove the main result.
+
+
+\begin{thm}
+  \label{thm:hessian-eigenanalysis}
+  Let  $\hat{s}, \hat{t}\in\mathbb C^{n}$ be Fourier
+  transforms of real-valued signals $s$, and $t$, respectively.
+  Let the sets of indices $\mathcal K$, $\mathcal L$, and $\mathcal
+  M$; and vectors $\{v_{i}\}_{i=1}^{n}$
+  be defined as in Theorem~\ref{thm:hessian-eigenanalysis-1}. Let
+  $(\lambda_{i}, u_{i})$ be an eigenpair of the following matrix
+  \begin{equation}
+    \label{eq:93}
+    A = F^{*}\mathrm{diag}(|\hat{s}|)F + F^{*}
+    \mathrm{diag}(\hat{t})F^{*} \,.
+  \end{equation}
+  Then, the eigenvalues are given by
+  \begin{equation}
+    \label{eq:106}
+    \begin{cases}
+      \lambda_{i} = |\hat{s}|_{i} + \hat{t}_{i} \,,  & \text{if } i\in \mathcal{M} \,, \\
+      \lambda_{i} = |\hat{s}|_{i} -|\hat{t}_{i}| \,, & \text{if } i\in \mathcal{K} \,, \\
+      \lambda_{i} = |\hat{s}|_{i} + |\hat{t}_{i}| \,,  & \text{if } i\in \mathcal{L} \,.
+    \end{cases}
+  \end{equation}
+  And the eigenvectors are given by
+  \begin{equation}
+    \label{eq:107}
+    U = [u_{1}, u_{2},\ldots, u_{n}] = VF \,, 
+  \end{equation}
+  where
+  \begin{equation}
+    \label{eq:108}
+    V = [v_{1}, v_{2}, \ldots, v_{n}]
+  \end{equation}
+\end{thm}
+
+\begin{proof}[Proof]
+  The proof is trivial once we note that
+  \begin{equation}
+    \label{eq:109}
+    \begin{split}
+      A
+      & = F^{*}\mathrm{diag}(|\hat{s}|)F + F^{*}
+      \mathrm{diag}(\hat{t})F^{*} \\
+      & = F^{*}\mathrm{diag}(|\hat{s}|)F + F^{*}
+      \mathrm{diag}(\hat{t})F^{4}F^{*}\\
+      & = F^{*}\mathrm{diag}(|\hat{s}|)F + F^{*}
+      \mathrm{diag}(\hat{t})F^{4}F^{*} \\
+      & = F^{*}
+      \left(
+        \mathrm{diag}(|\hat{s}|) +
+        \mathrm{diag}(\hat{t})F^{2}
+      \right) F \\
+      & = F^{*} (B + C) F \,, 
+    \end{split}
+  \end{equation}
+  where
+  \begin{equation}
+    \label{eq:110}
+    B = \mathrm{diag}(|\hat{s}|), \quad C =
+    \mathrm{diag}(\hat{t})F^{2} \,. 
+  \end{equation}
+  The eigendecomposition of $C$ was found in
+  Theorem~\ref{thm:hessian-eigenanalysis-1}. Thus, if we show that
+  $v_{i}$ is also an eigenvector of $B$, with the corresponding
+  eigenvalue of $|\hat{s}|_{i}$ the theorem will be proved. Indeed, it
+  is easy to verify that
+  \begin{equation}
+    \label{eq:111}
+    \mathrm{diag}(|\hat{s}|) = |\hat{s}|_{i} v_{i}\,,
+  \end{equation}
+  which completes the proof.
+\end{proof}
+
+\begin{cor}
+  The eigenvalues of the Hessian $\nabla^{2}E$ are given by
+  \begin{equation}
+    \label{eq:112}
+    \begin{cases}
+      \lambda_{i} = 1 \,, & \text{if } i\in\mathcal{M} \,,\\
+      \lambda_{i} = 1 - \frac{r_{i}}{|\hat{x}|_{i}} \,, & \text{if }
+      i\in\mathcal K \,, \\
+      \lambda_{i} = 1 \,, & \text{if }
+      i\in\mathcal L \,, \\
+    \end{cases}
+  \end{equation}
+  where $\mathcal M$, $\mathcal K$, and $\mathcal L$ are set of
+  indices, as defined in
+  Theorem~\ref{thm:hessian-eigenanalysis-1}. The corresponding  eigenvectors 
+  are given by $\{u_{i}\}_{i=1}^{n}$, as defined in
+  Theorem~\ref{thm:hessian-eigenanalysis}.
+\end{cor}
+
+This analysis can potentially lead to development of new methods. For
+example, because the eigenvalues of the Hessian is known, we can add a
+regularization term with a weight that guarantees that the problem is
+convex all the time. Although we have not developed such a method in
+the course of this work, it definitely appears on our ``todo'' list.
+
+\section{Concluding remarks (disappointing)}
+\label{sec:concl-remarks-disapp}
+After developing the machinery for efficient optimization methods, we
+tested this apparatus on the classical phase retrieval problem for a
+real non-negative two-dimensional signal with known off-support
+locations ($\mathcal O$)
+\begin{equation}
+  \label{eq:85}
+  \begin{split}
+    \min_{x} & \quad \||Fx|-r\|^{2} \,, \\
+    \mathrm{subject\ to} &\quad x \geq 0 \,, \\
+    &\quad x_{o\in\mathcal O} = 0 \,. 
+  \end{split}
+\end{equation}
+Unfortunately, the classical Newton-type methods failed so solve this
+problem. This failure was not surprising because the phase retrieval
+problem is known to be ``tough'' for continuous optimization
+techniques. Let us cite a concluding excerpt from a
+study~\cite{nieto-vesperinas86study}:
+
+``\textit{The efficiency of an important class of Newton methods
+(the Levenberg-Marquardt algorithm) for solving
+overdetermined sets of nonlinear equations is tested in
+finding the solution to the two-dimensional phase problem.
+It is seen that the nonlinearity and number of local
+minima of the cost function increases dramatically with
+the size of the object array, making these methods of little
+practical use for sizes greater than $6\times 6$\ldots}''
+
+Obviously, straightforward application of existing methods will not
+work. We hope that the eigenanalysis we performed in this chapter will
+eventually lead to a development of new efficient methods. Unfortunately, we
+did not do that in the framework of this research. 
+
+\section{Concluding remarks (encouraging)}
+\label{sec:concl-remarks-enco}
+The failure of continuous optimization techniques when applied to the
+multi-dimensional phase retrieval problem is well known and, so to
+say, ``widely accepted'' amongst researchers. However, the exact
+reason for this is not fully understood. In
+Chapter~\ref{cha:appr-four-phase-explanation} we provide an
+explanation for this failure. Moreover, in the following chapters we
+demonstrate that additional information can change things
+dramatically. For example, if a rough Fourier phase estimate is
+available, we demonstrate (first, empirically in
+Chapter~\ref{cha:appr-four-phase-first}, then theoretically in
+Chapter~\ref{cha:appr-four-phase-explanation}) that continuous
+optimization techniques succeed very well. Furthermore, in
+Chapter~\ref{cha:appr-four-phase-explanation} we provide a rigorous
+mathematical reasoning that explains why \textit{any} reasonable
+method is expected to succeed in the case where the Fourier phase
+uncertainty is below $\pi/2$ radians. In
+Chapter~\ref{cha:bandw-extr-using} we demonstrate that sparsity prior
+lets us solve successfully an even more difficult
+problem---simultaneous phase retrieval and bandwidth extrapolation.
+
+
+%%% Local Variables: 
+%%% TeX-master: "../thesis"
+%%% End: 

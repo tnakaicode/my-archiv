@@ -1,0 +1,810 @@
+\chapter{Phase retrieval combined with digital
+  holography\footnotemark{}}
+\label{cha:phase-retr-holography}
+
+\footnotetext{The material presented in this section is currently in
+  preparation for submission to a journal.}
+
+In this chapter we take our algorithm developed in the previous
+chapters into a new niche: signal reconstruction from two intensity
+measurements made in the Fourier plane. One is the Fourier magnitude
+of the sought image, as in classical phase retrieval, and the second
+is the intensity pattern resulting from the interference of the
+original signal with a known reference beam, as in the Fourier domain
+holography. Although either one of these measurements may, in theory,
+be sufficient for successful reconstruction of the unknown image, our
+method provides significant advantages over such reconstructions. For
+example, comparing with reconstruction from the Fourier magnitude
+alone by HIO, our method gives a much faster speed and better quality
+in case of noisy measurements as we showed earlier. Furthermore,
+unlike classical holography methods, our algorithm does not require
+any special design of the reference beam. Finally and most
+importantly, very good reconstruction quality is obtained even when
+the reference beam contains severe errors.
+
+
+\section{Basic reconstruction algorithm}
+\label{sec:basic-reconstr-algor} Let us start with the notation used
+throughout the chapter. The unknown two-dimensional signal that we wish
+to reconstruct is represented by the complex-valued function
+$z(\xi,\eta)=|z(\xi,\eta)|\exp[j\varphi(\xi,\eta)]$. To address the
+phase of a complex-valued number we use the angle notation, as before:
+$\angle(z(\xi,\eta)) \equiv \varphi(\xi,\eta)$. Our measurements are
+done in the Fourier plane $(\xi',\eta')$, hence the transformation
+that $z$ undergoes when transforming from the $(\xi,\eta)$ plane to
+the $(\xi',\eta')$ plane is simply the unitary Fourier transform
+\begin{equation}
+  \label{eq:phase-holo-1}
+  \hat{z}(\xi',\eta') = \mathcal{F}\{z(\xi,\eta)\}\ .
+\end{equation}
+% Strictly speaking, the actual transformation is a bit more
+% complicated as it includes some constant multipliers and scale
+% factors \shortcite{goodman05introduction}.  However, these are
+% immaterial for our discussion. 
+Hereinafter, we use  the
+usual convention that a pair of symbols like $x$ and $\hat{x}$ denotes a
+signal in the $(\xi,\eta)$ plane (also known as the object domain) and
+its counterpart in the $(\xi',\eta')$ plane (also referred to as the
+Fourier domain), respectively. For the sake of brevity, we may
+omit the location designator $(\xi,\eta)$  or $(\xi',\eta')$ and use $x$
+or $\hat{x}$ when the entire signal is considered.
+
+The main purpose of our work is to develop a robust reconstruction
+method that can tolerate severe errors in the reference beam. To
+this end we use the reference beam only for \textit{estimating}
+the Fourier phase of the sought image. Once a rough phase estimate
+is available we can use the method of phase retrieval with
+approximately known Fourier phase that was developed in
+the previous chapters.
+
+The two measurements available at our disposal are used as follows.
+$I_{1}$ provides the Fourier magnitude of the sought image via the
+simple relationship between the two:
+\begin{equation}
+  \label{eq:phase-holo-2}
+  I_{1}(\xi',\eta') = |\hat{z}(\xi',\eta')|^{2}\ .
+\end{equation}
+The second measurement reads
+\begin{equation}
+  \label{eq:phase-holo-3}
+  I_{2}(\xi',\eta') =|\hat{z}(\xi',\eta') + \hat{R}(\xi',\eta')|^{2}\ ,
+\end{equation}
+where $\hat{R}(\xi, \eta)$ denotes a known reference beam that is
+used to obtain the Fourier phase estimate as described below. One
+possible schematic setup that provides these measurements is shown
+in the next figure.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth{}]{fourierHolography}
+  \caption{Schematic representation of the experiment.}
+  \label{fig:experiment-schematic}
+\end{figure}
+Note that $\hat{R}$ is not
+necessarily a Fourier transform of some physical signal $R$ in the
+object domain. This means that $\hat{R}$ can be formed directly in
+the Fourier plane without forming first $R$ and applying then an
+optical Fourier transform to obtain $\hat{R}$.  Nevertheless,
+there exists the mathematical inverse
+\begin{equation}
+  \label{eq:phase-holo-4}
+  R(\xi,\eta) = \mathcal{F}^{-1}\{\hat{R}(\xi',\eta')\}\ ,
+\end{equation}
+whose properties, such as extent, magnitude, etc. can be
+considered. The only requirement of $\hat{R}$ is that it must not
+vanish in the region of our measurements. This is an important
+point that provides an advantage for our method over the classical
+holography techniques. We shall elaborate more on this in
+Section~\ref{sec:relation-holography}.
+
+Let us now describe  how $\hat{z}$'s phase information is extracted
+from $I_{2}$, and, more importantly, how it is used in our
+reconstruction method. Consider the two signals:
+\begin{equation}
+  \label{eq:phase-holo-5}
+  \hat{z}(\xi',\eta') = |\hat{z}(\xi',\eta')|\exp[j\phi(\xi',\eta')]\ ,
+\end{equation}
+and
+\begin{equation}
+  \label{eq:phase-holo-6}
+  \hat{R}(\xi',\eta') = |\hat{R}(\xi',\eta')|\exp[j\psi(\xi',\eta')]\ .
+\end{equation}
+The intensity pattern of their interference can be written as:
+\begin{equation}
+  \label{eq:phase-holo-7}
+\begin{split}
+  I_{2}(\xi',\eta')
+  = &|\hat{z}(\xi',\eta') + \hat{R}(\xi',\eta')|^{2}\\
+  = &|\hat{z}(\xi',\eta')|^{2} + |\hat{R}(\xi',\eta')|^{2}
+  + \hat{z}^{*}(\xi',\eta')\hat{R}(\xi',\eta')
+  + \hat{z}(\xi',\eta')\hat{R}^{*}(\xi',\eta')\\
+  = & |\hat{z}(\xi',\eta')|^{2} + |\hat{R}(\xi',\eta')|^{2}
+  +
+  2|\hat{z}(\xi',\eta')|\,|\hat{R}(\xi',\eta')|\cos[\phi(\xi',\eta')-\psi(\xi',\eta')] 
+  \ .
+\end{split}
+\end{equation}
+From this formula we can easily extract the difference between the
+unknown phase $\phi(\xi',\eta')$ and the known phase
+$\psi(\xi',\eta')$:
+\begin{equation}
+  \label{eq:phase-holo-8}
+  \cos[\phi(\xi',\eta')-\psi(\xi',\eta')] =
+  \frac
+  {I_{2}(\xi',\eta') -|\hat{z}(\xi',\eta')|^{2} - |\hat{R}(\xi',\eta')|^{2}}
+  {2|\hat{z}(\xi',\eta')|\,|\hat{R}(\xi',\eta')|} \ .
+\end{equation}
+This gives us:
+\begin{equation}
+  \label{eq:phase-holo-9}
+  \phi(\xi',\eta') = \psi(\xi',\eta') \pm \alpha(\xi',\eta')\ ,
+\end{equation}
+where
+\begin{equation}
+  \label{eq:phase-holo-10}
+  \alpha(\xi',\eta') = \arccos
+  \left[
+    \frac
+    {I_{2}(\xi',\eta') -|\hat{z}(\xi',\eta')|^{2} - |\hat{R}(\xi',\eta')|^{2}}
+    {2|\hat{z}(\xi',\eta')|\,|\hat{R}(\xi',\eta')|}
+  \right]\ .
+\end{equation}
+This expression is well defined, as $|\hat{R}(\xi',\eta')|$ is
+assumed to be non-zero everywhere in the region of interest, and
+the places where $|\hat{z}(\xi',\eta')|=0$ can be simply excluded
+from our consideration as there is nothing to be recovered because
+their phase has no influence. We assume that $\pm\alpha$, that is,
+the difference between the phases $\phi$ and $\psi$, lies within
+the interval $[-\pi,\pi]$, hence, no phase unwrapping is
+necessary. The phase $\phi(\xi',\eta')$ can assume either one
+(rarely) or two possible values at every location. The two
+possible situations are shown in
+Figure~\ref{fig:holography-possible-situations}.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:projection-fourier}
+    \includegraphics[width=0.45\textwidth]{holography2solutions}
+  }
+  \qquad{}
+  \subfloat[]{
+    \label{fig:convexrelaxation}
+    \includegraphics[width=0.45\textwidth]{holography1solution}
+  }
+  \caption[Possible scenarios in Fourier domain holography]{Given a reference beam (black) whose magnitude and phase
+    are known, and an unknown signal of known magnitude (dotted
+    circle radius), one can try to find the phase of the unknown
+    signal by measuring the magnitude of the sum (solid circle
+    radius). Evidently, in most cases there are two possible
+    solutions (a). However, in certain cases, the is only one
+    solution (b).}
+  \label{fig:holography-possible-situations}
+\end{figure}
+
+
+Hence, if the
+intensity $I_{2}(\xi',\eta')$ is sampled at $N$ points there are
+generally $2^{N}$ possible solutions $\hat{z}(\xi',\eta')$ and,
+consequently, the same number of possible reconstructions
+$z(\xi,\eta)$. (Here we consider the worst case scenario where all
+sampled values give rise to two solutions.) To guarantee a unique
+and meaningful reconstruction we must use additional information
+about the sought signal $z(\xi,\eta)$. In the phase retrieval problem,
+as well as in holography, 
+it is usually assumed that $z(\xi,\eta)$ has limited support, namely,
+part of the image is occupied by zeros.  In practice, it is
+usually assumed that, in each direction, half or more pixels of
+$z(\xi,\eta)$ are zeros. To capture this information in the Fourier
+domain one should ``over-sample'' by a factor of two (or more) in
+each dimension. Hence, if the known (not necessarily tight)
+support area of $z$ is $n\times n$ pixels, then in the Fourier
+plane it must be sampled with a sensor of size $2n\times 2n$
+pixels. Such ``over-sampling'' usually guarantees unique (up to
+trivial transformations: shifts, constant phase factor, and axis
+reversal) reconstruction in the case of the classical phase
+retrieval problem, where only $|\hat{z}|$ is available
+\shortcite{hayes82reconstruction}. It is not known whether this
+two-fold oversampling is absolutely necessary in our case where
+two measurements are available. However, our experiments indicate
+that for a general complex-valued signal it still seems to be
+necessary to over-sample by a factor of two. Hence, the
+reconstruction problem reads: find $z(\xi,\eta)$ such that $|\hat{z}|$
+is known, $\angle(\hat{z})=\psi\pm\alpha$, and $z(\xi_{O},\eta_{O}) =
+0$. Here, $\alpha$ is the known phase difference between $\hat{z}$
+and $\hat{R}$ as defined by Equations~(\ref{eq:phase-holo-9})
+and~(\ref{eq:phase-holo-10}); $(x_{O},y_{O})$ denotes the known off-support
+area in the $(\xi,\eta)$ plane.
+
+The problem is combinatorial in nature, and many different methods
+can be applied to find a solution. Our method is based on
+replacing the equality $\angle(\hat{z})=\psi\pm\alpha$ with the
+less strict inequality
+\begin{equation}
+  \label{eq:phase-holo-11}
+  \psi - \alpha \leq \angle(\hat{z}) \leq \psi + \alpha\ .
+\end{equation}
+By this relaxation we reduce the original problem into the phase
+retrieval problem with approximately known phase.  For this
+situation we have developed an efficient Quasi-Newton optimization
+method based on convex relaxation. Note that the problem we are facing
+here:
+\begin{equation}
+  \label{eq:phase-holo-12}
+  \begin{split}
+    \min_{x} &\quad \||\mathcal{F}\{x\}| -  |\hat{z}|\|^{2}\\
+    \mathrm{subject\ to} &\quad \psi - \alpha \leq \angle(\mathcal{F}\{x\}) \leq
+    \psi+\alpha \, , \\
+    &\quad x(x_{O}, y_{O}) = 0 \, ,
+  \end{split}
+\end{equation}
+is exactly the same as the one we solved in
+Chapters~\ref{cha:appr-four-phase-first},
+and~\ref{cha:appr-four-phase-explanation}. Hence, we use the same
+convex relaxation as we did before. Likewise, the solution of the
+above minimization problem $x$ is not guaranteed to be equal to the
+sought signal $z$. Due to the relaxation we performed, the phase of $\hat{x}$ is
+allowed to assume the continuum of values in the interval
+$[\psi-\alpha, \psi+\alpha]$ instead of the two discrete values
+$\psi\pm\alpha$.  However, due to the uniqueness of the phase
+retrieval problem, the phase of $x$ may differ from the phase of $z$
+only by a constant.  That is, $x(\xi,\eta)=z(\xi,\eta)\exp[jc]$ for
+some scalar $c$ (see~\shortcite{hayes82reconstruction} for details). This
+does not pose any problems, as only the relative phase distribution inside
+the support area of $z(\xi,\eta)$ is usually of interest. Moreover, in
+the case where the absolute phase is required, $c$ can be recovered by
+adding a post-processing step that solves the one-dimensional
+optimization problem:
+\begin{equation}
+  \label{eq:phase-holo-13}
+  \displaystyle\min_{c} \||\hat{x}\exp[jc] + \hat{R}| -
+  I_{2}^{1/2}\|^{2}\ .
+\end{equation}
+Note that we intentionally do not add a penalty term like
+$\||\hat{x} + \hat{R}| - I_{2}^{1/2}\|^{2}$ into the main
+minimization scheme as defined by Equation~(\ref{eq:phase-holo-12}).  Adding
+such a term would introduce a strong connection between $x$ and
+the reference beam $\hat{R}$. This connection will inevitably
+deteriorate the quality of reconstruction when the reference beam
+$\hat{R}$ contains errors.
+
+There is, however, an important dissimilarity between the current
+situation and the one we considered in the previous chapter: the phase
+uncertainty interval can be as large as $\pi$ radians. Nevertheless,
+our experiments indicate that the reconstruction is stable and its
+speed is very fast (see Figure~\ref{fig:phase-holo-we-reconstruction-speed}).
+Moreover, it can be further accelerated, and our experiments indicate
+that more aggressive oversampling (zero padding in the object domain)
+results in faster convergence in terms of the number of iterations. In
+fact, use of a special reference beam can, in theory, result in a
+trivial non-iterative reconstruction in a way similar to
+holography. However, such special reference beams may not be easily
+realizable in physical systems and the quality of the reconstructed
+signal is strongly influenced by the quality of the reference beam. We
+discuss this setup in the next section and compare its sensitivity to
+possible errors in $\hat{R}$ against our method in
+Section~\ref{sec:phase-holo-results}.
+
+\section{Relation to holography}
+\label{sec:relation-holography}
+
+Our method was initially developed for the phase retrieval
+problem. However, the use of interference patterns creates a
+strong connection with holography. Therefore, it may be pertinent
+to discuss the advantages that our method provides over the classical
+holographic reconstruction. Note that our discussion is limited to
+basic holography only, and no attempt is made to cover all possible
+setups and techniques that can be used in digital holography. We
+nonetheless believe that this novel approach can compete with or
+improve upon existing algorithms used in digital holography.
+
+In classical holography one uses a specially designed reference
+beam so as to allow easy non-iterative recovery of the sought
+image. This has an obvious advantage over iterative methods,
+especially when the speed of the reconstruction is of high
+importance. However, reliance on the reference beam means that
+reconstruction quality may deteriorate badly when the reference
+beam contains errors, that is, when it differs from the ``known''
+values. To review the non-iterative reconstruction method used in
+holography, recall that the recorded intensity $I_{2}$ is the
+result of superimposition of $\hat{z}$ and $\hat{R}$ as defined by
+Equation~(\ref{eq:phase-holo-7}). In optical Fourier holography, this
+intensity is recorded on optical material. The recorded image is
+used then as an amplitude modulator for an illuminating beam
+$\hat{A}(\xi',\eta')$, which then undergoes a Fourier transform to
+form a new signal $B(x',y')$. In a digital computer we may use the
+same technique. Moreover, we are free to use either the forward or
+the inverse Fourier transform, as it makes no practical difference
+(the resulting images will be reversed conjugate copies of each
+other). Here we use the inverse Fourier transform:
+\begin{equation}
+  \label{eq:phase-holo-14}
+  \begin{aligned}
+    B(\xi,\eta)
+    =&\,  \mathcal{F}^{-1}\{\hat{A}(\xi',\eta')\,I_{2}(\xi',\eta')\}\\
+    =&\,   \mathcal{F}^{-1}
+    \left\{
+      \hat{A}
+      \left[
+        |\hat{z}|^{2} + |\hat{R}|^{2}
+        + \hat{z}^{*}\hat{R} + \hat{z}\hat{R}^{*}
+      \right]
+    \right\}\\
+    = &\,  
+    A(\xi,\eta) \otimes z(\xi,\eta) \otimes z^{*}(-x,-y) +
+    A(\xi,\eta) \otimes R(\xi,\eta) \otimes R^{*}(-x,-y) +\\
+    &\,
+    A(\xi,\eta) \otimes z^{*}(-x,-y) \otimes R(\xi,\eta) +
+    A(\xi,\eta) \otimes z(\xi,\eta) \otimes R^{*}(-x,-y) \, ,
+  \end{aligned}
+\end{equation}
+where $\otimes$ denotes convolution. Note that in this case the
+fourth and the third terms are equal to the sought wavefront
+$z(\xi,\eta)$ and its Hermitian counterpart $z^{*}(-x,-y)$ convolved
+with $A(\xi,\eta)\otimes R(\xi,\eta)$ and $A(\xi,\eta)\otimes R^{*}(-x,-y)$,
+respectively.  The best possible choice is $A(\xi,\eta) = \delta(\xi,\eta)$
+and $R(\xi,\eta)= \delta(\xi-\xi_{0},\eta-\eta_{0})$, where $\delta(\xi,\eta)$ is the
+Dirac delta function.  In this case the obtained wave becomes:
+\begin{equation}
+  \label{eq:phase-holo-15}
+  B(\xi,\eta) =
+  z(\xi,\eta) \otimes z^{*}(-\xi,-\eta) + \delta(\xi,\eta) +
+  z^{*}(-\xi+\xi_{0}, -\eta+\eta_{0}) + z(\xi-\xi_{0}, \eta-\eta_{0})\ .
+\end{equation}
+Hence, if $\xi_{0}$ and/or $\eta_{0}$ are large enough, the four terms
+in the above sum will not overlap in the $(\xi,\eta)$ plane. Thus, we
+can easily obtain the sought signal $z(\xi,\eta)$, albeit shifted by
+$(\xi_{0}, \eta_{0})$, provided that the spatial extent of $z(\xi,\eta)$ is
+limited by the box $\xi\in[-L_{\xi}, L_{\xi}]$, $\eta\in[-L_{\eta},L_{\eta}]$.
+The spatial extent of the autocorrelation $z(\xi,\eta) \otimes
+z^{*}(-\xi,-\eta)$ is twice as large, that is, limited by the box
+$\xi\in[-2L_{\xi}, 2L_{\xi}]$, $\eta\in[-2L_{\eta},2L_{\eta}]$. Hence, to avoid
+overlapping we must have $\xi_{0} > 3L_{\xi}$, or $\eta_{0}>3L_{\eta}$.
+Thus, in theory, one can generate an ideal delta function in the
+$(\xi,\eta)$ plane located at a sufficient distance from the support area
+of $z(\xi,\eta)$. In the Fourier domain, this delta function
+corresponds to a plane wave arriving at a certain angle at the
+plane of measurements. If such a construction is possible, then a
+simple inverse transform of the intensity obtained in the Fourier
+plane is sufficient to obtain the sought signal $z(\xi,\eta)$. However,
+as mentioned earlier, this approach has some drawbacks. First, it
+is impossible to create an ideal delta function. Any physical
+realization will necessarily have a finite spatial extent, and
+this will result in a ``blurred'' reconstructed image. Note that
+the term ``blurring'' describes well the resulting image in the
+case where $z(\xi,\eta)$ is real-valued or has constant phase. In the
+more general case, where the phase of $z(\xi,\eta)$ varies at
+non-negligible speed, the result appears more distorted (see
+Figure~\ref{fig:holography-reconstruction-intensity}).
+The second
+drawback is the sensitivity of this method to errors in $\hat{R}$.
+In Section~\ref{sec:phase-holo-results} we demonstrate how the quality of
+reconstruction depends on the error in $\hat{R}$ (see
+Figures~\ref{fig:objectdomain-error}, 
+\ref{fig:objectdomain-error-corrected}, and
+\ref{fig:visual-results-phase-error}). Our method, on the other
+hand shows very little sensitivity to the reference beam shape.
+Moreover, its modification described in the next section allows
+the reference beam to contain severe errors without deteriorating
+significantly the quality of reconstruction.
+
+\section{Reconstruction method for imprecise reference beam}
+\label{sec:reconstr-meth-impr} Here we consider the situation
+where the reference beam is not known precisely, that is, we
+assume that the phase of $\hat{R}$ contains some unknown error. It
+is easy to verify that if the reference beam phase
+$\psi(\xi',\eta')$ has error $\epsilon(\xi',\eta')$ then the sought
+phase $\phi(\xi',\eta')$ becomes
+\begin{equation}
+  \label{eq:phase-holo-15}
+  \phi(\xi',\eta') = \psi(\xi',\eta') + \epsilon(\xi',\eta') \pm
+  \alpha(\xi',\eta')\ ,
+\end{equation}
+in a manner similar to Equation~(\ref{eq:phase-holo-9}). We do not consider
+errors in the magnitude $|\hat{R}|$ for several reasons. Many
+aberrations manifest themselves through phase
+distortion~\shortcite{goodman05introduction}. Also, the magnitude of
+$\hat{R}$ can
+be measured. Moreover, looking at the above equation, it is
+obvious that any error in $\psi$ can be viewed as an error in
+$\alpha$. That is, the situation would be the same if the reference
+beam phase $\psi$ were known precisely, while the difference
+$\alpha$ would contain some errors. This observation is relevant
+because errors in the phase $\alpha$ can arise from many different
+sources, including imperfect measurements and errors in the
+reference beam magnitude.
+
+The true error $\epsilon(\xi',\eta')$ is, of course, unknown. Hence,
+we assume just an upper bound (assumed known) on the absolute
+phase error:
+\begin{equation}
+  \label{eq:phase-holo-17}
+  \psi-\epsilon-\alpha
+  \leq\angle(\hat{z})\leq\psi+\epsilon+\alpha\ ,
+\end{equation}
+as in Equation~(\ref{eq:phase-holo-11}). This time, however, the phase
+uncertainty interval may be larger than $\pi$ radians which makes our
+method inapplicable. On the other hand, limiting the phase uncertainty
+interval by $\pi$ radians will prevent us from reconstructing the
+precise image, because the true phase may lie outside this interval. A
+possible solution is to measure the intensity of the reference beam
+and then to reconstruct its phase using the method presented in
+Chapter~\ref{cha:appr-four-phase-explanation}, because this problem
+itself can be seen as a phase retrieval with approximately known
+phase. However, taking another measurement may be undesirable, and
+therefore we developed the following reconstruction method:
+\begin{description}
+\item[Step 1:] Set the phase uncertainty interval as defined by
+  Equation~(\ref{eq:phase-holo-11}) (as if there were no errors in the reference
+  beam phase).
+
+\item[Step 2:] Solve the resulting minimization problem, obtaining a
+solution $x(\xi,\eta)$).
+
+\item[Step 3:] If not converged, set the phase uncertainty interval to
+  $[\angle(\hat{x}) - \pi/2, \angle(\hat{x}) + \pi/2]$. Clip it, if
+  applicable, to the limits defined by Equation~(\ref{eq:phase-holo-17}) and go to
+  Step 2.
+\end{description}
+
+In this algorithm we perform a number of outer iterations, each
+time updating the phase uncertainty interval. This approach leads
+to a successful reconstruction method even in cases where the
+reference beam contains severe errors. The results are much better
+than those of non-iterative holographic reconstruction (see
+Figures~\ref{fig:objectdomain-error},
+and~\ref{fig:objectdomain-error-corrected}).  This improvement is
+achieved by decoupling the reconstruction problem (which becomes
+the pure phase retrieval with approximately known phase) and the
+erroneous interferometric measurements.
+
+\section{Experimental results}
+\label{sec:phase-holo-results} 
+The method was tested on a variety of images with similar
+results. Here we present numerical experiments conducted on one
+natural image so as to allow easy perception of the reconstruction
+quality under various conditions. The image intensity (squared
+magnitude) is shown in Figure~\ref{fig:experimenal-image}.
+\begin{figure}[H]
+  \centering
+  \includegraphics{lena_128}
+  \caption[Test image]{Original image (intensity).}
+  \label{fig:experimenal-image}
+\end{figure}
+
+
+The technical
+details of the image are as follows: the size is $128\times 128$
+pixels, and pixel values (amplitude) vary from $0.2915$ to $0.9634$ on
+a scale of $0$ to $1$.
+with mean value of $0.6835$. These parameters will become important
+later, when we will consider the reference beam design, and when we will
+assess the reconstruction quality. Since the original image is a
+photograph, it does not have any phase information. Hence, we
+generated three different phase distributions to account for the
+assortment of possible real-world problems where our method can be
+applied. The first distribution assumes that the image is non-negative
+real-valued, that is, the phase is zero everywhere. The second
+distribution is designed to mimic a relatively smooth phase. To this
+end, the phase is set to be proportional to the image values (scaled
+to the interval $[-\pi,\pi]$). Finally, in the third distribution the
+phase is chosen at random, uniformly spread over the interval
+$[-\pi,\pi]$. This distribution is designed to show the behavior of
+our reconstruction method in cases where the true phase varies
+rapidly. We also consider three possible reference beams, again, to
+demonstrate the robustness of our method. The first reference beam is
+an ideal delta-function in the $(\xi,\eta)$ plane, located at the
+coordinate $(256, 256)$ so that the holographic condition is
+satisfied. With this reference beam exact reconstruction is obtained
+as long as the sampling in the Fourier domain is sufficiently dense
+($512\times512$ pixels, or more). We do not present the visual results
+of reconstruction for this reference beam as both methods produce
+images that are indistinguishable from the true image.  The speed of
+convergence of our method is shown in
+Figure~\ref{fig:phase-holo-we-reconstruction-speed}.  Later, we show also how the
+reconstruction quality of both methods is affected by Fourier phase
+errors in the reference beam. Before this, we demonstrate the effect
+of departure from the ideal delta function: the second reference beam
+is a small square of size $3\times3$ pixels, located at the
+coordinates $(256:258,256:258)$.  In this setup the reconstruction
+quality of the holographic method is degraded, as evident from
+Figure~\ref{fig:holography-reconstruction-intensity}.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:holography-real-square}
+    \includegraphics{holog/lena_real_2011-08-01-18-16-26-hol-square-0}
+  }
+  \quad{}
+  \subfloat[]{
+    \label{fig:holography-complexSmooth-square}
+    \includegraphics{holog/lena_cmplxSmooth_2011-08-01-22-18-58-hol-square-0}
+  }
+  \quad{}
+  \subfloat[]{
+    \label{fig:holography-complexRandom-square}
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-hol-square-0}
+  }
+  \caption[Image reconstructed by the holographic
+    technique using a small square as the reference beam]{Image (intensity) reconstructed by the holographic
+    technique using a small square as the reference beam: (a) the
+    image is real-valued, (b) image phase varies slowly, (c)
+    image phase is random (varies rapidly).}
+  \label{fig:holography-reconstruction-intensity}
+\end{figure}
+
+
+It is also evident
+that faster variations in the object phase result in greater
+deterioration in the reconstruction, in agreement with our
+expectations. Our method, on the other hand, is insensitive to the
+reference beam form. In Figure~\ref{fig:we-reconstruction-intensity} we
+demonstrate our reconstruction results for the aforementioned small
+square as the reference beam (the first row), and for another
+reference beam that was formed in the Fourier plane by combining unit
+magnitude with random phase (in the interval $[-\pi, \pi]$). This
+beam, of course, is not suitable for holography, as its extent in the
+object plane occupies the whole space.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:we-real-square}
+    \includegraphics{holog/lena_real_2011-08-01-18-16-26-we-square-0}
+  }
+  \quad{}
+  \subfloat[]{
+    \label{fig:we-complexSmooth-square}
+    \includegraphics{holog/lena_cmplxSmooth_2011-08-01-22-18-58-we-square-0}
+  }
+  \quad{}
+  \subfloat[]{
+    \label{fig:we-complexRandom-square}
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-we-square-0}
+  }\\
+   \subfloat[]{
+    \label{fig:we-real-random}
+    \includegraphics{holog/lena_real_2011-08-01-18-16-26-we-random-0}
+  }
+  \quad{}
+  \subfloat[]{
+    \label{fig:we-complexSmooth-random}
+    \includegraphics{holog/lena_cmplxSmooth_2011-08-01-22-18-58-we-random-0}
+  }
+  \quad{}
+  \subfloat[]{
+    \label{fig:we-complexRandom-random}
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-we-random-0}
+  }
+  \caption[Image reconstructed by our method]{Image reconstructed (intensity) by our method:
+    (a), (b), and (c) --- reference beam is a small square and object
+    phase is zero (a), smooth (b), random (c).
+    (d), (e), and (f) --- reference beam is random and object phase
+    is zero (d), smooth (e), random (f).}
+  \label{fig:we-reconstruction-intensity}
+\end{figure}
+
+
+Reconstruction is very fast
+and, in fact, is almost independent of the sought image and reference
+beam type. Figure~\ref{fig:phase-holo-we-reconstruction-speed} demonstrates that
+less than 20 iterations are required to solve the minimization problem
+as defined by Equation~(\ref{eq:phase-holo-12}).
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:we-speed-real}
+    \includegraphics[height=0.25\textheight]{holog/lena_real_2011-08-01-18-16-26-speed}
+  }
+  \subfloat[]{
+    \label{fig:we-speed-complexSmooth}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxSmooth_2011-08-01-22-18-58-speed}
+  }
+  \qquad{}
+  \subfloat[]{
+    \label{fig:we-speed-complexRandom}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxRand_2011-08-02-06-37-24-speed}
+  }
+  \caption[Reconstruction speed of our method]{Reconstruction speed of our method: (a) real valued image,
+    (b) image phase is smooth, (c) image phase is random.}
+  \label{fig:phase-holo-we-reconstruction-speed}
+\end{figure}
+
+
+
+
+In all these examples we assume perfect knowledge of the reference
+beam. Next we consider the situation where the actual reference
+beam does not match the expected signal in the Fourier plane.
+Following our discussion in Section~\ref{sec:reconstr-meth-impr},
+we evaluate how the reconstruction quality of the holographic
+approach and our method are affected by errors in the reference
+beam Fourier phase. We use again the three aforementioned models
+of the sought image (real-valued, smooth phase, and random phase)
+and the three reference beams (delta function, small square, and
+random). From Figure~\ref{fig:we-successrate} it is evident that in
+all these cases we were able to solve the minimization problem to
+sufficient accuracy as long as the phase error was below 25\%.
+That is, our method can tolerate reference
+beam Fourier phase errors of up to $\pi/2$ radians. The sharp
+discontinuity that happens at this value has a
+simple explanation: phase error greater than $\pi/2$ radians can
+result in the phase uncertainty interval greater than $2\pi$ radians
+(see Equation~(\ref{eq:phase-holo-17})).  Hence, all phase information is
+lost.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:we-success-real}
+    \includegraphics[height=0.25\textheight]{holog/lena_real_2011-08-01-18-16-26-success}
+  }
+  \subfloat[]{
+    \label{fig:we-success-complexSmooth}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxSmooth_2011-08-01-22-18-58-success}
+  }
+  \qquad{}
+  \subfloat[]{
+    \label{fig:we-success-complexRandom}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxRand_2011-08-02-06-37-24-success}
+  }
+  \caption[Fourier domain error vs. phase
+    error in the reference beam]{Fourier domain ($\||\hat{x}| - |\hat{z}|\|^{2}$) error vs. phase
+    error in the reference beam: (a) real valued image,
+    (b) image phase is smooth, (c) image phase is random. }
+  \label{fig:we-successrate}
+\end{figure}
+
+A comparison
+with the holographic reconstruction is given in
+Figure~\ref{fig:objectdomain-error} where the error norm in the
+object domain is depicted. Note that the objective function values
+are about $10^{-10}$, hence, one would expect the object domain
+error norm to be of order $10^{-5}$ (the difference stems from the
+fact that the objective function uses \textit{squared} norm). This
+is not so in the case of complex-valued images and the random
+reference beam. This effect is due to the relaxation we perform in
+the Fourier phase, as discussed in
+Section~\ref{sec:basic-reconstr-algor}. It does not change the
+relative phase distribution, but all phases can get a constant
+addition. This can be corrected by solving the one dimensional
+minimization defined by Equation~\eqref{eq:phase-holo-13}.
+Figure~\ref{fig:objectdomain-error-corrected} depicts the corrected
+values yielded by this process. Visual results comparing the
+holographic reconstruction with our method are provided in
+Figure~\ref{fig:visual-results-phase-error}. 
+
+
+
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:we-quality-real}
+    \includegraphics[height=0.25\textheight]{holog/lena_real_2011-08-01-18-16-26-quality}
+  }
+  \subfloat[]{
+    \label{fig:we-quality-complexSmooth}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxSmooth_2011-08-01-22-18-58-quality}
+  }
+  \qquad{}
+  \subfloat[]{
+    \label{fig:we-quality-complexRandom}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxRand_2011-08-02-06-37-24-quality}
+  }
+  \caption[Object domain error vs. phase error in the
+    reference beam]{Object domain error ($\|x-z\|$) vs. phase error in the
+    reference beam: (a) real valued image,
+    (b) image phase is smooth, (c) image phase is random.}
+  \label{fig:objectdomain-error}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \label{fig:we-qualitycorrected-real}
+    \includegraphics[height=0.25\textheight]{holog/lena_real_2011-08-01-18-16-26-qualitycorrected}
+  }
+  \subfloat[]{
+    \label{fig:we-qualitycorrected-complexSmooth}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxSmooth_2011-08-01-22-18-58-qualitycorrected}
+  }
+  \qquad{}
+  \subfloat[]{
+    \label{fig:we-qualitycorrected-complexRandom}
+    \includegraphics[height=0.25\textheight]{holog/lena_cmplxRand_2011-08-02-06-37-24-qualitycorrected}
+  }
+  \caption[Corrected object domain error  vs. phase error in the
+    reference beam]{Corrected object domain error ($\|x-z\|$) vs. phase error in the
+    reference beam: (a) real valued image,
+    (b) image phase is smooth, (c) image phase is random.}
+  \label{fig:objectdomain-error-corrected}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-hol-delta-0.01}
+  }
+  \quad{}
+  \subfloat[]{
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-hol-delta-0.1}
+  }
+  \quad{}
+  \subfloat[]{
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-hol-delta-0.2}
+  }\\
+   \subfloat[]{
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-we-delta-0.01}
+  }
+  \quad{}
+  \subfloat[]{
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-we-delta-0.1}
+  }
+  \quad{}
+  \subfloat[]{
+    \includegraphics{holog/lena_cmplxRand_2011-08-02-06-37-24-we-delta-0.2}
+  }
+  \caption[Image reconstructed by the holographic method
+    and our method]{Image (intensity) reconstructed by the holographic method
+    (upper row) and our method (lower row). Object phase is random,
+    and the reference beam is a delta function with Fourier phase
+    errors: 
+    (a), (b), and (c) --- phase error is 1\%, 10\%, and 20\% respectively
+    (d), (e), and (f) --- phase error is 1\%, 10\%, and 20\% respectively.}
+  \label{fig:visual-results-phase-error}
+\end{figure}
+
+
+
+As the results show, our method demonstrates a substantial
+advantage over ordinary holographic reconstruction. It is
+remarkable that even when the minimization is not particularly
+successful (in cases of very large phase errors) our
+reconstruction is still closer to the true signal than the
+holographic method. This success is due to our approach of
+decoupling the phase retrieval from the interferometric
+measurements. As mentioned earlier, we deliberately avoid strong
+dependence on the reference beam. The interference pattern is only
+used to \textit{estimate} the Fourier phase bounds. The results
+indicate that this approach is well justified.
+
+
+\section{Concluding remarks}
+\label{sec:phase-holo-conclusions}
+In this chapter we presented a new reconstruction method from two
+intensities measured in the Fourier plane. One is the magnitude of the
+sought signal's Fourier transform, and the other is the intensity
+resulting from the superimposition of the original image and an
+approximately known reference beam. While the method was originally
+developed for the phase retrieval problem, it can be useful in digital
+holography, because it poses less stringent requirements on the
+reference beam. The method is designed specifically to allow severe
+errors in the reference beam without compromising the quality of
+reconstruction. Numerical simulations justify our approach, exhibiting
+reconstruction that is superior to that of holographic techniques.
+
+It is also important to note that this method can, potentially,  be used in the
+classical phase retrieval problem without knowing the Fourier phase
+withing the error of $\pi/2$ radians as was done in
+Chapters~\ref{cha:appr-four-phase-first},
+and~\ref{cha:appr-four-phase-explanation} as it uses some sort of
+bootstrapping  technique that allows much rougher phase estimation.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 
+
+

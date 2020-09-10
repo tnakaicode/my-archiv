@@ -1,0 +1,1401 @@
+\chapter{Bandwidth extrapolation using sparsity
+  constraints\footnotemark\footnotemark}
+\label{cha:bandw-extr-using}
+
+\footnotetext[1]{The work presented in this chapter was done in
+  collaboration with Prof. Segev's group form the Technion Physics
+  Department, Solid State Institute.}
+\footnotetext[2]{The material presented in this chapter was submitted
+  to the Nature Materials journal. Part of it was presented at the
+  \textit{Frontiers in Optics 2011} conference. Also, part of it was
+  submitted to the \textit{CLEO 2012} conference.}
+
+In this chapter we present our work on the bandwidth extrapolation
+(super-resolution) problem with application to Coherent Diffracting
+Imaging (CDI). CDI is an algorithmic imaging technique where intricate
+features are reconstructed from measurements of the freely-diffracting
+intensity pattern 
+\shortcite{sayre52implications,miao99extending,miao01approach,quiney10coherent,chapman10coherent}. An important goal of such lensless-imaging methods
+is to study the structure of molecules (including many proteins) that
+cannot be crystallized
+\shortcite{sandberg07lensless,chapman07femtosecond,neutze00potential}. Clearly,
+high spatial resolution and very fast measurement are key features for
+many applications of CDI. Ideally, one would want to perform CDI at
+the highest possible spatial resolution and in a single-shot
+measurement---such that the techniques could be applied to imaging at
+ultra-fast rates. Undoubtedly, such capabilities would give rise to
+unprecedented possibilities. For example, observing molecules while
+they dissociate or undergo chemical reactions will considerably expand
+the knowledge in physics, chemistry and biology. However, the
+resolution of all current CDI techniques is limited by the diffraction
+limit, and therefore cannot resolve features smaller than one half the
+wavelength of the illuminating light \shortcite{lipson10optical}, which is
+considered a fundamental limit in diffractive imaging
+\shortcite{abbe73betrage}. Moreover, combining CDI with current
+sub-wavelength imaging techniques would not allow for rapid
+single-shot measurements that are able to follow ultra-fast dynamics,
+because such techniques rely on multiple exposures, either through
+mechanical scanning (e.g., Scanning Near-Field Microscope
+\shortcite{lewis84development,betzig91breaking}, scanning a sub-wavelength
+``hot spot''
+\shortcite{di_francia52super-gain,lezec02beaming,huang09super-resolution}),
+or by using ensemble-averaging over multiple experiments with
+fluorescent particles
+\shortcite{yildiz03myosin,hell09diffraction-unlimited}.  Here, we present
+sparsity-based single-shot sub-wavelength resolution in coherent
+diffraction microscopy: algorithmic reconstruction of sub-wavelength
+features from far-field intensity patterns of sparse optical
+objects. We experimentally demonstrate imaging of irregular and
+ordered arrangements of \unit[100]{nm} features with illumination wavelength of
+\unit[532]{nm} (green light), thereby obtaining resolutions several times
+better than the diffraction limit. The sparsity-based sub-wavelength
+imaging concept relies on minimization of the number of degrees of
+freedom, and operates on a single-shot basis
+\shortcite{gazit09super-resolution,szameit10sparsity-based,gazit10super-resolution}.
+Hence, it is suitable for capturing a series of ultrafast
+single-exposure images, and subsequently improving their resolution
+considerably beyond the diffraction limit. This work paves the way for
+ultrafast sub-wavelength CDI, via phase retrieval at the
+sub-wavelength scale. For example, sparsity-based methods could
+considerably improve the CDI resolution with x-ray free electron laser
+\shortcite{chapman11femtosecond}, without hardware
+modification. Conceptually, sparsity-based methods can enhance the
+resolution in all imaging systems, optical and non-optical.
+
+\section{Background information}
+\label{sec:sparse-background}
+Improving the resolution in imaging and microscopy has been a driving
+force in natural sciences for centuries. Fundamentally, the
+propagation of an electromagnetic field in a linear medium can be
+fully described through the propagation of its eigen-modes (a complete
+and orthogonal set of functions which do not exchange power during
+propagation). In homogeneous, linear and isotropic media, the most
+convenient set of eigen-modes are simply plane-waves, each
+characterized by its spatial frequency and associated propagation
+constant (see~\shortcite[Section~3.10]{goodman05introduction}). However,
+it is also known that when light of
+wavelength $\lambda$ propagates in media with refractive index $n$,
+only spatial frequencies below $n/\lambda$ can propagate, whereas all
+frequencies above $n/\lambda$ are rendered evanescent and decay
+exponentially (see~\shortcite[Section~6.6]{goodman05introduction}). Hence, for all propagation distances larger than
+$\lambda$, diffraction in a homogeneous medium acts as a low-pass
+filter. Consequently, optical features of sub-wavelength resolution
+appear highly blurred in a microscope, due to the loss of information
+carried by their high spatial-frequencies. Over the years, numerous
+``hardware'' methods for sub-wavelength imaging have been demonstrated
+\shortcite{lewis84development,betzig91breaking,di_francia52super-gain,lezec02beaming,huang09super-resolution,yildiz03myosin,hell09diffraction-unlimited};
+however, all of them rely on multiple exposures. Apart from hardware
+solutions, several algorithmic approaches for sub-wavelength imaging
+have been suggested (see,
+e.g. \shortcite{harris64diffraction,papoulis75new,gerchberg74super-resolution}). Basically,
+algorithmic sub-wavelength imaging aims to reconstruct the extended
+spatial frequency range (amplitudes and phases) of the information
+(``signal''), from measurements which are fundamentally limited to the
+range $[-n/\lambda, n/\lambda]$ in the plane-wave spectrum. However,
+as summarized by~\citeauthor{goodman05introduction} in his
+book~\citeyear{goodman05introduction}, ``all methods for extrapolating
+bandwidth beyond the diffraction limit are known to be extremely
+sensitive to both noise in the measured data and the accuracy of the
+assumed a priori knowledge'', such that ``it is generally agreed that
+the Rayleigh diffraction limit represents a practical frontier that
+cannot be overcome with a conventional imaging system.''
+
+In spite of this commonly held opinion that algorithmic methods for
+sub-wavelength imaging are impractical \shortcite{goodman05introduction}, a
+recent work proposed a method for reconstructing sub-wavelength
+features from the far-field (and/or blurred images) of sparse optical
+information \shortcite{gazit09super-resolution}. The concept of
+sparsity-based sub-wavelength imaging is related to Compressed Sensing
+(CS), which is a relatively new area in information processing
+\shortcite{candes06robust,candes06near-optimal,donoho06compressed,candes08introduction,duarte11structured}.
+It has been shown that sparsity-based methods work for both coherent
+\shortcite{gazit09super-resolution,szameit10sparsity-based} and incoherent
+\shortcite{shechtman10super-resolution,shechtman11sparsity} light. An
+experimental proof-of-concept was presented in
+\shortcite{gazit09super-resolution}: the recovery of fine features that
+were cut off by a spatial low-pass filter. Subsequently, these
+concepts were taken into the true sub-wavelength domain and
+demonstrated experimentally resolutions several times better than the
+diffraction limit: the recovery of \unit[100]{nm} features illuminated
+by \unit[532]{nm}
+wavelength light \shortcite{szameit10far-field}. These ideas were followed
+by several groups, most notably the recent demonstration of
+sparsity-based super-resolution of biological specimens
+\shortcite{babacan11cell}.
+
+Here, we take the sparsity-based concepts into a new domain, and
+present the first experimental demonstration of sub-wavelength CDI:
+single-shot recovery of sub-wavelength images from far-field intensity
+measurements.  That is, we demonstrate sparsity-based sub-wavelength
+imaging combined with phase-retrieval at the sub-wavelength level. We
+recover the sub-wavelength features without measuring (or assuming)
+any phase information whatsoever; the only measured data at our
+disposal is the intensity of the diffraction pattern (Fourier power
+spectrum) and the support structure of the blurred image. Our
+processing scheme combines bandwidth extrapolation and phase
+retrieval, considerably departing from classical CS. We therefore
+devise a new sparsity-based algorithmic technique which facilitates
+robust sub-wavelength CDI under typical experimental conditions.
+
+\section{Sparsity based super-resolution}
+\label{sec:sparsity-based-super}
+
+In mathematical terms, the bandwidth extrapolation problem underlying
+sub-wavelength imaging corresponds to a non-invertible system of
+equations which has an infinite number of solutions, all producing the
+same (blurred) image carried by the propagating spatial
+frequencies. That is, after measuring the far field, one can add any
+information in the evanescent part of the spectrum while still being
+consistent with the measured image. Of course, only one choice
+corresponds to the correct sub-wavelength information that was cut off
+by the diffraction limit. The crucial task is therefore to extract the
+one correct solution out of the infinite number of possibilities for
+bandwidth extension. This is where sparsity comes into play. Sparsity
+presents us with prior information that can be exploited to resolve
+the ambiguity resulting from our partial measurements, and identify
+the correct bandwidth extrapolation which will yield the correct
+recovery of the sub-wavelength image.
+
+Information is said to be sparse when most of its projections onto a
+complete set of base functions are zero (or negligibly small). For
+example, an optical image is sparse in the near-field when the number
+of non-zero pixels is small compared to the entire field of
+view. However, sparsity need not necessarily be in a near-field basis;
+rather, it can be in any mathematical basis. Many images are indeed
+sparse in an appropriate basis. In fact, this is the logic behind many
+popular image compression techniques, such as JPEG. In the fields of
+signal processing and coding theory, it is known for some time that a
+sparse signal can be precisely reconstructed from a subset of
+measurements in the Fourier domain, even if the sampling is carried
+out entirely in the low-frequency range
+\shortcite{vetterli02sampling}. This basic result was extended to the case
+of random sampling in the Fourier plane and initiated the area of CS
+\shortcite{candes06robust}. An essential result of CS is that, in the
+absence of noise, if the ``signal'' (information to be recovered) is
+sparse in a basis that is sufficiently uncorrelated with the
+measurement basis, then searching for the sparsest solution (that
+conforms to the measurements) yields the correct solution. In the
+presence of noise (that is not too severe), the error is bounded, and
+many existing CS algorithms can recover the signal in a robust fashion
+under the same assumptions.
+
+The concept underlying sparsity-based super-resolution imaging and
+sparsity-based CDI relies on the advance knowledge that the optical
+object is sparse in a known basis. The concept yields a method for
+bandwidth extrapolation. Namely, sparsity makes it possible to
+identify the continuation of the truncated spatial spectrum that
+yields the correct image. As was shown in
+\shortcite{gazit09super-resolution}, sparsity-based super-resolution
+imaging departs from standard CS, since the measurements are forced to
+be strictly in the low-pass regime, and therefore cannot be taken in a
+more stable fashion, as generally required by CS. Therefore, a
+specialized algorithm was developed, Non Local Hard Thresholding
+(NLHT), to reconstruct both amplitude and phase from low-frequency
+measurements \shortcite{gazit09super-resolution}. However, NLHT, as well as
+other CS techniques necessitate the measurement of the phase in the
+spectral domain. In contrast, the current problem of sub-wavelength
+CDI combines phase-retrieval with sub-wavelength imaging, aiming to
+extrapolate the bandwidth from amplitude measurements
+only. Mathematically, this problem can be viewed in principle as a
+special case of quadratic CS, introduced in
+\shortcite{shechtman11sparsity}. However, the algorithm suggested there
+is designed for a more general problem resulting in high computational
+complexity. Here we devise a specified algorithm that directly treats
+the problem at hand.
+
+
+
+
+\section{Sparsity based sub-wavelength CDI}
+\label{sec:sparsity-based-cdi}
+For the current case of
+sub-wavelength CDI, the phase information in the spectral domain is
+not available. Hence, fundamentally, sub-wavelength CDI involves both
+bandwidth extrapolation and phase retrieval. However, despite the
+missing phase that carries extremely important information, we show
+that sparsity-based ideas can still make it possible to identify the
+correct extrapolation. Namely, if we know that our signal is
+sufficiently sparse in an appropriate basis, then from all the
+possible solutions which could create the truncated spectrum the
+correct extrapolation is often the one yielding the maximally sparse
+signal. Moreover, even under real experimental conditions, i.e., in
+the presence of noise, searching for the sparsest solution that is
+consistent with the measured data often yields a reconstruction that
+is very close to the ideal one.
+
+Our algorithm iteratively reveals the support of the sought image by
+sequentially rejecting less likely areas (circles, in the experiments
+shown below). Thus, the sparsity of the reconstructed image increases
+with each iteration. This process continues as long as the
+reconstructed image yields a power-spectrum that remains in good
+agreement with the measurements. The process stops when the
+reconstructed power spectrum deviates from the measurements by some
+threshold value. However, it is important to emphasize that the exact
+threshold value and the degree of sparseness of the sought image need
+not be known a priori, as our method provides a natural termination
+criterion. Namely, the correct reconstruction is identified
+automatically. A detailed description of the reconstruction method, as
+well as comparison with other methods (that do not exploit sparsity),
+are provided in Section~\ref{sec:reconstr-meth}.
+
+
+\section{Finding suitable basis}
+\label{sec:find-suit-basis}
+As explained above, sparsity-based CDI relies on the advance knowledge
+that the object is sparse in a known basis. In some cases, the
+``optimal'' basis---the basis in which the object is represented both
+well and sparsely---is known from physical arguments. For example, the
+features in Very Large Scale Integration (VLSI) chips are best
+described by pixels on a grid, because they obey certain design
+rules. In some cases, however, the prior knowledge about the optimal
+basis is more loose, namely, it may be known that the object is well
+and sparsely described in a basis that belongs to a certain family of
+bases. For example, one may know in advance that the object is sparse
+in the near field using a rectangular grid, yet the optimal grid
+spacing is not known a priori. We address this issue in
+Section~\ref{sec:choosing-grid-basis},  where we describe a sparsity-based
+method that uses the experimental data to algorithmically find the
+optimal grid size (optimal basis) for our sub-wavelength CDI
+technique. That section also shows that the choice of basis functions
+is not particularly significant in our procedure: we obtain very
+reasonable reconstruction with almost any choice of basis functions,
+as long as they conform to the optimal grid. Finally, we note that
+recent work has shown that it is often possible to find the basis from
+a set of low-resolution images, using ``blind
+CS''\cite{gleichman10blind}.
+Likewise, in
+situations where a sufficient number of images of a similar type is
+available at high resolution, one can reconstruct the optimal basis
+through dictionary learning algorithms~\shortcite{aharon06k-svd:}.
+
+
+
+\section{Experiments}
+\label{sec:sparse-experiments}
+We demonstrate sub-wavelength CDI technique experimentally on
+two-dimensional (2D) structures. The optical information is generated
+by passing a $\lambda=\unit[532]{nm}$ laser beam through an arrangement of
+nano-holes of diameter $100nm$ each. The sample is made of a
+\unit[100]{nm} thick
+layer of chromium on glass; this thickness is larger than the skin
+depth at optical frequencies, such that the sample is opaque except
+for the holes. We use a custom microscope (numerical aperture $NA=1$,
+magnification $\times 26$)
+and a camera to obtain the blurred image. The optical Fourier
+transform of the optical information is obtained by translating the
+camera to the focal plane of the same microscope.
+
+
+The optical information is generated by passing a collimated laser
+beam ($\lambda = \unit[532]{nm}$) through a mask, whose transmission function
+corresponds to the optical information superimposed on the laser
+beam. The mask is fabricated as follows: As substrate material we
+chose fused silica, because it is a high quality transparent material
+at optical frequencies, and because its processing technology is well
+developed. In order to to create a mask containing the optical image,
+we deposit opaque material on the substrate and make several patterned
+holes in it, such that the holes pass the light while the opaque
+material blocks it. For this purpose, we sputter a chromium layer onto
+the surface of the substrate. Chromium is a metal, which absorbs light
+at optical frequencies. Nevertheless, the thickness of the chromium
+layer has to be larger than the skin depth at optical frequencies, to
+avoid undesired transmission through that layer. Thus we select a
+thickness of \unit[100]{nm} as suitable compromise between high quality
+optical behavior and fabrication considerations. The structures in the
+chromium layer are nano-holes, drilled in the chromium by a beam of
+focused gallium ions from a liquid metal ion
+source~\shortcite{krohn75ion,prewett80characteristics} (Zeiss Neon
+60). With this technology, it is feasible to mill the desired
+structures into the chromium layer directly and efficiently, without
+any additional lithography process. Utilizing a convenient set of
+parameters, it is possible to imprint the designed structures into the
+metal layer, without significantly affecting the substrate material,
+and with high spatial accuracy.  We fabricated two different samples
+yielding a two-dimensional sub-wavelength optical structure: (a) a
+Star of David (SOD) image, consisting of 30 holes, with \unit[100]{nm}
+diameter each, spaced by \unit[100]{nm}; and (b) a ``random'' image comprised of 12
+circular holes of \unit[100]{nm} diameter each, placed in a random order. The
+Scanning Electronic Microscope (SEM) images of the samples are shown
+in Figure~\ref{fig:sem-images}. Note that the SEM images are not in
+proportion as, in reality, the holes are of the same size and their
+diameter is equal to the spacing between holes. Generally, we
+use this approach throughout the paper: all images are shown in some
+abstract units that are, however, proportional to the corresponding
+physical quantities. The correspondence can be established using the
+fact that all holes are of diameter of \unit[100]{nm}.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.9\textwidth{}]{sparse/Star.png}
+  }\\
+  \subfloat[]{
+    \includegraphics[width=0.9\textwidth{}]{sparse/Asymm.png}
+  }
+  \caption[Test images]{SEM images of the samples: (a) Star of David, (b)
+    ``random''.}
+  \label{fig:sem-images}
+\end{figure}
+
+Let us present the reconstruction results first, followed by a full
+description of our method in Section~\ref{sec:reconstr-meth}.  We
+begin with an ordered structure: a Star of David, consisting of 30
+nanoholes. Figure~\ref{fig:sod-main-results}a shows an SEM image of
+this sample.  Figure~\ref{fig:sod-main-results}b depicts the image
+seen in the microscope. As expected, the image is small and severely
+blurred. The spatial power spectrum (absolute value squared of the
+Fourier transform) of the image is shown in
+Figure~\ref{fig:sod-main-results}c. This truncated power spectrum
+covers a larger area on the camera detector, therefore facilitating a
+much higher number of meaningful measurements (each pixel corresponds
+to one measurement). We emphasize that only intensity measurements are
+used, in both the (blurred) image plane and in the (truncated) Fourier
+plane (Figures~\ref{fig:sod-main-results}b,
+\ref{fig:sod-main-results}c, respectively), without measuring (or
+assuming) the phase anywhere. The recovered image, using our
+sparsity-based algorithm, is shown in
+Figure~\ref{fig:sod-main-results}d.  Clearly, we recover the correct
+number of circles, their positions, their amplitudes, and the entire
+spectrum (amplitude and phase), including the large evanescent part of
+the spectrum. This demonstrates sub-wavelength Coherent Diffractive
+Imaging: image reconstruction combined with phase-retrieval at the
+sub-wavelength scale. Moreover, as explained in
+Section~\ref{sec:reconstr-meth}, the intensity of the blurred image
+(Figure~\ref{fig:sod-main-results}b) is used only for rough estimation
+of the image support. Our reconstruction method yields better results
+than other phase-retrieval algorithms (see comparisons in
+Section~\ref{sec:comp-with-other}), because it exploits the sparsity
+of the signal (the image to be recovered), as prior information. As
+mentioned earlier, the underlying logic is to minimize the number of
+degrees of freedom, while always conforming to the measured data,
+which in this case is the truncated power spectrum (intensity in
+Fourier space). In the example presented in
+Figure~\ref{fig:sod-main-results}, we take the data from
+Figures~\ref{fig:sod-main-results}b and~\ref{fig:sod-main-results}c,
+search for the sparsest solution in the basis of circles of \unit[100]{nm}
+diameter on a grid, and reconstruct a perfect Star of David, as shown
+in Figure~\ref{fig:sod-main-results}d. The grid is rectangular with
+\unit[100]{nm}  spacing
+(Section~\ref{sec:choosing-grid-basis} describes how this parameter is
+found automatically), while the exact position of the grid with
+respect to the reconstructed information is unimportant (see
+Section~\ref{sec:reconstr-meth}).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth{}]{sparse/resultsSOD.jpg}
+  \caption{Reconstruction results for the SOD image.}
+  \label{fig:sod-main-results}
+\end{figure}
+
+We emphasize that our reconstruction algorithm is able to reconstruct
+the phase in the spatial spectrum domain (the Fourier transform), from
+the intensity measurement in Fourier space and some rough estimation
+of the image support. In addition, we use the knowledge that the holes
+are illuminated by a plane wave, implying non-negativity of the image
+in real space. In this Star of David example, our algorithm
+reconstructs the phase in the spectral plane, as presented in Figure
+1e. For comparison, Figure 1f shows the phase distribution in Fourier
+space, as obtained numerically from the ideal model of the
+subwavelength optical information (calculated from the SEM image of
+Figure~\ref{fig:sod-main-results}a). The reconstruction in
+Figure~\ref{fig:sod-main-results} therefore constitutes the first
+demonstration of subwavelength CDI.
+
+Interestingly, when comparing the Fourier transform of the sample with
+the measured spatial power spectrum, one finds that more than 90\% of
+the power spectrum is truncated by the diffraction limit, acting as a
+low-pass filter (see Figure~\ref{fig:sod-powerspectrum}).  That is, we
+use the remaining 10\% of the power spectrum and the blurred image, to
+successfully reconstruct the sub-wavelength features with high
+accuracy. In other words, the prior knowledge of sparsity and the
+basis is overcoming the loss of information in 90\% of the power
+spectrum. As demonstrated in Section~\ref{sec:reconstr-meth}, it is
+the sparsity prior that makes it happen: without assuming the sparsity
+prior the reconstruction suffers from large errors.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\textwidth{}]{sparse/SODpowerspectrum.jpg}
+  \caption{SOD image: available power spectrum.}
+  \label{fig:sod-powerspectrum}
+\end{figure}
+
+
+The Star of David exhibits certain symmetries which could in principle
+assist the phase retrieval, had these symmetries been known. However,
+symmetry was not used for reconstruction of sub-wavelength features of
+Figure~\ref{fig:sod-main-results}. Nevertheless, it is illustrative to
+present another example with no spatial symmetry at all: an irregular
+arrangement of sub-wavelength holes on the assumed
+grid. Figure~\ref{fig:random-main-results}a shows the blurred image of
+an unknown number of sub-wavelength circles, distributed in a random
+manner. The respective Fourier power spectrum, as observed in the
+microscope, is shown in Figure~\ref{fig:random-main-results}b. This
+sample is clearly not symmetric in real space, hence it does not
+exhibit a real Fourier transform. Still, we are able to reconstruct
+the sub-wavelength information, as shown in
+Figure~\ref{fig:random-main-results}c, where all features of the
+original sample are retrieved, despite the inevitable noise in the
+experimental system. Figure~\ref{fig:random-main-results}c shows the
+SEM image of the sample, displaying the random arrangement of \unit[100]{nm}
+holes. The electromagnetic (EM) field passing through these nano-holes
+has roughly the
+same amplitude for all the holes. The reconstructed amplitudes at the
+hole sites are represented by the colors in
+Figure~\ref{fig:random-main-results}c, highlighting the fact that the
+reconstructed field has similar amplitude at all the holes. The
+reconstructed phase in the spectral plane is presented in Figure 3e,
+where the white circle marks the cutoff imposed by the diffraction
+limit. As shown there, our algorithm recovers the phase throughout the
+entire Fourier plane, including the region of evanescent waves far
+away from the cutoff frequency. For comparison,
+Figure~\ref{fig:random-main-results}f shows the phase distribution in
+Fourier space, as obtained numerically from the ideal model of the
+sub-wavelength optical information (calculated from the SEM image of
+Figure~\ref{fig:random-main-results}d). Clearly, the correspondence
+between the original spectral phase and the reconstructed one is
+excellent, including in the deep evanescent regions. Interestingly,
+Figure~\ref{fig:random-main-results}e also displays the correct
+reconstruction of the phase around the faint high-frequency circle (of
+radius approximately 4 times the diffraction limit) where the phase
+jumps by $\pi$ Physically, this ``phase-jump circle'' is located at the
+first zero of the Fourier transform of a circular aperture, which in
+Fourier space multiplies the phase distribution generated by the
+irregular positions of the holes. The excellent agreement between
+Figures~\ref{fig:random-main-results}e
+and~\ref{fig:random-main-results}f highlights the strength of the
+sparsity-based algorithmic technique.
+
+\begin{figure}[H]
+  \centering
+\includegraphics[width=\textwidth]{sparse/resultsRandom}
+  \caption{Reconstruction results for the "random" image.}
+  \label{fig:random-main-results}
+\end{figure}
+
+
+
+\section{Our sparsity-based reconstruction method for CDI}
+\label{sec:reconstr-meth}
+Under the experimental conditions described in the previous section,
+our problem amounts to the reconstruction of a signal from the
+magnitude of its Fourier transform, assuming furthermore that this
+information is known only for a small interval of low frequencies as
+shown in Figure~\ref{fig:fourier-data}. The discussion below is
+general and applies to both examples given in the paper (and, of
+course, to a very large class of optical images). However, in order to
+make the explanation more succinct, we demonstrate most of the results
+on the ``random'' image, because it has no implicit symmetries. The
+SOD image exhibits very similar behavior and its main results will be
+presented
+below.% We would like to remind that all the images are shown in
+% some abstract units that are, nevertheless, proportional to the
+% corresponding physical quantities.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg-fullFourierMag}
+  }%
+  \qquad{}%
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg-lfFourierMag}
+  }
+  \caption[Fourier domain magnitude of the ``random'' image]{Fourier domain magnitude of the ``random'' image: (a) the
+    full spectrum (simulated, without noise) needed to reconstruct the
+    image precisely (by a simple application of the inverse Fourier
+    transform), (b) the low-frequency part (actual measurements, in
+    the presence of experimental noise).}
+  \label{fig:fourier-data}
+\end{figure}
+Of course, when the majority of the frequencies are lost, precise
+reconstruction is not possible, unless we have, or may assume, some
+additional information about the sought signal. In fact, the problem
+is even more difficult, because the measurements contain non-negligible
+noise.  In a manner similar to~\shortcite{gazit09super-resolution}, we
+assume that the EM field in the object domain $(u,v)$ can be
+represented precisely, or approximated adequately (hereinafter, this
+relation is denoted by $\approxeq$) by means of a known generating
+function $g(u,v)$. That is
+\begin{equation}
+  \label{eq:sparse-1}
+  E(u,v) \approxeq \sum_{m}\sum_{n} x_{mn}g(u-m\Delta_{u}, v - n\Delta_{v})\ ,
+\end{equation}
+where ${x_{mm}}$ are unknown signal coefficients in the basis defined
+by the shifted versions of $g(u,v)$. Note that the set
+$\left\{(m\Delta_{u}, n\Delta_{v})\right\}$ defines a rectangular grid
+where the shifted versions of the generating function are
+located. Hence, for example, by choosing $g(u,v)$ to be the Dirac
+delta function we can obtain the sampled version of the continuous EM
+field distribution, where $\Delta_{u}$, and $\Delta_{v}$ define the
+sampling interval.  Another classical example: all bandwidth limited
+signals can be represented precisely in this form when $g$ is chosen
+to be the $\mathrm{jinc(\rho)}$ function. For more examples
+see~\shortcite{eldar09beyond} and references therein. Of course, the
+generator must be chosen in a way that corresponds to the signal in
+question (although, in the most general case of 2D information, the
+generator could simply be rectangular pixels).  In this section and in
+Section~\ref{sec:comp-with-other}, where we compare our algorithm with
+other methods, we assume that the basis function is chosen in a way
+that allows a perfect reconstruction of the sought signal, namely $g$
+represents a circle of a priori known diameter (\unit[100]{nm}). We assume
+also that $\Delta_{u}=\Delta_{v}=\unit[100]{nm}$. That is, we assume that the
+sought signal is comprised of non-overlapping circles of known
+diameter.  The grid $\left\{(m\Delta_{u}, n\Delta_{v})\right\}$
+containing all possible locations (144) is shown in
+Figure~\ref{fig:full-grid}. Note that the exact placement of the grid
+is unimportant as our measurements are insensitive to shifts.  A more
+detailed explanation of this property is presented in
+Section~\ref{sec:choosing-grid-basis}, where we discuss the
+implications of the grid assumption along with the impact of the basis
+function on the reconstructed signal.
+
+Before moving on, there are two points we would like to stress. First,
+the assumption of an underlying grid is natural in many situations
+arising in digital signal processing. A prominent example are digital
+images that are comprised of pixels located on a rectangular
+grid. Just like in digital images, the grid in our case defines the
+resolution of a digitized version of the sought signal (see
+Section~\ref{sec:choosing-grid-basis} for details). Second, it is
+important to note that all our comparisons with other methods are done
+under exactly the same assumptions, including a grid, basis functions,
+etc. As is evident from the experiments presented in
+Section~\ref{sec:comp-with-other}, our algorithm outperforms other
+methods.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{sparse/full_grid}
+  \caption{The full grid.}
+  \label{fig:full-grid}
+\end{figure}
+We emphasize  that even if the correct number of circles were known
+(12 circles, in this example) there
+would be ${144 \choose 12} > 10^{17}$ possible variants to choose from for
+the signal support. To limit the search space, we use the blurred version
+of the signal as shown in Figure~\ref{fig:grid-restriction}.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/blurredMag}
+  }
+  \qquad{}
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/grid_restricted}
+  }
+  \caption[Support restriction by the low-resolution image]{Support restriction by the low-resolution image: (a)
+    blurred image magnitude, (b) grid restricted by the blurred
+    image.}
+  \label{fig:grid-restriction}
+\end{figure}
+However, even after this restriction, there still remain ${37 \choose 12}
+> 1.85\times 10^{9}$ variants. More importantly,
+even after this restriction, the image cannot be reconstructed
+precisely unless additional information is available (see
+Section~\ref{sec:comp-with-other}). Below we present
+our method that provides excellent reconstruction results based on the
+knowledge that the total number of circles in the image is small,
+that is, the image is \emph{sparse} in the basis associated with the
+circles, as defined by Equation~\eqref{eq:sparse-1}.
+
+In our method, we reconstruct the support and the magnitude of the
+circles in the sought signal simultaneously. To this end, we seek
+the sparsest $x$ ($x$ being a column vector comprised of the
+image coefficients $x_{mn}$ as defined by Equation~\eqref{eq:sparse-1}), that
+yields a good agreement with the measurements. Mathematically, we
+try to solve the following optimization problem
+\begin{equation}
+  \label{eq:sparse-2}
+  \begin{split}
+    \min &\quad\|x\|_{0}\\
+    \mathrm{subject\ to} &\quad \||LFCx| - r\|_{2}^{2}\leq\epsilon\, , \\
+    &\quad x \geq 0\ .
+  \end{split}
+\end{equation}
+Here $\|\cdot\|_{0}$ denotes the $l_{0}$ norm: $\|x\|_{0} =
+\sum_{i}|x_{i}|^{0}$,  that is, $\|x\|_{0}$
+equals to the number of elements of $x$ that are not zero. The
+measured (noisy) magnitude in the Fourier domain is denoted by
+$r$. Note that the operators and inequalities, like $|\cdot|$, and
+$\geq$ are applied element-wise. The matrix $C$ represents all
+possible shifts of the generator function (a circle); hence, $Cx$ is
+the actual image that we reconstruct; $F$ stands for the Fourier
+transform operator; $L$ represents the low-pass filter. That is, $L$
+is obtained from the identity matrix of appropriate size by removing
+most of its rows while keeping only those that correspond to the low
+frequencies of its operand, as shown in
+Figure~\ref{fig:fourier-data}. Physically, $L$ is the low-pass filter
+associated with the cutoff spatial frequency of the optical system,
+which, for microscopes with NA=1, corresponds to the diffraction
+limit. Note that, due to errors in the
+measurements, the discrepancy in the Fourier domain is allowed to be
+up to some small value $\epsilon $ ($>0$). A short discussion about the precise value of
+$\epsilon$ and whether it must be known a priori will follow. Note
+also that the last requirement $x\geq 0$ is valid because the optical
+information is generated by illuminating the sample with a plane wave,
+that is, a plane of equal amplitude and phase. Hence, the
+phase is the same across the whole image. Therefore, without loss of
+generality, we may assume that the phase is zero everywhere, since the
+absolute phase is unimportant. We do not
+assume that all circles have the same magnitude, however---they can
+have any value.
+
+To solve \eqref{eq:sparse-2} we developed an iterative method whose basic
+iteration contains the following two steps:
+\begin{description}
+\item[Step 1:] Solve the minimization problem:
+  \begin{equation}
+    \label{eq:sparse-3}
+    \begin{split}
+      \min &\quad \||LFCx| - r\|_{2}^{2}\\
+      \mathrm{subject\ to} &\quad x \geq 0 \ .
+    \end{split}
+  \end{equation}
+  (in practice, we use an unconstrained formulation that is solved by
+  the L-BFGS method \shortcite{liu89limited}).
+\item[Step 2:]
+  After a solution $x$ to Step 1 is found, set to zero the entry of
+  $x$ with minimal value. Once set to zero the entry remains so
+  forever.
+\end{description}
+In theory, the iterations should be repeated so long as the constraint
+$\||LFCx| - r\|^{2}\leq\epsilon$ is satisfied. It is often argued that
+the value of $\epsilon$ is known a priori or can be estimated from
+physical constraints (as a matter of fact, in the case of the
+``random'' image, the difference between the measured Fourier
+magnitude $r$ and its ideal variant $r^{*}$ is $\|r - r^{*}\|^{2} =
+1.7434$, which corresponds to a signal-to-noise ratio of $\|r^{*}\|/\|r
+- r^{*}\| = 1/0.041$). However, it is an important question whether the
+best value of $\|x\|_{0}$ (the true number of circles in the image)
+can be determined \emph{automatically}. Consider the different stages
+of our method as shown in Figure~\ref{fig:randomimg-rec-stages}. Is
+there any way to recognize that the correct number of circles is 12
+without knowing $\epsilon$?  It turns out that the answer to the above
+question is affirmative. As is evident from
+Figure~\ref{fig:randomimg-objfunction}, there is a big jump in the
+objective function value when the number of circles dips below the
+correct value of 12. Hence, even without knowing the noise bound
+$\epsilon$ one can easily identify that the smallest number of circles
+that ``explains'' well the measurements is 12 (this is, of
+course, correct as long as the circles have large enough amplitude).
+The result of our
+reconstruction and the true image are shown in
+Figure~\ref{fig:randimg-rec-and-true}.  Note that some circles have low
+magnitude so they are invisible in the color images. We therefore, place
+the '+' sign at the center of all circles in the image ($x$'s entries
+that are not zeros).
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter1-circles37}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter2-circles36}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter3-circles35}
+  }\\
+  \subfloat[]{
+  \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter25-circles13}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter26-circles12}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter27-circles11}
+  }\\
+    \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter29-circles9}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter30-circles8}
+  }
+  \subfloat[]{
+    \includegraphics[width=0.3\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter31-circles7}
+  }
+  \caption[Reconstruction stages for the example of the ``random''
+    image]{Reconstruction stages for the example of the ``random''
+    image. Each stage (iteration) corresponds to a certain number of
+    circles (non-zero entries in $x$): (a) 37 circles, (b) 36, (c) 35,
+    (d) 13, (e) 12, (f) 11, (g) 9, (h) 8, (i) 7.}
+  \label{fig:randomimg-rec-stages}
+\end{figure}
+%\clearpage{}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{sparse/randImg_2011-08-25-16-42-47-progress}
+  \caption[``Random'' image: objective function value]{``Random'' image: objective function value (Fourier domain
+    discrepancy) versus the number of circles in the solution.}
+  \label{fig:randomimg-objfunction}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter26-circles12}
+  }
+  \qquad{}
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_2011-08-25-16-42-47-true}
+  }
+  \caption[Reconstruction result for the ``random'' image]{Reconstruction result for the ``random'' image (a), and the
+    true (original) image (b).}
+  \label{fig:randimg-rec-and-true}
+\end{figure}
+Very similar behavior is
+observed for the second image (SOD) whose results are shown in
+Figures~\ref{fig:sodimg-objfunction}
+and~\ref{fig:sodimg-rec-and-true}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{sparse/sodImg_2011-08-25-16-33-38-progress}
+  \caption[SOD image: objective function value]{SOD image: objective function value (Fourier domain
+    discrepancy) versus the number of circles in the solution.}
+  \label{fig:sodimg-objfunction}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_2011-08-25-16-33-38-iter34-circles30}
+  }
+  \qquad{}
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_2011-08-25-16-33-38-true}
+  }
+  \caption[Reconstruction result for the SOD image]{Reconstruction result for the SOD image (a), and the true
+    (original) image (b).}
+  \label{fig:sodimg-rec-and-true}
+\end{figure}
+In
+Section~\ref{sec:choosing-grid-basis} we demonstrate that choosing an
+``incorrect'' basis function, even one whose shape does not allow 
+perfect representation of 
+the sought signal, results, nevertheless, in a reasonable
+reconstruction. Furthermore, we also demonstrate  that the  grid's cell
+size can be determined automatically.
+
+\section{Comparison with other methods}
+\label{sec:comp-with-other}
+We would like to stress again that our method is successful because we
+exploit the \emph{sparsity} of the sought signal. To demonstrate this,
+we present a comparison with some classical reconstruction methods, and
+discuss the relation between our setup and  classical compressed
+sensing.
+
+\subsection{Without a regularization}
+\label{sec:with-regul}
+Our sparsity-based technique  minimizes the $l_{0}$ norm
+subject to additional constraints. This formulation resembles closely
+a regularization imposed on $x$. Hence, the most naive approach would
+be to abandon the regularization altogether and to try to find $x$ that
+minimizes the discrepancy in the measurements. That is, we might
+solve the following problem
+\begin{equation}
+  \label{eq:sparse-4}
+    \begin{split}
+      \min &\quad \||LFCx| - r\|^{2} \\
+      \mathrm{subject\ to} &\quad x \geq 0 \ .
+    \end{split}
+\end{equation}
+Note that this is exactly the problem we solve in the first iteration
+of our method. However, using this approach as the full reconstruction
+process has a number of drawbacks. First,
+the problem of image reconstruction from the magnitude of its Fourier
+transform (also called phase retrieval) is known to be particularly
+tough for continuous optimization techniques (for explanation and
+further details see~\shortcite{osherovich11approximate}). To the best of our
+knowledge, the
+most widely used method for phase retrieval without additional information
+is the Hybrid Input-Output method~\shortcite{fienup82phase}.  A more
+detailed investigation of this method will follow in
+Section~\ref{sec:hybrid-input-output}. Here, we present the results
+obtained by our optimization routine. As mentioned earlier, this
+formulation is equivalent to performing only one iteration of our
+method. Hence, the result is as shown in
+Figure~\ref{fig:rec-without-regularization}. Note that the
+reconstruction contains many superfluous circles, and even if the correct
+number of the circles were known, a simple thresholding would yield an
+incorrect reconstruction.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_2011-08-25-16-42-47-iter1-circles37}
+  }
+  \qquad{}
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_2011-08-25-16-33-38-iter1-circles63}
+  }
+  \caption[Reconstruction without a regularization on $x$]{Reconstruction without a regularization on $x$: (a)
+    ``random'' image, (b) SOD image.}
+  \label{fig:rec-without-regularization}
+\end{figure}
+
+\subsection{Replacing $l_0$ with another norm}
+\label{sec:replacing-l_0-with}
+Using $l_{2}$ regularization has long been a favorite among engineers
+due to its simplicity and the ability to obtain closed-form solutions
+in linear cases. In the non-linear case, these benefits are lost, of
+course. However, for us it is more important that the $l_{2}$ norm
+does not promote sparsity (actually, some papers claim that it
+usually results in the most dense solution
+possible~\shortcite{chen99atomic}). To demonstrate that this regularization
+is not suitable for bandwidth extrapolation of sparse signals, we
+solved the following problem
+\begin{equation}
+  \label{eq:sparse-5}
+   \begin{split}
+    \min &\quad\|x\| \\
+    \mathrm{subject\ to} &\quad \||LFCx| - r\|^{2}\leq\epsilon\ ,\\
+    &\quad x \geq 0\ .
+  \end{split}
+\end{equation}
+The problem was solved by  transforming it into an
+unconstrained optimization problem and choosing the weights of the
+penalty function terms so as to get the discrepancy in the
+measurements close to the true values. That is, 
+assuming that the true $\epsilon$ is known ($\epsilon=1.74$ in the
+case of ``random'' image, and $\epsilon=0.0329$ in the case of SOD
+image). For the solution we used exactly the same routine (L-BFGS) as in our
+main algorithm. The results are shown in Figure~\ref{fig:l2-rec}.
+\begin{figure}[H]
+  \centering
+  \subfloat{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_L2_2011-08-28-14-02-28-iter1-circles37}
+  }
+  \qquad{}
+  \subfloat{
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_L2_2011-08-28-14-04-11-iter1-circles63}
+  }
+  \caption[Reconstruction using $l_2$ regularization]{Reconstruction using $l_2$ regularization: (a) ``random''
+    image, and (b) SOD image.}
+  \label{fig:l2-rec}
+\end{figure}
+It is obvious that the reconstruction result is incorrect. Moreover, even if the
+correct number of circles were known, a simple thresholding would
+still 
+produce an incorrect result.
+
+Another viable alternative would be using the $l_{1}$ norm. A
+discussion on this norm is postponed to
+Section~\ref{sec:relat-compr-sens}.
+
+\subsection{Methods based on alternating projections}
+\label{sec:meth-base-altern}
+In Chapter~\ref{cha:curr-reconstr-meth} we have already seen some methods for phase
+recovery~\shortcite{gerchberg72practical,fienup82phase} that are based
+on a simple and elegant idea of alternating projections. Similar ideas
+was applied in the field of bandwidth
+extrapolation~\shortcite{gerchberg74super-resolution,papoulis75new}.
+In general, the current
+signal estimate is transformed back and forth between the object and
+the Fourier domains. In each domain, all available information is used
+to form the next estimate. Here we consider two major methods of this
+type: Gerschberg type method (often referred to as Gerschberg-Saxton
+or Gerschberg-Papoulis) and Fienup's Hybrid Input-Output method. As we
+already know, the
+former is a classical method of alternating projections where all
+available information in the current domain is imposed upon the
+current estimate. In the latter approach the object domain
+information is not directly imposed on the current estimate; instead a
+more complex update rule is used as we presented in
+Section~\ref{sec:fienup-algor-phase}. 
+
+\subsubsection{Gerschberg type methods}
+\label{sec:gerschb-type-meth}
+As mentioned before, Gerschberg type methods are ``pure'' projection
+methods. The idea is to transform back and forth the current signal
+estimate between the signal and the Fourier domain 
+performing a ``projection'' in each of the domains, that is, replacing
+the current estimate $x_{cur}$ with 
+the nearest one that satisfies the constraints in the relevant
+domain ($x_{new}$).
+Hence, in each domain the
+following optimization problem is solved
+\begin{equation}
+  \label{eq:sparse-6}
+  \begin{split}
+    \min_{x_{new}} & \quad \|x_{cur} - x_{new}\|_{2}^{2}\\
+    \mathrm{subject\ to} & \quad x_{new} \in \mathcal{S} \ ,
+  \end{split}
+\end{equation}
+where $\mathcal{S}$ denotes the set of all admissible signals in the
+current domain. In our case the current estimate is first Fourier
+transformed. Then the current (wrong) magnitude is replaced with the
+measured (correct) magnitude in the low-frequency regime. The resulting
+signal is back-transformed into the object domain (the result
+denoted by $x'$) where it is converted into an image comprised of
+circles (denoted by $x_{new}$) in the following manner. Recall that
+the image model is of the following form $E = Cx$. Hence to find a
+projection we must solve the following problem
+\begin{equation}
+  \label{eq:sparse-7}
+  \begin{split}
+    \min_{x_{new}} &\quad \|Cx_{new} - x'\|_{2}^{2}\ ,\\
+    \mathrm{subject\ to} &\quad x_{new} \geq 0 \ .
+  \end{split}
+\end{equation}
+The problem is convex and can be solved efficiently, however, we
+used a two-steps approximation instead of a full solution.
+\begin{description}
+\item[Step 1] Solve $\min_{x_{new}}  \|Cx_{new} - x'\|_{2}^{2}$. Note that
+  this problem has a closed form solution: $x_{new} = C^{\dagger}x'$,
+  where $C^{\dagger}$ denotes the Moore-Penrose pseudo-inverse of $C$.
+\item[Step 2] Set all entries of $x_{new}$ that are negative to zero.
+\end{description}
+In general, this is not a true projection. However, it is a
+projection, if the
+vector $x_{new}$ obtained after the first step is non-negative. This
+is indeed the case we observe in all our experiments. The
+results obtained after 5000 iterations of this method are shown in
+Figure~\ref{fig:gerschberg-type-rec}. Usually, the correspondence
+between these and the true image falls considerably behind our
+sparsity-based reconstruction method.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_GERSH_2011-08-28-08-12-23-iter1-circles37}
+  }
+  \qquad{}
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_GERSH_2011-08-27-12-05-16-iter1-circles63}
+  }
+  \caption[Gerschberg type method: results of reconstruction]{Gerschberg type method: results of reconstruction (a)
+    ``random'' image, (b) SOD image.}
+  \label{fig:gerschberg-type-rec}
+\end{figure}
+From the results above, it is evident that the reconstruction is
+incorrect and even if the correct number of circles were known a
+simple thresholding would still result in incorrect images.
+
+\subsubsection{Fienup's Hybrid Input-Output method}
+\label{sec:hybrid-input-output}
+We already have met the Hybrid Input-Output method (see
+Section~\ref{sec:fienup-algor-phase}) that was developed
+by Fienup for the phase retrieval
+problem~\shortcite{fienup82phase}. Although based on the method of
+alternating projections, HIO does not enforce the object domain
+constraints, that is, the image is allowed to be non-zero in the
+off-support areas and the values may be negative. To the best of our
+knowledge, HIO is the most successful numerical method for signal
+reconstruction from the magnitude of its Fourier transform. However,
+the method only achieves good results when all or most of the Fourier
+spectrum is available. Judging by the result shown below, the method
+is not suitable for the situation where the Fourier magnitude is
+available only for a small fraction of the frequencies. In our tests
+we applied the method in its original form, using only the Fourier
+domain magnitude and support information in the object domain (along
+with non-negativity). We did not try to enforce a constant value
+across every circle or zero values in the off-support areas, as the
+original method does not do that. As a post-processing step, the
+result returned by HIO was zeroed in the off-support areas (shown in
+Figures~\ref{fig:hio-rec-random-orig} and~\ref{fig:hio-rec-sod-orig})
+and then the values across each circle were averaged (shown in
+Figures~\ref{fig:hio-rec-random-postproc}
+and~\ref{fig:hio-rec-sod-postproc}). As is evident from the results,
+the method is not capable of correct reconstruction of the
+signals. They cannot be recovered even if the correct number of
+circles is known: a simple thresholding will result in an incorrect
+reconstruction.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:hio-rec-random-orig}
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_HIO_2011-09-13-18-36-30-original}
+  }
+  \qquad{}
+  \subfloat[]{\label{fig:hio-rec-random-postproc}
+    \includegraphics[width=0.4\textwidth]{sparse/randImg_HIO_2011-09-13-18-36-30-iter1-circles37}
+  }
+  \caption[Fienup's HIO method: ``random'' image results of
+  reconstruction]{Fienup's HIO method: ``random'' image results of
+    reconstruction: (a) as produced by the method, (b) after enforcing
+    a constant value across every circle.}
+  \label{fig:hio-rec-random}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:hio-rec-sod-orig}
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_HIO_2011-09-12-20-14-56-original}
+  }
+  \qquad{}
+  \subfloat[]{\label{fig:hio-rec-sod-postproc}
+    \includegraphics[width=0.4\textwidth]{sparse/sodImg_HIO_2011-09-12-20-14-56-iter1-circles63}
+  }
+  \caption[Fienup's HIO method: SOD image results of reconstruction]{Fienup's HIO method: SOD image results of reconstruction:
+    (a) as produced by the method, (b) after enforcing constant a
+    value across every circle.}
+  \label{fig:hio-rec-sod}
+\end{figure}
+
+
+\subsection{Relation to compressed sensing}
+\label{sec:relat-compr-sens}
+Compressed sensing (CS) is an emerging field in image processing that
+performs signal reconstruction from a small number of its projections
+\shortcite{donoho06compressed,candes06robust,candes06near-optimal}. Conceptually,
+all CS techniques and their mathematical theory are based heavily upon
+the sparsity of the sought signals. It is important to note that CS,
+in its classical form, deals with measurements that are linear with
+respect to the unknown signal. Likewise, CS techniques generally
+assume random sampling distributed throughout the measurement
+domain. By contrast, in our current case of sub-wavelength CDI the
+measurements are: (1) nonlinear with respect to the sought signal, (2)
+taken only in a small (low-frequency) region of the measurement
+domain, where (3) they are taken in a periodic fashion (dictated by
+the pixels' arrangement of a digital camera sensor). Still, our
+reconstruction method relies on sparsity. As such, conceptually, our
+approach can still be viewed as CS in a broader sense.
+
+
+Clearly, for the reasons stated above, many theoretical results and
+reconstruction methods of classical CS are not applicable to our
+problem. For example, the Matching Pursuit (MP) method
+\shortcite{mallat93matching} cannot be applied in its original
+form. Another popular method — Basis Pursuit (BP) \shortcite{chen99atomic},
+could, in principle, be applied here (considering BP as a general
+approach based on replacing the $l_{0}$ with the $l_{1}$ norm, rather
+than a specific algorithm). However, its benefits are not clear,
+because, in contrast to the linear case, in our nonlinear
+problem---using the $l_{1}$ norm still does not lead to a convex problem.
+
+
+Besides the standard CS methods, which are inapplicable to the
+sub-wavelength CDI problem, it is instructive to consider other
+sparsity-based approaches which are related to CS, in the broader
+sense.  One of these is based on division of the reconstruction
+process into two stages: at the first stage the missing Fourier phase
+is reconstructed using Fienup’s HIO algorithm (or Gerchberg-type
+method); at the second stage this phase is combined with the measured
+Fourier magnitude to form complete measurements that are linear with
+respect to the unknown signal. Once these linear measurements are
+available, one can use methods from classical CS (like, for example,
+BP) or our previously proposed method NLHT 
+\shortcite{gazit09super-resolution}, which is aimed at recovering data from
+low-pass measurements. We find, however, that this approach
+does not produce high quality results. This failure is, probably,
+attributed to inability of the projection-based methods to reconstruct
+the phase precisely, as shown in Figure~\ref{fig:fourier-phase-hio}
+below.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/random_phase}
+  }
+  \qquad{}
+  \subfloat[]{
+    \includegraphics[width=0.4\textwidth]{sparse/random_HIO_phase}
+  }
+  \caption[Fourier phase of the ``random'' image]{Fourier phase of the ``random'' image: (a) the true
+    phase, (b) the phase obtained after 5000 iterations of
+    HIO.}
+  \label{fig:fourier-phase-hio}
+\end{figure}
+
+Recently, several works have considered CS with quadratic nonlinear
+measurements \shortcite{shechtman11sparsity,candes11phase}. In both papers
+the resulting nonlinear constraints are relaxed to semidefinite
+constraints using matrix lifting and an appropriate sparsity promoting
+objective is used.  The work of \shortcite{candes11phase} considers phase
+retrieval assuming the availability of several diffraction patterns
+obtained from multiple structured illuminations, which is not relevant
+to our problem.  In contrast, the scenario considered in
+\shortcite{shechtman11sparsity} is much closer to our current case. Namely,
+simultaneous phase retrieval and bandwidth extrapolation from a
+single-shot power-spectrum measurement. In fact, our present problem
+can be viewed as a special case of the problem addressed in
+\shortcite{shechtman11sparsity}. However, the algorithm suggested in
+\shortcite{shechtman11sparsity} is targeting a more general problem, hence
+its computational complexity is high. With this reasoning in mind, we
+devised the new sparsity-based approach and algorithm described in
+the next section, which is tailored for the specific
+problem of sub-wavelength CDI.
+
+\section{A method for automatic grid determination, and the
+  (un)importance of the basis function}
+\label{sec:choosing-grid-basis}
+In this section we would like to discuss the implications of our
+assumption regarding the existence of a grid that, in fact, defines a
+discrete set of allowed locations where the chosen basis function can
+be placed.  In many cases, especially when the optical information
+represents experimental data, introducing such a grid is highly
+justified. For example, a digital image is obtained from a continuous
+intensity distribution by sampling it with a sensor that physically is
+an array of square pixels arranged in rows and columns. Hence,
+naturally, the grid is rectangular and the basis functions are squares
+whose size is equal to the grid's cell size. Likewise, our
+reconstruction provides a digitized version of the true signal as if
+it were performed by a sensor whose pixels' shape corresponds to the
+chosen basis function (circular in our experiments above). Hence, the
+grid used in our reconstruction algorithm essentially defines the
+resolution of the reconstructed image. This is especially true when
+the spatial extent of the basis function is smaller than (or equal to)
+the grid's cell size. An example of such a sensor with circular pixels
+is shown in Figure~\ref{fig:cirle-imposed}.
+
+However, there is an important dissimilarity between our case and the
+regular sampling in the object domain. Since our measurements contain
+only the Fourier magnitude and no information is available about the
+phase, we cannot distinguish between all the shifted versions of the
+original signal. That is, if $E(u,v)$ represents the original signal,
+our best hope is to reconstruct a shifted version of it, that is,
+$E(u-\Delta u, v-\Delta v)$ for some $\Delta u$, and $\Delta v$.
+Which version (shift) of the original signal is reconstructed depends, of
+course, on the reconstruction method. Because our method seeks the
+sparsest solution, we obtain the digitization that corresponds to the perfect
+alignment shown in Figure~\ref{fig:circleImposed-aligned} and not the
+``misaligned'' version shown in
+Figure~\ref{fig:circleImposed-misaligned}. Because in the latter case
+each circle in the original image ``switches on'' two pixels in the
+sensor, in contrast to one pixel per circle in the aligned case. Hence,
+one does not need  to manually align the grid with respect to the sought
+signal as the best alignment is obtained automatically with our
+reconstruction method. The only concern regarding the grid alignment
+is related to the placement of the blurred image that we use for loose
+support estimation. Fortunately, the solution to this problem is easy:
+the blurred image must be placed in a way that guarantees maximal grid
+coverage, that is, we shall keep as many allowed locations as
+possible.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:circleImposed-aligned}
+    \includegraphics{sparse/circleImposed}
+  }\\
+   \subfloat[]{\label{fig:circleImposed-misaligned}
+    \includegraphics{sparse/circleImposed-misaligned}
+  }
+  \caption[The sought signal imposed on a sensor with circular
+    pixels]{The sought signal (red) imposed on a sensor with circular
+    pixels (blue). Note that the best alignment (a) is automatically
+    obtained as it results is a sparser reconstruction than a bad
+    alignment (b).}
+  \label{fig:cirle-imposed}
+\end{figure}
+
+\subsection{The impact of the basis function}
+\label{sec:impact-basis-funct}
+Let us now consider the situations where the basis function is
+chosen in a way that does not allow a perfect
+reconstruction. Specifically, we consider basis functions in a shape
+of a square and a triangle, as shown in
+Figure~\ref{fig:square-triangle-imposed}.
+\begin{figure}[H]
+  \centering
+   \subfloat[]{\label{fig:triangleImposed}
+    \includegraphics[height=0.35\textheight]{sparse/triangleImposed}
+  }\\
+   \subfloat[]{\label{fig:squareImposed}
+    \includegraphics[height=0.35\textheight]{sparse/squareImposed}
+  }
+  \caption[Basis functions that do not allow a perfect
+    reconstruction]{Basis functions that do not allow a perfect
+    reconstruction: triangles (a), and squares (b).}
+  \label{fig:square-triangle-imposed}
+\end{figure}
+As is evident from Figure~\ref{fig:square-triangle-reconstruction},
+the reconstruction in these cases matches our expectations:
+we obtain the correct ``digitized'' version of the sought signal that
+corresponds to the chosen basis function and the grid. We emphasize the
+fact that all experiments are done with actual data that contains a
+significant amount of noise.
+\begin{figure}[H]
+  \centering
+  \subfloat[]{\label{fig:triangleReconstruction}
+    \includegraphics[height=0.35\textheight]{sparse/randTriangle_2011-10-21-14-00-57-iter26-circles12}
+  }\\
+  \subfloat[]{\label{fig:squareReconstruction}
+    \includegraphics[height=0.35\textheight]{sparse/randSquare_2011-10-21-12-10-02-iter26-circles12}
+  }
+  \caption{Reconstruction in the case of basis functions that do not
+    match the sought signal.}
+  \label{fig:square-triangle-reconstruction}
+\end{figure}
+Moreover, if we consider the progress of the reconstruction process
+(see Figure~\ref{fig:objective-function-different-bases}) we observe
+that even an incorrect choice of the basis function has no adverse
+effect on the reconstruction. This fact has a simple explanation: the
+difference between a circle and a square (or a triangle) of size \unit[100]{nm}
+is much smaller than \unit[100]{nm}. Hence, being able to distinguish between
+these shapes would mean effective resolution that is much better than
+\unit[100]{nm}. Thus, we conclude that the shape of the basis function is not of
+great importance so long as its size matches the size of a typical
+feature in the sought signal. In what follows, we evaluate the
+possibility to discover the most appropriate grid pitch (basis
+function size) automatically, without any prior information.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{sparse/randImg-differentBases-progress}
+  \caption[Reconstruction of the ``random'' image using different
+    basis functions]{Reconstruction of the ``random'' image using different
+    basis functions: objective function value (Fourier domain
+    discrepancy) versus the number of circles/squares/triangles in the
+    solution. Marker shape corresponds to the basis function shape.}
+  \label{fig:objective-function-different-bases}
+\end{figure}
+
+
+
+\subsection{A method for automatic determination of an optimal grid}
+\label{sec:meth-autom-grid}
+So far, we have seen that the shape of the basis function has no
+severe impact on the reconstruction process. Moreover, the best
+possible alignment is obtained automatically due to our requirement of
+maximal sparsity. These two properties can be used for automatic
+determination of the optimal grid pitch. To this end we ran a series
+of experiments with different grids whose pitch varies from 10 to 32
+pixels (corresponds to the range of \unit[48--152]{nm}) using the square basis
+function of the size that matches the grid cell. As was mentioned
+earlier, the results of Section~\ref{sec:impact-basis-funct} show that
+the particular choice of the basis function is not very
+important. Hence, we could choose any shape of the size equal to the
+grid pitch. The choice of the square basis function was stipulated by
+the fact that most digital images are comprised of square
+pixels. Hence, this basis function will, probably, be the first choice
+in the situation where nothing is known about the sought signal. For
+each grid pitch we ran a few iterations of our method keeping the
+lowest discrepancy in the Fourier space as a numerical value that
+corresponds to the current grid pitch . There is no need to solve the
+problem completely, as our goal here is to see whether the sought
+signal can be represented well by the current grid. We expect that
+fine grids (small pitch) will represent well the sought signal so long
+as the grid's pitch is smaller than or equal to the size of a typical
+feature in the signal. However, once the grid becomes too coarse, we
+expect a rapid growth of the objective function value. Hence, we
+expect the graph to have the distinctive
+``\rotatebox[origin=c]{90}{L}\,''-shape, similar to the graphs in
+Figures~\ref{fig:objective-function-different-bases},
+\ref{fig:sodimg-objfunction}, and \ref{fig:randomimg-objfunction}. As
+is evident from Figure~\ref{fig:different-grids}, our expectations are
+confirmed by the experimental results.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{sparse/gridTest-randImg_2011-10-25-16-50-15-progress}
+  \caption[Objective function value versus grid pitch size]{Objective
+    function value (Fourier domain discrepancy) versus grid pitch
+    size.}
+  \label{fig:different-grids}
+\end{figure}
+Note that the first sharp jump in the objective function value happens
+during the transition from 21 pixels (the correct value) to 22
+pixels. However, it may be argued that the transition is not
+sufficiently apparent and the true value may lie in some small
+interval around 21 pixels. Hence, we evaluate the behavior of our
+reconstruction method for the grid pitch lying in the interval of
+18--24 pixels. As is evident from
+Figure~\ref{fig:objectiv-function-gridptich}, only the correct value
+of 21 pixels results in a clear and sharp jump after we dip below
+the correct value of squares (12). This property can be used for
+pinpointing the correct pitch size. Hence, an automatic subroutine for
+the optimal pitch determination is comprised of two steps: first, run
+a few iterations of our reconstruction method to obtain quantitative
+results indicating how well different grid sizes can represent the
+sought image; second, run a full reconstruction procedure for a
+limited range of pitches near the elbow in
+Figure~\ref{fig:different-grids} and check what pitch results in a
+clear evidence of existence of  the sparsest solution (as in
+Figure~\ref{fig:objectiv-function-gridptich}).
+
+Note that the obtained grid cell size is \emph{optimal}
+in the sense that it satisfies two important properties
+simultaneously: first, it allows good approximation of the sought
+signal; second, it leads to a highly evident sparse solution.
+
+The suggested method is also based on the sparsity assumption: it
+works well when there are a few features in the sought signal are of
+approximately the same size. This situation arises in many physical
+setups. However, we currently are working on extending the algorithm
+to cases where the signal features may be of various sizes.
+
+\begin{figure}[H]
+  \centering
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-21-notFullSquare-randImg-progress}
+  }\\
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-20-notFullSquare-randImg-progress}
+  }
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-22-notFullSquare-randImg-progress}
+  }\\
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-19-notFullSquare-randImg-progress}
+  }
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-23-notFullSquare-randImg-progress}
+  }\\
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-18-notFullSquare-randImg-progress}
+  }
+  \subfloat[]{
+    \includegraphics[height=0.19\textheight]{sparse/gridTest-randImg_2011-10-25-16-50-15-24-notFullSquare-randImg-progress}
+  }
+  \caption[Objective function behavior versus the grid pitch size]{Objective function behavior versus the grid pitch size
+    (in pixels):
+    (a) 21---the correct value, (b) 20, (d) 19, (f) 18, (c) 22, (e)
+    23, (g) 24.}
+  \label{fig:objectiv-function-gridptich}
+\end{figure}
+
+
+
+
+
+\section{Concluding remarks}
+\label{sec:sparse-concluding-remarks}
+In this chapter, we presented a technique facilitating reconstruction
+of sub-wavelength features, along with phase-retrieval at the
+sub-wavelength scale, at an unprecedented resolution for single-shot
+experiments. That is, we have taken coherent lensless imaging into the
+sub-wavelength scale, and demonstrated sub-wavelength CDI from
+intensity measurements only. The method relies on prior knowledge
+that the sample is sparse in a known basis (circles on a grid, in our
+examples). We emphasize that sparsity is what makes our
+phase retrieval work---the other assumptions used in the algorithm
+(non-negativity, bounded support and the known basis) alone are not
+sufficient. It is important to note that most natural and artificial
+objects are sparse, in some basis. The information does not
+necessarily have to be sparse in real space---it can be sparse in any
+mathematical basis whose relation to the measurement basis is known,
+for example, the wavelet basis or the gradient of the field intensity, given
+that this basis is sufficiently uncorrelated with the measurements. In
+all these cases our technique can provide a major improvement by
+``looking beyond the resolution limit'' in a single-shot
+experiment. Since our approach is purely algorithmic, it can be
+applied to every optical microscope and imaging system as a simple
+computerized image processing tool, delivering results in real time
+with practically no additional hardware. The fact that our technique
+works in a single-shot holds the promise for ultrafast sub-wavelength
+imaging---one could capture a series of ultrafast blurred images, and
+then off-line processing will reveal their sub-wavelength features,
+which could vary from one frame to the next.  Finally, we note that
+our technique is general, and can be extended also to other,
+non-optical, microscopes, such as atomic force microscope,
+scanning-tunnelling microscope, magnetic microscopes, and other
+imaging systems. We believe that the microscopy technique presented
+here holds the promise to revolutionize the world of microscopy with
+just minor adjustments to current technology---sparse sub-wavelength
+images could be recovered by making efficient use of their available
+degrees of freedom. Last but not least, we emphasize that our approach
+is more general than the particular subject of optical sub-wavelength
+imaging. It is in fact a universal scheme for recovering information
+beyond the cut-off of the response function of a general system,
+relying only on a priori knowledge that the information is sparse in a
+known basis.  Our preliminary theoretical and experimental results
+indicate, unequivocally, that our method offers an improvement by
+orders of magnitude beyond the most sophisticated deconvolution
+methods. In a similar vein, we believe that our method can be applied
+for spectral analysis, offering a means to recover the fine details of
+atomic lines, as long as they are sparse (that is, do not form bands). In
+principle, the ideas described here can be generalized to any
+sensing/detection/data acquisition schemes, provided only that the 
+information is sparse in a known basis, and that the measurements are
+taken in a basis sufficiently uncorrelated to it.
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 
+
+
+

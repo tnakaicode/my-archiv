@@ -1,0 +1,361 @@
+
+\chapter{Current reconstruction methods}
+\label{cha:curr-reconstr-meth}
+Current reconstruction methods date back to the pioneering work of
+Gerchberg and Saxton (GS)~\shortcite{gerchberg72practical}. Their original
+method was later improved significantly by Fienup~\shortcite{fienup82phase},
+who introduced the Hybrid Input-Output (HIO) algorithm. The latter
+algorithm, to the best of our knowledge, is the prevailing
+numerical method today for phase retrieval. The HIO method will be
+presented in Section~\ref{sec:fienup-algor-phase}. However, to better
+understand it, we start with its progenitor---GS, which is a classical
+example of optimization techniques known today as ``alternating
+projections''.  Details of the methods are give in
+Section~\ref{sec:gerchb-saxt-meth} below. Before we proceed further,
+we need to define two basic terms:
+\begin{defn}
+  \label{def:current-1}
+  The distance between a point $x$ and a closed set $\mathcal{S}$ is
+  defined as
+  \begin{equation}
+    \label{eq:current-1}
+    d(x,\mathcal{S}) = \min_{y\in\mathcal{S}}\|x - y\|\,. 
+  \end{equation}
+\end{defn}
+
+\begin{defn}
+  \label{def:current-2}
+  For a given point $x$ and a closed set $\mathcal{S}$ we say
+  $y\in{\mathcal{S}}$ is a projection of $x$ onto $\mathcal{S}$ if:
+  \begin{equation}
+    \label{eq:current-2}
+    \|x - y\| = d(x, \mathcal{S})\,. 
+  \end{equation}
+  That is, $y$ is a solution of the following minimization problem:
+  \begin{equation}
+  \label{eq:current-3}
+  \begin{split}
+    \min_{y} &\quad \|x-y\|\,,  \\
+    \mathrm{subject\ to} &\quad y\in\mathcal{S} \,. 
+  \end{split}
+\end{equation}
+\end{defn}
+It is important to note that a projection always exists, and
+furthermore it is unique if $\mathcal{S}$ is convex. Otherwise, there
+may be several solutions to Equation~\eqref{eq:current-3}. As we shall
+see later, the constraints that appear in the phase retrieval problem
+are not convex. Nevertheless, the projection is still well defined
+(unique) in
+all cases, except when the current estimate has zeros in the Fourier
+domain.  The non-convexity of the constraints along with existence of
+computationally cheap projections is the reason why current
+reconstruction methods are based on projections and why continuous
+optimization techniques, like gradient descent or Newton-type methods,
+are not capable of successful phase retrieval. More details on that
+will follow in Chapter~\ref{cha:appr-four-phase-explanation}.
+Meanwhile we proceed to the current reconstruction methods.
+
+\section{Gerchberg-Saxton method}
+\label{sec:gerchb-saxt-meth}
+Probably the first successful reconstruction method for phase
+retrieval was suggested by Gerchberg and Saxton for a slightly
+different problem---reconstruction of signals from two intensity
+measurements \shortcite{gerchberg72practical}.  The authors considered a
+situation that arises in electronic microscopes, where the intensity of
+the sought signal\footnote{The signal is complex-valued, of course,
+  otherwise the reconstruction would be trivial.}  can be measured
+along with its diffraction pattern (Fourier domain intensity). For
+this scenario, the authors suggested a reconstruction method that is
+based on projections (hereinafter the method will be referred
+to as GS method or GS algorithm). The algorithm is iterative, and each
+iteration consists of the following four steps:
+\begin{description}
+\item[Step 1:] Fourier transform the current estimate of the signal.
+\item[Step 2:] Replace the magnitude of the resulting computed Fourier
+  transform with the measured Fourier magnitude to form a new estimate of
+  the Fourier transform.
+\item[Step 3:] Inverse Fourier transform the estimate of the Fourier transform.
+\item[Step 4:] Replace the magnitude of the resulting computed signal with the
+  measured signal modulus to form a new estimate of the signal.
+\end{description}
+It is a trivial exercise in basic calculus to show that the Steps
+2 and 4 are, indeed, projections.
+
+Of course, this algorithm can be (and, in fact, has been)
+generalized to a large number of situations, where  the
+constraints in both domains are such that lead to a well defined and,
+preferably, computationally efficient projection. For example,
+this happens in the phase retrieval problem, where the object domain
+constraints are: limited support, that is, some parts of the signal
+are known to be zero; and, often, non-negativity---the signal in the
+support area is known to be real non-negative. A generalized version
+of GS is depicted in Figure~\ref{fig:current-gs-method} below.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{gerchberg-saxton}
+  \caption{Schematic description of the Gerchberg-Saxton algorithm.}
+\label{fig:current-gs-method}
+\end{figure}
+It is important to stress that the imposition of the constraints (both
+in the Fourier and object domain) is performed via a
+projection. Projections, unlike general transformations, guarantee
+convergence of the algorithm as we prove below\footnote{A similar
+  theorem was proved by Fienup for a specific set of constraints
+  \shortcite{fienup82phase}. Our proof is much more general.}. Before
+proceeding to the proof, note that convergence here means the lack of
+progress of the algorithm.  It can happen in two different situations:
+first, arriving at some stationary point (a solution is always a
+stationary point, but not vice-versa); second, the algorithm can enter
+into an endless loop, jumping from point to point without decreasing
+the error.
+\begin{thm}
+  \label{thm:alternating-projections}
+  Let $\mathcal{S}_{\mathcal{O}}$ and $\mathcal{S_{\mathcal{F}}}$ be
+  the sets of feasible signals as defined by the constraints in the
+  object and Fourier domains, respectively. Furthermore, assume
+  that these sets are equipped with the corresponding  projection
+  operators $P_{\mathcal{O}}$, and $P_{\mathcal{F}}$. Let
+  $\left\{x^{k}\right\}_{k=0}^{\infty}$ and
+  $\left\{y^{k}\right\}_{k=0}^{\infty}$ be the two sequences generated
+  by the generalized GS method using the two projections:
+  \begin{equation}
+    \label{eq:current-4}
+    y^{k} = P_{\mathcal{F}}[x^{k}], \quad
+    x^{k+1}=P_{\mathcal{O}}[y^{k}]\,. 
+  \end{equation}
+  Then, the sequences
+  $\left\{E_{\mathcal{F}}^{k}\right\}_{k=0}^{\infty}$, and
+  $\left\{E_{\mathcal{O}}^{k}\right\}_{k=0}^{\infty}$, defined as
+  \begin{equation}
+    \label{eq:current-5}
+    E_{\mathcal{F}}^{k} = d(x^{k}, S_\mathcal{F}),\quad
+    E_{\mathcal{O}}^{k} = d(y^{k}, S_\mathcal{O})\,,
+  \end{equation}
+  are monotonically decreasing, that is
+  \begin{equation}
+    \label{eq:current-6}
+    E_{\mathcal{F}}^{k+1} \leq E_{\mathcal{F}}^{k}
+  \end{equation}
+  \begin{equation}
+    \label{eq:current-7}
+    E_{\mathcal{O}}^{k+1} \leq E_{\mathcal{O}}^{k}
+  \end{equation}
+\end{thm}
+\begin{proof}[Proof]
+  Because $y^{k}$ is a projection of $x^{k}$ onto
+  $\mathcal{S}_{\mathcal{F}}$ we have, by
+  Definition~\ref{def:current-2},
+  $d(x^{k}, \mathcal{S}_{\mathcal{F}})=\|x^{k}-y^{k}\|$. Furthermore,
+  \begin{equation}
+    \label{eq:current-8}
+    d(x^{k}, \mathcal{S}_{\mathcal{F}}) = \|x^{k} - y^{k}\| \geq
+    \|x^{k+1} - y^{k}||\,.  
+  \end{equation}
+  Note that the inequality in the above equation follows from the fact
+  that both $x^{k}$, and $x^{k+1}$ belong to $\mathcal{S}_{\mathcal{O}}$
+  and $x^{k+1}$ is a projection of $y^{k}$ onto
+  $\mathcal{S}_\mathcal{O}$. Hence $\|y^{k}-x^{k+1}\| \leq
+  \|y^{k}-x^{k}\|$. Similarly,
+  \begin{equation}
+    \label{eq:current-9}
+    d(x^{k+1}, \mathcal{S}_{\mathcal{F}}) = \|x^{k+1} - y^{k+1}\| \leq
+    \|x^{k+1} - y^{k}\|\,.  
+  \end{equation}
+  Again, the inequality follows from the fact that both $y^{k}$ and
+  $y^{k+1}$ belong to $\mathcal{S}_{\mathcal{F}}$ and $y^{k+1}$ is a
+  projection of $x^{k+1}$ onto $\mathcal{S}_{\mathcal{F}}$. By combining
+  Equations~\eqref{eq:current-8} and \eqref{eq:current-9} we obtain
+  \begin{equation}
+    \label{eq:current-10}
+    d(x^{k+1}, \mathcal{S}_{\mathcal{F}}) \leq  \|x^{k+1} - y^{k}\|
+    \leq  d(x^{k}, \mathcal{S}_{\mathcal{F}})\,. 
+  \end{equation}
+  Hence
+  \begin{equation}
+    \label{eq:current-11}
+     d(x^{k+1}, \mathcal{S}_{\mathcal{F}}) \leq  d(x^{k},
+     \mathcal{S}_{\mathcal{F}})\,.
+   \end{equation}
+   The proof for the second claim follows immediately if we write down
+   Equation~\eqref{eq:current-10} for the iterations $k$ and $k+1$:
+   \begin{equation}
+     \label{eq:current-12}
+     d(x^{k+2}, \mathcal{S}_{\mathcal{F}})  \leq \|x^{k+2} - y^{k+1}\|
+     \leq  d(x^{k+1}, \mathcal{S}_{\mathcal{F}}) \leq  \|x^{k+1} - y^{k}\|
+     \leq  d(x^{k}, \mathcal{S}_{\mathcal{F}}) \,, 
+   \end{equation}
+   and note that
+   \begin{equation}
+     \label{eq:current-13}
+     \|y^{k} - x^{k+1}\| = d(y^{k}, \mathcal{S}_{\mathcal{O}}),\quad
+     \|y^{k+1} - x^{k+2}\| = d(y^{k+1}, \mathcal{S}_{\mathcal{O}})\,.
+   \end{equation}
+   Thus, we obtain
+   \begin{equation}
+     \label{eq:current-14}
+     d(y^{k+1}, \mathcal{S}_{\mathcal{O}}) \leq d(y^{k},
+     \mathcal{S}_{\mathcal{O}})\,.
+   \end{equation}
+\end{proof}
+Note that all $x^{k}$ satisfy the object domain constraints and their
+discrepancy with the Fourier domain constraints is ever
+decreasing\footnote{Strictly speaking, it is a non-increasing
+  sequence, however, in practice most algorithms terminate after the
+  decrease in the current step is below some threshold. Hence, the
+  sequence is strictly decreasing during the algorithm execution.}
+with $k$. Similarly, all $y^{k}$ satisfy the Fourier domain
+constraints and their discrepancy with the object domain constraints
+is also ever decreasing. Hence,
+Theorem~\ref{thm:alternating-projections} may suggest that the GS
+method converges to a solution. This is true if the constraints are
+convex. In our case, however, the Fourier domain constraints are
+non-convex. Thus, the convergence to a solution is not guaranteed: the
+decrease in the functions $d(x^{k}, \mathcal{S}_{\mathcal{F}})$ and
+$d(y^{k}, \mathcal{S}_{\mathcal{O}})$ can be arbitrary small and even
+zero if the algorithm gets stuck as some stationary point (usually, a
+local minimum). Moreover, extensive experiments confirm that GS is not
+suitable for the standard phase retrieval from a single intensity
+measurement and support information (even for non-negative signals):
+the algorithm typically stagnates at some point that is nowhere near
+a solution.  In the next section we will review the Hybrid
+Input-Output algorithm that was invented by Fienup to overcome the
+stagnation problem of GS.
+
+\section{Fienup's algorithms for phase retrieval }
+\label{sec:fienup-algor-phase}
+In 1982, Fineup suggested a family of iterative algorithms that are
+based on a different interpretation of the GS method
+\shortcite{fienup82phase}. These algorithms keep intact the right-hand side
+(Fourier domain) of the diagram depicted in
+Figure~\ref{fig:current-gs-method}, that is, the first three
+operations of each iteration remains the same:
+\begin{description}
+\item[Step 1:] Fourier transforming
+  $x^{k}\stackrel{\mathcal{F}}{\rightarrow}\hat{x}^{k}$.
+\item[Step 2:] Satisfying the Fourier domain constraints
+  $\hat{x}^{k} \rightarrow \hat{y}^{k}$.
+\item[Step 3:] Inverse Fourier transforming the result $\hat{y}^{k} \stackrel{\mathcal{F}^{-1}}{\rightarrow} y^{k}$.
+\end{description}
+However, the further treatment (in the object domain) is
+different. Fienup's insight was to group together the three steps
+above into a non-linear system having an input $x$ and an output $y$
+as depicted in Figure~\ref{fig:current-fienup-alg}. The useful
+property of this system is that the output $y$ is always a signal
+having a Fourier transform that satisfies the Fourier domain
+constraints. Therefore, if the output also satisfies the object domain
+constraints, it is a solution of the problem. Unlike in the GS
+algorithm, the input $x$ need no longer be thought of as the
+current estimate of the signal. Instead, it can be considered as a
+driving function for the next output $y$. Hence, the input $x$ need
+not necessarily satisfy the object domain constraints.
+\begin{figure}[H]
+  \centering
+  \includegraphics{fourier_projection}
+  \caption[Projection in the Fourier domain]{Fienup's interpretation of the Fourier domain constraints
+    imposing procedure as a non-linear system.}
+  \label{fig:current-fienup-alg}
+\end{figure}
+
+Based on this novel interpretation, Fienup suggested three algorithms
+for the phase retrieval problem from a single intensity and a priori
+knowledge that the signal $x$ is non-negative
+everywhere.\footnote{Originally, the algorithms were developed for
+  real non-negative signals such as those that arise in
+  astronomy. Later, the method was applied to complex-valued signals
+  where it was discovered that precise support information is crucial
+  for successful reconstruction \shortcite{fienup87reconstruction}.}
+
+
+\begin{description}
+\item [{input-output}] This algorithm is based on a claim (see
+  \shortcite{fienup80iterative}) that a small change of the input results
+  in a change of the output that is a constant $\alpha$ times the
+  change in the input. Hence, if a change $\Delta x$ is desired in the
+  output, a logical choice for the change of the input to achieve that
+  change in the output would be $\beta\Delta x$, where $\beta$ is a
+  constant, ideally equal to $\alpha^{-1}$. For the problem of phase
+  retrieval from a single intensity measurement the desired change of
+  the output is
+  \begin{equation}
+    \label{eq:57}
+    \Delta x^{k}(t)=\begin{cases}
+      0, & t\not\in\nu \,, \\
+      -y^{k}(t), & t\in\nu \,, 
+  \end{cases}
+  \end{equation}
+  where $\nu$ is the set of points at which $y(t)$ violates the object
+  domain constraints. That is, at points where the constraints are
+  satisfied, one does not require a change of the output. On the other
+  hand; at points where the constraints are violated, the desired change of the
+  output, required to satisfy the support and non-negativity
+  constraints, is one that drives it towards the value of zero, and
+  therefore, the desired change is the negated output at those
+  points. Hence, the logical choice for the next input is
+  \begin{align}
+    x^{k+1}(t) & =x^{k}(t)+\beta\Delta x^{k}(t)\nonumber \\
+    & =\begin{cases}
+      x^{k}(t), & t\not\in\nu,\\
+      x^{k}(t)-\beta y^{k}(t), & t\in\nu.
+    \end{cases}\label{eq:ioalg}
+  \end{align}
+
+\item [{output-output}] This algorithm is based on the following
+  observation with respect to the non-linear system depicted in
+  Figure~\ref{fig:current-fienup-alg}.  If the output $y$ is used as an
+  input, the resulting output will be $y$ itself, because it already
+  satisfies the Fourier domain constraints.  Therefore, irrespective
+  of what input actually resulted in the output $y$, the output $y$
+  can be considered to have been resulted from itself as an input. From
+  this point of view another logical choice for the next input is
+  \begin{align}
+    x^{k+1}(t) & =y^{k}(t)+\beta\Delta x^{k}(t)\nonumber \\
+    & =\begin{cases}
+      y^{k}(t), & t\not\in\nu,\\
+      y^{k}(t)-\beta y^{k}(t), & t\in\nu.
+    \end{cases}\label{eq:ooalg}
+  \end{align}
+  Note that if $\beta=1$ the output-output algorithm becomes the GS
+  algorithm. Because best results are, in general, obtained with
+  $\beta\not=1$ the GS algorithm can be viewed as a
+  sub-optimal version of the input-output algorithm.
+\item [{hybrid input-output}] Finally, we consider the third algorithm
+  suggested by Fienup. This time the next input is formed by a
+  combination of the upper line of Equation~\eqref{eq:ooalg} with the
+  lower line of Equation~\eqref{eq:ioalg}:
+  \begin{align}
+    x^{k+1}(t) & =y^{k}(t)+\beta\Delta x^{k}(t)\nonumber \\
+    & =\begin{cases}
+      y^{k}(t), & t\not\in\nu,\\
+      x^{k}(t)-\beta y^{k}(t), & t\in\nu.
+    \end{cases}\label{eq:hioalg}
+  \end{align}
+\end{description}
+The last algorithm, known as the Hybrid Input-Output (HIO) algorithm,
+is currently the most widely used algorithm in industry due to
+its simplicity and (usually) best convergence rate amongst the above
+three algorithms.
+
+In contrast to the GS method, there is no proof of convergence for the
+HIO method. However, a large body of experiments indicates that the
+algorithm is often successful in phase retrieval of real-valued
+non-negative signals. Still, stagnation is possible in certain
+situations
+\shortcite{fienup86phase-retrieval,wackerman89avoiding}. Besides, it turns
+out that phase retrieval of complex-valued objects whose support is
+not known precisely poses a much more severe problem. In this case, HIO
+is not capable of successful reconstruction
+\shortcite{fienup87reconstruction}.
+
+Several examples of reconstruction by HIO will be presented in the
+following sections. We do not present results obtained by the GS
+method because this method is not suitable for the phase retrieval
+problem---it stagnates very fast and its results are not even close to
+the sought signal.
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End: 

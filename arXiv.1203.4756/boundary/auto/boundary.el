@@ -1,0 +1,25 @@
+(TeX-add-style-hook "boundary"
+ (lambda ()
+    (LaTeX-add-labels
+     "cha:design-bound-phase"
+     "sec:introduction"
+     "sec:revi-exist-meth"
+     "eq:1"
+     "eq:2"
+     "eq:3"
+     "eq:4"
+     "sec:our-reconstr-meth"
+     "eq:5"
+     "sec:numerical-results"
+     "sec:conclusions"
+     "fig:test-images"
+     "fig:hayes-quatieri-rec-intensity"
+     "fig:hayes-quatieri-rec-error"
+     "fig:hayes-quatieri-reconstruction"
+     "fig:mask"
+     "fig:mask-withimages"
+     "fig:reconstruction-speed-flat-mask"
+     "fig:reconstruction-quality-flat-mask"
+     "fig:reconstruction-speed-random-mask"
+     "fig:reconstruction-quality-random-mask")))
+
