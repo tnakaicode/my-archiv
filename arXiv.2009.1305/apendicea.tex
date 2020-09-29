@@ -1,0 +1,65 @@
+\begin{chapter}{Computation Resources}
+\label{app:comp}
+
+\hspace{5 mm} 
+
+Some of the computational tools developed during the work on this thesis might be of interest to other students, and the purpose of this section is to share these tools.
+The tool below was built with the \texttt{Mathematica} software and its code is freely available on Github, with a short link provided.
+
+\section{Tensor Contraction}
+
+This program performs contraction of indices on Euclidean
+tensors written with the Einstein summation convention.
+There already are specific packages for tensor manipulations,
+especially in the context of General Relativity, but they provide
+more general functionality at the expense of a more complex
+interface.
+In the context of the RFD model (Chapter \ref{chap:rfd}), only manipulations of Euclidean tensors are necessary, a case in which there is no difference between covariant and contravariant indices.
+
+The function \texttt{contract} was built in order to carry out tensor contractions in arbitrarily long products of Euclidean tensors. 
+For instance, consider the isotropic tensor $G_{ijkl}$ defined in Eq.~\eqref{eq:tensor-g}:
+\begin{equation}
+G_{ijkl} = 2 \delta_{ik} \delta_{jl} - \frac12 \delta_{il} \delta_{jk} - \frac12 \delta_{ij} \delta_{kl} \ .
+\end{equation}
+The diagrammatic contributions of Eqs.~\eqref{eq:g_correction} and \eqref{eq:v_correction} are obtained as specific contractions of products of this tensor. 
+As a demonstration of this function, some results are shown in Fig.~\ref{fig:contract}, corresponding to the following operations: $G_{ikil}$, $G_{iijj}$, $G_{ijij}$ and $G_{ijkl}G_{klmn}$.
+% These resources were also needed in Chap. \ref{chap:shotnoise}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{contract}
+	\caption
+	[Examples of tensor contractions performed with the \texttt{contract} function]
+	{A picture from the \texttt{Mathematica} software, with 
+	examples of tensor contractions performed with the \texttt{contract} function on the tensor $G_{ijkl}$.}
+	\label{fig:contract}
+\end{figure}
+
+As another example, the specific contraction which produces the result of Eq.~\eqref{eq:g_correction} is depicted in Fig.~\ref{fig:contract-noise}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{contract-noise.png}
+	\caption
+	[Tensor contraction for the noise renormalization in the RFD model.]
+	{Tensor contraction for the noise renormalization in the RFD model.}
+	\label{fig:contract-noise}
+\end{figure}
+
+As a last example, contractions of the tensor $G_{ijkl}$ with arbitrary vectors, denoted by $u$ and $v$, are shown, in Fig.~\ref{fig:contract-vector}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\textwidth]{contract-vector.png}
+	\caption
+	[Tensor contractions including products of tensors and vectors.]
+	{Tensor contractions including products of tensors and vectors.}
+	\label{fig:contract-vector}
+\end{figure}
+
+A final remark is that this function can only perform contractions of repeated indices, while the value of individual elements of a tensor should be obtained manually, or with other tools.
+
+The code for the \texttt{contract} function is available at https://git.io/fjQe8.
+%\href{https://git.io/fjQe8}{https://git.io/fjQe8}.
+
+\end{chapter}

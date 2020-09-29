@@ -1,0 +1,689 @@
+\begin{chapter}{Instantons and Fluctuations in a Lagrangian Model of Turbulence}
+\label{chap:rfd}
+
+\hspace{5 mm} 
+
+Intermittency has been measured in Galilean-invariant observables such as velocity differences and velocity gradients since \textcite{batchelor1949}. 
+Such observables have gained considerable interest in the last decades with the introduction of new experimental techniques to measure all nine components of the velocity gradient tensor,
+%with nine and twelve-sensor hot wire probes
+\parencite{Wallace9,tsinober1992experimental,zeff2003,wallace2009,WallaceVukoslav2010,KatzSheng2010}. These novel precise measurements inspired new attempts in the modeling of the velocity gradient dynamics \parencite{frisch1995,Chev2006,ChevPRL}, which offers a chance of studying the small scale fluctuations decoupled from the dynamics of large eddies, hence their recent theoretical and experimental interest.
+
+The evolution of the Lagrangian velocity gradient $A_{ij} = \partial_j u_i$ can be obtained from a gradient of the Navier-Stokes equations ($\frac{\partial}{\partial x_j} (N.S.)_i$), resulting in
+\begin{equation} \label{eq:velgrad-ns}
+    \frac{d A_{i j}}{d t}=-A_{i k} A_{k j}-\frac{\partial^{2} p}{\partial x_{i} \partial x_{j}}+\nu \frac{\partial^{2} A_{j j}}{\partial x_{k} \partial x_{k}} \ .
+\end{equation}
+In this equation, $d/dt$ stands for the Lagrangian material derivative, $d / d t \equiv \partial / \partial t+u_{k} \partial / \partial x_{k}$. The Lagrangian framework describes the changes of the velocity gradient as it moves along the fluid particle trajectories in the flow, hence $A_{ij}(\mathbf{x},t)$ depends only on the initial position of the fluid particle $\mathbf{x}$, and evolves in time. Nevertheless, Eq.~\eqref{eq:velgrad-ns} is not closed in terms of the velocity gradient on a single trajectory $A_{ij}(\mathbf{x},t)$, because of the last two terms in the right hand side, respectively the pressure Hessian and the viscous term. These terms depend on neighboring Lagrangian trajectories as well. Furthermore, the incompressibility condition provides the equation
+\begin{equation}
+    \nabla^{2} p=-A_{l k} A_{k l} \ ,
+\end{equation}
+which is a highly nonlocal condition for the pressure field.
+Eq.~\eqref{eq:velgrad-ns} is usually rewritten in a form which isolates local and nonlocal contributions, as
+\begin{equation}
+    \frac{d A_{i j}}{d t}=-\left(A_{i k} A_{k j}-\frac{1}{3} A_{m k} A_{k m} \delta_{i j}\right)+H_{i j}^{P}+H_{i j}^{\nu} \ ,
+\end{equation}
+where the pressure and viscous contribution are, respectively
+\begin{equation}
+    H_{i j}^{p}=-\left(\frac{\partial^{2} p}{\partial x_{i} \partial x_{j}}-\frac{1}{3} \nabla^{2} p \delta_{i j}\right) \quad \text { and } \quad H_{i j}^{\nu}=\nu \frac{\partial^{2} A_{i j}}{\partial x_{k} \partial x_{k}} \ .
+\end{equation}
+
+The observation that Eq.~\eqref{eq:velgrad-ns} is unclosed has led to the development of several closure formulations, trying to simplify the equations and still capture the phenomena they describe. The simplest closed Lagrangian model is the Restricted Euler Equation, in which the nonlocal and anisotropic contributions $H_{ij}^p$ and $H_{ij}^{\nu}$ are ignored. This model was first considered in \textcite{leorat1975turbulence} and many of its properties were elicited in \textcite{vieillefosse1982,vieillefosse1984}.
+%particularly on the classification of turbulent regions based on invariants of the Restricted Euler equation \textcite{TsinoberInformal}
+%it would be good to develop on this, lookup the Meneveau article for this and talk about the finite-time singularities of the RE equation
+
+Numerous other models, including linear damping, stochastic forcing and geometric effects have been developed since the Restricted Euler equation (\textcite{Martin98,girimaji90material,Chertkov99,Jeong2003}). An extensive review is available in \textcite{meneveau2011lagrangian}. This chapter focuses on the Recent Fluid Deformation (RFD) approach, presented in \textcite{ChevPRL}.
+% a discussion of the model itself is also suited here. The idea is that one can model the pressure hessian and viscous contribution as isotropic in the past, since the fluid, after some time, has lost memory on the geometric features of the past. Other formulations have been done which assume isotropy, but this is not realistic, hence one can assume isotropy in the past and let the Navier-Stokes equations take care of the time evolution of this blob of pressure hessian / strained viscosity
+
+The RFD model was recast in the Martin-Siggia-Rose-Janssen-de Dominicis (MSRJD) formulation in \textcite{moriconi2014}, where it was suggested that noise renormalization is the main physical mechanism to be considered to understand the onset of fat tails in the PDFs of velocity gradients, a point supported in \textcite{grigorio2017instantons}. But the approach of \textcite{moriconi2014} relied on simplifying hypothesis which were not rigorously verified. The work which generated this chapter, \textcite{apolinario2019instantons}, addresses these hypotheses.
+
+\section{The RFD Model} \label{sec:model}
+
+A natural stochastic extension to the velocity gradient dynamics (Eq.~\ref{eq:velgrad-ns}) is
+\begin{equation}  \label{eq:model}
+ \dot{{\mathbf{A}}} = V[{\mathbf{A}}] + g \mathbf{F} \ , \ 
+\end{equation} 
+where $V[{\mathbf{A}}]$ is a nonlinear and nonlocal functional of  ${\mathbf{A}}$, defined from Eq.~\eqref{eq:velgrad-ns}.
+There is a random external force, $\mathbf{F} = \mathbf{F}(t)$, of null trace and entries given by a Gaussian stochastic process of zero mean and two-point correlation:
+\begin{equation}
+ \langle F_{ij} (t) F_{kl} (t') \rangle \equiv G_{ijkl} \delta (t-t') \ , \ 
+\end{equation}
+where
+\begin{equation} \label{eq:tensor-g}
+ G_{ijkl} = 2 \delta_{ik} \delta_{jl} - \frac12 \delta_{il} \delta_{jk} - \frac12 \delta_{ij} \delta_{kl} \ .
+\end{equation}
+This is the most general fourth-order isotropic tensor consistent with the symmetries of Eq.~\eqref{eq:model} \parencite{pope2000}.
+The stochastic force strength $g$ is proportional to the energy dissipation rate per unit mass, and can be seen as a perturbative coupling constant.
+The incompressibility condition, $\partial_i u_i = 0$, is equivalent to
+$\mathrm{Tr} \ \mathbf{A} = 0$.
+
+It is interesting to notice that $\mathbf{A}$ and $\mathbf{F}$ only depend on time and not on space, thus making Eq.~\eqref{eq:model} a closed system. This is achieved through the modeling of the pressure Hessian and the viscous term of Eq.~\eqref{eq:velgrad-ns}, which are replaced by local algebraic functions of the velocity gradient tensor. The closure for the RFD model is obtained from the assumption that velocity gradients are only correlated on short time scales. Hence, the nonlocal contributions can be assumed as isotropic at an arbitrary initial instant of the time evolution.
+With these assumptions, two time scale parameters are required in the model, $\tau$ and $T$, respectively corresponding to the dissipative and integral scales. These parameters generate an intermittent system corresponding to Lagrangian turbulence of Reynolds number $ Re = f(g) (T/\tau)^2 $, where $f(g)$ is some unknown (probably monotonic) analytical function of the coupling constant $g$.
+% discuss why monotonic? if it were a chapter fully written by me, I know I would discuss it
+
+Mathematically, these assumptions are expressed as the following approximation to $V [ {\mathbf{A}} ]$:
+\begin{equation} \label{eq:vpotential}
+ V({\mathbf{A}}) = - {\mathbf{A}}^2 + \frac{\mathrm{Tr} ({\mathbf{A}}^2)}{\mathrm{Tr} (\mathbf{C}^{-1})} \mathbf{C}^{-1} 
+ - \frac{\mathrm{Tr} (\mathbf{C}^{-1})}{3 T} {\mathbf{A}} \ , \
+\end{equation}
+where $\mathbf{C}$ is the approximate Cauchy-Green tensor,
+\begin{equation}
+ \mathbf{C} = \exp[ \tau {\mathbf{A}}] \exp[ \tau {\mathbf{A}}^\T] \mbox{,}
+\end{equation}
+which governs the deformation in time of advected fluid blobs, within dissipative time scales.
+% do I have to explain this? following the rule that this is for novices in the field, yes I do, but imagining that novices will only read the first chapters, then no
+
+Since only the ratio $\tau/T$ has physical significance in the model, the value $T=1$ can be used. Furthermore, in numerical simulations, it was observed that a perturbative expansion of the potential $V(\mathbf{A})$ up to $O(\tau^2)$ is enough to capture its quantitative features \parencite{afonso2010recent,moriconi2014}.
+This expansion is given by
+\begin{equation}\label{vpowers_def}
+V({\mathbf{A}}) = \sum_{p=1}^4 V_p ({\mathbf{A}}) \ , \
+\end{equation}
+where each $V_p({\mathbf{A}})$ collects velocity gradient contributions of $O({\mathbf{A}}^p)$:
+\begin{equation} \label{eq:vpowers}
+\begin{split}
+ V_1 ({\mathbf{A}}) = &- {\mathbf{A}} \mbox{,} \\
+ V_2 ({\mathbf{A}}) = &- {\mathbf{A}}^2 + \frac{\mathbbm{1}}{3} \mathrm{Tr} ({\mathbf{A}}^2) \mbox{,} \\
+ V_3({\mathbf{A}}) = &- \frac{\tau}{3} \left( {\mathbf{A}} + {\mathbf{A}}^\T - \frac{2 \mathbbm{1}}{3} \mathrm{Tr} ({\mathbf{A}}) \right) \mathrm{Tr} ({\mathbf{A}}^2)
+ - \frac{\tau^2}{3} \mathrm{Tr} ({\mathbf{A}}^\T {\mathbf{A}}) {\mathbf{A}}  - \frac{\tau^2}{3} \mathrm{Tr} ({\mathbf{A}}^2) {\mathbf{A}} \mbox{,} \\
+ V_4 ({\mathbf{A}}) = &- \frac{\mathbbm{1}}{9} \tau^2 \mathrm{Tr} ({\mathbf{A}}^\T {\mathbf{A}}) \mathrm{Tr} ({\mathbf{A}}^2) 
+ - \frac{\mathbbm{1}}{9} \tau^2 [ \mathrm{Tr} ({\mathbf{A}}^2) ]^2
+ + \frac{\tau^2}{3} {\mathbf{A}}^\T {\mathbf{A}} \ \mathrm{Tr} ({\mathbf{A}}^2) \\
+ &+ \frac{\tau^2}{6} ({\mathbf{A}}^2 + {\mathbf{A}}^{2 \T}) \ \mathrm{Tr} ({\mathbf{A}}^2) \mbox{.} 
+\end{split}
+\end{equation}
+
+The RFD model is capable of reproducing several of the statistical features of the turbulent fluctuations of the velocity gradient tensor, observed in numerical simulations and experiments. Close to $g=1.0$, the domain of validity of the model is approximately given by the range $0.05 < \tau < 0.2$. Outside of this range, it was observed in \textcite{ChevPRL}, that the velocity gradient PDFs in the RFD model are strongly dissimilar from experimental and numerical results.
+
+\section{Path-Integral Formulation of Stochastic La\-gran\-gian Mo\-dels} \label{sec:path}
+
+The MSRJD formalism, as described in Chapter~\ref{chap:stoc} is used to express the conditional probability density function of finding ${\mathbf{A}} = {\mathbf{A}}_1$ at time $t= 0$, provided that ${\mathbf{A}} = {\mathbf{A}}_0$ at the initial time $t= -\beta$, as
+\begin{equation} \label{eq:rhoPDF}
+ \rho ( {\mathbf{A}}_1 | {\mathbf{A}}_0, \beta ) \propto \int_{\Sigma} D[\hat {\mathbf{A}}] D[{\mathbf{A}}]  \exp \left\{ -S[\hat {\mathbf{A}}, {\mathbf{A}}] \right\} \mbox{.}
+\end{equation}
+In this equation: The auxiliary field is denoted by $\hat{\mathbf{A}}$. The boundary conditions for the path integral are represented by $\Sigma = \{ {\mathbf{A}}(-\beta) = {\mathbf{A}}_0, \ {\mathbf{A}}(0) = {\mathbf{A}}_1 \}$. And the MSRJD action is 
+\begin{equation} \label{eq:rfd-action}
+     S[\hat {\mathbf{A}}, {\mathbf{A}}] \equiv \int_{- \beta}^0 d t \left\{ i \mathrm{Tr}[\hat {\mathbf{A}}^\T ( \dot{\mathbf{A}} - V({\mathbf{A}}) ) ]
+     + \frac{g^2}{2} G_{ijkl} \hat A_{ij} \hat A_{kl} \right\} \mbox{.}
+\end{equation}
+
+The stationary state solutions of the RFD equations correspond to large asymptotic times, $\beta \rightarrow \infty$. Furthermore, it can be assumed that for such times the dependence on the initial condition ${\mathbf{A}}_0$ has vanished, making it possible to require periodic boundary conditions in the velocity gradient field,
+\begin{equation} \label{eq:boundary}
+ {\mathbf{A}}(0) = {\mathbf{A}}(- \beta) \equiv \bar {\mathbf{A}} \ .
+\end{equation}
+This approach was pursued in \textcite{moriconi2014}, leading to an analytical simplification in the saddle-point equations of the MSRJD action.
+The PDF for a stationary state configuration of the system is then reached as the limit
+\begin{equation} \label{asymptPDF}
+ \rho(\bar {\mathbf{A}}) = \lim_{\beta \rightarrow \infty} \rho(\bar {\mathbf{A}} | \bar {\mathbf{A}}, \beta) \mbox{.}
+\end{equation}
+
+As addressed in the general discussion on the MSRJD method, the principal features of the PDF in Eq.~\eqref{asymptPDF} are captured by the instanton configuration, the solution to the saddle point equations of the MSRJD action (Eq.~\eqref{eq:rfd-action}).
+% well, not in all regimes, add a remark? again?
+This solution is called the instanton field, denoted by $\hat {\mathbf{A}}^{sp}$ and ${\mathbf{A}}^{sp}$, where $sp$ stands for \enquote{saddle point}.
+The PDF obtained solely from the instanton fields already captures nontrivial (non Gaussian) behavior induced by the nonlinearity and nonlocality of the Navier-Stokes equation, or an approximation such as the RFD equation.
+The instanton fields are the solutions of the Euler-Lagrange equations
+\begin{equation} \label{eq:rfd-eq-motion}
+ \left. \frac{\delta S[\hat {\mathbf{A}}, {\mathbf{A}}]}{\delta A_{ij}} \right|_{\substack{\hat {\mathbf{A}} = \hat {\mathbf{A}}^{sp} \\ {\mathbf{A}} = {\mathbf{A}}^{sp}}} \!\!\!\!\!\! = 0 \ \ \mbox{and} \ \ 
+ \left. \frac{\delta S[\hat {\mathbf{A}}, {\mathbf{A}}]}{\delta \hat A_{ij}} \right|_{\substack{\hat {\mathbf{A}} = \hat {\mathbf{A}}^{sp} \\ {\mathbf{A}} = {\mathbf{A}}^{sp}}} \!\!\!\!\!\! = 0  \mbox{,}
+\end{equation}
+with the periodic boundary condition $ {\mathbf{A}}^{sp}(0) = {\mathbf{A}}^{sp}(- \beta) = \bar {\mathbf{A}} $.
+
+Besides the instanton solution, fluctuations around these configurations are relevant as well in the reproduction of the correct PDFs from the original model. To consider the effect of fluctuations, the velocity gradient fields in the MSRJD action are replaced as
+$\hat {\mathbf{A}} \rightarrow \hat {\mathbf{A}}^{sp} + \hat {\mathbf{A}}$ and ${\mathbf{A}} \rightarrow {\mathbf{A}}^{sp} + {\mathbf{A}}$,
+where $\hat {\mathbf{A}}$ and ${\mathbf{A}}$ on the right hand side of these transformations refer to the fluctuation contributions. Since the potential $V(\mathbf{A})$ has been approximated by a sum of polynomials in $\mathbf{A}$, the MSRJD action can be split in the form
+\begin{equation}
+ S[\hat {\mathbf{A}}, {\mathbf{A}}] \rightarrow S[\hat {\mathbf{A}}, {\mathbf{A}}] = S_{sp}[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp}] + \Delta S[\hat {\mathbf{A}}, {\mathbf{A}}] \label{sp_fluct} \ .
+\end{equation}
+% slightly changed
+The above expression is exact: The first term, $ S_{sp}[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp}] $ , holds the contributions to the MSRJD action that contain only the instanton fields, while all the additional terms that involve the fluctuations ${\mathbf{A}}$ and $\hat {\mathbf{A}}$ are included in $\Delta S[\hat {\mathbf{A}}, {\mathbf{A}}]$.
+The saddle-point action $S_{sp}[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp}]$ is simply the 
+MSRJD action, (\ref{eq:rfd-action}), evaluated on the instanton
+fields, $\hat {\mathbf{A}}^{sp}$ and ${\mathbf{A}}^{sp}$.
+From (\ref{eq:rhoPDF}), (\ref{asymptPDF}), and (\ref{sp_fluct}), the vgPDF can be correspondingly rewritten as
+\begin{equation}
+ \rho(\bar {\mathbf{A}}) = \exp \left\{ -S_{sp}[\hat {\mathbf{A}}^ {sp}, {\mathbf{A}}^ {sp}] \right\} \int D[\hat {\mathbf{A}}] D[{\mathbf{A}}] \exp \left\{ -\Delta S[\hat {\mathbf{A}}, {\mathbf{A}}] \right\} \mbox{.}
+\end{equation}
+
+The above path integral can be perturbatively computed following a standard procedure of statistical field theory, the cumulant expansion \parencite{amit2005}. 
+With this application in mind, the $ \Delta S[\hat {\mathbf{A}}, {\mathbf{A}}]$ term is exactly split as
+\begin{equation} \label{deltaS}
+ \Delta S[\hat {\mathbf{A}}, {\mathbf{A}}] = \Delta S_0[\hat {\mathbf{A}}, {\mathbf{A}}] + \Delta S_1[\hat {\mathbf{A}}, {\mathbf{A}}] \mbox{,}
+\end{equation}
+where $ \Delta S_0 [\hat {\mathbf{A}}, {\mathbf{A}}] $ contains only the quadratic contributions, whereas $ \Delta S_1 [\hat {\mathbf{A}}, {\mathbf{A}}] $ holds all the self-interacting terms of the MSRJD action.
+Under this separation, the velocity gradient PDF is calculated as 
+\begin{equation} \label{eq:pdf}
+ \rho(\bar {\mathbf{A}}) = \exp \left\{ -S_{sp}[\hat {\mathbf{A}}^ {sp}, {\mathbf{A}}^ {sp}] \right\}
+ \left\langle \exp [ -\Delta S_1 ] \right\rangle_0 ,
+\end{equation}
+where the expectation value $ \left\langle \exp [ -\Delta S_1 ] \right\rangle_0 $ is computed 
+with respect to the model defined by the quadratic action $ \Delta S_0$.
+The PDF in Eq.~\eqref{eq:pdf} can be seen as 
+\begin{equation} \label{nn_vgPDF}
+\rho(\bar {\mathbf{A}}) \propto \exp \left\{ -\Gamma[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] \right\} , 
+\end{equation}
+where $\Gamma[\hat{\mathbf{A}}^{sp},\mathbf{A}^{sp}]$ is the \textit{effective action}, taking into account the contributions from fluctuations around the instanton.
+
+The cumulant expansion is a pragmatic way to evaluate the effective action from the statistical moments of $\Delta S_1$. Up to second order in $\Delta S_1$, the result of this expansion is
+\begin{equation} \label{eq:cumul-gamma}
+\begin{split}
+ \Gamma[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] &= 
+ S_{sp}[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] + \langle \Delta S_1[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] \rangle_0 \\
+ &- \frac{1}{2}
+ \left( \langle \Delta S_1^2[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ]  \rangle_0 - \langle \Delta S_1[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] \rangle_0^2 \right) \mbox{.}
+\end{split}
+\end{equation}
+A derivation of this formula is found in Appendix \ref{app:cumul}.
+Each term in the cumulant expansion corresponds to a Feynman diagram with respect to the free theory $\Delta S_0$. These diagrams can be numerous, with a variety of relative weights, requiring a power counting procedure to single out the most relevant diagrams. This discussion is provided in the next section.
+
+% this paragraph and the paragraph below should be changed. They are talking about the instanton approximation.
+It should be emphasized that it is in general difficult to find exact solutions of the saddle-point Eqs.~\eqref{eq:rfd-eq-motion}. 
+% review the words below, I'm not sure I like their style
+This, however, should not be a matter of great concern, if one is able to find reasonable approximations for the instanton fields, since the substitution (\ref{sp_fluct}) and the second order cumulant expansion result (\ref{eq:cumul-gamma}) are always meaningful perturbative procedures in weak coupling regimes. 
+
+Provided that the Reynolds numbers are not too high, the exact instantons can be approximated by closed analytical expressions derived from the quadratic contributions to the MSRJD action. 
+It  is important to have in mind that such a simplification would not work to model the far PDF tails, essentially dependent on the exact nonlinear instantons (in cases where the PDF tails decay faster than a simple exponential).
+
+\section{Application to the RFD Model}  \label{sec:Application}
+
+In this section, the MSRJD formalism, discussed in the last section, is applied to the RFD model. The notation below follows the one introduced in Eq.~\eqref{deltaS}.
+The quadratic action is given by
+\begin{equation} \label{eq:quadratic}
+ \Delta S_0[\hat {\mathbf{A}}, {\mathbf{A}}] = \int_{- \beta}^0 d t \left\{ i \mathrm{Tr} [ \hat {\mathbf{A}}^\T (\dot {\mathbf{A}} + {\mathbf{A}})
+ + \frac{g^2}{2} G_{ijkl} \hat A_{ij} \hat A_{kl} \right\} \ ,
+\end{equation}
+and the interaction term by
+\begin{equation} \label{eq:deltaS1}
+ \begin{split}
+  \Delta S_1 [ \hat {\mathbf{A}}, {\mathbf{A}}] &= - i \sum_{p=2}^{4} \int_{- \beta}^0 d t \ 
+  \mathrm{Tr}[ ( \hat {\mathbf{A}}^{sp} )^\T ( V_p({\mathbf{A}}) + \Delta V_p ({\mathbf{A}}) ) ] \\
+  &+ \mathrm{Tr}
+  [ \hat {\mathbf{A}}^\T V_p ({\mathbf{A}}^{sp})] + \mathrm{Tr} [ \hat {\mathbf{A}}^\T ( V_p({\mathbf{A}}) + \Delta V_p ({\mathbf{A}}) ) ] \mbox{,}
+ \end{split}
+\end{equation}
+where the $V_p$ were defined in Eq.~\eqref{eq:vpowers} and $\Delta V_p$ are
+\begin{equation}
+ \Delta V_p({\mathbf{A}}) = V_p( {\mathbf{A}}^{sp} + {\mathbf{A}} ) - V_p( {\mathbf{A}}^{sp} ) - V_p( {\mathbf{A}} ) \ . \
+\end{equation}
+Since each $V_p({\mathbf{A}})$ corresponds to a polynomial in the components of $\mathbf{A}$, it can be seen that the $\Delta V_p({\mathbf{A}})$ isolate those contributions that mix the instanton ($\mathbf{A}^{sp}$ and $\hat{\mathbf{A}}^{sp}$) and fluctuating fields ($\mathbf{A}$ and $\hat{\mathbf{A}}$).
+
+The propagators in the free (quadratic) model are calculated as second order functional derivatives of the free generating functional,
+\begin{equation}
+ Z[{\mathbf{J}},\hat {\mathbf{J}}] = \int D[\hat {\mathbf{A}}] D[{\mathbf{A}}] \exp \left\{ - \Delta S_0[\hat {\mathbf{A}}, {\mathbf{A}}] +i \int_{ - \beta}^0 d t \ \mathrm{Tr} [{\mathbf{J}}^T {\mathbf{A}} + \hat{\mathbf{J}}^T \hat {\mathbf{A}}] \right\} \mbox{,}
+\end{equation}
+with respect to the external source fields $\hat {\mathbf{J}}$ and ${\mathbf{J}}$, and evaluated at
+$\hat {\mathbf{J}} = {\mathbf{J}} = 0$. There are two nonzero propagators in this model, given by
+\begin{equation} \label{eq:q_propagator}
+%calculated again 28/03,1
+\langle A_{ij} (t) \hat A_{kl} (t') \rangle_0 = \left. \frac{\delta^2 \ln(Z[{\mathbf{J}},\hat {\mathbf{J}}])}{\delta J_{ji}(t) \delta \hat J_{lk}(t')} \right |_{\hat {\mathbf{J}} = {\mathbf{J}}=0}= -i \theta (t-t') \exp(t'-t) \delta_{ik} \delta_{jl} \ \ \mbox{and}
+\end{equation}
+\begin{equation} \label{eq:0_propagator}
+ \langle A_{ij} (t) A_{kl} (t') \rangle_0 =
+ \left. \frac{\delta^2 \ln(Z[{\mathbf{J}},\hat {\mathbf{J}}])}{\delta J_{ji}(t) \delta J_{lk}(t')} \right |_{\hat {\mathbf{J}} = {\mathbf{J}}=0} = \frac{g^2}{4} \exp(-|t-t'|) G_{ijkl} \mbox{,}
+\end{equation}
+which are represented as the Feynman diagrams illustrated in Fig. \ref{fig:free-propagator}. The functions in Eq.~\eqref{eq:0_propagator} are measured in the units of the large time scale $T=1$.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=.3\textwidth]{diagram.pdf}
+ \caption
+ [RFD model propagators]
+ {The unperturbed two-point correlation functions of the RFD model, given by diagrams (a) and (b), respectively related to the time translation invariant expressions (\ref{eq:q_propagator}) and (\ref{eq:0_propagator}).}
+ \label{fig:free-propagator}
+\end{figure}
+
+The perturbative effective action, Eq.~\eqref{eq:cumul-gamma}, is an algebraic expansion of all the terms in Eq.~\eqref{eq:deltaS1}, producing one hundred and eleven Feynman diagrams. These diagrams are obtained as products of the propagators in Eqs.~\eqref{eq:q_propagator} and ~\eqref{eq:0_propagator} with the application of Wick's theorem \parencite{amit2005,zinn2002}.
+As an example, the complete set of fourth-order vertices is depicted in Fig.\ref{fig:Vertices}.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{vertices.pdf}
+    \caption
+    [Fourth-order vertices in the RFD model]
+    {Fourth-order vertices taken from the MSRJD action for the RFD model, Eq. (\ref{eq:deltaS1}). Dashed lines attached to crossed or filled circles, 
+    indicate, respectively, the insertion of the instanton fields $ \hat {\mathrm{A}}^{sp}$ (dashed incoming lines) or
+    ${\mathrm{A}}^{sp}$ (dashed outgoing lines) in the perturbative vertices. Solid lines have an analogous interpretation, given in
+    terms of the fluctuating fields $ \hat {\mathrm{A}}$ and ${\mathrm{A}}$. These vertices are related to the following contributions to the MSRJD action (by ``odd'' or ``even'' parts of traces, we refer to the sum of tensor monomials that contain an odd or even total number of fluctuating fields): 
+    (a) $ \mathrm{Tr} [ (\hat {\mathrm{A}}^{sp})^\T V_3({\mathrm{A}}) ] $,
+    (b) odd part of $ \mathrm{Tr} [  ( \hat {\mathrm{A}}^{sp})^\T \Delta V_3({\mathrm{A}}) ]$,
+    (c) even part of $ \mathrm{Tr} [  ( \hat {\mathrm{A}}^{sp})^\T \Delta V_3({\mathrm{A}}) ]$,
+    (d) $ \mathrm{Tr} [ \hat {\mathrm{A}}^\T V_3 ({\mathrm{A}}^{sp})] $,
+    (e) $ \mathrm{Tr} [ \hat {\mathrm{A}}^\T V_3({\mathrm{A}}) ] $,
+    (f) odd part of $ \mathrm{Tr} [ \hat {\mathrm{A}}^\T \Delta V_3({\mathrm{A}}) ] $ and
+    (g) even part of $ \mathrm{Tr} [ \hat {\mathrm{A}}^\T \Delta V_3({\mathrm{A}}) ] $.}
+  \label{fig:Vertices}
+\end{figure}
+% maybe i should review the meaning of these diagrams? it's been so long i can't read them anymore
+
+The evaluation of all Feynman diagrams is possible with the use of computer algebra systems, but the regime of interest is perturbative, where $g$ and $\tau$ are small values, and the vast majority of the diagrammatic contributions can be neglected. The determination of the relevant diagrams has been pursued through a power-counting procedure, taking into account the coupling parameters $g$ and $\tau$, and also the powers of the instanton fields associated to each one of the Feynman diagrams.
+
+Explicitly, the saddle-point equations for the RFD action are:
+\begin{equation} \label{eq:rfd-saddle}
+    \begin{split}
+        &\frac{\delta S[\hat {\mathbf{A}}, {\mathbf{A}}]}{\delta A_{ij}} =
+        -i \left( \frac{d \hat A_{ij}}{dt} + \hat A_{kl} \frac{\delta V_{kl}}{\delta A_{ij}} \right) \ , \\
+        &\frac{\delta S[\hat {\mathbf{A}}, {\mathbf{A}}]}{\delta \hat A_{ij}} =
+        i \left( \frac{d A_{ij}}{dt} - V_{ij} \right) + g^2 G_{ijkl} \hat A_{kl} \ .
+    \end{split}
+\end{equation}
+The roots of the equations above determine the instanton fields. With the second equation, $\hat {\mathbf{A}}^{sp}$ can be expressed in terms of ${\mathbf{A}}^{sp}$, an expression which is used to derive the order of magnitude contribution of each diagram. Graph-theoretical arguments are also important in this derivation.
+
+% this paragraph did not have many changes, it is a difficult paragraph, which I don't understand fully
+A diagram is characterized by its number of loops $L$, number of external lines $E$ (representing $\hat {\mathbf{A}}^{sp}$ or ${\mathbf{A}}^{sp}$ fields), and the numbers of vertices $N_3$ and $N_4$. $N_3$ corresponds to vertices of the type $\hat {\mathbf{A}}^{sp}({\mathbf{A}^{sp}})^3$, and $N_4$ to vertices $\hat {\mathbf{A}}^{sp}({\mathbf{A}^{sp}})^4$. The contribution of this diagram is proportional to 
+\begin{equation} \label{eq:powers}
+ g^{2(L-1)} (1 + a\tau^{N_3})\tau^{N_3 + 2 N_4} f( {\mathbf{A}}^{sp} ) \ .
+\end{equation}
+In this equation, $f( {\mathbf{A}}^{sp} )$ is a diagram-dependent homogeneous scalar function of ${\mathbf{A}}^{sp}$ with homogeneity degree $E$, that is : $f( \alpha {\mathbf{A}}^{sp}) = \alpha^E f( {\mathbf{A}}^{sp} )$, for any real positive parameter $\alpha$, being $\alpha$ a constant of the order of unity. It is important to note that vertices of type $\hat {\mathbf{A}}^{sp}({\mathbf{A}^{sp}})^2$ do not contribute with factors that depend on their diagrammatic participation number $N_2$, since these diagrams derive from $V_2$ contributions, which do not depend on $\tau$, as it can be seen from the potential (Eq. \ref{eq:vpowers}b). Thus, for each Feynman diagram that takes part in the cumulant expansion, we define, taking into account (\ref{eq:boundary}) and (\ref{eq:powers}), its \textit{power counting coefficient}, as
+\begin{equation}
+C(g,\tau, A) = g^{2(L-1)} {\hbox{Max($\tau^{N_3}$,$\tau^{2N_3}$)}} \tau^{2 N_4} A^E \label{power_count_coeff} \ , \ 
+\end{equation}
+where 
+\begin{equation}
+A \equiv \sqrt{ \mathrm{Tr} [ \bar {\mathbf{A}}^{\T}  \bar {\mathbf{A}}] }
+\end{equation}
+is a measure of the velocity gradient strength for the velocity gradient tensor $\bar {\mathbf{A}}$ where the vgPDF is evaluated. 
+
+Eq. \eqref{power_count_coeff} is the basis for the ranking of diagrams. In consonance with previous numerical studies \parencite{ChevPRL,moriconi2014,afonso2010recent,grigorio2017instantons}, the values $g=1.0$ and $\tau=0.1$ are taken.
+% no changes, starting here
+The numerical values of the power counting coefficients are inspected in the interval $0 \leq A \leq 1$, a range where perturbation theory is assumed to hold, a fact we verify \textit{a posteriori} from the computation of PDFs.
+It is important that $\tau$ be small enough for the RFD model to yield statistical results which are qualitatively similar to the ones derived from the exact Navier-Stokes equations, as observed in \textcite{ChevPRL}.
+The forcing parameter $g$ is our main perturbative parameter, since it controls the intensity of fluctuations. In addition, the velocity gradient strength $A$ must also be small, once we are focused on the evaluation of relevant intermittency corrections near the PDF cores. 
+% i have to review this and maybe give the argument of symmetries
+% review this again, I'm skipping
+The most important five contributions that appear more frequently in that range of velocity gradient strengths are labeled, in ranking order of decreasing importance, with boldface letters from {\textbf{A}} to {\textbf{E}}, and correspond to the following cumulant expansion terms,
+\begin{align}
+  &\textbf{A:}  \  \langle \mathrm{Tr} \left [ ( \hat {\mathbf{A}}^{sp})^\T V_2({\mathbf{A}}) \right ]_t  \mathrm{Tr} \left [ ( \hat {\mathbf{A}}^{sp})^\T V_2({\mathbf{A}}) \right ]_{t'}   \rangle_0  \sim A^2 \ , \ \label{eqA} \\ 
+  &\textbf{B:} \ \langle \mathrm{Tr} \left [ ( \hat {\mathbf{A}}^{sp})^\T V_2({\mathbf{A}}) \right ]_t  \mathrm{Tr} \left [ \hat {\mathbf{A}}^\T \Delta V_2({\mathbf{A}}) \right ]_{t'} \rangle_0 \sim A^2 \ , \ \label{eqB} \\ 
+  &\textbf{C:} \ \langle \mathrm{Tr} \left [ ( \hat {\mathbf{A}}^{sp})^\T \Delta V_2({\mathbf{A}}) \right ]_t  \mathrm{Tr} \left [ \hat {\mathbf{A}}^\T V_2({\mathbf{A}}^{sp}) \right ]_{t'} \rangle_0 \sim  A^4/g^2 \ , \ \\
+  &\textbf{D:} \ \langle \mathrm{Tr} \left [ ( \hat {\mathbf{A}}^{sp})^\T \Delta V_3({\mathbf{A}}) \right ]_t \mathrm{Tr} \left [ \hat {\mathbf{A}}^\T V_2({\mathbf{A}}^{sp}) \right ]_{t'} \rangle_0 \sim  \tau A^5/g^2 \label{eqD} \ , \ \\
+  &\textbf{E:} \ \langle \mathrm{Tr} \left [ ( \hat {\mathbf{A}}^{sp} )^\T V_3({\mathbf{A}}) +  \hat {\mathbf{A}}^\T V_3 ({\mathbf{A}}^{sp}) +  \hat {\mathbf{A}}^\T V_3({\mathbf{A}}) \right ]_t \rangle_0 = {\hbox{const.}}  \label{eqE} \ , \ 
+\end{align}
+which have their power counting coefficients plotted in Fig. \ref{fig:powers-scaling}a. The histogram analysis of the above top five expectation values is furthermore given in Fig. \ref{fig:powers-scaling}b.
+These five diagrams agree with the intuitive notion, brought by
+Eq. (\ref{power_count_coeff}), that the more relevant diagrams have smaller values
+of $N_3$ and $N_4$, since $\tau = 0.1$. As a matter of fact, we point out that the higher order terms produced from the second order cumulant contributions, and not scrutinized in Eqs. (\ref{eqA} - \ref{eqE}), have prefactors that are proportional to powers of the small parameter $\tau$, and, thus, play a negligible role in the account of perturbative contributions.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=\textwidth]{diagram_count.pdf}
+ \caption
+ [Power counting coefficients]
+ {(a)  The power counting coefficient as a function of the velocity gradient strength $A$, as defined from the expectation values (\ref{eqA}-\ref{eqE}) taken for $g=1.0$ and $\tau=0.1$. (b) Relative frequencies, within the interval $0 \leq A \leq 1$, of the cases where the power counting coefficients are found to be among the first five largest ones.}
+ \label{fig:powers-scaling}
+\end{figure}
+
+% did not review this
+It turns out that in the considered range of velocity gradient strengths, two contributions, which have exactly the same power counting coefficients,
+are clearly dominant over the remaining ones. These are the cumulant corrections {\hbox{\textbf{A}}} and {\hbox{\textbf{B}}}, defined in Eqs. (\ref{eqA}) and (\ref{eqB}). 
+Note that the power counting coefficient for the contribution {\hbox{\textbf{E}}}, Eq. (\ref{eqE}), is actually independent of $A$, and, therefore, plays 
+no role at all in the evaluation of the PDFs.
+Diagram \textbf{E} is only displayed for matters of completeness,
+since it casually happens to be larger than many other diagrams. It is important to note that power counting is actually an effective way to identify relevant contributions, provided these are in fact dependent on the velocity gradient tensor - a fact that we check for each one of the selected diagrams.
+
+With respect to the fluctuations, the first order contribution in the expansion around the instantons is null, $ \langle \Delta S_1 [\hat {\mathbf{A}}, {\mathbf{A}}] \rangle_0 = 0$, because the instantons satisfy the Euler-Lagrange equations for the $\Delta S_0$ action. 
+From this fact and Eq. (\ref{eq:cumul-gamma}), the MSRJD effective action can be written as
+\begin{equation} \label{eq:eff_MSRJD_action}
+ \Gamma[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] = S[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] + \sum_n C_n [\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ] \mbox{,}
+\end{equation}
+where $n$ labels the several second order cumulant expansion terms $C_n [\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ]$, which are dominated by the contributions $\textbf{A}$ and $\textbf{B}$.
+Their associated Feynman diagrams, represented in Fig. \ref{fig:oneloop}, are noted to renormalize the noise and propagator kernels in the effective MSRJD action (\ref{eq:eff_MSRJD_action}).
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{oneloop.pdf}
+  \caption
+  [Feynman diagrams for noise and potential renormalization]
+  {Feynman diagrams for (a) the renormalized noise and (b) the renormalized causal propagator kernels, which take into account the one-loop contributions {\textbf{A}} and {\textbf{B}}, respectively.}
+  \label{fig:oneloop}
+\end{figure}
+The contributions {\textbf{A}} and {\textbf{B}} to the effective action (\ref{eq:eff_MSRJD_action}) can be written, more concretely, as
+\begin{equation}\label{eq:diag_a_effective}
+ C_{\textbf{A}} [\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ]  = \frac12 \int_{-\beta}^0 d t \int_{-\beta}^0 d t'
+ \hat A^{sp}_{ij} (t) \hat A^{sp}_{kl} (t') C^A_{ijkl} (t-t')
+\end{equation}
+and
+\begin{equation}\label{eq:diag_b_effective}
+ C_{\textbf{B}} [\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ]  = \frac12 \int_{-\beta}^0 d t \int_{-\beta}^0 d t'
+ \hat A^{sp}_{ij} (t) C^B_{ij} ({\mathbf{A}}^{sp}(t'),t-t') \mbox{,}
+\end{equation}
+where
+\begin{equation}
+    C^A_{ijkl} (t-t') = \langle [ V_2 ({\mathbf{A}}(t)) ]_{ij} [V_2 ({\mathbf{A}}(t')) ]_{kl} \rangle_0
+\end{equation}
+and
+\begin{equation}
+   C^B_{ij} ({\mathbf{A}}^{sp}(t'),t-t') = \langle [ V_2 ({\mathbf{A}}(t)) ]_{ij} \hat A_{kl} (t') [\Delta V_2 ({\mathbf{A}}(t')) ]_{kl} \rangle_0 \mbox{.}
+\end{equation}
+These terms correspond to the integration over fluctuating fields.
+
+\subsection{Structure of the MSRJD Effective Action}
+
+The effective action (\ref{eq:eff_MSRJD_action}) can be written, after the introduction of the contributions (\ref{eq:diag_a_effective}) and (\ref{eq:diag_b_effective}), as
+
+\begin{equation}\label{eq:effective_with_integrals}
+\begin{split}
+\Gamma [ \hat {\mathbf{A}}, {\mathbf{A}}] = i \int_{-\beta}^0 d t \int_{-\beta}^0 d t' \Bigg \{ 
+&\mathrm{Tr} \left[ \hat {\mathbf{A}}^\T(t) \left( \frac{d\mathbf{A}}{dt} - V^{\mathrm{ren}}({\mathbf{A}}(t'),t-t') \right)
+\right] \\
++ &\frac{g^2}{2} G_{ijkl}^{\mathrm{ren}} (t-t') \hat A_{ij} (t) \hat A_{kl} (t') \Bigg \} \ .
+\end{split}
+\end{equation}
+This action has the same form as the instanton action, $S_{sp}[\hat {\mathbf{A}}^{sp},{\mathbf{A}}^{sp}]$, with two renormalized terms: the noise $G$ and the potential $V$. These renormalizations correspond to the effective role of the fluctuations to the terms in the saddle-point action. Explicitly, these contributions are
+\begin{equation}\label{eq:noise_renormalized}
+G_{ijkl}^{\mathrm{ren}} (t-t') \equiv  G_{ijkl} \delta(t-t') + C^A_{ijkl}(t-t') 
+\end{equation}
+and
+\begin{equation}\label{eq:potential_renormalized}
+V_{ij}^{\mathrm{ren}}({\mathbf{A}}(t'),t-t') \equiv V_{ij}({\mathbf{A}}(t')) \delta(t-t') - C^B_{ij}({\mathbf{A}}(t'),t-t') \ . \ 
+\end{equation}
+In contrast to the original nonperturbed MSRJD action (\ref{eq:quadratic}), the above renormalized form (\ref{eq:effective_with_integrals}) contains kernels that depend
+non-trivially on a pair of time instants $t$ and $t'$. As it is usual (sometimes in an implicit way) in renormalization group
+studies \parencite{amit2005,zinn2002,Peskin}
+% there used to be references to Barabaki, Kardar and Kogut here, I removed to make the text shorter, since these are almost random citations
+, the structure of the renormalized effective action can be simplified in the case of slowly varying fields
+(as the instanton fields are assumed to be). This simplification is achieved through the procedure of low-frequency renormalization, which 
+in our context consists in replacing the renormalization kernels $C^A_{ijkl}$ and $C^B_{ij}$ by singular ones, 
+according to the prescriptions
+\begin{subequations}
+\begin{align}
+&C^A_{ijkl}(t-t') \rightarrow \tilde C^A_{ijkl} \delta(t-t') \ , \ \\
+&C^B_{ij}({\mathbf{A}}(t'), t-t') \rightarrow \tilde C^B_{ij}({\mathbf{A}}(t')) \delta(t-t') \ , \ 
+\end{align}
+\end{subequations}
+where
+\begin{subequations}
+\begin{align}
+& \tilde C^A_{ijkl} \equiv  \int_{- \infty}^\infty dt'  C^A_{ijkl}(t- t') \ , \ \label{eq:coeff_diag_a}\\
+& \tilde C^B_{ij}({\mathbf{A}}(t)) \equiv \int_{- \infty}^\infty dt'  C^B_{ij}({\mathbf{A}}(t'),t-t') \ . \ \label{eq:coeff_diag_b}
+\end{align}
+\end{subequations}
+Substituting (\ref{eq:coeff_diag_a}) and (\ref{eq:coeff_diag_b}) in (\ref{eq:noise_renormalized}) and 
+(\ref{eq:potential_renormalized}), the nonperturbed and the effective MSRJD actions will, then, become
+isomorphic to each other, provided that the tensors
+$G_{ijkl}$ and $V_{ij}({\mathbf{A}})$ of the nonperturbed action are mapped, respectively, to the tensors
+\begin{equation} \label{eq:g_renc}
+\tilde G_{ijkl}^{\mathrm{ren}} \equiv  G_{ijkl} + \tilde C^A_{ijkl} 
+\end{equation}
+and
+\begin{equation} \label{eq:v_renc}
+\tilde V_{ij}^{\mathrm{ren}}({\mathbf{A}}) \equiv V_{ij}({\mathbf{A}})  - \tilde C^B_{ij}({\mathbf{A}}) 
+\end{equation}
+that appear in the definition of the effective renormalized action.
+
+It is important to observe, furthermore, that from the traceless property of the stochastic forcing, it follows that $\tilde G_{iikl}^{\mathrm{ren}} 
+=\tilde G_{ijkk}^{\mathrm{ren}} = 0$, and we may write, in general, that
+\begin{equation}\tilde G_{ijkl}^{\mathrm{ren}} = D_{ijkl} -\frac{1}{3}(x+y) \delta_{ij} \delta_{kl} \ , \
+\end{equation}where 
+\begin{equation}D_{ijkl} = x \delta_{ik} \delta_{jl} + y \delta_{il} \delta_{jk} \ , \
+\end{equation}with $x$ and $y$ being two independent arbitrary parameters. The computation of the noise renormalization diagram, Fig. \ref{fig:oneloop}a,
+returns
+\begin{equation} \label{eq:g_correction}
+ \tilde C^A_{ijkl} = \frac{g^4}{8} \left( 6 \delta_{ik} \delta_{jl}
+ - \frac{1}{4} \delta_{il} \delta_{jk} - \frac{23}{12} \delta_{ij} \delta_{kl} \right) \mbox{,}
+\end{equation}
+and, as a consequence,
+\begin{equation} \label{eq:renormalization_xy}
+x = 2 + \frac{3}{2} g^2 \ , \  y = -\frac12 - \frac{1}{16} g^2 \mbox{.}
+\end{equation}
+
+In its turn, the renormalization of the potential produces the contribution
+\begin{equation} \label{eq:v_correction}
+    \tilde C^B_{ij} = \frac{g^2}{16} ( 4 A_{ji} - A_{ij} ) .
+\end{equation}
+
+The calculation of the renormalization terms in Eqs.~\eqref{eq:g_correction} and \eqref{eq:v_correction} involves the manipulation of several $A_{ij}$ and $G_{ijkl}$ factors in complex tensor contractions. These tensor contractions have been performed with the computer algebra system Mathematica and they are described in Appendix \ref{app:comp}.
+
+Recalling, now, the saddle-point to solve for $\hat {\mathbf{A}}^{sp}$ in terms of ${\mathbf{A}}^{sp}$, the MSRJD effective action can be 
+rewritten in a more compact way, up to the same order in perturbation expansion, as a scalar functional uniquely
+dependent on the velocity gradient tensor field ${\mathbf{A}}$, namely,
+\begin{equation}\label{eq:longGamma}
+\begin{split}
+\Gamma [{\mathbf{A}}] &= \frac{1}{2 g^2} \int_{-\beta}^0 d t \ 
+\left( \frac{dA_{ij}}{dt} - \tilde V^{\mathrm{ren}}_{ij}({\mathbf{A}}) \right)
+D^{-1}_{ijkl} 
+\left( \frac{dA_{kl}}{dt} - \tilde V^{\mathrm{ren}}_{kl}({\mathbf{A}}) \right)
+\\ &= \frac{a}{2 g^2} \int_{-\beta}^0 d t \ 
+\left( \frac{dA_{ij}}{dt} - \tilde V^{\mathrm{ren}}_{ij}({\mathbf{A}}) \right)
+\left( \frac{dA_{ij}}{dt} - \tilde V^{\mathrm{ren}}_{ij}({\mathbf{A}}) \right)
+\\ &+ \frac{b}{2 g^2} \int_{-\beta}^0 d t \ 
+\left( \frac{dA_{ij}}{dt} - \tilde V^{\mathrm{ren}}_{ij}({\mathbf{A}}) \right)
+\left( \frac{dA_{ji}}{dt} - \tilde V^{\mathrm{ren}}_{ji}({\mathbf{A}}) \right) \ , 
+\end{split}
+\end{equation}
+where
+\begin{equation}
+    D^{-1}_{ijkl} \equiv a \delta_{ik} \delta_{jl} + b \delta_{il} \delta_{jk} \ , \
+\end{equation}
+with
+\begin{equation} \label{eq:ab_from_xy}
+    a = - \frac{x}{y^2 - x^2} \ , \ b = \frac{y}{y^2 - x^2} \ . \     
+\end{equation}
+
+In the formulation of Eq.~\ref{eq:longGamma}, it is not necessary anymore to work with a coupled set of saddle-point equations. Instead, the instanton configuration is obtained from a single equation
+\begin{equation} \label{eq:euler-lagrange-gamma}
+ \left. \frac{\delta \Gamma[{\mathbf{A}}]}{\delta A_{ij}} \right|_{{\mathbf{A}}={\mathbf{A}}^{sp}} = 0 \ . 
+\end{equation}
+The effective action of Eq.~\ref{eq:longGamma} is usually called the Onsager-Machlup action functional \parencite{onsager1953fluctuations}.
+
+\subsection{Instanton Configurations}
+
+One the working hypothesis made in \textcite{moriconi2014} was the relevance of an approximate analytical instanton, instead of the exact field, solution of Eq.~\ref{eq:rfd-saddle}. In this work, the applicability of this hypothesis was verified. The approximate instantons consist in the saddle-point solutions of a quadratic truncated renormalized effective action,
+\begin{equation} \label{eq:gamma_quadratic}
+ \Gamma_0[{\mathbf{A}}] \equiv \frac{a}{2 g^2} \int_{-\beta}^0 d t \ \mathrm{Tr}
+ \left[\dot {\mathbf{A}}^\T \dot {\mathbf{A}} + {\mathbf{A}}^\T {\mathbf{A}} \right] +
+ \frac{b}{2 g^2} \int_{-\beta}^0 d t \ \mathrm{Tr} \left[\dot {\mathbf{A}}^2 + {\mathbf{A}}^2 \right] \ .
+\end{equation}
+The corresponding approximate saddle-point equation is
+\begin{equation}\label{eq:approx_EOM}
+ \left. \frac{\delta \Gamma_0[{\mathbf{A}}]}{\delta A_{ij}} \right|_{{\mathbf{A}}={\mathbf{A}}^{sp}} = 0 \Rightarrow  \ddot {\mathbf{A}}^{sp} - {\mathbf{A}}^{sp} = 0
+\ ,\ 
+\end{equation}
+subject to the periodic boundary condition (\ref{eq:boundary}).
+Instanton solutions of (\ref{eq:approx_EOM}) have the form
+\begin{equation} \label{eq:analytical_instanton}
+ {\mathbf{A}}^{sp} (t) = \bar {\mathbf{A}} f(\beta, t) \mbox{,}
+\end{equation}
+where the function $f(\beta,t)$, defined for $-\beta \leq t \leq 0$, is given by
+\begin{equation}
+ f(\beta, t) = 2 \frac{\sinh(\beta/2)}{\sinh(\beta)} \cosh(t + \beta/2) \mbox{.}
+\end{equation}
+Additionally, since the potential functions $V_p({\mathbf{A}})$ are homogeneous functions of degree $p$, their contribution conforms to
+\begin{equation}
+ V({\mathbf{A}}^{sp}(t)) = \sum_{p = 1}^4 V_p (\bar {\mathbf{A}}) [ f(\beta,t) ]^p \ .
+\end{equation}
+The above expression together with (\ref{eq:vpowers}), (\ref{eq:g_renc}) and \eqref{eq:v_renc}, leads to the evaluation of the effective action (Eq. \ref{eq:longGamma}) from these following scalar contributions:
+% what equation to cite here?
+\begin{equation}
+\begin{split}
+\int_{-\beta}^0 dt \ &\left( \frac{d A_{ij}^{sp}}{dt} - V_{ij}^{\mathrm{ren}}(\mathbf{A}^{sp}) \right) \left( \frac{d A_{ij}^{sp}}{dt} - V_{ij}^{\mathrm{ren}}(\mathbf{A}^{sp}) \right)
+= \\ &I_1 (\beta) 
+\mathrm{Tr} [ \bar {\mathbf{A}}^\T \bar {\mathbf{A}} ] + \sum_{p=1}^4 \sum_{q=1}^4 I_{p+q}  (\beta) H_{p,q}(\bar {\mathbf{A}}^\T, \bar {\mathbf{A}})
+\end{split}
+\end{equation}
+and
+\begin{equation}
+\begin{split}
+\int_{-\beta}^0 dt \ &\left( \frac{d A_{ij}^{sp}}{dt} - V_{ij}^{\mathrm{ren}}(\mathbf{A}^{sp}) \right) \left( \frac{d A_{ji}^{sp}}{dt} - V_{ji}^{\mathrm{ren}}(\mathbf{A}^{sp}) \right)
+= \\ &I_1 (\beta) 
+\mathrm{Tr} [ \bar {\mathbf{A}}^2  ] + \sum_{p=1}^4 \sum_{q=1}^4 I_{p+q} (\beta) H_{p,q}(\bar {\mathbf{A}}, \bar {\mathbf{A}}) \ , \    
+\end{split}
+\end{equation}
+where $H_{p,q}(X,Y)$ is an homogeneous scalar function of degrees $p$ and $q$, related, 
+respectively, to the matrix variables $X$ and $Y$, and
+\begin{equation}
+ I_1 (\beta)  \equiv \int_{-\beta}^0 d t [ \dot f(\beta, t) ]^2 \mbox{,}
+ \ I_{p+q} (\beta) \equiv \int_{-\beta}^0 d t [ f(\beta, t) ]^{p+q} \mbox{.}
+\end{equation}
+At asymptotic times, $\beta \rightarrow \infty$, the constants $I_p$ are defined as $I_p = \lim_{\beta \rightarrow \infty } I_p (\beta)$
+and their exact values are:
+\begin{equation}
+\begin{split}
+     &I_1 = I_2 = 1 \mbox{,} \  I_3 = 2/3 \mbox{,} \  I_4 = 1/2 \mbox{,}  \nonumber \\
+     &I_5 = 2/5 \mbox{,} \  I_6 = 1/3 \mbox{,} \  I_7 = 2/7 \mbox{,} \  I_8 = 1/4 \mbox{.}
+\end{split}
+\end{equation}
+Assembling all the above pieces together, the effective action is
+\begin{equation}\label{gamma_A}
+\begin{split}
+\Gamma[{\mathbf{A}}^{sp}] \equiv \Gamma( \bar {\mathbf{A}}) &= \frac{aI_1}{2 g^2} \mathrm{Tr} [ \bar {\mathbf{A}}^\T \bar {\mathbf{A}} ] + \frac{bI_1}{2 g^2} \mathrm{Tr} [ \bar {\mathbf{A}}^2  ]
+ \\ &+ \sum_{p=1}^4 \sum_{q=1}^4 \frac{I_{p+q}}{2g^2} [ a H_{p,q}(\bar {\mathbf{A}}^\T, \bar {\mathbf{A}})
+ + b H_{p,q}(\bar {\mathbf{A}}, \bar {\mathbf{A}}) ] \ . \ 
+\end{split}
+\end{equation}
+The normalized vgPDF can now be readily derived from (\ref{nn_vgPDF}) and (\ref{gamma_A}), therefore, as 
+\begin{equation}\rho(\bar {\mathbf{A}}) = {\cal{N}} \exp [ - \Gamma(\bar {\mathbf{A}}) ] \ . \  \label{n_vgPDF}
+\end{equation}
+
+It is relevant to compare the approximate instanton solutions (Eq. \ref{eq:analytical_instanton}) with accurate numerical solutions in specific cases. As discussed in \textcite{grigorio2017instantons}, diagonal velocity gradient instantons can be obtained from the application of the Chernykh-Stepanov method \parencite{chernykh2001} for the particular boundary conditions,
+\begin{equation}
+\begin{split} 
+&\bar A_{11} = -2 \bar A_{22} = -2 \bar A_{33} \equiv c \ , \ \label{c_boundary} \\
+& \bar A_{ij} = 0 {\hbox{  for $i \neq j$}} \ ,  \ 
+\end{split}
+\end{equation}
+where $c$ is an arbitrary constant. The approximate and the numerical instantons for $c=1$, $\tau=0.1$, and $g=0.8$ are both plotted in Fig. \ref{fig:instanton}, for three different values of the $\beta$ parameter. This figure reveals that the approximate instantons are uniformly close to the exact ones, justifying the use of quadratic instantons in the analytical approach. It is also worth pointing out that the regime in question is that of moderate Reynolds numbers and fluctuations only a few standard deviations from the mean, which does not guarantee the same uniform agreement for high Reynolds numbers. The use of approximate instantons also implies, in an exact formulation, that the first order contribution $\langle \Delta S_1 \rangle_0$ is not zero, but these contributions can be safely discarded due to their low relevance in the power counting scheme, and by the small difference between the exact and numerical instantons.
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=\textwidth]{instantons}
+ \caption
+ [Comparison between approximate and numerical instantons]
+ {Comparison between approximate (dashed lines) and numerical instantons (solid lines), obtained, respectively from Eq. (\ref{eq:analytical_instanton}) and from the application of the Chernykh-Stepanov method as discussed in \textcite{grigorio2017instantons}, for $c=1$ [that is $\bar A_{11} = 1$, see Eq. (\ref{c_boundary})], $\tau=0.1$, and $g=0.8$ in (a) linear and (b) monolog scales.
+ Notice that the approximate and the numerical instantons both refer to the RFD model.
+ Blue, green and red curves (left to right) correspond to $\beta =30$, $20$ and $10$.
+ }
+ \label{fig:instanton}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Numerical Results} 
+\label{sec:Results}
+
+This section discusses the analytical predictions obtained from the renormalized effective action in comparison to the numerical results obtained directly from the RFD model. The observables considered have been previously studied in the context of Lagrangian velocity gradients and reveal many of the non-trivial features of their dynamics.
+
+%\subsection{Marginal velocity gradient PDFs}\label{ssec:vgpdfs}
+
+The PDF in Eq.~\ref{n_vgPDF} is multivariate, it is defined on the domain of nine velocity gradient components. But symmetries between the components yield redundant the individual analysis of all of them. The high-dimensionality of the problem also makes it impractical to consider the whole distribution. For this reason, marginal PDFs have been produced from statistical ensembles of velocity gradients generated with a Monte Carlo procedure. The detailed procedure to sample configurations from the effective action $\Gamma[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp} ]$ is described in \textcite{moriconi2014}.
+
+The Monte Carlo samples consisted of sets of $ 8 \times 10^6$ velocity gradient tensors, from which were extracted ensembles of $ 24 \times 10^6$ and $ 48 \times 10^6$ diagonal and off-diagonal velocity gradient components, respectively. An illustrative case for the marginal PDFs of the diagonal and off-diagonal components of the velocity gradient tensor is given in Fig. \ref{fig:pdf-single-g}, for controlling parameters $\tau=0.1$ and $g=0.8$.
+For this value of $\tau$, the RFD model leads to statistical results similar to the ones observed in realistic turbulent flows \parencite{ChevPRL}.
+
+The PDFs of velocity gradients are compared in four different situations:
+\begin{enumerate}[label=(\roman*)]
+\item \label{it:DNS} the straightforward numerical simulations of the RFD model, Eq. \eqref{eq:model} with the potential from Eq.~\eqref{eq:vpotential}. This statistical ensemble contains $10^9$ velocity gradient tensors, covering $2 \times 10^5$  integral times scales, 
+\item \label{it:NonR} the saddle-point MSRJD action with no renormalization contributions, $S_{sp}[\hat {\mathbf{A}}^{sp}, {\mathbf{A}}^{sp}]$. 
+\item \label{it:NoiseR} the {\textit{ partial renormalization}} of the effective MSRJD action, which is renormalized only by the noise contribution, as given by Eqs. (\ref{eq:effective_with_integrals}) and
+(\ref{eq:noise_renormalized}), with $\tilde C^B_{ij}=0$ prescribed in (\ref{eq:potential_renormalized}), and
+\item \label{it:FullR} the {\textit{full renormalization}} of the effective action, which is renormalized by both the noise and the propagator contributions, as given by Eqs. (\ref{eq:effective_with_integrals}), (\ref{eq:noise_renormalized}), and (\ref{eq:potential_renormalized}).
+\end{enumerate}
+
+% review figure captions
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=\textwidth]{compare_single_g_log_with_gaussian.pdf}
+ \caption
+ [PDFs for diagonal and off-diagonal velocity gradient components]
+ {PDFs for the (a) diagonal and (b) off-diagonal velocity gradient components, computed for $\tau=0.1$ and $g=0.8$. Open squares refer to the empirical PDFs derived from the numerical solutions of the RFD model, while all the other PDFs follow from analytical expressions obtained at different improvement levels. Green dashed lines correspond to no effective action renormalization, red (light gray) lines to partial renormalization and blue (dark gray) lines to full renormalization.
+ The dotted-dashed gray lines correspond to Gaussian fits of the numerical (RFD) data around the PDFs peaks, which clearly show deviations from quadratic behavior both in the partial and full renormalization schemes.
+ The diagonal and off-diagonal empirical PDFs have standard deviations and kurtosis given by $\sigma = 0.66$ and $\kappa = 3.3$ and
+$\sigma = 0.89$ and $\kappa = 3.7$, respectively.
+ }
+ \label{fig:pdf-single-g}
+\end{figure}
+
+In Fig.~\ref{fig:pdf-single-g}, it can be seen that great improvement is obtained with the use of renormalized actions. Noise renormalization is found to be the leading contribution, and for this reason we may refer to the propagator renormalization contribution as the subleading one.
+The results from partial and full renormalization, though, seem essentially equivalent, with small differences observed mainly for the PDF tails of diagonal velocity gradient components. In closer inspection, though, it is found that the core regions of the numerical distribution is more accurately described by the PDF from the complete renormalization procedure.
+
+%One may wonder how the modeled vgPDFs plotted in Fig. \ref{fig:pdf-single-g} (the green, red and blue lines) would change if exact (numerical) instantons \textcite{grigorio2017instantons}, were used instead of the approximated (but analytical) ones considered in this work. It is clear that when renormalization is absent, the use of exact instantons leads in general to better and reasonable vgPDFs for small values of $g$. For larger values of $g$ ($g > 0.4$, roughly), fluctuations become more important and have to be necessarily taken into account for a proper modeling of the vgPDFs \textcite{grigorio2017instantons}.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=\textwidth]{compare_several_g_loglin.pdf}
+ \caption
+ [PDFs for diagonal and off-diagonal velocity gradient components at several values of the fluctuation intensity $g$]
+ {PDFs for the diagonal components of the velocity gradient tensor
+ at (a) and (c), and its off-diagonal components, at (b) and (d).
+ Figures (a) and (b) are in monolog scale, while figures
+ (c) and (d) are in linear scale, and they represent the same
+ sets of data.
+ Symbols refer to the empirical PDFs derived from the numerical solutions of Eq. (\ref{eq:model}), for different values of the random force
+ strength $g$, as indicated in the plots; red (light gray) and blue
+ (dark gray) lines refer, respectively, to PDFs obtained from partial
+ and fully renormalized effective actions. With better
+ visualization in mind, the non-renormalized PDFs have not been plotted.}
+ \label{fig:pdf-several-g}
+\end{figure}
+
+A more extensive comparison between PDFs is provided in Fig. \ref{fig:pdf-several-g}, where the cores of these distributions are examined with more care. In this figure, three values of $g$ are chosen, up to $g=1.0$, which is close to the limit of validity of perturbation theory. 
+This upper limit can be estimated from the perturbative corrections (\ref{eq:renormalization_xy}) and appreciated from the results of simulations: above $g=1.0$ the renormalized PDFs are noted to deviate in a more expressive way from the numerical ones.
+It is to be remarked here that the definition of an upper bound for the coupling constant $g$ is by no means a sufficient condition for the 
+validity of the perturbative expansion, since it is important that both $g$ and $A$ are not too large for the consistency of the cumulant expansion approach.
+There is a clear interplay between these quantities, since the variance of $A$ scales as $g^2$ for small values of $g$, though this yields interesting information only around the PDF peaks. 
+
+\begin{table}[ht]
+\centering
+%\caption{std}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline \multicolumn{7}{|c|}{\textbf{Standard Deviations}}
+\\ \hline
+\textbf{g}  & \multicolumn{2}{c|}{0.2} & \multicolumn{2}{c|}{0.5} & \multicolumn{2}{c|}{1.0} \\ \hline
+ {\textbf{Statistical Ensembles}} & D & OD & D & OD & D & OD \\ \hline
+Numerical RFD & 0.14 & 0.20 & 0.39 & 0.52 & 0.86 & 1.15 \\ \hline
+No Renormalization & 0.14 & 0.20 & 0.35 & 0.48 & 0.68 & 0.88 \\ \hline
+Partial Renormalization & 0.14 & 0.20 & 0.39 & 0.52 & 0.90 & 1.13 \\ \hline
+Full Renormalization & 0.14 & 0.20 & 0.39 & 0.52 & 0.84 & 1.13 \\ \hline
+\end{tabular}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline \multicolumn{7}{|c|}{\textbf{Kurtoses}}
+\\ \hline
+\textbf{g}  & \multicolumn{2}{c|}{0.2} & \multicolumn{2}{c|}{0.5} & \multicolumn{2}{c|}{1.0} 
+\\ \hline
+ {\textbf{Statistical Ensembles}} & D & OD & D & OD & D & OD\\ \hline
+Numerical RFD & 3.05 & 3.03 & 3.25 & 3.23 & 3.23 & 3.87 \\ \hline
+No Renormalization & 3.03 & 3.01 & 3.12 & 3.09 & 3.19 & 3.33 \\ \hline
+Partial Renormalization & 3.03 & 3.01 & 3.14 & 3.12 & 3.14 & 3.51 \\ \hline
+Full Renormalization & 3.03 & 3.01 & 3.14 & 3.10 & 3.14 & 3.39 \\ \hline
+\end{tabular}
+\caption{Standard deviations and kurtoses associated to the vgPDFs shown in Fig. \ref{fig:pdf-several-g}. The labels D and OD stand for statistical ensembles of diagonal and off-diagonal velocity gradient components, respectively. These ensembles are characterized, besides the D/OD classification, from specifying how their associated PDFs are obtained,
+according to four alternative schemes, described as the items
+\ref{it:DNS} to \ref{it:FullR} in Sec. \ref{sec:Results}:
+numerical simulations of the RFD model, non-renormalized saddle-point MSRJD actions, partially renormalized effective actions, and fully renormalized effective actions.
+}
+\label{tab}
+\end{table}
+
+% not changed
+The standard deviations and kurtoses of these PDFs are reported in Table \ref{tab}. It is verified that the standard deviations agree remarkably well with those evaluated directly from the RFD model. 
+The comparison between kurtoses, on the other hand, has some discrepancies, mainly due to the slow decay of the far tails of the PDFs, which are out of the reach of the present approach.
+
+% To analyze the observed ranges of agreement between the fully renormalized and the empirical vgPDFs in a more quantitative way, we define them as the velocity gradient regions where the calculated perturbative corrections correspond to a given fraction, say $20\%$, of the saddle-point action. The values of $\bar A$ that are obtained from this prescription establish an estimate for the border of validity of perturbation theory, and turn out to be well described by an approximate power-law relation, $ \bar A/g \approx 1.29 \ g^{-0.41} $. Following such a procedure, we find that the limit of applicability of perturbation theory along the lines of the cumulant expansion is actually compatible with the qualitative arguments addressed before.
+
+%\subsection{Joint Statistics of the Velocity Gradient Invariants {\hbox{$Q$}} and {\hbox{$R$}} }
+
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=\textwidth]{qr_jpdf.pdf}
+ \caption
+ [Joint PDFs of the velocity gradient invariants $Q^*$ and $R^*$]
+ {Joint PDFs (and their level curves) of the velocity gradient invariants $Q^*$ and $R^*$, as obtained from (a) numerical simulations of the RFD model,
+ (b) the analytical approach based on the non-renormalized effective MSRJD action, (c) the noise renormalized effective action and (d) the fully renormalized  effective action.
+ Solid lines represent the \enquote{Vieillefosse line}, defined by $(27/4)R^2 + Q^3 = 0$ (a constraint which holds for the inviscid evolution of the velocity gradient tensor). The data correspond to the RFD parameters $\tau=0.1$ and $g=0.8$,  and the color bar scale corresponds to powers of 10 in the visualization of the joint probability distribution functions.
+ }
+ \label{fig:QR}
+\end{figure}
+
+The pair of velocity gradient invariants $Q \equiv - \mathrm{Tr}({\mathbf{A}}^2)/2$ and $R \equiv -\mathrm{Tr}({\mathbf{A}}^3)/3$ have been extensively used in the literature as important observables for the investigation of structural aspects of turbulence \parencite{TsinoberInformal}. Turbulent flow regions can be dominated by enstrophy ($Q>0$) or strain ($Q<0$) and, independently, by compression ($R>0$) or stretching ($R<0$) dynamics. It is interesting to work with a dimensionless version of these invariants, 
+\begin{equation}
+ Q^* = - \frac{\mathrm{Tr}({\mathbf{A}}^2)}{2 \langle \mathrm{Tr}(\mathbf{S}^2) \rangle } \ \ \mbox{and} \ \ 
+ R^* = - \frac{\mathrm{Tr}({\mathbf{A}}^3)}{3 \langle \mathrm{Tr}(\mathbf{S}^2)  \rangle^{3/2} } \mbox{,}
+\end{equation}
+where $\mathbf{S} = ({\mathbf{A}} + {\mathbf{A}}^\T)/2$ is the strain rate tensor, the symmetric part of the velocity-gradient tensor. The joint PDF of $Q^*$ and $R^*$ shows a characteristic teardrop shape, which was first observed in direct numerical simulations of turbulence \parencite{leorat1975turbulence,vieillefosse1982,vieillefosse1984}. This teardrop shape is qualitatively well reproduced by the RFD model \parencite{ChevPRL}.
+
+With the same Monte Carlo ensembles used to produce the marginal PDFs, the joint PDF of $Q^*$ and $R^*$ was produced in the same four regimes, and the relevance of renormalization can be observed for this observable too, as can be seen in Fig.~\ref{fig:QR}. In particular, the difference between the leading order (Fig.~\ref{fig:QR}c) and complete renormalization (Fig.~\ref{fig:QR}d) is noticeable, since the latter is much closer to the numerical results (Fig.~\ref{fig:QR}a) than the former.
+
+\section{Discussion}
+
+The results of \textcite{moriconi2014} motivated this deeper analysis of the field theoretical approach to the RFD approach, a model of Lagrangian intermittency \parencite{ChevPRL}. The work described in this chapter, \textcite{apolinario2019instantons}, pursued a detailed verification of approximation hypotheses which were made in this previous work. 
+
+Notably, two main results stand out: The accuracy of the quadratic instanton, which is used as a proxy for the exact instanton, was verified. And the ranking of the relevance of each diagram was established, advocating for the relevance of the noise renormalization which was empirically observed in \textcite{moriconi2014}.
+
+The cumulant expansion yields accurate results for the core of PDFs at the onset of turbulence, as observed. That is, in regimes of moderate Reynolds numbers, where fat tails start to stand out. In this situation, the expansion is a reliable perturbation technique. At the far PDF tails, on the other hand, the perturbative expansion breaks down, and asymptotically large fluctuations are instead well described purely by the instantons, thus requiring an exact treatment of the saddle-point solutions.
+
+\end{chapter}

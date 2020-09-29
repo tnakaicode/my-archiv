@@ -1,0 +1,125 @@
+\begin{chapter}{Introduction}
+\label{cap1}
+
+\hspace{5 mm}
+
+In the beginning of the XXth century, the Isar Company of Munich
+had the task of building banks for the Isar River, to prevent it from
+flooding. They contacted Arnold Sommerfeld with the question:
+At what point would the river flow change
+from smooth (laminar) to irregular (turbulent)?
+Sommerfeld and Werner Heisenberg, then, performed an
+analysis of the equations of flow and predicted a limit of
+stability for the smooth solution.
+As a follow-up to this story, there is an apocryphal quote attributed
+to Heisenberg (cited by \textcite{ball2014scientific}:
+\begin{displayquote}
+When I meet God, I am going to ask him two questions. Why relativity?
+And why turbulence? I really believe he will have an answer for the first.
+\end{displayquote}
+The same citation has been attributed as well to Richard Feynman and to Horace Lamb,
+and relativity is sometimes replaced with quantum electrodynamics.
+For more details on these stories, the
+reader is referred to \textcite{ball2014scientific,eckert2017}.
+
+This tale illustrates the lasting interest that turbulence
+has had as a scientific problem, both in pure and applied research.
+Turbulent flows are ubiquitous in daily and industrial flows,
+such as the atmosphere, the ocean, combustion engines and wind tunnels.
+It is easy to imagine that mankind has tried to understand
+and control it since the beginning of science.
+The first theoretical contributions to this problem came from
+the founders of classical mechanics:
+Newton, Euler, Bernoulli, Lagrange, Navier and Stokes, among others, who
+determined the equations which dictate the evolution
+of velocity and pressure in viscous and inviscid flows,
+respectively the Navier-Stokes equation and the Euler equation.
+
+The modern understanding of the problem
+% of turbulence
+only came with
+the experiments and theories developed in the XX century, by scientists such as
+Osborne Reynolds (1842-1912), Geoffrey I. Taylor (1886-1975),
+Lewis Fry Richardson (1881-1953), Ludwig Prandtl (1875-1953)
+and Theodore von Kármán (1881-1963),
+who described the phenomena of the laminar-turbulent transition,
+the formation of vortical structures, the energy cascade
+and the boundary layer.
+Their contributions served as inspirations to theorists
+such as Andrey Kolmogorov (1903-1987), Lev Landau (1908-1968)
+and Lars Onsager (1903-1976), who built the first models
+to describe these phenomena and still inspire much of
+the current developments in this research area.
+% other names: Mandelbrot, Kraichnan, Hopf}
+
+The Navier-Stokes and Euler equations have attracted the interest of
+mathematicians, as well, for they provide seemingly simple equations,
+but with complex nonlinearities, still not fully understood.
+Even the basic problem of existence and smoothness of solutions of these
+equations remains open. This is a famous open problem
+in mathematics, one of the Millenium Prize Problems,
+with a US\$ 1 million prize offered by the Clay Mathematics Institute
+for its solution. The formal statement asks for a proof of existence (or non-existence) of global regularity in the Navier-Stokes equations. In other words, if starting with smooth initial conditions, do the velocity and pressure fields remain regular and analytical for any finite time or do they develop singularities?
+
+The global regularity problem is also open for the Euler equation in three dimensions, but partial results in different settings have been obtained. For Navier-Stokes in two dimensions, regularity was proven in \textcite{ladyzhenskaya1969mathematical}.
+In three dimesions, the existence of \textit{weak solutions} to the Navier-Stokes equations was proved in \textcite{leray1934} (weak solutions are briefly discussed in Sec.~\ref{sec:onsager}).
+%And in \textcite{tao2016finite}, a finite time blowup solution was found for an averaged version of Navier-Stokes, which hints at the absence of global regularity.
+A rigorous description of this problem can be found
+in \textcite{fefferman2006existence}, and a mathematical discussion
+of the theory of turbulence is available in \textcite{temam2001}.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=.69\textwidth]{cross-section-ishihara.png}
+    \caption[Intense vorticity isosurfaces in a large-scale DNS]
+    {Large scale numerical simulation of a turbulent flow from \textcite{ishihara2009}.
+    Intense vorticity isosurfaces are depicted, the vorticity is
+    displayed if it deviates more than four standard deviations from the mean. Clouds of small eddies interleaved with void regions can be seen, illustrating the non-homogeneity of turbulent fiels.}
+    \label{fig:cross-section}
+\end{figure}
+
+Another area of study with rich interactions with turbulence
+is that of numerical simulations of partial differential equations.
+Various numerical schemes for their solution have been developed, most notably the spectral methods,
+which rely on fast algorithms for the numerical Fourier transform
+to obtain higher precision than would be possible with
+numerical simulations of the same size in real space.
+Spectral methods were first applied in turbulence in \textcite{orszag1972},
+on a grid of $32^3$ points, and have evolved
+to simulations with $16\ 384^3$ points \parencite{iyer2019},
+where very detailed structures can be identified. This is illustrated in Fig.~\ref{fig:cross-section}, extracted from \textcite{ishihara2009}. In this work, snapshots of a simulation with $4096^3$ grid points are shown, and structures such as vortex tubes are clearly seen.
+%An initiative created for the analysis of The Johns Hopkins Turbulence Database is
+%described in \cite{li2008} and available in \cite{jhtdb}.
+
+Notable as well is the importance that the study of turbulence has
+on technological applications. In some industrial areas, it is desired to suppress turbulence, such as in flows through pipes, where the external pressure difference applied to the ends of the pipe is greatly reduced, for a fixed flow rate,
+if the fluid is calm and laminar, rather than irregular and turbulent.
+In other situations turbulence is beneficial, for instance in the efficient
+mix of chemical reactants, where turbulent flows vastly accelerate
+the dispersal of chemicals and the occurrence of reactions.
+For a review of engineering problems and turbulence, the reader
+is referred to \textcite{dewan2010,ting2016}.
+
+To summarize, the prominent features of turbulent flows, which permit us to understand the challenges in their study and the potential for applications are:
+\begin{enumerate}
+\item enhanced energy dissipation, even in the limit of vanishing viscosity;
+\item strong mixing of energy, momentum, mass and heat;
+\item unpredictability of flow configurations.
+\end{enumerate}
+A discussion of these properties is pursued in Chap.~\ref{chap:turb}, where the statistical theory of turbulence is discussed, and the topics investigated in this dissertation are different manifestations of these phenomena. The inclusion of this general discussion has the objective of making this text self-contained and accessible to researchers and students unfamiliar with the topic, since the theory of turbulence is seldom included in graduation curricula. The content of the review chapter is based on the discussions of
+\textcite{frisch1995,foias2001navier,moriconi2008introducao,eyink2008turbulence} with references to further sources.
+
+Chap.~\ref{chap:stoc} is, likewise, a review on the theory of stochastic calculus, functional methods and instantons, where its history and some techniques are discussed. These techniques are employed in the next chapters, which cover the original contributions discussed in this dissertation. In this chapter, the discussion is mostly based on \textcite{gardiner2009,grafke2015instanton,canet2019leshouches}.
+
+In Chap.~\ref{chap:rfd}, Lagrangian turbulence and statistical closures are introduced, along with a discussion of the results of \textcite{apolinario2019instantons}. To predict transport properties, such as mixing and spread of dispersed particles, it is necessary to understand Lagrangian velocity gradients, but the equation for their dynamics, derived from the Navier-Stokes equations, is unclosed. Consequently, many closure approximations have been developed, particularly the Recent Fluid Deformation (RFD), in \textcite{ChevPRL}, which was investigated with functional methods in \textcite{moriconi2014}.
+An extension of these analytical results is pursued in two ways: A hierarchical classification of perturbative contributions is performed and the most relevant diagrams are integrated into the renormalized effective action. The approximate instanton hypothesis is also verified to be true.
+%It is observed that renormalization plays a significant role in the description of non-Gaussian cores of velocity gradient PDFs.
+
+The next chapter,~\ref{chap:burgers}, discusses the onset
+of intermittency in Burgers turbulence along the lines of the functional formalism. The Burgers model is a one-dimensional version of the Navier-Stokes equation, which shares many qualitative features with the original model, hence it is sometimes used as test case for analytical and numerical techniques in turbulence. For this equation, the relevance of the instanton approach in the description of large fluctuations of the velocity gradient has been verified in previous works \parencite{grafke2015relevance}. Nevertheless, it was also revealed the need of an empirical noise renormalization. In \textcite{apolinario2019onset}, on which this chapter is based, a theoretical explanation for the mechanism of noise renormalization is presented.
+% as arising from fluctuations around the instanton description.
+
+In Chap.~\ref{chap:shotnoise}, a different route is taken in the investigation of Lagrangian pseudo-dissipation. A stochastic differential equation with a stationary solution is used to model the fluctuations of this observable. This stochastic process is driven by shot noise, a periodic and discrete source of randomness, inspired by the discrete and exactly multifractal causal process described in \textcite{perpete2011}. It is verified that this discrete dynamics leads to multifractal statistics and long-range correlations compatible with known models of pseudo-dissipation. This chapter is based on 
+\textcite{apolinario2020shotnoise}.
+
+\end{chapter}

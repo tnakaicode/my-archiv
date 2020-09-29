@@ -1,0 +1,34 @@
+\begin{chapter}{Cumulant Expansion}
+\label{app:cumul}
+
+\hspace{5 mm}
+
+The cumulant expansion is a standard technique in statistics which is used to approximate a distribution or expectated value. They can be used as a simple way to describe the differences between a distribution and its Gaussian approximation. In quantum field theory, in particular, it is often necessary to compute $\langle e^x \rangle$, and the cumulant expansion offers a systematic way to obtain this result perturbatively in terms of the moments of the random variable $x$, which are $\langle x^p \rangle$.
+
+%How to derive the formula for the cumulant expansion to arbitrary order. This was first seen in Chapter~\ref{chap:rfd}, in Eq.~\eqref{eq:cumul-gamma}.
+
+This particular derivation is carried out to order $O(x^3)$, but it can be extended without further complications to arbitrary order. It is interesting to notice that there is no general way to obtain the coefficients of the cumulant expansion, other than following an algorithm, be it the one below or an equivalent.
+
+To begin with, an expansion of the exponential produces
+\begin{equation}
+\begin{split}
+	\langle e^x \rangle &= \left\langle 1 + x + \frac{x^2}{2!} + O(x^3) \right\rangle \\
+	&= 1 + \langle x \rangle + \frac{ \langle x^2 \rangle}{2} + O(x^3) \ .
+\end{split}
+\end{equation}
+Taking the logarithm of both sides and a further series expansion, the following result is obtained:
+\begin{equation}
+\begin{split}	
+	\ln \langle e^x \rangle &= \ln \left( 1 + \langle x \rangle + \frac{\langle x^2 \rangle}{2} + O(x^3) \right) \\
+	&= \langle x \rangle + \frac{\langle x^2 \rangle}{2} - \frac{ \langle x \rangle^2}{2} + O(x^3) \ .
+\end{split}
+\end{equation}
+The desired result is then achieved as an exponential of the previous result,
+\begin{equation}
+	\langle e^x \rangle \simeq \exp\left\{ \langle x \rangle + \frac12 \big( \langle x^2 \rangle - \langle x \rangle^2 \big) + O(x^3) \right\} \ .
+\end{equation}
+By dropping the error term, this is a pragmatic way to perturbatively evaluate the given expected value.
+
+Further references on cumulants can be found in \textcite{cumulants,novak2012}, and a list of coefficients for expansions of high order is provided as sequence A127671 of the Online Encyclopedia of Integer Sequences (OEIS), available in \textcite{oeis_cumul}.
+
+\end{chapter}

@@ -1,0 +1,319 @@
+\documentclass[brazil,12pt,a4paper,openany]{book}
+\usepackage{anysize}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage{makeidx}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{simplewick}
+\usepackage{latexsym}
+\usepackage[all]{xy}
+\usepackage{enumerate}
+\usepackage{dsfont}
+\usepackage{slashed}
+%\usepackage[plainpages=false,pagebackref=true,pdftex]{hyperref}
+
+\usepackage[style=authoryear]{biblatex}
+\addbibresource{thebib.tex}
+\usepackage{csquotes}
+\usepackage{pdfpages}
+\usepackage{enumitem}
+\usepackage{bm}
+
+\makeindex
+
+\graphicspath{{figs/}} %Setting the graphicspath
+
+%%%%%% NEW COMMANDS
+
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\mathbbm}[1]{\text{\usefont{U}{bbm}{m}{n}#1}} % from mathbbm.sty
+\newcommand{\teta}{\tau_{\eta}}
+
+%%%%%%
+
+\marginsize{25mm}{25mm}{25mm}{25mm}
+
+%\hypersetup{pdfpagelabels,hyperindex,colorlinks=true,breaklinks=true,bookmarks=true,linkcolor=black,citecolor=black,urlcolor=black}
+
+\begin{document}
+
+\setlength{\abovecaptionskip}{0.0cm}
+\setlength{\belowcaptionskip}{0.0cm}
+\setlength{\baselineskip}{24pt}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\fancypagestyle{plain}
+{
+	\fancyhf{}
+	\lhead{}
+	\chead{}
+	\rhead{\thepage}
+	\lfoot{}
+	\cfoot{}
+	\rfoot{}
+}
+
+\renewcommand{\headrulewidth}{0pt}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Capa %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+
+\thispagestyle{empty}
+
+\begin{figure}[h]
+	\includegraphics[scale=0.8]{logo_ufrj.jpg}
+\end{figure}
+
+\vspace{15pt}
+
+\begin{center}
+
+\textbf{UNIVERSIDADE FEDERAL DO RIO DE JANEIRO}
+
+\textbf{INSTITUTO DE FÍSICA}
+
+\vspace{30pt}
+
+{\Large \bf Large Fluctuations in Stochastic Models of Turbulence}
+
+\vspace{25pt}
+
+{\large \bf Gabriel Brito Apolinário}
+
+\vspace{35pt}
+
+\begin{flushright}
+\parbox{10.3cm}{Tese de Doutorado apresentada ao Programa de Pós-Graduação em Física do Instituto de Física da Universidade Federal do Rio de Janeiro - UFRJ, como parte dos requisitos necessários à obtenção do título de Doutor em Ciências (Física)}.
+
+\vspace{18pt}
+
+{\large \bf Orientador: Luca Moriconi}
+
+%\vspace{12pt}
+
+%{\large \bf Coorientador: Nome do Coorientador}}
+\end{flushright}
+
+\vspace{90pt}
+
+\textbf{Rio de Janeiro}
+
+\textbf{Abril de 2020}
+
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%% Folha de Assinaturas da Banca %%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\thispagestyle{empty}
+
+\noindent
+
+%\begin{figure}[h]
+%  \begin{center}
+%	\includegraphics[scale=0.45]{assinaturas.png}
+%  \end{center}
+%\end{figure}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\includepdf[pages=-]{ficha.pdf}
+%\includepdf[pages=-]{aprovacao.pdf}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Resumo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\noindent
+
+\vspace*{20pt}
+\begin{center}
+{\LARGE\bf Resumo}\\
+\vspace{15pt}
+{\Large\bf Large Fluctuations in Stochastic Models of Turbulence}\\
+\vspace{6pt}
+{\bf Gabriel Brito Apolinário}\\
+\vspace{12pt}
+{\bf Orientador: Luca Moriconi}\\
+%{\bf Coorientador: Nome do Coorientador}\\
+\vspace{20pt}
+\parbox{14cm}{Resumo da Tese de Doutorado apresentada ao Programa de Pós-Graduação em Física do Instituto de Física da Universidade Federal do Rio de Janeiro - UFRJ, como parte dos requisitos necessários à obtenção do título de Doutor em Ciências (Física).}
+\end{center}
+\vspace*{35pt}
+
+As primeiras observações de flutuações estatísticas em turbulência, descritas pelas equações de Navier-Stokes, foram feitas na década de 1940 e já revelavam a presença de intermitência: Dis\-tri\-bui\-ções de probabilidade de caudas largas em observáveis como gradientes de velocidade, diferenças de velocidade, e dissipação de energia. Hoje em dia, com experimentos cada vez mais precisos e simulações numéricas em números de Reynolds cada vez maiores, reitera-se as observações de grandes flutuações, mas uma descrição teórica que conecta as equações de Navier-Stokes à estatística observada ainda é um problema em aberto. Esta tese discute o fenômeno da intermitência em três modelos de turbulência, se valendo de técnicas analíticas e numéricas para a análise de processos estocásticos e as distribuições estatísticas que estes geram.
+
+Os capítulos iniciais apresentam uma revisão da teoria estat\'{i}stica da turbulência e da teoria estatística de campos aplicada à física fora do equilíbrio. É discutida a história das equações de Navier-Stokes e a necessidade de uma formulação estocástica destas para explicar os fenômenos da turbulência. Em seguida, os sucessos e limitações da fenomenologia de Kolmogorov de 1941 são apresentados. A principal dessas limitações é não incluir os efeitos das flutuações, que são ponto central da teoria de Kolmogorov-Obukhov e da teoria multifractal, abordadas em seguida. Também é feita uma revisão dos métodos funcionais aplicados a sistemas de equações diferenciais estocásticas.
+
+O modelo Recent Fluid Deformation (RFD), que descreve a dinâmica de gradientes de velocidade lagrangeanos, e o modelo de Burgers, que descreve a formação de ondas de choque em fluidos unidimensionais, são investigados através do método funcional Martin-Siggia-Rose-Janssen-de Dominicis (MSRJD). Nesta formulação, os instantons (soluções das equações de Euler-Lagrange obtidas a partir da ação de MSRJD) já tinham sido identificados como a contribuição principal à distribuição de probabilidade de gradientes de velocidade nos dois modelos. Nesta tese é feita uma análise cuidadosa das hipóteses e resultados que levaram a essas observações anteriores sobre os instantons e sobre correções perturbativas correspondentes a flutuações nos dois modelos.
+
+No caso do RFD, é feita uma contagem de potências dos diagramas perturbativos associados às flutuações ao redor dos instantons e uma verificação da validade do instanton aproximado usado em cálculos anteriores. No modelo de Burgers, foram identificados dois diagramas perturbativos até segunda ordem na expansão em cumulantes, que são cruciais para entender um procedimento \textit{ad hoc} de renormalização já observado em discussões anteriores: A distribuição de probabilidade gerada pelos instantons descreve bem as distribuições de probabilidade numéricas, mas é necessário adicionar um fator de correção ao parâmetro que regula a intensidade das flutuações. Foi investigada a contribuição das flutuações para induzir esse fator de correção.
+
+Por último, é apresentado um processo estocástico estacionário e unidimensional como um modelo das flutuações da pseudo-dissipação lagrangeana. Esse processo apresenta ruído aleatório na escala microscópica, construído a partir de um processo multifractal discreto, assim como uma dinâmica regular em escalas ainda menores. Foram verificadas as propriedades estatísticas desse processo aleatório, que apresenta uma distribuição de probabilidade lognormal, e correlações de longo alcance na forma de leis de potência, de acordo com as propriedades estatísticas experimentais da pseudo-dissipação.
+
+\vspace{15pt}
+
+\textbf{Palavras-chave:} Turbulência, modelos estocásticos, eventos extremos, formalismo Martin-Sig\-gia-Ro\-se, renormalização.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Abstract %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\noindent
+
+\vspace*{20pt}
+\begin{center}
+{\LARGE\bf Abstract}\\
+\vspace{15pt}
+{\Large\bf Large Fluctuations in Stochastic Models of Turbulence}\\
+\vspace{6pt}
+{\bf Gabriel Brito Apolinário}\\
+\vspace{12pt}
+{\bf Orientador: Luca Moriconi}\\
+%{\bf Coorientador: Name of the Coadvisor}\\
+\vspace{20pt}
+\parbox{14cm}{\emph{Abstract} da Tese de Doutorado apresentada ao Programa de Pós-Graduação em Física do Instituto de Física da Universidade Federal do Rio de Janeiro - UFRJ, como parte dos requisitos necessários à obtenção do título de Doutor em Ciências (Física).}
+\end{center}
+\vspace*{35pt}
+
+The first observations of statistical fluctuations in turbulence, described by the Navier-Stokes equations, were made in decade of 1940 and already revealed the presence of intermittency: The probability distribution functions of observables such as velocity gradients, velocity differences and kinetic energy dissipation are heavy tailed. Nowadays, with more precise experiments and numerical simulations at larger Reynolds numbers, the observations of large fluctuations are reinforced, but a theoretical description that connects the Navier-Stokes equations to the observed statistics is still an open problem. This dissertation discusses the intermitency phenomenon in three models of turbulence, employing analytical and numerical techniques in the analysis of stochastic processes and the probability distributions which they induce.
+
+The initial chapters present a review of the statistical theory of turbulence and of statistical theory of fields as applied to out of equilibrium physics. The history of the Navier-Stokes equation is discussed and associated to the need for a stochastic formulation of them in order to explain turbulent phenomena. Then, the successes and limitations of the Kolmogorov 1941 phenomenology are presented. The predominant limitation is not to include fluctuation effects, the central point of the Kolmogorov-Obukhov and multifractal theories, which are reviewed. A summary of functional methods applied to systems of stochastic differential equations is also presented.
+
+The RFD model, which describes the dynamics of Lagrangian velocity gradients, and the Burgers model, describing the formation of shock waves in one-dimensional fluids, are investigated through the Martin-Siggia-Rose-Janssen-de Dominicis (MSRJD) functional method. In this formulation, the instantons (solutions of the Euler-Lagrange equations obtained from the MSRJD action) had already been identified as the leading contribution to the velocity gradient probability distribution function in both models. In this dissertation, a careful analysis of the previous hypothesis and results is undertaken, in order to verify the observations of perturbative corrections corresponding to fluctuations around the instanton in both models.
+
+In the Recent Fluid Deformation (RFD) model, a power-counting procedure on the perturbative diagrams associated to fluctuations around the instantons is pursued, along with a validation of the approximate instanton used in prior calculations. In the Burgers model, two perturbative diagrams were identified up to second order in the cumulant expansion. They are revealed to be crucial in understanding an \textit{ad hoc} renormalization procedure reported in the literature: The probability distribution induced by the instantons describes velocity gradient fluctuations well, if a correction factor is added to the parameter associated to the intensity of fluctuations. The contribution of fluctuations to cause this correction factor is investigated.
+
+In the end, a stationary one-dimensional stochastic process is presented as a model of Lagrangian pseudo-dissipation fluctuations. This model displays random noise in the microscopic scale, built from a discrete multifractal process, but at smaller scales its dynamics is regular. The statistical properties of this random process are verified, and it is observed that, in agreement with established properties of the pseudo-dissipation, this process has a lognormal probability distribution and long range power-law correlations.
+
+\vspace{15pt}
+
+\textbf{Keywords:} Turbulence, stochastic models, extreme events, Martin-Siggia-Rose formalism, renormalization.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Agradecimentos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+\noindent
+
+\vspace*{20pt}
+
+\begin{center}
+
+{\LARGE\bf Agradecimentos}
+
+\end{center}
+
+\vspace*{40pt}
+
+Agradeço aos meus pais pelo apoio e pela confiança ao longo destes anos de estudo. Nada disso seria possível sem esse incentivo e amparo.
+
+Pelo aprendizado sobre a prática da ciência, que inclui as técnicas, a leitura, a escrita, as discussões e o pensamento crítico, e pelos riquíssimos problemas científicos que me propôs, agradeço ao Prof. Luca Moriconi.
+
+Agradeço também aos companheiros semanais no journal club de turbulência e dinâmica de fluidos, Rodrigo Arouca, Elvis Soares, Bruno Magacho, Victor Valadão, Mirlene Oliveira, Marina Moesia e Maiara Neumann. E agradeço ao Rodrigo Pereira pela valiosa colaboração, e pelos ensinamentos em programação.
+
+Agradeço aos novos amigos que fiz nesse período na UFRJ, aos amigos de longa data da UFF, e aos amigos que fiz nas viagens, ao longo do doutorado. Vinicius Henning, Pedro Foster, Reginaldo Junior, Luis Fernando, Rodrigo Bruni, Kainã Diniz, Flavianna Siller, Lucas Hutter, Lucas Torres,  Patrícia Abrantes, Larissa Inácio, Ethe Costa, Evelyn Caso, Daniel Martin, Irene Lamberti, Fabiana Monteiro, Humberto Medeiros, Gleice Germano, Leonardo Pio, Ruslan Guerra: Obrigado.
+
+Aos funcionários Igor Silva, Khrisna Teixeira, César Chagas e Mariana Sampaio, agradeço pelo apoio em questões técnicas e administrativas.
+E à Luana Serpa pela ajuda com o catálogo da exposição \enquote{Turbulência e Arte} e as respectivas fotos que abrem alguns dos capítulos.
+
+Por fim, agradeço ao CNPq pelo surporte financeiro, sem o qual este doutoramento não teria sido possível.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+%\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\newpage
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+%\newpage
+%\addcontentsline{toc}{chapter}{Lista de Tabelas}
+%\listoftables
+
+\newpage
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+
+\chapter*{List of Abbreviations}
+
+\begin{table}[h]
+\begin{tabular}{ll}
+DNS & Direct Numerical Simulation \\
+LHS & Left-hand side \\
+MSRJD & Martin-Siggia-Rose-Janssen-de Dominicis \\
+PDF  & Probability Density Function \\
+RFD & Recent Fluid Deformation \\
+RHS & Right-hand side \\
+SDE & Stochastic Differential Equation \\
+SPDE & Stochastic Partial Differential Equation \\
+\end{tabular}
+\end{table}
+
+\mainmatter
+\input{capitulo1.tex}
+\input{capitulo2.tex}
+\input{capitulo3.tex}
+\input{capitulo4.tex}
+\input{capitulo5.tex}
+\input{capitulo6.tex}
+\input{capitulo7.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliografia %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\printbibliography
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Apendices %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+\input{apendicea.tex}
+\input{apendiceb.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

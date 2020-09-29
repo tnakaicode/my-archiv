@@ -1,0 +1,658 @@
+\begin{chapter}{Brief Review of Stochastic Methods}
+\label{chap:stoc}
+
+\hspace{5 mm} 
+In 1827, the famous botanist Robert Brown observed that pollen immersed
+in water followed a strange jiggling motion,
+reported in \textcite{brown1828}. Interested
+in investigating if this effect was a manifestation
+of life, he repeated the experiment with other suspensions
+of fine particles: Glass, minerals, and even a fragment of
+the sphinx. In all of these situations, the same jiggling motion
+was observed, thus ruling out any organic origin
+\parencite{gardiner2009}.
+% Brown was born in 1773, thus he was already famous in 1827,
+% he was also responsible for one of the first descriptions of the
+% cell nucleus, on plant pollination and fertilisation,
+% he was one of the first to recognize the difference between
+% gymnosperms and angyosperms, he also made several
+% contributions to plant taxonomy
+
+The origin of this mysterious motion was only resolved in 1905 by Albert Einstein,
+who also introduced the probabilistic description of physical
+phenomena in his solution \parencite{einstein1905}.
+This theory relied on the molecular nature
+of matter and the random motion of its molecules, agitated by
+thermal fluctuations. He predicted that
+the mean square displacement of a suspended particle would be
+\begin{equation} \label{eq:displacement}
+    \langle x^2 \rangle = 2 D t \ .
+\end{equation}
+Furthermore, the suspended particle is in thermal equilibrium,
+thus its kinetic energy is given by the equipartition law,
+which sets the value of the constant $D$ to
+\begin{equation}
+    D = \frac{k_B T}{6 \pi \mu a} \ .
+\end{equation}
+In this equation, $k_B$ is the Boltzmann constant and $\mu$ is the
+dynamic viscosity of the fluid, it arises because of the Stokes drag in the
+suspended particle, assumed spherical of diameter $a$.
+Also, $\langle \ \bm\cdot \ \rangle$ represents an expectation value,
+calculated with respect to some probability distribution function.
+
+With the theoretical framework developed by Einstein, the
+experimental physicist Jean Perrin was able to verify
+such random motion and calculate Avogadro's constant,
+obtaining the surprisingly accurate value of
+$6.4 \times 10^{23} \ \mathrm{mol}^{-1}$ \parencite{perrinnobel}.
+This value was in close agreement
+with known results of the time, including other independent
+measures from Perrin, using several different experimental techniques.
+At the time, these experiments were seen as strong evidence
+of the existence of atoms and molecules and
+Perrin was awarded the Nobel Prize in Physics of 1926
+\enquote{for his work on the discontinuous structure of matter}
+\parencite{perrinAIP}.
+
+A few years after Einstein,
+the French physicist Paul Langevin was able to arrive at the same conclusions
+by proposing an equation of motion for the suspended particle
+\parencite{langevin1908theorie}:
+\begin{equation} \label{eq:origin-langevin}
+    m \frac{d^2 x}{dt^2} = - 6 \pi \mu a \frac{dx}{dt} + \eta_t \ .
+\end{equation}
+In this equation, it is supposed that the particle of mass $m$
+is subject to
+viscous drag (Stokes drag) by the medium
+and to a random external force $\eta_t$, which represents the
+incessant impact of the molecules of the liquid on the particle.
+He further assumed that this force would be positive and negative
+with equal probabilities.
+Eq.~\eqref{eq:origin-langevin} was the first example of a stochastic differential equation
+used in physics,
+and from it
+the mean square displacement law can be derived as well,
+with the same constant $D$ that Einstein had obtained.
+% maybe add a derivation of mean square displacement from
+% the langevin equation, but only maybe
+% also explain why the equipartition theorem plays a role here,
+% something which I never quite understood
+
+Earlier equivalent models for random motion were developed
+in the study of time series \parencite{thiele1880} and in stock
+markets \parencite{bachelier1900}, although they remained unacknowledged
+for a long time (see \textcite{jarrow2004} for a historical review).
+
+The random description of Brownian motion inspired the mathematicians
+Norbert Wiener, Raymond Paley and Antoni Zygmund
+to develop a rigorous mathematical
+explanation for the theory of Einstein.
+The construction which obeys Eq.~\eqref{eq:displacement}
+was demonstrated in 1923 and is called the
+Wiener process, or Wiener measure,
+which is informally treated as a synonym for Brownian motion.
+%who demonstrated in 1923 the mathematical properties of
+%These mathematical constructions relied on new ideas in measure
+%theory of the early twentieth century (Daniell, 1913).
+% what new ideas? who is Daniell? this quote is probably from Jarrow and Protter
+The Wiener process is the continuous-time stochastic process, $W_t$,
+which observes the following properties:
+\begin{enumerate}
+    \item $W_0 = 0$;
+    \item $W$ has independent increments;
+    \item $W$ has Gaussian increments: $W_{t+s} - W_t$ is distributed with mean $0$
+    and variance $s$. This is represented by $W_{t+s} - W_t \overset{d}{=} \mathcal{N}(0,s)$;
+    \item $W$ has continuous paths. This means $W_t$ is almost surely continuous in $t$.
+\end{enumerate}
+As before, the symbol $\overset{d}{=}$ means equality in distribution.
+Due to its simple properties, the Wiener process
+is used as the basis for numerous other stochastic processes and
+in applications to real systems.
+
+The mathematical grounding for the theory of stochastic differential
+equations such as Eq.~\eqref{eq:origin-langevin},
+though, was only developed years later by the Japanese
+mathematician Kiyosi Itô \parencite{ito1944}.
+To make mathematical sense of such an equation,
+he developed the concept of the
+Itô stochastic integral, defined as the limit
+\begin{equation} \label{eq:ito-integral}
+    \int_{t_0}^t G(t') dW_{t'} =
+    \lim_{n \to \infty} \left[ \sum_{i=i}^n G(t_{i-1}) ( W_{t_i} - W_{t_{i-1}} ) \right]
+    \ .
+\end{equation}
+%above, the mean square limit is considered,
+%but this is weird, there is no averaging done.
+Itô demonstrated that this integral
+converges in probability to a well defined random variable.
+
+A well known figure who was also paramount to the theory of
+probability and stochastic processes was Andrey Kolmogorov, who
+established the axioms
+of probability theory and developed a theory for Markov processes.
+His work on Markov processes, which elicited the role of the drift and diffusion coefficients, inspired Itô in building a theory of
+stochastic calculus. His most famous contribution is
+discussed in the next section.
+
+\section{Itô's Lemma}
+
+A generalized Langevin equation is usually written in mathematical
+notation as
+\begin{equation} \label{eq:langevin}
+    du = b[u] dt + g[u] d W_t \ ,
+\end{equation}
+where the Wiener process is the driving random
+contribution. The velocity
+$u$ is a vector in $\mathbb{R}^d$,
+$b[u]$ is a functional called the drift coefficient and $g[u]$
+is the diffusion coefficient.
+This equation is similar to the one proposed by Langevin,
+and is often written in the physics literature as
+%Eq.~\eqref{eq:langevin} written as
+%\textcite{zinn2002}
+\begin{equation} \label{eq:diff-langevin}
+    \dot u = b[u] + g[u] \eta_t \ ,
+\end{equation}
+where $\eta_t$ is called Gaussian white noise.
+Such noise source is equivalent to a time-derivative of the
+Wiener process, or, formally, its Radon-Nikodym derivative.
+Gaussian white noise can be characterized entirely
+by its mean and its two-point correlation function:
+\begin{equation} \label{eq:gauss-noise}
+	\begin{split}
+		&\langle \eta(t) \rangle = 0 \ , \\
+		&\langle \eta(t) \eta(t') \rangle = \delta(t-t') \ .
+	\end{split}
+\end{equation}
+
+%The Langevin equation generates a time dependent probability distribution
+%$P(u,t)$ for the solution $u(t)$, which can be formally written as
+
+%This equation is invariant under time translations
+%(where can I see it?)
+
+One of the main results in the theory of stochastic processes,
+fundamental to the mathematical manipulation of
+equations such as Eq.~ \eqref{eq:diff-langevin} is called
+Itô's lemma. It is the formula for a change of variables in stochastic processes,
+hence it is an expression analogous to the chain rule of
+standard calculus.
+In the formula for the stochastic integral, Eq.~\eqref{eq:ito-integral},
+it can be seen
+that the prescription for a derivative has to be carefully
+specified. One of the consequences of this is that the
+formulation of the chain rule depends on the exact prescription.
+The Itô prescription for the derivative is the following:
+\begin{equation}
+\frac{du}{dt} = \lim_{\epsilon \to 0} \frac{u(t+\epsilon) - u(t)}{\epsilon} \ .
+\end{equation}
+% i would still have to make this definition
+% of the derivative and the formula for the stochastic integral
+% compatible, which they are not, currently
+
+If $u$ is governed by Eq.~\eqref{eq:langevin},
+the stochastic differential equation which $f(u)$ obeys can be found using
+the Itô prescription:
+\begin{equation}
+\begin{split}
+    \frac{df}{dt} &= \lim_{\epsilon \to 0} \frac{f(u(t+\epsilon)) - f(u(t))}{\epsilon} \\
+    &= \lim_{\epsilon \to 0} \frac{f(u(t)+\epsilon \dot u(t) + \ldots) - f(u(t))}{\epsilon} \ .
+\end{split}
+\end{equation}
+Then, $f$ can be expanded to second order in a Taylor series,
+\begin{equation}
+\begin{split}
+    \frac{df}{dt} &\approx \lim_{\epsilon \to 0} \frac{1}{\epsilon} \left[ f(u(t)) + \epsilon \dot u(t) \frac{\partial f}{\partial u}
+    +\frac12 \epsilon^2 \dot u(t)^2 \frac{\partial^2 f}{\partial u^2} + \ldots - f(u(t)) \right] \\
+    &\simeq \lim_{\epsilon \to 0} \left[ \dot u(t) \frac{\partial f}{\partial u}
+    +\frac12 \epsilon \dot u(t)^2 \frac{\partial^2 f}{\partial u^2} + O(\epsilon^2) \right] \ .
+\end{split}
+\end{equation}
+With $\dot u^2 = b[u]^2 + g[u]^2 \eta_t^2 + 2 b[u] g[u] \eta_t$
+and $\eta_t^2 = O(1/\epsilon)$, the expression for
+Itô's lemma can be found:
+\begin{equation}
+    \frac{df}{dt} = \dot u \frac{\partial f}{\partial u}
+    +\frac{g[u]^2}{2} \frac{\partial^2 f}{\partial u^2} \ .
+\end{equation}
+In the differential formulation, this is written as
+\begin{equation}
+    df = \left(
+    %\frac{\partial f}{\partial t} +
+    b[u] \frac{\partial f}{\partial u}
+    + \frac{g[u]^2}{2} \frac{\partial^2 f}{\partial u^2} \right) dt +
+     g[u] \frac{\partial f}{\partial u} d W_t \ .
+\end{equation}
+The symbol $O(\ \bm\cdot \ )$ is used for asymptotic big-O notation.
+
+A brief explanation of $\eta_t^2 = O(1/\epsilon)$ is worthy of notice.
+From the properties of the Wiener process, it can be seen that
+$|W_{t+\epsilon} - W_t|$ is a term of the order of $\sqrt{\epsilon}$. Consequently,
+terms of second order in $|W_{t+\epsilon}-W_t|$ cannot be ignored,
+since they produce a first order contribution in $\epsilon$.
+The order of magnitude of $\eta_t$ can be found from
+its defining properties, Eq.~\eqref{eq:gauss-noise} or from
+the knowledge that it is a time derivative of $dW_t$,
+resulting in $\eta_t^2 = O(1/\epsilon)$.
+All of these statements can be proven,
+and the reader is referred to \textcite[sec.4.2.5]{gardiner2009} or
+\textcite[sec.2.5]{protter2005} on this topic.
+% lookup page and section
+The former reference is more accessible to physicists in general,
+while the latter proof is more mathematically rigorous.
+
+An alternative to the Itô prescription for the derivative is
+the Stratonovich one, given by
+\begin{equation}
+\frac{du}{dt} = \lim_{\epsilon \to 0} \frac{u(t+\epsilon/2) - u(t-\epsilon/2)}{\epsilon} \ .
+\end{equation}
+An argument equivalent to the previous one, for the Itô prescription,
+produces the respective chain rule under the Stratonovich prescription,
+which is equal to the chain rule in standard calculus,
+\begin{equation}
+    \frac{df}{dt} = \dot u \frac{\partial f}{\partial u} \ .
+\end{equation}
+
+% lookup difference between Ito and Stratonovich in van Kampen's book
+
+The standard chain rule naively seems to favor the use
+of the Stratonovich interpretation, but the differences in
+calculation go beyond this point.
+Eq.~\eqref{eq:diff-langevin} leaves the interpretation ambiguous
+and the issue of which interpretation should be used in a physical
+problem depends on the details of the question, such as the source of noise.
+
+Consider the case in which
+the variance of the noise $\eta_t$ is a known function with a finite
+correlation time $\epsilon$,
+instead of Gaussian white noise, which has a singular variance.
+It has been demonstrated that, in the limit $\epsilon \to 0$, the equation obtained
+is given in the Stratonovich prescription \parencite{mori1975}.
+This is usually the case in situations of external noise: When
+a random force is added to an otherwise deterministic system.
+In these situations, $b[u]$ provides the deterministic
+dynamics of the system and the statistical properties of the noise can be studied
+independently.
+
+In contrast, in systems where noise is intrinsic (or internal),
+it is harder to distinguish the drift and diffusion terms.
+This is the case of chaotic systems such as turbulence, where noise
+is unavoidable, as discussed in Sec.~\ref{sec:random}.
+In many such cases, the Itô prescription is the more appropriate
+interpretation because of its non-anticipating nature:
+The Itô prescription only requires knowledge of times up to $t$
+to calculate derivatives and integrals at time $t$, while the Stratonovich interpretation
+requires knowledge of the future of $t$.
+This feature makes mathematical demonstrations much harder
+in the Stratonovich interpretation and favor the Itô view,
+which is employed in all stochastic differential equations
+in this dissertation.
+
+Nevertheless, an SDE in the Stratonovich interpretation can be translated
+to an equivalent equation in the Ito interpretation,
+producing the same physical consequences (for instance, the same probability distribution function).
+A Stratonovich SDE is usually written as
+\begin{equation}
+    du = b[u] dt + g[u] \circ dW_t \ ,
+\end{equation}
+where the symbol $\circ$ indicates the use
+of the Stratonovich rule. This is equivalent to the following
+Itô SDE:
+\begin{equation}
+    du = \left( b[u] + \frac12 \frac{\partial g[u]}{\partial u} g[u] \right) dt + g[u] dW_t \ .
+\end{equation}
+A proof of this statement can be found in \textcite[sec.6.5.6]{evans2012}.
+% https://math.stackexchange.com/questions/2296945/conversion-between-solution-to-stratonovich-sde-and-it%C3%B4-sde/2300426
+% https://en.wikipedia.org/wiki/Stratonovich_integral
+
+%It the case of chaotic systems, noise is unavoidable,
+%and the
+%treatment of turbulence via stochastic systems is an effective
+%description.
+%These differences are discussed in detail in \textcite[sec.9.5]{vankampen1992}.
+The differences between prescriptions were settled
+in the discussions of \textcite{vankampen1981,vankampen1992},
+and recently reviewed in \textcite{mannella2012}.
+
+At the same time, studying quantum mechanics, physicists developed another method
+to deal with the inherent fluctuations of quantum phenomena, namely
+the Feynman integral, or functional formalism. In the next section,
+the connections between the functional formalism and
+stochastic differential equations are developed.
+
+\section{The Functional Formalism}
+
+The theoretical framework of functional methods
+were first translated from quantum fields to the
+equilibrium statistical mechanics of systems near phase transitions.
+In this regime, the correlation length of these systems diverges,
+which makes the microscopic details irrelevant, and they
+can be described by a continuous limit, that is, a field theory
+\parencite{zinn2002,amit2005,mussardo2010}.
+
+Similarly to critical systems, turbulence is a phenomenom involving
+several length scales which displays universal behavior at small scales as well.
+The relation between these properties and the physics of statistical
+systems close to phase transitions was noticed quite early,
+and several researchers contributed to the understanding of
+both of these problems, turbulence, and critical systems,
+such as Landau and Onsager.
+But turbulence is already naturally described by continuous variables,
+the velocity and pressure, and no fine tuning
+is required to observe the scaling behavior of K41,
+unlike in phase transitions, where external parameters such
+as pressure and temperature have to be carefully
+chosen so the system displays critical behavior.
+The presence of exponents (that is, scaling behavior)
+has also drawn attention
+to the possibility of applying renormalization group methods,
+which were very successful in the study of critical systems to
+understand their scaling exponents and other universal quantities.
+
+The use of functional methods in fluid dynamics began with
+\textcite{hopf1952statistical},
+where a generating function for multi-point correlation
+functions of the velocity was investigated, without success.
+%such as the Dyson equation, and not in the framework
+%of functional integrals.
+This approach spanned several derivative works
+\parencite{kraichnan1958higher,lewis1962space,wyld1961formulation,
+tatarskii1962application,kraichnan1961dynamics},
+though they fail to account for intermittent fluctuations.
+
+A change in paradigm was the development of field
+theoretical methods applied to classical stochastic systems.
+This was first done in \textcite{martin1973},
+with canonical quantization techniques of quantum field theories.
+Later, they were extended to the language of functional
+integrals in \textcite{janssen1976,dominicis1976}.
+These developments are currently known as the
+Martin-Siggia-Rose-Janssen-de Dominicis (MSRJD) formalism,
+an established technique in the study of classical stochastic systems.
+% synonym of technique
+%Functional integrals for stochastic dynamics were introduced in
+%\textcite{phythian1977functional,langouche1979functional,jensen1981functional}.
+
+Other field theoretical approaches have been developed since the advent
+of the MSRJD formalism. As an example, methods in conformal field
+theory have been applied to turbulence in
+\textcite{polyakov1993theory,falkovich19932d,falkovich1994universal,benzi1995conformal}
+and applications of the non-perturbative renormalization group have been pursued in \textcite{mejia2012,canet2016fully}
+%,canet2017spatiotemporal,,tarpin2018stationary}.
+% any other work I could cite?
+
+The MSRJD approach is valid for any well posed stochastic differential equation (that is, given a smooth initial condition, it generates a unique solution for all times, for each realization of the noise).
+The following discussion, though, is limited to SDEs driven by additive Gaussian noise, but the method can be properly extended to other sources of noise through the careful evaluation of a Jacobian.
+Additive noise means that the diffusion term does not depend on the $u$ field, which is thus governed by the equation
+\begin{equation} \label{eq:additive-langevin}
+    \dot u = b[u] + g \eta \ .
+\end{equation}
+The noise $\eta$ is Gaussian of zero mean and known
+two-point correlation, given by
+\begin{equation}
+    \langle \eta(t) \eta(t') \rangle = \chi(t-t') \ .
+\end{equation}
+The probability of any single realization of the noise is
+then given by the continuous limit of a multivariate normal
+distribution,
+\begin{equation}
+    P[\eta] \propto \exp\left\{-\int dt \ \langle \eta, \chi^{-1} * \eta \rangle / 2\right\} \ .
+\end{equation}
+In the above expression, a convolution is represented by $*$ and its explicit formulation is
+\begin{equation}
+    (f*g)(t) = \int_{-\infty}^{\infty} f(t-t') g(t') dt' \ ,
+\end{equation}
+and $\langle \ \bm\cdot \ , \ \bm\cdot \ \rangle$ represents a
+suitable inner product, which depends on the dimensionality of the $u$ field.
+
+This probability is the basis for calculating the expectation
+value of any observable $\mathcal{O}[u]$ which depends
+on the field $u$. For instance, some useful observables
+are $\mathcal{O}[u] = e^{i \lambda u(t)}$ and
+$\mathcal{O}[u] = u(t_a) u(t_b)$. The expectation value of the former
+is called the characteristic function, which is a Fourier transform of the probability distribution
+function, while the expectation value of the latter is the two-point
+correlation function.
+
+Given any realization of the noise, $\eta$, the corresponding
+(unique) solution of the SPDE is represented by $u_{\eta}$
+Then, the expectation value of any observable is calculated as
+\begin{equation}
+    \langle \mathcal{O}[u] \rangle =
+    \int D \eta \ \mathcal{O}[u_{\eta}] P[\eta] \ .
+\end{equation}
+The functional integral is necessary because an integral is performed
+over all possible realizations of the noise, which is a time-dependent
+field. This can be understood by
+partitioning the time evolution of the system into small intervals,
+then this integral would be the limit of
+\begin{equation}
+    \langle \mathcal{O}[u] \rangle =
+    \lim_{n \to \infty}
+    \int d \eta_{t_1} d\eta_{t_2} \cdots d\eta_{t_{n-1}}
+    \ \mathcal{O}[u_{\eta}] P[\eta] \ .
+\end{equation}
+This equation can be equivalently written with an extra
+functional integral over all possible $u$ fields:
+\begin{equation}
+    \langle \mathcal{O}[u] \rangle =
+    \int Du D\eta \ \mathcal{O}[u] \delta[u - u_{\eta}] P[\eta] \ .
+\end{equation}
+
+$\delta[u]$ is a functional Dirac-delta, which
+filters the value of the integral over the $u$ field
+at each instant of time.
+Since $u_{\eta}$ is a solution of Eq.~\eqref{eq:additive-langevin},
+a change of variables can be perfomed to replace it
+with the stochastic equation itself:
+\begin{equation}
+    \langle \mathcal{O}[u] \rangle =
+    \int Du D\eta \ \mathcal{J} \ \mathcal{O}[u] \delta[\dot u - b[u] - g \eta] P[\eta] \ .
+\end{equation}
+There is a Jacobian which arises from the change of variables, $\mathcal{J}$,
+but it does not depend on $u$ for the case of additive noise
+(it is also important that Eq.~\eqref{eq:additive-langevin}
+is interpreted with the Itô prescription).
+A proof of this can be found in \textcite{nakazato1990symmetries}.
+In this case, the Jacobian is simply a normalization constant and can be neglected.
+
+Rewriting the functional Dirac delta as a Fourier transform of a constant, an auxiliary field $p$ is introduced. Then,
+discarding all normalization constants, the desired expectation
+value can be written as
+\begin{equation}
+    \langle \mathcal{O}[u] \rangle \propto
+    \int Du D\eta Dp \  \mathcal{O}[u] \
+    e^{-i \int dt \ \langle p, u - b[u] - g \eta \rangle}
+    e^{-\frac12 \int dt \langle \eta, \chi^{-1} * \eta \rangle } \ .
+\end{equation}
+
+All terms involving the noise can be exactly integrated.
+Making the substitution $\eta \to \eta - i \chi * p$:
+\begin{equation}
+    \int D\eta \
+    e^{-\frac12 \int dt \langle \eta, \chi^{-1} * \eta \rangle
+    + i g \int dt \langle p, \eta \rangle}
+    %\underset{\eta \to \eta - i \chi * p}{\longrightarrow}
+    \xrightarrow[\eta \to \eta - i \chi * p]{}
+    \int D\eta \
+    e^{-\frac{g^2}{2} \int dt \langle \eta, \chi^{-1} * \eta \rangle
+    - \frac12 \int dt \langle p, \chi * p \rangle} \ .
+\end{equation}
+On the right hand side of this expression, the last term
+under the integral does not depend on the noise, while the first
+is quadratic on $\eta$.
+The integral of this term is a Gaussian integral, which
+provides a constant contribution.
+Thus, the final form of the MSRJD functional is:
+\begin{equation} \label{eq:functional-expec}
+    \langle \mathcal{O}[u] \rangle \propto \int Du Dp \ \mathcal{O}[u] \
+    e^{-i \int dt \ \langle p, \dot u - b[u] \rangle}
+    e^{-\frac{g^2}{2} \int dt \langle p, \chi * p \rangle} \ ,
+\end{equation}
+from which any statistical observable can be calculated, in principle.
+It is worth mentioning, though, that technical difficulties on the exact evaluation of Eq.~\eqref{eq:functional-expec} are the standard, as it happens in any nonlinear field theory.
+
+It is also common, in connection with statistical field theory,
+to name the (negative) argument of the exponential the \textit{MSRJD action}:
+\begin{equation} \label{eq:msrjd}
+    S[u,p] =
+    i \int dt \ \langle p, \dot u - b[u] \rangle
+    + \frac{g^2}{2} \int dt \langle p, \chi * p \rangle \ .
+\end{equation}
+
+This is the starting point for any application of the method,
+where a variety of field theoretical tools can be applied.
+It is important to remark that the above derivation is valid for Langevin equations with additive noise. In the case of multiplicative noise, the contribution of the Jacobian determinant must be carefully examined, and the choice of discretization is relevant for this. A discussion on multiplicative noise in functional methods can be found in \textcite{arenas2010} and a general discretization, which interpolates between the Itô and Stratonovich cases (the $\alpha$-discretization) is found in \textcite{janssen1992}.
+
+\section{The Instanton Method}
+
+The difficulties in dealing with functional integrals such
+as Eq.~\eqref{eq:msrjd} are notorious. The great success
+of quantum electrodynamics in making experimental predictions
+relies on the presence of a naturally perturbative parameter, the
+fine structure constant. Similarly, the first applications of
+the MSRJD formalism to fluid dynamics also relied on expansions
+around the zero field solution \parencite{forster1977}.
+Nevertheless, there is no
+natural perturbative parameter in the problem of turbulence
+and intermittent
+fluctuations is one of its main ingredients.
+The standard perturbative expansion, developed around the \enquote{vacuum}, thus cannot account for these effects.
+
+
+Another approach is the method of background field expansion.
+% did it begin in field theory? are you sure?
+Instead of a perturbative expansion around the zero field, this method
+relied on the expansion around classical (or saddle-point) solutions
+of the action.
+In the context of disordered systems in
+solid state physics, the first applications of the background field
+method were done in
+\textcite{zittartz1966,langer1967,langer1969}.
+In fluid dynamics, the background expansion was first perfomed
+for the Burgers equation, a one-dimensional
+version of Navier-Stokes, in \textcite{gurarie1996}.
+In this setting, the authors studied the tails of the velocity gradient PDF.
+This problem has been only
+partially resolved and is further investigated in Chap.~\ref{chap:burgers}.
+
+The background field expansion was originally developed in the context of
+Yang-Mills theory in \textcite{belavin1975}.
+The saddle-point solutions of the respective Euclidean field theory, which also
+display non-trivial topology, were called instantons.
+This name was a reference to solitons,
+waves localized in space, while the instantons are fast transitions
+between different ground states, hence they are solutions localized in time
+\parencite{schafer1998}.
+
+At the heart of the method is the realization that a
+functional integral reduces to the semi-classical limit in the presence
+of a small parameter. Then, the integral can be approximated
+by its saddle point approximation, using the solution
+that minimizes the action.
+In the literature of stochastic hydrodynamics, these solutions are called
+instantons as well, and represent the maximum likelihood
+realization of a specific event. The observed events are usually extreme
+fluctuations of intermittent observables, such as velocity gradients,
+vorticity, local energy dissipation, or circulation.
+This approach captures the leading behavior of the PDF of the desired observable,
+but it must be supplemented with fluctuations beyond the instanton
+to represent the true probability distribution.
+
+For instance, consider the observable
+\begin{equation}
+    \mathcal{O}[u] = \delta( F[u(x,t=0)] - a ) \ .
+\end{equation}
+This means that the event in question is the observable $F$ having
+the value $a$ at time $t=0$. The system is allowed to evolve for
+an infinite time, from $-\infty$ to $0$, to develop the value
+$F[u]=a$ at $t=0$.
+Large velocity gradients are one common instance of observable of interest, which is associated to $F[u] = u_x \delta(x)$.
+
+In the MSRJD framework, the probability of such an event is
+\begin{equation}
+\begin{split}
+    P(a) &= \langle \delta( F[u(x,t=0)] - a ) \rangle \\
+    &= \int D u Dp \ \frac{1}{2\pi} \int_{-\infty}^{\infty}
+    d\lambda \ \mathcal{J}[u] \ e^{-S[u,p]} e^{-i \lambda(F[u]\delta(t)-a)} \ .
+\end{split}
+\end{equation}
+In the limit of extreme fluctuations, $|a| \to \infty$, this integral
+can be estimated from its stationary contribution.
+As the $u$ and $p$ fields develop extreme values, the action $S[u,p]$ also grows,
+which justifies the saddle-point approach.
+This limit is also equivalent to $|\lambda| \to \infty$ or to $\chi(0) \to 0$,
+corresponding to large fluctuations and vanishing intensity of the external
+force, respectively.
+%Any of these parameters validates the asymptotic expansion.
+The instanton configuration corresponds to the most probable
+trajectory compatible with the observable.
+In the quantum mechanical analogue,
+this is the classical trajectory obtained with $\hbar \to 0$.
+
+The functional derivative of the MSRJD action yields equations for
+the instanton fields, corresponding to the extremal points of the action
+functional:
+\begin{align}
+    &\frac{\delta S}{\delta p} = i(\dot u -b[u]) + \chi * p  \ , \\
+    &\frac{\delta S}{\delta u} = -i \dot{p} - i (\nabla_u b[u])^T p \ .
+\end{align}
+The contributions from the Lagrange multiplier (the observable) provide
+an initial condition to the instanton fields, which satisfy the following equations:
+\begin{align}
+    \dot u &= b[u] + i \chi * p \ , \\
+    \dot{p} &= - (\nabla_u b[u])^T p + i \lambda \nabla_u F[u] \delta(t) \ .
+\end{align}
+
+Integrating around $t=0$, the second equation can be used to obtain the initial condition
+for the $p$ field. It is assumed that $p(0^+)=0$ for stability reasons,
+otherwise $p$ would grow without bounds and the action would diverge.
+Furthermore, the time evolution of the system is only considered for $t \leq 0 $.
+The equations obtained for $p$ are:
+\begin{equation}
+\begin{split}
+    \dot{p} &= - (\nabla_u b[u])^T p \ , \\
+    p(0^-) &= -i \lambda \nabla_u F[u(x,t=0)] \ .
+\end{split}
+\end{equation}
+
+The instanton approach can likewise be developed in the language of large deviation theory,
+the mathematical framework that studies the asymptotic behavior of
+probability distributions \parencite{varadhan1966}.
+The connection between the methods of statistical field theory and
+large deviation theory has been explored in \textcite{ellis2007,touchette2009}.
+
+Nevertheless, the instanton is only the leading contribution to the
+probability distribution function of the observable. This approximation
+is more accurate in the limit of large fluctuations, but other effects
+have to be considered away from this regime. One possible approach is to
+consider perturbative fluctuations to the instanton field, with an expansion of
+the form
+\begin{equation} \label{eq:perturb-instanton}
+\begin{split}
+    &u = u_s + \delta u \ , \\
+    &p = p_s + \delta p \ ,
+\end{split}
+\end{equation}
+where the subscript $s$ indicates the instanton (or saddle-point) fields and
+$\delta u$ and $\delta p$ are fluctuating fields.
+After this change of variables, the MSRJD action can be split into
+instanton and fluctuation contributions,
+\begin{equation} \label{eq:perturb-action}
+    S[u,p] = S[u_s,p_s] +
+    \Delta S[ u_s, p_s, \delta u, \delta p] \ .
+\end{equation}
+In this equation, the first term is called the instanton action.
+Corrections of first order in the instanton fields do
+not play a role because the instanton solutions are extremal solutions of
+the action, by definition.
+Thus, the second term carries the contributions of quadratic and higher order
+in the fluctuation fields, as well as a possible dependence on the
+instantons themselves.
+A detailed treatment of fluctuations in two models of turbulence
+is going to be the subject of the next chapters.
+
+The cumulant expansion is used in these particular cases, a standard method in statistical field theory which has been applied to classical stochastic systems since \textcite{langouche1979}.
+This is a perturbative method, hence its validity is limited to regimes in which the diagrammatic contributions in Eq.~\eqref{eq:perturb-action} are small relative to the instanton contribution, that is: $\Delta S[ u_s, p_s, \delta u, \delta p] / S[u_s,p_s] \ll 1$. This condition is met either for small fluctuation intensities ($g \ll 1$) or at large fluctuations of the observable being investigated.
+
+\end{chapter}

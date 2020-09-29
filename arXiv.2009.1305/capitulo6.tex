@@ -1,0 +1,575 @@
+\begin{chapter}{Shot Noise Multifractal Model for Turbulent Pseudo-Dissipation}
+\label{chap:shotnoise}
+
+The first observations of intermittency in turbulence were reported quite a long time ago \parencite{batchelor1949} and were first addressed theoretically in \textcite{kolmogorov1962refinement,obukhov1962}, as discussed in Sec.~\ref{sec:multifractal}. In these works, scale dependent observables were postulated as the relevant quantities in the study of fluctuations in the turbulent inertial range.
+The theory also hypothesized that the kinetic energy dissipation, a positive quantity, follows a lognormal probability distribution, an observation which is remarkably accurate, as reported in experiments and numerical simulations \parencite{yeungpope1989}.
+Furthermore, experimental measurements of the kinetic energy dissipation revealed long-range power-law correlations \parencite{gurvitch1963,pond1965}, another key feature of turbulent fields. Multifractal random fields have been a tool to describe and understand turbulent fields with such statistical properties, but their derivation on a first-principle basis is still an open problem.
+
+The origin of the lognormal distribution of the kinetic energy dissipation has been connected to the Richardson energy cascade through several phenomenological models, beginning with discrete cascade models \parencite{novikov1964,yaglom1966,frisch1978}. In summary, these models describe the distribution of energy dissipation across length scales in a turbulent field, from the large energy-injection scale, down to the much smaller dissipation length scales.
+The kinetic energy dissipation in an inviscid cascade of $n$ steps, following Eq.~\eqref{eq:epsilon-cascade}, can be written as a random variable
+\begin{equation} \label{eq:discrete-cascade}
+    \varepsilon_n = W_1 W_2 \cdots W_n \ \varepsilon_0 \ ,
+\end{equation}
+where the $W_i$ are random variables which determine the energy transferred from one step to the next. For the cascade to be statistically inviscid, it is required that the $W_i$ are positive and have a mean value of one.
+
+% below equally -> identically ?
+If the $W_i$ factors in this model are equally and independently distributed, the probability distribution for the small-scale energy dissipation is well approximated by a lognormal, since $\ln \varepsilon_n$ is defined as the sum of several independent random variables of finite mean and variance.
+The central limit theorem ensures that the probability distribution of $\ln \varepsilon_n$ approaches a normal distribution. As a consequence, $\varepsilon_n$ itself is a random variable with a lognormal distribution in the limit $n \to \infty$.
+%This is a simple way to elicit the relevance of the lognormal distribution and its connection to the energy cascade. Different discrete models rely on this basis, with varying proposals for the way the energy is split at each step, and for the probability distribution of the $W_i$ factors.
+
+These cascade models, though, had the limitation of being discrete and of possessing a special scale ratio between neighboring scales, customarily $\lambda=2$. It was noticed in \textcite{mandelbrot1972} that this special scale ratio should not be present, since turbulent energy dissipation displays multifractal properties for any chosen scale. Instead, a description in which arbitrary values of $\lambda$ are valid and produces multifractal statistics should be preferred and investigated, as pointed out by Mandelbrot.
+Furthermore, the discrete models have been able to account for scale-locality of the energy transfer process, but did not account for correlations in time. This means that such fields had no causal structure, making them difficult to connect to the dynamics of turbulent fields described by the Navier-Stokes equations. Some of these issues were addressed by the causal framework of \textcite{pereira2018multifractal}, in which a stationary stochastic process is described and it is analytically verified that it satisfies the same multifractal properties as the small-scale energy pseudo-dissipation of the discrete cascade models.
+
+This chapter describes a causal stochastic process driven by discrete and periodic random jumps, which is used to model the dynamical and multifractal properties of Lagrangian pseudo-dissipation. The observed dynamics is regular at scales below the Kolmogorov length scale, and multifractal at larger scales, demonstrating the possibility to apply discrete (shot) noise in effective models of turbulence.
+%But observables which depend on the details of the small-scale dynamics exist, their dynamics is highly dependent on the intermittent fluctuations of turbulent flows, which happens for filaments and surfaces carried by high Reynolds number fluid flows.
+Our main motivation here relies on the fact that the time evolution of local Lagrangian observables is sensitive to the existence of spacetime localized perturbations of the turbulent flow, such as vortex tubes. The dynamics of spheroids in turbulent flows has been observed to be dependent on small scale properties \parencite{parsa2012,voth2017}. Their tumbling motion is marked by a regular evolution disrupted by intense jumps, which can be seen in Fig.~\ref{fig:rods}, indicating that a modeling in terms of shot noise might explain their behavior. The main characteristics of a turbulent flow which lead to the preferential alignment of these spheroids is still a problem under investigation, with possible applications in industrial and natural fluid currents.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=.7\textwidth]{rods-voth2017.png}
+    \caption
+    [Trajectory of a rod in a turbulent flow from experiments]
+    {Trajectory of a rod in a turbulent flow from experiments of \textcite{parsa2012}. The color represents the tumbling rate. Figure extracted from \textcite{voth2017}.}
+    \label{fig:rods}
+\end{figure}
+
+There are infinite ways a stochastic field can be multifractal. In previous models in the literature \parencite{schmitt2003,perpete2011,pereira2018multifractal}, the lognormal description was chosen, due to its interesting statistical features (it is the simplest nontrivial continuous multifractal formulation) and to its history in connection with the statistical theory of turbulence.
+Furthermore, the construction of a causal equation for a multifractal field driven by shot noise requires the use of a general version of It{\^o'}s lemma, including the contributions from discontinuities \parencite{protter2005,klebaner2012}. This lemma and its application to the random field in case are discussed in detail.
+
+Focusing on turbulence, it turns out, from experimental evidence \parencite{yeungpope1989}, that several positive-definite observables like the kinetic energy dissipation, kinetic energy pseudo-dissipation, enstrophy, and the absolute value of acceleration can be reasonably well described by lognormal distributions, with a particularly good accuracy being achieved for pseudo-dissipation.
+In the work of Yeung and Pope, it is also remarked that the statistical moments of dissipation and enstrophy seem to approach those of the lognormal distributions as the Reynolds number increases, suggesting that further studies are required to settle this issue.
+Additionally, it is also known that the lognormal distribution can only be a good approximation to the statistics of dissipation, but not a complete solution which holds close to the dissipative scale or at arbitrarily high orders of the statistical moments. A discussion on consistency requirements for statistical distributions of turbulent observables can be found in \textcite{frisch1995}.
+
+\section{Statistics of Turbulent Energy Dissipation and Pseudo-Dis\-si\-pa\-tion} \label{sec:stat-dissip}
+
+The first theoretical results in the statistical theory of turbulence established the picture of the turbulent cascade on a mathematical ground. This early description of Kolmogorov regards the mean behavior of the inertial range statistics of turbulent velocity fields, but not its fluctuations. Later studies of turbulent fluctuations, leading to the multifractal picture,
+revealed that the K41 velocity field is an exactly self-similar field of Hurst exponent $1/3$, that is, a monofractal. This field is homogeneous in space, in contrast to the complex and concentrated structures which form in isotropic flows, revealed by direct numerical simulations and experiments \parencite{ishihara2009,debue2018prf,dubrulle2019beyond}.
+
+Multifractal fields have been proposed as general models to the  turbulent velocity field in the inertial range, although it remains an open problem to fully characterize this multifractal field and its statistical properties.
+% blanket = general
+For the purpose of modeling a positive-definite scalar field, consider a generic $d$-dimensional multifractal random field $\varepsilon_{\eta}$, which may depend on the spatial variable $\boldsymbol{x}$ and on time $t$, and with a dissipative length scale $\eta$.
+The basic statistical properties of this random field are compatible with the features of the discrete cascade models and with experimental and numerical realizations of several observables in turbulence.
+The field $\varepsilon_{\eta}$ satisfies, for its statistical moments, the relation
+\begin{equation} \label{eq:bare-moments}
+\left\langle(\varepsilon_{\eta})^{q}\right\rangle = A(q) \ \eta^{K(q)} \ ,
+\end{equation}
+where $A(q)$ is a $q$-dependent constant and $K(q)$ is a characteristic function of the multifractal field, connected to how structures at different scales spread across space.
+% careful: previously, the microscale eta was represented by a lambda. lambda now is used to represent the scale ratio in discrete (or continuous) cascade models. one has to review this to make sure there are no old lambdas left in the wrong places.
+In particular, a lognormal distribution for $\varepsilon_{\eta}$ corresponds exactly to $K(q) = \mu q (q-1) / 2$, where $\mu$ is called the intermittency parameter, which measures the intensity of the fluctuations of this field.
+%In the case of Eulerian three-dimensional turbulence, $\mu=0.2$ \parencite{stolovitzky1994,praskovsky1997,chen1997}.
+% stolovitzky1992,
+
+The variable $\varepsilon_{\eta}$ is a bare field, since it is defined at the dissipative scale. The multifractal hypothesis makes predictions for the behavior of coarse grainings of $\varepsilon_{\eta}$ as well, which are defined as local averages of the original field at the scale $\ell > \eta$, according to Eq.~\eqref{eq:dissip-coarse}.
+In particular, the statistical moments of a coarse-grained multifractal field obey the same statistical behavior as the bare field,
+\begin{equation} \label{eq:dressed-moments}
+\left\langle(\varepsilon_{\ell})^{q}\right\rangle = A'(q) \ \ell^{K(q)} \ ,
+\end{equation}
+at scales larger than the bare scale $\eta$ and up to some critical moment $q_{\mathrm{crit}}$, beyond which this scaling becomes linear \parencite{schmitt1994,lashermes2004}.
+% schmitt1994 p.98, these references came from PerpeteSchmitt2011
+It is vital to know these properties for coarse-grained fields for two main reasons. First, a coarse-grained field is all experimentalists have access to. And second, the features of coarse-grained fields are a fundamental ingredient in Kolmogorov's refined similarity hypothesis, according to which the inertial range statistical properties at scale $\ell$ depend only on $\ell$ itself and on the kinetic energy dissipation coarse-grained at this scale, $\varepsilon_{\ell}$. Thus, the verification that a given set of data does display multifractal statistics compels to the study of its coarse-grained properties.
+
+For the general field $\varepsilon_{\eta}$, given that $X_{\eta} \equiv \ln \varepsilon_{\eta}$, its autocorrelation function decays logarithmically with the distance between the points,
+\begin{equation} \label{eq:ln-correlation}
+\langle X_{\eta}(0) X_{\eta}(\boldsymbol{r}) \rangle = C - \frac{\sigma^2}{\ln \lambda} \ln |\boldsymbol{r}| \ .
+\end{equation}
+This property can be easily verified for the the discrete cascade models \parencite{arneodo1998prl,arneodo1998jmathphys,schmitt2003}, in which case $\sigma^2 = \mathrm{Var}[ \ln W ]$ and $C = \langle \ln W \rangle^2 n^2 + \sigma^2 n$, where $n$ is the depth of the cascade and $\lambda$ the scale ratio of the model.
+The Fourier transform of this expression corresponds to the power spectrum, which amounts to $1/f$ noise,
+\begin{equation}
+E_{\eta}(k) \approx k^{-1} \ .
+\end{equation}
+% can i find other applications of multifractal fields?
+This is a common feature of intermittent fields in general and is also valid for coarse-grained fields \parencite{schertzer1987,schertzer1991,bacry2001}.
+The properties just presented: Eqs. (\ref{eq:bare-moments}), (\ref{eq:dressed-moments}), and (\ref{eq:ln-correlation}) are the main characteristics of a multifractal field.
+
+To account for fluctuations into account, it was postulated by Kolmogorov and Obu\-khov in 1962 that the kinetic energy dissipation field follows a lognormal distribution with
+\begin{equation} \label{eq:kolmogorov-var}
+    \mathrm{Var}[\ln \varepsilon_{\ell}] = - \mu \ln (\ell/L) + C \ ,
+\end{equation}
+% this equation is obtained in schmitt2003
+where $L$ is the integral length scale, $\ell$ is the observation scale in the inertial range, $\eta \ll \ell \ll L$, and C is an arbitrary constant. The intermittency parameter $\mu$, the same as in the expression for $K(q)$, was historically introduced in this expression.
+
+It was later realized \parencite{yaglom1966} that the intermittency parameter is also responsible for the power-law correlations of the kinetic energy dissipation, in the form
+\begin{equation} \label{eq:gurvitch-corr}
+\langle \varepsilon_{\eta}(\boldsymbol{r}) \varepsilon_{\eta}(\boldsymbol{r+\delta r}) \rangle \propto (L/\ell)^{\mu} \ ,
+\end{equation}
+where $\ell \equiv |\boldsymbol{\delta r}|$ and the parameter $\mu$ is apparent as well.
+The cascade models were built to explain these statistical features.
+
+The specific random fields considered in this chapter, as well as \textcite{schmitt2003,perpete2011,pereira2018multifractal} are one-dimensional and depend only on time, since they correspond to some positive-definite observable following a Lagrangian trajectory of the flow.
+The Lagrangian view is connected to the space-time structure of the energy dissipation cascade: since eddies are carried by the flow, their statistical distribution is somehow influenced by the transport properties of the turbulent velocity field.
+And Lagrangian observables such as velocity differences and velocity gradients have been argued to display scaling and intermittent behavior, following a Lagrangian refined similarity hypothesis, in an equivalent manner to the Eulerian framework. Lagrangian velocity difference structure functions, for instance, are believed to scale as
+\begin{equation} \label{eq:lag-k41-scaling}
+    \langle \big( \delta u_i(\tau) \big)^n \rangle \propto (\langle \varepsilon_{\tau} \rangle \tau)^{\xi_n}
+\end{equation}
+in the Lagrangian inertial range, $\teta \ll \tau \ll T$, between the dissipative time scale $\teta$ and the integral time scale $T$.
+% Lagrangian integral time is defined in barjona2017
+The coarse-grained Lagrangian kinetic energy dissipation, $\varepsilon_{\tau}$, is defined in terms of its bare counterpart, $\varepsilon_{\teta}$, in analogy with Eq.~\eqref{eq:dissip-coarse}:
+\begin{equation} \label{eq:dissip-coarse-1dim}
+    \varepsilon_{\tau}(t) = \frac{1}{\tau} \int_{t}^{t+\tau} dt'
+    \varepsilon_{\teta}(t') \ .
+\end{equation}
+Its average value $\langle \varepsilon_{\tau} \rangle$ is constant due to the stationarity of the turbulent flow. The dissipative time scale is determined from dimensional analysis as the Lagrangian analogue of the dissipative length scale, and is defined as $\teta = \eta^{2/3} \varepsilon_0^{-1/3}$ and the Lagrangian integral time is defined in terms of the velocity two-point autocorrelation $\rho_L(\tau)$, as $T = \int_0^{\infty} \rho_L(\tau) d\tau$.
+In the K41 framework, the scaling exponents of velocity difference structure functions grow linearly, and the equivalent relation in the Lagrangian view is that $\xi_n = n/2$. This can be understood with the framework of \textcite{borgas1993}, which connects Lagrangian and Eulerian self-similarity.
+Eq.~\eqref{eq:lag-k41-scaling} has been numerically verified in \textcite{benzi2009,sawfordyeung2011,barjona2017}, and it is notable that finite Reynolds effects are even more pronounced in the Lagrangian frame, making measurements even more difficult \parencite{yeung2002}.
+
+In \textcite{mandelbrot1972}, it was noticed that a random field built as the exponential of a Gaussian field,
+\begin{equation} \label{eq:mandelbrot-dissip}
+    \varepsilon_{\eta} \propto \exp \{ \sqrt{\mu} X\} \ ,    
+\end{equation}
+would satisfy these properties. In this equation, the Gausian field $X$ is an It\^o integral over the Wiener measure $dW(t)$, hence $\varepsilon_{\eta}$ can be seen as a continuous product of random factors. 
+This is a straightforward, albeit nonrigorous, translation of Eq.~\eqref{eq:discrete-cascade} to the continuum, which has lognormal statistics as well. This construction was mathematically formalized in \textcite{kahane1985}, and the modern understanding of such random fields has led to explicit frameworks in the Eulerian \parencite{pereira2016} and Lagrangian context \parencite{pereira2018multifractal}, which approximate the known statistics of turbulent fields. Since Kahane, this continuous stochastic process with multifractal statistics is called Gaussian Multiplicative Chaos, in connection with the standard additive random process (the Wiener process). For an explanation of the origin of this nomenclature, the reader should consult the footnote in \textcite{rhodes2014}.
+
+The discrete cascades display the same statistical properties as the small scale multifractal field of Eq.~\eqref{eq:mandelbrot-dissip}, but for a single scale ratio.
+Another critique of Mandelbrot on the discrete cascades was the absence of a space-time causal structure. The only causal connection in these models is between length scales, a relation which cannot be easily translated to a space-time distribution of turbulent structures or of energy dissipation. A step in this direction was performed in \textcite{schmitt2003}, with the study of a causal one-dimensional stochastic process, formulated in terms of a stochastic differential equation.
+In this work, analytical expressions for the statistical moments and two-point correlation functions of this process are proved, in agreement with the multifractal hypothesis and providing a continuous-in-scale extension of the discrete cascade models.
+This stochastic process, though, does not generate a stationary state solution, an issue which was resolved in \textcite{pereira2018multifractal}.
+
+The stochastic process of \textcite{pereira2018multifractal} for the evolution of the pseudo-dissipation field $\varphi_P$ is described by the following stochastic differential equation:
+\begin{equation} \label{eq:pereira-x}
+\begin{split}
+    d X_P(t)&=\left[-\frac{1}{T} X_P(t)+\beta_P(t)\right] d t+\frac{1}{\sqrt{\tau_{\eta}}} dW(t) \ , \\
+    \beta_P(t)&=-\frac{1}{2} \int_{s=-\infty}^{t} \frac{1}{\left(t-s+\tau_{\eta}\right)^{3 / 2}} dW(s) \ ,
+\end{split}
+\end{equation}
+where the pseudo-dissipation $\varphi_P(t)$ is given by an exponential of the underlying $X_P(t)$ process, explicitly:
+\begin{equation}
+    \varphi_P(t)=\frac{1}{\tau_{\eta}^{2}} \exp \left\{ \sqrt{\mu} X_P(t)-\frac{\mu}{2} \mathbb{E}\left[X_P^{2}\right] \right\} \ ,
+\end{equation}
+where $\mu$ is the Lagrangian intermittency exponent, $T$ is the integral time scale, $\teta$ the Kolmogorov dissipative time scale and $W(t)$ is a standard Wiener process.
+The stochastic processes $X_P(t)$ and $\varphi_P(t)$ reach a stationary state with lognormal and long-range correlated statistics, in the limit of $\teta \to 0$ (corresponding to infinite Reynolds number). Some of the necessary ingredients in a multifractal process which this equation illustrates are long-term memory and noise correlations, expressed through the $\beta_P(t)$ term, which is driven by the same random noise solution as the main equation, for $\varepsilon_P(t)$.
+
+\section{Stochastic Models of Lagrangian Pseudo-Dissipation} \label{sec:stoc-lag-dissip}
+
+An alternative formulation of multiplicative chaos was done in \textcite{perpete2011}, where a time-discretized causal multifractal process was introduced. This stochastic process satisfies the multifractal properties for its statistical moments and two-point autocorrelation functions, as well as its coarse-grained version, for which the multifractal statistics are verified for any continuous scale ratio (in the limit of infinite Reynolds number).
+
+The stochastic process of \textcite{perpete2011}, with a dissipative timescale $\teta$ and a large timescale corresponding to the integer $N = T/\teta$, is described by
+\begin{equation} \label{eq:perpete-x}
+    X_D(t) = \frac{1}{\sqrt{\teta}} \sum_{k = 0}^{N-1} (k+1)^{-1/2} \alpha_{t-k} \ ,
+\end{equation}
+where $\alpha_k$ are independent and identically distributed Gaussian random variables of zero mean and standard deviation $\sqrt{\teta}$. The time, unlike in the previous examples, is only defined for integer $t$. This process also possesses long-term memory over the integral time scale, in connection with Eqs.~\eqref{eq:pereira-x}.
+The multifractal process corresponding to Eq.~\eqref{eq:perpete-x} is likewise given by its exponential,
+\begin{equation}
+    \varphi_D(t) = \varphi_0 \exp \big( \sqrt{\mu} X_D(t) - \mu \mathbb{E}[X_D^2]/2 \big) \ \mbox{,}
+\end{equation}
+which has lognormal and long-range correlated statistics.
+Eq.~\eqref{eq:perpete-x} reaches a stationary state with the following multifractal properties:
+\begin{enumerate}[label=(\roman*)]
+    \item \label{it:bare}
+    Its moments satisfy
+    \begin{equation} \label{eq:perpete-moments}
+    \mathbb{E}[ \varphi_D^q ] =
+    C_q \left( \frac{\teta}{T} \right)^{-K(q)} \ \mbox{,}
+    \end{equation}
+    with $K(q) = \mu \ q (q-1) / 2$, conforming to the lognormal statistics, and $C_q$ is a factor which can be
+    exactly calculated.
+    % it'd be interesting to say on which C_q is independent, because this is important, and also to give a name to the K(q) function, maybe
+    \item \label{it:dress}
+    The coarse-grained moments of $\phi_D$ satisfy a similar relation with the same exponents:
+    \begin{equation} \label{eq:perpete-moment}
+    \mathbb{E}[ (\varphi_D)_{\tau}^q ] \approx
+    c_q \left( \frac{\tau}{T} \right)^{-K(q)} \ \mbox{,}
+    \end{equation}
+    where the coarse-grained field is defined as a moving average with a window of $\tau$:
+    \begin{equation}
+    (\varphi_D)_{\tau}(t) = \frac{1}{\tau} \sum_{k=t}^{t+\tau/\teta-1} \varphi_D(k) \ .
+    \end{equation}
+    Relation (\ref{eq:perpete-moment}) is asymptotic, and is valid in the limit of $T$ going to infinity, with the ratio $\tau/T$ kept fixed. Furthermore, $q$ must be such that $K(q) < q-1$.
+    % this resembles the linear growth limit, and Perpete has references on that, I should check it out
+    The existence of upper and lower bounds on $c_q$ was demonstrated in \textcite{perpete2011}, while precise values would have to be inspected numerically.
+    \item The autocovariance of this process, in the same limit of $T \to \infty$,
+    converges to
+    \begin{equation} \label{eq:perpete-cov}
+    \mathrm{Cov}[\varphi_D(t), \varphi_D(t+\tau)] \approx
+    - \mu \ln(\tau/T) \ \mbox{.}
+    \end{equation}
+\end{enumerate}
+
+Having Eqs.~(\ref{eq:perpete-moments}-\ref{eq:perpete-cov}) in mind, a stochastic differential equation which inherits features from the continuous and discrete instances is described in this chapter. This stochastic field takes into account the small scales in a dynamic manner, such that it follows a smooth time evolution on scales below the Kolmogorov time, but still shows roughness and multifractal behavior on timescales much larger than that. This picture is inspired by the Kolmogorov phenomenology, in which dissipation can be neglected in the inertial range, while it acts in smoothing out the velocity field in the dissipative scale.
+
+Furthermore, the refined similarity hypothesis states that, in the limit of infinite Reynolds numbers, all the statistical properties at scale $\ell$ are uniquely and universally determined by the scale itself and the mean energy dissipation rate coarse-grained at this scale, $\varepsilon_{\ell}$.
+By this hypothesis, it is expected that a variety of noise sources generate similar behavior in the inertial range, due to an independence on the details of the dissipative dynamics.
+For this reason, several large scale observables of the random field stirred by discrete noise should converge to the same quantities as fields driven by Wiener noise.
+
+%The stochastic process described in this chapter is a model for Lagrangian pseudo-dissipation forced by a discrete noise source, still with a long time memory such as the noise source presented in \textcite{perpete2011}. It is interesting to remark that this stochastic process evolves in continuous time, while being driven by randomness which is periodic in time and only acts in discrete instants. A stationary state arises as solution of this process and its statistical properties are investigated, in comparison with the properties of the multifractal random fields already described in the literature.
+
+Studies of discrete noise (often called shot noise) or a mixture of discrete and continuous noise (or jump-diffusion) have been pursued in others areas of knowledge, such as financial economics \parencite{duffie2000,das2002}, neuronal systems \parencite{patel2008,sacerdote2013}, atomic physics \parencite{funke1993,montalenti1999}, biomedicine \parencite{grenander1994} and image recognition \parencite{srivastava2002}.
+
+Explicitly, consider the stochastic process given by the stationary solution of the following differential equation:
+\begin{equation} \label{eq:jump-scalar}
+    dX(t) = \left( -\frac{1}{T} X(t^-) + \beta(t) \right) dt + \frac{1}{\sqrt{\teta}} \sum_{\teta \ell \leq t} \alpha_{\ell} \ \delta(t-\teta \ell) \ dt \ .
+\end{equation}
+The first term on the RHS corresponds to a drift in a usual Langevin equation, and has the same form as the drift term in Eq.~\eqref{eq:pereira-x}. The first contribution in this term is responsible for correlations of the $X(t)$ random field of characteristic time $T$, while the second is in charge of the multifractal correlations in the solution, with a similar role to the long-memory term present in Eqs. (\ref{eq:pereira-x}) and (\ref{eq:perpete-x}). The second term in Eq.~\eqref{eq:jump-scalar} accounts for the discrete random jump contributions. These jumps occur at periodic intervals of length $\teta$ and have an intensity $\alpha_{\ell}$, which is a Gaussian random variable of zero mean and standard deviation of $\sqrt{\teta}$. Each value of $\ell$ corresponds to a jump instant $\ell\teta$, hence the sum is carried for all jump times prior to the observation time $t$.
+
+It is also important to observe the presence of the $t^-$ in the first term which represents an instant infinitesimally preceding the current observation instant. In a stochastic process with jumps, this kind of care is needed, because the current state of the system (at $t$) depends on the continuous evolution up to time $t^-$ and on the value of a jump which may have happened exactly at the instant $t$, and therefore does not affect the previous state of the system, only its future evolution. For this reason, the state $X(t^-)$ and a jump $\alpha_{\ell}$ happening exactly at $\ell \teta = t$ are completely independent events.
+In the traditional notation of point processes \parencite{protter2005,klebaner2012}, continuous random fields are taken to be \textit{c\`{a}dl\`{a}g}, a French acronym for \textit{continuous on the right and limit on the left}. This denomination means that jumps occur exactly at the instant $t_{\ell}$, while the left-limit at $t_{\ell}^-$, is not at all influenced by the jump term. Then, for a discontinuous random field $f(t)$ with a random jump happening at $t_{\ell}$, being \textit{c\`{a}dl\`{a}g} is equivalent to
+\begin{equation}
+    \lim_{t \to t_{\ell}^-} f(t) \neq f(t_{\ell}) \ \ \mbox{and} \ \
+    \lim_{t \to t_{\ell}^+} f(t) = f(t_{\ell}) \ .
+\end{equation}
+
+The drift term in Eq.~\eqref{eq:jump-scalar} contains a random contribution, $\beta(t)$, in correspondence with the long-term memory random contributions in \textcite{pereira2018multifractal}. The expression for this term is
+\begin{equation} \label{eq:beta}
+    \beta(t) = -\frac12 \sum_{\teta \ell \leq t}  \ \frac{\alpha_{\ell}}{(t-\teta \ell + \teta)^{3/2}} \ \mbox{,}
+\end{equation}
+where the $\alpha_{\ell}$ are exactly the same as those already sampled randomly for Eq.~\eqref{eq:jump-scalar}.
+The sum is also carried out over all jump times up to the time $t$.
+
+The solution to this equation can be written explicitly in terms of a particular realization of the random jumps:
+%\begin{equation}
+%X_{\tau_{\eta}}(t)=\int_{s=-\infty}^{t} e^{-\frac{t-s}{T}} \beta_{\tau_{\eta}}(s) d s+\frac{1}{\sqrt{\tau_{\eta}}} \int_{s=-\infty}^{t} e^{-\frac{t-s}{T}} W(d s)
+%\end{equation}
+\begin{equation}
+    \begin{split}
+        X(t) &= \int_{s = t-T}^{t} \frac{e^{(s-t)/T}}{\sqrt{t-s+\teta}} \ \sum_{\ell} \alpha_{\ell} \ \delta(s-\teta \ell) \ ds \\
+        &+ \frac{1}{\sqrt{T+\teta}} \int_{s=0}^t e^{(s-t)/T} \ \sum_{\ell} \alpha_{\ell} \ \delta(s-\teta \ell+T) \ ds \ ,
+    \end{split}
+\end{equation}
+where, after integrating over the delta functions,
+\begin{equation} \label{eq:x-solution}
+\begin{split}
+        X(t) &= \sum_{t-T < \teta \ell \leq t}
+        \frac{e^{(\teta \ell-t)/T}}{\sqrt{t-\teta \ell+\teta}} \  \alpha_{\ell} \\
+        &+ \frac{1}{\sqrt{T+\teta}} \sum_{0 < \teta \ell \leq t}
+        e^{(\teta \ell-t-T)/T} \ \alpha_{\ell - T/\teta} \ .
+\end{split}
+\end{equation}
+From this solution, several analytical properties of the stationary stochastic field can be calculated and compared to the results of numerical simulations.
+
+Still, the solution in Eq.~\eqref{eq:x-solution} has only Gaussian fluctuations. In analogy to what is done in the discrete and continuous settings, the field with multifractal correlations is, in fact,
+\begin{equation} \label{eq:exp-x}
+    \varphi(t) = \varphi_0 \ \exp\{\sqrt{\mu} X(t)
+    - \mu \mathbb{E}[X(t^-)^2]/2 \} \ ,
+\end{equation}
+where the mean value of this process is defined as $\varphi_0 = 1/\teta^2$, following the phenomenology of Kolmogorov \parencite{girimaji1990diffusion}.
+The variance of the $X(t)$ process, $\mathbb{E}[X^2(t)]$, can be calculated from the analytical solution, Eq.~\eqref{eq:x-solution}:
+% this expression: 20/06/19,4
+\begin{equation} \label{eq:x2-variance}
+\begin{split}
+    \mathbb{E}[X^2(t)] &=
+    \sum_{t-T \leq \teta\ell \leq t} \teta \frac{e^{2(\teta\ell-t)/T}}{t-\teta \ell + \teta}
+    + \frac{\teta}{T + \teta} \sum_{0 \leq \teta\ell \leq t} e^{2(\teta\ell-t)/T-2} \\
+    &+ \frac{2 \teta}{\sqrt{T+\teta}} \sum_{t-T \leq \ell \leq t} \frac{e^{2(\teta\ell-t)/T-1}}{\sqrt{t-\teta \ell + \teta}} \ ,
+\end{split}
+\end{equation}
+thus it can be seen simply as a function of time.
+
+Eq.~\eqref{eq:exp-x} also explains the choice of periodic discrete noise with period $\teta$, instead of the common choice of Poisson noise with an equal characteristic time, which is often what is referred to as shot noise \parencite{morgado2016}. The variable $z = \exp{\sqrt{\mu}X}$, where $X$ is a sum of $N$ Gaussian random variables, follows a lognormal probability distribution. In the case of Poisson noise, the amplitudes of the jumps would be given by the normal distribution as well, but the number of jumps would be random, with a mean $N$, and $z$ would not follow a lognormal distribution exactly. In the limit of $N \to \infty$, though, both distributions coincide, by the central limit theorem.
+
+As was done in \textcite{schmitt2003,pereira2018multifractal}, a dynamical equation for the pseudo-dissipation itself can be obtained from the dynamical equation for $X(t)$, Eq.~\eqref{eq:jump-scalar}, and the relation between the $X$ and $\varphi$ variables, Eq.~\eqref{eq:exp-x}.
+Consider for a moment the general stochastic differential equation
+% is this going to make confusion with any other F and G variables? maybe, there is F down below, in F A_{ij} factor
+% is this really t^- or t? because noise is calculated exactly at t, while the G function is probably calculated in the limit
+% okay, PROBABLY F and G have to be continuous, or the expression for X(t) - X(t^-) below will be different, and maybe other things will also be different
+\begin{equation} \label{eq:x-sde}
+    dX(t) = F(t^-, X(t^-)) \ dt + \sum_{0 \leq t_{\ell} \leq t} G(t^-,X(t^-)) \delta(t-t_{\ell}) \alpha_{\ell} \ dt \ ,
+\end{equation}
+where $F$ and $G$ are arbitrary functions of $t$ and $X(t)$, respectively called the drift and jump terms. This equation does not have any continuous noise term (proportional to a Wiener measure $dW(t)$), because the stochastic differential equation proposed in this work does not possess the Wiener term either.
+In addition, an appropriate set of initial conditions for $X(t)$ is provided.
+The new variable, $Y$, is obtained from the original variable through an arbitrary continuous function $f$, as
+% what hypotheses on the function f?
+\begin{equation} \label{eq:f}
+    Y(t) = f(t,X(t)) \ .
+\end{equation}
+A stochastic differential equation for $Y(t)$ is obtained \parencite{protter2005,klebaner2012} with It\^{o}'s lemma for semimartingales, which is the appropriate expression for a change of variables in a stochastic process, equivalent to the chain rule in standard calculus. Semimartingales are generalizations of local martingales: While the latter are represented by continuous stochastic processes, such as the standard Brownian motion, the former may display discontinuous jumps, which are central to the current discussion. The solution $X(t)$ of Eq.~\eqref{eq:x-sde} is thus a semimartingale.
+
+In its semimartingale formulation, It\^{o}'s lemma is expressed as
+\begin{equation} \label{eq:ito-original}
+    \begin{split}
+    &Y(t) = Y(0) +
+    \int_0^t \partial f(s^-,X(s^-)) / \partial s \ ds \\
+    &+ \int_0^t f'(s^-,X(s^-)) dX(s) + \frac12 \int_0^t f''(s^-,X(s^-)) d[X,X]^c(s) \\
+    &+ \sum_{0 \leq t_{\ell} \leq t} \Big( f(t_{\ell},X(t_{\ell})) - f(t_{\ell}^-,X(t_{\ell}^-))
+    - f'(X(t_{\ell}^-)) (X(t_{\ell}) - X(t_{\ell}^-)) \Big) \ .
+    \end{split}
+\end{equation}
+The integration interval, from $0$ to $t$, includes several jump instants, denoted by $t_{\ell}$ with an integer index $\ell$ differentiating each jump. Because of the discontinuities, it is important to prescribe that the $X(t)$ process is \textit{c\`{a}dl\`{a}g}, which means that terms of the form $X(s^-)$ should be calculated as the limit
+\begin{equation}
+    X(s^-) = \lim_{t \to s^-} X(t) \ .
+\end{equation}
+If $s$ is a jump instant, this limit does not include the contribution from the discontinuous jump, which is only accounted for in $X(s)$. Whereas if $s$ is not a jump instant, $X(s)$ and $f(s,X(s))$ are continuous at this point.
+The first four terms in the RHS of Eq.~\eqref{eq:ito-original} are exactly equal to those in It\^{o}'s lemma for continuous processes, with the only difference that the discontinuous jumps require a distinction between left and right limits. As in the traditional It\^{o}'s lemma, the derivatives $f'(t,X(t))$ and $f''(t,X(t))$ are taken with respect to $X(t)$.
+
+The \textit{continuous quadratic variation} $[X,X]^c(t)$ of the Wiener process is simply $t$, concluding the identification with the lemma for local martingales.
+In general, the quadratic variation is defined by
+\begin{equation} \label{eq:quad-var}
+    [X,X]_{t}=\lim _{\delta t \rightarrow 0} \sum_{k=1}^{n}\left(X_{t_{k}}-X_{t_{k-1}}\right)^{2} \ ,
+\end{equation}
+where time has been partitioned into $n$ intervals of size $\delta t_k = t_k - t_{k-1}$ and $\delta t$ is the maximum size among these partitions \parencite{protter2005,klebaner2012}. The continuous quadratic variation is the continuous part of Eq.~\eqref{eq:quad-var}.
+If the stochastic force is purely jump-discontinuous, as is the case in Eq.~\eqref{eq:jump-scalar}, its continuous quadratic variation is zero. Also, using Eq.~\eqref{eq:x-sde}, the discontinuity $X(t_{\ell}) - X(t_{\ell}^-)$ which appears in Eq.~\eqref{eq:ito-original} is equal to $G(t_{\ell}^-,X(t_{\ell}^-)) \alpha_{\ell}$.
+Thus, replacing Eq.~\eqref{eq:x-sde} in Eq.~\eqref{eq:ito-original}, one of the terms in $f'(s^-,X(s^-)) dX(s)$ is canceled by $f'(t_{\ell}^-,X(t_{\ell}^-)) (X(t_{\ell}) - X(t_{\ell}^-))$. With this, \textit{It\^{o}'s lemma for pure jump processes} is obtained:
+\begin{equation} \label{eq:ito-semi}
+\begin{split}
+    Y(t) &= Y(0) +
+    \int_0^t \frac{\partial f}{\partial s}(s^-) \ ds
+    + \int_0^t f'(X(s^-)) F(s^-,X(s^-)) ds \\
+    &+ \sum_{\ell} \Big( f(t_{\ell},X(t_{\ell})) - f(t_{\ell}^-,X(t_{\ell}^-)) \Big) \ .
+    \end{split}
+\end{equation}
+In differential notation, this is equivalent to
+\begin{equation} \label{eq:ito-jump}
+\begin{split}
+    d Y(t) &=
+    \partial f / \partial t \ dt +
+    f'(X(t^-)) F(t^-,X(t^-)) dt \\
+    &+ \sum_{\ell} \Big( f(t_{\ell},X(t_{\ell})) - f(t_{\ell}^-,X(t_{\ell}^-)) \Big)
+    \delta(t-t_{\ell}) dt \ .
+    \end{split}
+\end{equation}
+
+At first glance, this definition may look circular, because the variable $Y$ and the variable $X$ appear simultaneously. In fact, only the initial condition for $X(t)$ is needed, which is easily converted to an initial condition for $Y(t)$. All other appearances of $X(t)$ in Eq.~\eqref{eq:ito-jump} are causal, referring to values of $Y(t)$ already calculated, thus $X(t) = f^{-1}(t,Y(t))$. The term $f(t_{\ell},X(t_{\ell}))$, when $t_{\ell}$ is a jump instant, needs the value of $X$ at the current instant, which is simply the left-limit at the jump instant with the random contribution added:
+\begin{equation} \label{eq:x-jump-gen}
+    X(t_{\ell}) = X(t_{\ell}^-) + G(t_{\ell}^-,X(t_{\ell}^-)) \alpha_{\ell} \ .
+\end{equation}
+Thus, Eq.~\eqref{eq:ito-jump} is an entirely self-consistent way to determine the time evolution of the random field $Y(t)$.
+
+In the specific model considered in this work, the equation for $X(t)$ is Eq.~\eqref{eq:jump-scalar}. $X(t)$ is a stochastic process with Gaussian fluctuations and its exponential is the variable of interest, with lognormal fluctuations and long-range correlations.
+Through It\^{o}'s lemma (Eq.~\ref{eq:ito-semi}), a stochastic differential equation for the pseudo-dissipation field is reached, $\varphi(t) = f(X(t))$, where the specific function $f$ corresponding to Eq.~\eqref{eq:f} depends only on $X$ and is defined by
+\begin{equation} \label{eq:exp}
+    f(X(t)) = \varphi_0 \ \exp\{\sqrt{\mu} X(t)
+    - \mu \mathbb{E}[X^2(t^-)]/2 \} \ \mbox{.}
+\end{equation}
+
+The equation for the pseudo-dissipation field obtained through It\^o's lemma is
+\begin{equation} \label{eq:phi-x}
+\begin{split}
+    &d\varphi(t) = \varphi(t^-)
+    \Bigg( - \frac{1}{T} \ln \frac{\varphi(t^-)}{\varphi(0)} -     \frac{\mu}{2 T} \mathbb{E}[X^2(t^-)] + \sqrt{\mu} \beta(t) \\ &- \frac{\mu}{2} \frac{\partial \mathbb{E}[X^2(t^-)]/2 }{\partial t} \Bigg) \ dt + \sum_{\ell} \Big( f(\varphi(\teta \ell)) - f(\varphi(\teta \ell^-)) \Big) \delta(t-\teta \ell) dt \ .
+        \end{split}
+\end{equation}
+Together with an initial condition, this stochastic process is then completely well defined.
+Since a long-term memory is present, it is necessary to provide $X(s)$ for $s \in ]-T,0]$, corresponding to the past time-evolution of $X$. After a few integral times, the influence of the initial condition vanishes, and the process reaches a stationary state. At the jumping times, a new random jump intensity $\alpha_{\ell}$ is sampled and this updates the value of the $X$ variable as in Eq.~\eqref{eq:x-jump-gen}, with
+\begin{equation}
+    X(\teta \ell) = X(\teta \ell^-) + \alpha_{\ell} / \sqrt{\teta} \ .
+\end{equation}
+From the above expression, the pseudo-dissipation is simply obtained as $\varphi(\teta \ell) = f(X(\teta \ell))$.
+
+\section{Numerical Procedure} \label{sec:numerical}
+
+Numerical simulations were performed to verify the statistical properties of the shot noise driven process. The time evolution of Eq.~\eqref{eq:jump-scalar} can be split in a deterministic contribution from the drift term, $(-X/T+\beta)$, and a jump term, proportional to a random jump intensity $\alpha_{\ell}$. There are sophisticated algorithms to obtain the solutions of general jump-diffusion equations, such as those illustrated in \textcite{casella2011,gonccalves2014}, which provide a framework to deal with complex time dependence in the drift or diffusion coefficients, cases where the solution cannot be obtained with a straightforward stochastic Euler algorithm. Instead, the diffusion term in Eq.~\eqref{eq:jump-scalar} does not display any time dependence, and the $\beta(t)$ term has a long-term memory, requiring a simpler algorithm in its implementation. With these considerations in mind, the Euler algorithm described in \textcite{casella2011} was applied in the simulation of the stochastic jump process of Eq.~\eqref{eq:jump-scalar}.
+
+The jumping times are known in advance, since they are periodic, and given simply by $(0,\teta,2 \teta,\ldots)$. For each interval between two jumps, $((\ell-1)\teta,\ell\teta)$, the drift term is simulated with an Euler algorithm, which is used to calculate $X(t_{\ell}^-)$. Then, the jump term is added, with the random sampling of a new random quantity which is added to determine $X(t_{\ell})$.
+To setup the initial conditions for the simulation, the jump intensities $\alpha_{\ell}$ are arbitrarily defined for a complete integral time in the interval $[-T,0]$. Eq.~\eqref{eq:beta} depends on the whole time evolution of the system, hence a truncation in the past evolution is required. A complete integral time has been chosen since it provides accurate results in comparison with the theoretical means and standard deviations, as is detailed in the next section. The random jump intensities in this past interval are sampled exactly like the intensities in the core of the simulation, as Gaussian random variables of mean zero and standard deviation $\sqrt{\teta}$. The choice of $X(0)=0$ is made as well.
+The time necessary to reach a statistically stationary state in every simulation run is optimized by this choice of initial conditions, and is found to be less than two integral times for all simulations performed.
+
+The above algorithm is used to build a sample path for the stochastic process in Eq.~\eqref{eq:jump-scalar}. This procedure was run for sample paths of thirty integral times in total, and three hundred sample paths were drawn for each value of $\teta$. Thus, an ensemble containing $9 \times 10^3$ integral times is built for each $\teta$, providing the significant statistics used to verify the multifractal properties of the stationary random field.
+
+The chosen values of $\ln(\teta/T)$ range from $-1.0$ to $-6.0$. The more negative values correspond to more intermittency and higher Reynolds number.
+The time step for the simulation was chosen to be $2 \times 10^{-3} \teta$ and the Lagrangian intermittency parameter used is $\mu = 0.3$,  which was measured in Lagrangian trajectories from direct numerical simulations in \textcite{huang2014}.
+
+Once the $X(t)$ process is calculated with this algorithm, the pse\-udo-dis\-si\-pa\-tion $\varphi(t)$ is obtained as its exponential, from Eq.~\eqref{eq:exp}. It was verified that the mean and standard deviation of $X(t)$ follow the analytical results (Eq.~\ref{eq:x2-variance}) within error bars. This is particularly important for the evaluation of $\varphi$, which depends on the time periodic function $\mathbb{E}[X^2(t)]$. It is simpler and more precise to apply the analytical expression for this function (Eq.~\ref{eq:x2-variance}) than to store the previous integral times and compute standard deviations on the fly. For our results, the first five integral times were discarded, even though the observed times to reach a stationary state were always smaller than this. These results are reported in the next section.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Numerical Results} \label{sec:results}
+
+A sample trajectory of the shot noise multifractal process governed by Eq.~\eqref{eq:phi-x}
+is depicted in Fig.~\ref{fig:phitraj}, along with its mean behavior.
+%In the figure the sample trajectory (in blue), shows intense and inhomogeneous positive fluctuations, in yellow, it is depicted the ensemble average, which fluctuates very close to the theoretical mean, the dashed line in black. The discrete random jumps at regular intervals cannot be identified at this scale, hence a closer look at this stochastic process is shown in the inset, where individual jumps can be seen.
+Trajectories for this example were generated for $\ln\teta/T = -5.60$, which corresponds to one of the highest Reynolds numbers achieved in these simulations.
+For higher Reynolds numbers, even larger ensembles would be needed to display the same agreement between the empirical ensemble averages and theoretical predictions.
+This ensemble size is sufficient for other statistical measures, though, such as probability distributions and correlation functions, because averages can be taken over ensembles and time translated samples.
+
+In Fig.~\ref{fig:xtraj}, the same detailed range as the one of the inset of Fig.~\ref{fig:phitraj} is shown, which now contains the corresponding sample path of the $X(t)$ process, along with the empirical ensemble and theoretical means. The individual jumps are noticeable: They are equally likely to be positive or negative, and their intensity does not vary as vigorously as for the $\varphi(t)$ variable. The yellow curve is the ensemble average, and it is very close to the theoretical value for the mean of $X(t)$. The global character of this stochastic process is not shown, but it resembles a standard Gaussian process, since the small time scale and the periodicity of the jumps cannot be resolved if the observation window is closer to the integral scale, $T$.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_phitraj.png}
+    \caption
+    [A sample path of the shot noise stochastic process]
+    {An illustration of the shot noise stochastic process for the energy pseudo-dissipation $\varphi(t)$ (Eq.~\ref{eq:phi-x}). A sample path is drawn (blue), from an ensemble of three hundred paths, and shows strong and non-Gaussian fluctuations, characterized by localized large positive bursts. The ensemble mean (yellow) and the theoretical mean (black, dashed) are shown as well, and it can be seen that the numerical results accurately reproduce the correct average.
+    %Another noticeable feature in the ensemble trajectory is how fast the numerical solution reaches the stationary state, starting from the initial condition $\varphi(0)=1/\teta^2$.
+    In this picture, $\ln(\teta/T) = -5.60$.
+    The inset shows a small stretch of the full time evolution, expanded to show details of the stochastic process at small time scales, where individual jumps can be seen. The inhomogeneity of the fluctuations can also be noticed in this smaller excerpt.
+    }
+    \label{fig:phitraj}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_xtraj.png}
+    \caption
+    [Sample path of the underlying Gaussian shot noise stochastic process]
+    {
+    The interval depicted and the data of this figure are the same as those of the inset in Fig.~\ref{fig:phitraj}. The time evolution of the stochastic Gaussian process $X(t)$ (Eq.~\ref{eq:jump-scalar}) is shown. The individual jumps can be seen at periodic intervals of $\teta$, and the fluctuations are much more regular, since $X$ is a Gaussian process. The colors represent the same data as in the previous figure (with $\ln(\teta/T) = -5.60$): the same sample trajectory in blue, the ensemble average in yellow and the theoretical mean in black, dashed.
+    %Again, the ensemble average is consistently close to the theoretical value.
+    In the inset, the variance of the process $X(t)$ is shown, with its dependence in $\ln(\teta/T)$. The variance is calculated analytically with Eq.~\eqref{eq:x2-variance} and a clear asymptotic linear behavior as $\teta \to 0$ is indicated by a fit in gray.}
+    \label{fig:xtraj}
+\end{figure}
+
+In the same figure, in the inset, the asymptotic behavior of the variance of $X(t)$ is shown. For the continuous field in \textcite{pereira2018multifractal}, it was demonstrated that
+\begin{equation} \label{eq:lim-varx}
+    \mathbb{E}\left[\left(X_P\right)^{2}\right] \underset{\teta \to 0}{\sim} -\ln \left(\frac{\teta}{T}\right) \ .
+\end{equation}
+The equivalent relation for $X(t)$ is verified in Fig.~\ref{fig:xtraj}.
+A linear fit is depicted together with the analytical curve, and the linear coefficient obtained is $0.993$. It has also been observed that this coefficient grows closer to $1.0$, the expected value for the continuous process, as the range of the fit is extended to more negative values of $\ln \teta/T$. This is an important property in the numerical verification that the shot noise driven process indeed displays multifractal statistics.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{a_match.png}
+    \caption
+    [Verification of low order one-point statistical properties of shot noise process]
+    {Comparison between low-order one-point statistical properties of the numerical solutions of Eq.~\eqref{eq:phi-x} and their exact values. It is a consistency check on the results of the numerical calculations. The ensemble mean (a) and the variance (b) are shown. Both the mean and the variance were calculated at instants immediately before and after the jumps, and these instants are represented respectively by $\teta^-$ and $\teta^+$.
+    % Also, to make visualization more clear and the data easier to distinguish, all of the data points are given in units of the respective theoretical values after the jumps.
+    Yellow symbols correspond to the numerical results, plotted with error bars in both cases, and blue corresponds to theoretical results.
+    %The values of $\ln \teta/T$ range from $-1.0$ to $-6.0$ and display all of the numerical solutions obtained.
+    }
+    \label{fig:mean_var_match}
+\end{figure}
+
+
+Considering an instant $t$ and all other instants which differ by a multiple of $\teta$ from $t$, these points follow the discrete process described in \textcite{perpete2011} for different initial conditions, and its multifractal properties can be demonstrated analytically. In particular, it is obtained that
+\begin{equation} \label{eq:phi-mom-periodic}
+    \mathbb{E} [ \varphi^q(t) ]_{\{t \sim t+\ell\teta\}} = \varphi_0^q \exp \left\{ \mathbb{E}[X^2(t)] K(q) \right\} \ ,
+\end{equation}
+in which the subscript $\{t \sim t+\ell\teta\}$ for the expectation value means that, in addition to the ensemble average, an average over all equivalent instants (separated by a multiple of the dissipative scale $\teta$) is taken as well. From this relation, taking into account Eq.~\eqref{eq:lim-varx}, which has been verified numerically in Fig.~\ref{fig:xtraj}, the multifractal dependence of the statistical moments is obtained:
+\begin{equation}
+    \mathbb{E} [ \varphi^q(t) ]_{\{t \sim t+\ell\teta\}} = B(t) \ \varphi_0^q \left( \frac{\teta}{T} \right)^{-K(q)} ,
+\end{equation}
+where $B(t)$ is a function of period $\teta$.
+The inset of Fig.~\ref{fig:xtraj}, though, displays the stronger result
+\begin{equation} \label{eq:moments-multifrac}
+    \mathbb{E} [ \varphi^q ] = \varphi_0^q \left( \frac{\teta}{T} \right)^{-K(q)} \ ,
+\end{equation}
+where the expectation value is taken over ensemble and time translated samples. This scaling is compatible with the inset of Fig.~\ref{fig:xtraj}, which shows scaling of the time average $\overline{\mathbb{E}[X^2(t)]}$, defined by
+\begin{equation} \label{eq:x2-varmean}
+    \overline{\mathbb{E}[X^2(t)]} = \frac{1}{\teta} \int_0^{\teta} \mathbb{E}[X^2(t)] \ dt \ ,
+\end{equation}
+reason for which there is no time dependence.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_parabola.png}
+    \caption
+    [Statistical moments of shot noise process]
+    {Statistical moments of the $\varphi(t)$ stochastic process, where averages are done over the ensemble and time translated samples. The numerical results correspond to the blue points, which align into a different curve for each value of $\ln \teta/T$, these curves are indicated in blue, calculated with a quadratic fit. All of the blue points include error bars. The values of $\ln\teta/T$ in this figure are $(-3.0,-3.8,-4.6,-5.6)$, with darker colors corresponding to more negative values (higher Reynolds number). In orange, quadratic theoretical curves corresponding to each of these values are displayed.
+    %These theoretical curves are quadratic, and follow the blue points and the blue curves closely for most of the calculated moments.
+    The curves only deviate from each other for higher moments or higher Reynolds numbers, both regions where a significantly higher statistical ensemble would be needed.}
+    \label{fig:parabola}
+\end{figure}
+
+Fig.~\ref{fig:mean_var_match} is a consistency test of the numerical solution of Eq.~\eqref{eq:phi-x}, compared with respective analytical results for the mean and variance of $\varphi(t)$ immediately before and after the jumps.
+In this figure, the ensemble is larger than in the previous two figures: All independent trajectories were considered, as well as all jumps in a single trajectory. In this fashion, all points immediately before (after) a jump are equivalent in order to calculate the mean and variance of $\varphi(t)$ before (after) jumps, since $\mathbb{E}[X(t)]$ and $\mathbb{E}[X^2(t)]$ vary periodically in time.. The points in yellow correspond to numerical averages while those in blue correspond to theoretical values, and it can be seen that, with little exceptions, the theoretical values are within the error bars of the corresponding numerical data points. Those exceptions are expected to be corrected with a larger statistical ensemble.
+%in the time average, can I say that I used all points? and indeed I have not used ALL points, I believe, since there is a stride used to speed up the calculations and test the figures, I don't know if this is the final figure produced.
+% There is a problem here: Is this really X or is this observable $\varphi? Because X has mean zero, then how can I divide by Theo[X] and obtain a result that makes sense? This has to be checked!!
+%A continuous comparison has been performed and it can be seen that both curves follow the same trends, even if the numerical results show some small fluctuations. In most of the cases it has been observed a strong match between analytical and theoretical results.
+%The results are closer for the mean, which is simpler to obtain, but are also quite close for the standard deviation. Only some values deviate from the theoretical ones, and these deviations are consistent across different observables, which indicates that these results would look better with even more data, with larger statistics.
+
+The statistical moments $\mathbb{E}[\varphi^q(t)]$ calculated from the ensemble and time translated samples, are shown in Fig.~\ref{fig:parabola} for several values of $q$ and of $\ln \teta/T$.
+This plot verifies relation (\ref{eq:moments-multifrac}), in which all time dependence has been integrated.
+The numerical results, in blue points, fall in different quadratic curves according to their value of $\ln\teta/T$, in agreement with
+\begin{equation}
+    \mathbb{E}[\varphi^q(t)] = \varphi_0^q \exp \left\{ \overline{\mathbb{E}[X^2(t)]} K(q) \right\} \ ,
+\end{equation}
+with $\overline{\mathbb{E}[X^2(t)]}$ calculated from Eqs.~(\ref{eq:x2-variance}) and (\ref{eq:x2-varmean}).
+This value is used to trace the orange theoretical curves in Fig.~\ref{fig:parabola}.
+The data points are well approximated by parabolic fits (blue curves) which show reasonable agreement with the theoretical expectations.
+Some deviation between the points and the curves are only noticeable for higher Reynolds numbers (more negative values of $\ln \teta/T$), represented by the darker curves, and for the higher moments.
+% In both of these cases, it is expected that reliable results follow for larger statistical ensembles.
+The blue curves in this figure were obtained with a fit over a quadratic function $K_1(q) = a q (q-1)$, and the agreement with the points and the theoretical curves is remarkable, especially for low order moments. This result is another evidence for the lognormal behavior of the jump stochastic process.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_pdfs.pdf}
+    \caption
+    [Normalized PDFs of shot noise process]
+    {Normalized PDFs of $\ln \varphi$ are shown for the following values of $\ln \teta/T: (-6.0, -5.0, -4.2, -3.6, -2.8, -2.0)$, where darker colors correspond to more negative values (higher Reynolds number).
+    The curves fall accurately on the continuous curves, which were obtained with a fit through a quadratic curve. This means that the probability distribution of pseudo-dissipation is lognormal for all values of $\teta$. All PDFs have been scaled to a standard Gaussian distribution (mean zero and unit variance), and they have been arbitrarily displaced upwards to simplify visualization.
+    %All points were obtained from the ensemble of numerical solutions of Eq.~\eqref{eq:jump-scalar}, and averages over the ensembles and time translated samples have been done.
+    }
+    \label{fig:pdfs}
+\end{figure}
+
+Another form of visualizing the lognormal statistical distribution of the pseudo-dissipation $\varphi$ can be directly implemented from its probability distribution function.
+They can be seen in Fig.~\ref{fig:pdfs} for several values of $\ln\teta/T$.
+%The blue points correspond to numerically obtained PDFs, from the ensemble of numerical solutions, and the colors follow the same convention as in the other figures, with darker colors representing more negative values of $\ln\teta/T$.
+The mean and variance of the pseudo-dissipation have already been verified against their analytical results in Fig.~\ref{fig:mean_var_match}, hence only normalized PDFs (zero mean and unit variance) are shown in Fig.~\ref{fig:pdfs}. In this way, a direct comparison between the PDFs and an exact lognormal distribution can be done. The continuous curves are fits through quadratic functions, revealing that all of the curves fall closely on the expected distribution.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_cov.png}
+    \caption
+    [Autocovariance of the shot noise process]
+    {Numerical results for the autocovariance function of the pseudo-dissipation. $\tau$ is the separation between the points in this function.
+    Colors range from yellow to purple, increasing in this order from less to more negative values of $\ln\teta/T$, thus the upper curves, showing a wider scaling region, are those with highest Reynolds numbers.
+    The dashed line is the asymptotic relation for autocovariance in the continuous limit, where this function scales linearly with $\ln\tau/T$.
+    It can be seen that as the Reynolds number grows, the region where a linear scaling can be seen grows, each curve becomes more closely linear, closer to the theoretical result for the continuous limit.
+    % I also have to discuss what are the values of $\ln\teta/T$ which are included here and if they are all values which were simulated (that is, the same values as in the mean_var_match figure)
+    }
+    \label{fig:cov}
+\end{figure}
+% change fig. to say "ln" instead of "log"
+
+Besides their lognormal behavior, another of the most relevant features of the dissipation and pseudo-dissipation statistics is their long-range correlations, which the multifractal hypothesis is able to reproduce \parencite{gurvichyaglom1967,meneveausreenivasan1991,sreenivasanantonia1997}. The autocovariance of the pseudo-dissipation field, $\mathrm{Cov}[\ln \varphi(t),\ln \varphi(t+\tau)]$ has been calculated to verify the existence of long-range correlations. The covariance is calculated as
+\begin{equation} \label{eq:gen-cov}
+    \mathrm{Cov}[X,Y] =
+    \mathbb{E}[(X-\langle X \rangle)(Y-\langle Y \rangle)] \ ,
+\end{equation}
+and the respective numerical results can be observed in Fig.~\ref{fig:cov}. In this figure, $\tau$ is the separation between two data points, where the range of interest lies in $\tau > \teta$. It can be seen that correlations grow for more negative values of $\ln\teta/T$, and as they grow, a larger scaling region can be seen for intermediate values of $\ln\tau/T$. This region is analogous to the inertial range in three-dimensional Navier-Stokes turbulence. In the scaling region, the autocovariance displays a dependence with $\ln\tau/T$, which is very close to linear, a relation which had been observed in \textcite{pereira2018multifractal}. This linear dependence can be understood by noticing the relation
+%rewriting the autocovariance of $\ln \varphi(t)$ as
+\begin{equation}
+    \mathrm{Cov}[\ln \varphi(t),\ln \varphi(t+\tau)]
+    = \mu \mathbb{E}[X(t) X(t+\tau)] \ ,
+\end{equation}
+where a linear dependence in $\mu$ is observed. The second term, the autocorrelation of $X$, is an extension of Eq.~\eqref{eq:lim-varx}, and in the limit $\teta \to 0$, it also displays a linear dependence in $\ln\tau/T$, which leads to
+\begin{equation} \label{eq:phi-cov-asymp}
+    \mathrm{Cov}[\ln \varphi(t),\ln \varphi(t+\tau)] \underset{\teta \to 0}{\sim} - \mu \ln \left( \frac{\tau}{T} \right) \ .
+\end{equation}
+The scaling region is a measure of the inertial range and is seen to grow with higher Reynolds. Also, in the gray dashed line, the exact asymptotic relation for the continuous multifractal field, Eq.~\eqref{eq:phi-cov-asymp}, is shown, and it can be observed that the stochastic process with discrete jumps approaches the continuous limit as the intervals between jumps become smaller.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_cov_smooth.png}
+    \caption
+    [Autocovariance of the coarse-grained shot noise process]
+    {Autocovariance of the coarse-grained field $\tilde\varphi(t)$, in this figure the local averaging is done over a scale $\teta/2$.
+    A clear scaling range, which is much more linear, can be seen in all of the curves, becoming more pronounced as the Reynolds number grows. Also, the slope of these linear curves is much closer to the theoretical value for the continuous limit, which is shown exactly the same as in the previous figure.}
+    % i guess i should write a little more ...}
+    \label{fig:cov_smooth}
+\end{figure}
+
+These statistical properties were also investigated for time averaged fields, denoted by $\tilde \varphi(t)$ and calculated as
+\begin{equation} \label{eq:coarse-phi}
+    \tilde \varphi(t) = \frac{1}{\tau} \int_{t}^{t+\tau} \varphi(t') \ dt' \ ,
+\end{equation}
+where $\tau$ is the averaging scale under consideration.
+This observable is inspired by the hypothesis of refined similarity in the Lagrangian context as discussed in Section \ref{sec:stat-dissip}.
+The one point statistical measures (namely PDF and statistical moments, in Figs.~\ref{fig:parabola} and \ref{fig:pdfs}) of coarse grained fields did not show appreciable difference from their fine grained versions, and for this reason the corresponding figures are not shown.
+Yet for the autocovariance, which is a two point statistical observable, a different behavior for the coarse-grained field is noticed, still compatible with the asymptotic description of the continuous field.
+In Fig.~\ref{fig:cov_smooth}, the autocovariance of the coarse-grained fields is seen, and the linear behavior observed in Fig.~\ref{fig:cov} for the fine-grained covariance is revealed to be even more pronounced:
+The inertial range is more clearly visible, and grows as $\teta\to 0$, and its slope closely approaches the theoretical value in the continuous limit.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{a_cov_irange.png}
+    \caption
+    [Slope of the scaling range of the autocovariance for coarse-grained fields]
+    {Each point has been obtained from a numerical fit of the inertial range of the autocovariance, according to Eq.~\eqref{eq:fit_cov}. In this range, the asymptotic scaling Eq.~\eqref{eq:fit_cov} is valid. Each color corresponds to a different coarse-graining scale, where the values shown are $\tau=(\teta/3,\teta/2,\teta)$, higher values are represented in darker colors. An exponential fit, with Eq.~\eqref{eq:b_exp_fit}, through these numerical values was done to demonstrate the tendency of the data to approach the value $b=1$. This exponential fit is shown in the continuous curves. The gray dashed line on the top corresponds to $b=1$, indicating the high Reynolds number limit.}
+    \label{fig:cov_irange}
+\end{figure}
+
+In order to investigate the convergence to the continuous limit, the autocovariance in the inertial range was fitted to an asymptotic functional form linear in $\ln\tau/T$ with a free parameter:
+\begin{equation} \label{eq:fit_cov}
+    \mathrm{Cov}[\ln \tilde\varphi(t),\ln \tilde\varphi(t+\tau)]
+    = - b \mu \ln \tau/T \ .
+\end{equation}
+The constant $b$ is a measure of the rate of convergence to the asymptotic continuous behavior, where $b=1$. The evolution of this parameter as the dissipative scale $\teta$ changes can be seen in Fig.~\ref{fig:cov_irange}, where the points correspond to numerical fits over the respective inertial ranges. Each color represents a different coarse-graining scale $\tau$ in Eq.~\eqref{eq:coarse-phi}, and as this scale grows, convergence to the continuous becomes faster. This property was observed in the autocovariance, in Fig.~\ref{fig:cov_smooth}, and is verified in Fig.~\ref{fig:cov_irange}.
+
+Further evidence of the accelerated convergence produced by coarse-graining was obtained with a numerical fit of the curves in Fig.~\ref{fig:cov_irange}. These points slowly approach the asymptotic continuous value, $b=1$, and an exponential fit can make this argument quantitative. The function
+\begin{equation} \label{eq:b_exp_fit}
+    \chi(\teta) = 1 + \alpha \exp(\beta \ln \teta/T)
+\end{equation}
+approaches 1 as $\teta \to 0$, and is represented in the figure in continuous curves. The curves serve as a guide to the eye on the evolution of the slope $b$ as the Reynolds number grows, and furthermore show that for the higher values of $\tau$, this convergence is hastened. The exponential shape is only a plausible approximation to a curve which asymptotically approaches a value, hence fluctuations around this curve can be seen in the data. Furthermore, the inertial range is narrow for values of $\ln\teta/T$ closer to zero, which make the fit more delicate in this region. It can also be observed from Fig.~\ref{fig:cov_irange} that an increase of a few percent in the value of $b$ (Eq.~\ref{eq:fit_cov}) would require the smallest $\teta$ to be one or two orders of magnitude lower, corresponding to a significant increase in computational effort.
+
+\section{Discussion}
+
+Positive-definite quantities such as dissipation, pseudo-dissipation and enstrophy have been observed to display nearly lognormal probability distributions and long-range correlations \parencite{yeungpope1989}, and such statistical properties can be understood under the multifractal formulation of turbulent flows, leading to a connection between the statistics and the geometrical properties of the energy cascade.
+
+The stochastic process driven by shot noise discussed in this chapter was verified to display multifractal properties, particularly a lognormal distribution and a power-law long-range correlation. These properties have been verified for fine and coarse grained fields, which is an important feature in the application of such models to real world Lagrangian trajectories.
+
+%New questions that the work brings
+%We should look at the statistics of turbulent flows at a finer scale, close to the dissipation range, and investigate means to represent it more accurately as a stochastic process, if this can at all be performed. The connection with Navier-Stokes would still be elusive, but this is a step in the direction of understanding fluctuations in turbulence, particularly Lagrangian fluctuations.
+
+\end{chapter}

@@ -1,0 +1,93 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Figures}{xii}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{List of Abbreviations}{xiv}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Statistical Theory of Turbulence}{7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}The Navier-Stokes Equations}{9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Reynolds Similarity}{12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}The Random External Force}{15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Symmetries of Fluid Dynamical Equations}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}The Theory of 1941}{23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}The Energy Budget Equation}{27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.2}The Energy Spectrum and the 5/3 Law}{32}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.3}The Critiques of Landau}{34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.6}Onsager's Conjecture}{34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.7}The Theory of 1962 and Intermittency}{36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.8}The Multifractal Model}{40}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Brief Review of Stochastic Methods}{44}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Itô's Lemma}{47}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}The Functional Formalism}{50}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}The Instanton Method}{54}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Instantons and Fluctuations in a Lagrangian Model of Turbulence}{59}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}The RFD Model}{61}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Path-Integral Formulation of Stochastic La\-gran\-gian Mo\-dels}{63}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Application to the RFD Model}{66}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Structure of the MSRJD Effective Action}{72}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Instanton Configurations}{75}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Numerical Results}{77}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Discussion}{82}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}The Onset of Intermittency in Stochastic Burgers Hydrodynamics}{85}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Field Theoretical Setup}{87}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}The Onset of Intermittency}{94}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.1}Analytical Approximations for the Instanton Fields}{95}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.2}The Surrogate Saddle-Point Action}{98}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.3}Evaluation of $I_1 [p^c,u^c]$ and $I_2 [p^c]$}{100}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.4}Perturbative Domain}{103}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}Discussion}{104}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Shot Noise Multifractal Model for Turbulent Pseudo-Dissipation}{105}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Statistics of Turbulent Energy Dissipation and Pseudo-Dis\-si\-pa\-tion}{108}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Stochastic Models of Lagrangian Pseudo-Dissipation}{114}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.3}Numerical Procedure}{121}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.4}Numerical Results}{123}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.5}Discussion}{134}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Conclusion}{135}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{References}{137}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Computation Resources}{149}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}Tensor Contraction}{149}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Cumulant Expansion}{152}%

@@ -1,0 +1,91 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Intense vorticity isosurfaces in a large-scale DNS}}{3}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces An illustration of the Richardson cascade}}{8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Original drawings of Osborne Reynolds depicting the la\-mi\-nar-turbulent transition}}{13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces The laminar-turbulent transition in a drawing from Feynman}}{19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces A flow coming from a rectangular grid becomes approximately homogeneous and isotropic}}{20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Experimental setup for a Von Karman flow}}{21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Measurements from several different numerical simulations support enhanced dissipation of kinetic energy at large Rey\-nolds numbers}}{26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Numerical verification of the four-fifths law}}{31}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces The turbulent energy spectrum}}{32}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Fluctuations in energy dissipation and enstrophy}}{37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Measure of high-order structure functions in numerical simulations display deviations from self-similar behavior}}{42}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces RFD model propagators}}{67}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Fourth-order vertices in the RFD model}}{68}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Power counting coefficients}}{70}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Feynman diagrams for noise and potential renormalization}}{72}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Comparison between approximate and numerical instantons}}{78}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces PDFs for diagonal and off-diagonal velocity gradient components}}{80}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces PDFs for diagonal and off-diagonal velocity gradient components at several values of the fluctuation intensity $g$}}{81}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Joint PDFs of the velocity gradient invariants $Q^*$ and $R^*$}}{83}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Example of shock in Burgers dynamics and its associated velocity gradient PDF}}{86}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The Lagrange multiplier $\lambda $ is given as a function of the velocity gradient $\xi $}}{98}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison between the surrogate saddle-point action and a fitting function}}{99}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Modeled and empirical velocity gradient PDFs are compared for several values of noise strength}}{102}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces The intensity of fluctuations defines the range where the perturbative cumulant expansion is assumed to work}}{103}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Trajectory of a rod in a turbulent flow from experiments}}{107}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces A sample path of the shot noise stochastic process}}{124}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Sample path of the underlying Gaussian shot noise stochastic process}}{125}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Verification of low order one-point statistical properties of shot noise process}}{126}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Statistical moments of shot noise process}}{127}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Normalized PDFs of shot noise process}}{129}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Autocovariance of the shot noise process}}{130}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Autocovariance of the coarse-grained shot noise process}}{131}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Slope of the scaling range of the autocovariance for coarse-grained fields}}{133}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Examples of tensor contractions performed with the \texttt {contract} function}}{150}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Tensor contraction for the noise renormalization in the RFD model.}}{150}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Tensor contractions including products of tensors and vectors.}}{151}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

@@ -1,0 +1,1319 @@
+\begin{chapter}{Statistical Theory of Turbulence}
+\label{chap:turb}
+
+\hspace{5 mm}
+
+The pursuit of a complete statistical theory of turbulence
+has been singular for some reasons. Its phenomena have been
+recognized since ancient times, yet a descriptive
+approach which stems from the Navier-Stokes equations,
+and derives
+the results known nowadays still seems far from being realized.
+%In Eq.~\eqref{eq:ns}, $u_i$ is the velocity of the fluid,
+%$\nu$ the kinematic viscosity, $p$ is the pressure, and $f_i$
+%is an external force.
+%The second equation describes the incompressibility condition.
+The most successful attempts have been to build phenomenological
+theories, and their use was aptly described by Feynman, talking about
+superfluidity:
+\begin{displayquote}
+Rather than look at the Hamiltonian we shall \enquote{wave our hands},
+use analogies
+with simpler systems, draw pictures, and make plausible guesses based on physical
+intuition to obtain a qualitative picture of the solutions (wave functions). This
+qualitative approach will prove singularly successful.
+\parencite[p.321]{feynman1972}
+\end{displayquote}
+Just as described, the theory of turbulence has relied strongly
+on physical pictures and analogies.
+One of the main ideas that have inspired the construction of theories,
+and forms the basic picture of turbulence, is the
+energy cascade. First stated in \textcite{richardson1922weather},
+it described turbulent flows as composed of eddies of different sizes, ranging
+from the largest scales in the flow to the smallest.
+Kinetic energy is injected into the flow at the large scales,
+through the external force, and generates
+large vortices, which are unstable and break up.
+Energy is then transferred progressively and without loss to smaller eddies,
+that go through the same breakup process.
+After reaching the smallest scales, energy is finally dissipated by viscosity. This process is illustrated in Fig.~\ref{fig:cascade}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.\textwidth]{frisch-cascade.png}
+    \caption[An illustration of the Richardson cascade]
+    {The Richardson cascade is illustrated in this figure from \textcite{frisch1995}. Vortices of different scales are shown, from the integral scale down to the dissipative scale. The transference of kinetic energy across scales is local and inviscid, that is, the same amount of energy being is transferred between neighboring scales at every step.}
+    \label{fig:cascade}
+\end{figure}
+
+The cascade picture was the basic inspiration of Kolmogorov in building
+his theory, which proposed a self-similar velocity
+field as approximate solution to the Navier-Stokes equations.
+The approach of Kolmogorov was to incorporate experimental
+and theoretical knowledge into a theory in order to build
+a consistent framework from which further predictions could
+be made. Some of these predictions are the scaling behavior
+of statistical observables, such as velocity differences,
+energy dissipation and enstrophy. All of these observables will
+be defined in later sections.
+
+From the energy cascade picture, a large separation of scales can be inferred.
+The energy containing range is placed in one end of the spectrum, the large scale,
+and the dissipation range in the other end, the small scale.
+This separation of scales also induces the idea of scale invariance
+of some observables, which, together with its anomalous breaking, is one of the main ingredients of the current understanding of turbulent flows.
+
+\section{The Navier-Stokes Equations}
+
+Fluids are treated as a continuous medium, despite
+the knowledge, confirmed in the beginning of the XX century that matter
+is made of atoms and is discontinuous.
+A successful continuum description relies on the large separation
+between the molecular scale (set by the mean free path of the molecules of the fluid, $\lambda$) and the typical scales of the flow
+(the integral scale $L$, defined by the external force on the fluid and by the geometry).
+In quantitative terms, the Knudsen number, $\mathrm{Kn} = \lambda/L$, must satisfy $\mathrm{Kn} \ll 1$ for a valid continuum formulation.
+In this regime, the fluid can be described by quantities which
+vary with continuous position and time indexes: A single instant of a flow is characterized by its density, velocity and pressure at each point.
+This is called the Eulerian point of view in fluid dynamics, in which the
+coordinates refer to a fixed reference frame.
+There is also the Lagrangian frame, in which individual parcels
+of fluid are tracked, and the position index refers to the position
+of this \enquote{fluid particle} in the initial time.
+By \enquote{fluid particle} it is not meant a molecule, but
+an amount of fluid which can be treated as an individual particle,
+it is much smaller than all relevant scales in the flow, yet much larger
+than the mean free path of its molecules. This is only possible
+because of the large separation of scales.
+
+Fluid dynamics is then the result of applying conservation of mass,
+energy and momentum to a continuous medium.
+Mass conservation in this context is also called the equation of continuity:
+\begin{equation} \label{eq:mass}
+    \partial_t \rho + \partial_i (\rho u_i) = 0 \ .
+\end{equation}
+Notice that, in this equation and in the rest of this dissertation, latin
+indices stand for spatial coordinates, ranging from one to three.
+Derivatives with respect to time are represented by $\partial_t$
+and derivatives with respect to space coordinate $x_i$ by $\partial_i$.
+And the Einstein convention for
+summation over repeated indices is adopted, unless otherwise specified.
+
+Momentum conservation is written through Newton's second law,
+in terms of the acceleration $\gamma_i$, at a certain point,
+and the Cauchy stress tensor $\sigma_{ij}$, which describes
+the interaction of different fluid parcels with each other:
+\begin{equation}
+    \rho \gamma_i = \partial_j \sigma_{ij} + f_i \ ,
+\end{equation}
+where $f_i$ is an external, divergenceless, body force, acting on the whole
+fluid, with a possible dependence on position and time.
+The acceleration is the material derivative of velocity:
+\begin{equation}
+    \gamma_i = D u_i / Dt = \partial_t u_i + u_j \partial_j u_i \ .
+\end{equation}
+The material derivative of the velocity is the acceleration experienced by a particle moving with the flow, which is different from the acceleration of the velocity at this point ($\partial_t u_i$).
+
+The material derivative computes the time rate of change of any quantity such as temperature or velocity (which gives acceleration) for a portion of a material moving with a velocity, v. If the material is a fluid, then the movement is simply the flow field.
+
+
+To proceed further, some knowledge of the properties of the fluid,
+modelled through the $\sigma_{ij}$ tensor,
+is needed. The simplest model for the stress tensor
+is a linear dependence on velocity, which describes a Newtonian fluid:
+\begin{equation} \label{eq:gen-stress}
+    \sigma_{ij} = \mu (\partial_j u_i + \partial_i u_j )
+    + (\lambda \partial_m u_m - p) \delta_{ij} \ .
+\end{equation}
+The variable $p$ is the pressure and it varies with position and time,
+and the constants
+$\mu$ and $\lambda$ are specific to each fluid, $\mu$ is
+the molecular (or dynamic) viscosity
+coefficient, and $3\lambda+2\mu$ is called the viscous dilatation coefficient.
+The linear form was proposed by Newton, who also
+performed the first experiments to measure the viscosity coefficient.
+Eq.~\ref{eq:gen-stress} is the most straightforward model of a viscous fluid,
+capturing the behavior of actual substances
+such as air and water remarkably well in most quotidian or
+industrial situations \parencite{kremer2010}.
+
+In these common settings, a useful approach is to consider
+the typical speeds in the flow much smaller than the speed
+of sound in the medium. In this limit,
+spatial differences in density adjust quickly compared to the motion of the
+fluid, which means the density can be considered constant in the whole
+flow. Such a flow is called incompressible.
+In this special situation, Eq. \eqref{eq:mass} is altered to:
+\begin{equation} \label{eq:incompressibility}
+    \partial_i u_i = 0 \ ,
+\end{equation}
+and this is called the \textit{incompressibility condition}.
+In turn, this also simplifies Eq. \eqref{eq:gen-stress}:
+\begin{equation}
+    \sigma_{ij} = \mu (\partial_j u_i + \partial_i u_j ) - p \delta_{ij}\ .
+\end{equation}
+
+With the above expressions the Navier-Stokes equations
+for incompressible flows are obtained:
+\begin{equation}
+    \partial_t u_i + u_j \partial_j u_i
+    = - \frac{1}{\rho} \partial_i p + \frac{\mu}{\rho} \partial^2 u_i \ ,
+\end{equation}
+where $\partial^2$ represents the Laplacian operator, $\partial_i \partial_i$.
+Since the density is constant, it is customary to rewrite
+\begin{equation} \label{eq:change-vars}
+p/\rho \to p \qquad \mbox{and} \qquad \mu/\rho \to \nu \ ,
+\end{equation}
+where $\nu$ is called the kinematic viscosity.
+Its value is known for all common fluids and is more directly relevant
+to applications than the dynamic viscosity.
+As an example, the kinematic viscosity of water at 20ºC is
+$1.00 \times 10^{-6}$ m$^2$/s and $1.51 \times 10^{-5}$ m$^2$/s for air at 20ºC
+(see \textcite{visc-water} and \textcite{visc-air}).
+These values are not so distant from each other, despite the difference in the respective dynamic viscosity of nearly three decades.
+% explanation: mu (Water) = 8.9 x 10^-3 \sim 10^-2
+%              mu (Air)   = 1.8 x 10^-5 \sim 10^-5
+
+Under the change of variables in Eq.~\eqref{eq:change-vars},
+the incompressible Navier-Stokes equations become:
+\begin{equation} \label{eq:ns}
+\begin{split}
+    \partial_t u_i + u_j \partial_j u_i
+    &= - \partial_i p + \nu \partial^2 u_i + f_i \ , \\
+    \partial_i u_i &= 0 \ .
+\end{split}
+\end{equation}
+
+A complete description of a fluid dynamical requires these
+equations,
+%together with the incompressibility condition, Eq. \eqref{eq:incompressibility},
+together with
+an initial condition for the velocity field, and the no-slip boundary condition:
+the velocity of the fluid at the boundaries is
+always null.
+
+The no-slip boundary condition was proposed by Stokes, who performed experiments in fluids and found no slip velocity. Later, a kinetic theory argument was used by Maxwell to demonstrate that the slip velocity is of the order of magnitude of the mean free path of the molecules of the fluid, hence for macroscopic fluids, the no-slip boundary condition is well-suited. More details on this topic can be found in \textcite{denniston2006,shen2007} and in \textcite[Chap.6]{eyink2008turbulence}.
+
+Observe that the incompressibility condition renders the pressure field
+non-local. This effect can be seen by deriving
+the Navier-Stokes equations with respect to coordinate $i$ and obtaining
+\begin{equation}
+    \partial^2 p = - (\partial_i u_j) (\partial_j u_i) \ ,
+\end{equation}
+which is the Poisson equation. It can be solved with the use of
+Green's functions and its solution for $p$ at each point is an integral
+over the whole domain, hence is it nonlocal.
+This already illustrates
+some of the difficulties in determining mathematical
+solutions to the Navier-Stokes equations.
+
+\section{Reynolds Similarity} \label{sec:similarity}
+
+Important contributions to the phenomenology of turbulence
+came from the British scientist Osborne Reynolds (1842 - 1912), who
+performed paramount experiments in this subject.
+Many of the methods developed by him at this time have a direct
+connection with modern experimental techniques for visualization
+of flows. Reynolds investigated flows on long pipes,
+which be seen in Fig.~\ref{fig:reynolds-draw}, in drawings
+from his notebooks.
+Using small jets of dyed water introduced into
+the center of the flow and electric sparks, he could visualize
+structures in the motion of water in the pipe.
+
+\begin{figure}[t]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{reynolds-draw-setup} % first figure itself
+    \end{minipage}\hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{reynolds-draw-pipe} % second figure itself
+    \end{minipage}
+    \caption
+    [Original drawings of Osborne Reynolds depicting the la\-mi\-nar-turbulent transition]
+    {The original drawings of \textcite{reynolds1883} describe his experimental apparatus: A long pipe, in the middle of which a jet of dyed water was inserted. A valve allowed him to control the input velocity of the fluid, and thus demonstrate the transition from a laminar state to a turbulent flow. With an electric spark, vortical structures in the pipe could also be visualized.}
+    \label{fig:reynolds-draw}
+\end{figure}
+
+In an experiment from 1883, he
+demonstrated the transition of a flow from an ordered state to another
+which is irregular and unpredictable.
+The first is called a laminar flow, because different streams in
+the fluid seem to form
+independent layers, barely interacting with each other.
+And the latter is a turbulent flow. It displays complex
+swirly patterns, called vortices, which mix
+all layers of the stream.
+A flow control
+valve was used to regulate the inlet velocity of water in the tube and Reynolds noticed
+that, as the velocity increases, the behavior of the flow changes from
+the laminar to the turbulent state.
+
+The scientist also noticed that a single dimensionless number is responsible
+for this transition. In his memory this parameter of the flow is
+called the Reynolds number, defined as
+\begin{equation} \label{eq:reynolds}
+ \mathrm{Re} = U L /\nu \ .
+\end{equation}
+In this definition, $U$ and $L$ are respectively a typical
+velocity and length in the flow, and $\nu$ is the kinematic viscosity,
+which can be measured for each different fluid.
+The typical velocity may be defined by the inlet velocity of the fluid,
+or its mean velocity in the flow. And the typical length is usually
+defined by the geometry, such as the length of the boundaries
+containing the flow, or by the characteristic length of the external force.
+
+The concept of the Reynolds number only gained popularity after these experiments, but it was introduced theoretically in 1851 by George Stokes (for a discussion on the history of the Reynolds
+number, \textcite{rott1990note} should be consulted).
+Stokes noticed that, in the Navier-Stokes equations, there is only one relevant dimensionless parameter.
+The relevance of the Reynolds number may be noticed by rewriting the
+Navier-Stokes equations in dimensionless form, with
+the following changes of variables:
+\begin{equation}
+    \partial_t = \frac{U}{L} \partial_{t}' \ , \quad
+    \partial_i = \frac1L \partial_{i}' \ , \quad
+    u = U u' \ , \quad
+    p = U^2 p' \quad \mbox{and} \quad
+    f = \frac{U^2}{L} f' \ ,
+\end{equation}
+with the same typical scales $U$ and $L$
+as in Eq.~\eqref{eq:reynolds}.
+
+After these transformations, the Navier-Stokes equations become:
+\begin{equation}
+    \partial_t' u_i' + u_j' \partial_j' u_i' =
+    - \partial_i' p' + \frac{1}{\mathrm{Re}} \partial'^2 u_i' + f_i' \ ,
+\end{equation}
+with the Reynolds number as defined in Eq.~\eqref{eq:reynolds}.
+It can be seen that, in the regime of high Reynolds number, the dissipation term $\partial'^2 u_i' / \mathrm{Re}$ becomes less relevant in comparison with the nonlinear term.
+On the contrary, when the Reynolds number is very small, dissipation gains relevance relative to the inertial contribution.
+
+A simple dimensional argument exists to reinforce this conclusion: Looking at the flow only at a characteristic scale $\ell$, the nonlinear term has a typical intensity $u^2 /\ell$, and the dissipative term, in turn, has a typical dimension $u / (\ell^2 \mbox{Re})$. At large scales, the nonlinear term prevails, and creates complex vortical structures in the flow, even if the initial state is smooth. And at small scales, the dissipation term dominates, and acts in order to smooth out these turbulent structures.
+
+Nevertheless, one could naively imagine, from this argument, that viscous forces can be ignored at large Reynolds numbers.
+But ignoring the viscous contribution changes the Navier-Stokes equations from second order in the spatial derivatives to only first order, and this change renders impossible the realization of the no-slip boundary condition.
+Therefore, there is an abrupt difference in behavior between the case of vanishing viscosity (very large Reynolds) and the case of exactly zero viscosity (corresponding to the Euler equations). In the first situation, fluid motion is highly turbulent, whereas in the second there can be laminar solutions irrespective of any scale of the flow.
+This abrupt change is a singular limit.
+
+Consequently, one should tread with care in using a scaling argument, for their validity is restricted to intermediate length scales, far from the injection or dissipation scales, illustrated in the cascade picture. This regime of intermediate length scales is called the inertial range, and a more precise description of it is given in Sec.~\ref{sec:k41}.
+A scale-based analysis, though, can be made rigorous and is a useful tool in studies of turbulence. Several mathematical and numerical techniques decompose turbulent flows according to their scales of motion, such as Fourier analysis, wavelet methods and coarse-graining in real space. For more details, the reader is referred to \textcite{farge1992wavelet,pereira2012}.
+
+The singular limit is also responsible for the formation of the \textit{boundary layer} in wall flows, such as flows around airplanes and ships, or over a landscape. There is a strong mean component in these flows, which are often treated as idealized and frictionless (solutions of the Euler equation), but near the walls rapid variations of velocity and the appearance of complex vortical structures occur, which cannot be understood without the viscous contribution. This phenomenon, the boundary layer, is of great relevance to engineering applications, as can be imagined. On this topic, the reader is referred to \textcite{schlichting2016}.
+
+\section{The Random External Force} \label{sec:random}
+
+In the experiments on turbulent flows, such as those performed by Reynolds,
+%and even before him, with Da Vinci,
+one of the first features that was noticed was the seemingly random nature of the solutions. The same phenomenon happens in numerical simulations of the Navier-Stokes equations:
+Minute differences in the initial or boundary conditions, or small instabilities due to truncation errors in the numerical routines, generate solutions which, after some time, look nothing like each other. This is also one of the main features of chaotic systems, discovered in \textcite{lorenz1963}, a parallel which has led to numerous investigations on the connection between turbulence and chaos \parencite{eyink2011,boffetta2017,berera2018}.
+
+Quantitative evidence on the effect of small perturbations in turbulence have been investigated, for instance, through the dispersion of particle pairs in turbulent flows since \textcite{richardson1926atmospheric}.
+This work describes several experiments with particles in atmospheric flows, and its main result, called the Richardson dispersion law, describes the growth of the mean square distance of two particles in a turbulent flow:
+\begin{equation} \label{eq:richardson}
+    \langle r^2 \rangle \propto t^3 \ .
+\end{equation}
+This result shows that the dispersion of trajectories in turbulent flows is superdiffusive: Much faster than in Brownian motion,
+in which $\langle r^2 \rangle \propto t$.
+In the case of Brownian motion, though, the path taken by the particles is completely uncorrelated and memoryless, and to explain
+Eq.~\eqref{eq:richardson}, the complex correlations in time and space
+of turbulent fields have to be taken into account.
+Modern verifications of this law can be found in \textcite{boffetta2002,bourgoin2006,salazar2009}.
+
+Nevertheless, chaotic behavior is characterized by an exponential separation of trajectories, rather than the algebraic growth of Eq.~\eqref{eq:richardson}. It has been argued that at small scales (the dissipative range), particles separate exponentially fast \parencite{furstenberg1963,zeldovich1984}, while in the inertial range, separation is algebraic, given by Richardson's dispersion. The algebraic separation is an altogether different phenomenon which produces randomness in turbulent flows. Velocity fields in turbulent flows are irregular and not continuously differentiable, which leads to the phenomenon of spontaneous stochasticity of Lagrangian trajectories: Only a statistical description of these trajectories is possible, since the equations describing their evolution display multiple solutions. This phenomenon and Richardson's dispersion law are deeply linked, as observed in \textcite{bernard1998scaling,falkovich2001particles}.
+The first description of spontaneous stochasticity were presented in \textcite{bernard1998scaling,gawedzki2000,gawedzki2002}, and a rigorous proof in the context of advection by a random field (the Kraichnan model) was presented in \textcite{lejan2002}. More details on these topics are available in \textcite{falkovich2001particles,eyink2008turbulence}. The roughness of the turbulent velocity field is also further discussed in Sec.~\ref{sec:onsager}.
+% from wikipedia:
+% Continuously differentiable ⊂ Lipschitz continuous ⊂ α-Hölder continuous ⊂ uniformly continuous = continuous, 0 < α < 1
+
+% "infinitesimally close trajectories still separate in a finite time. This makes a marked difference in comparison to the smooth chaotic regime"
+
+Due to this inevitable randomness, both from the recent theories, and from the early observations of unpredictable behavior, it is common in theoretical and numerical investigations to define the external force $f_i$ in the Navier-Stokes equations, Eq.~\eqref{eq:ns}, as a random source of Gaussian nature, with zero mean, correlated on the large scales and delta-correlated in time. This is formally described as
+\begin{equation}
+\begin{split}
+    \langle f_i(\mathbf{r},t) \rangle &= 0 \ , \\
+    \langle f_i(\mathbf{r},t) f_j(\mathbf{r'},t') \rangle
+    &= \chi(|\mathbf{r}-\mathbf{r'})|) \delta(t-t') \delta_{ij} \ .
+\end{split}
+\end{equation}
+In this equation, $\delta(t)$ is the Dirac delta function
+and $\delta_{ij}$ is the Kronecker delta symbol.
+$\chi(r)$ is the correlation function of the external force, its characteristic
+length is $L$ and this function decays fast at distances larger than $L$.
+
+In this manner, the observed randomness is produced artificially.
+But the statistical properties of the resulting flow
+are expected to be the same for two main reasons.
+The first, of a physical nature, is that flows at very high
+Reynolds numbers display universal behavior, particularly the exponents of statistical moments of Galilean invariant quantities.
+The second reason is in connection with the theory of dynamical
+systems: Birkhoff's theorem shows that, for ergodic systems, there is
+an underlying probability distribution which reproduces its
+statistical features, even if the original dynamical system is deterministic \parencite{frisch1995,cornfeld2012ergodic}.
+
+Resorting to Birkhoff's theorem requires the assumption that turbulence
+is ergodic.
+In experiments, measurements are often made
+of time-averaged quantities. Theoretical considerations, on the other side,
+rely on ensemble averages, which are equivalent to averages
+over some probability distribution function. To connect the experimental
+and theoretical results, ergodicity has also been proposed without proof.
+It is important to mention that the same assumption has to be made in many other
+systems, in equilibrium or not, since there are few
+problems where a proof of ergodicity exists.
+One of these is the hard sphere billiard, its ergodicity
+was proven in \textcite{sinai1963}.
+%As in equilibrium statistical mechanics, to connect the
+%experimental and theoretical results, the ergodicity of turbulent
+%flows has been proposed without proof.
+
+Studies of the Navier-Stokes equations as a dynamical system
+have been pursued since
+\textcite{landau1944problem,hopf1948mathematical},
+and a mathematical foundation has been established
+for the rigorous meaning of the ensemble average
+and the statistics of a turbulent stationary state.
+For a discussion of these results, the reader is
+referred to
+\textcite{fursikov1988,foias2001navier}.
+% neither ruelle1971 or ruelle1982 are mentioned here
+With the availability of large scale numerical
+simulations, where both time and ensemble averages can
+be calculated, numerical verifications of ergodicity
+have also been done, in \textcite{galanti2004turbulence},
+supporting the hypothesis.
+
+All of these considerations are drawn as basis for the use of a stochastic version of the Navier-Stokes equations and its variants, although an explanation of the clear connection between noise and Navier-Stokes dynamics is still missing \parencite{eyink2008turbulence}.
+
+\section{Symmetries of Fluid Dynamical Equations} \label{sec:symmetries}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.\textwidth]{reynolds-transition.png}
+    \caption[The laminar-turbulent transition in
+    a drawing from Feynman]
+    {This image, extracted from \textcite{feynman2011feynmanvol2},
+    depicts the flow past a cylinder. It starts regular at low
+    Reynolds numbers, this is the laminar flow, shown in the top left.
+    At higher values of Re, instabilities set in
+    and periodic solutions, with rotating vortices arise,
+    this is the von Karman vortex street, shown in the middle.
+    With even higher Re, the flow becomes turbulent, a situation
+    in which all layers of the flow are mixed, seen in the bottom right.
+    The Reynolds number is the only parameter that governs this transition in typical flows.}
+    \label{fig:reynolds-transition}
+\end{figure}
+
+Since few exact results can be drawn directly from the Navier-Stokes
+equations, an analysis of its symmetries becomes all
+the more relevant to the study of turbulence.
+In Fig.~\ref{fig:reynolds-transition}, a drawing from
+\textcite{feynman2011feynmanvol2} depicts the flow around a cylinder
+at increasing Reynolds numbers, a setting where
+symmetries and symmetry breaking can be recognized.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1.\textwidth]{grid-turbulence.png}
+    \caption
+    [A flow coming from a rectangular grid becomes approximately
+    homogeneous and isotropic]
+    {In this image from \textcite{van1982album},
+    homogeneous turbulence is generated by a flow incoming from
+    the left and impinging on a rectangular grid.
+    This setting can be used to study the properties
+    of homogeneous isotropic turbulence, since, far from
+    the grid, the large scale features of the flow
+    are weaker.}
+    \label{fig:grid-turbulence}
+\end{figure}
+
+At small Reynolds numbers, this flow is stationary, which means it
+is invariant under time translations.
+As the Reynolds increases,
+instabilities develop and rotating vortices appear behind
+the cylinder, breaking time translation to a discrete symmetry.
+These vortices alternate between swirling with the flow and against it,
+in a periodic manner, but in this situation, the behavior of the flow
+is still orderly and predictable. At even higher Reynolds
+numbers (Fig.~\ref{fig:reynolds-transition}d), this periodicity
+is lost and random vortices begin to populate the flow.
+The last state, (Fig.~\ref{fig:reynolds-transition}e), at the highest Reynolds number,
+is called fully developed turbulence.
+Invariance under time translations is hopeless in this situation,
+as are attempts at predicting the future state of the flow, due
+to its irregular behavior. But in a statistical description,
+since it is observed that stationarity is recovered when looking at
+ensemble averages. This is what is meant by a stationary flow:
+The statistical symmetry of translation in time of an ensemble of similarly prepared flows.
+
+A similar phenomenon happens regarding spatial symmetries.
+The presence of the cylinder makes translational invariance seem impossible,
+since it does not exist even at small Reynolds numbers.
+Nevertheless, there is such a symmetry if one looks at the small scales of the
+turbulent flow in Fig.~\ref{fig:reynolds-transition}e.
+Away from the boundaries and at such small length scales, the
+overall properties of the flow lose relevance.
+Then, spatial symmetries are recovered in this limit:
+Both rotational and translational invariance, in a statistical sense, are properties of the fully turbulent flow
+
+Another setup, which is commonly used in experiments,
+is turbulence generated by a spatial grid, illustrated
+in Fig.~\ref{fig:grid-turbulence}.
+In the figure, the fluid is flowing from left to right
+and at the left side there is a regular grid. The unpredictable
+properties of the flow quickly manifest behind the grid, where
+individual streaks of flow, coming out of the empty spacings, start
+to mix. The pattern generated away from the grid does not inherit
+any of the symmetries of the setup, and instead displays statistical invariance
+under translations and rotation.
+The name given to a statistical invariance under translations is
+homogeneity, and to statistical invariance under rotations, isotropy.
+
+These symmetries are manifest in all flows at sufficiently high
+Reynolds numbers, and at small scales,
+irrespective of the symmetries of the external force
+or the geometry of the flow.
+For this reason, the basic paradigm in the study of turbulence
+are the properties of stationary, homogeneous and isotropic flows.
+This is the simplest configuration of a turbulent flow, and the
+view of restored symmetries provides a theoretical vindication
+to studying such flows.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=1.\textwidth]{von-karman-flow}
+    \caption[Experimental setup for a Von Karman flow]
+    {This figure, extracted from \textcite{dubrulle2019beyond},
+    displays an experimental setup for the generation
+    of von Karman flows (a). In (b) and (c), details of the
+    working of the rotating paddles are shown.
+    The black and red boxes in the (b) are the two regions
+    observed in the experiments, one in the middle
+    of the flow, where mixing from several layers of flow
+    generates turbulence which is very accurately homogeneous
+    and isotropic, and one very close to the boundary layer,
+    yet the statistical observations are equivalent in this
+    region.}
+    \label{fig:von-karman-flow}
+\end{figure}
+
+An experimental setup which is very commonly used
+to generate homogeneous isotropic turbulence is shown in
+Fig.~\ref{fig:von-karman-flow}: two counter-rotating propellers
+at the bottom and the top impel the motion of fluid.
+In the middle plane of the setup, there is a mixing layer.
+Measurements in the mixing layer display all properties of
+homogeneous and isotropic flows with good accuracy.
+Recent experiments with this
+arrangement have reached Reynolds numbers of the order of $10^5$
+\parencite{debue2018experimental}.
+
+The statistical symmetries are inherited from the global
+symmetries of the Navier-Stokes equations, which are more
+than simply time translations, spatial translations and rotations.
+And they form the basis of the modern view of Kolmogorov's theory.
+Some of these symmetries are only observed in the regime
+of infinite Reynolds (equivalent to vanishing viscosity).
+This is called the inviscid regime, and it corresponds formally to
+the Euler equation:
+\begin{equation} \label{eq:euler}
+\begin{split}
+    \partial_t u_i + u_j \partial_j u_i
+    &= - \partial_i p \ , \\
+    \partial_i u_i = 0 \ .
+\end{split}
+\end{equation}
+
+As discussed, this is a singular limit, and
+strong qualitative differences exist
+in the solutions of the Euler equation, often smooth
+and symmetric, and the Navier-Stokes equation at vanishing
+viscosity, corresponding to fully developed turbulence.
+But at intermediate length scales, where the dissipative (viscous) effects
+can be ignored, the symmetries of the Euler equation are relevant
+in the study of fully developed viscous flows.
+
+Then, the global symmetries of the Euler equations are the following:
+\begin{enumerate}
+\item Space translations: $t, r_i, v_i(\bm{r},t) \to t, r_i+\rho_i, v_i(\bm{r},t)$
+\item Time translations: $t, r_i, v_i(\bm{r},t) \to t+\tau, r_i, v_i(\bm{r},t) $
+\item Galilean transformations: $t,r_i,v_i(\bm{r},t) \to t, r_i + U_i \ t, v_i(\bm{r},t) + U_i$
+\item Parity: $t,r_i,v_i(\bm{r},t) \to t,-r_i,-v_i(\bm{r},t)$
+\item Rotations: $t,r_i,v_i(\bm{r},t) \to t, \Lambda_{ij} r_j, \Lambda_{ij} v_j(\bm{r},t)$,
+ where $\Lambda \in SO(3)$.
+\item Time reversal: $t,r_i,v_i(\bm{r},t) \to -t,r_i,-v_i(\bm{r},t)$ \label{it:time-rev}
+\item Scaling: $t,r_i,v_i(\bm{r},t) \to \lambda^{1-h} t, \lambda r_i, \lambda^h v_i(\bm{r},t)$, $\lambda > 0$ and $h$ is a real number. \label{it:scaling}
+\end{enumerate}
+Proofs can be found in \textcite{moriconi2008introducao}.
+%,eyink2008turbulence,frisch1995}.
+The last two are symmetries exclusively of the Euler equation,
+while the others are symmetries of the Navier-Stokes equation as well.
+
+Applying the time reversal transformations (item \ref{it:time-rev} above) to the Navier-Stokes equations,
+it can be noticed that the term responsible for breaking this symmetry is the
+viscous contribution, $\nu \partial^2 u_i$. This is one more evidence that the viscous
+term is responsible for the system being dissipative, and for this reason
+there is no symmetry under time reversal.
+
+Regarding the last symmetry, the Euler equations are invariant under any $h$ rescaling, whereas the Navier-Stokes equation are only invariant under rescaling if $h=-1$.
+Nonetheless, the symmetries in the Navier-Stokes equations are not necessarily manifest in the solutions, as can be observed in the flows of Fig.~\ref{fig:von-karman-flow}.
+
+These symmetries inspired
+Kolmogorov to build a theory based on three basic hypothesis.
+In the next sections, these hypothesis and their limitations are going to be discussed.
+
+\section{The Theory of 1941} \label{sec:k41}
+
+Andrey Kolmogorov was one the most important mathematicians of the twentieth century.
+He was responsible for the modern development of the theory of probability
+and of turbulence, along with paramount contributions
+in areas such as topology, logics, classical mechanics and computational complexity.
+In 1941, he published three articles which laid the foundations
+for the statistical theory of turbulence:
+\textcite{kolmogorov1941dissipation,kolmogorov1941degeneration,kolmogorov1941local}.
+For this reason they form what is called the K41 theory.
+
+The picture of the energy cascade inspired Kolmogorov to
+build three hypotheses as the basis of a phenomenological theory of fully developed turbulence.
+At the time, these hypotheses were formulated in terms of universality
+of statistical observables at sufficiently high Reynolds numbers.
+In this text, instead, the point of view of
+restored symmetries is adopted. This is a contemporary interpretation of the
+Kolmogorov hypotheses, described in
+\textcite{frisch1995}. Both interpretations are equivalent, portaying the same theory, but the symmetry perspective enables to investigate more deeply their range of validity and limitations.
+%One of these advantages is that the language of symmetry remains
+%valid if we take fluctuations into account, which the K41 theory
+%does not include.
+These hypotheses are still some of the foundations of the statistical theory of turbulence, even with all the posterior developments.
+They operate as good approximations to reality in the limit of infinite Reynolds number, at small scales and away from boundaries. Their statement follows.
+
+The \textit{first hypothesis} of K41 is that, under the given assumptions, all possible symmetries of the Navier-Stokes equations are statistically restored.
+As was discussed in Sec.~\ref{sec:symmetries}, these symmetries are usually broken by the mechanisms producing the turbulent flow. The key point in this hypothesis is that the details of the large scale forcing and flow boundaries lose relevance in the infinite Reynolds limit.
+
+Under the same assumptions, the \textit{second hypothesis} states that
+a turbulent flow is self-similar at small
+scales. This means the flow possesses a unique scaling exponent $h$,
+such that the velocity is a statistically self-similar field:
+\begin{equation} \label{eq:v-scale}
+	\delta \mathbf{v} ( \mathbf{r}, \lambda \ell )
+	\overset{d}{=}
+	\lambda^h \delta \mathbf{v} ( \mathbf{r}, \ell ) \ .
+\end{equation}
+In this equation, $\delta \mathbf{v} ( \mathbf{r}, \ell ) = \mathbf{v} ( \mathbf{r} +  \ell \mathbf{x} ) - \mathbf{v} ( \mathbf{r})$
+is the velocity difference along the direction of $\mathbf{x}$. The equality in distribution in Eq.~\eqref{eq:v-scale}, indicated by $\overset{d}{=}$, means that both sides follow the same probability distribution. Hence, this is not a strict
+equality, but only a statistical correspondence, valid when an ensemble of flows is considered.
+
+Finally, the \textit{third hypothesis}, valid under the same assumptions, is that
+turbulent flows have a finite
+nonvanishing mean rate of kinetic energy dissipation per unit mass.
+This quantity is denoted by the symbol $\varepsilon$.
+This means that, if the integral scale $L$ and the large scale velocity $U$ are
+kept constant, and the limit $\nu \to 0$ is taken, $\varepsilon$ reaches a constant, non-zero, value.
+
+Overall, these hypotheses define the general statistical features of the
+velocity field in a turbulent flow. For instance, this explains why all turbulent
+flows display the same statistical features at small scales, regardless of the
+specific geometry of the flow, or the forcing conditions.
+
+An equivalent dimensional argument, which Kolmogorov employed,
+is that the only dimensional quantities which influence
+the flow at small scales are the mean energy dissipation $\varepsilon$ and the kinematic
+viscosity $\nu$. From these quantities, a single characteristic
+length scale can be built. It is a microscopic length called the Kolmogorov
+scale,
+\begin{equation}
+	\eta_K = (\nu^3/\varepsilon)^{1/4} \ .
+\end{equation}
+At this scale, dissipation gains relevance relative to the nonlinear advection, and the vortices are
+smoothed out of the flow. For this reason, the scales
+below $\eta_K$ are called the dissipative range.
+If the Reynolds number is large enough, there is a large difference between the
+small scale $\eta_K$ and the large scale $L$.
+In the intermediate scale, the relevance of both the large scale effects (anisotropy)
+and the small scale effects (dissipation) can be discarded, and
+universal behavior is observed. With a precise definition of the dissipation scale, the inertial range also receives a more rigorous characterization: It contains the length scales $\ell$ such that $\eta_K \ll \ell \ll L$. The statistical hypotheses of Kolmogorov were designed to describe turbulent fields in this interval, where neither dissipation nor large scale geometry are relevant, thus the flow properties may only depend on a single property: the kinetic energy dissipation, $\varepsilon$.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{ishihara-zero-law}
+	\caption
+	[Measurements from several different numerical simulations support enhanced dissipation of kinetic energy at large Rey\-nolds numbers]
+	{This figure, extracted from
+	\textcite{ishihara2009}, displays the nondimensionalized energy dissipation
+	for several different numerical simulations.
+	The energy dissipation, made dimensionless by
+	the respective input parameters of each simulation, evolve
+	to the same constant value as the Reynolds number increases.
+	}
+	\label{fig:zero-law}
+\end{figure}
+
+The rate of dissipation $\varepsilon$ is constant across scales,
+since energy loss only occurs in the dissipative range.
+Therefore, the value of $\varepsilon$ can be determined from
+the large scale features, where vortices have a typical kinetic energy of $U^2$
+and a turnover time scale of $T=L/U$. Then, the energy transfer rate per unit mass is dimensionally equivalent to $K/T = U^3 / L$.
+The constant of proportionality between the actual value of the energy dissipation and $U^3/L$ is expected to be a universal quantity, independent on the flow, in the infinite Reynolds limit. This property, referred to as the zeroth law of turbulence, or dissipative anomaly, was first discussed in \textcite{dryden1943review}, and in the reformulation of the K41 theory in terms of restored symmetries, pursued in \textcite{frisch1991global}, it enters as the third hypothesis.
+Several measurements, both in experiments and numerical
+simulations, have been made and they support this claim,
+as can be seen in Fig.~\ref{fig:zero-law}.
+For discussions on this topic, the reader is referred to
+\textcite{cadot1997energy,sreenivasan1984scaling,sreenivasan1998update,pearson2002measurements,kaneda2003energy}.
+
+In the sections that follow, the main results
+of the Kolmogorov 1941 theory of turbulence are going to be introduced.
+These results follow from the basic hypothesis together
+with manipulations of the Navier-Stokes equations.
+
+\subsection{The Energy Budget Equation}
+
+From the Navier-Stokes equations, an equation which describes
+the flow of energy can be written: The energy budget equation.
+This equation provides a quantitative aspect to the cascade picture, in which energy is transported in an inviscid manner from the large to the small scales. It can be obtained by taking a scalar
+product of Eq.~\eqref{eq:ns} with $u_i$. Then, an average of the result produces
+the desired equation:
+\begin{equation} \label{eq:full-EB}
+	\big\langle u_i \partial_t u_i \big\rangle+
+	\big\langle u_j u_i \partial_j u_i \big\rangle =
+	\nu \big\langle u_i \partial^2 u_i \big\rangle
+	- \big\langle u_i \partial_i  p \big\rangle +
+	\big\langle f_i u_i \big\rangle \ .
+\end{equation}
+The angle brackets indicate a spatial average, that is, an integral over the whole domain $\Omega$
+of the flow:
+\begin{equation}
+	\langle f \rangle = \frac{\int_{\Omega} d\mathbf{r} \ f(\mathbf{r})}
+	{\int_{\Omega} d\mathbf{r} } \ .
+\end{equation}
+For this reason, the rule of integration by parts, which will
+be used extensively, applies directly to the averaged function.
+The first term of Eq.~\eqref{eq:full-EB} is a derivative of the energy density (per unit mass).
+This can be seen by rewriting the first term as:
+\begin{equation} \label{eq:EB-energy}
+	\big\langle u_i \partial_t u_i \big\rangle
+	= \frac12 \big\langle \partial_t |u_i|^2 \big\rangle
+	= \frac{d}{dt} \mathcal{T}(\mathbf{u}) \ ,
+\end{equation}
+where $\mathcal{T}(\mathbf{u})$ is the energy density:
+\begin{equation}
+	\mathcal{T}(\mathbf{u}) = \frac12 \big\langle |\mathbf{u}|^2 \big\rangle \ .
+\end{equation}
+
+The second term of Eq.~\eqref{eq:full-EB} vanishes, as can be seen
+from an integration by parts. It is assumed that the velocity field is smooth,
+so that the integration by parts can be carried out, and that it vanishes at the boundaries
+of the domain, thus making the boundary term of the integration by parts identically zero.
+Then, the incompressibility condition renders the result null:
+\begin{equation}
+	\big\langle u_j u_i \partial_j u_i \big\rangle =
+	\frac12 \big\langle u_j \partial_j |u_i|^2 \big\rangle =
+	- \frac12 \big\langle |u_i|^2 \partial_j u_j \big\rangle = 0 \ .
+\end{equation}
+For the same reason, the pressure term is seen to be zero
+after an integration by parts.
+
+The dissipation term does not vanish, but produces an important contribution:
+\begin{equation} \label{eq:EB-dissip}
+	\nu \big\langle u_i \partial^2 u_i \big\rangle =
+	- \nu \big\langle \left\lvert\partial_k u_i\right\lvert^2 \big\rangle
+	= - \nu \mathcal{E}(\mathbf{u}) \ ,
+\end{equation}
+which is used to define the mean enstrophy:
+\begin{equation} \label{eq:enstrophy-1}
+	\mathcal{E}(\mathbf{u}) = \big\langle |\partial_k u_i|^2 \big\rangle \ .
+\end{equation}
+This word comes from the greek \textit{strophy}, which means rotation.
+The enstrophy is a conserved quantity in two-dimensional flows and
+is connected to the energy dissipation and rotation of the flow in general.
+Eq.~\eqref{eq:enstrophy-1} is also equivalent to
+\begin{equation}
+	\mathcal{E}(\mathbf{u}) = \big\langle |\bm{\omega}|^2 \big\rangle \ ,
+\end{equation}
+where $\bm{\omega} = \mathbf{\nabla} \times \mathbf{u}$ is the vorticity vector.
+
+From Eqs.~\eqref{eq:EB-energy} and \eqref{eq:EB-dissip}, the energy budget equation, Eq.~\eqref{eq:full-EB} can be rewritten as:
+\begin{equation} \label{eq:EB}
+	\frac{d}{dt} \mathcal{T}(\mathbf{u}) = - \nu \mathcal{E}(\mathbf{u})
+	+ \big\langle \mathbf{f \cdot u} \big\rangle \ .
+\end{equation}
+In this form, it can be seen that kinetic energy density
+is provided by the large scale force, $\bm{f}$, and dissipated by
+the viscous term (which is proportional to the viscosity and the enstrophy).
+%\begin{equation}
+%	\frac{d}{dt} \frac{\langle u^2 \rangle}{2} =
+%	\frac12 \partial_t \langle u^2 \rangle + \langle u_i u_j \partial_j u_i \rangle
+%	= + \nu \langle u_i \partial^2 u_i \rangle + \langle u_i f_i \rangle
+%\end{equation}
+
+
+In particular, two interesting regimes can be derived from the energy
+budget equation. The first, in which there is no external force, called
+decaying turbulence:
+\begin{equation} \label{eq:EB-decay}
+	\frac{d}{dt} \mathcal{T}(\mathbf{u}) = - \nu \mathcal{E}(\mathbf{u}) \ .
+\end{equation}
+In this scenario the role of viscosity and enstrophy in dissipating
+energy is clear. The instantaneous kinetic energy dissipation rate is
+the rate of change of kinetic energy, and, from this equation, it
+can be written as:
+\begin{equation}
+	\varepsilon' = \nu (\partial_j u_i)^2 \ .
+\end{equation}
+Nevertheless, it is customary to remove the pressure Hessian contribution,
+$(\partial_j u_i) (\partial_i u_j)$,
+from the definition of the energy dissipation, since it does not
+contribute to the mean dissipation rate. Then, what is usually referred to as the
+the dissipation rate is actually
+\begin{equation} \label{eq:dissip}
+	\varepsilon = \frac12 \nu (\partial_i u_j + \partial_j u_i)^2 \ .
+\end{equation}
+
+The other regime of interest in Eq.~\eqref{eq:EB} is one
+in which the state of the flow does not change, on average:
+\begin{equation} \label{eq:EB-stat}
+	\nu \mathcal{E}(\boldsymbol{u}) = \big\langle \mathbf{f \cdot u} \big\rangle \ .
+\end{equation}
+This is called the stationary regime, in which a balance between
+energy input at large scales and dissipation at the Kolmogorov scale can
+be observed.
+
+Eq.~\eqref{eq:EB} is a global energy budget, and for this reason the
+inviscid transfer of energy from large to small scales can be inferred.
+But there is no explicit term responsible for the transfer of energy
+across scales in this equation. Such an analysis can be done through a similar
+reasoning, but taking into account the point-split mean kinetic
+energy:
+\begin{equation}
+	\mathcal{T}_{\ell}(\bm{r}) = \frac12 \big\langle u_i(\bm{r}) u_i(\bm{r+\ell}) \big\rangle \ .
+\end{equation}
+This quantity includes an explicit dependence on the scale of observation,
+and its dynamics is described by the point-split kinetic energy
+budget equation:
+\begin{equation} \label{eq:EB-split}
+	\frac{d}{dt} \mathcal{T}_{\ell}(\mathbf{u}) + \mathcal{I}_{\ell}(\bm{u})
+	= - \nu \mathcal{E}_{\ell}(\mathbf{u})
+	+ \mathcal{F}_{\ell}(\bm{u}) \ ,
+\end{equation}
+% Dubrulle Beyond Eq. 6.12 and personal notes 18/09/19,1
+where $\mathcal{E}_{\ell}$ and $\mathcal{F}_{\ell}$ are point-split
+versions of the enstrophy and external force in Eq.~\eqref{eq:EB}, defined as:
+\begin{align}
+	\mathcal{E}_{\ell}(\mathbf{u}) &= \big\langle \partial_k u_i(\bm{r}) \ \partial_k u_i(\bm{r+\ell}) \big\rangle \ ,\\
+	\mathcal{F}_{\ell}(\mathbf{u}) &= \big\langle f_i(\bm{r+\ell}) u_i(\mathbf{r}) + f_i(\mathbf{r}) u_i(\bm{r+\ell}) \big\rangle \ .
+\end{align}
+And $\mathcal{I}_{\ell}$ is the inertial transport term, responsible for the
+conservative transport of energy across scales, explicitly written as
+\begin{equation} \label{eq:inertial-transport}
+	\mathcal{I}_{\ell}(\bm{u}) =
+	\frac12 \big\langle u_j(\bm{r}) u_i(\bm{r+\ell}) \partial_j u_i(\bm{r})
+	+ u_j(\bm{r+\ell}) u_i(\bm{r}) \partial_j u_i(\bm{r+\ell}) \big\rangle \ .
+\end{equation}
+
+It has been mentioned that the fields $p$ and $\mathbf{u}$ are assumed to
+be smooth such that the integration by parts and derivations can be perfomed.
+Nevertheless, from the expression for the energy
+dissipation, Eq.~\ref{eq:dissip} and the third hypothesis of Kolmogorov,
+an apparent contradiction can be found.
+As $\nu$ approaches zero ($\mathrm{Re} \to \infty$),
+the scaling properties of the velocity field must be non trivial
+in order for the energy dissipation to remain constant and not vanish.
+It is currently understood that the velocity field becomes rough
+in at least some small regions of the flow, but not globally, and this
+heuristically explains why such manipulations are still valid at high Reynolds numbers.
+This is also an indication for the strong fluctuations and spatial
+inhomogeneities which turbulence displays and K41 does not
+account for.
+Fluctuations and roughness of the velocity field is the subject
+of Onsager's conjecture, which is discussed in section \ref{sec:onsager}.
+
+From the point-split energy budget, Eq.~\eqref{eq:EB-split},
+and from other results known at the time, Kolmogorov was able
+to derive one of the most important exact results in the
+theory of turbulence, the four-fifths law,
+published in \textcite{kolmogorov1941dissipation},
+%the third article of 1941.
+
+This result provides an exact value for the skewness
+of the velocity difference probability distribution function:
+\begin{equation} \label{eq:45law}
+	\left\langle\left(\delta \bm{u}_{ \|}(r, \ell)\right)^{3}
+	\right\rangle=-\frac{4}{5} \varepsilon \ell \ .
+\end{equation}
+This quantity is also called the third order structure function.
+The longitudinal velocity difference is defined as
+\begin{equation}
+	\delta \bm{u}_{ \|}(r, \ell) = u_i(\bm{r}+\ell \bm{x}_i) - u_i(\bm{r}) \ .
+\end{equation}
+where $\bm{x_i}$ is the unit vector along direction $i$,
+parallel to the chosen velocity component.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.8\textwidth]{iyer-45-law}
+	\caption[Numerical verification of the four-fifths law]
+	{Verification of the four-fifths law in a numerical
+	simulation from \textcite{iyer2017reynolds}, with $8192^3$ grid points, and $\mathrm{Re}_{\lambda} = 1300$. The dashed horizontal line corresponds to the theoretical prediction of the 4/5 law, and deviations from this result are used to define the inertial range.}
+	\label{fig:k-45-law}
+\end{figure}
+
+The four-fifths law reveals that the velocity difference PDF is skewed,
+and the skewness is directly proportional to the energy dissipation.
+A numerical verification of this law can be seen in
+Fig.~\ref{fig:k-45-law}.
+
+Inspired by the second hypothesis of Kolmogorov, Eq.~\eqref{eq:v-scale},
+a scaling transformation applied to Eq.~\eqref{eq:45law} reveals
+the scaling exponent of Navier-Stokes is $h=1/3$.
+If there is only one such scaling exponent, this results in a single functional
+form to all structure functions:
+\begin{equation} \label{eq:self-sim-zeta}
+	S_p(\ell) = \left\langle\left(\delta \mathbf{u}_{ \|}(r, \ell)\right)^{p} \right\rangle
+	= C_p (\varepsilon \ell)^{p/3} \ .
+\end{equation}
+The $C_p$ are constants that do not depend on the Reynolds number,
+since the infinite Reynolds limit has already been taken in the derivation of the
+four-fifths law.
+It was a further hypothesis of Kolmogorov that the constants $C_p$
+are universal at small scales, independent of the geometry or the forcing, although later criticism, especially from Landau, was made against the universality hypothesis.
+Among the constants, only $C_3$ is universal, and its value
+is given by the four-fifths law as $C_3 = -4/5 \varepsilon$. The exponents $p/3$, though, are understood to be universal, but their scaling is not linear as predicted by Kolmogorov.
+The critiques against universality are addressed in Section \ref{sec:landau} and the nonlinearity of the exponents, a sign of intermittency, is discussed in the Sections \ref{sec:k62} and \ref{sec:multifractal}.
+Despite these objections, $C_2$ has been measured in different settings and its value has been observed to be constant, and equal to $2.0 \pm 0.4$, in different flow conditions \parencite{sreenivasan1995universality}.
+
+\subsection{The Energy Spectrum and the 5/3 Law}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.9\textwidth]{energy-spectrum}
+	\caption[The turbulent energy spectrum]
+	{The kinetic energy spectrum is displayed at various values of Reynolds, dif-
+	ferent forcing schemes and anisotropy conditions. In both figures, the black
+	dotted line is the $k^{-5/3}$ scaling. In (a), results from numerical simulations are shown, while in (b), the black continuous line is from the Johns Hopkins Turbulence Database \parencite{jhtdb}, at $\mathrm{Re}_{\lambda} = 433$ \parencite{li2008}, and the symbols are from several experiments, described in \textcite{debue2018experimental}. The figure was extracted from \textcite{dubrulle2019beyond}.}
+	\label{fig:energy-spectrum}
+\end{figure}
+
+Another relevant observable for which K41 provides a prediction
+is the energy spectrum.
+It describes how energy is spread across different energy scales,
+and is obtained from the velocity two-point correlation function,
+\begin{equation} \label{eq:vv-corr}
+	R_{ij}(\mathbf{r}) = \langle u_i (\mathbf{x}) u_j(\mathbf{x}+\mathbf{r}) \rangle \ .
+\end{equation}
+Its Fourier transform is defined as
+\begin{equation}
+	\phi_{ij}(\mathbf{k}) = \frac{1}{(2 \pi)^3}
+	\int R_{ij}(\mathbf{r}) e^{-i \mathbf{k} \cdot \mathbf{r}} d\mathbf{r} \ ,
+\end{equation}
+from which we obtain the energy spectrum $E(k)$ as an integral at fixed $k$
+over all directions of the Fourier transformed correlation function:
+\begin{equation}
+	E(k) = \oint \frac12 \phi_{ii}(\mathbf{k}) dS(k) \ .
+\end{equation}
+In this equation, $dS(k)$ is the surface integration element at a distance $k$
+from the origin.
+Notice that $E(k)$ only depends on the absolute value of the wavenumber
+vector $\mathbf{k}$. Homogeneity and isotropy imply that all the information
+contained in the tensor $\phi_{ij}(\mathbf{k})$ can be described by the
+scalar $E(k)$ \parencite{pope2000}.
+
+In the inertial range, since there is no characteristic length scale which can
+be formed only from $\varepsilon$, Kolmogorov argued that the transfer of energy can
+only be self-similar. This means the energy spectrum displays an algebraic
+dependence with the scale $k$,
+and this algebraic exponent can be found from dimensional analysis.
+Given that the kinetic energy dissipation is dimensionally equivalent to
+\begin{equation}
+	[ \varepsilon ] = [ dU/dt ] = U^2 /T = U^3 /L = U^3 \kappa \ ,
+\end{equation}
+and the dimension of the energy spectrum is
+\begin{equation}
+	[ E(k)] = [\phi_{ii} dS(k)] = U^2 \kappa^{-3} \kappa^2 = U^2 \kappa^{-1} \ ,
+\end{equation}
+we obtain that a self-similar energy spectrum has the functional form:
+\begin{equation}
+E(k) = C_K \varepsilon^{2/3} k^{-5/3} \ ,
+\end{equation}
+where $C_K$ is argued to be a universal constant called the Kolmogorov constant.
+Its value is approximately 1.5 \parencite{sreenivasan1995universality}.
+
+In the dissipation range, there is a natural length scale provided
+viscosity, which hinders the algebraic behavior. Instead, the
+energy spectrum decays exponentially in this range.
+The first experimental results to show an agreement with the $5/3$ exponents were communicated in \textcite{grant1962turbulence}.
+Despite the agreement, in the same year Kolmogorov proposed
+a refinement of the 1941 theory, which will be discussed in
+the next section.
+More recent measurements, both in DNS and in experiments, can be seen in
+Fig.~\ref{fig:energy-spectrum}, corroborating the predicted exponent.
+One can also see a spiked behavior at small wavenumbers, that
+corresponds to the forcing scale, where the energy input is concentrated,
+and a fast exponential decay at small spatial scales (large $k$).
+
+\subsection{The Critiques of Landau} \label{sec:landau}
+
+Soon after the publication of the works of 1941, L. D. Landau
+expressed critiques regarding the hypothesis of universality.
+He argued that fluctuations could spoil universality, which was assumed for the constants $C_p$ and the exponents, in Eq.~\eqref{eq:self-sim-zeta}.
+These comments were made at a meeting in Kazan in 1942 and in a footnote
+in the first edition of his textbook in fluid mechanics, published
+in 1944 \parencite{frisch1995}.
+
+Landau devised an argument to show that, in a flow with
+more than one length scale present
+(for instance, if the grid generating turbulence has varying grid
+spacings), then there are local variations of the kinetic
+energy dissipation such that it is not possible to
+satisfy Eq.~\eqref{eq:self-sim-zeta} both locally and globally for this flow (the only case in which this is possible is $p=3$).
+This version of the argument in terms of a flow with multiple length scales is presented in \textcite{frisch1995}.
+
+As a consequence, whatever is the mechanism used to generate
+local variations in $\varepsilon$, universality as proposed in Eq.~\eqref{eq:self-sim-zeta} cannot be true.
+But fluctuations in the energy dissipation occur naturally,
+and they are quite strong in fully developed turbulence,
+even without any external mechanism
+to enhance space variations, such as a non-uniform grid.
+
+The comments of Landau were brief, and some of them are known only through recounts in conference proceedings, hence they are still object
+of study as to their precise meaning, but substantial credit is given to them in \textcite{kolmogorov1962refinement}, the extension of the 1941 theory which takes fluctuations into account.
+
+\section{Onsager's Conjecture} \label{sec:onsager}
+
+A deeper connection between the solutions of the Euler
+and Navier-Stokes equations (at vanishing viscosity)
+is subject of a discussion originally stated in \textcite{onsager1949statistical}.
+This discussion concerns the properties of weak solutions of the Euler equation.
+
+Weak solutions are functions for which all derivatives may not exist, but which
+are still considered solutions of the respective differential equation.
+In contrast to them, standard solutions are also called strong solutions.
+This formulation was first developed in \textcite{leray1934}, where it
+was demonstrated that the Navier-Stokes equations
+possess weak solutions on the whole space, $\mathbb{R}^d$, with $d \geq 2$.
+In \textcite{hopf1950uber} this demonstration was expanded to limited domains.
+For other systems of differential equations, weak solutions are often an intermediate step to a general proof of regularity in the strong solutions, but this path has not been completed for the equations of fluid dynamics, either viscous
+or inviscid.
+
+For the Navier-Stokes equations, Eq.~\eqref{eq:ns}, the formal definition
+of weak solutions are fields $p(\mathbf{r},t)$ and $\mathbf{u}(\mathbf{r},t)$
+that satisfy the following equations \parencite{bernard2000}:
+\begin{equation}
+\begin{split}
+&\int_{\mathbb{R}^3 \times \mathbb{R}} \Big( u_i \partial_t + u_i u_j \partial_j + \nu u_i \partial^2 + p \partial_i + f_i \Big) \phi_i \ d\mathbf{r} \ dt = 0 \ , \\
+&\int_{\mathbb{R}^3 \times \mathbb{R}} u_i \partial_i \psi \ d\mathbf{r} \ dt = 0 \ ,
+\end{split}
+\end{equation}
+where $\bm{\phi}(\mathbf{r},t)$ and $\psi(\mathbf{r},t)$ are smooth functions of compact support, with the further constraint of $\partial_i \phi_i = 0$.
+A similar definition, without the viscous term, holds for the weak solutions of the
+Euler equation.
+% other possible references on explicit forms: Buckmaster Vicol Annals of Math 2019, Tao Weak Solutions (includes Leray projection, clear to follow),
+
+Onsager, then, noticed that, while the Euler equation is a conservative system,
+its weak solutions, which may display rough and irregular behavior, need not
+conserve energy. That is,
+consider a weak solution of the Euler equation satisfying
+\begin{equation}
+	\left|\mathbf{u}(\mathbf{r}, t)-\mathbf{u}(\mathbf{r}^{\prime}, t )\right| \leq C\left|\mathbf{r}-\mathbf{r}^{\prime}\right|^{\theta}
+\end{equation}
+everywhere, where $C$ is independent of $\mathbf{r},\mathbf{r}^{\prime}$ and $t$.
+This condition is called Hölder continuity with an exponent $\theta > 0$, which measures the roughness of the velocity field.
+If $\theta \geq 1$, the velocity field is differentiable, whereas if $\theta < 1$, it is a continuous, but nowhere
+differentiable function, similar to ideal Brownian paths.
+
+Onsager's conjecture, regarding the weak solution $\mathbf{u}(\mathbf{r}, t)$, states that:
+\begin{enumerate}
+	\item If $\theta > 1/3$, then this solution conserves energy;
+	\item If $\theta \leq 1/3$, there exist weak solutions that do not conserve energy.
+\end{enumerate}
+The first part was proved in \textcite{constantin1994}.
+For the second part, dissipative solutions were first built by \textcite{scheffer1993,shnirelman1997}, and a proof for the open interval $\theta < 1/3$ was
+exhibited in \textcite{isett2018} for $d \geq 3$, building upon an argument from \textcite{delellis2007}. Still, the proof
+for the case $\theta = 1/3$ remains open.
+
+The connection between the value $1/3$ in this conjecture and the value for the scaling
+exponent of the velocity field in Kolmogorov's theory is seen immediately,
+but this fact was only explaned in \textcite{duchon2000}.
+In this article, it is demonstrated that the term responsible for
+dissipation in the weak solutions of the Euler equation
+is similar to the inertial transport term
+in the Navier-Stokes equation, $\mathcal{I}_{\ell}(\bm{u})$,
+Eq.~\eqref{eq:inertial-transport}.
+For this reason, the phenomenon of dissipative solutions in the Euler equations was called inertial
+dissipation, first described by Onsager:
+\begin{displayquote}
+	It is of some interest to note that in principle, turbulent dissipation
+	as described could take place just as readily wihout the final
+	assistance by viscosity. In the absence of viscosity, the standard
+	proof of the conservation of energy does not apply, because the velocity
+	field does not remain differentiable!
+	\parencite{onsager1949statistical}
+\end{displayquote}
+
+For this reason, it is also hypothesized that weak solutions
+of the Navier-Stokes equations at
+vanishing viscosity are equivalent to dissipative weak solutions of the Euler
+equation \parencite{eyink2006}.
+For
+a deeper discussion on this topic, the reader is referred to
+\textcite{delellis2019,tao2019onsager} and references therein.
+
+\section{The Theory of 1962 and Intermittency} \label{sec:k62}
+
+In 1962, the first experimental evidences of the success of K41 were
+still appearing,
+with new measurement techniques being developed.
+Nevertheless, there was already theoretical
+controversy on the limitations of this theory, such as the critiques
+of K41 by Landau. The role of fluctuations
+can be seen as crucial in these critiques. In this same year, Kolmogorov
+and Alexander Obukhov, a student of Kolmogorov, proposed an extension of the K41 theory,
+which accounts for large fluctuations, but which preserved universality at the small
+scales from K41.
+This theory is commonly called K62.
+
+Among the phenomena considered in K62, there are
+deviations from the self-similar exponents of Eq.~\eqref{eq:self-sim-zeta}.
+Instead of linear exponents, scaling behavior with arbitrary exponents $\zeta_p$
+is expected in the inertial range:
+\begin{equation} \label{eq:anomalous-zeta}
+    S_p(\ell) = \left\langle\left(\delta \mathbf{u}_{ \|}(r, \ell)\right)^{p} \right\rangle
+    = C_p (\varepsilon \ell)^{\zeta_p} \ .
+\end{equation}
+Strong evidence of this discrepancy was only reported much later,
+in \textcite{anselmet1984high}, and has been reinforced ever since.
+%although it is
+%still hard to measure high order exponents with accuracy and precision.
+Several models have been proposed since 1962 to explain such deviations
+from the self-similar exponents, beginning with K62,
+but such models are still phenomenological and it is still difficult to answer
+precisely which of them describes the data the most accurately.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.0\textwidth]{space-fluctuations}
+    \caption[Fluctuations in energy dissipation and enstrophy]
+    {This figure, from the large scale numerical simulations of \textcite{ishihara2009},
+    shows
+    strong spatial fluctuations in energy dissipation (a) and in enstrophy (b),
+    }
+    \label{fig:space-fluctuations}
+\end{figure}
+
+An observation from numerical simulations that strengthens the need
+for a statistical description of fluctuations can be seen in
+Fig.~\ref{fig:space-fluctuations}, where the values of kinetic
+energy dissipation and enstrophy are displayed,
+in a single instant, for a cross-section of a three-dimensional flow.
+These observables exhibit fluctuations which
+are very intense, in marked contrast with Gaussian noise, which would
+be evenly spread and of almost uniform intensity.
+Instead, there are turbulent spots
+where very large fluctuations can be observed.
+
+This phenomenom is called intermittency.
+Intermittent fields display scale-dependent fluctuations, in which
+intense bursts are observed in small intervals (in space or time).
+A velocity field which displays such strong fluctuations, thus,
+cannot be accurately described by its mean value, requiring
+an understanding of its higher order statistics.
+
+But measuring intermittent fluctuations and the structure
+function exponents from Eq.~\eqref{eq:anomalous-zeta}
+is a challenge, because capturing large fluctuations requires
+very long time series, whether in numerical simulations
+or in experiments.
+
+To take fluctuations into account,
+a new theory was developed in
+\textcite{kolmogorov1961precision,kolmogorov1962refinement,
+obukhov1962}.
+Its main hypothesis is that,
+instead of using the global mean energy dissipation, $\varepsilon$,
+its local scale averaged value should be considered.
+The kinetic energy dissipation averaged over a scale $\ell$ is
+\begin{equation} \label{eq:dissip-coarse}
+    \varepsilon_{\ell}(\bm{x},t) = \frac{3}{4 \pi \ell^3}
+    \int_{\mathcal{B}_{\ell}(\mathbf{x})} \varepsilon (\bm{x+r},t) \ d \bm{r} \ ,
+\end{equation}
+in which $\varepsilon$ is integrated over a ball
+$\mathcal{B}_{\ell}(\mathbf{x})$ of radius $\ell$ and center $\mathbf{x}$.
+This hypothesis was called \textit{local universality} by Kolmogorov and Obukhov, and under this assumption, all statistical properties measured at scale $\ell$ in the inertial range, can only depend on $\varepsilon_{\ell}$, instead of the global quantity $\varepsilon$.
+
+This addresses the critique of Landau: Universal scaling exponents, universal constants $C_p$ and non-homogeneities in the energy dissipation field cannot coexist under the linear scaling defined by Eq.~\eqref{eq:self-sim-zeta}, and not even for the nonlinear scaling of Eq.~\eqref{eq:anomalous-zeta}, for the reasons laid out in Sec.~\ref{sec:landau}. Instead, if the scaling of the structure functions (or any other observable) at some scale $\ell$ is defined in terms of the local energy dissipation, as
+\begin{equation}
+    S_{p}(\ell) = C_{p}(L)(\varepsilon_{\ell} \ell)^{\zeta_{p}} \ ,
+\end{equation}
+no such problem exists. The local universality hypothesis warrants the replacement of $\varepsilon$ with $\varepsilon_{\ell}$, and the constants $C_p(L)$ are no longer universal, instead depending on the large scale. In this manner, the universality of the scaling exponents and the non-homogeneities of the energy dissipation field are maintained.
+
+Along with the local universality hypothesis, a conjecture for
+the statistics of the energy dissipation was also made. It was
+established that $\varepsilon_{\ell}$ displays log-normal fluctuations,
+specified by
+\begin{equation} \label{eq:lognormal}
+\begin{split}
+    \langle \varepsilon_{\ell} \rangle &= \varepsilon \ , \\
+    \mathrm{Var}[\ln \varepsilon_{\ell}] &= C - \mu \ln (\ell / L) \ .
+\end{split}
+\end{equation}
+In this equation, $C$ is a non-universal constant that depends on the large scales
+and $\mu$ is a universal constant, called the intermittency parameter,
+which defines the strength of fluctuations. The higher
+its value, more intense is intermittency.
+Another element which is present in these equations is the
+integral length $L$. It is responsible for breaking the self-similar
+behavior (scale invariance).
+
+The hypothesis of lognormal fluctuations can be justified with the
+Richardson cascade picture, in which the energy is transferred locally from a scale $\ell$ to a scale $a \ell$, with $a \leq 1$, in a self-similar way. The ratio between the energy dissipation at two nearby scales, $\varepsilon_{\ell} / \varepsilon_{a \ell}$, can be thought of as a random variable, its probability distribution depending only on the scale ratio $a$. Then, the whole cascade can be described as the product of several random factors which only depend on the same ratio, as
+\begin{equation} \label{eq:epsilon-cascade}
+    \frac{\varepsilon_L}{\varepsilon_{a^N L}} =
+    \frac{\varepsilon_L}{\varepsilon_{a L}} \frac{\varepsilon_{a L}}{\varepsilon_{a^2 L}} \cdots
+    \frac{\varepsilon_{a^{N-2} L}}{\varepsilon_{a^{N-1} L}}
+    \frac{\varepsilon_{a^{N-1} L}}{\varepsilon_{a^N L}} \ ,
+\end{equation}
+for any $\ell = a^N L$. From this expression, $\ln \varepsilon_{\ell}$ is
+the sum of several variables with identical distributions
+of finite variance. If the
+ratios $\varepsilon_{a^n L} / \varepsilon_{a^{n+1} L}$ can be considered
+independent, then, as $N$ approaches infinity, the probability distribution of
+$\ln \varepsilon_{\ell}$ approaches a normal distribution,
+from the Central Limit Theorem. The probability distribution of
+$\varepsilon_{\ell}$ is correspondingly a lognormal.
+
+The exponents $\zeta_p$ can be calculated from
+the distribution for the scale averaged energy dissipation.
+If the probability distribution of $\varepsilon$ is a lognormal
+with mean and variance given by Eq.~\eqref{eq:lognormal},
+then any moment of $\varepsilon_{\ell}$ is given
+by
+\begin{equation}
+    \langle \varepsilon_{\ell}^{p} \rangle \sim \varepsilon^{p} e^{-p(1-p) C/2}\left(\frac{\ell}{L}\right)^{\mu p(1-p)}.
+\end{equation}
+Then, using the local universality hypothesis, it is observed that
+velocity fluctuations, in the inertial range and
+at scale $\ell$, only depend on the energy dissipation at this scale, $\varepsilon_{\ell}$,
+and on the scale itself. This means that $\delta u_{\ell}$ has
+the same scaling behavior as $(\ell \varepsilon_{\ell})^{1/3}$,
+from which the scaling of the structure functions is obtained:
+\begin{equation}
+    \langle \left(\delta u_{\ell}\right)^{p} \rangle \sim
+    \langle \left(\ell \varepsilon_{\ell}\right)^{p / 3} \rangle
+    \propto
+    (\ell \varepsilon)^{p / 3}\left(\frac{\ell}{L}\right)^{\mu (1-p/3) p/3} \ .
+\end{equation}
+The anomalous exponents are calculated directly from this expression:
+\begin{equation} \label{eq:zeta}
+    \zeta_p = \frac{p}{3} \left( 1 + \mu \left( 1-\frac{p}{3} \right) \right) \ .
+\end{equation}
+
+Several evidences for deviations from
+linear (self-similar) behavior have been reported.
+For numerical and experimental results, the reader is referred to
+\textcite{ishihara2009,benzi2010inertial,sinhuber2017dissipative,iyer2017reynolds,reinke2018universal}.
+
+The 1962 model is a rich and useful framework for dealing with
+large fluctuations. It is known that some
+properties of the exponents in Eq.~\eqref{eq:zeta}
+at high orders
+conflict with mathematical properties expected in general for
+them \parencite{frisch1995}.
+For this reason, more general models for fluctuations in
+turbulence have been proposed, which are discussed in the next section.
+
+\section{The Multifractal Model} \label{sec:multifractal}
+
+The self-similar theory of 1941 is marked by a single scaling
+exponent, $h=1/3$. Yet, scale invariance is broken by the
+intermittent fluctuations, as can be seen in the K62 model.
+Another proposal which employs the language of scale invariance
+and includes fluctuations is called multifractality.
+A random velocity field with a single scaling exponent is also called
+a fractal, in general, because this scaling exponent is in direct correspondence
+with the fractal dimension of the random field.
+The multifractal approach, instead, states that
+a range of scaling exponents is possible, corresponding to
+a field with multiple fractal dimensions simultaneously.
+
+This approach began in \textcite{mandelbrot1974intermittent},
+where lognormal fluctuations of the energy dissipation
+are already treated under a multifractal view.
+Further developments were carried out in
+\textcite{frisch1985singularity,meneveau1987multifractal, meneveau1991multifractal}.
+
+In the multifractal approach, it is supposed that there is a set
+$F \in \mathbb{R}^3$ of fractal dimension
+$D_F < 3$
+where energy dissipation events and intense fluctuations concentrate.
+The complement of this region is made of regular velocity fields,
+which can be linearized. In this region, the scaling exponent of
+the velocity field is $h \geq 1$,
+such that all velocity gradients remain small in this region.
+The set $F$ is a multifractal if it is a superposition of subsets $\mathcal{S}_h$,
+such that the velocity field scales with an exponent in the range
+$[h,h+dh]$ inside $\mathcal{S}_h$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{zeta}
+    \caption
+    [Measure of high-order structure functions in numerical
+    simulations display deviations from self-similar behavior]
+    {Structure functions from the numerical
+    simulations of \textcite{benzi2010inertial} display clear deviations from
+    the linear prediction of K41. But exponents of order larger
+    than eight are still hard to measure with precision due
+    to the enourmous amount of data that is needed to capture large fluctuations.
+    }
+    \label{fig:zeta}
+\end{figure}
+
+%the data of Meneveau and Sreenivasan show quite
+%convincingly that there are multifractal exponents
+
+In this context, the probability of sampling a singularity
+exponent close to $h$ is proportional to the size of the corresponding
+set $\mathcal{S}_h$, which is
+measured by the fractal dimension $D(h)$.
+This probability, then, is
+\begin{equation}
+    \mathcal{P}_{\ell}(h) dh = \left(\frac{\ell}{L}\right)^{3-D(h)} \rho(h) dh \ .
+\end{equation}
+The function $\rho(h)$ describes the distribution of values
+of $h$ in this velocity field, irrespective of the scale,
+it is thus a smooth function of $h$, independent of $\ell$.
+Then, the structure functions are given by
+\begin{equation} \label{eq:multif-veldif}
+    \int \left(\delta \mathbf{u}_{ \|}(\bm{r}, \ell)\right)^{p} \mathcal{P}_{\ell}(h) dh
+    \sim \int \left(\ell \varepsilon_{\ell}\right)^{h p}
+    \left(\frac{\ell}{L}\right)^{3-D(h)} \rho(h) dh \ .
+\end{equation}
+
+Using a saddle-point aproximation for the structure functions,
+the structure function exponents are obtained as
+\begin{equation} \label{eq:multif-zeta}
+    \zeta_p = \underset{h}{\mbox{min}} [ h p + 3 - D(h) ] \ .
+\end{equation}
+Direct measures of the structure functions
+from numerical simulations can be seen in Fig.~\ref{fig:zeta}.
+Deviations from the linear exponents of K41 are
+clearly seen.
+
+The multifractal model is a general framework for
+anomalous scaling, but it does not provide a
+quantitative prediction for the exponents,
+which depend on an explicit $D(h)$ function.
+But relationships between exponents of different observables
+which can be predicted from the theory,
+and be used to test it. For instance, scaling exponents for
+the energy dissipation \parencite{mandelbrot1974intermittent}
+or the velocity gradient \parencite{nelkin1990multifractal} can be obtained
+as Legendre transforms of the $D(h)$ function,
+hence these exponents must be connected to those calculated in
+Eq.~\eqref{eq:multif-zeta}.
+
+The former sections have demonstrated the relevance of fluctuations
+and probabilities in turbulence.  The next chapter discusses
+techniques of stochastic calculus and statistical mechanics which
+are used in the works developed in this dissertation.
+
+
+\end{chapter}

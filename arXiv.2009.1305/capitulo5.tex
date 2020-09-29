@@ -1,0 +1,467 @@
+\begin{chapter}{The Onset of Intermittency in Stochastic Burgers Hydrodynamics}
+\label{chap:burgers}
+
+\hspace{5 mm} 
+
+The Burgers model was introduced in \textcite{burgers1948} as a one-dimensional prototype for Navier-Stokes hydrodynamics. It displays nonlinearities which are similar to those of Navier-Stokes, and became a valuable testing ground for the development of new theoretical and computational approaches in turbulence and hydrodynamics, as foreseen in \textcite{vonneumann1963}. Furthermore, the Burgers equation has been applied to realistic problems in a variety of fields: nonlinear acoustics \parencite{gurbatov1991}, cosmology \parencite{zeldovich1970, gurbatov1984}, critical interface growth \parencite{kardar1986}, traffic flow dynamics \parencite{musha1978,chowdhury2000}, and biological invasion \parencite{petrovskii2005}.
+% can i find modern examples? all examples i cited are from the last century, with two exceptions from 2000 and 2005
+
+The stochastic Burgers model determines the evolution of the velocity field $u(x,t)$ which is forced by a random external force $\phi(x,t)$:
+\begin{equation}
+u_t + u u_x = \nu u_{xx} + \phi \ , \  \label{eq:nu-burgers}
+\end{equation}
+As usual, $\nu$ is the kinematic viscosity.
+And similarly to Navier-Stokes, observables such as velocity gradients, $\xi = \partial_x u$, and velocity differences, $\delta u_{\ell}(x) = u(x+\ell) - u(x)$, display intermittent fluctuations in turbulent steady state solutions.
+%\cite{polyakov1995, gurarie1996, khanin1997, balkovsky1997, bec2001, chernykh2001, moriconi2009, grafke2015relevance, friedrich2018}.
+
+Starting from a smooth initial condition, this model leads to the formation of smooth ramps and sudden negative shocks, which can be seen in Fig.~\ref{fig:burgers-shock}a. The probability distribution of the velocity gradient, seen in Fig.~\ref{fig:burgers-shock}b, can also be understood from the picture of ramps and shocks: Positive velocity gradients are small and with little fluctuations, while negative gradients are extremely intermittent, with the largest negative fluctuations forming visible shocks.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{margaz_burgers.png}
+    \caption
+    [Example of shock in Burgers dynamics and its associated velocity gradient PDF]
+    {Burgers hydrodynamics is marked by the formation of sudden negative shocks interleaved by smooth positive ramps. A ramp and a shock are identified in (a). This dynamics leads to the PDF observed in (b), where positive gradients decay fast, while negative gradients display intense fluctuations, which grow with higher Reynolds numbers. A comparison between these PDFs and a Gaussian distribution is also shown. This figure was extracted from \textcite{margazoglou2019}.}
+    \label{fig:burgers-shock}
+\end{figure}
+
+The instanton approach was applied to the Burgers model in \textcite{gurarie1996}, where it was shown that the velocity difference PDFs followed
+\begin{equation} \label{eq:pdf_general}
+    \rho_g(\delta u) = \exp [ - S(\delta u) ] \ ,
+\end{equation}
+and that the asymptotic form of the action $S(\xi)$ was
+\begin{equation}
+    S(\delta u) \sim |\delta u|^{3} \ .
+\end{equation}
+This result confirms that fluctuations in the positive tails are effectively irrelevant, since their distribution is sub-Gaussian. As a consequence, the instanton PDF is essentially exact.
+The same result had been obtained before by different methods in \textcite{polyakov1995}.
+% what about feigelman1980, what did he do?
+Furthermore, the exponent $3$ is equally observed for positive velocity gradients, a result demonstrated in \textcite{gotoh1998}.
+%Vicosity can be neglected in the right tail, which made an analytical result possible and it was obtained that the PDF, if written as
+
+Negative fluctuations, though, due to their intermittent fluctuations, are still subject of research in this field.
+%\parencite{khanin1997, balkovsky1997, bec2001, chernykh2001, moriconi2009, grafke2015relevance}
+The first result on negative gradients with the instanton method was obtained in \textcite{balkovsky1997}, where it was demonstrated that the left tail of the velocity gradient probability distribution could be written as Eq.~\eqref{eq:pdf_general}, but instead depending on $\xi$. The asymptotic behavior of the PDF tails is given by
+\begin{equation} \label{eq:left-asymp}
+    S(\xi) \sim |\xi|^\frac{3}{2} \ ,
+\end{equation}
+which corresponds to a fat tailed distribution.
+The hypotheses made in these calculations and the general result were verified in \textcite{chernykh2001}, although, as \textcite{grafke2015relevance} point out, the asymptotic form of $S(\xi)$ is still beyond the reach of direct numerical simulations. Still, the authors observe an agreement between the velocity gradient PDF tails and those provided by the instanton configurations. This agreement, however, relies on an arbitrary multiplication of the random force strength parameter by a Reynolds number dependent adjustment factor. A detailed analytical investigation on why such an empirical \enquote{noise renormalization procedure} works is the central aim of the work developed in \textcite{apolinario2019onset}, work on which this chapter is based.
+
+%The discussion in this chapter applies field theoretical techniques previously described: The MSRJD formalism and the cumulant expansion of fluctuations around the instanton fields. It is natural to expect that corrections to the instanton evaluations of PDF tails have to be supplemented by subdominant fluctuation contributions, but numerical studies of such fluctuations have only been performed very recently through hybrid Monte Carlo techniques \parencite{margazoglou2019, ebener2019}.
+
+\section{Field Theoretical Setup}
+
+A dimensionless version of Burgers equation is obtained by equivalent methods to those of Section~\ref{sec:similarity}, by measuring length in units of $L$, the forcing scale, time in units of $L^2/\nu$ and velocity in units of $\nu/L$. As a result:
+\begin{equation}
+u_t + u u_x - u_{xx} = g \phi \ , \  \label{burgers_eq}
+\end{equation}
+where $\phi = \phi(x,t)$ is a zero-mean Gaussian random field used to model large-scale forcing, with correlator
+\begin{equation}
+\langle \phi(x,t) \phi (x',t') \rangle = \chi(x-x') \delta (t -t') \ . \  \label{phi-c}
+\end{equation}
+The correlation function $\chi$ is peaked at wavenumber $k=0$ and broadened in Fourier space within a region of size $\Delta k \sim 1$.
+In other words, $L \equiv 1$ ($ \sim \Delta k^{-1}$) is taken to be the random force correlation length, defined as the largest relevant length scale in the flow. While most of the considerations in this section are general, a specific form of the correlation function is adopted, as it has been addressed in former works \parencite{balkovsky1997, gotoh1998, grafke2015relevance},
+\begin{equation}
+\chi(x) = (1-x^2) \exp \left (  - \frac{x^2}{2} \right ) = - \partial_ x^2
+\exp \left ( - \frac{x^2}{2} \right ) \ . \
+\end{equation}
+% cite work which studies universality
+This is a case study of particular interest, due to its simple formulation and good analytical properties.
+
+Note that the intensity of forcing is given by the noise strength parameter $g$. This is the only dimensionless parameter in the problem, and can be connected to the Reynolds number through the phenomenology of Section~\ref{sec:k41}. The amplitude $\chi_0 = \chi(0)$ of the external force correlation function is in direct correspondence with the kinetic energy dissipation rate, $\varepsilon$. Furthermore from the K41 theory, $\varepsilon \propto U^3/L$, where $U$ is a typical velocity. From these relations, the following dimensionally correct relation is obtained:
+\begin{equation}
+    U = (\chi_0 L)^{1/3} \ .
+\end{equation}
+This equation is used to write the Reynolds number, $\mathrm{Re} = U L / \nu$ in terms of the dimensional parameters of the problem. Finally, the force strength can also be written in terms of the same parameters, as $g = \chi_0^{1/2} L^2 \nu^{-3/2}$, from which it is obtained that
+\begin{equation}
+    g = \mathrm{Re}^{3/2} \ .
+\end{equation}
+
+% I don't fully understand this argument of Luca, but it is based on microscale fluctuations, instead of large scale K41
+%Furthermore, once the viscosity $\nu$ and the integral length scale $L$ are normalized to unit in Eq. (\ref{burgers_eq}), by defining the Reynolds number as $Re = L^{4/3}\sqrt[3]{\langle (\partial_x u)^2 \rangle / \nu^2}$ we get $Re = \sqrt[3]{g^2/2}$.
+
+With the Burgers model in mind, velocity gradients are going to be computed in the MSRJD formalism as path-integrations over the velocity field
+$u(x,t)$ and its conjugate auxiliary field $p(x,t)$, combined with an ordinary integration over a Lagrange multiplier
+variable $\lambda$ as
+\begin{equation}
+\rho_g(\xi)  = \langle \delta(u_x|_0 - \xi) \rangle = {\cal{N}}^{-1} \int Dp Du \int_{- \infty}^{ \infty} d \lambda \exp \{ -S[u,p,\lambda ; g] \} \ , \
+\label{vgPDF}
+\end{equation}
+where $\cal{N}$ is an unimportant normalization constant (to be suppressed from now on, in order to simplify notation), $u_x|_0$ is the velocity gradient taken at $(x,t) = (0,0)$, and $S[u,p,\lambda ; g]$ is the MSRJD action:
+\begin{equation} \begin{split}
+&S[u,p,\lambda ; g] = \frac{g^2}{2} \int d t d x ~ p (\chi * p ) + \\
+&+i \int d t d x ~ p(u_t+u u_x - u_{xx}) - i\lambda (u_x |_0 - \xi ) \ , \ \label{msr_action}
+\end{split} \end{equation}
+with $\chi * p \equiv \int dx'\chi(x-x') p(x',t)$, which is a convolution in space, equivalent to the one defined in Sec.~\ref{chap:stoc}.
+
+% here we use the saddle-point for the tails of PDFs while in the previous work we used it for the core of PDFs, do I need to dwell on the differences?
+The saddle-point method is adopted to find the asymptotic form of velocity gradient PDF tails. The method provides meaningful answer in cases where the PDF tails decay faster than a simple exponential, $\exp(-c|\xi|)$ for any arbitrary $c>0$, as observed in numerical studies of Burgers turbulence \textcite{gotoh1998}.
+The saddle-point configurations $u^c$, $p^c$, and $\lambda^c$ that extremize the MSRJD action are named instantons and they were first obtained for the Burgers mode in \textcite{gurarie1996, falkovich1996}.
+As pointed out in the previous chapters, they are the solutions of the Euler-Lagrange equations, which in the present case are:
+\begin{equation}
+ \left. \frac{\delta S}{\delta u}\right\vert_{u^c,p^c,\lambda^c} \!\!\!\!\!\!\! =0
+ \ \ \ , \ \ \
+ \left.\frac{\delta S}{\delta p}\right\vert_{u^c,p^c, \lambda^c} \!\!\!\!\!\!\! =0
+  \ \ \mbox{and} \ \
+ \left.\frac{\partial S}{\partial \lambda }\right\vert_{u^c,p^c, \lambda^c} \!\!\!\!\!\!\! =0   \ . \ \label{sp_eqs}
+\end{equation}
+It is convenient to rescale $p(x,t)$ and $\lambda$ as
+\begin{equation}
+    p \rightarrow \frac{p}{g^2} \ \ \mbox{and} \ \
+    \lambda \rightarrow \frac{\lambda}{g^2} \mbox{,} \label{rescaling}
+\end{equation}
+so that the MSRJD action in (\ref{vgPDF}) is rescaled as
+\begin{equation}
+S[u,p,\lambda;g] \rightarrow \frac{1}{g^2} S[u, p, \lambda; 1]  \label{s_to_s}
+\end{equation}
+and the Euler-Lagrange equations stated in (\ref{sp_eqs}) become
+\begin{subequations}
+\begin{align}
+ &u_t^c + u^c u_x^c - u^c_{xx} = i\chi * p^c \ , \ \label{sp1} \\
+ &p^c_t+ u^c p^c_x + p^c_{xx} = \lambda^c \delta(t) \delta'(x) \label{sp2} \ , \ \\
+ &\xi = u^c_x|_0 \label{sp3} \ . \
+\end{align}
+\end{subequations}
+It is relevant to notice that the noise strength $g$ has been factored out of the action in Eq.~\eqref{s_to_s}. Furthermore, the saddle-point solutions $p^c(x,t)$ and $\lambda^c$ are purely imaginary, since it is natural to expect purely real velocity instantons $u^c(x,t)$.
+
+% change this paragraph
+When dealing with instantons, one needs, in general, to worry about the existence of degenerate families of saddle-point solutions, associated with symmetries of the action, like translation or gauge invariance. The Fadeev-Popov method is the usual procedure to eliminate such redundant solutions \textcite{coleman1988,moriconi2009}. However, in the formalism addressed here, the degeneracy issue is bypassed through the explicit assignment of the spacetime point $(x,t)=(0,0)$ as the symmetry center around which the instantons evolve, making Eqs. (\ref{sp1}) and (\ref{sp2}) not translationally invariant.
+
+The sign of the dissipation term in Eqs. \eqref{sp1} and \eqref{sp2} works as an effective time-reversal: The equation for $u^c$ has to be solved forward in time, since it has the same sign as the standard Burgers equation, but the equation for $p^c$ has a reversed sign in the dissipation term, making it similar to a backward in time Burgers equation. The time domain of these solutions is
+$- \infty < t \leq 0$, with $u^c(x, - \infty) = p^c (x, - \infty) = 0$, and the additional boundary conditions given by Eq. (\ref{sp3}) and $p^c(x,0^+) = 0$. The last of these is equivalent to $p^c(x,0^-) = -\lambda \delta'(x)$, or, in Fourier space, to $\tilde p^c(k,0^-) = - i \lambda k$ \parencite{gurarie1996}. \label{burgers-boundary}
+
+Making use of this time reversal analogy, a fruitful self-consistent numerical strategy for the above saddle-point equations was proposed in \textcite{chernykh2001}. This is now usually called the Chernykh-Stepanov method. One first neglects the boundary condition \eqref{sp3}, and trades it for an arbitrary fixed value of $\lambda$. The equations, then, are solved through an iterative method which, if convergent, leads to arbitrarily precise solutions.
+
+Beginning with $u_1(x,t) \equiv 0$, Eq.~\eqref{sp2} is solved backwards in time for $p_1(x,t)$. This field, $p_1(x,t)$, is then used in Eq.~\eqref{sp1} to obtain $u_2(x,t)$. This procedure can be carried on indefinitely, and the solutions $u^c(x,t)$ and $p^c(x,t)$ can be found within a previously defined precision metric. The velocity gradient $\xi$ is defined, \textit{a posteriori}, from Eq. (\ref{sp3}), as a derivative of the last iterated velocity field. It has been observed numerically that $\xi$ is a monotonically increasing function of $\lambda$, hence Eq.~\eqref{sp3} has a unique solution in this situation. It is imperative to note, though, that the Chernykh-Stepanov method may require further numerical devices to attain convergence for $|\lambda|$ large enough.
+
+Once $u^c(x,t)$, $p^c(x,t)$ and $\lambda^c$ are available, an expansion around the instantons is performed, introducing the fluctuations $u(x,t)$, $p(x,t)$ and $\lambda$, along the lines of Eq.~\eqref{eq:perturb-instanton}:
+\begin{subequations}
+\begin{align}
+&u(x,t) \rightarrow u^c(x,t) + u(x,t) \ , \ \label{subs_u} \\
+&p(x,t) \rightarrow p^c(x,t) + p(x,t) \ , \ \label{subs_p} \\
+&\lambda \rightarrow \lambda^c + \lambda \ . \ \label{subs_lambda}
+\end{align}
+\end{subequations}
+This substitution rewrites the MSRJD action, accordingly, as
+\begin{equation}
+\begin{split}
+&S[u,p, \lambda; 1]  \rightarrow S[u^c + u,p^c + p, \lambda^c + \lambda; 1] \\
+&\equiv S_c[u^c,p^c] + S_0[u,p] + S_1[u^c,u,p^c,\lambda] \ , \
+\end{split}
+\end{equation}
+where $S_c$, $S_0$, and $S_1$ are, respectively: the saddle-point action; the sum of all quadratic forms in the $u$ and $p$ fields that do not depend on $p^c$ and $u^c$; and finally, $S_1$ is the contribution that collects all terms that have not been included in $S_c$ or $S_0$. Explicitly, these terms are
+\begin{equation}
+\begin{split}
+S_c  &\equiv \frac{1}{2} \int d t d x  ~ p^c (\chi * p^c ) + i \int d t d x ~ p^c(u^c_t+u^c u^c_x - u^c_{xx}) \\
+&= ({\hbox{using Eq. (\ref{sp1})}}) = - \frac{1}{2} \int d t d x  \ p^c (\chi * p^c)  \ ; \label{sp_action} \\
+S_0  &=  \int d t d x  \left \{ \frac{1}{2}\ p (\chi * p)  + i \ p (u_t - u_{xx}) \right \} \ ; \\
+\end{split}
+\end{equation}
+and, up to second order in the fluctuating fields:
+\begin{equation}
+S_1 =  i \int d t d x \left\{ p^c u u_x - p_x u^c u  \right\}
+- i \lambda u_x|_0 \ . \
+\end{equation}
+It is clear that $S_c$ is a functional of the instanton fields, which on their turn depend on the velocity gradient $\xi \equiv u^c_x |_0 $. Hence we can write, more synthetically, that $S_c = S_c(\xi)$.
+
+Now, taking into account the instanton solutions, we can reformulate the velocity gradient PDF, Eq. (\ref{vgPDF}), as
+\begin{equation}
+\begin{split}
+\rho_g(\xi) &= \exp \left ( - \frac{1}{g^2} S_c(\xi) \right ) \int Dp Du
+\int_{- \infty}^\infty d \lambda
+\exp \left [ - \frac{1}{g^2} ( S_0 + S_1 ) \right ] \\
+& \propto \exp \left ( -\frac{1}{g^2}
+S_c(\xi) \right )
+\int_{- \infty}^\infty d \lambda \left \langle \exp \left ( - \frac{1}{g^2}
+S_1 \right )
+\right \rangle_0 \ , \  \label{vgpdf2}
+\end{split}
+\end{equation}
+where $\langle \ \bm\cdot \ \rangle_0$ stands for an expectation value computed in the linear stochastic model defined by the MSRJD action $S_0$.
+
+A perturbative development of the above expression is possible in cases where the fluctuation-dependent contributions are small relative to the leading saddle-point results, that is,
+\begin{equation}
+S_c(\xi) \gg g^2 \left | \ln \left [ \int_{- \infty}^\infty d \lambda \left \langle \exp \left ( - \frac{1}{g^2}
+S_1 \right )
+\right \rangle_0 \right ] \right | \ .
+\end{equation}
+Therefore, the cumulant expansion is a natural method for evaluating Eq.~\eqref{vgpdf2} in a perturbative manner. Considering contributions up to second order in the instanton fields and $\lambda$, we obtain
+\begin{equation}
+\left \langle \exp \left ( - \frac{1}{g^2} S_1 \right )
+\right \rangle_0 = \exp \left \{ - \frac{1}{g^2} \langle S_1 \rangle_0  +   \frac{1}{2 g^4}
+\left [ \langle (S_1)^2 \rangle_0 - \langle S_1  \rangle_0^2 \right ]  \right \} \ ,
+\label{c-expansion}
+\end{equation}
+which is used to establish the \textit{effective MSRJD action},
+\begin{equation}
+\Gamma \equiv S_c + \langle S_1 \rangle_0  - \frac{1}{2 g^2}
+\left [ \langle (S_1)^2 \rangle_0 - \langle S_1  \rangle_0^2 \right ] \ . \
+\end{equation}
+
+The basic building blocks needed to evaluate (\ref{c-expansion}) are the correlation functions
+\begin{equation} \begin{split}
+G_{pu}(x,x',t,t') &\equiv \langle p(x,t) u(x',t') \rangle_0 \\
+&= -\frac{i g^2}{2 \sqrt{\pi (t'-t)} }
+\exp \left [ - \frac{(x-x')^2}{4 (t'-t)} \right ] \Theta(t'-t) \label{Gpu}
+\end{split} \end{equation}
+and
+\begin{equation} \begin{split}
+G_{uu}(x,x',t,t') &\equiv \langle u(x,t) u(x',t') \rangle_0 \\
+&= \frac{g^2}{2 \sqrt{1+2|t-t'|}} \exp \left [ - \frac{(x-x')^2}{2(1+ 2|t-t'|)} \right ]
+\ . \ \label{Guu}
+\end{split} \end{equation}
+The first propagator connects the velocity field and the auxiliary field, while the second connects two velocity fields at different positions and instants. Thus, these propagators are equivalent to those described for the RFD model, and illustrated in Fig.~\ref{fig:free-propagator}.
+
+From Eqs. (\ref{Gpu}) and (\ref{Guu}), it can be shown that
+$\langle S_1 \rangle_0 = 0$ and
+\begin{equation}
+\langle (S_1)^2 \rangle_0 = I_1 [p^c,u^c] + I_2 [p^c] - \lambda^2 \langle (u_x|_0)^2 \rangle_0 \ , \ \label{S1squared}
+\end{equation}
+with
+\begin{subequations}
+\begin{align}
+I_1 [p^c,u^c] &\equiv \int_{t,t'<0} dt dt'dx dx'~ p^c(x,t) u^c(x',t') H_1(x,x',t,t')   \ , \label{I1} \\
+I_2 [p^c] &\equiv \int_{t,t'<0} dt dt'dx dx'~ p^c(x,t) p^c(x',t') H_2(x,x',t,t') \ , \label{I2}
+\end{align}
+\end{subequations}
+where
+\begin{equation} \begin{split}
+&H_1(x,x',t,t') = -2 \partial_x [ G_{uu}(x,x',t,t') \partial_x G_{pu}(x',x,t',t) ] \ , \   \\
+&H_2(x,x',t,t') = \frac{1}{2} \partial_x^2 [G_{uu}(x,x',t,t')]^2 \ . \
+\end{split} \end{equation}
+Note that $I_1[p^c,u^c]$ and $I_2[p^c]$, both of $O (g^4)$, are the one-loop contributions which renormalize, respectively, the heat and noise kernels of the original stochastic Burgers equation, Eq.~(\ref{burgers_eq}). These corrections are also equivalent to those for the RFD model, represented in Fig.~\ref{fig:oneloop}, in the previous chapter.
+
+The overall effect of perturbative contributions can always be conventionally accounted by a redefinition of the noise strength parameter $g$ in the expression for the velocity gradient PDF, $\rho_g( \xi) \propto \exp ( - S_c(\xi) /g^2 )$. In the present context, the $g$-independent coefficient
+\begin{equation}
+    c(\xi) \equiv - \frac{I_1 [p^c,u^c] + I_2 [p^c]}{2g^4 S_c } \ \label{c-xi}
+\end{equation}
+is enough.
+Using (\ref{vgpdf2}), (\ref{c-expansion}), and integrating over $\lambda$ in the Gaussian approximation given by (\ref{S1squared}), a renormalized expression for the velocity gradient PDF is obtained,
+\begin{equation}
+\rho_g(\xi) \propto \exp \left ( -  \frac{S_c (\xi) }{g_R^2} \right ) \ , \ \label{eff_vgpdf}
+\end{equation}
+in which
+\begin{equation}
+g_R \equiv \frac{g}{ \sqrt{1 + c(\xi)g^2}} \label{eff_noise}
+\end{equation}
+defines an {\textit{effective noise strength}} parameter, which is, in principle, a velocity-gradient dependent quantity that encodes the effects of fluctuations around the instantons, up to the lowest non-trivial order in the cumulant perturbative expansion.
+
+\section{The Onset of Intermittency}
+
+% text was not changed much, is this a problem?
+Eq. (\ref{eff_noise}) suggests, in fact, a simple criterion for the consistency of the perturbative analysis.
+The cumulant expansion is meaningful, up to second order, if $|c(\xi)|g^2$ is reasonably smaller than unity. It follows, immediately, that for any fixed velocity gradient $\xi$, the cumulant expansion will break down for $g$ large enough. Similarly, since  (as will be seen) $c(\xi)$ is a positive monotonically increasing function of $|\xi|$, the cumulant expansion framework becomes inadequate for large enough $|\xi|$ at any fixed $g$.
+
+Consequently, the consideration of strong coupling regimes ($g \gg 1$, equivalent to high Reynolds numbers) and/or asymptotically large velocity gradient fluctuations is precluded from the cumulant expansion approach. The perturbative analysis, nevertheless, is actually useful to model the shape of velocity gradient PDF left tails in the non-Gaussian region, where $|\xi| > g$, for not very large $g$.
+It is expected that, as the noise strength grows and incipient turbulent fluctuations associated to flow instabilities come into play, the onset of non-Gaussian behavior is captured by dominant instanton contributions \enquote{dressed} by cumulant corrections.
+
+It is important, before proceeding, to comment on the challenging technical difficulties associated to the evaluations of $S_c(\xi)$,  $I_1 [p^c,u^c]$, and $I_2 [p^c]$, given, respectively, by Eqs. (\ref{sp_action}), (\ref{I1}) and (\ref{I2}), the essential ingredients in the derivation of the PDF tails. It turns out that the associated integrations based on the numerical instantons are extremely demanding in terms of computational cost. The numerical convergence of integrals is very slow as the system size increases and the grid resolution gets finer.
+Nevertheless, a pragmatic scheme for the computation of the saddle-point action $S_c(\xi)$ is available from the numerical work in \textcite{grafke2015relevance}, where it is pointed out that for large negative velocity gradients and at a given noise strength $g$, $S_c(\xi)$ can be retrieved with good accuracy from the velocity gradient PDF $\rho_g(\xi)$ as
+\begin{equation}
+S_c(\xi) \simeq - g^2\kappa(g) \ln \left [ \frac{\rho_g(\xi)}{\rho_g(0)} \right ] \ , \ \label{s_Sc}
+\end{equation}
+where $\kappa(g)$ is a $g-$dependent empirical correction factor.
+
+It follows, now, under the light of Eq. (\ref{eff_vgpdf}), that $\kappa(g)$ is nothing more than $(g_R/g)^2$, and, therefore, it should depend on $\xi$ as well.  From such a perspective, one finds that the relevance of Eq. (\ref{s_Sc}) is fortuitously based on the fact that $c(\xi)$, as defined in (\ref{c-xi}), is in general a slowly varying function of $\xi$. Eq.~\eqref{s_Sc} is then used as a practical way to obtain a reasonable evaluation of the saddle-point action.
+To distinguish between the exact saddle-point action and the one approximated by \eqref{s_Sc}, the latter is denoted the \textit{surrogate saddle-point action} and represented by $S_{sc}(\xi)$.
+
+Regarding the evaluation of the perturbative functionals $I_1 [p^c,u^c]$ and $I_2 [p^c]$: The full numerical approach is very slowly convergent, if based on the Chernykh-Stepanov numerical solutions of Eqs. (\ref{sp1}) and (\ref{sp2}). Instead, approximate analytical expressions for $u^c(x,t)$ and $p^c(x,t)$ lead to analytical expressions within the same order in the perturbative expansion. Below, this analytical approximation is discussed, along with its use in the determination focus of $S_{sc}(\xi)$, $I_1 [p^c,u^c]$, and $I_2 [p^c]$.
+
+\subsection{Analytical Approximations for the Instanton Fields}
+
+In the asymptotic limit of small velocity gradients, instantons can be well approximated as the solutions of Eqs. (\ref{sp1}) and (\ref{sp2}) simplified by the suppression of nonlinear terms. Working in Fourier space, where
+\begin{align}
+& \tilde p(k,t) \equiv \int dx \ p(x,t) \exp(-ikx) \ , \ \label{fp} \\
+& \tilde u(k,t) \equiv \int dx \ u(x,t) \exp(-ikx) \ , \ \label{fu}
+\end{align}
+it is straightforward to find, under the linear approximation, that
+\begin{align}
+& \tilde u^c(k,t) = \lambda^c \sqrt{\frac{\pi}{2}} k \exp \left [ -k^2\left (|t|+\frac{1}{2} \right ) \right ]  \label{fuc}  \ , \ \\
+& \tilde p^c(k,t) = -i  \lambda^c k \exp( k^2 t) \Theta(-t) \equiv \tilde p^{(0)}(k,t) \ . \ \label{fpc}
+\end{align}
+Taking $\lambda^c \equiv -i \lambda$, the velocity gradient at $(x,t)=(0,0)$ is obtained as $\xi = \lambda /2$. From now on it is assumed, thus, that $\lambda$ is a negative real number, since the velocity gradients in question are also negative.
+
+Note that the exact solution for the instanton response field can be formally written as
+\begin{equation}
+p^c(x,t) = p^{(0)}(x,t) + \delta p^c(x,t) \ , \ \label{pc_full}
+\end{equation}
+where $\delta p^c(x,t)$ satisfies the boundary conditions
+\begin{equation}
+\delta p^c (x,- \infty) = \delta p^c(x,0^-) = 0 \ , \ \label{vbc}
+\end{equation}
+since $p^{(0)}(x,t)$ saturates the boundary conditions for $p^c(x,t)$, stated on p.~\pageref{burgers-boundary}.
+
+The vanishing boundary conditions (\ref{vbc}) suggest that $\delta p^c(x,t)$ can be taken as a perturbation field. Accordingly, the instanton velocity field can be expanded as a functional Taylor series,
+\begin{equation}
+u^c(x,t) = u^{(0)}(x,t) + \sum_{n=1}^\infty \int \left [ \prod_{i=1}^n dx'_i dt'_i \delta p^c(x_i',t_i') \right ] F_n(x,t, \{x',t'\}_n )  \ , \ \label{uc_full}
+\end{equation}
+where
+\begin{equation}
+\{x',t'\}_n \equiv \{ x_1',x_2',...,x_n', t_1', t_2',...,t_n' \}
+\end{equation}
+and the many variable kernel $F_n(x,t, \{x',t'\}_n )$ is a functional of $p^{(0)}(x,t)$. Note that $u^{(0)}(x,t)$ is independent
+(in the functional sense) of $\delta p^c(x,t)$. An infinite hierarchy of equations is obtained for $F_n(x,t, \{x',t'\}_n )$, when (\ref{pc_full}) and (\ref{uc_full})
+are substituted into the saddle-point Eqs. (\ref{sp1}) and (\ref{sp2}). In general, $\partial_t F_n(x,t, \{x',t'\}_n )$ will depend in a nonlinear way on the set of $F_m$ and its derivatives, with $m \leq n$.
+
+Interestingly, a closed analytical solution for $u^{(0)}(x,t)$ can be obtained, as
+\begin{equation}
+\tilde u^{(0)}(k,t) = \lambda^c \tilde F_0^{(1)} (k,t) + (\lambda^c)^2 \tilde F_0^{(2)} (k,t) \ , \ \label{u0}
+\end{equation}
+where $\lambda^c \tilde F_0^{(1)}(k,t)$ is exactly the same as (\ref{fuc}),
+and
+\begin{equation} \begin{split}
+\tilde F_0^{(2)} (k,t) &= \frac{i k}{32} \sqrt{\frac{3 \pi k^2}{4}} \exp \left [ k^2 \left ( |t| + \frac{1}{2} \right ) \right ] \Gamma \left (-\frac{1}{2}, \frac{3 k^2}{2} \left ( |t|+ \frac{1}{2} \right ) \right )
+\\ &-\frac{i k^3}{32} \sqrt{\frac{\pi}{3 k^2}} \exp \left [ k^2 \left ( |t| + \frac{1}{2} \right ) \right ] \Gamma \left (\frac{1}{2}, \frac{3 k^2}{2} \left ( |t|+ \frac{1}{2} \right ) \right ) \ ,
+\label{F02}
+\end{split} \end{equation}
+a result expressed in terms of the incomplete Gamma function, $\Gamma(x,y) = \int_y^\infty t^{x-1} \exp(-t) dt$.
+From Eq. (\ref{u0}) (using, again, $\lambda^c \equiv -i \lambda$), the velocity gradient at $(x,t)=(0,0)$ can be
+computed, in the approximation where $u^c(x,t) = u^{(0)}(x,t)$, as
+\begin{equation} \begin{split}
+\xi \equiv \partial_x u^c(x,0)|_{x=0} &= \frac{i}{2 \pi}  \int dk \ k \ \tilde u^{(0)} (k,0) \\
+&=\frac{\lambda}{2} + \frac{3 -2\sqrt{3}}{24} \lambda^2 \ .
+\end{split} \end{equation}
+which, upon inversion, leads to
+\begin{equation}
+\lambda = 2 \frac{\sqrt{3}  - \sqrt{3 + 2(3 - 2 \sqrt{3}) \xi }}{2-\sqrt{3}} \ . \ \label{lambda-xi}
+\end{equation}
+In order to see how accurate is Eq. (\ref{lambda-xi}), the numerical instantons from Eqs. (\ref{sp1}-\ref{sp3}), along the lines of the Chernykh-Stepanov procedure, were computed. The solution was implemented through the pseudo-spectral method for a system with size $200$ (recall that $L=1$), and $2^{10}$ Fourier modes. The time evolution is realized through a second order Adams-Bashfort scheme with time step $\delta t = 10/2048 \simeq 5 \times 10^{-3}$ and total integration time $T = 200$. Since instantons evolve within the typical integral time scale $T_0 \sim 1/|\lambda|$, we have investigated the range $0.5 \leq |\lambda| \leq 20.0$, such that $ \delta t \ll T_0 \ll T$.
+
+In Fig. \ref{lambda_fig}, relation (\ref{lambda-xi}) is compared to a result obtained from the numerical instantons.  Following the Chernykh-Stepanov method, $\lambda$ is defined as an external parameter, and the velocity gradient $\xi$ is calculated as derivative of the numerical velocity field obtained after convergence. It can be seen that the predicted relation is reasonably accurate. What is more, the relation between $\lambda$ and $\xi$ is biunivocal in this range, which validates the last step of the Chernykh-Stepanov method, in which Eq.~\eqref{sp3} is solved \textit{a posteriori}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.7\textwidth]{lambda.pdf}
+\caption
+[The Lagrange multiplier $\lambda$ is given as a function of the velocity gradient $\xi$]
+{The Lagrange multiplier $\lambda$ is given as a function of the velocity gradient $\xi$. Open circles represent values obtained from the numerical solutions of Eqs. (\ref{sp1}-\ref{sp3}) (the black solid line is just a polynomial interpolation of the numerical data); red solid line: approximated instanton relation, Eq. (\ref{lambda-xi}); dashed line: $\lambda = 2 \xi$, which holds for asymptotically small velocity gradients.
+}
+\label{lambda_fig}
+\end{figure}
+
+\subsection{The Surrogate Saddle-Point Action}
+
+The approximate instantons given by Eqs.~(\ref{fpc}) and (\ref{u0}) are useful for the evaluation of $I_1 [p^c,u^c]$ and $I_2 [p^c]$ up to lowest non-trivial order in the functional perturbative expansion around $p^{(0)}(x,t)$. Nevertheless, they are unable to provide the observed dependence of the MSRJD action $S_c(\xi)$ with the velocity gradient $\xi$. In fact, $p^{(0)}(x,t)$ is proportional to $\lambda$, leading, from (\ref{sp_action}), to $S_c(\xi) = \lambda^2/4$, a result that is not supported by the numerical PDFs \textcite{grafke2015relevance}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.7\textwidth]{saddle_point_action.pdf}
+    \caption
+    [Comparison between the surrogate saddle-point action and a fitting function]
+    {Comparison between the surrogate saddle-point action, as prescribed by \textcite{grafke2015relevance} for the case of noise strength parameter $g=1.7$ (black solid line), and a four-parameter fitting function (red line) which provides distinct power law asymptotics for domains of small and large velocity gradients.}
+    \label{surrogate_action}
+\end{figure}
+
+Taking advantage of the results reported in \textcite{grafke2015relevance} for the case of noise strength parameter $g=1.7$, a flow regime close to the onset of intermittency, we set $\kappa(g) = (0.92)^2$ and write down the surrogate saddle-point action (\ref{s_Sc}) as
+\begin{equation}
+S_{sc}(\xi) \simeq - (0.92 \times 1.7)^2 \ln \left [ \frac{\rho_{1.7}(\xi)}{\rho_{1.7}(0)} \right ] \ . \ \label{s_sc2}
+\end{equation}
+To obtain the surrogate action and a set of velocity gradient PDFs for several values of $g$, direct numerical simulations were performed. They were used to check (\ref{vgpdf2}) in the approximation given by (\ref{c-expansion}).
+
+The stochastic Burgers equation is solved with a fully dealiased pseudo-spectral method in $N=2048$ collocation points by employing a $2^\text{nd}$ order predictor-corrector time evolution scheme \parencite{canuto2012spectral,kloeden2013}. As in the numerical solution of the instanton fields, the domain size is taken to be $200L$. Velocity gradients are saved every 30 time steps after a suitable transient time, after which the total simulation time is $T \approx 1.2\times 10^7$.
+
+A useful and accurate fitting of the surrogate saddle-point action (\ref{s_sc2}) can be defined as
+\begin{equation} \label{interpol}
+S_{sc}(\xi) = \frac{\lambda^2}{4} \exp \left ( \frac{\lambda}{a} \right ) + b|\xi|^c \left [1 - \exp \left ( \frac{\xi}{d} \right  ) \right ] \ , \
+\end{equation}
+where $\lambda$ is given by (\ref{lambda-xi}), and $a=2.046$, $b=2.407$, $c=1.132$, and $d=2.195$ are optimal fitting parameters. This result is shown in Fig. \ref{surrogate_action}.
+
+The interpolation (\ref{interpol}) is actually consistent with the behavior of the local stretching exponent for the saddle-point action. This exponent is defined as
+\begin{equation}
+    \theta(\xi) = \frac{d \ln S(\xi)}{d \ln |\xi|} \ ,
+\end{equation}
+and has been used to numerically verify the $3/2$ exponent in the asymptotic expression \eqref{eq:left-asymp}.
+At small velocity gradients, the PDF can be approximated by a Gaussian, for which $\theta(\xi) = 2$, whereas at large velocity gradients the exponent transitions to $\theta(\xi) \simeq 1.16$. The expected value, on the basis of the instanton analysis \parencite{balkovsky1997} would be $1.5$, but high resolution numerical simulations have been unable, to this date, to observe this value. Instead, the value $1.16$ has been reported, with hints that even larger fluctuations would have to be investigated to reach the instanton scaling \parencite{gotoh1998,grafke2015relevance}. The main benefit of using (\ref{interpol}) instead of the raw surrogate saddle-point action derived from $\rho_{1.7}(\xi)$ is that it yields a smooth interpolation of data, circumventing error fluctuations that grow at larger values of $|\xi|$.
+
+\subsection{Evaluation of $I_1 [p^c,u^c]$ and $I_2 [p^c]$}
+
+Since $I_1 [p^c,u^c]$ is a linear functional of $u^c(x,t)$, it can be written that, from (\ref{pc_full}) and (\ref{u0}):
+\begin{equation} \begin{split} \label{I1I2dp}
+I_1 [p^c,u^c] + I_2 [p^c] &= I_1 [p^{(0)},\lambda^c F_0^{(1)}] + \\
+&+ I_1 [p^{(0)}, (\lambda^c)^2 F_0^{(2)}] + I_2 [p^{(0)}] + \mathcal{O}[\delta p^c] \ . \
+\end{split} \end{equation}
+In order to evaluate the first three terms on the RHS of (\ref{I1I2dp}), it is interesting, for the sake of fast numerical convergence,
+to write the two-point correlation functions (\ref{Gpu}) and (\ref{Guu}) in Fourier space, viz.,
+\begin{subequations}
+\begin{align}
+\tilde G_{pu} (k,t,t') &= \int d x \ G_{pu}(x,0,t,t') \exp(-ikx) \nonumber \\ &= -i g^2 \exp \left [ - (t' -t)k^2 \right ] \Theta(t'-t) \ , \ \label{fGpu} \\
+\tilde G_{uu} (k,t,t') &= \int d x \ G_{uu}(x,0,t,t') \exp(-ikx) \nonumber \\ &= g^2 \sqrt{\frac{\pi}{2}} \exp \left
+[ - \left (|t' -t| + \frac{1}{2} \right ) k^2 \right ] \ . \ \label{fGuu}
+\end{align}
+\end{subequations}
+We have, from (\ref{I1}), (\ref{I2}), (\ref{fGpu}), and (\ref{fGuu}),
+\begin{subequations}
+\begin{align}
+I_1[p^{(0)},\lambda^c F_0^{(1)}]  &= \frac{\lambda^c }{2 \pi^2} \int_{t,t'<0} dt dt' \int dk dk' ~  k(k+k') \tilde p^{(0)}(k,t) \times \nonumber \\ &\times \tilde F_0^{(1)} (-k,t') \tilde G_{uu} (k',t,t')   \tilde G_{pu}(k + k',t',t) \nonumber \\
+&= \frac{\lambda^2 g^4}{8 \pi} \int dk dk' ~  \frac{k(k+k')}{k^2+k'^2+(k+k')^2}  \exp \left [ -\frac{1}{2} \left (k^2+k'^2 \right ) \right ]  \ , \ \label{I1n}
+\\
+I_2[p^{(0)}] &= - \frac{1}{2(2 \pi)^2} \int_{t,t'<0} dt dt' \int dk dk' \ k^2 \nonumber \times \\ &\times \tilde p^{(0)}(k,t) \tilde p^{(0)}(-k,t') \tilde G_{uu} (k',t,t')  \tilde G_{uu}(k + k',t,t') \nonumber \\
+&= -\frac{\lambda^2 g^4}{16 \pi} \int dk dk' \frac{k^2}{k^2+k'^2+(k+k')^2} \exp \left [ -\frac{1}{2} \left (k'^2 + (k+k')^2 \right ) \right ] \ , \ \label{I2n}
+\end{align}
+\end{subequations}
+implying that
+\begin{equation}
+I_1[p^{(0)}, \lambda^c F_0^{(1)}] = - I_2[p^{(0)}] = (3-\sqrt{3}) \lambda^2 g^4/24
+\end{equation}
+and, according to (\ref{I1I2dp}),
+\begin{equation}
+I_1 [p^c,u^c] + I_2 [p^c] = I_1 [p^{(0)},(\lambda^c)^2 F_0^{(2)}]  + \mathcal{O}[\delta p^c] \ . \ \label{I1dp}
+\end{equation}
+A straightforward numerical evaluation returns,
+\begin{equation}
+I_1 [p^{(0)},(\lambda^c)^2 F_0^{(2)}] \simeq 1.6 \times 10^{-3} \lambda^3 g^4 \ . \
+\end{equation}
+Eqs. (\ref{vgpdf2}), (\ref{c-expansion}), (\ref{S1squared}), and (\ref{I1dp}) provide all the ingredients needed for a perturbative analytical expression for the velocity gradient PDF:
+\begin{equation}
+\rho_g(\xi) = C(g) \exp \left [- \frac{1}{g^2} S_{sc}(\xi) + \frac{1}{2g^4} I_1 [p^{(0)}, (\lambda^c)^2 F_0^{(2)}] \right ] \ , \ \label{rho_complete}
+\end{equation}
+where $C(g)$ is a normalization constant that cannot be determined from the instanton approach, since it depends on the detailed shape of the vgPDF for $- \infty < \xi < \infty$, while (\ref{rho_complete}) refers, in principle, to negative velocity gradients which are some standard deviations away from the mean. The relevance of the saddle-point computational strategy (including fluctuations), however, can be assessed from adjustments of $C(g)$ that produce the best matches between the predicted PDFs, Eq. (\ref{rho_complete}), and the empirical ones, obtained from the direct numerical simulations of the stochastic Burgers equation. These numerical fits are carried out in the velocity gradient range $-5g \leq \xi \leq -3g$.
+%\begin{equation} \begin{split}
+%&\lambda = 1.942 \xi  + 1.135 \times 10^{-1} \xi^2 + \nonumber \\
+%&+ 5.707 \times 10^{-3} \xi^3 + 1.115 \times 10^{-4} \xi^4 \ . \
+%\end{split} \end{equation}
+
+\begin{figure}[t]
+    \centering
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[trim=20 400 120 0,clip,width=\textwidth]{pdfs.pdf} % first figure itself
+    \end{minipage}\hfill
+    \begin{minipage}{0.5\textwidth}
+        \centering
+        \includegraphics[trim=20 10 120 370,clip,width=\textwidth]{pdfs.pdf} % second figure itself
+    \end{minipage}
+    \caption
+    [Modeled and empirical velocity gradient PDFs are compared for several values of noise strength]
+    {Modeled (red lines) and empirical (black lines) vgPDFs are compared for noise strengths $g=1.0, 1.2, 1.5, 1.7, 1.8, 1.9$, and $2.0$. They have been shifted along the vertical axis to ease visualization, and their associated values of $g$ grow from the bottom to the top in each one of the PDF sets. Figures (a) and (b) give the modeled vgPDFs that include and neglect, respectively, the effects of fluctuations around instantons.}
+    \label{vgPDFs}
+\end{figure}
+
+Comparisons between the predicted and empirical PDFs are shown in Fig. \ref{vgPDFs}, for $g=1.0$, $1.2$, $1.5$, $1.7$, $1.8$, $1.9$, and $2.0$, with and without the fluctuation correction term proportional to $I_1 [p^{(0)},(\lambda^c)^2 F_0^{(2)}]$, as it appears in (\ref{rho_complete}).
+It can be observed in the figure that the surrogate saddle-point action is in fact a very good approximation to the exact one, by inspecting the PDF for $g=1.0$, when the cumulant contribution is almost negligible. As $g$ grows, the relative cumulant contributions grow as well, and become essential for an accurate modeling of velocity gradient PDF tails. For $g=1.7$, as an example, there is an evident intermittent left tail, with an excellent agreement between modeled and empirical PDFs that extends for about four decades.
+
+As it can be seen from Fig. \ref{vgPDFs}, as $g$ grows, the velocity gradient regions where the agreement between the predicted and the empirical vgPDFs is reasonably good shrink in size. This is, of course, expected under general lines, since the cumulant expansion is a perturbative method supposed to break down when the amplitude of saddle-point configurations become large enough, which in our particular case takes place for large negative velocity gradients.
+
+\subsection{Perturbative Domain}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\textwidth]{range_h.pdf}
+    \caption
+    [The intensity of fluctuations defines the range where the perturbative cumulant expansion is assumed to work]
+    {Solid lines, labeled by values of $g$, represent relative corrections to the MSRJD surrogate saddle-point action due to fluctuations around instantons. The intersection points of each one of the solid lines with the vertical and horizontal dashed lines define the range of normalized velocity gradients $\xi/g$ where the perturbative cumulant expansion is assumed to work (highlighted region in the plot).} \label{pert_domain}
+\end{figure}
+
+An analysis of the results in Fig.~\ref{vgPDFs} reveals that a fine matching between the predicted and the empirical vgPDFs holds for $|\xi| > 2g$, but starts to lose accuracy when velocity gradients are such that the second order cumulant expansion contributions, $(I_1[p^c,u^c]+I_2[p^c])/2g^4$, are of the order of $20 \%$ (in absolute value) of the dominant saddle-point contributions, $S_{sc}(\xi)/g^2$. In Fig.~\ref{pert_domain}, the ratio between these two quantities is depicted with its dependence on the velocity gradient $\xi$, for the several investigated values of the noise strength parameter $g$, up to $g=2.0$. It can be estimated in this way, then, that $g \simeq 2.7$ is an upper bound for the usefulness of the cumulant expansion method.
+
+\section{Discussion}
+
+The instanton approach to Burgers intermittency was introduced in \textcite{gurarie1996,balkovsky1997} to describe asymptotically large fluctuations, in this case, of the velocity gradient. The representation of its preasymptotic features, though, has remained obscured.
+
+Previous results in the context of Lagrangian turbulence (\textcite{moriconi2014} and \textcite{apolinario2019instantons}, discussed in Chap.~\ref{chap:rfd}), have indicated that non-Gaussian fluctuations can be perturbatively investigated at the onset of intermittency by means of the cumulant expansion technique. The main lesson taken from these studies is that at the onset of intermittency, the MSRJD saddle-point action reaps a renormalization of its noise and heat kernels, as a dynamical effect of fluctuations around instantons.
+In this way, accurate comparisons between analytical and empirical velocity gradient PDFs have been achieved.
+
+In this work, reported in \textcite{apolinario2019onset}, a similar approach has been applied to the stochastic Burgers hydrodynamics in order to predict the left tails of its velocity gradient PDF at the onset of intermittency. The results in Fig.~\ref{vgPDFs} show that an account of fluctuations around instantons is necessary to render the instanton approach a meaningful tool for the modeling of Burgers intermittency.
+
+\end{chapter}
