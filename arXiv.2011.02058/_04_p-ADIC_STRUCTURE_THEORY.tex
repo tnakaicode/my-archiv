@@ -1,0 +1,970 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{4}.\quad  p-ADIC STRUCTURE THEORY}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Fix a prime $p$ and recall that 
+$\Q_p$
+\index{$\Q_p$}
+is the completion of $\Q$ per the $p$-adic absolute value 
+$\acdot_{p}$.\\
+%\linebreak
+
+\begin{x}{\small\bf NOTATION} \  
+Let
+\[
+\sA= \{0,1, ..., p-1\}.
+\]
+\index{$\sA$}
+\end{x}
+\vspace{0.1cm}
+			
+\begin{x}{\small\bf SCHOLIUM}  \ 
+Structurally, $\Q_{p}$ is the set of all Laurent series in $p$ with coefficients in $\sA$ subject to the restriction that only finitely many of the negative powers of $p$ occur, thus generically a typical element x $\neq$ 0 of $\Q_{p} $ has the form 
+\[
+x =  \sum_{n=N}^\infty a_{n} p^n   \quad (a_{n}  \in \sA , \ N \in  \Z).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}}  \  
+It follows from this that $\Q_{p}$ is uncountable, so $\Q$ is not complete per $\acdot_{p}$.\\
+\end{x}
+\vspace{0.1cm}
+
+\indent The exact formulation of the algebraic rules (i.e., addition, multiplication, inversion) is elementary (but technically a bit of a mess) and will play no role in the sequel, hence can be omitted.\\
+
+
+\begin{x}{\small\bf LEMMA} \ 
+Every positive integer $N$ admits a base $p$ expansion:
+\[
+N =  a_{0} + a_{1} p + ... + a_{n} p^n, 	 
+\]
+where the $a_{n}  \in \sA$.
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ 
+\[
+1= 1 +  0p  + 0p^2 + \dots \ .
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ 
+Take $p = 3$ $-$then
+\[\left\{
+\begin{array}{l l}
+24 = 0 +  2 \times 3 + 2 \times 3^2 = 2p + 2p^2\\
+17 = 2 + 2 \times 3 + 1 \times 3^2 = 2 + 2p + p^2
+\end{array}
+\right.\]
+
+\indent\indent $\implies$	
+\[
+\ds\frac{24}{17}  = \ds\frac{2p + 2p^2}{2 + 2p + p^2} = p + p^3 + 2p^5 + p^7 + p^8 + 2p^9 + \dots \ .
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ 
+\[
+			-1= (p-1) + (p-1)p + (p-1)p^2 + \dots \ .
+\]
+\indent PROOF \ 
+\[
+\begin{aligned}
+1 + &(p-1) + (p-1)p + (p-1)p^2 + (p-1)p^3 + ...\\
+&= \ p + (p-1)p + (p-1)p^2 + (p-1)p^3 + ... \\
+&= \ p^2 + (p-1)p^2 + (p-1)p^3 + ... \\
+&= \ p^3 + (p-1)p^3 + ... \\
+&= \ 0.
+\end{aligned}
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ 
+\[
+\begin{aligned}
+-N &= (-1) \cdot N \\
+&= \ \bigl(\sum_{i=0}^\infty (p-1) p^i \bigr) (a_0 + a_1p + ... + a_np^n) \\
+&= \ ...
+\end{aligned}
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \  %9
+A $p$-adic series
+\[
+\sum_{n=0}^\infty x_n  	 \quad (x_{n}  \in \Q_{p}) 
+\]
+is convergent iff 
+$\abs{x_n}_{p} \ra 0  \quad (n  \ra  \infty)$.\\ 
+%\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------03
+
+\indent PROOF \ 
+The usual argument establishes necessity.
+So suppose that $\abs{x_n}_p  \ra  0$  $(n  \ra  \infty)$.  
+Given $K  >  0$, $\exists \  N$:
+\[
+n > N \implies \abs{x_n}_{p} < p^{-K}.
+\]
+Let
+\[
+s_n = \sum_{k=1}^n x_k.
+\]
+Then
+\[
+\begin{aligned}
+m > n > N 
+&\implies \abs{s_m - s_n}_{p} = \abs{x_{n+1} + \dots + x_m}_{p}\\
+&\le \  \sup(\abs{x_{n+1}}_{p}, \dots, \abs{x_m}_{p})\\
+&<  \ p^{-K}.
+\end{aligned}
+\]
+Therefore the sequence $\{s_n\}$ of partial sums is Cauchy, thus is convergent $(\Q_{p}$ being complete).\\
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+The p-adic series
+\[
+\sum_{i=0}^\infty p^i
+\]
+is convergent (to $\ds\frac{1}{1-p})$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ % 11
+The $p$-adic series
+\[
+\sum_{n=0}^\infty n!
+\]
+is convergent.
+
+\vspace{0.2cm}
+
+[Note that 
+\[
+\abs{n!}_p = p^{-N},
+\]
+%%----------------------------------------------------------------------------------------------04
+where
+\[
+N = [n/p] + [n/p^2] + \dots \ .]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %12
+The $p$-adic series
+\[
+\sum_{n=0}^\infty n \cdot n!
+\]
+is convergent (to $-1$).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %13
+$\Q_p$ is a topological field (cf. $\S\ 2, \  \#5$).
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %14
+$\Q_p$ is 0-dimensional, hence is totally disconnected.\\
+
+\indent PROOF \  
+A basic neighborhood $N_r(x)$ is open (by definition) and closed (cf. $\S2, \  \#6$).
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %15
+%\[
+%\begin{aligned} 
+\begin{align*} 
+&\text{\textbullet} \quad \Z_p = \{x \in \Q_p:\abs{x}_p \le 1\} \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad 
+\index{$\Z_p$}\\
+&\text{\textbullet} \quad p\Z_p = \{x \in \Q_p:\abs{x}_p < 1\} 
+\index{$p\Z_p$}\\
+&\text{\textbullet} \quad \Z_p^\times = \{x \in \Z_p:\abs{x}_p = 1\} 
+\index{$\Z_p^\times$}
+%\end{aligned} 
+\end{align*} 
+%\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %16
+$\Z_p$ is a commutative ring with unit $($the ring of 
+\underline{$p$-adic integers}, 
+\index{$p$-adic integers})
+in fact $\Z_p$ is an integral domain.\\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %17
+$p\Z_p$ is an ideal in $\Z_p$, in fact $p\Z_p$ is a maximal ideal in $\Z_p$, in fact $p\Z_p$ is the unique maximal ideal in $\Z_p$, hence $\Z_p$ is a local ring.\\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %18
+$\Z_p^\times$ is a group under multiplication, in fact $\Z_p^\times$ is the set of 
+%%----------------------------------------------------------------------------------------------05
+\underline{$p$-adic units}
+\index{$p$-adic units} 
+in  $\Z_p$, i.e., the set of elements in $\Z_p$ that have a multiplicative inverse in $\Z_p$.\\
+\end{x}
+
+\vspace{0.1cm}
+
+Obviously, 
+\[
+\Z_p = \Z_p^\times \amalg (\Z_p - \Z_p^\times)
+\]
+or still, 
+\[
+\Z_p = \Z_p^\times \amalg p\Z_p.
+\]
+\begin{x}{\small\bf LEMMA} \ %19
+\[
+\Z_p = \bigcup\limits_{0 \le k \le p-1} (k + p\Z_p).
+\]
+
+\indent PROOF \   
+Let $x \in \Z_p$.  Matters being clear if $\abs{x}_p < 1$, (since in this case $x \in p\Z_p$), suppose that $\abs{x}_p = 1$.  Chose $q = \ds\frac{a}{b} \in \Q: \abs{q - x}_p < 1$, where $(a,b) = 1$ and 
+$
+\begin{cases}
+(a,p) = 1\\
+(b,p) = 1
+\end{cases}
+$
+$-$then
+\[
+x + p\Z_p = q + p\Z_p.
+\]
+Choose $k$ with $ 0 < k \le p-1$ such that  $p$ divides $a - kb$, thus $\abs{a - kb}_p < 1$ and, moreover, 
+$\abs{\ds\frac{a - kb}{b}}_p < 1$.  Therefore
+\[
+\begin{aligned}
+\abs{k - \ds\frac{a}{b}}_p < 1 
+&\implies k + p\Z_p = q + p\Z_p = x + p\Z_p \\
+&\implies x \in k + p\Z_p.
+\end{aligned}
+\]
+
+Consider a $p$-adic series
+\[
+\sum_{n=0}^\infty a_np^n		\qquad (a_n \in \sA).
+\]
+Then
+%%----------------------------------------------------------------------------------------------06
+\[
+\begin{aligned}
+\abs{\sum_{n=0}^\infty a_n p^n}_p 
+&\le \ \sup_n \abs{a_np^n}_p \\
+&\le \ \sup_n \abs{p^n}_p \\
+&\le \ 1,
+\end{aligned}
+\]
+so it converges to an element $x$ of $\Z_p $.  Conversely:
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf THEOREM} \ %20
+Every $x \in \Z_p$ admits a unique representation
+\[
+x = \sum_{n=0}^\infty a_np^n		\qquad \text{$a_n \in \sA$}.
+\]
+
+\indent PROOF \   
+Let $x \in \Z_p$ be given.  
+Choose uniquely $a_0 \in \sA$ such that $\abs{x - a_0}_p < 1$, hence $x = a_0 + px_1$ for some $x_1 \in \Z_p$.  
+Choose uniquely $a_1 \in \sA $ such that $\abs{x_1 - a_1}_p < 1$, hence $x_1 = a_1 + p x_2$ for some $x_2 \in \Z_p$.  Continuing: $\forall$ $N$,
+\[
+x = a_0 + a_1p + \dots + a_Np^N + x_{N+1}p^{N+1},
+\]
+where $a_n \in \sA$ and $x_{N+1} \in \Z_p$.  But
+\[
+x_{N+1}p^{N+1} \ra 0.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %21
+$\Z$ is dense in $\Z_p$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %22
+Let $x \in \Z_p -$then $\forall$ n $\in \N,$
+\[
+\binom{x}{n} = \frac{x(x-1) \dots (x-n+1)}{n!} \in \Z_p.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %23
+\[
+\Z_p^\times = \bigcup\limits_{1 \le k \le p-1} 	(k + p\Z_p).
+\]
+\end{x}
+\vspace{0.1cm}
+
+Consequently, if
+\[
+x = \sum_{n=0}^\infty a_np^n		\qquad \text{($a_n \in\sA$)}
+\]
+and if $x \in \Z_p^\times$, then $a_0 \ne 0$.\\
+\vspace{0.1cm}
+\indent [In fact, there is a unique $k$ $(1 \le k \le p-1)$ such that $x \in k + p\Z_p$ and this "k" is $a_0.]$\\
+%%----------------------------------------------------------------------------------------------07
+
+\begin{x}{\small\bf THEOREM} \ %24
+An element
+\[
+x = \sum_{n=0}^\infty a_np^n		\qquad (a_n \in\sA)
+\]
+in $\Z_p$ is a unit iff $a_0 \ne 0$.\\
+%\vspace{0.1cm}
+
+\indent PROOF \  
+To establish the characterization, construct a multiplicative inverse $y$ for $x$ as follows.  
+First choose uniquely $b_0$  $(1 \le b_0 \le p-1)$ such that $a_0 b_0 \equiv 1 \mod p$.  
+Proceed from here by recursion and assume that $b_1, \dots, b_M$ between 0 and $p-1$ have already been found subject to
+\[
+x\bigl(\sum_{0 \le m \le M} b_mp^m\bigr) \equiv 1 \mod p^{M+1}.
+\]
+Then there is exactly one $0 \le b_{M+1} \le p-1$ such that
+\[
+x \bigl(\sum_{0 \le m \le M+1} b_mp^m\bigr) \equiv 1 \mod p^{M+2}.
+\]
+Now put $y = \sum\limits_{m=0}^\infty b_mp^m$, thus $x y = 1$.\\
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %25
+$1 - p$ is invertible in $\Z_p$ but $p$ is not invertible in $\Z_p$.\\
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %26
+The arrow
+\[
+\epsilon: \Z_p \ra \Z / p\Z
+\]
+that sends
+\[
+x = \sum_{n=0}^\infty a_np^n		\qquad \text{($a_n \in\sA$)}
+\]
+to $a_0 \ \modx p$ is a homomorphism of rings called 
+\underline{reduction mod $p$}\index{reduction mod $p$}.  
+It is surjective with kernel $p\Z_p$, hence $[\Z_p:p\Z_p] = p$.\\
+
+Consider now the topological aspects of $\Z_p$:\\
+\indent\textbullet \quad $\Z_p$ is totally disconnected.\\
+\indent\textbullet \quad $\Z_p$ is closed, hence complete.\\
+\indent\textbullet \quad $\Z_p$ is open.\\
+
+%\begin{itemize}
+%\item $\Z_p$ is totally disconnected.
+%\item $\Z_p$ is closed, hence complete.
+%\item $\Z_p$ is open.
+%\end{itemize}
+\indent [As regards the last point, observe that
+\[
+\Z_p = \{x \in \Q_p: \abs{x}_p < r\} \equiv N_r(0) 	\qquad (1 < r < p).]
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %27
+$\Z_p$ is compact.\\
+
+\indent PROOF \  
+Since $\Z_p$ is a metric space, it suffices to show that $\Z_p$ is sequentially compact.  So let $x_1, x_2, \dots $ be an infinite sequence in $\Z_p$.  Choose $a_0 \in \sA$ such that $a_0 + p\Z_p$ contains infinitely many of the $x_n$.  Write
+%%----------------------------------------------------------------------------------------------09
+\[
+\begin{aligned}
+a_0 + p\Z_p  \ 
+&= \ a_0 + p( \bigcup\limits_{a \in \sA} (a + p\Z_p))\\
+&= \ a_0 +  \bigcup\limits_{a \in \sA} (ap + p^2\Z_p)\\
+&= \ \bigcup\limits_{a \in \sA} (a_0 + ap + p^2\Z_p).
+\end{aligned}
+\]
+Choose $a_1 \in \sA$ such that $a_0 + a_1p + p^2\Z_p$ contains infinitely many of the $x_n$.  Etc.  
+The construction thus produces a descending sequence of cosets of the form
+\[
+A_j + p^j\Z_p,
+\] 
+each of which contains infinitely many of the $x_n$.  But
+\[
+\begin{aligned}
+A_j + p^j\Z_p \  
+&= \  \{x \in \Z_p: \abs{x - A_j}_p \le p^{-j}\}\\
+&\equiv \  B_{p^{-j}}(A_j),
+\end{aligned}
+\]
+a closed ball in the p-adic metric of radius $p^{-j} \ra 0$ $(j \ra \infty)$, hence by the completeness of $\Z_p$,
+\[
+\bigcap\limits_{j=1}^\infty B_{p^{-j}}(A_j) = \{A\}.
+\]
+Finally choose
+\[
+x_{n_1} \in B_{p^{-1}}(A_1),  \ x_{n_2} \in B_{p^{-2}}(A_2), \dots \ .
+\]
+Then
+\[
+\lim_{j \ra \infty} x_{n_j} = A.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %28
+$\Q_p$ is locally compact.\\
+%%----------------------------------------------------------------------------------------------10
+
+\indent [Since $\Q_p$ is Hausdorff, it is enough to prove that each $x \in \Q_p$ has a compact neighborhood.  But $\Z_p$ is a compact neighborhood of 0, so $x + \Z_p$ is a compact neighborhood of x.$]$
+\end{x}
+\vspace{0.1cm}
+
+\indent The set $p^{-n}\Z_p$ $(n \ge 0)$ is the set of all $x \in \Q_p$ such that $\abs{x}_p \le p^n$.  
+Therefore
+\[
+\Q_p = \bigcup\limits_{n=0}^\infty  p^{-n}\Z_p.
+\]
+Accordingly, $\Q_p$ is $\sigma$-compact (the $p^{-n}\Z_p$ being compact).\\
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %29
+A subset of $\Q_p$  is compact off it is closed and bounded.\\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %30
+Given $n,m \in \Z$,
+\[
+p^n\Z_p \subset p^m\Z_p \Leftrightarrow m \le n.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %31
+Take $ n\ge 1$ $-$then the $p^n\Z_p$ are principal ideals in $\Z_p$ and, apart from $\{0\}$, these are the only ideals in $\Z_p$, thus $\Z_p$ is a principal ideal domain.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %32
+For every $x_0 \in \Q_p$ and $r > 0$, there is an integer $n$ such that 
+\[
+\begin{aligned}
+N_r(x_0) \ 
+&= \{x \in \Q_p: \abs{x - x_0}_p < r\}\\
+&= \ N_{p-n}(x_0) \\
+&= \ \{x \in \Q_p: \abs{x - x_0}_p < p^{-n}\}\\
+&= \ x_0 + p^{n+1}\Z_p
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %33
+The basic open sets in  $\Q_p$  are the cosets of some power of $p\Z_p$.\\
+%%----------------------------------------------------------------------------------------------11
+
+\indent [Note: It is a corollary that every nonempty open subset of $\Q_p$ can be written as a disjoint union of cosets of the $p^n\Z_p$ $(n \in \Z).]$ \\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %34
+\[
+p^n\Z_p^\times = p^n\Z_p - p^{n+1}\Z_p.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %35
+The $p^n\Z_p^\times$ are called 
+\un{shells}\index{shells}.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %36
+There is a disjoint decomposition
+\[
+\Q_p^\times = \bigcup\limits_{n \in \Z} p^n \Z_p^\times,
+\]
+where
+\[
+p^n\Z_p^\times = \bigcup\limits_{1 \le k \le p-1}(p^nk + p^{n+1}\Z_p).
+\]
+
+[Note: \   
+For the record, $\Q_p^\times$ is totally disconnected and, being open in $\Q_p$, is Hausdorff and locally compact.  
+Moreover, $\Z_p^\times$ is open-closed (indeed, open-compact).]\\
+
+Let $x \in \Q_p^\times -$then there is a unique $v(x) \in \Z$  and a unique $u(x) \in \Z_p^\times$ 
+such that $x = p^{v(x)}u(x)$.  
+Consequently, 
+\[
+\Q_p^\times \approx \langle p \rangle \times \Z_p^\times
+\] 
+or still, 
+\[
+\Q_p^\times \approx \Z \times \Z_p^\times.
+\] 
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %37
+For $ n = 1, 2, \dots$, put
+\[
+U_{p,n} = 1 + p^n\Z_p.
+\]
+%%----------------------------------------------------------------------------------------------12
+
+[Note: \ 
+\[
+1 + p^n\Z_p = \{x \in \Z_p^\times: \abs{1 - x}_p \le p^{-n}\}.]
+\]
+
+The $U_{p,n}$ are open-compact subgroups of $\Z_p^\times$ and 
+\[
+\Z_p^\times \supset U_{p,1} \supset U_{p,2} \supset \dots \ .
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %38
+The collection $\{U_{p,n}:n \in \N\}$ is a neighborhood basis at 1.\\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %39
+$U_{p,1} = 1 + p\Z_p$ is called the group of 
+\un{principal units}
+\index{principal units} 
+of $\Z_p$.\\
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %40
+The quotient $\Z_p^\times/U_{p,1}$ is isomorphic to $\F_p^\times$ and the index of $U_{p,1}$ in $\Z_p^\times$ is $p-1$.
+\end{x}
+\vspace{0.1cm}
+
+
+A generator of $\F_p^\times$ can be "lifted" to $\Z_p^\times$.\\
+
+\begin{x}{\small\bf THEOREM} \ %41
+There exists a $\zeta \in \Z_p^\times$ such that $\zeta^{p-1} = 1$ and $\zeta^k \ne 1$ $(0 < k < p-1)$.
+
+[This is a straightforward application of Hensel's lemma.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %42
+$\zeta \notin U_{p,1}$ ($p$ odd).
+
+[If $x\in \Z_p$ and if for some $n \ge 1$,
+\[
+(1 + px)^n = 1,
+\]
+then using the binomial theorem one finds that $x = 0$.  This said, suppose that $\zeta \in U_{p,1}$:
+%%----------------------------------------------------------------------------------------------13
+\[
+\zeta = 1 + pu \ (u \in \Z_p) \implies (1 + pu)^{p-1} = 1 \implies u = 0,
+\]
+a contradiction.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %43
+$\Z_p^\times$ can be written as a disjoint union
+\[
+\Z_p^\times = U_{p,1} \cup \zeta U_{p,1} \cup \zeta^2 U_{p,1} \cup \dots \cup \zeta^{p-2}U_{p,1}.
+\]
+Therefore
+\[
+\Q_p^\times \approx \Z \times \Z_p^\times \approx \Z \times \Z/(p-1)\Z \times U_{p,1}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %44
+Any root of unity in $\Q_p$ lies in $\Z_p^\times$.
+
+PROOF \  
+If $x = p^{v(x)}u(x)$ and if $x^n = 1$, then $n v(x) = 0$, so $v(x) = 0$, thus $x \in \Z_p^\times$.
+\end{x}
+
+\indent The roots of unity in $\Z_p^\times$ are a subgroup (as in any abelian group), call it $T_p$.  
+If, on the other hand, $G_{p-1}$ is the cyclic subgroup of 
+$\Z_p^\times$ generated by $\zeta$, 
+then $G_{p-1}$ consists of  $(p-1)^{st}$ roots of unity, hence $G_{p-1} \subset T_p$.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %45
+If $p \ne 2$, then $G_{p-1} = T_p$ but if $p = 2$, then $T_p = \{\pm 1\}$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %46
+If $p_1$, $p_2$ are distinct primes, then $\Q_{p_1}$ is not field isomorphic to $\Q_{p_2}$.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------14
+
+\begin{x}{\small\bf REMARK} \ %47
+$\Q_p$ is not a field isomorphic to $\R$.
+
+\vspace{0.1cm}
+
+[$\Q_p$ has algebraic extensions of arbitrarily large linear degree which is not the case of $\R$ (cf. $\S5$, $\#26$).]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %48
+Let $x \in \Q_p^\times$ $-$then $x \in \Z_p^\times$ iff $x^{p-1}$ possesses $n^{th}$ roots for infinitely many $n$.
+
+\vspace{0.1cm}
+
+PROOF \   
+If $x \in \Z_p^\times$ and if $n$ is not a multiple of $p$, then one can use Hensel's lemma to infer the existence of a $y_n \in \Z_p$ such that $y_n^n = x^{p-1}$.  Conversely, if $y_n^n = x^{p-1}$, then
+\[
+nv(y_n) = (p-1)v(x),
+\]
+thus $n$ divides $(p-1)v(x)$.  
+But this can happen for infinitely many $n$ only if $v(x) = 0$, implying thereby that $x$ is a unit.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %49
+Let $\phi: \Q_p \ra \Q_p$ be a field automorphism $-$then $\phi$ preserves units.
+
+\vspace{0.1cm}
+
+[In fact, if $x \in  \Z_p^\times$, then
+\[
+y_n^n = x^{p-1} \implies \phi(y_n)^n = (\phi(x))^{p-1}.]
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %50
+The only field automorphism $\phi$ of $\Q_p$ is the identity.
+
+\indent PROOF \  
+Given $x \in \Q_p^\times$, write $x = p^{v(x)}u(x)$, hence
+\[
+\begin{aligned}
+\phi(x)  \ 
+&= \  \phi(p^{v(x)}u(x))\\
+&= \ \phi(p^{v(x)})\phi(u(x)) \\
+&=   p^{v(x)} \phi(u(x)),
+\end{aligned}
+\]
+hence
+\[
+v(\phi(x)) = v(x)			\qquad (\phi(u(x)) \in \Z_p^\times).
+\]
+%%----------------------------------------------------------------------------------------------15
+Therefore $\phi$ is continuous.  
+Since $\Q$ is dense in $\Q_p$, it follows that $\phi = id_{\Q_p}$.
+\end{x}
+\vspace{0.01cm}
+
+[Note: 
+\[
+\begin{aligned}
+x_k \ra 0 
+&\implies \abs{x_k}_p \ra 0 \\
+&\implies p^{-v(x_k)} \ra 0\\
+&\implies p^{-v(\phi(x_k))} \ra 0 \\
+&\implies \abs{\phi(x_k)}_p \ra 0 \\
+&\implies \phi(x_k) \ra 0.]
+\end{aligned}
+\]
+
+\indent The final structural item to be considered is that of quadratic extensions and to this end it is necessary to explicate $(\Q_p^\times)^2$, bearing in mind that
+\[
+\Q_p^\times \approx \Z \times \Z_p^\times \approx \Z \times \Z / (p-1)\Z \times U_{p,1}.
+\]
+\begin{x}{\small\bf LEMMA} \ %51
+If $p \ne 2$, then $U_{p,1}^2 = U_{p,1}$ but if $p = 2$, then $U_{2,1}^2 = U_{2,3}$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %52
+If $p \ne 2$, then
+\[
+(\Q_p^\times)^2 \approx 2\Z \times 2(\Z/(p-1)\Z) \times U_{p,1}
+\]
+but if $p = 2$, then
+\[
+(\Q_p^\times)^2 \approx 2\Z \times U_{2,3}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf THEOREM} \ %53
+If $p \ne 2$, then
+\[
+[\Q_p^\times: (\Q_p^\times)^2] = 4
+\]
+but if $p = 2$, then
+\[
+[\Q_2^\times: (\Q_2^\times)^2] = 8.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %54
+If $p \ne 2$, then
+\[
+\Q_p^\times / (\Q_p^\times)^2 \approx \Z/2\Z \times \Z/2\Z
+\]
+%%----------------------------------------------------------------------------------------------16
+but if $p = 2$, then
+\[
+\Q_2^\times / (\Q_2^\times)^2 \approx \Z/2\Z \times \Z/2\Z \times \Z/2\Z.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CRITERION} \ %55
+Suppose that $p \ne 2$.
+
+\vspace{0.1cm}
+
+\indent\indent \textbullet \quad $p$ is not a square.
+
+[If $p = x^2$, write $x = p^{v(x)}u(x)$ to get 
+\[
+1 = v(p) = v(x^2) = 2v(x),
+\] 
+an untenable relation.]\\
+
+\indent\indent \textbullet \quad $\zeta$ is not a square.
+
+[Assume that $\zeta = x^2 -$then
+\[
+\zeta^{p-1} = 1 \implies x^{2(p-1)} = 1,
+\]
+thus $x$ is a root of unity, thus $x\in T_p$, 
+thus $x \in G_{p-1}$ (cf. $\# 45$), 
+thus $x = \zeta^k$ $(0 < k < p-1)$, 
+thus $\zeta = (\zeta^k)^2 = \zeta^{2k}$, thus $1 = \zeta^{2k-1}$.  
+But
+\[
+2k < 2p - 2 \implies 2k-1 < 2p -1.
+\]
+And
+\[
+\qquad \qquad\qquad
+\begin{cases}
+2k - 1 = p -1 \implies 2k = p \implies \quad \text{$p$ even $\dots$} \\
+2k - 1 = 2p -2 \implies 2k - 1 = 2(p-1) \implies   \quad \text{$2k - 1$ even $\dots \  .]$}
+\end{cases}
+.\]
+
+\vspace{0.1cm}
+
+\indent\indent \textbullet \quad $p\zeta$ is not a square.
+
+\vspace{0.1cm}
+
+[For if $p\zeta = p^{2n}u^2$ $(n \in \Z)$, then
+\[
+\begin{aligned}
+\zeta = p^{2n-1}u^2 
+&\implies 1 = \abs\zeta_p = \abs{p^{2n-1}}_p = p^{1 - 2n} \\
+&\implies 1 - 2n = 0,
+\end{aligned}
+\]
+an untenable relation.]
+\end{x}
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------17
+\begin{x}{\small\bf THEOREM} \ %56
+If $p \ne 2$, then up to isomorphism, $\Q_p$ has three quadratic extensions, viz.
+\[
+\Q_p(\sqrt{p}), \  \Q_p(\sqrt{\zeta}), \  \Q_p(\sqrt{p\zeta})
+\]
+
+[Note: if $\tau_1 = p$, $\tau_2 = \zeta$, $\tau_3 = p\zeta$, then these extensions of $\Q_p$ are inequivalent 
+since $\tau_i\tau_j^{-1} (i \ne j)$ is not a square in $\Q_p.]$
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %57
+Another choice for the three quadratic extensions of $\Q_p$ when $p \ne 2$ is
+\[
+\Q_p( \sqrt{p} ), \  \Q_p( \sqrt{a} ), \ \Q_p( \sqrt{pa} ),
+\]
+where $1 < a < p$ is an integer that is not a square mod $p$.\\
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf REMARK} \ %58
+It can be shown that up to isomorphism, $\Q_2$ has seven quadratic extensions, viz.
+\[
+\Q_2(\sqrt{-1}),  \ \Q_2(\sqrt{\pm2}), \  \Q_2(\sqrt{\pm5}), \  \Q_2(\sqrt{\pm10}).
+\]
+\end{x}
+\vspace{0.01cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %59
+Take $p = 5$ $-$then $2 \notin (\Q_5^\times)^2, 3 \notin (\Q_5^\times)^2$, but 6 $\in (\Q_5^\times)^2$.  
+And
+\[
+\Q_5(\sqrt{2}) = \Q_5(\sqrt{3}).
+\]
+\indent [Working within $\Z_5^\times$, consider the equation $x^2 = 2$ and expand $x$ as usual:
+\[
+x = \sum_{n=0}^\infty a_n5^n			\qquad (a_n \in \sA).
+\]
+Then
+\[
+a_0^2 \equiv 2 \mod 5.
+\]
+But the possible values of $a_0$ are 0, 1, 2, 3, 4, thus the congruence is impossible, 
+%%----------------------------------------------------------------------------------------------18
+so $2 \notin (\Q_5^\times)^2$. Analogously, $3 \notin (\Q_5^\times)^2$.  On the other hand, $6 \in (\Q_5^\times)^2$ $($by direct verification or Hensel's lemma$)$, hence $6 = \gamma^2$  $(\gamma \in \Q_5)$.  
+Finally, to see that
+\[
+\Q_5(\sqrt{2}) = \Q_5(\sqrt{3}),
+\]
+it need only be shown that $\sqrt{2} = a + b\sqrt{3}$ for certain $a, b \in \Q_5$.  
+To this end, note that $\sqrt{2} \ \sqrt{3} = \pm \gamma$, from which
+\[
+\sqrt{2} \ =\  \pm \frac{\gamma}{\sqrt{3}} \ = \  \pm \frac{\gamma}{3}\sqrt{3}.]
+\]
+\end{x}
+\vspace{0.01cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %60
+If $p$ is odd, then $p - 1$ is even and $-1 \in G_{p-1}$.  In addition, $-1 \in (\Q_2^\times)^2$ iff (p-1)/2 is even, i.e. iff $p \equiv 1 \mod 4$.  
+Accordingly, to start $\sqrt{-1}$ exists in $\Q_5, \  \Q_{13}, \dots$ .
+\end{x}
+\vspace{0.1cm}
+
+\indent [Note: $\sqrt{-1}$ does not exist in $\Q_2.]$\\
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+
+\indent Let $\Q_p^{c\ell}$ be the algebraic closure of $\Q_p$ 
+$-$then $\acdot_p$ extends uniquely to $\Q_p^{c\ell}$ (cf. $\S 3$,  $\# 12$) (and satisfies the ultrametric inequality).  Furthermore, the range of $\acdot_p$ per $\Q_p^{c\ell}$ is the set of all rational powers of $p$ (plus 0).\\
+
+\begin{x}{\small\bf THEOREM} \ %01
+$\Q_p^{c\ell}$ is not second category.\\
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %02
+The metric space $\Q_p^{c\ell}$ is not complete.\\
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %03
+The Hausdorff space $\Q_p^{c\ell}$ is not locally compact (cf. $\S5, \  \#5$).\\
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------19
+
+\begin{x}{\small\bf NOTATION} \ %04
+Put
+\[
+\complement_p = \overline{\bigl(\Q_p^{c\ell}\bigr)}, \index{$\complement_p$}
+\]
+the completion of $\Q_p^{c\ell}$ per $\acdot_p$.\\
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %05
+$\complement_p$ is algebraically closed.\\
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %06
+The metric space $\complement_p$ is separable but the Hausdorff space 
+$\complement_p$ is not locally compact (cf. $\S5, \  \#5$).\\
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

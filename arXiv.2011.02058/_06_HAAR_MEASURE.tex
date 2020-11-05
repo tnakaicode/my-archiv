@@ -1,0 +1,549 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{6}.\quad  HAAR MEASURE}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Let $X$ be a locally compact Hausdorff space.
+
+\vspace{0.25cm}
+
+\begin{x}{\small\bf DEFINITION} \ %1
+A 
+\underline{Radon measure}
+\index{Radon measure} 
+is a measure $\mu$ defined on the Borel $\sigma$-algebra of $X$ subject to the following conditions.
+
+\vspace{0.1cm}
+
+1.  $\mu$ is finite on compacta, i.e., for every compact set $K$ $\subset$ X, $\mu(K) < \infty$.
+
+\vspace{0.1cm}
+
+2.  $\mu$ is outer regular, i.e., for every Borel set $A \subset$ $X$, 
+\[
+\mu(A) = \inf_{U\supset A} \mu(U),	 \quad \text{where $U \subset$ X is open.}
+\]
+
+3.  $\mu$ is inner regular, i.e., for every open set $A \subset$ X, 
+\[
+\mu(A) = \sup_{K\subset A} \mu(K),	 \quad \text{where $K \subset X$ is compact.}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+Let $G$ be a locally compact abelian group.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %2
+A 
+\underline{Haar measure}
+\index{Haar measure} 
+on $G$ is a Radon measure $\mu_{G}$ which is translation invariant: 
+$\forall$ Borel set $A$, $\forall \ x \in G$,
+\[
+\mu_G(x+A) = \mu_G(A) = \mu_G(A+x)
+\]
+or still, $\forall \ f \in C_c(G), \forall \ y \in G$,
+\[
+\int_Gf(x+y)d\mu_G(x) \ = \  \int_Gf(x)d\mu_g(x).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %3
+$G$ admits a Haar measure and for any two Haar measures $\mu_G$,  $\nu_G$ differ by a positive constant: 
+$\mu_G  = c\nu_G  \ (c > 0)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %4
+Every nonempty open subset of $G$ has positive Haar measure.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %5
+$G$ is compact iff $G$ has finite Haar measure.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %6
+$G$ is discrete iff every point of $G$ has positive Haar measure.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE}   \ %7
+Take $G = \R$ $-$then $\mu_{ \R} = dx$ ($dx$ = Lebesgue measure) is a Haar measure 
+($\mu_{\R} ([0,1]) = \ds\int_0^1dx = 1$).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %8
+Take $G = \R^\times -$then $\mu_{R^\times} = \ds\frac{dx}{\abs{x}}$ ($dx$ = Lebesgue measure) 
+is a Haar measure ($\mu_{\R^\times} ([1,e]) = \ds\int_1^e\frac{dx}{\abs{x}} = 1$).
+\end{x}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %9
+Take $G = \Z$ $-$then $\mu_{ \Z} =$ counting measure is a Haar measure.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+Let $G^\prime$ be a closed subgroup of $G$ and put $G^{\prime \prime} = G/G^\prime$.  
+Fix Haar measures $\mu_{G}$, $\mu_{G^{\prime}}$ on $G$, $G^\prime$ respectively 
+$-$then there is a unique determination of the Haar measure 
+$\mu_{G^{\prime \prime}}$ on $G^{\prime \prime}$ such that $\forall \ f \in C_c(G)$, 
+\[
+\int_Gf(x)d\mu_G(x) 
+= \int_{G^{\prime \prime}} \left( \int_{G^\prime} f(x + x^\prime)d\mu_{G^\prime}(x^\prime)\right) 
+d\mu_{G^{\prime \prime}} (x^{\prime \prime}).
+\]
+
+\vspace{0.1cm}
+
+[Note: The function
+\[
+x \ra \int_{G^\prime} f(x + x^\prime) d\mu_{G^\prime} (x^\prime).
+\]
+is $G^{\prime}$-invariant, hence is a function on $G^{\prime \prime}.]$
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE}
+Take $G = \R$,  $G^\prime = \Z$ with the usual choice of Haar measures.  
+Determine $\mu_{\R/\Z}$ per $\# 10$ $-$then $\mu_{\R/\Z}(\R/\Z) = 1$.
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+[Let $\chi$ be the characteristic function of $[0,1[$ $-$then
+\[
+\sum_{n \in \Z} \chi(x+n)
+\]
+is $\equiv$ 1, hence when integrated over $\R/\Z$ gives the volume of $\R/\Z$. 
+On the other hand, 
+\[
+\int_{\R} \chi = 1.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+Let $\K$ be a local field (cf. $\S$5, $\#6$).  
+Given $a \in \K^\times$, let $M_a:\K \ra \K$ be the automorphism that sends $x$ to $ax = xa$ 
+$-$then for any Haar measure $\mu_\K$ on $\K$, the composite $\mu_\K \circ M_a$ is again a Haar measure on  $\K$, 
+hence there exists a positive constant $\modxs_\K(a)$ such that for every Borel set $A$,
+\[
+\mu_\K(M_a(A)) = \modxs_\K(a)\mu_\K(A)
+\]
+or still, $\forall \ f \in C_c(\K)$,
+\[
+\int_\K f(a^{-1}x)d\mu_\K(x) = \modxs_\K(a)\int_\K f(x)d\mu_\K(x).
+\]
+
+\vspace{0.1cm}
+
+[Note: $\modxs_\K(a)$ is independent of the choice of $\mu_\K$.]
+
+\vspace{0.2cm}
+
+Extend $\modxs_\K$ to all of $\K$ by setting $\modxs_\K(0)$ equal to 0.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %12
+Let $\K$, $\LL$ be local fields, where $\LL/\K$ is a finite field extension $-$then $\forall$ $x \in \LL$,
+\[
+\begin{aligned}
+\modxs_\LL(x) 
+&= \modxs_\K(N_{\LL/\K}(x)) \\
+&\equiv \ \modxs_\K(\det(M_x))
+\end{aligned}
+\]
+
+[Let $n = [\LL:\K]$, view $\LL$ as a vector space of dimension $n$, and identify $\LL$ with $\K^n$ by choosing a basis.  
+Proceed from here by breaking $M_x$ into a product of $n$ 
+%%----------------------------------------------------------------------------------------------03
+"elementary" transformations.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %13
+Take $\K = \R$, $\LL = \R$ $-$then $\forall$ a $\in \R$,
+\[
+\modxs_{\R}(a) = \abs{a}.
+\]
+$[\forall$ f $\in C_c(\R)$,
+\[
+\int_{\R} f(a^{-1}x)dx = \abs{a} \int_{\R} f(x)dx.]
+\]
+\end{x}
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf EXAMPLE} %14
+Take $\K = \C$, $\LL = \C$ $-$then $\forall$ $a\in \C$,
+\[
+\allowdisplaybreaks
+\begin{aligned}
+\modxs_{\C}(z) \ 
+&= \  \modxs_{\R}(N_{\C/\R}(z)) \\
+&= \ \abs{z\ov{z}} \\
+&=\  \abs{z}^2.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %15
+\[
+\modxs_{\Q_p} = \acdot_{p}
+\]
+To prove this we need a preliminary.
+\end{x}
+
+
+\begin{x}{\small\bf LEMMA} \ %16
+The arrow
+\[
+\epsilon_k : \Z_p  \ra \Z/p^k\Z
+\]
+that sends
+\[
+x = \sum_{n=0}^\infty a_np^n		\qquad(a_{n}  \in \sA)
+\]
+to
+\[
+\sum_{n=0}^{k-1} a_np^n \modxs p^k
+\]
+is a homomorphism of rings.  
+It is surjective with kernel $p^k\Z_p$, so $[\Z_p:p^k\Z_p] =p^k$ 
+%%----------------------------------------------------------------------------------------------05
+(cf. $\S 4$,   $\#26$), thus there is a disjoint decomposition of $\Z_p:$
+\[
+\Z_p = \bigcup\limits_{j=1}^{p^k} (x_j + p^k\Z_p).
+\]
+
+Normalize the Haar measure on $\Q_p$ by stipulating that
+\[
+\mu_{\Q_p} (\Z_p) = 1.
+\]
+
+\vspace{0.1cm}
+
+[Note: In this connection, recall that $\Z_p$ is an open-compact set.$]$
+
+\vspace{0.2cm}
+
+The claim now is that for every Borel set $A$,
+\[
+\mu_{\Q_p} (M_x(A)) = \abs{x}_p\mu_{\Q_p} (A).
+\]
+Since the Borel $\sigma$-algebra is generated by the open sets, it is enough to take $A$ open.  
+But any open set can be written as the disjoint union of cosets of the subgroups 
+$p^k\Z_p$ $($cf. $\S 4$, $\# 33$), hence thanks to translation invariance, it suffices to deal with these alone:
+\[
+\begin{aligned}
+\mu_{\Q_p} (p^k\Z_p) \ 
+&= \ \modxs_{\Q_p}(p^k)\mu_{\Q_p}(\Z_p) \\
+&= \ \modxs_{\Q_p}(p^k) \\
+%&= \ \abs{p^k}_p.
+&= \ |p^k|_p.
+\end{aligned}
+\]
+
+1. $k \ge 0$:
+\[
+\begin{aligned}
+1  \
+&= \ \mu_{\Q_p}(\Z_p)  \\
+&= \ \mu_{\Q_p}(\bigcup\limits_{j=1}^{p^k} (x_j + p^k\Z_p)) \\
+&= \ p^k\mu_{\Q_p}(p^k\Z_p)
+\end{aligned}
+\]
+\qquad\qquad\qquad\qquad$\implies$
+\[
+\begin{aligned}
+\mu_{\Q_p}(p^k\Z_p) \ 
+&= \ p^{-k} \\
+%&= \ \abs{p^k}_p.
+&= \ |p^k|_p.
+\end{aligned}
+\]
+
+%%----------------------------------------------------------------------------------------------06
+2. $k < 0$:
+\[
+\begin{aligned}
+1 \ 
+&=\  \mu_{\Q_p}(\Z_p) \\
+&= \ \mu_{\Q_p}(p^{-k}p^k\Z_p)\\
+&= \ \modxs_{\Q_p} (p^{-k}) \mu_{\Q_p} (p^k\Z_p)\\
+%&= \ \abs{p^{-k}}_p \mu_{\Q_p}(p^k\Z_p)
+&= \ |p^{-k}|_p \mu_{\Q_p}(p^k\Z_p)
+\end{aligned}
+\]
+\qquad\qquad\qquad\qquad$\implies$
+\[
+\begin{aligned}
+\mu_{\Q_p}(p^k\Z_p) \ 
+%&= \ \abs{p^{-k}}_p^{-1} \\
+&= \ |p^{-k}|_p^{-1} \\
+%&= \ \abs{p^k}_p.
+&= \ |p^k|_p.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM}  \ %17
+If $\K$ is a finite field extension of $\Q_p$, then $\forall$ a $\in \K$, 
+\[
+\modxs_\K(a) = \abs{N_{\K/ \Q_p}(a)}_{p},
+\]
+the normalized absolute value on $\K$ mentioned in $\S$ 5:
+\[
+\modxs_\K(a) = \abs{a}_\K \quad (= \abs{a}_p^n, \ n = [\K:\Q_p]).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CONVENTION}  \ %18
+Integration w.r.t. $\mu_{\Q_p}$ will be denoted by dx:
+\[
+\int_{\Q_p}f(x)d\mu_{\Q_p}(x) = \int_{\Q_p}f(x)dx.
+\]
+
+[Note: Points are of Haar measure zero:
+\[
+\{0\} = \bigcap\limits_{k=1}^{\infty} p^k\Z_p
+\]
+\qquad\qquad\qquad\qquad$\implies$
+\[
+\begin{aligned}
+\mu_{\Q_p} (\{0\}) \ 
+&= \  \lim_{k \ra \infty} \mu_{\Q_p}(p^k\Z_p)\\
+&= \  \lim_{k\ra \infty} p^{-k} = 0.]
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------07
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+\[
+\Z_p^\times = \bigcup\limits_{1 \le k \le p-1} (k+ p\Z_p)	\qquad \text{ $($cf. $\S 4$, $\#23$)}.
+\]
+Therefore
+\[
+\begin{aligned}
+\vol_{dx}(\Z_p^\times)  \
+&= \ (p-1)\vol_{dx}(p\Z_p ) \\
+&= \ \frac{p-1}{p}.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE}  \ %20
+\[
+\begin{aligned}
+\vol_{dx}(p^n\Z_p^\times)  \
+&= \ \vol_{dx}(p^n\Z_p - p^{n+1}\Z_p)		\qquad \text{(cf.} \  \S 4, \ \# 34)\\
+&= \ \vol_{dx}(p^n\Z_p) - \vol_{dx}(p^{n+1}\Z_p)	\\	
+&= \ \abs{p^n}_p \vol_{dx}(\Z_p) - \abs{p^{n+1}}_p \vol_{dx}(\Z_p)\\
+&= \ p^{-n} - p^{-n-1}.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE}  \ %21
+Write
+\[
+\Z_p - \{0\} = \bigcup\limits_{n \ge 0}p^n \Z_p^\times.
+\]
+Then
+%\[
+%\allowdisplaybreaks
+\begin{align*}
+\allowdisplaybreaks
+\int_{\Z_p - \{0\}} \log \abs{x}_p dx \ 
+&= \ \sum_{n=0}^\infty \  \int_{p^n \Z_p^\times} \log \abs{x}_p dx\\
+&= \ \sum_{n=0}^\infty \log p^{-n} \vol_{dx}(p^n\Z_p^\times)\\
+&= \ -\log p \ \sum_{n=0}^\infty n(p^{-n} - p^{-n-1})\\
+&= \ -\log p \  \bigl(\sum_{n=0}^\infty \frac{n}{p^n} - \frac{1}{p} \sum_{n=0}^\infty \frac{n}{p^n}\bigr)\\
+&= \ - (1 - \frac{1}{p}) \log p \ \sum_{n=0}^\infty \frac{n}{p^n} \\
+&= \ - (1 - \frac{1}{p}) \log p \ \frac{p}{(p-1)^2}\\
+&= \ - \frac{\log p}{p-1}.
+\end{align*}
+%\]
+\end{x}
+%%----------------------------------------------------------------------------------------------08
+
+%\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE}   \ %22
+\[
+\int_{\Z_p^\times} \log \abs{1 - x}_p dx = -\frac{\log p}{p-1}.
+\]
+
+[Break $\Z_p^\times$ up via the scheme
+\[
+(\Z_p^\times:a_0 \ne 1) \cup (\Z_p^\times:a_0 = 1, a_1 \ne 0) \cup (\Z_p^\times:a_0 = 1, a_1 = 0, a_2 \ne 0) \cup \dotsb .]
+\]
+\end{x}
+
+
+%\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %23
+The measure $\ds\frac{dx}{\abs{x}_p}$ is a Haar measure on the multiplicative group $\Q_p^\times$.
+
+%\vspace{0.1cm}
+
+PROOF \  $\forall \  y \in \Q_p^\times$,
+
+%\[
+\allowdisplaybreaks
+\begin{align*}
+\allowdisplaybreaks
+\int_{\Q_p^\times} f(y^{-1}x) \frac{dx}{\abs{x}_p} \ 
+&= \ \abs{y}_p^{-1} \int_{\Q_p^\times} f(y^{-1}x) \frac{1}{\abs{y^{-1}x}_p} dx\\
+&= \ \abs{y}_p^{-1} \modxs_{\Q_p}(y) \int_{\Q_p^\times} f(x) \frac{dx}{\abs{x}_p}\\
+&= \ \abs{y}_p^{-1} \abs{y}_p \int_{\Q_p^\times} f(x) \frac{dx}{\abs{x}_p}\\
+&= \ \int_{\Q_p^\times} f(x) \frac{dx}{\abs{x}_p}.
+\end{align*}
+%\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %24
+\[
+\allowdisplaybreaks
+\begin{aligned}
+\ds\vol_{\frac{dx}{\abs{x}_p}}(p^n\Z_p^\times) \
+&= \ \vol_{\frac{dx}{\abs{x}_p}}(\Z_p^\times)\\
+&= \ \int_{\Z_p^\times} \frac{dx}{\abs{x}_p} \\
+&= \ \int_{\Z_p^\times} dx \\
+&= \ \vol_{dx}(\Z_p^\times) \\
+&= \ \frac{p-1}{p}.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %25
+The 
+\underline{normalized Haar measure}
+\index{normalized Haar measure} 
+on the multiplicative group $\Q_p^\times$ is given by
+\[
+d^\times x = \frac{p}{p-1}\frac{dx}{\abs{x}_p}.
+\]
+Accordingly,
+\[
+\vol_{d^\times x} (\Z_p^\times) = 1,
+\]
+this condition characterizing $d^\times x$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begingroup
+\allowdisplaybreaks
+\begin{x}{\small\bf EXAMPLE} %26
+Let $s$ be a complex variable with $\Re(s) > 1$.  Write 
+\[
+\Z_p - \{0\} = \bigcup\limits_{n \geq 0} p^n \Z_p^\times.
+\]
+%%----------------------------------------------------------------------------------------------10
+Then
+\[
+\allowdisplaybreaks
+\begin{aligned}
+\allowdisplaybreaks
+\int_{\Z_p-\{0\}} \abs{x}_p^s d^\times x  \
+&= \ \sum_{n = 0}^\infty p^{-ns} \int_{\Z_p^\times} d^\times x \\
+&= \ \sum_{n = 0}^\infty p^{-ns} \\
+&= \ \frac{1}{1 - p^{-s}},
+\end{aligned}
+\]
+the $p^{th}$ factor in the Euler product for the Riemann zeta function.
+
+\vspace{0.1cm}
+
+Let $\K/\Q_p$ be a finite extension. 
+Given a Haar measure $da$ on $\K$, put
+\[
+d^\times a = \frac{q}{q-1} \frac{da}{\abs{a}_\K}.
+\]
+Then $\ds\frac{da}{\abs{a}_\K}$ is a Haar measure on $\K^\times$ and we have
+%\[
+%\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\allowdisplaybreaks
+\vol_{d^\times a} (R^\times) \ 
+&= \ \int_{R^\times} \frac{q}{q-1} \frac{da}{\abs{a}_\K}\\
+&= \ \frac{q}{q-1} \int_{R^\times}  da\\
+&= \ \sum_{n = 0}^\infty q^{-n} \int_{R^\times}  da\\
+&= \ \sum_{n = 0}^\infty \int_{R^\times}  q^{-n} da\\
+&= \ \sum_{n = 0}^\infty \int_{\pi^nR^\times}  da\\
+%%----------------------------------------------------------------------------------------------11
+&= \ \int_{\bigcup\limits_{n \ge 0}\pi^nR^\times}  da\\
+&= \ \int_R da \\
+&= \  \vol_{da}(R).
+\end{align*}
+%\endgroup
+%\]
+\end{x}
+\endgroup
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

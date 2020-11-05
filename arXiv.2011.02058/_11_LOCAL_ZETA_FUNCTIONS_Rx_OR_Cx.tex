@@ -1,0 +1,428 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{11}.\quad  LOCAL ZETA FUNCTIONS: $\R^\times$ or $\C^\times$}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+\ \indent 
+We shall first consider $\R^\times$, hence $\widetilde{\R}^\times \thickapprox \Z / 2 \Z \times \C$ and every character has the form
+\[
+\chi(x) \equiv \chi_{\sigma, s}(x) = (\sgn x)^\sigma \abs{x}^s \quad 
+(\sigma \in \{0, 1\}, \ s \in \C) \quad 
+(\text{cf. } \S7, \  \#11).
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %1
+Given $f \in \sS(\R^n)$ and a character $\chi: \R^\times \ra \C^\times$, 
+the 
+\un{local zeta} \un{function}
+\index{local zeta function} 
+attached to the pair $(f, \chi)$ is
+\[
+Z (f,\chi) = \int_{\R^\times} f(x) \chi(x) d^\times x, \qquad \text{where $d^\times x = \frac{dx}{\abs{x}}$.}
+\]
+
+[Note: The parameters $\sigma$ and $s$ are implicit:
+\[
+Z(f,x) \equiv Z(f,\chi_{\sigma,s}).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf LEMMA} \ %2
+The integral defining $Z(f,\chi)$ is absolutely convergent for $\Re(s) > 0$.
+
+\vspace{0.1cm}
+
+PROOF \   
+Since $f$ is Schwartz, there are no issues at infinity.  
+As for what happens at the origin, let $I = ]-1,1[ \ -\  \{0\}$ and fix $C > 0$ such that $\abs{f(x)} \le C$ $(x \in I)$. $-$then
+\begin{align*}
+\abs{Z(f,\chi)} \ 	
+&\le\  \int_{\R- \{0\}} \abs{f(x)} \abs{x}^{\Re(s) - 1} dx\\	
+&\le\   \bigl(\int_{\R - I} + \int_I\bigr) \abs{f(x)} \abs{x}^{\Re(s) - 1} dx\\	
+&\le\   M + C \int_I \abs{x}^{\Re(s) - 1} dx,
+\end{align*}
+a finite quantity.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf LEMMA} \ %3
+$Z(f,\chi)$ is a holomorphic function of $s$ in the strip $\Re(s) > 0$.
+
+[Formally, 
+\[
+\frac{d}{ds}Z(f,\chi) \ =\  \int_{\R^\times} f(x) (sgn x)^\sigma (\log \abs{x}) \abs{x}^s d^\times x,
+\]
+
+and while correct, "differentiation under the integral sign" does require a formal proof $\ldots$ .]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %4
+Put
+\[
+\widecheck{\chi} = \chi^{-1} \| \cdot \|.
+\]
+
+The integral defining $Z(f,\widecheck{\chi} )$ is absolutely convergent if $\Re(1-s) > 0$, i.e., if $1-\Re(s) > 0$ 
+or still, if $\Re(s) < 1$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %5
+Let $f, g \in \sS(\R)$ and suppose that $0 < \Re(s) < 1$ $-$then
+\[
+Z(f,\chi) Z(\widehat{g},\widecheck{\chi}) =  Z(\widehat{f},\widecheck{\chi}) Z(g,\chi) 
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+Write
+\[
+Z(f,\chi) Z(\widehat{g},\widecheck{\chi})  
+= \int \int_{\R^\times \times \R^\times} f(x) \widehat{g}(y) \chi(xy^{-1}) \abs{y} d^\times x \hspace{0.05cm} d^\times y
+\]
+and make the substitution $t = yx^{-1}$ to get
+\[
+Z(f,\chi) Z(\widehat{g},\widecheck{\chi})  
+= \int_{\R^\times} \bigl(\int_{\R^\times} f(x) \widehat{g}(tx) \abs{x} d^\times x\bigr) 
+\chi(t^{-1}) \abs{t} d^\times t.
+\]
+The claim now is that the inner integral is symmetric in $f$ and $g$ (which then implies that
+%%----------------------------------------------------------------------------------------------03
+\[
+Z(f,\chi) Z(\widehat{g},\widecheck{\chi})  = Z(g,\chi)   Z(\widehat{f},\widecheck{\chi}), 
+\]
+the desired equality$)$.   To see this is so, observe first that
+\[
+\abs{x} du \cdot d^\times x = \abs{u} dx \cdot d^\times u.
+\]
+Since $\R^\times$ and $\R$ differ by a single element, it therefore follows that
+\begin{align*}
+\int_{\R^\times} f(x) \widehat{g}(tx) \abs{x} d^\times x \ 
+&=\  \int_{\R^\times} f(x) \abs{x} \bigl(\int_\R g(u) e^{2\pi\sqrt{-1}\  txu} du\bigr) d^\times x\\	
+&=\   \int \int_{\R \times \R^\times} f(x) g(u) \abs{x} e^{2 \pi \sqrt{-1}\  txu} du d^\times x\\
+&=\  \int_{\R^\times} g(u) \abs{u} \bigl(\int_\R f(x) e^{2 \pi \sqrt{-1}\  txu} dx \bigr) d^\times u\\
+&=\  \int_{\R^\times} g(u) \widehat{f}(tu) \abs{u} d^\times u.
+\end{align*}
+
+Fix $\phi \in \sS(\R)$ and put
+\[
+\rho(\chi) = \frac{Z(\phi,\chi)}{Z(\widehat{\phi},\widecheck{\chi})}
+\]
+Then $\rho(\chi)$ is independent of the choice of $\phi$ and $\forall$ $f \in \sS(\R)$, the 
+\un{functional equation}
+\index{functional equation}
+\[
+Z(f,\chi) = \rho(\chi) Z(\widehat{f}, \widecheck{\chi})
+\]
+obtains.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf LEMMA} \ %6
+$\rho(\chi)$ is a meromorphic function of $s$ (cf. infra).
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+
+\begin{x}{\small\bf APPLICATION} \ %7
+$\forall$ $f \in \sS(\R), Z(f,\chi)$ admits a meromorphic continuation to the whole $s$-plane.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf NOTATION} \ %8
+Set
+\[
+\Gamma_\R(s) = \pi^{-s/2} \Gamma(s/2).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf DEFINITION} \ %9
+Write
+\[L(\chi) =\ 
+\begin{cases}
+\Gamma_\R(s) &\quad (\sigma = 0)\\
+\Gamma_\R(s+1) &\quad (\sigma = 1)
+\end{cases}
+.\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+Proceeding to the computation of $\rho(\chi)$, distinguish two cases.
+\vspace{0.2cm}
+
+\qquad \textbullet \quad \un{$\sigma = 0$} \quad Take $\phi_0(x)$ to be $e^{-\pi x^2}$ $-$then
+\begin{align*}
+Z(\phi_0, \chi) \ 
+&=\  \int_{\R^\times} e^{-\pi x^2} \abs{x}^s d^\times x\\	
+&=\  2\int_0^\infty e^{-\pi x^2} x^{s-1} dx\\	
+&=\  \pi^{-s/2} \Gamma(s/2) \\
+&=\  \Gamma_\R(s)\\
+&=\  L(\chi).
+\end{align*}
+Next $\widehat{\phi}_0 = \phi_0$ ( cf. \S10, \#2) so by the above argument,
+\[
+Z(\widehat{\phi}_0,\widecheck{\chi}) = L(\widecheck{\chi}),
+\]
+from which
+%%----------------------------------------------------------------------------------------------05 (ish)
+\begin{align*}
+\rho(\chi) \ 	
+&=\  \frac{L(\chi)}{L(\widecheck{\chi})}\\	
+&=\  \frac{\pi^{-s/2} \Gamma\bigl(\ds\frac{s}{2}\bigr)}{\pi^{-(1-s)/2} \Gamma\bigl(\ds\frac{1-s}{2}\bigr)}\\	
+&=\  2^{1-s} \pi^{-s} \cos\bigl( \ds\frac{\pi s}{2}\bigr) \Gamma(s).
+\end{align*}
+
+\qquad \textbullet \quad \un{$\sigma = 1$} \quad Take $\phi_1(x)$ to be $xe^{-\pi x^2}$ $-$then
+\allowdisplaybreaks
+\begin{align*}
+Z(\phi_1, \chi) \ 
+&=\  \int_{\R^\times} xe^{-\pi x^2} \frac{x}{\abs{x}} \abs{x}^s d^\times x\\	
+&=\  \int_{\R^\times} e^{-\pi x^2}  \abs{x}^{s+1} d^\times x\\
+&=\  2\int_0^\infty e^{-\pi x^2} x^s dx\\	
+&=\  \pi^{-(s+1)/2} \Gamma\bigl(\frac{s+1}{2}\bigr)\\
+&=\  \Gamma_\R(s+1)\\
+&=\  L(\chi).
+\end{align*}
+Next
+\[
+\widehat{\phi}_1(t) = \sqrt{-1}\ t \exp(- \pi t^2) \quad \text{(cf. \S10, \#2)}.
+\]
+Therefore
+\begin{align*}
+Z(\widehat{\phi_1}, \widecheck{\chi}) \ 	
+&=\  \sqrt{-1}\   \int_{\R^\times} xe^{-\pi x^2} \frac{x}{\abs{x}} \abs{x}^{1-s} d^\times x\\	
+&=\  \sqrt{-1}\   \int_{\R^\times} e^{-\pi x^2}  \abs{x}^{2-s} d^\times x\\
+&=\  \sqrt{-1}\   2\int_0^\infty e^{-\pi x^2} x^{1-s} dx\\	
+&=\  \sqrt{-1}\  \pi^{-(2-s)/2} \Gamma\bigl(\frac{2-s}{2}\bigr)\\
+&=\  \sqrt{-1}\  \Gamma_\R(2-s)\\
+&=\  \sqrt{-1}\  L(\widecheck{\chi}).
+\end{align*}
+%%----------------------------------------------------------------------------------------------06 (ish)
+Accordingly
+\begin{align*}
+\rho(\chi) \ 
+&=\  - \sqrt{-1}\  \ds\frac{L(\chi)}{L(\widecheck{\chi})}\\	
+&=\  - \sqrt{-1}\   \frac{\pi^{-(s+1)/2} \Gamma(\ds\frac{s+1}{2})}{\pi^{(s-2)/2} \Gamma\bigl(\ds\frac{2-s}{2}\bigr)}\\	
+&=\  - \sqrt{-1}\    2^{1-s} \pi^{-s} \sin(\ds\frac{\pi s}{2}) \Gamma(s).
+\end{align*}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %10
+\[
+\begin{cases}
+\ds\frac{\zeta(1-s)}{\zeta(s)} 	&= 2^{1-s} \pi^{-s} \cos\bigl(\ds\frac{\pi s}{2}\bigr) \Gamma(s)\\
+\\
+\ds\frac{\zeta(s)}{\zeta(1-s)} 	&= 2^{s} \pi^{s-1} \sin\bigl(\ds\frac{\pi s}{2}\bigr) \Gamma(1-s)
+\end{cases}
+.
+\]
+
+\vspace{0.1cm}
+
+To recapitulate: $\rho(\chi)$ is a meromorphic function of $s$ and 
+\[
+\rho(\chi) 	= \epsilon(\chi) \frac{L(\chi)}{L(\widecheck{\chi})},
+\]
+where
+\[\epsilon(\chi) =\ 
+\begin{cases}
+\  1 				&\quad \text{$(\sigma = 0)$}\\
+\  - \sqrt{-1} 	&\quad \text{$(\sigma = 1)$}
+\end{cases}
+.\]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------7
+Having dealt with $\R^\times$, let us now turn to $\C^\times$, hence 
+$\widetilde{\C}^\times$ $\thickapprox \Z \times \C$ and every character has the form
+\[
+\chi(x) \equiv \chi_{n,s}(x) = \exp(\sqrt{-1} \  n \  \arg x) \abs{x}^s 
+\quad (n \in \Z, \ s \in \C) \quad (\text{cf. } \S 7, \ \#12).
+\]
+Here, however, it will be best to make a couple of adjustments.
+
+1. Replace $x$ by $z$.
+
+2. Replace $\acdot$ by $\acdot_\C$, the normalized absolute value, so
+\[
+\abs{z}_\C = \abs{z  \bar{z}} = \abs{z}^2	\qquad ( \text{cf. } \S6, \  \#15).
+\]
+
+\begin{x}{\small\bf DEFINITION} \ %11
+Given $f \in \sS(\C)$ $(= \sS(\R^2))$ and a character $\chi : \C^\times \ra \C^\times$, the \un{local zeta function} attached to the pair $(f, \chi)$ is
+\[
+Z(f,\chi) = \int_{\C^\times} f(z) \chi(z) d^\times z,
+\]
+where $d^\times z = \ds\frac{\abs{dz \wedge d\ov{z}}}{\abs{z}_\C }$.
+\vspace{0.2cm}
+
+[Note: \  The parameters $n$ and $s$ are implicit:
+\[
+Z(f,\chi) \equiv Z(f, \chi_{n,s}).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf NOTATION} \ %12
+Put
+\[
+\widecheck{\chi} = \chi^{-1} \acdot_\C.
+\]
+
+The analogs of \#2 and \#3 are immediate, as is the analog of $\#5$ 
+(just replace $\R^\times$ by $\C^\times$ and $\acdot$ by $\acdot_\C$), the crux then being the analog of $\#6$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf NOTATION} \ %13
+Set
+\[
+\Gamma_\C(s) = (2\pi)^{1-s} \Gamma(s).
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------08
+
+
+\begin{x}{\small\bf DEFINITION} \ %14
+Write
+\[
+L(\chi) = \Gamma_\C(s + \frac{\abs{n}}{2}).
+\]
+
+To determine $\rho(\chi)$ via a judicious choice of $\phi$ per the relation
+\[
+\rho(\chi) = \frac{Z(\phi,\chi)}{Z(\widehat{\phi},\widecheck{\chi})},
+\]
+let
+\[
+\phi_n(z) =\ 
+\begin{cases}
+\ \ov{z}^{n} e^{-2\pi\abs{z}^2}		&\quad (n \ge 0)\\
+\ z^{-n} e^{-2\pi\abs{z}^2}	 		&\quad (n < 0)\\
+\end{cases}
+.\]
+Then
+\[
+\widehat{\phi}_n = \sqrt{-1}^{\abs{n}} \phi_{-n} 	\qquad (\text{cf. } \S 10, \  \#3).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %15
+In terms of polar coordinates $z = r e^{\sqrt{-1} \text{ } \theta}$,\\
+
+\qquad\textbullet \quad$\phi_n(z) = r^{\abs{n}} \exp (-2\pi r^2 - \sqrt{-1} \ n \theta)$\\
+
+\qquad\textbullet \quad$d^\times z =\ds\frac{2 r dr d \theta}{r^2} = \ds\frac{2}{r} dr d \theta$\\
+
+\qquad\textbullet \quad$\chi(z) = e^{\sqrt{-1} \  n \theta} \abs{z}_\C^s = e^{\sqrt{-1} \ n \theta} r^{2s}$.\\
+
+Therefore
+%%----------------------------------------------------------------------------------------------9 (ish)
+
+
+\begin{align*}
+Z(\phi_n,\chi) \ 	
+&=\  \int_0^{2\pi} \int_0^\infty r^{\abs{n}} \exp(-2\pi r^2 - \sqrt{-1} \  n \theta) e^{\sqrt{-1} \ n \theta} r^{2s} \frac{2}{r} dr d\theta\\	
+&=\  \int_0^{2\pi} \int_0^\infty r^{2(s-1) + \abs{n}} \exp(-2\pi r^2) 2r dr d\theta\\		
+&=\  2\pi \int_0^\infty t^{(s-1) + \abs{n}/2} \exp(-2\pi t) dt\\
+&=\  (2\pi)^{1 - s - \abs{n}/2} \Gamma\bigl(s + \frac{\abs{n}}{2}\bigr)\\ 
+&=\  \Gamma_\C\bigl(s + \frac{\abs{n}}{2}\bigr)\\
+&=\  L(\chi)\\  
+\end{align*}
+and
+\begin{align*}
+Z(\widehat{\phi}_n,\widecheck{\chi}) \ 	
+&=\  Z((\sqrt{-1})^{\abs{n}} \phi_{-n}, \widecheck{\chi})\\	
+&=\  (\sqrt{-1})^{\abs{n}} (2\pi)^{1 - (1 - s)- \abs{n}/2} \Gamma\bigl(1 - s + \frac{\abs{n}}{2}\bigr)\\		
+&=\  (\sqrt{-1})^{\abs{n}} (2\pi)^{s - \abs{n}/2} \Gamma\bigl(1 - s + \frac{\abs{n}}{2}\bigr)\\	
+&=\  (\sqrt{-1})^{\abs{n}}  \Gamma_\C\bigl(1 - s + \frac{\abs{n}}{2}\bigr)\\
+&=\  (\sqrt{-1})^{\abs{n}}  L(\widecheck{\chi}).
+\end{align*}
+Consequently, 
+\begin{align*}
+\rho(\chi)	\ 	
+&=\  \frac{Z(\phi_n,\chi)}{Z(\widehat{\phi}_n,\widecheck{\chi}) }\\	
+&=\  (\sqrt{-1})^{-\abs{n}} \frac{L(\chi)}{L(\widecheck{\chi})}\\		
+&=\  \epsilon(\chi)\frac{L(\chi)}{L(\widecheck{\chi})},		
+\end{align*}
+%%----------------------------------------------------------------------------------------------10
+where
+\[
+\epsilon(\chi) = (\sqrt{-1})^{-\abs{n}}.
+\]
+And
+\[
+\frac{L(\chi)}{L(\widecheck{\chi})} = (2\pi)^{1 - 2s} 
+\frac{\Gamma\bigl(s + \ds\frac{\abs{n}}{2}\bigr)}{\Gamma\bigl(1-s + \ds\frac{\abs{n}}{2}\bigr)}.
+\]
+\end{x}
+%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

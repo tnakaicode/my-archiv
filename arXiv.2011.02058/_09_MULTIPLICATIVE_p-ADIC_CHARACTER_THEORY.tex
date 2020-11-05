@@ -1,0 +1,264 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{9}.\quad  MULTIPLICATIVE p-ADIC CHARACTER THEORY}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Recall that
+\[
+\Q_p^\times \ \thickapprox \  \Z \times \Z_p^\times,
+\]
+the abstract reflection of the fact that for ever $x \in \Q_p^\times$, there is a unique $v(x) \in \Z$ and a unique $u(x) \in \Z_p^\times$ such that $x = p^{v(x)}u(x)$.  
+Therefore
+\[
+\widehat{(\Q_p^\times)} \ 
+\thickapprox \ \widehat{\Z} \times \widehat{(\Z_p^\times)}  \ 
+\thickapprox \ \T \times \widehat{(\Z_p^\times)}.
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %1
+A character of $\Q_p$ is necessarily unitary (cf. $ \S8, \  \# 4$) but this is definitely not the case for $\Q_p^\times$ $($cf. infra$)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %2
+A character $\chi: \Q_p^\times \ra \C^\times$ is \un{unramified} if it is trivial on $\Z_p^\times$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %3
+Given any complex number $s$, the arrow $x \ra \abs{x}_p^s$ is an unramified character of $\Q_p^\times$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %4
+If $\chi: \Q_p^\times \ra \C^\times$ is an unramified character, then there exists a complex number $s$ such that 
+$\chi = \acdot_p^s$.
+
+\vspace{0.1cm}
+
+PROOF \ Such a $\chi$ factors through the projection $\Q_p^\times \ra p^\Z$ defined by $x \ra \abs{x}_p$, 
+hence gives rise to a character $\widetilde{\chi}: p^\Z \ra \C^\times$ 
+which is completely determined by its value on $p$, say $\widetilde{\chi}(p) = p^s$ for the complex number
+\[
+s = \frac{\log \widetilde{\chi}(p)}{\log p},
+\]
+%%----------------------------------------------------------------------------------------------02
+itself determined up to an integral multiple of
+\[
+\frac{2\pi \sqrt{-1}}{\log p}.
+\]
+Therefore
+\begin{align*}
+\chi(x) \ 		
+&=\ \widetilde{\chi}(\abs{x}_p)\\	
+&=\ \widetilde{\chi}(p^{-v(x)})\\		
+&=\  (\widetilde{\chi}(p))^{-v(x)}\\	
+&=\  (p^s)^{-v(x)}\\
+&=\  (p^{-v(x)})^s\\
+&=\  \abs{x}_p^s.	
+\end{align*}
+
+[Note: \  For the record, 
+\begin{align*}
+\abs{x}_p^{2 \pi \sqrt{-1}/ \log p}	\ 	
+&=\  (p^{-v(x)})^{2 \pi \sqrt{-1}/ \log p}\\	
+&=\  (e^{-v(x) \log p})^{2 \pi \sqrt{-1} / \log p}\\		
+&=\  e^{-v(x) 2 \pi \sqrt{-1}}\\	
+&=\  1.]\\	
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+Suppose that $\chi: \Q_p^\times \ra \C^\times$ is a character $-$then $\chi$ can be written as
+\[
+\chi(x) = \abs{x}_p^s \un{\chi}(u(x)),
+\]
+where $s \in \C$ and $\un{\chi} \equiv \restr{\chi}{\Z_p^\times} \in \widehat{(\Z_p^\times)}$, 
+thus $\chi$ is unitary iff $s$ is pure imaginary.
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %5
+If $\un{\chi} \in \widehat{(\Z_p^\times)}$ is nontrivial, then there is an $n \in \N$ such that $\un{\chi} \equiv 1$ on $U_{p,n}$ but $\chi \not\equiv 1$ on $U_{p,n-1}$ (cf. $\S 8, \  \# 5$).
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------03
+
+Assume again that $\chi: \Q_p^\times \ra \C^\times$ is a character.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %6
+$\chi$ is 
+\un{ramified of degree $n \ge 1$}
+\index{ramified of degree $n \ge 1$} 
+if 
+$\restr{\un{\chi}}{U_{p,n}} \equiv 1$ 
+and 
+$\restr{\un{\chi}}{U_{p,n-1}} \not\equiv 1$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %7
+The 
+\un{conductor}
+\index{conductor} 
+$\con\chi$ of $\chi$ is $\Z_p^\times$ if $\chi$ is unramified and $U_{p,n}$ if 
+$\chi$ is ramified of degree $n$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ %8
+If $G$ is a finite abelian group, then the number of unitary characters of $G$ is card $G$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %9
+\[
+[\Z_p^\times:U_{p,1}] = p-1  \qquad (\text{cf. } \S 4, \  \#40)
+\]
+and 
+\[
+[U_{p,1}:U_{p,n}] = p^{n-1} .
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+If $\chi$ is ramified of degree $n$, then $\un{\chi}$ can be viewed as a unitary character of $\Z_p^\times / U_{p,n}$.   
+But the quotient $\Z_p^\times / U_{p,n}$ is a finite abelian group, thus has 
+\[
+\card \ \Z_p^\times / U_{p,n} = [\Z_p^\times:U_{p,n}] 
+\]
+unitary characters.  
+And
+\begin{align*}
+[\Z_p^\times:U_{p,n}] \ 
+&=\  [\Z_p^\times:U_{p,1}] \cdot [U_{p,1}:U_{p,n}]  \\
+&=\  (p-1) p^{n-1},
+\end{align*}
+this being the number of unitary characters of $\Z_p^\times$ of degree $\le n$.  
+Therefore the 
+%%----------------------------------------------------------------------------------------------04
+group $\Z_p^\times$ has p-2 unitary characters of degree 1 and for $n \ge 2$, the group $\Z_p^\times$ has
+\[
+(p-1) p^{n-1} - (p-1) p^{n-2} = p^{n-2}(p-1)^2
+\]
+unitary characters of degree $n$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+Let $\chi \in \widehat{\Q_p^\times}$ $-$then
+\[
+\chi(x) = \abs{x}_p^{\sqrt{-1} \  t} \un{\chi}(u(x)),
+\]
+where $t$ is real and 
+\[
+-(\pi / \log p) < t \le \pi / \log p.
+\]
+\end{x}
+
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+
+
+
+Suppose that $p \ne 2$, let $\tau \in \Q_p^\times - (\Q_p^\times)^2$, and form the quadratic extension
+\[
+\Q_p(\tau) = \{x+y \sqrt{\tau} : x,y \in \Q_p\}.
+\]
+
+\begin{x}{\small\bf NOTATION} \ %1
+Let $\Q_{p,\tau}$ be the set of points of the form $x^2 - \tau y^2$ $(x \ne 0$, $y \ne 0)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %2
+$\Q_{p,\tau}$ is a subgroup of $\Q_p^\times$ containing $(\Q_p^\times)^2$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %3
+\[
+[\Q_p^\times:\Q_{p,\tau}] = 2 \text{ and } [\Q_{p,\tau}:(\Q_p^\times)^2] = 2.
+\]
+
+[Note:
+\[
+[\Q_p^\times:(\Q_p^\times)^2] = 4		\qquad (\text{cf. } \S 4, \ \# 53).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %4
+Given $x \in \Q_p^\times$, let
+\[
+\sgn_\tau(x) \ = \ 
+\begin{cases}
+\  \ 1	\quad \text{if }x \in \Q_{p,\tau}\\
+-1 	\quad \text{if } x \notin \Q_{p,\tau}
+\end{cases}
+.
+\]
+%%\sgn_\tau(x)=\left\{
+%%\begin{array}{l l}
+%%\  \ 1	&\quad \text{if $x \in \Q_{p,\tau}$}\\
+%%-1 	&\quad \text{if $x \notin \Q_{p,\tau}$}\\
+%%\end{array}
+%\right.\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %5
+$\sgn_\tau$ is a unitary character of $\widehat{\Q}_p$.
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,367 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{15}.\quad  GLOBAL ANALYSIS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+By definition,
+\[
+\A \ =\  \A_{\fin} \times \R.
+\]
+Therefore
+\[
+\widehat{\A} \ \thickapprox \  \widehat{\A}_{\fin} \times \widehat{\R}.
+\]
+And
+\[
+\A_{\fin} \ =\  \prod_p  \  (\Q_p: \Z_p)
+\]
+\qquad\qquad $\implies$
+\[
+\widehat{\A}_{\fin} \ \thickapprox \   \prod_p \  (\widehat{\Q}_p: \Z_p^\perp)	\qquad (\text{cf.} \  \S13, \  \#15).
+\]
+Put
+\[
+\chi_\Q \ =\  \prod_{p \le \infty} \chi_{p},
+\]
+where
+\[
+\chi_\infty \ =\  \exp( -2\pi \sqrt{-1}  \ x)  \qquad (x \in \R)	\qquad (\text{cf.}  \ \S8, \  \#27).
+\]
+Then
+\[
+\chi_\Q \in \widehat{\A}.
+\]
+Given $t \in \A$, define $\chi_{\Q, t} \in \widehat{\A}$ by the rule
+\[
+\chi_{\Q, t} (x) = \chi_\Q (tx).
+\]
+Then the arrow
+\[
+\Xi_\Q : \A \ra \widehat{\A}
+\]
+that sends $t$ to $\chi_{\Q, t}$ is an isomorphism of topological groups (cf.  \S8, \  \#24).
+%%----------------------------------------------------------------------------------------------02
+
+
+Recall now that $\forall$ $q \in \Q$,
+\[
+\chi_\Q(q) = 1	\qquad (\text{cf.} \  \S8, \  \#28).
+\]
+Accordingly, $\chi_\Q$ passes to the quotient and defines a unitary character of the adele class group $\A/\Q$.  
+So, $\forall$ $q \in \Q$, $\chi_{\Q, q}$ is constant on the cosets of $\A/\Q$, 
+thus it too determines an element of $\widehat{\A/\Q}$.
+
+Equip $\Q$ with the discrete topology.
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %01
+The induced map
+\begin{align*}
+%\Xi_\Q|_\Q: \Q  	
+\restr{\Xi_\Q}{\Q}: \Q  	
+&\ra \widehat{\A/\Q}\\
+q 		
+&\mapsto \chi_{\Q, q}
+\end{align*}
+is an isomorphism of topological groups.
+
+\vspace{0.1cm}
+
+PROOF \  
+Form $\Q^\perp \subset \widehat{\A}$, the closed subgroup of $\widehat{\A}$ consisting of those $\chi$ 
+that are trivial on $\Q$ $-$then $\Q \subset \Q^\perp$ and $\widehat{\A/\Q} \thickapprox \Q^\perp.$  
+But $\A/\Q$ is compact, thus its unitary dual $\widehat{\A/\Q}$ is discrete, thus $\Q^\perp$ is discrete.  
+The quotient $\Q^\perp/\Q \subset \A/\Q$ $(\A \thickapprox \widehat{\A})$ is therefore discrete and closed, 
+hence discrete and compact, hence finite.  
+But $\Q^\perp/\Q$ is a $\Q$-vector space, so $\Q^\perp/\Q = \{0\}$ or still, $\Q^\perp = \Q$, 
+which implies that $\Q \thickapprox \widehat{\A/\Q}$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %02
+There are two points of detail that have been tacitly invoked in the foregoing derivation.
+
+
+\qquad \textbullet \quad $\Q^\perp/\Q$ in the quotient topology is discrete.  
+Reason$:$  Let $S$ be an arbitrary nonempty subset of $\Q^\perp/\Q$, say 
+$S = \{x\Q: x \in U\}$, \mU a subset of $\Q^\perp$ $-$then $U$ is automatically open $(\Q^\perp$ being discrete$)$, 
+thus by the very definition of the quotient 
+%%----------------------------------------------------------------------------------------------03
+topology, $S$ is an open subset of $\Q^\perp/\Q$.
+
+\qquad \textbullet \quad The quotient $\Q^\perp/\Q$ is closed in $\A/\Q$.  
+Reason: $\Q^\perp$ is a closed subgroup of $\A$ containing $\Q$, so the following generality is applicable:  
+If $G$ is a topological group, if $H$ is a subgroup of $G$, if $F$ is a closed subgroup of $G$ containing $H$, 
+then $\pi(F)$ is closed in $G/H$ $(\pi : G \ra G/H$ the projection$)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf SCHOLIUM} \ %03
+\[
+\Q \thickapprox \widehat{\A/\Q} \implies \widehat{\Q} \thickapprox \widehat{\widehat{\A/\Q}} \thickapprox \A/\Q.
+\]
+
+\vspace{0.1cm}
+
+[Note: \  Bear in mind that $\Q$ carries the discrete topology.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DISCUSSION} \ %04
+Explicated, if $\chi \in \widehat{\Q}$, then there exists a $t \in \A$ such that $\chi = \chi_{\Q, t}$ and $\chi_{\Q, t_1} = \chi_{\Q, t_2}$ iff $ t_1 - t_2 \in \Q$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %05
+The 
+\underline{Bruhat space}
+\index{Bruhat space} 
+$\sB(\A_{\fin})$
+\index{$\sB(\A_{\fin})$} 
+consists of all finite linear combinations of functions of the form
+\[
+f = \prod_p f_{p},
+\]
+where $\forall$ $p$, $f_p \in \sB(\Q_p)$ and $f_p = \chi_{\Z_p}$ for all but a finite number of $p$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %06
+The 
+\underline{Bruhat-Schwartz space}
+\index{Bruhat-Schwartz space} 
+$\sB_\infty(\A)$
+\index{$\sB_\infty(\A)$}  
+consists of all finite linear combinations of functions of the form
+\[
+f = \prod_p f_{p} \times f_\infty,
+\]
+where 
+\[
+\prod_p f_p = \sB(\A_{\fin}) \text{ and } f_\infty \in \sS(\R).
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+Given an $f \in \sB_\infty(\A)$, its Fourier transform is the function:
+\begin{align*}
+\widehat{f}:\A 	
+&\ra \C\\	
+t 		
+&\mapsto \int_\A f(x) \chi_{\Q,t}(x) d\mu_\A(x) = \int_\A f(x) \chi_\Q(tx) d\mu_\A(x).	
+\end{align*}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %07
+If
+\[
+f = \prod_p f_p \times f_\infty
+\]
+is a Bruhat-Schwartz function, then
+\[
+\widehat{f} = \prod_p \widehat{f}_p \times \widehat{f}_\infty.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %08
+$\widehat{f}_p$ is computed per \S10, \  \#11 but $\widehat{f}_\infty$ is computed per
+\[
+\chi_\infty(x) = \exp(-2\pi\sqrt{-1} \ x),
+\]
+meaning that the sign convention here is the opposite of that laid down in \S10 (a harmless deviation).
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %09
+\[
+f \in \sB_\infty(\A) \implies \widehat{f} \in \sB_\infty(\A) \qquad (\text{cf.} \  \S10, \  \#16).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %10
+It is clear that
+\[
+\sB_\infty(\A) \subset \bINV(\A)
+\]
+and $\forall$ $f \in \sB_\infty(\A)$,
+\[
+\widehat{\widehat{f}\hspace{0.1cm}} = f(-x) \quad \text{$( x \in \A)$}.
+\]
+\end{x}
+
+\vspace{0.11cm}
+%%----------------------------------------------------------------------------------------------05
+
+
+\begin{x}{\small\bf LEMMA} \ %11
+Given $f \in \sB_\infty(\A)$, the series
+\[
+\sum_{r \in \Q} f(x+r),  \qquad \sum_{q \in \Q} \widehat{f}(x+q)
+\]
+are absolutely and uniformly convergent on compact subsets of $\A$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf POISSON SUMMATION FORMULA} \ %12
+Given $f \in \sB_\infty(\A)$,
+\[
+\sum_{r \in \Q} f(r) \ = \  \sum_{q \in \Q} \widehat{f}(q).
+\]
+
+The proof is not difficult but there are some measure theoretic issue to be dealt with first.
+
+On general grounds, 
+\[
+\int_\A \ =\  \int_{\A/\Q} \ \sum_\Q	\qquad (\text{cf.} \ \S6,  \ \#11).
+\]
+Here the integral $\ds\int_\A$ is with respect to the Haar measure $\mu_\A$ on $\A$ (cf. \S14, \  \#31).  
+Taking $\mu_\Q$ to be counting measure, this choice of data fixes the Haar measure $\mu_{\A/\Q}$ on $\A/\Q$.
+
+\vspace{0.1cm}
+
+[Note: \  The restriction of $\mu_\A$ to the fundamental domain
+\[
+D = \prod_p \Z_p \times [0,1[
+\]
+for $\A/\Q$ ( cf. \S14, \  \#10 ) determines $\mu_{\A/\Q}$ and
+\[
+1 \ =\  \mu_\A(D) \ =\  \mu_{\A/\Q} (\A/\Q).]
+\]
+If $\phi:\Q \ra \C$, then $\widehat{\phi}:\widehat{\Q} \ra \C$, i.e. $\widehat{\phi}:
+\A/\Q \ra \C$ or still,
+\[
+\widehat{\phi}(\chi) \ = \ \sum_{r \in \Q} \phi(r) \chi(r).
+\]
+%%----------------------------------------------------------------------------------------------06
+
+
+Specialize and suppose that $\phi$ is the characteristic function of $\{0\}$, so $\forall$ $\chi$,
+\[
+\widehat{\phi}(\chi) \ =\  \chi(0) \ =\  1.
+\]
+Therefore $\widehat{\phi}$ is the constant function 1 on $\A/\Q$.  
+Pass now to $\widehat{\widehat{\phi}\hspace{0.059cm}}$, thus 
+$\widehat{\widehat{\phi}\hspace{0.05cm}}: \widehat{\A/\Q} \ra \C$ or still,
+\begin{align*}
+\widehat{\widehat{\phi}\hspace{0.05cm}}:(\chi_{\Q,q}) \ 
+&=\  \int_{\A/\Q} \widehat{\phi}(x) \chi_{\Q,q} (x) d\mu_{\A/\Q}(x) \\
+&=\  \int_{\A/\Q} \chi_{\Q,q} (x) d\mu_{\A/\Q}(x)
+\end{align*}
+which is 1 if $q = 0$ and is 0 otherwise (cf. \S7, \  \#46 $(\A/\Q$ is compact)), 
+hence $\widehat{\widehat{\phi}\hspace{0.05cm}} = \phi$.  
+But $\phi(r) = \phi(-r)$, thereby leading to the conclusion that the Haar measure 
+$\mu_{\A/\Q}$ on $\A/\Q$ is the one singled out by Fourier inversion ( cf. \S7, \  \#45).
+
+\vspace{0.2cm}
+
+Summary: Per Fourier inversion,
+
+\qquad \textbullet \quad $\mu_\Q$ is paired with $\mu_{\A/\Q}$. 
+
+\qquad \textbullet \quad $\mu_{\A/\Q}$ is paired with $\mu_\Q$.
+\vspace{0.2cm}
+
+Given $f \in \sB_\infty(\A)$, put
+\[
+F(x) = \sum_{r \in \Q} f(x+r).
+\]
+Then $F$ lives on $\A/\Q$, so $\widehat{F}$ lives on $\widehat{\A/\Q} \thickapprox \Q:$
+\begin{align*}
+\widehat{F}(q) \ 
+&=\  \int_{\A/\Q} F(x) \chi_{\Q, q}(x) d\mu_{\A/\Q}(x) \\
+&=\  \int_{\A/\Q} F(x) \chi_\Q(qx) d\mu_{\A/\Q}(x).
+\end{align*}
+On the other hand,
+%%----------------------------------------------------------------------------------------------07
+\begin{align*}
+\widehat{f}(q)  	
+&= \int_\A f(x) \chi_{\Q, q}(x) d\mu_\A(x) \\
+&= \int_\A f(x) \chi_\Q (qx) d\mu_\A(x) \\
+&= \int_{\A/\Q} \bigl(\sum_{r \in \Q} f(x+r)  \chi_\Q (q(x+r))\bigr) d\mu_{\A/\Q} (x) \\
+&= \int_{\A/\Q} \bigl(\sum_{r \in \Q} f(x+r)  \chi_\Q (qx+qr)\bigr) d\mu_{\A/\Q} (x) \\
+&= \int_{\A/\Q} \bigl(\sum_{r \in \Q} f(x+r)  \chi_\Q (qx) \chi_\Q (qr)  \bigr) d\mu_{\A/\Q} (x) \\
+&= \int_{\A/\Q} \bigl(\sum_{r \in \Q} f(x+r)\bigr)  \chi_\Q (qx)   d\mu_{\A/\Q} (x) \\
+&= \int_{\A/\Q} F(x)  \chi_\Q (qx)   d\mu_{\A/\Q} (x) \\
+&= \widehat{F}(q).
+\end{align*}
+
+To finish the proof, per Fourier inversion, write
+\[
+F(x) \ =\  \sum_{q \in \Q} \widehat{F}(q) \overline{\chi_\Q(qx)}
+\]
+and then put $x = 0$:
+\[
+F(0) \ =\  \sum_{r \in \Q} f(r) \ =\  \sum_{q \in \Q} \widehat{F}(q) \ =\  \sum_{q \in \Q} \widehat{f}(q).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf THEOREM} \ %13
+Let $x \in \I$ $-$then $\forall$ $f \in \sB_\infty(\A)$,
+\[
+\sum_{r \in \Q} f(rx) \ =\  \frac{1}{\abs{x}_\A} \  \sum_{q \in \Q} \  \widehat{f}(qx^{-1}).
+\]
+
+\vspace{0.1cm}
+
+PROOF \  
+Work with $f_x \in \sB_\infty(\A)$ $(f_x(y) = f(xy)):$
+\[
+\sum_{r \in \Q} f_x(r) \ =\  \sum_{q \in \Q} \widehat{f}_x(q).
+\]
+%%----------------------------------------------------------------------------------------------08
+But
+\begin{align*}
+\widehat{f}_x(q)  \ 	
+&=\  \int_\A f_x(y) \chi_{\Q, q}(y) d\mu_\A(y) \\
+&=\  \int_\A f_x(y) \chi_{\Q}(qy) d\mu_\A(y) \\
+&=\  \int_\A f(xy) \chi_{\Q}(qxx^{-1}y) d\mu_\A(y) \\
+&=\  \frac{1}{\abs{x}_\A} \int_\A f(y) \chi_{\Q}(qx^{-1}y) d\mu_\A(y) \\
+&=\  \frac{1}{\abs{x}_\A} \widehat{f}(qx^{-1}).
+\end{align*}\\
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

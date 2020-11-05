@@ -1,0 +1,505 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{12}.\quad  LOCAL ZETA FUNCTIONS: $\Q^\times_p$}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+The theory set forth below is in the same spirit as that of \S11 but matters are technically more complicated due to the presence of ramification.
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %1
+Given $f \in \sB(\Q_p)$ and a character $\chi: \Q_p^\times \ra \C^\times$, the 
+\un{local zeta} \un{function}
+\index{local zeta function} 
+attached to the pair $(f,\chi)$ is
+\[
+Z(f, \chi) = \int_{\Q_p^\times} f(x) \chi(x) d^\times x,
+\]
+where $d^\times x = \ds\frac{p}{p-1} \ds\frac{dx}{\abs{x}_p}$ \ (cf. $\S 6$, $\#26$).
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: \  There are two parameters associated with $\chi$, viz. $s$ and $\un{\chi}$ (cf. $\S9$).]
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %2
+The integral defining $Z(f, \chi)$ is absolutely convergent for $\Re(s) > 0$.
+
+\vspace{0.01cm}
+
+PROOF \   
+It suffices to check the absolute convergence for $f = \chi_{p^n \Z_p}$ (cf. $\S 10$, $\#10$) 
+and then we might just as well take $n = 0:$
+\begin{align*}
+\abs{Z(f,\chi)} \ 	
+&\le \int_{\Q_p^\times} \abs{f(x)} \abs{x}_p^{\Re(s)} d^\times x\\	
+&=\  \int_{\Q_p^\times} \chi_{\Z_p}(x) \abs{x}_p^{\Re(s)} d^\times x\\		
+&=\  \int_{\Z_p - \{0\}} \abs{x}_p^{\Re(s)} d^\times x\\	
+&=\  \frac{1}{1 - p^{-\Re(s)}} \qquad \text{(cf. $\S 6$, $\#27$)}.
+\end{align*}
+\end{x}
+
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf LEMMA} \ %3
+$Z(f, \chi)$ is a holomorphic function of $s$ in the strip $\Re(s) > 0$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf NOTATION} \ %4
+Put
+\[
+\widecheck{x} = x^{-1}  \acdot_p.
+\]
+
+The integral defining $Z(f, \widecheck{\chi})$ is absolutely convergent if  $\Re(1-s) > 0$, i.e., if $1 - \Re(s) > 0$ or still, if $\Re(s) < 1$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %5
+Let $f, g \in \sB(\Q_p)$ and suppose that $0 < \Re(s) < 1$ $-$then
+\[
+Z(f, \chi)  Z(\widehat{g}, \widecheck{\chi}) = Z(\widehat{f}, \widecheck{\chi}) Z(g, \chi).
+\]
+
+[Simply follow verbatim the argument employed in \S11, \#5.]
+\end{x}
+
+\vspace{0.1cm}
+
+Fix $\phi \in \sB(\Q_p)$ and put
+\[
+\rho(\chi) \ = \ \frac{Z(\phi,\chi)}{Z(\widehat{\phi},\widecheck{\chi}}).
+\]
+Then $\rho(\chi)$ is independent of the choice of $\phi$ and $\forall$ $f \in \sB(\Q_p)$, the 
+\index{functional equation}
+\un{functional equation} 
+\[
+Z(f, \chi) = \rho(\chi) Z(\widehat{f}, \widecheck{\chi})
+\]
+obtains.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %6
+$\rho(\chi)$ is a meromorphic function of $s$ $($cf. infra$)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %7
+$\forall$ $f \in \sB(\Q_p)$, $Z(f, \chi)$ admits a meromorphic continuation to the whole $s$-plane
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %8
+Write
+\[L(\chi) =\ 
+\begin{cases}
+\ (1 - \chi(p))^{-1} &\quad (\chi  \ \text{unramified})\\
+\ 1 &\quad (\chi \ \text{ramified}
+\end{cases}
+.\]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+There remains the computation of $\rho(\chi)$, the simplest situation being when $\chi$ is unramified, say 
+$\chi = \acdot_p^s$, in which case we take $\phi_0(x) = \chi_p(x) \chi_{\Z_p}(x):$
+\begin{align*}
+Z(\phi_0,\chi)	\ 
+&=\  \int_{\Q_p^\times} \phi_0(x) \chi(x) d^\times x\\	
+&=\  \int_{\Q_p^\times}  \chi_p(x) \chi_{\Z_p}(x) \abs{x}_p^s d^\times x\\		
+&=\  \int_{\Z_p - \{0\}} \chi_p(x) \abs{x}_p^s d^\times x\\	
+&=\  \int_{\Z_p - \{0\}} \abs{x}_p^s d^\times x\\
+&=\  \frac{1}{1 - p^{-s}} \qquad \text{(cf. \S6, \#27)}\\
+&=\  \frac{1}{1 - \abs{p}_p^s} \\
+&=\  \frac{1}{1 - \chi(p)}\\
+&=\  L(\chi).
+\end{align*}
+
+To finish the determination, it is necessary to explicate the Fourier transform 
+$\widehat{\phi}_0$ of $\phi_0$ $($cf. \S10, \#11$):$
+\begin{align*}
+\widehat{\phi}_0(t)\ 
+&=\  \int_{\Q_p} \phi_0(x) \chi_p(tx) dx\\	
+&=\  \int_{\Q_p} \chi_p(x) \chi_{\Z_p}(x) \chi_p(tx) dx\\	
+&=\  \int_{\Z_p} \chi_p(x)  \chi_p(tx) dx\\	
+&=\  \int_{\Z_p} \chi_p((1+t)x) dx\\
+&=\  \chi_{\Z_p}(t).
+\end{align*}
+%%----------------------------------------------------------------------------------------------04 (ish)
+Therefore
+\begin{align*}
+Z(\widehat{\phi}_0, \widecheck{\chi})	
+&=\  \int_{\Q_p^\times} \widehat{\phi}_0(x)  \widecheck{\chi}(x) d^\times x\\	
+&=\  \int_{\Q_p^\times} \chi_{\Z_p}(x) \abs{x}_p^{1-s} d^\times x\\	
+&=\  \int_{\Z_p-\{0\}} \abs{x}_p^{1-s} d^\times x\\	
+&=\  \frac{1}{1 - p^{-(1-s)}}	\qquad \text{(cf. \S6, \#27)}\\
+&=\  \frac{1}{1 - \abs{p}_p^{1-s}}\\
+&=\  \frac{1}{1 - \widecheck{\chi}(p)}\\
+&=\  L(\widecheck{\chi}).
+\end{align*}
+And finally
+\[
+\rho(\chi) = \frac{Z(\phi_0, \chi)}{Z(\widehat{\phi}, \widecheck{\chi})	} = \frac{L(\chi)}{L(\widecheck{\chi})}
+\]
+or still, 
+\[
+\rho(\chi) = \frac{1 - p^{-(1-s)}}{1 - p^{-s}}.
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %9
+The function
+\[
+\frac{1 - p^{-(1-s)}}{1 - p^{-s}}
+\]
+%%----------------------------------------------------------------------------------------------05
+has a simple pole at $s = 0$ with residue
+\[
+\frac{p-1}{p}\log p
+\]
+and there are no other singularities. 
+\end{x}
+
+\vspace{0.1cm}
+
+Suppose now that $\chi$ is ramified of degree $n \ge 1 : \chi = \acdot_p^s$ $\un{\chi}$ \ 
+$($cf. \S9, \#6 $)$ and take $\phi_n(x) = \chi_p(x) \chi_{p^{-n} \Z_p}(x):$
+\begin{align*}
+Z(\phi_n, \chi)	
+&=\  \int_{\Q_p^\times} \phi_n(x)  \chi(x) d^\times x\\	
+&=\  \int_{\Q_p^\times} \chi_p(x) \chi_{p^{-n} \Z_p}(x) \abs{x}_p^s\un{\chi}(x) d^\times x\\
+&=\  \int_{p^{-n}\Z_p-\{0\}} \chi_p(x)  \abs{x}_p^s\un{\chi}(x) d^\times x\\	
+&=\  \sum_{k = -n}^\infty \int_{\Z_p^\times} \chi_p(p^ku) \abs{p^ku}_p^s \un{\chi}(u) d^\times u\\
+&=\  \sum_{k = -n}^\infty p^{-ks}  \int_{\Z_p^\times} \chi_p(p^ku) \un{\chi}(u) d^\times u.					
+\end{align*}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+If $\abs{v}_p \ne p^n$, then
+\[
+\int_{\Z_p^\times} \chi_p(vu) \un{\chi}(u) d^\times u = 0.
+\]
+
+Since $\abs{p^k}_p = p^{-k}$, $Z(\phi_n, \chi)$ reduces to
+%%----------------------------------------------------------------------------------------------06
+\[
+p^{ns} \int_{\Z_p^\times} \chi_p(p^{-n}u) \un{\chi}(u) d^\times u.
+\]
+Let $E = \{e_i: i \in I\}$ be a system of coset representatives for 
+$\Z_p^\times  / U_{p,n}$ $-$then by assumption, $\un{\chi}$ is constant on the cosets mod $U_{p,n}$, hence
+\[
+\int_{\Z_p^\times} \chi_p(p^{-n}u) \un{\chi}(u) d^\times u 
+= \sum_{i = 1}^r \un{\chi}(e_i) \int_{e_i U_{p,n}} \chi_p(p^{-n}u) d^\times u.
+\]
+But
+\[
+u \in e_i U_{p,n} \implies p^{-n} u \in p^{-n} e_i + \Z_p
+\]
+$\implies$
+\begin{align*}
+\chi_p(p^{-n} u) 	
+&=\   \chi_p(p^{-n} e_i + x) \qquad ( x \in \Z_p)\\	
+&=\ \chi_p(p^{-n} e_i).						
+\end{align*}
+Therefore
+\begin{align*}
+\int_{\Z_p^\times} \chi_p(p^{-n} u)  \un{\chi}(u) d^\times u 	
+&=\  \sum_{i = 1}^r \un{\chi}(e_i)  \chi_p(p^{-n}e_i) \int_{e_i U_{p,n}}  d^\times u\\	
+&=\  \tau(\chi) \int_{U_{p,n}}  d^\times u							
+\end{align*}
+if
+\[
+ \tau(\chi) = \sum_{i = 1}^r \un{\chi}(e_i)  \chi_p(p^{-n}e_i).
+\]
+%%----------------------------------------------------------------------------------------------07
+And
+\begin{align*}
+\int_{U_{p,n}} d^\times u  \ 
+&=\  \int_{1 + p^n \Z_p} d^\times u \\	
+&=\  \frac{p}{p-1}\int_{1 + p^n \Z_p} \frac{du}{\abs{u}_p} \\
+&=\  \frac{p}{p-1}\int_{1 + p^n \Z_p} du \\
+&=\  \frac{p}{p-1}\int_{p^n \Z_p} du \\		
+&=\  \frac{p}{p-1} p^{-n } \\
+&=\  \frac{p^{1-n}}{p-1}.				
+\end{align*}
+So in the end
+\[
+Z(\phi_n, \chi) = \tau(\chi) \frac{p^{1 + n(s - 1)}}{p-1}.
+\]
+Next
+\begin{align*}
+\widehat{\phi}_n(t) \ 
+&=\  \int_{\Q_p} \phi_n(x) \chi_p(tx) dx \\	
+&=\  \int_{\Q_p} \chi_p(x) \chi_{p^{-n}\Z_p (x)}  \chi_p(tx) dx \\
+&=\  \int_{p^{-n}\Z_p}  \chi_p(x)  \chi_p(tx) dx \\
+&=\  \int_{p^{-n}\Z_p} \chi_p((1+t)x) dx \\	
+&=\  \vol_{dx} (p^{-n} \Z_p) \chi_{p^n \Z_p-1} (t)\\	
+&=\  p^n\chi_{p^n \Z_p-1} (t).			
+\end{align*}
+%%----------------------------------------------------------------------------------------------08
+
+Therefore 
+\begin{align*}
+Z(\widehat{\phi}_n, \widecheck{\chi}) \ 
+&=\  \int_{\Q_p^\times} \widehat{\phi}_n(x) \widecheck{\chi}(x) d^\times x \\		
+&=\  \int_{\Q_p^\times} p^n \chi_{p^n \Z_p-1} (x)  \chi^{-1}(x) \abs{x}_p d^\times x \\	
+&=\  p^n\int_{p^n\Z_p-1} \ov{\un{\chi}(x)} \abs{x}_p^{1-s}d^\times x \\	
+&=\  p^n\int_{p^n\Z_p-1} \ov{\un{\chi}(x)} d^\times x \\
+&=\  p^n\int_{1 + p^n\Z_{p}} \ov{\un{\chi}(-x)} d^\times x \\	
+&=\  p^n \ov{\chi(-1)} \int_{1 + p^n\Z_{p}} \ov{\un{\chi}(x)} d^\times x \\
+&=\  p^n \chi(-1) \int_{U_{p,n}} d^\times x \\	
+&=\  p^n \chi(-1) \frac{p^{1-n}}{p-1} \\
+&=\  \frac{p}{p-1} \chi(-1).
+\end{align*}
+
+\vspace{0.1cm}
+
+[Note: \ $\chi(-1) = \pm 1:$
+\[
+1 = (-1)(-1) \implies 1 = \chi(-1)\chi(-1) = \chi(-1)^2.]
+\]
+Assembling the data then gives
+%%----------------------------------------------------------------------------------------------09 (ish)
+\begin{align*}
+\rho(\chi) \ 
+&=\  \frac{Z(\phi_n, \chi)}{Z(\widehat{\phi}_n, \widecheck{\chi})} \\		
+&=\  \frac{\tau(\chi) \ds\frac{p^{1 + n(s-1)}}{p-1} }    {\ds\frac{p}{p-1}\chi(-1)}\\
+&=\  \tau(\chi) \ds\frac{p^{1 + n(s-1)}}{p-1}  \frac{p-1}{p\chi(-1)}\\
+&=\  \tau(\chi) \chi(-1) p^{n(s-1)}\\
+&=\  \tau(\chi) \chi(-1) p^{n(s-1)} \ds\frac{1}{1}\\
+&=\  \tau(\chi) \chi(-1) p^{n(s-1)} \ds\frac{L(\chi)}{L(\widecheck{\chi})}.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %11
+\[\rho(\chi) = \epsilon(\chi) \frac{L(\chi)}{L(\widecheck{\chi})}, \quad \text{ where } \epsilon(\chi)  \ =\left\{
+\begin{array}{l l}
+1 \quad \text{ }  \text{ if $\chi$ is unramified}\\
+\rho(\chi)  \text{ if $\chi$ is ramified of degree $n \ge 1$.}\\
+\end{array}
+\right.\]
+\end{x}
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %12
+Suppose that $\chi$ is ramified of degree $n \ge 1$ $-$then
+\[
+ \epsilon(\chi)  \epsilon(\widecheck{\chi}) = \chi(-1).
+\]
+
+\vspace{0.1cm}
+
+PROOF \  
+$\forall$ $f \in \sB(\Q_p)$, 
+%%----------------------------------------------------------------------------------------------10
+\begin{align*}
+Z(f, \chi) 	\ 
+&=\   \epsilon(\chi) Z(\widehat{f}, \widecheck{\chi}) \\		
+&=\   \epsilon(\chi)  \epsilon(\widecheck{\chi}) Z(\widehat{\widehat{f}\hspace{.125cm}}, \widecheck{\widecheck{\chi}}).
+\end{align*}
+But $\widecheck{\widecheck{\chi}} = \chi$, hence
+\begin{align*}
+Z(\widehat{\widehat{f}\hspace{.125cm}}, \widecheck{\widecheck{\chi}}) \ 	
+&=\   \int_{\Q_p^\times} \widehat{\widehat{f}\hspace{.125cm}}(x) \chi(x) d^\times x \\		
+&=\   \int_{\Q_p^\times} f(-x)\chi(x) d^\times x \\	
+&=\   \int_{\Q_p^\times} f(x)\chi(-x) d^\times x \\
+&=\   \chi(-1) \int_{\Q_p^\times} f(x)\chi(x) d^\times x \\
+&=\   \chi(-1) Z(f, \chi).
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %13
+\[
+\tau(\chi) \tau(\widecheck{\chi}) = p^n \chi(-1).
+\]
+
+[In fact,
+\begin{align*}
+\epsilon(\chi)  \epsilon(\widecheck{\chi}) \ 
+&= \  \tau(\chi)p^{n(s-1)} \chi(-1) \tau(\widecheck{\chi}) p^{n(1 - s - 1)} \widecheck{\chi}(-1) \\
+&= \  \tau(\chi) \tau(\widecheck{\chi}) p^{-n} \\
+&= \  \chi(-1)
+\end{align*}
+\qquad\qquad $\implies$
+\[
+\tau(\chi) \tau(\widecheck{\chi}) = p^n \chi(-1).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------11
+
+
+\begin{x}{\small\bf LEMMA} \ %14
+Suppose that $\chi$ is ramified of degree $n \ge 1$ $-$then
+\[
+\epsilon(\ov{\chi}) = \chi(-1) \ov{\epsilon(\chi)}.
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+$\forall$ $f \in \sB(\Q_p)$, 
+\begin{align*}
+Z(\widehat{\ov{f}}, \chi) \ 
+&=\   \int_{\Q_p^\times} \widehat{\ov{f}}(x) \chi(x) d^\times x \\		
+&=\   \int_{\Q_p^\times} \ov{\widehat{f}(-x)}\chi(x) d^\times x  \qquad (\text{cf.} \ \S 10, \ \#12)\\	
+&=\   \int_{\Q_p^\times} \ov{\widehat{f}(x)}\chi(-x) d^\times x \\
+&=\   \chi(-1) \int_{\Q_p^\times} \ov{\widehat{f}(x)}\chi(x) d^\times x \\
+&=\   \chi(-1) Z(\ov{\widehat{f}}, \chi).
+\end{align*}
+
+But $\widecheck{\ov{\chi}} = \ov{\widecheck{\chi}}$, hence
+\begin{align*}
+\ov{Z(f, \chi)}	\ 
+&=\   Z(\ov{f}, \ov{\chi}) \\		
+&=\   \epsilon(\ov{\chi}) Z(\widehat{\ov{f}}, \widecheck{\ov{\chi}}) \\	
+&=\   \epsilon(\ov{\chi}) Z(\widehat{\ov{f}}, \ov{\widecheck{\chi}}) \\
+&=\   \epsilon(\ov{\chi}) \chi(-1) Z(\ov{\widehat{f}}, \ov{\widecheck{\chi}}) \\	
+&=\   \epsilon(\ov{\chi}) \chi(-1) \ov{Z(\widehat{f}, \widecheck{\chi})}.	
+\end{align*}
+On the other hand,
+\begin{align*}
+\ov{Z({f}, {\chi})} \ 
+&=\   \ov{\epsilon(\chi) Z(\widehat{f}, \widecheck{\chi})}\\		
+&=\   \ov{\epsilon(\chi)} \ov{Z(\widehat{f}, \widecheck{\chi})}.
+\end{align*}
+%%----------------------------------------------------------------------------------------------12
+Therefore 
+\[
+\epsilon(\ov{\chi}) \chi(-1) = \ov{\epsilon(\chi)}
+\]
+\qquad\qquad\qquad$\implies$
+\[
+\epsilon(\ov{\chi}) = \chi(-1)\ov{\epsilon(\chi)}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %15
+\[
+\tau(\ov{\chi}) = \chi(-1)\ov{\tau(\chi)}.
+\]
+
+[In fact,
+\begin{align*}
+\epsilon(\ov{\chi})  	\ 
+&=\   \tau(\ov{\chi}) p^{n(\ov{s} - 1)} \ov{\chi}(-1)\\	
+&=\   \chi(-1)\ov{\epsilon(\chi)}\\
+&=\   \chi(-1)\ov{\tau(\chi)}p^{n(\ov{s} - 1)} \ov{\chi(-1)}\\
+&=\   \chi(-1)\ov{\tau(\chi)}p^{n(\ov{s} - 1)} \ov{\chi}(-1)
+\end{align*}
+\qquad\qquad\qquad$\implies$
+\[
+\tau(\ov{\chi}) = \chi(-1)\ov{\tau(\chi)}.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %16
+Let $\un{\chi} \in \widehat{\Z_p^\times}$ be a nontrivial unitary character $-$then its \un{root number} 
+$W(\un{\chi}) $ is prescribed by the relation
+\[
+W(\un{\chi}) = \epsilon(\acdot_p^{1/2} \un{\chi}).
+\]
+
+[Note: \  If $\un{\chi}$ is trivial, then $W(\un{\chi}) = 1.]$
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %17
+\[
+\abs{W(\un{\chi})} = 1.
+\]
+%%----------------------------------------------------------------------------------------------13
+
+\vspace{0.1cm}
+
+PROOF \ 
+Put $\chi = \acdot_p^{1/2} \un{\chi}$ $-$then
+\[
+\epsilon(\chi)\epsilon(\widecheck{\chi}) = \chi(-1) 	\qquad \text{(cf. } \# 12)
+\]
+$\implies$
+\begin{align*}
+\epsilon(\chi)^{-1}  \ 	
+&=\   \epsilon(\widecheck{\chi}) \chi(-1)^{-1}\\	
+&=\   \epsilon(\widecheck{\chi}) \chi(-1)\\
+&=\   \epsilon(\ov{\chi}) \chi(-1) \qquad (\widecheck{\chi} = \ov{\chi})\\
+&=\   \chi(-1) \ov{\epsilon(\chi)} \chi(-1) \qquad (\text{cf.} \  \#14)\\
+&=\   \chi(-1)^2 \ \ov{\epsilon(\chi)}\\
+&=\   \ov{\epsilon(\chi)}.
+\end{align*}
+$\implies$
+\[
+\abs{\epsilon(\chi)} = 1 \implies \abs{W(\un{\chi})} = 1.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %18
+\[
+\abs{\tau(\acdot_p^{1/2} \chi)} = p^{n/2}.
+\]
+
+[In fact,
+\[
+1 = \abs{W(\un{\chi}) } = \abs{\tau(\acdot_p^{1/2} \un{\chi}) p^{n(\frac{1}{2} - 1)} }.
+\]
+\end{x}
+
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf EXERCIZE AD LIBITUM} \ %18 
+Show that the theory expounded above for $\Q_p$ can be carried over to any finite extension $\K$ of $\Q_p$.
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

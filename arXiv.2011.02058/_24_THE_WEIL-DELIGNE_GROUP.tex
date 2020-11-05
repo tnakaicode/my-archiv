@@ -1,0 +1,497 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{24}.\quad  THE WEIL-DELIGNE GROUP}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+%\ \indent 
+
+\begin{x}{\small\bf DEFINITION} \ %01
+\  The 
+\un{Weil-Deligne}
+\index{Weil-Deligne group} 
+group \ $WD_\K$ is the semidirect product \  $\C \rtimes W_\K$, the multiplication rule being 
+\[
+(z_1,w_1) \ (z_2,w_2) \ = \ (z_1  + \norm{w_1} z_2, w_1 w_2).
+\]
+
+[Note: \  The identity in $WD_\K$ is $(0,e)$ and the inverse of $(z,w)$ is $(-\norm{w}^{-1}z,w^{-1})$: 
+\begin{align*}
+(z,w) (-\norm{w}^{-1}z, w^{-1})  \ 
+&=\  (z + \norm{w} (-\norm{w}^{-1}z),w w^{-1})\\
+&=\ (z - z,e) \\
+&=\  (0,e).]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %02
+The topology on $WD_\K$ is the product topology.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %03
+A 
+\un{Deligne representation}
+\index{Deligne representation} 
+of $W_\K$ is a triple $(\rho,V,N)$, where $\rho:W_\K \ra \GL(V)$ is a representation of $W_\K$ 
+and $N:V \ra V$ is a nilpotent endomorphism of $V$ subject to the relation 
+\[
+\rho(w) N \rho(w)^{-1} \ = \ \norm{w} N \qquad (w \in W_\K).
+\]
+
+[Note: \ $N = 0$ is admissible so every representation of $W_\K$ is a Deligne representation.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %04
+Take $V = \C^n$, hence $\GL(V) = \GL_n(\C)$.  
+Let $e_0, e_1, \ldots, e_{n-1}$ be the usual basis of $V$.  Define $\rho$ by the rule
+\[
+\rho(w) e_i \ = \ \norm{w}^i e_i \qquad (w \in W_\K, \ 0 \leq i \leq n-1)
+\]
+and define $N$ by the rule 
+\[
+N e_i \ = \ e_{i+1} \quad (0 \leq i \leq n -2), \quad N e_{n-1} = 0.
+\]
+%%----------------------------------------------------------------------------------------------02
+Then the triple $(\rho, V, N)$ is a Deligne representation of $W_\K$, the 
+\un{$n$-dimensional special} \un{representation}, 
+\index{$n$-dimensional special representation}
+denoted $\spp(n)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %05
+A 
+\un{representation} 
+\index{representation} 
+of $WD_\K$ is a continuous homomorphism 
+$\rho^\prime:WD_\K \ra \GL(V)$ whose restriction to $\C$ is complex analytic, where $V$ is a finite dimensional complex vector space.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %06
+Every Deligne representation $(\rho,V,N)$ of $W_\K$ gives rise to a representation 
+$\rho^\prime:WD_\K \ra \GL(V)$ of $WD_\K$.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Put
+\[
+\rho^\prime(z,w) \ = \ \exp(z N) \rho(w).
+\]
+Then
+\begin{align*}
+\rho^\prime(z_1,w_1) \rho^\prime(z_2,w_2)   \ 
+&=\vsy\  \exp(z_1 N) \rho(w_1) \exp(z_2 N) \rho(w_2) \\
+&=\vsy\  \exp(z_1 N) \rho(w_1) \exp(z_2 N) \rho(w_1^{-1}) \rho(w_1)  \rho(w_2) \\
+&=\vsy\  \exp(z_1 N) \exp(z_2 \norm{w_1} N) \rho(w_1 w_2)\\
+&=\vsy\  \exp(z_1 N + z_2 \norm{w_1} N) \rho(w_1 w_2)\\
+&=\vsy\  \exp((z_1 + \norm{w_1} z_2) N) \rho(w_1 w_2)\\
+%%----------------------------------------------------------------------------------------------03
+&=\vsy\  \rho^\prime(z_1 + \norm{w_1} z_2, w_1 w_2) \\
+&=\vsy\  \rho^\prime((z_1, w_1)(z_2, w_2)).
+\end{align*}
+
+[Note: \ 
+The continuity of $\rho^\prime$ is manifest as is the complex analyticity of its restriction to $\C$.]
+\end{x}
+\vspace{0.1cm}
+
+
+One can also go the other way but this is more involved.
+
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf RAPPEL} \ %07
+If $T:V \ra V$ is unipotent, then 
+\[
+\log T \ = \ \sum\limits_{n \geq 1} \frac{(-1)^{n+1}}{n} \ (T - I)^n
+\]
+is nilpotent.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SUBLEMMA} \ %08
+Let $\rho^\prime:WD_\K \ra \GL(V)$ be a representation of $WD_\K$ $-$then $\forall \ z \neq 0$, $\rho^\prime(z,e)$ is unipotent.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SUBLEMMA} \ %09
+Let $\rho^\prime:WD_\K \ra \GL(V)$ be a representation of $WD_\K$ $-$then $\forall \ z \neq 0$, 
+\[
+\log \rho^\prime (z,e)
+\]
+is nilpotent and 
+\[
+(\log \rho^\prime (z,e)) / z \qquad (z \neq 0)
+\]
+is independent of $z$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+Every representation $\rho^\prime:WD_\K \ra \GL(V)$ of $WD_\K$ gives rise to a Deligne representation 
+$(\rho,V,N)$ of $W_\K$.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Put 
+\[
+\rho \ = \ \restr{\rho^\prime}{\{0\}} \times W_{\K}, \  N \ = \ \log \rho^\prime (1,e).
+\]
+%%----------------------------------------------------------------------------------------------04
+Then $\forall \ w \in W_\K$, 
+
+\allowdisplaybreaks
+\begin{align*}
+\rho(w) N \rho(w)^{-1}   \ 
+&=\vsy\  \rho(w) \log \rho^\prime (1,e) \rho(w)^{-1}\\
+&=\vsy\  \rho(w) \bigl( \sum\limits_{n \geq 1} \frac{(-1)^{n+1}}{n} \ (\rho^\prime(1,e) - I)^n\bigr) \rho(w)^{-1}\\
+&=\vsy\ \sum\limits_{n \geq 1} \frac{(-1)^{n+1}}{n} (\rho(w) \rho^\prime(1,e) \rho(w)^{-1} - I)^n.
+\end{align*}
+And 
+\allowdisplaybreaks
+\begin{align*}
+\rho(w) \rho^\prime(1,e) \rho(w)^{-1} \ 
+&=\vsy\ \rho^\prime(0,w) \rho^\prime(1,e) \rho^\prime(0,w^{-1})\\
+&=\vsy\ \rho^\prime ((0,w)(1,e)(0,w^{-1}))\\
+&=\vsy\ \rho^\prime ((\norm{w},w)(0,w^{-1}))\\
+&=\vsy\ \rho^\prime(\norm{w},e).
+\end{align*}
+Therefore
+\allowdisplaybreaks
+\begin{align*}
+\rho(w) N \rho(w)^{-1} \ 
+&=\vsy\ \sum\limits_{n \geq 1} \frac{(-1)^{n+1}}{n} (\rho^\prime(\norm{w},e)  - I)^n\\
+&=\vsy\ \log \rho^\prime(\norm{w},e)\\
+&=\vsy\ \norm{w} \log \rho^\prime (\norm{w}, e)) /  \norm{w}\\
+&=\vsy\ \norm{w} \log \rho^\prime (1,e)\\
+&=\vsy\ \norm{w} N.
+\end{align*}
+
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+\begin{x}{\small\bf OPERATIONS} \ %11
+
+\vspace{0.3cm}
+
+\index{Deligne representation, direct sum}
+\qquad \textbullet \quad \un{Direct Sum}: \ Let $(\rho_1,V_1,N_1)$, $(\rho_2,V_2,N_2)$ be Deligne representations 
+$-$then their direct sum is the triple 
+\[
+(\rho_1 \oplus \rho_2,V_1 \oplus V_2 ,N_1 \oplus N_2).
+\]
+
+\index{Deligne representation, tensor product}
+\qquad \textbullet \quad \un{Tensor Product}: \ Let $(\rho_1,V_1,N_1)$, $(\rho_2,V_2,N_2)$ be Deligne representations 
+$-$then their tensor product is the triple
+\[
+(\rho_1 \  \otimes \  \rho_2,V_1 \  \otimes \ V_2 ,N_1 \ \otimes \  I_2 + I_1 \  \otimes\  \ N_2).
+\]
+
+\index{Deligne representations, contragredient}
+\qquad \textbullet \quad \un{Contragredient}: \ Let $(\rho,V,N)$ be a Deligne representation $-$then its contragredient is the triple 
+\[
+(\rho^\vee, V^\vee, -N^\vee).
+\]
+
+[Note: \ 
+$V^\vee$ is the dual of $V$ and $N^\vee$ is the transpose of $N$ (thus $\forall \ f \in V^\vee$, 
+$N^\vee(f) = f \circ N$).]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %12
+The definitions of $\oplus$, $\otimes$, $\vee$ when transcribed to the ``prime picture'' are the usual 
+representation-theoretic formalities applied to the group $WD_\K$.  
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %13
+Let 
+\[
+\begin{cases}
+\ (\rho_1,V_1,N_1)\\
+\ (\rho_2,V_2,N_2)
+\end{cases}
+\]
+be Deligne representations of $W_\K$ $-$then a morphism 
+\[
+(\rho_1,V_1,N_1) \ra (\rho_2,V_2,N_2)
+\]
+%%----------------------------------------------------------------------------------------------06
+is a linear map $T:V_1 \ra V_2$ such that 
+\[
+T \rho_1 (w) \ = \  \rho_2(w) T \qquad (w \in W_\K)
+\]
+and $T N_1 = N_2 T$.
+
+[Note: \ 
+If $T$ is a linear isomorphism, then the Deligne representations 
+\[
+\begin{cases}
+\ (\rho_1,V_1,N_1)\\
+\ (\rho_2,V_2,N_2)
+\end{cases}
+\]
+are said to be \un{isomorphic}.]
+\index{Deligne representation, isomorphic}
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %14
+Suppose that $(\rho,V,N)$ is a Deligne representation of $W_\K$ $-$then a subspace $V_0 \subset V$ is an 
+\un{invariant subspace} 
+\index{Deligne representation, invariant subspace}
+if it is invariant under $\rho$ and $N$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %15
+The kernel of $N$ is an invariant subspace. 
+
+\vspace{0.1cm}
+
+PROOF \ 
+If $N v = 0$, then $\forall \ w \in W_\K$, 
+\[
+N \rho (w) v \ = \ \norm{w^{-1}} \rho(w) N v = 0.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %16
+A Deligne representation $(\rho,V,N)$ of $W_\K$ is 
+\un{indecomposable} 
+\index{Deligne representation, indecomposable}
+if $V$ cannot be written as a direct sum of proper 
+invariant subspaces.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %17
+Consider $\spp(n)$ $-$then it is indecomposable.
+
+\vspace{0.1cm}
+
+[If $\C^n = S \oplus T$ was a nontrivial decomposition into  proper invariant subspaces, then both
+$
+\begin{cases}
+\ S \cap \ker N\\
+\ T \cap \ker N
+\end{cases}
+$
+would be nontrivial.]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------07
+
+\begin{x}{\small\bf DEFINITION} \ %18
+A Deligne representation $(\rho,V,N)$ of $W_\K$ is 
+\un{semisimple} 
+\index{Deligne representation, semisimple}
+if $\rho$ is semisimple (cf. \S23, \#37).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+Consider $\spp(n)$ $-$then it is semisimple.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %20
+Let $\pi$ be an irreducible representation of $W_\K$  $-$then $\spp(n) \ \otimes \  \pi$ is semisimple and indecomposable.  
+
+[Note: \ 
+Recall that $\pi$ is identified with $(\pi,0)$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %21
+Every semisimple indecomposable Deligne representation of $W_\K$  is equivalent to a Deligne representation of the form 
+$\spp(n) \ \otimes \  \pi$, where $\pi$ is an irreducible representation of $W_\K$ and $n$ is a positive integer. 
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %22
+Let $(\rho,V,N)$ be a semisimple Deligne representation of $W_\K$ $-$then there is a decomposition 
+\[
+(\rho,V,N) \ = \ \bigoplus\limits_{i= 1}^{s} \spp(n_i) \ \otimes \ \pi_i,
+\]
+where $\pi_i$ is an irreducible representation of $W_\K$ and $n_i$ is a positive integer.  
+Furthermore, if  
+\[
+(\rho,V,N) \ = \ \bigoplus\limits_{j = 1}^t \spp(n_j^\prime) \  \otimes \  \pi_j^\prime
+\]
+is another such decomposition, then $s = t$ and after a renumbering of the summands, 
+$\pi_i \approx \pi_i^\prime$ and $n_i = n_i^\prime$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+
+Instead of working with 
+\[
+WD_\K \ = \ \C \rtimes W_\K,
+\]
+%%----------------------------------------------------------------------------------------------08
+some authorities work with 
+\[
+SL(2,\C) \times W_\K,
+\]
+the rationale for this being that the semisimple representations of the two groups are the ``same''.
+
+Given $w \in W_\K$, let 
+\[
+h_w \ = \ 
+\begin{pmatrix}
+\norm{w}^{1/2} &0\\
+0 &\norm{w}^{-1/2}\\
+\end{pmatrix}
+\]
+and identify $z \in \C$ with 
+\[
+h_w \ = \ 
+\begin{pmatrix}
+1 &z\\
+0 &1\\
+\end{pmatrix}
+.
+\]
+
+Then
+\[
+h_w 
+\begin{pmatrix}
+1 &z\\
+0 &1\\
+\end{pmatrix}
+h_w^{-1}
+\ = \ 
+\begin{pmatrix}
+1 &\norm{w}z\\
+0 &1\\
+\end{pmatrix}
+.
+\]
+But  conjugation by $h_w$ is an automorphism of $\SL(2,\C)$, thus one can form the semisimple direct product 
+$\SL(2,\C) \rtimes W_\K$, the multiplication rule being 
+\[
+(X_1, w_1) (X_2, w_2) \ = \ (X_1 h_{w_1} X_2 h_{w_1}^{-1}, w_1 w_2).
+\]
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------09
+
+\begin{x}{\small\bf LEMMA} \ %01
+The arrow 
+\[
+(X,w) \lra (Xh_w,w)
+\]
+from 
+\[
+\SL(2,\C) \rtimes W_\K \quad \text{to} \quad \SL(2,\C) \times W_\K
+\]
+is an isomorphism of groups.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %02
+A 
+\un{representation} 
+\index{representation of $\SL(2,\C)$} 
+of $\SL(2,\C) \times W_\K$ is a continuous homomorphism 
+$\rho:\SL(2,\C) \times W_\K \ra \GL(V)$ ($V$ a finite dimensional complex vector space) such that the restriction of $\rho$ to 
+$\SL(2,\C)$ is complex analytic.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %03
+$\rho$ is semisimple iff its restriction to $W_\K$ is semisimple.  
+
+\vspace{0.1cm}
+
+[The restriction of $\rho$ to $\SL(2,\C)$ is necessarily semisimple.]
+\end{x}
+
+\vspace{0.1cm}
+
+The finite dimensional irreducible representations of $\SL(2,\C)$ are parameterized by the positive integers:
+\[
+n \longleftrightarrow \sym(n), \qquad \dim \sym(n) = n.
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %04
+The isomorphism classes of semisimple Deligne representations of $W_\K$ are in a 1-to-1 correspondence with the isomorphism classes of semisimple representations of $\SL(2,\C) \times W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+To explicate matters, start with a semisimple indecomposable Deligne representation of $W_\K$, say 
+$\spp(n) \ \otimes \  \pi$, and assign to it the external tensor product 
+\fboxsep=0cm
+$\sym(n)  \boxtimesdmc \hsx \pi$, hence in general 
+\[
+\bigoplus\limits_{i = 1}^s \spp(n_i)  \ \otimes \  \pi_i \lra 
+%\bigoplus\limits_{i = 1}^s \sym(n_i) \boxed{\times} \hsx \pi_i.
+\bigoplus\limits_{i = 1}^s \sym(n_i) \boxtimesdmc \hsx \pi_i.
+\] 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

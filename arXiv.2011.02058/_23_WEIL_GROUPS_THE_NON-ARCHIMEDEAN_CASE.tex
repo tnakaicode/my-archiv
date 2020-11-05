@@ -1,0 +1,534 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{23}.\quad  WEIL GROUPS: THE NON-ARCHIMEDEAN CASE}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+\ \indent Let $\K$ be a non-archimedean local field. 
+
+\vspace{0.25cm}
+
+\begin{x}{\small\bf NOTATION} \ %01
+Put 
+\[
+\begin{cases}
+ \ G_\K \ = \ \Gal(\K^\sep / \K)\\
+ \ G_\K^\ab \ = \ \Gal(\K^\ab / \K)
+\end{cases}
+.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %02
+Every character of $G_\K$ factors through $\ov{G_\K^*}$, hence gives rise to a charcter of $G_\K^\ab$.
+\end{x}
+\vspace{0.1cm}
+
+To study the characters of $G_\K^\ab$, precompose with the reciprocity map $\rec_\K:\K^\times \ra G_\K^\ab$, thus
+\[
+\chi_\K \ : \ 
+\begin{cases}
+ \ (G_\K^\ab)^{\widetilde{\ }} \ra (\K^\times)^{\widetilde{\ }}\\
+ \ \chi \ra \chi \circ \rec_\K
+\end{cases}
+.
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %03
+$\chi_\K$ is a homomorphism.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %04
+$\chi_\K$ is injective.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Suppose that 
+\[
+\chi_\K(\chi) \ = \ \chi \circ \rec_\K
+\]
+is trivial $-$then $\restr{\chi}{\Img \rec_\K} = 1$. But $\Img  \rec_\K$ is dense in $G_\K^\ab$ (cf. \S21, \#13), 
+so by continuity, $\chi \equiv 1$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf LEMMA} \ %05
+$\chi_\K$ is not surjective.
+
+\vspace{0.1cm}
+
+PROOF \ 
+$G_\K^\ab$ is compact abelian and totally disconnected.  
+Therefore 
+$(G_\K^\ab)^{\widetilde{\ }} = (G_\K^\ab)^{\widehat{\ }}$ 
+and every $\chi$ is unitary and of finite order 
+(cf. \S7, \#7 and \S8, \#2), thus the $\chi_\K(\chi)$ are unitary and of finite order.  
+But there are characters of $\K^\times$ for which this is not the case.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %06
+The failure of $\chi_\K$ to be surjective will be remedied below (cf. \#19). 
+\end{x}
+
+\vspace{0.1cm}
+
+The kernel of the arrow 
+\[
+\Gal(\K^\sep / \K) \lra \Gal(\K^\ur / \K)
+\]
+of restriction is $\Gal(\K^\sep / \K^\ur)$ and there is an exact sequence
+\[
+1 \lra \Gal(\K^\sep / \K^\ur) \lra \Gal(\K^\sep / \K)  \lra \Gal(\K^\ur / \K) \lra 1.
+\]
+Identify
+\[
+\Gal(\K^\ur / \K)
+\]
+with 
+\[
+\Gal(\F_q^\ab / \F_q) 
+\]
+and put 
+\[
+W(\F_q^\ab / \F_q) \ = \ \langle \sigma_q \rangle \qquad (\text{discrete topology}).
+\]
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %07
+The \un{Weil group} $W(\K^\sep / \K)$ is the inverse image of $W(\F_q^\ab / \F_q)$ in $\Gal(\K^\sep / \K)$, 
+i.e., the elements of $\Gal(\K^\sep / \K)$ which induce an intgral power of $\sigma_q$.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf NOTATION} \ %08
+Abbreviate $W(\K^\sep / \K)$  to $W_\K$, hence $W_\K \subset G_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+Setting 
+\[
+I_\K \ = \ \Gal(\K^\sep / \K^\ur) \qquad (\text{the \un{inertia group}}),
+\]
+there is an exact sequence
+\[
+\begin{tikzcd}[sep=large]
+{1} \ar{r} 
+&{I_\K} \ar{r}
+&{W_\K} \ar{r}
+&{W(\F_q^\ab / \F_q)} \ar{d} \ar{r}
+&{1}\\
+&&&{\Z} \ar{u}[swap]{\approx}
+\end{tikzcd}
+.
+\]
+
+\vspace{0.1cm}
+
+[Note: \  Fix an element $\widetilde{\sigma}_q \in W_\K$ which maps to $\sigma_q$ $-$then structurally, 
+$W_\K$ is the disjoint union
+\[
+\bigcup\limits_{n \in \Z} (\widetilde{\sigma}_q)^n I_\K.]
+\]
+
+Topologize $W_\K$ by taking for a neighborhood basis at the identity the 
+\[
+\Gal(\K^\sep / \LL) \cap I_\K,
+\]
+where $\LL$ is a finite Galois extension of $\K$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf REMARK} \ %09
+$I_\K$ has the relative topology per the inclusion $I_\K \ra G_\K$ and any splitting 
+$\Z \ra W_\K$ induces an isomorphism $W_\K \approx I_\K \times \Z$ of topological groups, 
+where $\Z$ has the discrete topology.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+$W_\K$ is a totally disconnected locally compact group.
+
+[Note: \ $W_\K$ is not compact \ldots \ .]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %11
+The inclusion  $W_\K \ra G_\K$ is continuous and has a dense image.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf LEMMA} \ %12
+$I_\K$ is open in  $W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %13
+$I_\K$ is a maximal compact subgroup of $W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+Suppose that $\LL / \K$ is a finite extension of $\K$ $-$then $G_\LL \subset G_\K$ is the subgroup of $G_\K$ fixing $\LL$, hence 
+\[
+W_\LL \subset G_\LL \subset G_\K.
+\]
+
+\begin{x}{\small\bf LEMMA} \ %14
+\[
+W_\LL \ = \  G_\LL \cap W_\K \subset W_\K
+\]
+is open and of finite index in $W_\K$, it being normal in $W_\K$ iff $\LL / \K$ is Galois.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %15
+The arrow 
+\[
+\LL \ra  W_\LL
+\]
+is a bijection between the finite extensions of $\K$ and the open subgroups of $W_\K$.
+
+\vspace{0.1cm}
+
+[By contrast, the arrow 
+\[
+\LL \ra \Gal(\K^\sep / \LL)
+\]
+is a bijection between the finite extensions of $\K$ and the open subgroups of $G_\K$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %16
+\[
+\ov{W_\K^*} \ = \ \ov{G_\K^*} .
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %17
+The homomorphism $W_\K^\ab \ra G_\K^\ab$ is 1-to-1.
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+\begin{x}{\small\bf THEOREM} \ %18
+The image of 
+$\rec_\K:\K^\times \ra G_\K^\ab$ is $W_\K^\ab$ and the induced map $\K^\times \ra W_\K^\ab$ is an isomorphism of topological groups (cf. \S21, \#13).
+\end{x}
+\vspace{0.1cm}
+
+The characters of $W_\K$ ``are'' the characters of $W_\K^\ab$, so we have:
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %19
+There is a bijective correspondence between the characters of $W_\K$ and the characters of $\K^\times$ or still, there is a 
+bijective correspondence between the 1-dimensional representations of $W_\K$ and the 
+1-dimensional representations of $\GL_1(\K)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+Suppose that $\LL / \K$ is a finite Galois extension of $\K$ $-$then $G_\LL \subset G_\K$ and 
+\[
+G_\K / G_\LL \ \approx \ \Gal(\LL / \K)
+\]
+is finite of cardinality 
+$[\LL:\K]$.  Since $W_\K$ is dense in $G_\K$, it follows that the image of the arrow
+\[
+\begin{cases}
+ \ W_\K \lra G_\K / G_\LL\\
+ \ w \lra w G_\LL
+\end{cases}
+\]
+is all of $G_\K / G_\LL$, its kernel being those $w \in W_\K$ such that $w \in G_\LL$, i.e., its kernel is 
+$G_\LL \cap W_\K$ or still, is $W_\LL$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %20
+\[
+W_\K / W_\LL \ \approx \ G_\K / G_\LL \ \approx \ \Gal(\LL / \K).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %21
+$\ov{W_\LL^*}$ is a normal subgroup of $W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+%%----------------------------------------------------------------------------------------------06
+[Bearing in mind that $W_\LL$ is a normal subgroup of $W_\K$, if $\alpha, \ \beta \in W_\LL^*$ and if $\gamma \in W_\K$, then 
+\[
+\gamma \alpha \beta \alpha^{-1} \beta^{-1} \gamma^{-1} \ = \ 
+(\gamma \alpha \gamma^{-1}) (\gamma \beta \gamma^{-1}) 
+(\gamma \alpha^{-1} \gamma^{-1}) (\gamma \beta^{-1} \gamma^{-1}).]
+\]
+
+\vspace{0.1cm}
+
+There is an exact sequence 
+\[
+1 \lra 
+W_\LL /\ov{W_\LL^*} \lra 
+W_\K /\ov{W_\LL^*} \lra 
+(W_\K /\ov{W_\LL^*})  / (W_\LL /\ov{W_\LL^*}) \lra 
+1
+\]
+or still, there is an exact sequence
+\[
+1 \lra 
+W_\LL /\ov{W_\LL^*} \lra 
+W_\K /\ov{W_\LL^*} \lra 
+W_\K   / W_\LL \lra 
+1.
+\]
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf NOTATION} \ %22
+Put 
+\[
+W(\LL,\K) \ = \ W_\K /\ov{W_\LL^*}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %23
+There is an exact sequence
+\[
+1 \lra 
+W_\LL^\ab \lra
+W(\LL,\K) \lra 
+W_\K /W_\LL \lra
+1
+\]
+and a diagram
+\[
+\begin{tikzcd}[sep=large]
+&{W_\LL^\ab}   \ar{r}
+&{W(\LL,\K)} \ar{r}
+&{W_\K / W_\LL} \ar{d}{\approx}\\
+{1} \ar{r} &{\LL^\times} \ar{u}{\rec_\LL} &&{\Gal(\LL / \K)} \ar{r} &{1}
+\end{tikzcd}
+.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %24
+Given $w \in W_\K$, let $\norm{w}$ denote the effect on $w$ of passing
+%%----------------------------------------------------------------------------------------------07
+from $W_\K$ to $\R_{>0}^\times$ via the arrows 
+\[
+\begin{tikzcd}[sep=large]
+{W_\K} \ar{r} 
+&{W_\K^\ab} \ar{rr}{\rec_\K^{-1}}
+&&{\K^\times} \ar{rr}{\mods_\K}
+&&{\R_{>0}^\times}
+\end{tikzcd}
+.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %25
+$\norm{\cdot}:W_\K \ra \R_{>0}^\times$ is a continuous homomorphism and its kernel is $I_\K$.
+
+[Under the arrow 
+\[
+W_\K \ra W_\K^\ab,
+\]
+$I_\K$ drops to 
+\[
+\Gal(\K^\ab / \K^\ur) \ \subset \ W_\K^\ab.
+\]
+Consider now the arrow
+\[
+\rec_\K:\K^\times \lra W_\K^\ab.
+\]
+Then $R^\times$ is sent to $\Gal(\K^\ab / \K^\ur)$ and a prime element $\pi \in R$ is sent to an element 
+$\widetilde{\sigma}_q$ in $W_\K^\ab$ whose image in $W(\F_q^\ab / \F_q)$ is $\sigma_q$.  And 
+\[
+W_\K^\ab \ = \ \bigcup\limits_{n \in \Z} (\widetilde{\sigma}_q)^n \Gal(\K^\ab / \K^\ur).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %26
+A \un{representation} of $W_\K$ is a continuous homomorphism 
+$\rho:W_\K \ra \GL(V)$, where $V$ is a finite dimensional complex vector space.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %27
+A homomorphism 
+$\rho:W_\K \ra \GL(V)$ 
+is continuous per the usual topology on $\GL(V)$ iff it is continuous per the discrete topology on $\GL(V)$.
+
+\vspace{0.1cm}
+
+[$\GL(V)$ has no small subgroups.]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------08
+
+\begin{x}{\small\bf SCHOLIUM} \ %28
+The kernel of every representation of $W_\K$ is trivial on an open subgroup $J$ of $I_\K$.  
+Conversely, if $\rho:W_\K \ra \GL(V)$ is a homomorphism which is trivial on an open subgroup $J$ of $I_\K$, then 
+the inverse image of any subset of $\GL(V)$ is a union of cosets of $J$, hence is open, hence $\rho$ is continuous, so by definition is a representation of $W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %29
+Suppose that $\LL / \K$ is a finite Galois extension of $\K$ $-$then 
+\begin{align*}
+W_\LL \cap I_\K \ 
+&=\  G_\LL \cap W_\K \cap I_\K \\
+&=\ G_\LL \cap I_\K
+\end{align*}
+is an open subgroup of $I_\K$.  But
+\[
+W_\K / W_\LL \ \approx \  \Gal(\LL / \K) \qquad (\text{cf.} \ \#20).
+\]
+Therefore every homomorphism $\Gal(\LL/\K) \ra \GL(V)$ lifts to a homomorphism $W_\K \ra \GL(V)$ which is trivial on an open subgroup of $I_\K$, hence is a representation of $W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %30
+Representations of $W_\K$ arising in this manner are said to be of \un{Galois type}.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %31
+A representation of $W_\K$ is of Galois type iff it has finite image.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %32
+$\norm{\cdot}$ is a character of $W_\K$ but as a representation, is not of Galois type.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %33
+Let $\rho:W_\K \ra \GL(V)$ be a representation $-$then the image $\rho(I_\K)$ is finite.
+%%----------------------------------------------------------------------------------------------09
+
+\vspace{0.1cm}
+
+PROOF \ 
+Suppose that $J$ is an open subgroup of $I_\K$ on which $\rho$ is trivial.  
+Since $I_\K$ is compact and $J$ is open, the quotient $I_\K / J$ is finite, thus 
+$\rho(I_\K) = \rho(I_\K / J)$ is finite.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %34
+A representation $\rho:W_\K \ra \GL(V)$ is \un{irreducible} if $V \neq 0$ 
+and the only $\rho$-invariant subspaces are 0 and $V$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %35
+Given an irreducible representation $\rho$ of $W_\K$, there exists an irreducible representation $\widetilde{\rho}$ of $W_\K$ 
+and a complex parameter $s$ such that $\rho \ \approx \ \widetilde{\rho} \ \un{\otimes} \ \norm{\cdot}^s$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %36
+Let $\rho:W_\K \ra \GL(V)$ be a representation $-$then $V$ is the sum of its irreducible $\rho$-invariant subspaces iff 
+every $\rho$-invariant subspace has a $\rho$-invariant complement.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %37
+Let $\rho:W_\K \ra \GL(V)$ be a representation $-$then $\rho$ is \un{semisimple} if it satisfies either condition of the preceding lemma.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %38
+Irreducible representations are semisimple.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %39
+Let $\rho:W_\K \ra \GL(V)$ be a representation $-$then the following conditions are equivalent
+
+\qquad 1. \quad $\rho$ is semisimple.
+
+\qquad 2. \quad $\rho(\widetilde{\sigma}_q)$ is semisimple.
+
+\qquad 3. \quad $\rho(w)$ is semisimple $\forall \ w \in W_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

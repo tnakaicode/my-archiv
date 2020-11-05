@@ -1,0 +1,177 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{2}.\quad  TOPOLOGICAL FIELDS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent Let $\abs{\hspace{0.05cm}\cdot \hspace{0.05cm}}$ be an absolute value on a field $\F$. Given a $\in \F, r > 0$, put
+\[
+N_r(a) = \{b: \abs{b - a} < r\}.
+\]
+
+
+\begin{x}{\small\bf LEMMA} \ %1
+There is a topology on $\F$ in which a basis for the neighborhoods of a are the $N_r(a)$.\\
+
+PROOF \  The nontrivial point is to show that given  $V \in$ $\sB_a$
+%dmc
+($\sB_a$ = the set of open balls centered at $a$)\xspace
+, 
+there is a $V_0 \in \sB_a$ such that if $a_0 \in V_0$, then there is a $W \in \sB_{a_0}$ such that $W \subset V$.  
+So let V = $N_r(a)$, $V_0 = N_{r/2M}(a)$, $W = N_{r/2M}(a_0)$ $(a_0 \in V_0) -$ then $W \subset V:$
+\[
+\begin{aligned}
+b \in W \implies \abs{b - a} \ 
+&= \ \abs{(b - a_0) + (a_0 - a)}\\
+&\le \ M \sup(\abs{b - a_0}, \abs{a_0 - a}) \\
+&\le \ M \sup(r/2M, r/2M)\\
+&= \  M(r/2M) \\
+&= \ r/2 \\
+&< \  r.
+\end{aligned}
+\]
+\end{x}
+
+
+
+\begin{x}{\small\bf EXAMPLE} \ %2
+The topology induced by $\acdot$ is the discrete topology iff  $\acdot$ is the trivial absolute value.
+\end{x}
+
+
+\begin{x}{\small\bf FACT} \ %3
+Absolute values $\acdot_1$, and $\acdot_2$ are equivalent iff they give rise to the same topology.
+\end{x}
+%\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %4
+The topology induced by $\acdot$  is metrizable.\\
+
+PROOF \  This is because $\acdot$ is equivalent to an absolute value satisfying the 
+%%----------------------------------------------------------------------------------------------02
+triangle inequality (cf. $\S1$, \ \#14), the underlying metric being 
+\[
+d(a,b) \ = \  \abs{a - b}.
+\]
+\end{x}
+%\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %5
+A field with a topology defined by an absolute value is a 
+\underline{topological} \underline{field} 
+\index{topological field}
+i.e., the operations sum, product, and inversion are continuous.\\
+\end{x}
+\vspace{0.1cm}
+
+Assume now that $\acdot$  is non-archimedean, hence that the ultrametric inequality 
+\[
+\abs{a - b} \ \le \  \sup (\abs{a},\abs{b})
+\]
+is in force.\\
+
+\begin{x}{\small\bf LEMMA} \ %6
+$N_r(a)$ is closed (open is automatic).\\
+
+\indent PROOF \   Let $p$ be a limit point of $N_r(a)$ $-$then $\forall$  $t > 0$,
+\[
+(N_t(p) - \{p\}) \cap N_r(a) \ne \emptyset
+\]
+Take $t = \ds\frac{r}{2}$ and choose $b \in N_r(a):$
+\[
+d(p,b) < \frac{r}{2}	\quad \text{$(p \ne b)$}.
+\]
+Then
+\[
+\begin{aligned}
+d(a,p) 
+&\le  \ \sup(d(a,b), d(b,p)) \\
+&< \  r
+\end{aligned}
+\]
+$\implies$
+\[
+p \in N_r(a).
+\]
+Therefore, $N_r(a)$ contains all its limit points, hence is closed.\\
+\end{x}
+%\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %7
+If $a^{\prime} \in N_r(a)$, then $N_r(a^{\prime} ) = N_r(a)$.\\
+
+PROOF \  E.g:
+\[
+b \in N_r(a) \implies \abs{b - a} < r
+\]
+%%----------------------------------------------------------------------------------------------03
+$\implies$
+\[
+\begin{aligned}
+\abs{b - a^{\prime}} 
+&= \  \abs{(b - a) + (a - a^{\prime})}\\
+&\le \  \sup(\abs{b - a},\abs{a - a^{\prime}})\\
+&< r %\implies N_r(a) \subset N_r(a^{\prime}).
+\end{aligned}
+\]
+$\indent\indent\implies$ 
+\[
+N_r(a) \subset N_r(a^{\prime}).
+\]
+\end{x}
+%\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %8
+Put
+\[
+B_r(a) = \{b:\abs{b - a} \le r\}.
+\]
+Then a priori, $B_r(a)$ is closed.  But $B_r(a)$ is also open and if $a^{\prime} \in B_r(a)$, then  $B_r(a^{\prime}) = B_r(a)$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %9
+If
+\[
+a_1 + a_2 + \dotsb + a_n = 0, 
+\]
+then $\exists$  $i \ne j$ such that
+\[
+\abs{a_i} = \abs{a_j} = \sup\abs{a_k}.
+\]
+
+PROOF \
+Without loss of generality write $a_1 = \sup\limits_{1 \leq k \leq n}\abs{a_k}$.  Then
+%$\implies$
+\allowdisplaybreaks
+\begin{align*}
+\abs{a_1} 	\ 
+&=\  \abs{0 - a_1}\\	
+&=\  \abs{a_1 + a_2 + \dotsb + a_n - a_1}\\
+&=\  \abs{a_2 + \dotsb + a_n}\\	
+&\leq\ \sup\limits_{2 \leq k \leq n}\abs{a_k}\\
+&=\ \abs{a_j} \qquad (\exists \ j: 2 \leq j \leq n)\\
+&\leq\ \sup\limits_{1\leq k \leq n}\abs{a_k}\\
+&= \abs{a_1}.
+\end{align*}
+
+\end{x}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

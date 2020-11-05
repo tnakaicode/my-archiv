@@ -1,0 +1,323 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{17}.\quad  GLOBAL ZETA FUNCTIONS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Structurally, there is a short exact sequence
+\[
+1 \ra \I^1/ \Q^\times \ra \I/ \Q^\times \ra \R_{>0}^\times \ra 1 	\qquad 
+(\text{cf.} \  \S14, \ \#27)
+\]
+and $\I^1/ \Q^\times$ is compact (cf. \S14, \ \#24).
+
+\vspace{0.3cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+Given $f \in \mathcal{B}_\infty(\A)$ and a unitary character $\omega:\I/ \Q^\times \ra \T$, the 
+\underline{global zeta function}
+\index{global zeta function} 
+attached to the pair $(f,\omega)$ is 
+\[
+Z (f,\omega,s) \ =\  \int_\I f(x)\omega(x)\abs{x}_\A^s d^\times x		\qquad (\Re(s) > 1).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %02
+In the notation of \S16, take
+\[
+f(x) \ = \ \Phi(x) \ = \ e^{-\pi x_\infty ^2} \ \prod_p \chi_{\Z_p} (x_p)		\qquad (x \in \A)
+\]
+and let $\omega = 1$ $-$then as shown there
+\[
+Z(f,1,s) = \pi ^{-s/2} \Gamma(s/2) \zeta(s).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %03
+$Z(f,\omega,s)$ is a holomorphic function of $s$ in the strip $\Re(s) > 1.$
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %04
+$Z(f,\omega,s)$ can be meromorphically continued into the whole $s$-plane and satisfies the functional equation
+\[
+Z(f,\omega,s) = Z(\widehat{f},\ov{\omega},1-s).
+\]
+
+[Note:
+\[
+f \in \mathcal{B}_\infty(\A) \implies \widehat{f} \in \mathcal{B}_\infty(\A)	\qquad (\text{cf.} \  \S15, \  \#9).]
+\]
+The proof is a computation, albeit a lengthy one.
+%%----------------------------------------------------------------------------------------------02
+
+To begin with,
+\[
+\I \thickapprox \R_{>0}^\times \times \I^1	\qquad (\text{cf.} \   \S14, \  \#27).
+\]
+Therefore
+\begin{align*}
+Z (f,\omega,s) \ 	
+&=\vsx \int_\I f(x)\omega(x)\abs{x}_\A^s d^\times x\\	
+&=\vsx \int_{\R_{>0}^\times \times \I^1} f(tx)\omega(tx)\abs{tx}_\A^s \frac{dt}{t} d^\times x\\	
+&=\vsx \int_0^\infty \bigl(\int_{\I^1} f(tx)\omega(tx)\abs{tx}_\A^s  d^\times x\bigr) \frac{dt}{t}.	
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %05
+Put
+\[
+Z_t(f,\omega,s) = \int_{\I^1} f(tx)\omega(tx)\abs{tx}_\A^s  d^\times x.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %06
+\ \qquad\\
+\vspace{0.1cm}
+
+$
+\text{\qquad\qquad} Z_t(f,\omega,s) + f(0) \ds\int_{\I^1/\Q^\times} \omega(tx)\abs{tx}_\A^s  d^\times x\\
+\text{\qquad\qquad\qquad\qquad} = Z_{t^{-1}}(\widehat{f},\ov{\omega},1-s) + 
+\widehat{f}(0) \int_{\I^1/\Q^\times} \ov{\omega}(t^{-1}x)\abs{t^{-1}x}_\A^{1-s}  d^\times x.\\
+$
+
+\vspace{0.1cm}
+
+PROOF \ 
+Write
+\begin{align*}
+\int_{\I^1} f(tx)\omega(tx)\abs{tx}_\A^s  d^\times x \ 
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\sum_{r \in \Q^\times} f(rtx) \omega(rtx) \abs{rtx}_\A^s \bigr) d^\times x\\	
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\sum_{r \in \Q^\times} f(rtx) \omega(tx) \abs{tx}_\A^s \bigr) d^\times x.	
+\end{align*}
+%%----------------------------------------------------------------------------------------------03
+Then
+
+\allowdisplaybreaks
+$
+Z_t(f,\omega,s) + f(0) \ds\int_{\I^1/\Q^\times} \omega(tx)\abs{tx}_\A^s  d^\times x
+$
+\begin{align*}
+\quad \quad     
+&=\vsx  \int_{\I^1/\Q^\times} (\sum_{q \in \Q} f(rtx) \omega(tx) \abs{tx}_\A^s d^\times x\\	
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\frac{1}{\abs{tx}_\A} \ \sum_{q \in \Q} \widehat{f}(qt^{-1}x^{-1})\bigr) \omega(tx) \abs{tx}_\A^s d^\times x \qquad (\text{cf.} \  \S15, \ \#13)\\
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\sum_{q \in \Q} \widehat{f}(qt^{-1}x)\bigr) \abs{t^{-1}x}_\A\omega(tx^{-1}) \abs{tx^{-1}}_\A^s d^\times x \qquad \text{$(x \ra x^{-1})$}\\
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\sum_{q \in \Q} \widehat{f}(qt^{-1}x)\bigr) \omega^{-1}(t^{-1}x) \abs{t^{-1}x}_\A^{1-s} d^\times x \\
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\sum_{q \in \Q} \widehat{f}(qt^{-1}x)\bigr) \ov{\omega}(t^{-1}x) \abs{t^{-1}x}_\A^{1-s} d^\times x \\
+&=\vsx \int_{\I^1/\Q^\times} \bigl(\sum_{q \in \Q^\times} \widehat{f}(qt^{-1}x) \ov{\omega}(qt^{-1}x) \abs{qt^{-1}x}_\A^{1-s} \bigr)d^\times x \\
+&\hspace{3.5cm} + \widehat{f}(0) \int_{\I^1/\Q^\times} \ov{\omega}(t^{-1}x)\abs{t^{-1}x}_\A^{1-s}  d^\times x \\
+&=\vsx \int_{\I^1} \widehat{f}(t^{-1}x)) \ov{\omega}(t^{-1}x) \abs{t^{-1}x)}_\A^{1-s} d^\times x \\
+&\hspace{3.5cm} + \widehat{f}(0) \int_{\I^1/\Q^\times} \ov{\omega}(t^{-1}x)\abs{t^{-1}x}_\A^{1-s}  d^\times x\\
+&=\vsx Z_{t^{-1}}(\widehat{f},\ov{\omega},1-s) + \widehat{f}(0) \int_{\I^1/\Q^\times} \ov{\omega}(t^{-1}x)\abs{t^{-1}x}_\A^{1-s}  d^\times x.
+\end{align*}
+
+
+Return to $Z(f,\omega,s)$ and break it up as follows:
+%%----------------------------------------------------------------------------------------------04
+\[
+Z(f,\omega,s) = \int_0^1 Z_t(f,\omega,s) \frac{dt}{t} + \int_1^\infty Z_t(f,\omega,s) \frac{dt}{t}.
+\]
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %07
+The integral
+\[
+ \int_1^\infty Z_t(f,\omega,s) \frac{dt}{t}
+\]
+is a holomorphic function of $s$.
+
+[It can be expressed as
+\[
+\int_{\I :\abs{x}_\A \ge 1} f(x)\omega (x) \abs{x}_\A^s d^\times x.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+This leaves
+\[
+\int_0^1 Z_t(f,\omega,s) \frac{dt}{t},
+\]
+which can thus be represented as
+\[
+\int_0^1 (Z_{t^{-1}}(\widehat{f},\ov{\omega},1-s)  \  - \   f(0) \int_{\I^1/\Q^\times} \omega(tx)  \abs{tx}_\A^s d^\times x \  + \  \widehat{f}(0) \int_{\I^1/\Q^\times} \ov{\omega}(t^{-1}x)  \abs{t^{-1}x}_\A^{1-s} d^\times x )\frac{dt}{t}.
+\]
+
+To carry out the analysis, subject
+\[
+\int_0^1 Z_{t^{-1}}(\widehat{f},\ov{\omega},1-s) \frac{dt}{t}
+\]
+to the change of variable $t \ra t^{-1}$, thereby leading to
+\[
+\int_1^\infty Z_{t}(\widehat{f},\ov{\omega},1-s) \frac{dt}{t},
+\]
+a holomorphic function of $s$ (cf. \#7 supra).
+%%----------------------------------------------------------------------------------------------05
+
+\vspace{0.2cm}
+
+It remains to discuss
+\begin{align*}
+R(f,\omega,s)     	
+&=\vsx \int_0^1 (-f(0) \int_{\I^1/\Q^\times} \omega(tx)  \abs{tx}_\A^s d^\times x \  + \  \widehat{f}(0) \int_{\I^1/\Q^\times} \ov{\omega}(t^{-1}x)  \abs{t^{-1}x}_\A^{1-s} d^\times x )\frac{dt}{t}\\
+&=\vsx \int_0^1 \bigl(-f(0)\omega(t) \abs{t}^s \int_{\I^1/\Q^\times} \omega(x) d^\times x \  + \  \widehat{f}(0) \ov{\omega}(t^{-1})\abs{t^{-1}}^{1-s} \int_{\I^1/\Q^\times} \ov{\omega}(x) d^\times x \bigr)\frac{dt}{t},
+\end{align*}
+there being two cases.
+
+\vspace{0.1cm}
+
+1. \quad $\omega$ is nontrivial on $\I^1$.  
+Since $\I^1/\Q^\times$ is compact (cf. \S14, \#24), the integrals
+\[
+\int_{\I^1/\Q^\times} \omega(x) d^\times x, \qquad   \int_{\I^1/\Q^\times} \ov{\omega}(x) d^\times x 
+\]
+must vanish (cf. \S7, \#46).  
+Therefore $R(f,\omega,s) = 0$, hence
+\[
+Z(f,\omega,s) = \int_1^\infty Z_t(f,\omega,s) \frac{dt}{t} + \int_1^\infty Z_t(\widehat{f},\ov{\omega},1-s) \frac{dt}{t},
+\]
+is a holomorphic function of $s$.
+
+\vspace{0.1cm}
+
+2. \quad $\omega$ is trivial on $\I^1$.  Let $\phi: \R_{>0}^\times \ra \I/\I^1$ be the isomorphism per \S14, \#27
+$-$then $\omega \circ \phi: \R_{>0}^\times \ra \T$ is a unitary character of $\R_{>0}^\times$, 
+thus for some $w \in \R$, $\omega \circ \phi = \acdot^{-\sqrt{-1}\ w}$, so
+\[
+\omega = \acdot^{-\sqrt{-1}\ w} \circ \phi^{-1} \implies \omega(x) = \abs{x}_\A^{-\sqrt{-1}\ w}.
+\]
+Therefore
+%%----------------------------------------------------------------------------------------------06 (ish)
+
+\begin{align*}
+R(f,\omega,s)  \ 	
+&=\  -f(0) \vol(\I^1/\Q^\times) \int_0^1 t^{-\sqrt{-1} \ w + s - 1} dt + \widehat{f}(0) \vol(\I^1/\Q^\times) \int_0^1 t^{-\sqrt{-1}\ w + s - 2} dt \\
+&=\  -f(0) \frac{\vol(I^1/\Q^\times)}{-\sqrt{-1}\ w + s} + \widehat{f}(0) \frac{\vol(\I^1/\Q^\times)}{-\sqrt{-1}\ w + s - 1},
+\end{align*}
+a meromorphic function that has a simple pole at
+\\
+\[
+\begin{cases}
+\ s = \sqrt{-1}\ w \quad \quad \quad \text{ with residue } \quad -f(0) \ \vol(\I^1/\Q^\times) \quad \text{if} \ f(0) \ne 0\\
+\ s = \sqrt{-1}\ w+1 \quad \ \text{ with residue } \qquad  \widehat{f}(0) \ \vol(\I^1/\Q^\times) \quad \text{if} \ \widehat{f}(0) \ne 0\\
+\end{cases}
+.\]
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %08
+To explicate $\vol(\I^1/\Q^\times)$ use the machinery of \S16:  In the notation of \#2 above, 
+\[
+Z(f,1,s) = -\frac{1}{s} + \frac{1}{s-1} + \dotsb 
+\]
+\[
+\implies \vol(\I^1/\Q^\times) = 1.
+\]
+
+[Note: \ Here, $w = 0$ and $f(0) = 1$, $\widehat{f}(0) = 1.]$
+\end{x}
+
+That $Z(f,\omega,s)  $ can be meromorphically continued into the whole $s$-plane is now manifest.  
+As for the functional equation, we have
+\\
+\begin{align*}
+Z(f,\omega,s)      
+&= \vsx \int_1^\infty Z_t(f,\omega,s) \frac{dt}{t} 
++ \int_1^\infty Z_t(\widehat{f},\ov{\omega},1-s)  \frac{dt}{t} 
++ R(f,\omega,s)  \\
+&= \vsx\int_1^\infty \bigl(\int_{\I^1} f(tx) \omega(tx) \abs{tx}_\A^s d^\times x\bigr)  \frac{dt}{t} 
++ \int_1^\infty \bigl(\int_{\I^1} \widehat{f}(tx) \ov{\omega}(tx) \abs{tx}_\A^{1-s} d^\times x\bigr)  \frac{dt}{t} 
++ R(f,\omega,s).
+\end{align*}
+%%----------------------------------------------------------------------------------------------07
+And we also have
+\\
+\begin{align*}
+Z(\widehat{f},\ov{\omega},1-s)      	
+&=\vsx \int_1^\infty Z_t(\widehat{f},\ov{\omega},1-s) \frac{dt}{t} + \int_1^\infty Z_t(\widehat{\widehat{f}\hspace{0.125cm}},\ov{\ov{\omega}},1-(1-s))  \frac{dt}{t} + R(\widehat{f},\ov{\omega},1-s)  \\
+&=\vsx \int_1^\infty Z_t(\widehat{f},\ov{\omega},1-s) \frac{dt}{t} 
++ \int_1^\infty Z_t(\widehat{\widehat{f}\hspace{0.125cm}},\omega,s)\bigr)  \frac{dt}{t} 
++ R(\widehat{f},\ov{\omega},1-s)  \\						
+&=\vsx \int_1^\infty \bigl(\int_{\I^1} \widehat{f}(tx) \ov{\omega}(tx) \abs{tx}_\A^{1-s} d^\times x\bigr)  \frac{dt}{t} 
++ \int_1^\infty \bigl(\int_{\I^1} \widehat{\widehat{f}\hspace{0.125cm}}(tx) \omega(tx) \abs{tx}_\A^s d^\times x\bigr)  \frac{dt}{t} \\
+&\hspace{7.5cm} +  R(\widehat{f},\ov{\omega},1-s).
+\end{align*}
+The first of these terms can be left as is (since it already figures in the formula for $Z(f,\omega,s)).$  
+Recalling that
+\[
+\widehat{\widehat{f}\hspace{0.125cm}}(x) = f(-x) \quad (x \in \A) \qquad (\text{cf.} \  \S15, \ \#10),
+\]
+The second term becomes
+\[
+\int_1^\infty \bigl(\int_{\I^1} f(-tx) \omega(tx) \abs{tx}_\A^s d^\times x\bigr) \frac{dt}{t}
+\]
+%%----------------------------------------------------------------------------------------------08
+or still,
+\[
+\int_1^\infty \bigl(\int_{\I^1} f(tx) \omega(-tx) \abs{-tx}_\A^s d^\times x\bigr) \frac{dt}{t} 
+= \int_1^\infty \bigl(\int_{\I^1} f(tx) \omega(-tx) \abs{tx}_\A^s d^\times x\bigr) \frac{dt}{t}.
+\]
+But by hypothesis, $\omega$ is trivial on $\Q^\times$, hence
+\[
+\omega(-tx) = \omega((-1)tx) = \omega(-1) \omega(tx) = \omega(tx),
+\]
+and we end up with 
+\[
+ \int_1^\infty \bigl(\int_{\I^1} f(tx) \omega(tx) \abs{tx}_\A^s d^\times x\bigr) \frac{dt}{t}
+\]
+which likewise figures in the formula for $Z(f,\omega,s)$.  
+Finally, if $\omega$ is trivial on $\I^1$, then
+\\
+\begin{align*}
+R(\widehat{f},\ov{\omega},1-s) \   	
+&= -\frac{\widehat{f}(0)}{\sqrt{-1} \ w + 1 - s} +  \frac{\widehat{\widehat{f}\hspace{0.125cm}}(0)}{\sqrt{-1} \ w + (1 - s) - 1}\\
+&= \frac{f(0)}{\sqrt{-1}\  w - s} -  \frac{\widehat{f}(0)}{\sqrt{-1} \ w + 1 - s}\\
+&= -\frac{f(0)}{-\sqrt{-1}\  w + s} +  \frac{\widehat{f}(0)}{-\sqrt{-1}\  w + s - 1}\\
+&= R(f,\omega,s).
+\end{align*}
+On the other hand, if $\omega$ is nontrivial on $\I^1$, then $\ov{\omega}$ is nontrivial on $\I^1$ and 
+\[
+R(f,\omega,s) = 0, \quad R(\widehat{f},\ov{\omega},1-s) = 0.
+\]
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

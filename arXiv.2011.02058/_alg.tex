@@ -1,0 +1,1109 @@
+\chapter{
+%$\boldsymbol{\S}$\textbf{24}.\quad  THE WEIL-DELIGNE GROUP}
+APPENDIX B: TOPICS IN ALGEBRA}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+\[
+\text{PRINCIPAL IDEAL DOMAINS}
+\]
+
+\[
+\text{FIELD EXTENSIONS}
+\]
+
+\[
+\text{ALGEBRAIC CLOSURE}
+\]
+
+\[
+\text{TRACES AND NORMS}
+\]
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{PRINCIPAL IDEAL DOMAINS}
+\]
+
+Let \mA be a commutative ring with unit.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+An 
+\un{ideal}
+\index{ideal} 
+\mI in \mA is an additive subgroup of \mA such that the relations $a \in A$, $x \in I$ imply that 
+$a x$ ($= x a$) belongs to \mI.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %02
+An ideal \mI in \mA is a 
+\un{prime ideal} 
+\index{prime ideal} 
+if $I \neq A$ and if $a b \in I$ implies that either $a \in I$ or $b \in I$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %03
+An ideal \mI in \mA is a 
+\un{maximal ideal} 
+\index{maximal ideal} 
+if $I \neq A$ and there is no larger proper ideal of \mA that contains \mI.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %04
+\mA is an
+\un{integral domain} 
+\index{integral domain} 
+if $a b = 0$ implies that $a = 0$ or $b = 0$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}}  \ %05
+Every field is an integral domain.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %06
+$\Z$ is an integral domain but $Z/n\Z$ is an integral domain iff $n$ is prime.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT}  \ %07
+An ideal $I \neq A$ in \mA is a prime ideal iff $A/I$ is an integral domain.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT}  \ %08
+An ideal $I \neq A$ in \mA is a maximal ideal iff $A/I$ is a field.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %09
+Take $A = \Z[X]$ $-$then $\langle X \rangle$ is a prime ideal 
+(since $A/\langle X \rangle \approx \Z$ is an integral domain) but $\langle X \rangle$ is not a maximal ideal 
+(since $A/\langle X \rangle \approx \Z$ is not a field).
+\end{x}
+
+
+\begin{x}{\small\bf DEFINITION} \ %10
+An ideal \mI in \mA is a 
+\un{principal ideal}
+\index{principal ideal} 
+if $I = A a_0$ ($\equiv \hsx \langle a_0\rangle$) for some $a_0 \in A$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf DEFINITION} \ %11
+\mA is a 
+\un{principal ideal domain}
+\index{principal ideal domain} 
+if \mA is an integral domain and if every ideal in \mA is principal.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %12
+For any field $\K$, the polynomial ring $\K[X]$ is a principal ideal domain.
+
+\vspace{0.1cm}
+
+[If \mI is a nonzero ideal in $\K[X]$, then \mI consists of all the multiples of the monic polynomial in \mI of least degree.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %13
+The polynomial ring $\Z[X]$ is not a principal ideal domain.
+
+\vspace{0.1cm}
+
+[The ideal \mI consisiting of all polynomials with even constant term is not a principal ideal (but it is a maximal ideal).]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf FACT} \ %14
+If \mA is a principal ideal domain, then every nonzero prime ideal is maximal.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %15
+For any field $\K$, the maximal ideals in $\K[X]$ are the nonzero prime ideals.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %16
+A 
+\un{unit} 
+\index{unit} 
+in \mA is an element $u \in A$ with a multiplicative inverse, i.e., there is a $v \in A$ such that $u v = 1$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %17
+The units in $\K[X]$ are the nonzero constants.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %18
+The units in $\Z$ are 1 and $-1$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+The units in $\Z/n\Z$ are the congruence classes $[a]$ of a mod $n$ such that $(a,n) = 1)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %20
+The elements $a, b \in A$ are said to be 
+\un{associates}
+\index{associates} 
+if there is a unit $u \in A$ such that $a = u b$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf DEFINITION} \ %21
+A nonzero element $p \in A$ is said to be 
+\un{irreducible}
+\index{irreducible} 
+if $p$ is not a unit and in every factorization $p = a b$, either $a$ or $b$ is a unit.
+\end{x}
+
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %22
+Take $A = \Z[X]$ $-$then $2X + 2 = 2(X + 1)$ is not irreducible, yet it does not factor into a product of polynomials of lower degree.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %23
+For any field $\K$, a nonzero polynomial $p(X) \in \K[X]$ of degree $\geq 1$ is irreducible iff there is no factorizartion 
+$p(X) = f(X) g(X)$ in $\K[X]$ with $\deg f < \deg p$ and $\deg g < \deg p$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %24
+If \mA is a principal ideal domain, then the nonzero prime ideals are the ideals $\langle p \rangle$, where $p$ is irreducible.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %25
+If \mA is a principal ideal domain and if $p \in A$ is irreducible, then $A / \langle p \rangle$ is a field.
+
+\vspace{0.1cm}
+
+[For $\langle p \rangle$ is prime, hence maximal.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %26
+\mA is a 
+\un{unique factorization domain}
+\index{unique factorization domain} 
+if \mA is an integral domain subject to:
+
+\vspace{0.1cm}
+
+\un{E}\quad Every nonzero $a \in A$ that is not a unit is a product of irreducible elements.
+
+\un{U}\quad If 
+\[
+p_1 \cdots p_m \hsx = \hsx q_1 \cdots q_n, 
+\]
+where the $p$ and $q$ are irreducible, then $m = n$ and there is a one-to-one correspondence between the 
+factors such that the corresponding factors are associates.
+
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %27
+Every principal ideal domain is a unique factorization domain.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %28
+For any field $\K$, the polynomial ring $\K[X]$ is a unique factorization domain
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf DEFINITION} \ %29
+Suppose that \mA is a unique factorization domain $-$then a 
+\un{system of representatives of irreducible elements in \mA}
+\index{system of representatives of irreducible elements in \mA} 
+is a set of irreducible elements having exactly one element in common with the set of all associates of each irreducible element.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %30
+For any field $\K$, the monic irreducible polynomials constitute a system of representatives of irreducible elements in $\K[X]$. 
+
+\vspace{0.1cm}
+
+[Note: \ Let $f$ be a nonconstant polynomial in $\K[X]$ and let $f_1, \ldots, f_n$ be the distinct monic irreducible factors of 
+$f$ in $\K[X]$ $-$then 
+\[
+f \hsx = \hsx C \prod\limits_{k = 1}^n \hsx f_k^{e_k},
+\]
+where $C$ is the leading coefficient of $f$ and $e_1, \ldots, e_n$ are positive integers.  Moreover, 
+this representation of $f$ is unique up to a permutation of $\{1, \ldots, n\}$.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %31
+For any field $\K$ and for any irreducible polynomial $p(X)$, the quotient 
+$\LL^\prime = \K[X]/\langle p(X) \rangle$ is a field containing an isomorphic copy $\K^\prime$ of $\K$ as a subfield 
+and a zero of $p^\prime(X)$.
+
+\vspace{0.1cm}
+
+[Setting $I = \langle p(X) \rangle$, the map $a \ra a + I$ $(a \in \K)$ identifies $\K$ with a subfield $\K^\prime$ 
+of $\LL^\prime$.  Write
+\[
+p(X) \hsx = \hsx a_0 + a_1 X + \cdots + a_n X^n.
+\]
+Then in $\K^\prime[X]$, 
+\[
+p^\prime(X) \hsx = \hsx (a_0 + I) + (a_1 + I)X + \cdots + (a_n + I) X^n.
+\]
+Now put $\theta = X + I$:
+\begin{align*}
+p^\prime(\theta) \ 
+&=\vsx\ (a_0 + I) + (a_1 X + I) + \cdots + (a_n X^n + I)\\
+&=\vsx\ a_0 + a_1 X + \cdots + a_n X^n + I\\
+&=\vsx\ p(X) + I \\
+&=\vsx\ I, 
+\end{align*}
+the zero element of $\LL^\prime$.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{theoremn}{0}
+
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+
+\[
+\text{FIELD EXTENSIONS}
+\]
+
+\ \indent 
+
+Let $\K$ be a field.
+
+\vspace{0.3cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+A 
+\un{field extension} 
+\index{field extension} 
+of $\K$ is a field $\LL$ having $\K$ as a subfield.  
+\end{x}
+
+\vspace{0.1cm}
+
+Given $\LL/\K$ and elements $x_1, \ldots, x_n \in \LL$, write $\K(x_1, \ldots, x_n)$ for the subfield of $\LL$ 
+generated by $\K$ and the $x_i$ $(i = 1, \ldots, n)$.  In particular: $\K(x)$ is the subfield generated by $\K$ and $x$.
+
+\begin{x}{\small\bf EXAMPLE} \ %02
+Take $\K = \Q$, $\LL = \R$, $x = \sqrt{2}$ $-$then $\Q(\sqrt{2})$ consists of all real numbers of the form 
+$r + s \sqrt{2}$ $(r, s \in \Q)$.
+
+\vspace{0.1cm}
+
+[Let \mF be the set of all real numbers of the indicated form, thus
+\[
+\Q \cup \{\sqrt{2}\} \hsx \subset \hsx \F \hsx \subset \hsx \Q(\sqrt{2}),
+\]
+and, by definition, $\Q(\sqrt{2})$ is the subfield of $\R$  generated by $\Q \cup \{\sqrt{2}\}$.  
+Let now 
+$x = r + s \sqrt{2}$ $(r, s, \in \Q)$: $r^2 - 2 s^2 \neq 0$ ($\sqrt{2}$ irrational)
+
+\qquad\qquad\qquad\qquad $\implies$
+\begin{align*}
+\frac{1}{x} \hsx 
+&= \hsx \frac{r}{r^2 - 2 s^2} + \frac{-s}{r^2 - 2 s^2} \sqrt{2}\\
+&\in \F,
+\end{align*}
+so $\F$ is a field, so $\F = \Q(\sqrt{2})$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %03
+Take $\K = \Q$, $\LL = \R$, $x = \sqrt{2}$, $y = \sqrt{3}$ $-$then
+\[
+\Q(\sqrt{2},\sqrt{3}) \hsx = \hsx \Q(\sqrt{2} + \sqrt{3}).
+\]
+
+[Obviously, $\sqrt{2} + \sqrt{3} \in \Q(\sqrt{2},\sqrt{3})$ hence 
+$\Q(\sqrt{2} + \sqrt{3}) \subset \Q(\sqrt{2},\sqrt{3})$.  
+In the other direction
+%%----------------------------------------------------------------------------------------------02
+\[
+(\sqrt{2} + \sqrt{3}) (\sqrt{2} - \sqrt{3}) = -1
+\]
+\qquad\qquad\qquad\qquad $\implies$
+\[
+\sqrt{3} - \sqrt{2} \hsx = \hsx \ \frac{1}{\sqrt{2} + \sqrt{3}} \in \Q(\sqrt{2} + \sqrt{3})
+\]
+\qquad\qquad\qquad\qquad $\implies$
+\[
+\begin{cases}
+\ \sqrt{3} \hsx = \hsx ((\sqrt{3} + \sqrt{2}) + (\sqrt{3} - \sqrt{2})) / 2\\
+\ \sqrt{2} \hsx = \hsx ((\sqrt{3} + \sqrt{2}) - (\sqrt{3} - \sqrt{2})) / 2
+\end{cases}
+\in \Q(\sqrt{2} + \sqrt{3}).
+\]
+Therefore $\Q(\sqrt{2},\sqrt{3}) \subset \Q(\sqrt{2} + \sqrt{3})$.]
+\end{x}
+
+\vspace{0.1cm}
+
+Given $\LL \supset \K$, view $\LL$ as a vector space over $\K$ and write $[\LL:\K]$ for its dimension, the 
+\un{degree} 
+\index{degree} 
+of $\LL$ over $\K$.
+
+\vspace{0.1cm}
+
+[Note: \ In this context, the term ``dimension'' refers to the cardinal number of a basis for $\LL$ over $\K$.]
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf FACT} \ %04
+Let $\F \subset \K \subset \LL$ be fields $-$then
+\[
+[\LL:\F] \hsx = \hsx [\LL:\K]  \cdot [\K:\F].  
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %05
+Take $\F = \Q$, $\K = \Q(\sqrt{2})$, $\LL = \Q(\sqrt{2},\sqrt{3})$ $-$then
+\begin{align*}
+[\Q(\sqrt{2},\sqrt{3}):\Q] \ 
+=\ [\Q(\sqrt{2},\sqrt{3}):\Q(\sqrt{2})] \cdot [\Q(\sqrt{2}):\Q]\\
+=\ 2 \cdot 2 \\
+=\  4.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %06
+$\LL$ is a 
+\un{finite extension}
+\index{finite extension} 
+of $\K$ if $[\LL:\K]$ is finite and $\LL$ is an 
+\un{infinite extension}
+\index{infinite extension} 
+of $\K$ if $[\LL:\K]$ is infinite.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf EXAMPLE} \ %07
+$[\C:\R] = 2$ but $[\C:\Q] = 2^{\aleph_0}$.
+\end{x}
+
+\vspace{0.1cm}
+
+Given $\LL/\K$ and $x \in \LL$, the 
+\un{ideal $I_x$ of algebraic relations of $x$}
+\index{ideal $I_x$ of algebraic relations of $x$} 
+is the ideal in $\K[X]$ consisting of all polynomials admitting $x$ as a zero.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %08
+$x$ is 
+\un{algebraic}
+\index{algebraic}
+over $\K$ 
+(\un{transcendental} over $\K$)
+\index{transcendental (element over a field $\K$)} 
+according to whether $I_x$ is nonzero (zero).  
+I.e.: $x$ is algebraic over $\K$ (transcendental over $\K$) according to whether it is (or is not) 
+a zero of a nonzero polynomial in $\K[X]$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %09
+Take $\K = \Q$, $\LL = \C$ $-$then $\sqrt{-1}$ is algebraic over $\Q$ but $e$ and $\pi$ are transcendental over $\Q$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %10
+Let $x \in \LL$ $-$then $x$ is algebraic over $\K$ iff $I_x$ is a nonzero prime ideal in $\K[X]$ or still, 
+is a maximal ideal in $\K[X]$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %11
+If $x \in \LL$ is algebraic over $\K$, then $I_x$ has a unique monic polynomial $p_x$ in $\K[X]$ as a generator: 
+$I_x = \langle p_x \rangle$, the 
+\un{minimal polynomial of $x$ over $\K$}.
+\index{minimal polynomial of $x$ over $\K$} 
+
+\vspace{0.1cm}
+
+[Note: \  One can characterize $p_x$ as the monic polynomial in $\K[X]$ that admits $x$ as a zero and divides in $\K[X]$ 
+every polynomial admitting $x$ as a zero.]
+
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf REMARK} \ %12
+The minimal polynomial of an element depends on the base field.  
+E.g.: If $\K = \Q$ and $\LL = \C$, then $p_{\sqrt{-1}}(X) = X^2 + 1$ but if $\K = \LL = \C$, then 
+$p_{\sqrt{-1}}(X) = X - \sqrt{-1}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %13
+If $x \in \LL$ is algebraic over $\K$, then its minimal polynomial $p_x$ is irreducible.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf FACT} \ %14
+If $x \in \LL$ is algebraic over $\K$ and if $n = \deg p_x$, then $p_x$ is the only monic polynomial in $\K[X]$ 
+of degree $n$ admitting $x$ as a zero.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %15
+If $x \in \LL$ is algebraic over $\K$, then the set $\{x^j: 0 \leq j \leq n-1\}$ is a linear basis of $\K(x)$ over $\K$, 
+hence $[\K(x):\K] = n$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %16
+Take $\K = \Q$, $\LL = \R$, $x = (2)^{1/3}$ $-$then $\Q((2)^{1/3})$ is a subfield of $\R$ and $(2)^{1/3}$ 
+is algebraic over $\Q$, its minimal polynomial being $X^2 - 2$, so $[\Q((2)^{1/3}):\Q] = 3$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %17
+$\LL$ is an 
+\un{algebraic extension}
+\index{algebraic extension} 
+of $\K$ if every element of $\LL$ is algebraic over $\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %18
+If $[\LL:\K] < \infty$, then $\LL$ is an algebraic extension of $\K$.
+
+\vspace{0.1cm}
+
+[If $n = [\LL:\K]$ and if $x \in \LL$, then the sequence $x^j$ $(0 \leq j \leq n)$ is linearly dependent over $\K$, 
+so there exists a sequence $a_j$ $(0 \leq j \leq n)$ of elements of $\K$ (not all zero) such that 
+$\ds\sum\limits_{j = 0}^n a_j x^j = 0$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %19
+Suppose that $\K$ is infinite and $\LL$ is an algebraic extension of $\K$ $-$then 
+\[
+\card \K \hsx = \hsx \card \LL.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %20
+$\R$ is not an algebraic extension of $\Q$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %21
+Let $\K$ be a field and let $\LL_1, \LL_2$ be field extensions of $\K$ $-$then 
+%%----------------------------------------------------------------------------------------------05
+a 
+\un{$\K$-homomorphism}
+\index{$\K$-homomorphism} 
+$\phi:\LL_1 \ra \LL_2$ is a ring homomorphism such that 
+$\restr{\phi}{\K} = \id_\K$, $\phi$ being called a 
+\un{$\K$-isomorphism}
+\index{$\K$-isomorphism} 
+if it is in addition bijective (injectivity is automatic).
+
+\vspace{0.1cm}
+
+[Note: \ When $\LL_1 = \LL_2$, the term is 
+\un{$\K$-automorphism}.]
+\index{$\K$-automorphism} 
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %22
+If $\LL_1 = \LL_2$, call it $\LL$, and if $\LL$ is an algebraic extension of $\K$, then every $\K$-homomorphims 
+$\phi:\LL \ra \LL$ is a $\K$-isomorphism.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %23
+Let $\K$ be a field and let $\LL_1$, $\LL_2$ be field extensions of $\K$.  Suppose that $f$ is an irreducible polynomial in 
+$\K[X]$ and suppose that $x_1, x_2$ are, respectively, zeros of $f$ in  $\LL_1$, $\LL_2$  $-$then 
+there is a unique $\K$-isomorphism 
+$\K(x_1) \ra \K(x)$ such that $x_1 \ra x_2$.
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: \ The assumption that $f$ is irreducible cannot be dropped.]
+
+\vspace{0.3cm}
+
+\setcounter{theoremn}{0}
+\[
+\text{ADDENDUM}
+\]
+
+Let $\K$ be a field, $\LL/\K$ a field extension $-$then a sublset $S$ of $\LL$ is a 
+\un{transcendence basis}
+\index{transcendence basis} 
+for $\LL/\K$ if \mS is algebraically independent over $\K$ and if $\LL$ is algebraic over $\K(S)$ 
+(the subfield of $\LL$ generated by $\K \cup S$).
+
+\begin{x}{\small\bf FACT} \ %01
+A transcendence basis for $\LL/\K$ always exists and any two have the same cardinality.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %02
+The 
+\un{transcendence degree}
+\index{transcendence degree} 
+$\trdeg(\LL/\K)$
+\index{$\trdeg(\LL/\K)$} 
+is the cardinality of any transcendence basis of $\LL/\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------06
+
+\begin{x}{\small\bf EXAMPLE} \ %03
+Take $\K = \Q$, $\LL = \C$ $-$then $\trdeg(\C/\Q)$ is infinite (in fact uncountable).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %04
+Take $\K = \Q$, $\LL = \Q_p$ $-$then $\trdeg(\Q_p/\Q)$ is infinite (in fact uncountable).
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{theoremn}{0}
+
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{ALGEBRAIC CLOSURE}
+\]
+
+Let $\K$ be a field, $\LL/\K$ a field extension.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf NOTATION} \ %01
+$A(\LL/\K)$ is the set of all elements of $\LL$ that are algebraic over $\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %02
+$A(\LL/\K)$ is the 
+\un{algebraic closure}
+\index{algebraic closure} 
+of $\K$ in $\LL$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %03
+Take $\K = \R$, $\LL = \C$ $-$then $A(\LL/\K) = \C$.
+
+\vspace{0.1cm}
+
+[Given $a + \sqrt{-1} \hsx b$, consider the polynomial
+\[
+(X - (a + \sqrt{-1} \hsx b)) (X - (a - \sqrt{-1} \hsx b)) \hsx = \hsx 
+X^2 - 2 a X + a^2 + b^2.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %04
+$\LL$ is an algebraic extension of $\K$ iff $A(\LL/\K) = \LL$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION}  \ %05
+$\K$ is 
+\un{algebraically closed}
+\index{algebraically closed} 
+in $\LL$ if every element of $\LL$ that is algebraic over $\K$ belongs to $\K$:
+\[
+A(\LL/\K) \hsx = \hsx \K.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %06
+
+\[
+\K \hsx \subset\hsx A(\LL/\K) \hsx\subset\hsx \LL.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT}  \ %07
+$A(\LL/\K)$ is a field.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT}  \ %08
+$A(\LL/\K)$ is algebracally closed in $\LL$.
+
+\vspace{0.1cm}
+
+[Spelled out, if $x \in \LL$ is algebraic over $A(\LL/\K)$, then $x \in A(\LL/\K)$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %09
+If $\K \subset \E \subset \LL$ and if $\E$ is an algebraic extension of $\K$, then
+%%----------------------------------------------------------------------------------------------02
+\[
+\E \subset A(\LL/\K).
+\]
+\end{x}
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %10
+Take $\K = \Q$, $\LL = \C$ $-$then an 
+\un{algebraic number}
+\index{algebraic number} 
+is a complex number which is algebraic over $\Q$, i.e., is an element of $A(\C/\Q)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %11
+$\card A(\C/\Q) \hsx = \hsx \aleph_0$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %12
+$[A(\C/\Q):\Q] \hsx = \hsx \aleph_0$.
+
+\vspace{0.1cm}
+
+[Let $n$ be a postive integer $-$then the polynomial $X^n - 2$ is irreducible in $\Q[X]$, thus is the minimal polynomial of 
+$(2)^{1/2}$ over $\Q$, so $[Q((2)^{1/2}):\Q] = n$, from which 
+\[
+[A(\C/\Q):\Q] \hsx \geq \hsx n.
+\]
+And this implies that 
+\[
+[A(\C/\Q):\Q] \hsx \geq \hsx \aleph_0.
+\]
+On the other hand, 
+\[
+[A(\C/\Q):\Q] \hsx \leq \hsx \card A(\C/\Q) \hsx = \hsx \aleph_0.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %13
+A field $\F$ is 
+\un{algebraically closed}
+\index{algebraically closed} 
+if every nonconstant polynomial in $\F[X]$ has a zero in $\F$.
+
+\vspace{0.1cm}
+
+[Note: \ This notion is absolute.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf EXAMPLE} \ %14
+Neither $\Q$ nor $\R$ is algebraically closed but $\C$ is algebraically closed.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %15
+$\F$ is algebraically closed iff every irreducible polynomial has degree 1.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf FACT} \ %16
+$\F$ is algebraically closed iff every nonconstant polynomial $f$ in $\F[X]$ splits in $\F[X]$.
+
+\vspace{0.1cm}
+
+[Note: \ I.e.: Given $f$, there exists a postive integer $n$ and elements 
+$a, a_1, \ldots, a_n$ (not necessarily distinct) of $\F$ such that 
+\[
+f(X) \hsx = \hsx a \hsx \prod\limits_{k = 1}^n (X - a_k).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %17
+If $\F$ is algebraically closed, then it is its only algebraic extension.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %18
+If there is an algebraically closed field extension $\F^\prime$ of $\F$ in which $\F$ is algebraically closed, then 
+$\F$ is algebraically closed.
+
+\vspace{0.1cm}
+
+[Let $f \in \F[X]$ be a nonconstant polynomial $-$then $f$ has a zero $a^\prime$ in $\F^\prime$, hence 
+$a^\prime$ is algebraic over $\F$, hence $a^\prime \in \F$ (since $\F$ is algebraically closed in $\F^\prime$).]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %19
+Suppose that $\LL/\K$ is an algebraically closed field extension.  
+Let $\F = A(\LL/\K)$, $\F^\prime = \LL$ to conclude that $A(\LL/\K)$ is algebraically closed.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %20
+Take $\K = \Q$, $\LL = \C$ $-$then $\C$ is algebraically closed, hence $A(\C/\Q)$ is algebraically closed.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf FACT} \ %21
+Let $\K$ be a field, let $\LL$ be an algebraic closure of $\K$, and let $\M$ be an algebraically closed extension of $\K$ $-$then 
+there exists a $\K$-monomorphism $\phi:\LL \ra \M$.
+\end{x}
+
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %22
+Take $\K = \R$, $\LL = \C$, $\M = \C$ $-$then the inclusion $\R \ra \C$ admits two distinct extensions to $\C$, 
+viz. the identity and the complex conjugation
+%%----------------------------------------------------------------------------------------------04
+(and these are the only $\R$-automorphisms of $\C$).
+
+\vspace{0.1cm}
+
+[Note: \ Therefore uniqueness of the extending $\K$-monomorphism cannot be asserted.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf EXAMPLE} \ %23
+If $\E \neq \R$ is an algebraic extension of $\R$, then $\E$ is isomorphic to $\C$.
+
+\vspace{0.1cm}
+
+[Take $\K = \R$, $\LL = \E$, $\M = \C$ $-$then there exists an $\R$-monomorphism 
+$\phi:\E \ra \C$, hence 
+\[
+2 \hsx = \hsx [\C:\R] \hsx = \hsx [\C:\phi(\E)] \cdot [\phi(\E):\R],
+\]
+from which $\C = \phi(\E) \approx \E$.]
+\end{x}
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %24
+Given a field $\F$, an 
+\un{algebraic closure}
+\index{algebraic closure} 
+of $\F$ is an algebraicallly closed algebraic extension of $\F$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %25
+$\C$ is an algebraic closure of $\R$ but $\C$ is not an algebraic closure of $\Q$ (since it is not algebraic over $\Q$).
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %26
+$A(\C/\Q)$ is an algebraic closure of $\Q$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf STEINITZ THEOREM} \ %27
+Every field $\F$ admits an algebraic closure $\F^\cl$ and any two algebraic closures of $\F$ are 
+$\F$-isomorphic.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %28
+Every automorphism of $\F$ can be extended to an automorphism of $\F^\cl$.
+
+\vspace{0.1cm}
+
+[Note: \ In general, if $\F_1$ and $\F_2$ are fields, then every isomorphism from $\F_1$ to $\F_2$ can be extended to an 
+isomorphism from $\F_1^\cl$ to $\F_2^\cl$.]
+
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %29
+If $\LL / \K$ is an algebraic extension of $\K$, then $\LL$ is $\K$-isomorphic to a subfield of $\K^\cl$.
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{theoremn}{0}
+
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{TRACES AND NORMS}
+\]
+
+
+Let $\K$ be a field, $\LL/\K$ a field extension of $\K$ $-$then each $x \in \LL$ gives rise to a linear transformation 
+\[
+M_x: \LL \ra \LL
+\]
+defined by 
+\[
+M_x(y) \hsx = \hsx x y.
+\]
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+The 
+\un{trace}
+\index{trace}\index{$\tT_{\LL/\K}$} 
+of $\LL$ over $\K$ is the function 
+\[
+\begin{cases}
+\ \tT_{\LL/\K}:\LL \ra \K\\
+\ \tT_{\LL/\K}(x) \ \hsx = \hsx \tr(M_x).
+\end{cases}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %02
+The 
+\un{norm}
+\index{norm}\index{$\tN_{\LL/\K}$}
+of $\LL$ over $\K$ is the function 
+\[
+\begin{cases}
+\ \tN_{\LL/\K}:\LL \ra \K\\
+\ \tN_{\LL/\K}(x) \ \hsx = \hsx \det(M_x).
+\end{cases}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf PROPERTIES} \ %03
+$\forall \ x, y \in \LL$, $\forall \ a \in \K$:
+
+\vspace{0.1cm}
+
+1. \ $\tT_{\LL/\K}(x + y) \hsx = \hsx \tT_{\LL/\K}(x) + \tT_{\LL/\K}(y)$.
+
+\vspace{0.1cm}
+
+2. \ $\tT_{\LL/\K}(a) \hsx = \hsx [\LL:\K] a$.
+
+\vspace{0.1cm}
+
+3. \ $\tN_{\LL/\K}(x y) \hsx = \hsx \tN_{\LL/\K}(x) \tN_{\LL/\K}(y)$.
+
+\vspace{0.1cm}
+
+4. \ $\tN_{\LL/\K}(a) \hsx = \hsx a^{[\LL:\K]}$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf FACT} \ %04
+If $\E$ is a subfield of $\LL$ containing $\K$, then 
+\[
+\begin{cases}
+\ \tT_{\LL/\K}(x) \hsx = \hsx \tT_{\E/\K} ( \tT_{\LL/\E} (x))\\
+\ \tN_{\LL/\K}(x) \hsx = \hsx \tN_{\E/\K} ( \tN_{\LL/\E} (x))
+\end{cases}
+.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %05
+Let $\theta \in \K^\times - (\K^\times)^2$ and put $\LL = \K(\sqrt{\theta})$ $-$then $\forall \ a, b \in \K$, 
+\[
+\begin{cases}
+\ \tT_{\LL/\K}(a + b \sqrt{\theta}) \hsx = \hsx 2a\\
+\ \tN_{\LL/\K}(x) (a + b \sqrt{\theta}) \hsx = \hsx a^2 - b^2 \theta
+\end{cases}
+.
+\]
+\end{x}
+
+
+
+
+
+
+
+

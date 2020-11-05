@@ -1,0 +1,373 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{13}.\quad  RESTRICTED PRODUCTS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Recall:
+
+\begin{x}{\small\bf FACT} \ %1
+Suppose that $X_i$ $(i \in I)$ is a nonempty Hausdorff space $-$then the product 
+$\prod\limits_{i \in I} X_i$ is locally compact iff each 
+$X_i$ is locally compact and all but a finite number of the $X_i$ are compact.
+\end{x}
+
+\vspace{0.1cm}
+
+
+Let $X_i \  (i \in I)$ be a family of nonempty locally compact Hausdorff spaces and for each 
+$i \in I$, let $K_i \subset X_i$ be an open-compact subspace.
+\begin{x}{\small\bf DEFINITION} \ %2
+The 
+\underline{restricted product}
+\index{restricted product}
+\[
+\prod\limits_{i \in I} (X_i : K_i)
+\]
+consists of those $x = \{x_i\}$ in $\prod\limits_{i \in I} X_i$ such that $x_i \in K_i$ for all but a finite number of $i \in I$. 
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %3
+\[
+\prod_{i \in I} (X_i : K_i) = \bigcup_{S \subset I} \ \prod_{i \in S} X_i \times \prod_{i \notin S} K_i,
+\]
+where $S \subset I$ is finite.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %4
+A 
+\underline{restricted open rectangle}
+\index{restricted open rectangle} 
+is a subset of $\prod\limits_{i \in I} (X_i : K_i)$ of the form
+\[
+\prod_{i \in S} U_i \times \prod_{i \notin S} K_i,
+\]
+where $S \subset I$ is finite and $U_i \subset X_i$ is open.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+
+\begin{x}{\small\bf LEMMA} \ %5
+The intersection of two restricted open rectangles is a restricted open rectangle.
+\end{x}
+
+\vspace{0.1cm}
+
+
+Therefore the collection of restricted open rectangles is a basis for a topology on $\prod\limits_{i \in I} (X_i : K_i)$, the \underline{restricted product topology}.  
+\index{restricted product topology}
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %6
+If $I$ is finite, then
+\[
+\prod_{i \in I} X_i = \prod_{i \in I} (X_i : K_i)
+\]
+and the restricted product topology coincides with the product topology.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %7
+If $I = I_1 \cup I_2$, with $I_1 \cap I_2 = \emptyset$, then
+\[
+ \prod_{i \in I} (X_i : K_i) \ \approx \  \bigl( \prod_{i \in I_1} (X_i : K_i) \bigr) \times \bigl(\prod_{i \in I_2} (X_i : K_i)\bigr),
+\]
+the restricted product topology on the left being the product topology on the right.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %8
+The inclusion $\prod\limits_{i \in I} (X_i : K_i)  \hookrightarrow \prod\limits_{i \in I} X_i$ is continuous but the restricted product topology coincides with the relative topology only if $X_i = K_i$ for all but a finite number of $i \in I$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %9
+$\ds\prod\limits_{i \in I} (X_i : K_i)$ is a Hausdorff space.
+
+\vspace{0.1cm}
+
+PROOF \   
+Taking into account \#8, this is because
+
+1. A subspace of a Hausdorff space is Hausdorff;
+
+2. Any finer topology on a Hausdorff space is Hausdorff.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+$\prod_{i \in I} (X_i : K_i)$ is a locally compact Hausdorff space.
+%%----------------------------------------------------------------------------------------------03
+
+\vspace{0.1cm}
+
+PROOF \  
+Let $x \in \prod\limits_{i \in I} (X_i:K_i)$ $-$then there exists a finite set $S \subset I$ such that $x_i \in K_i$ if $i \notin S$.  
+Next, for each $i \in S$, choose a compact neighborhood $U_i$ of $x_i$.  
+This done, consider
+\[
+\prod_{i \in S} U_i \times \prod_{i \notin S} K_i,
+\]
+a compact neighborhood of $x$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+From this point forward, it will be assumed that $X_i \equiv G_i$ is a locally compact abelian group and $K_i \subset G_i$ is an open-compact subgroup.
+\vspace{0.2cm}
+
+\begin{x}{\small\bf NOTATION} \ %11
+\[
+G = \prod_{i \in I} \ (G_i:K_i).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %12
+$G$ is a locally compact abelian group.  
+\end{x}
+
+\vspace{0.1cm}
+
+Given $i \in I$, there is a canonical arrow
+\begin{align*}
+\ins_i : G_i	&\ra G\\	
+x			&\mapsto (\cdots, 1, 1, x, 1, 1, \cdots).\\	
+\end{align*}
+
+
+\begin{x}{\small\bf LEMMA} \ %13
+$\ins_i$ is a closed embedding.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Take $S = \{i\}$ and pass to
+\[
+G_i \times \prod_{j \ne i} K_j,
+\]
+an open, hence closed subgroup of G.  The image $\ins_i(G_i)$ is a closed subgroup of
+%%----------------------------------------------------------------------------------------------04
+\[
+G_i \times \prod_{j \ne i} K_j
+\]
+in the product topology, hence in the restricted product topology.\\
+
+Therefore $G_i$ can be regarded as a closed subgroup of $G$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %14
+
+1. Let $\chi \in \widetilde{G}$ 
+$-$then $\chi_i = \chi \circ \ins_i = \restr{\chi}{G_i} \in \widetilde{G}_i$ and 
+$\restr{\chi}{K_i} \equiv 1$ for all but a finite number of $i \in I$, so for each $x \in G$, 
+\[
+\chi(x) \ =\  \chi(\{x_i\}) \ =\  \prod_{i \in I} \chi_i(x_i).
+\]
+
+2.  Given $i \in I$, let $\chi_i \in \widetilde{G}_i$ and assume that $\restr{\chi}{K_i} \equiv 1$ 
+for all but a finite number of $i \in I$ $-$then the prescription 
+\[
+\chi(x) \ =\  \chi(\{x_i\}) \ =\  \prod_{i \in I} \chi_i(x_i)
+\]
+defines a $\chi \in \widetilde{G}$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+These observations also apply if $\widetilde{G}$ is replaced by $\widehat{G}$, in which case more can be said.
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf THEOREM} \ %15
+As topological groups,
+\[
+\widehat{G} \thickapprox \prod_{i \in I} \  (\widehat{G}_i:K_i^\perp).
+\]
+
+[Note: \   Recall that
+\[
+K_i^\perp = \{\chi_i \in \widehat{G}_i:\chi{|K_i} \equiv 1\} \qquad (\text{cf.} \  \S7, \  \#32)
+\]
+and a tacit claim is that $K_i^\perp$ is an open-compact subgroup of $\widehat{G}$.  
+To see this, 
+%%----------------------------------------------------------------------------------------------05
+quote \S7, \#34 to get
+\[
+\widehat{K}_i \thickapprox \widehat{G} / K_i^\perp, \quad K_i^\perp \thickapprox \widehat{G / K_i}.
+\]
+Then
+
+%\begin{itemize}
+\qquad \textbullet \quad
+$K_i$ compact $\implies \widehat{K}_i$ discrete $\implies \widehat{G}/K_i^\perp$ discrete $\implies K_i^\perp$ open.
+
+\qquad \textbullet \quad
+$K_i$ open $\implies G/K_i$ discrete $\implies \widehat{G/K_i}$ compact $\implies K_i^\perp$ compact.$]$
+%\end{itemize}
+\end{x}
+
+\vspace{0.1cm}
+
+
+Let $\mu_i$ be the Haar measure on $G_i$ normalized by the condition
+\[
+\mu_i(K_i) = 1.
+\]
+\begin{x}{\small\bf LEMMA} \ %16
+There is a unique Haar measure $\mu_G$ on $G$ such that for every finite subset $S \subset I$, the restriction of $\mu_G$ to
+\[
+G_S \ \equiv \ \prod_{i \in S} \ G_i \ \times  \ \prod_{i \notin S}\  K_i
+\]
+is the product measure.
+\end{x}
+
+\vspace{0.1cm}
+
+
+Suppose that $f_i$ is a continuous, integrable function on $G_i$ such that $\restr{f_i}{K_i} = 1$ 
+for all $i$ outside some finite set and let $f$ be the function on $G$ defined by
+\[
+f(x) = f(\{x_i\}) = \prod_i f_i(x_i).
+\]
+Then $f$ is continuous.
+Proof: The $G_S$ are open and cover $G$ and on each of them $f$ is continuous.
+
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %17
+Let $S \subset I$ be a finite subset of $I$ $-$then
+%%----------------------------------------------------------------------------------------------06
+\[
+\int_{G_S} f(x) d\mu_{G_S} (x) \ =\  \prod_{i \in S} \  \int_{G_i} f_i(x_i)d\mu_{G_i}(x_i).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %18
+If
+\[
+\sup_S \ \prod_{i \in S} \  \int_{G_i} \  \abs{f_i(x_i)} d\mu_{G_i}(x_i) \ < \  \infty,
+\]
+then $f$ is integrable on $G$ and
+\[
+\int_G f(x) d\mu_{G} (x) \ = \ \prod_{i \in I} \ \int_{G_i} f_i(x_i)d\mu_{G_i}(x_i).
+\]
+\end{x}
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+Take  $f_i = \chi_{K_i}$ (which is continuous, $K_i$ being open-compact) $-$then $\widehat{f}_i = \chi_{K_i^\perp}.$  
+Setting
+\[
+f \ = \ \prod_{i \in I} f_i,
+\]
+it thus follow that $\forall$ $\chi \in \widehat{G}$,
+\[
+\widehat{f}(\chi) \ = \  \prod_{i \in I} \widehat{f}_i(\chi_i).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+Working within the framework of \S7, \#45, let $\mu_{\widehat{G}_i}$ be the Haar measure on $\widehat{G}_i$ per Fourier inversion.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %20
+\[
+\mu_{\widehat{G}_i} (K_i^\perp) = 1.
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+%%----------------------------------------------------------------------------------------------07 (ish)
+Since $\chi_{K_i} \in \mathbf{INV}(G_i)$, $\forall$ $x_i \in G_i$,
+\begin{align*}
+\chi_{K_i} (x_i) \ 
+&= \  \int_{\widehat{G}_i } \widehat{\chi}_{K_i} (x_i) \overline{\chi_i (x_i)} d \mu_{\widehat{G}_i} (\chi_i) \\
+&= \  \int_{K_i^\perp} \overline{\chi_i (x_i)} d \mu_{\widehat{G}_i} (\chi_i).
+\end{align*}
+Now set $x_i = 1$ to get
+\begin{align*}
+1 
+&=\  \int_{K_i^\perp} d\mu_{\widehat{G}_i} (\chi_i) \\
+&=\  \mu_{\widehat{G}_i}(K_i^\perp).
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+Let $\mu_{\widehat{G}}$ be the Haar measure on $\widehat{G}$ constructed as in \#16  (i.e., replace $G$ by 
+$\widehat{G}$, bearing in mind \#20).
+
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %21
+$\mu_{\widehat{G}}$ is the Haar measure on $\widehat{G}$ figuring in the Fourier inversion per $\mu_G$.
+
+\vspace{0.1cm}
+
+PROOF \  Take
+\[
+f \ =\  \prod_{i \in I} f_i,
+\]
+where $f_i = \chi_{K_i}$ (cf. \#19 ) $-$then
+\begin{align*}
+\int_{\widehat{G}} \widehat{f}(\chi) \overline{\chi(x)} d\mu_{\widehat{G}} (\chi) \ 
+&=\  \prod_{i \in I} \ \int_{\widehat{G}_i} \widehat{f}_i(\chi_i) \overline{\chi_i(x_i)} d\mu_{\widehat{G}_i} (\chi_i) \\	
+&=\  \prod_{i \in I}\  f_i(x_i) \\	
+&=\  f(\{x_i\}) \\
+&=\  f(x).
+\end{align*}
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

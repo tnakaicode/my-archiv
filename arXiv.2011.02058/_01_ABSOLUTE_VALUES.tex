@@ -1,0 +1,426 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{1}.\quad  ABSOLUTE VALUES}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\setcounter{x}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\begin{x}{\small\bf DEFINITION} \ 
+Let $\F$ be a field $-$then an 
+\un{absolute value}
+\index{absolute value} 
+(a.k.a. a valuation of order 1) is a function
+\[
+\acdot : \F \ra \R_{\ge 0}
+\]
+satisfying the following conditions.\\
+%\vspace{0.05cm}
+
+%\begin{flalign*}
+\indent \un{AV-1} \quad		$\abs{a}  = 0 \Lra a = 0$.\\
+\indent \un{AV-2} \quad 		$\abs{ab} = \abs{a} \abs{b}$.\\
+\indent \un{AV-3} \quad		$\exists \ M > 0$:\\
+%\end{flalign*}
+\[
+\abs{a+b} \le M \sup(\abs{a}, \abs{b}).
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ 
+Let $\F = \R$ or $\C$ with the usual absolute value $\acdot_\infty$ $-$then one can take $M = 2$.
+\end{x} 
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ 
+The 
+\un{trivial absolute value}
+\index{trivial absolute value} 
+is defined by the rule
+\[
+\abs{a} = 1 \quad \text{$\forall$ a $\ne 0.$}
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ 
+If $\acdot$  is an absolute value, then
+\[
+\abs{1} = 1.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ 
+If $a^n$ = 1, then
+\[
+\abs{a^n} = \abs{a}^n = \abs{1} = 1
+\]
+\[
+\implies \abs{a} = 1.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ 
+Let \mG be a cyclic group of order $r < \infty$ $-$then the order of any subgroup of \mG is a divisor of $r$ and if $n \mid r$, then \mG possesses one and only one 
+%%----------------------------------------------------------------------------------------------02
+subgroup of order $n$ (and this subgroup is cyclic).
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ 
+Let \mG be a cyclic group of order $r < \infty -$then the 
+\un{order}
+\index{order} 
+of $x$ $\in$ \mG is, by definition, 
+$\#\langle x \rangle$, the latter being the smallest positive integer $n$ such that $x^n$ = 1.
+\end{x}
+\vspace{0.1cm}
+ 
+\begin{x}{\small\bf SCHOLIUM} \ %8
+Every absolute value on a finite field $\F_q$ is trivial.
+
+\vspace{0.1cm}
+
+[In fact, $\F_q^\times$  is cyclic of order $q-1$.]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ 
+Two absolute values $\acdot_1$, and $\acdot_2$ on a field $\F$ are 
+\un{equivalent} 
+\index{absolute values equivalence } 
+if $\exists$  $r > 0$:
+\[
+\acdot_2 = {\acdot_1}^r.
+\]
+
+Note: Equivalence is an equivalence relation.]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ 
+If $\acdot$ is an absolute value, then so is ${\acdot}^r  \ (r > 0)$, 
+the $M$ per $\acdot$ being $M^r$ per ${\acdot}^r$ .
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %11
+Every absolute value is equivalent to one with $M \le 2$.
+
+\vspace{0.1cm}
+
+PROOF \  Assume from the beginning that $M > 2$, hence
+\[
+M^r \le 2 			\quad \text{$(r > 0)$}
+\]
+if 
+\[
+r \log M \le \log 2
+\]
+or still, if
+\[
+r  \le \frac{\log 2}{\log M}			\quad (< 1).
+\]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf DEFINITION} \ %12
+An absolute value $\acdot$ satisfies the 
+\un{triangle inequality}
+\index{triangle inequality} 
+if
+\[
+\abs{a + b} \le \abs{a} + \abs{b}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %13
+Suppse given a function $\acdot : \F \ra \mathbb{R}_{\ge 0}$ satisfying AV-1 and AV-2, 
+$-$then AV-3 holds with $M \le 2$  iff the triangle inequality obtains.
+
+PROOF \   Obviously, if 
+\[
+\abs{a + b} \le \abs{a} + \abs{b},
+\]
+then
+ \[
+ \abs{a + b} \le 2 \sup( \abs{a},  \abs{b}).
+\]
+In the other direction, by induction on $m$, 
+\[
+%\bigl|\sum_{k=1}^{2^m} a_{k} \bigr | \le 2^m \sup_k \abs{a_k} \quad \text{$(1 \le k \le 2^m)$.}
+\bigl|\sum_{k=1}^{2^m} a_{k} \bigr | \le 2^m \sup\limits_{1 \leq k \leq 2^m} \abs{a_k}.
+\]
+Next, given $n$ choose $m$: $2^m$ $\ge n > 2^{m-1}$, so upon inserting $2^m - n$ zero summands,
+\[
+\allowdisplaybreaks
+\begin{aligned}
+\allowdisplaybreaks
+\bigl|\sum_{k=1}^{n} a_{k} \bigr | 
+&\le M \sup \bigl(\bigl|\sum_{k=1}^{2^{m-1}} a_{k}\bigr | , \bigl|\sum_{k=2^{m-1}+1}^{2^m} a_{k} \bigr | \bigr )\\
+& \le 2 \sup \bigl(\bigl|\sum_{k=1}^{2^{m-1}} a_{k} \bigr | ,\bigl|\sum_{k=2^{m+1} + 1}^{2^{m-1} + 2^{m-1}} a_{k} \bigr | \bigr)\\
+& \le 2 \sup \bigl(2^{m-1} \sup_{k \le 2^{m-1}}\abs{a_k},    2^{m-1} \sup_{k > 2^{m-1}}\abs{a_k}\bigr) \\
+& \le 2 \cdot 2^{m-1} \sup_{1 \le k \le n}\abs{a_k} \\
+& \le 2 \cdot n \cdot \sup_{1 \le k \le n}\abs{a_k}.
+\end{aligned}
+\]
+
+%%----------------------------------------------------------------------------------------------04
+\allowdisplaybreaks
+I.e.
+\allowdisplaybreaks
+\[
+\begin{aligned}
+\bigl|\sum_{k=1}^{n} a_{k} \bigr |  \ 
+&\le \ 2n \sup_{1 \le k \le n}\abs{a_k} \\
+&\le \ 2n \sum_{k=1}^{n} \abs{a_{k}}. 
+\end{aligned}
+\]
+In particular, 
+\[
+\bigl|\sum_{k=1}^{n} 1 \bigr | \ = \abs{n} \  \le  \ 2n.
+\]
+Finally, 
+\[
+\begin{aligned}
+\allowdisplaybreaks
+\abs{a + b}^n 
+&= \  \abs{(a + b)^n} \quad \text{(AV-2)}\\
+&=  \ \bigl|\sum_{k=0}^{n} {n \choose k}  a^kb^{n-k}\bigr |\\
+&\leq \  2(n+1) \sum_{k=0}^{n} \bigl|{n \choose k}a^kb^{n-k}\bigr | \\
+&\leq \  2(n+1) \sum_{k=0}^{n} \bigl|{n \choose k}\bigr | \bigl|a^kb^{n-k}\bigr |    \quad \text{(AV-2)}\\
+&\le  \ 2(n+1)2 \sum_{k=0}^{n} {n \choose k} \bigl|a^kb^{n-k}\bigr | \\
+&=  \ 4(n+1) (\abs{a} + \abs{b})^n
+\end{aligned}
+\]
+$\implies$\\
+\[
+\begin{aligned}
+\allowdisplaybreaks
+\abs{a + b} 
+&\le 4^{1/n}(n + 1)^{1/n}(\abs{a} + \abs{b})\\
+&\ra (\abs{a} + \abs{b})  \quad \text{ $(n \ra \infty)$}.
+\end{aligned}
+\]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+\begin{x}{\small\bf SCHOLIUM} \ %14
+Every absolute value is equivalent to one that satisfies the triangle inequality.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %15
+A 
+\un{place}
+\index{place} 
+of $\F$ is an equivalence class of nontrivial absolute values.
+\end{x}
+\vspace{0.1cm}
+
+Accordingly, every place admits a representative for which the triangle inequality is in force. \\
+
+
+\begin{x}{\small\bf DEFINITION} \ %16
+An absolute value $\acdot$  is 
+\un{non-archimedean}
+\index{non-archimedean} 
+if it satisfies the 
+\index{ultrametric inequality}
+\un{ultrametric inequality}:
+\[
+\abs{a + b} \le \sup(\abs{a},\abs{b})	\quad (\text{so } M = 1).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %17
+A non-archimedean absolute value satisfies the triangle inequality.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %18
+Suppose that $\acdot$  is non-archimedean and let $\abs{b} < \abs{a} -$then
+\[
+\abs{a + b} = \abs{a}.
+\]
+\quad PROOF \ 
+\[
+\begin{aligned}
+\abs{a} = \abs{(a + b) - b} \ 
+&\le \ \sup(\abs{a + b}, \abs{b}) \\
+&=\  \abs{a + b}
+\end{aligned}
+\]
+since $\abs{a} \le \abs{b}$ is untenable.  Meanwhile
+\[
+\abs{a + b} \ \le \  \sup(\abs{a}, \abs{b}) \ = \  \abs{a}.
+\]
+%\raggedleft$\diagup\diagup$
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+Fix a prime $p$ and take $\F$ = $\mathbb{Q}$.  Given a rational number $x$ $\ne$ 0, write
+\[
+x = p^k\frac{m}{n} 	\qquad (k \in \Z),
+\]
+%%----------------------------------------------------------------------------------------------06
+where $p \nmid m$, $p \nmid n$, and then define the 
+\un{$p$-adic absolute value} 
+\index{$p$-adic absolute value} 
+$\acdot_p$ by the prescription
+\[
+\abs{x}_p = p^{-k}	\qquad (\abs{0}_p = 0).
+\]
+\quad[AV-1 is obvious.
+To check AV-2, write 
+\[
+x = p^k\frac{m}{n},  \ y = p^\ell\frac{u}{v},
+\]
+where $m, n, u, v$ are coprime to $p$ $-$then
+\[
+xy = p^{k + \ell} \frac{mu}{nv}
+\]
+\indent\indent\indent$\implies$
+\[
+\abs{xy}_p = p^{-(k+\ell)} = p^{-k} p^{-\ell} = \abs{x}_p\abs{y}_p.
+\]
+As for AV-3, $\acdot_p$ satisfies the ultrametric inequality.  
+To establish this, assume without loss of generality that $k \le \ell$ and write 
+\[
+\begin{aligned}
+\indent
+x + y 
+&= p^k\bigl(\frac{m}{n}+ p^{\ell-k}\frac{u}{v}\bigr )\\
+& = p^k\frac{mv + p^{\ell-k}nu}{nv}.
+\end{aligned}
+\]
+\indent\textbullet \quad $\abs{x}_p \ne \abs{y}_p$, so $\ell - k > 0$, hence 
+\[
+mv + p^{\ell-k}nu
+\]
+is coprime to $p$ (otherwise, 
+\[
+\begin{aligned}
+mv 
+&= p^r N - p^{\ell-k}nu	\quad (r \ge 1)\\
+&= p(p^{r-1} N - p^{\ell - k - 1} nu) 
+\end{aligned}
+\]
+\indent\indent\indent\indent\indent\indent $\implies p | mv$)\\ 
+\indent\indent\indent $\implies$\\
+\[
+\begin{aligned}
+%\implies\\
+\abs{x + y}_p 
+&= p^{-k}\\
+%%----------------------------------------------------------------------------------------------07
+&= \abs{x}_p\\
+&= \sup(\abs{x}_p, \abs{y}_p),
+\end{aligned}
+\]
+since
+\[
+\begin{aligned}
+\ell - k > 0 
+&\implies p^{-\ell} <  p^{-k}\\ 
+&\implies \abs{y}_p < \abs{x}_p.
+\end{aligned}
+\]
+\indent\textbullet  \quad $\abs{x}_p = \abs{y}_p$, so, $\ell = k$, hence
+\[
+\begin{aligned}
+&mv + nu = p^rN		\quad (r \ge 0) \ (p \nmid N) \\
+\implies\\
+&x + y = p^{k+r} \frac{N}{nv}\\
+\implies\\
+& \abs{x + y}_p = p^{-k-r}.
+\end{aligned}
+\]
+And
+\[p^{-k-r} \le\left\{
+\begin{array}{l l}
+p^{-k} = \abs{x}_p\\
+p^{-k} = \abs{y}_p
+\end{array}
+\right.\]
+\indent\indent$\implies$
+\[
+\abs{x + y}_p \le \sup(\abs{x}_p,\abs{y}_p).]
+\]
+\end{x} 
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %20
+It can be shown that every nontrivial absolute value on $\mathbb{Q}$ is equivalent to a $\acdot_p$ for some $p$ or to $\acdot_{\infty}.$
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------08
+
+\begin{x}{\small\bf LEMMA} \ %21
+$\forall  \ x \in \mathbb{Q}^\times$,
+\[
+\prod_{p \le \infty} \abs{x}_p = 1,
+\]
+all but finitely many of the factors being equal to 1.\\
+
+\quad PROOF \ Write
+\[
+x \ = \ \pm {p_1}^{k_1} \dotsb {p_n}^{k_n}		\quad (k_1, \dotsb , k_n \in \Z)
+\]
+for pairwise distinct primes $p_j$ $-$then $\abs{x}_p$ = 1 if $p$ is not equal to any of the $p_j$.  
+In addition,
+\[
+\abs{x}_{p_j} \ = \ p^{-k_j},  \ \ \abs{x}_\infty \ = \ {p_1}^{k_1} \dotsb {p_n}^{k_n}	
+\]
+\indent\indent$\implies$
+\[
+\begin{aligned}
+\prod_{p \le \infty} \abs{x}_p 
+&= \bigl(\prod_{j=1}^n p_j^{-k_j}\bigr ) \cdot {p_1}^{k_1} \dotsb {p_n}^{k_n}\\
+& = 1.	
+\end{aligned}
+\]
+\\
+%\raggedleft$\diagup\diagup$
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ 
+If $p_1$,  $p_2$, are distinct primes, then $\acdot_{p_1}$ is not equivalent to  $\acdot_{p_2}$.\\
+
+\indent [Consider the sequence $\{{p_1}^n\}:$
+\[
+\abs{p_1}_{p_1} = p_1^{-1} \implies \abs{p_1^n}_{p_1} = p_1^{-n}  \ra 0.
+\]
+Meanwhile,
+\[
+\abs{p_1}_{p_2} = \abs{p_2^0 p_1}_{p_2} = p_2^{-0} = 1 
+\]
+\[
+\implies \abs{p_1^n}_{p_2} \equiv 1.]
+\]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------09
+
+\begin{x}{\small\bf CRITERION} \ 
+Let $\acdot$ be an absolute value on $\F$ $-$then  $\acdot$ is non-archimedean iff $\{\abs{n}: n \in \N\}$ is bounded.
+\\
+\vspace{0.25cm}
+\indent [Note: In either case, $\abs{n}$ is bounded by 1$:$
+\[
+\abs{n} = \abs{1 + 1 + \dotsb + 1} \le 1.]
+\]
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

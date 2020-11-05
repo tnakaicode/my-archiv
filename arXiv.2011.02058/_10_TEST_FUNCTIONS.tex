@@ -1,0 +1,659 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{10}.\quad  TEST FUNCTIONS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+ 
+\ 
+\indent The 
+\un{Schwartz space}
+\index{Schwartz space} 
+$\sS(\R^n)$ consists of those complex valued $\sC^\infty$ functions which, together with all their derivatives, vanish at infinity faster than any power of $\norm{\cdot}$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %1
+The elements $f$ of $\sS(\R^n)$ are the 
+\un{test functions}
+\index{test functions} 
+on $\R^n$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %2
+Take $n = 1$ $-$then
+\[
+f(x) = C x^A \exp(-\pi x^2),			%\quad \text{where A = 0 or 1, is a test function said to be \un{standard}}
+\]
+where $A = 0$ or 1, is a test function, said to be 
+\un{standard}. 
+\index{standard (test function)} 
+Here
+\[
+\int_\R x^A \exp(-\pi x^2) e^{2 \pi \sqrt{-1} \ tx} dx = (\sqrt{-1})^A t^A \exp(- \pi t^2),
+\]
+thus $\sF_\R$ of a standard function is again standard (c.f. $\S 7$, $51$).
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: \  Henceforth, by definition, the Fourier transform of an $f \in  L^1(\R)$ will be the function
+
+\[
+\widehat{f}:\R \lra \C
+\]
+defined by the rule
+\begin{align*}
+\widehat{f}(t) \ \
+&= \ \sF_\R f(t) \\
+&= \  \int_{\R} f(x) e^{2 \pi \sqrt{-1}\  tx} dx.]
+\end{align*}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %3
+Take $n = 2$ and identify $\R^2$ with $\C$ $-$then
+\[
+f(z) = Cz^A \ov{z}^{B} \exp( -2 \pi \abs{z}^2),
+\]
+where $A,B \in \Z_{\ge 0}$ $\&$ $AB = 0$, is a test function, said to be 
+\un{standard}.   
+\index{standard (test function)}
+Here
+%%----------------------------------------------------------------------------------------------02
+\[
+\int_{\C} z^A \ov{z}^B \exp( -2 \pi \abs{z}^2) e^{2 \pi \sqrt{-1} \ (wz + \ov{w} \ov{z}}) \abs{dz \wedge d \ov{z}} 
+\ = \ \sqrt{-1}^{A+B} \  w^B \ov{w}^A \exp( -2 \pi \abs{w}^2),
+\]
+thus $\sF_\C$ of a standard function is again standard ( c.f. $\S 7$, $\# 53$ ).
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: Henceforth, by definition, the Fourier transform of an $f \in L^1(\C)$ will be the function 
+\[
+\widehat{f} : \C \lra \C
+\]
+defined by the rule
+\begin{align*}
+\widehat{f}(w) \ 
+&= \ \sF_\C f(w) \\
+&= \ \int_\C f(z) e^{2\pi \sqrt{-1} \  (wz + \ov{w}\ov{z})} \abs{dz \wedge d\ov{z}} .]
+\end{align*}
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %4
+Let $G$ be a totally disconnected locally compact group $-$then a function $f:G \ra \C$ is said to be 
+\un{locally constant} if for any $x \in G$, 
+there is an open subset $U_x$ of $G$ containing $x$ such that $f$ is constant on $U_x$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %5
+A locally constant function $f$ is continuous.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Fix $x \in G$ and suppose that $\{x_i\}$ is a net converging to $x$ $-$then $x_i$ is eventually in $U_x$, hence there $f(x_i) = f(x)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %6
+The 
+\un{Bruhat space}
+\index{Bruhat space} 
+$\sB(G)$
+\index{$\sB(G)$} 
+consists of those complex valued locally constant functions whose support is compact.
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: \  $\sB(G)$ carries a "canonical topology" but I shall pass in silence as regards to its precise formulation$]$.\\
+%%----------------------------------------------------------------------------------------------03
+
+
+\begin{x}{\small\bf DEFINITION} \ %7
+The elements $f$ of $\sB(G)$ are the 
+\un{test functions}
+\index{test functions (on \mG)} 
+on $G$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %8
+Given a test function $f$, there exists an open-compact subgroup $K$ of $G$, and integer 
+$n \ge 0$, elements $x_1, \ldots, x_n$ in $G$ and elements $c_1, \ldots, c_n$ in $\C$ such that the union
+$\bigcup\limits_{k=1}^n K x_k K	$ is disjoint and 
+\[
+f = \sum_{k=1}^n c_k \chi_{K x_k K},	
+\]
+$\chi_{K x_k K}$ the characteristic function of $K x_k K$.
+\vspace{0.1cm}
+
+\vspace{0.1cm}
+
+PROOF \ 
+Since $f$ is locally constant, for every $z \in \C$ the pre image $f^{-1}(z)$ is an open subset of $G$.  
+Therefore $X = \{x:f(x) \ne 0\}$ is the support of $f$.  
+This said, given $x \in X$, define a map
+\[
+\begin{aligned}
+\phi_x: G \times\ G 		&\ra \C\\	
+(x_1, x_2) 				&\mapsto f(x_1 x x_2)\\	
+\end{aligned}
+,
+\]
+thus $\phi_x(e,e) = f(x) $ and $\phi_x$ is continuous if $\C$ has the discrete topology. 
+Consequently, one can find an open-compact subgroup $K_x$ of $G$ such that $\phi_x$ is constant on $K_x \times K_x$.  
+Put $U_x = K_x \times K_x$ $-$then $U_x$ is open-compact and $f$ is constant on $U_x$.  
+But $X$ is covered by the $U_x$, hence, being compact, is covered by finitely many of them.  
+Bearing in mind that distinct double cosets are disjoint, consider now the intersection $K$ of the finitely many $K_x$ that occur.
+
+\end{x}
+
+\vspace{0.1cm}
+
+Specialize and let $G = \Q_p$.
+\\
+\begin{x}{\small\bf EXAMPLE} \ %9
+If $K \subset \Q_p$ is open-compact, then its characteristic function $\chi_K$ is a test function on $\Q_p$ .
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf LEMMA} \ %10
+Every $f \in \sB(\Q_p)$ is a finite linear combination of functions of the form
+\[
+\chi_{x+p^n \Z_p}		\qquad (x \in \Q_p, \ n \in \Z).
+\]
+
+[This is an instance of $\# 8$ or argue directly (c.f. $\S 4$, $\#33$).]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %11
+Given $f \in L^1(\Q_p)$, its 
+\un{Fourier transform}
+\index{Fourier transform} 
+is the function 
+\[
+\widehat{f}:\Q_p \lra \C
+\]
+defined by the rule
+\begin{align*}
+\widehat{f}(t) 
+&= \   \int_{\Q_p} f(x) \chi_{p,t}(x) dx\\
+&= \ \int_{\Q_p} f(x) \chi_p(tx) dx.	
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %12
+$\forall$ $f \in L^1(\Q_p)$,
+\[
+\widehat{\ov{f\hspace{0.07cm}}}(t) = \overline{\widehat{f}(-t)}.
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+\begin{align*}
+\widehat{\ov{f\hspace{0.07cm}}}(t)   \ 	
+&=\  \int_{\Q_p} \overline{f(x)} \chi_p(tx) dx \\
+&=\  \int_{\Q_p} \overline{f(x) \chi_p(-tx)} dx \\
+&=\  \int_{\Q_p} \overline{f(x) \chi_p((-t)x)} dx \\
+&=\  \overline{\int_{\Q_p)} f(x) \chi_p((-t)x) dx} \\
+&=\  \overline{\widehat{f}(-t)}. 
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+
+\begin{x}{\small\bf SUBLEMMA} \ %13
+
+\[
+\int_{p^n\Z_p} \chi_p(x) dx \ = \ 
+\begin{cases}
+p^{-n} \qquad (n \geq 0)\\
+0 \qquad\quad \ (n < 0)
+\end{cases}
+.
+\]
+
+\vspace{0.1cm}
+
+[Recall that 
+\[
+\mu_{\Q_p}(p^n \Z_p) \ = \  p^{-n}
+\]
+and apply $\S 7$, $\# 46$ and $\S 8$, $\# 12$.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %14
+Take $f = \chi_{p^n\Z_p}$  $-$then
+\[
+\widehat{\chi}_{p^n\Z_p} = p^{-n} \chi_{p^{-n}\Z_p}.
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+\begin{align*}
+\widehat{\chi}_{p^n\Z_p}(t) \ 	
+&=\  \int_{\Q_p} \chi_{p^n\Z_p}(x) \chi_{p,t}(x) dx\\
+&=\  \int_{\Q_p} \chi_{p^n\Z_p}(x) \chi_p(tx) dx\\
+&=\  \abs{t}_p^{-1}\int_{\Q_p} \chi_{p^n\Z_p}(t^{-1}x) \chi_p(x) dx\\
+&=\  \abs{t}_p^{-1}\int_{p^{n+v(t)}\Z_p} \chi_p(x) dx.
+\end{align*}
+The last integral equals 
+\[
+p^{-n - v(t)}
+\]
+if $n + v(t) \geq 0$ and equals 0 if $n + v(t) < 0$ (cf. $\# 13$).  
+But
+%%----------------------------------------------------------------------------------------------06
+\[
+t \in p^{-n}\Z_p \Leftrightarrow v(t) \ge -n \Leftrightarrow n+v(t) \ge 0.
+\]
+Since
+\[
+\abs{t}^{-1}_pp^{v(t)} \ =\  1,
+\]
+it therefore follows that
+\[
+\widehat{\chi}_{p^n\Z_p} \ =\  p^{-n} \chi_{p^{-n}\Z_p}.
+\]
+In particular, 
+\[
+\widehat{\chi}_{\Z_p} \ =\  \chi_{\Z_p}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %15
+Take $f = \chi_{x+p^n\Z_p}$ $-$then
+\[
+\widehat{\chi}_{x+p^n\Z_p}(t)  = \ 
+\begin{cases}
+\chi_p(tx)p^{-n} \qquad (\abs{t}_p \le p^n)\\
+0 \qquad \qquad\qquad (\abs{t}_p > p^n)
+\end{cases}
+.
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+%%----------------------------------------------------------------------------------------------07 (ish)
+\begin{align*}
+\widehat{\chi}_{x+p^n\Z_p}(t) \ 
+&=\  \int_{\Q_p} \chi_{x+p^n\Z_p}(y) \chi_{p,t}(y) dy\\
+&=\  \int_{\Q_p} \chi_{x+p^n\Z_p}(y) \chi_p(ty) dy\\
+&=\  \int_{x+p^n\Z_p} \chi_p(ty) dy\\
+&=\  \int_{p^n\Z_p} \chi_p(t(x+y)) dy\\
+&=\  \int_{p^n\Z_p} \chi_p(tx+ty) dy\\
+&=\  \int_{p^n\Z_p} \chi_p(tx) \chi_p(ty) dy\\
+&=\  \chi_p(tx) \int_{p^n\Z_p} \chi_p(ty) dy\\
+&=\  \chi_p(tx) \int_{\Q_p} \chi_{p^n\Z_p}(y) \chi_p(ty) dy\\										
+&=\  \chi_p(tx) \int_{\Q_p} \chi_{p^n\Z_p}(y) \chi_{p,t}(y) dy\\
+&=\  \chi_p(tx) \widehat{\chi}_{{p^n}\Z_p} (t)\\
+&=\  \chi_p(tx) p^{-n}\chi_{p^{-n}\Z_p}(t).
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %16
+Taking into account $\# 10$, 
+\[
+f \in \sB(\Q_p) \Rightarrow \widehat{f} \in \sB(\Q_p). 
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %17
+$\forall$ $f \in \mathbf{INV}(\Q_p)$, 
+\[
+\widehat{\widehat{f}\hspace{0.1cm}} = f(-x)	\qquad (x \in \Q_p).
+\]
+
+\vspace{0.1cm} 
+
+PROOF \ 
+It suffices to check this for a single function, so take $f = \chi_{Z_p}$ $-$then as noted above,
+\[
+\widehat{\chi}_{\Z_p} = \chi_{\Z_p},
+\]
+%%----------------------------------------------------------------------------------------------08
+thus $\forall$ x,
+\[
+\widehat{\widehat{\chi}\hspace{0.05cm}}_{\Z_p}(x) = \chi_{\Z_p} (x) =  \chi_{\Z_p} (-x).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %18
+It is clear that
+\[
+\sB(\Q_p) \subset \mathbf{INV}(\Q_p).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf SCHOLIUM} \ %19
+The arrow $f \ra \widehat{f}$ is a linear bijection of $\sB(\Q_p)$ onto itself.
+
+[Injectivity is manifest.  
+As for surjectivity, the arrow $f \ra \check{f}$, where
+\[
+\widecheck{f\hspace{0.05cm}} = f(-x),
+\]
+maps $\sB(\Q_p)$ into itself.  And
+\[
+f \ 
+=\ \widecheck{\widecheck{f\hspace{0.05cm}}} 
+=\  (\widecheck{f\hspace{0.05cm}}) \raisebox{0.22cm}{$\text{ }\widecheck{}$}
+=\  (\widecheck{f\hspace{0.05cm}})    \raisebox{0.11cm}{$\text{ }\widehat{} \hspace{0.15cm}\text{ }\widehat{}$}
+=\  ((\widecheck{f\hspace{0.05cm}}) 
+\raisebox{0.08cm}{$\text{ }\widehat{}$} \hspace{0.1cm} )
+\raisebox{0.08cm}{$\text{ }\widehat{}$}.]
+\]
+\end{x}
+
+
+\begin{x}{\small\bf REMARK} \ %20
+As is well-known, the same conclusion obtains if $\Q_p$ is replaced by $\R$ or $\C$.
+\end{x}
+
+\vspace{0.1cm}
+
+Pass now from  $\Q_p$ to  $\Q_p^\times$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %21
+Let $ f \in \sB(\Q_p^\times)$ $-$then $\exists$ $n \in \N:$
+\[
+\begin{cases}
+\ \abs{x}_p < p^{-n} 	\implies f(x) = 0\\
+\ \abs{x}_p > p^{n} \ \ 	\implies f(x) = 0
+\end{cases}
+.
+\]
+
+Therefore an element $f$ of $\sB(\Q_p^\times)$ can be viewed as an element of $\sB(\Q_p)$ with the property that $f(0) = 0$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------09
+\begin{x}{\small\bf DEFINITION} \ %22
+Given $f \in L^1(\Q_p^\times, d^\times x)$, its 
+\un{Mellin transform}
+\index{Mellin transform} 
+$\widetilde{f}$ 
+is the Fourier transform of $f$ per $\Q_p^\times:$
+\[
+\widetilde{f}(\chi) = \int_{\Q_p^\times} f(x) \chi(x) d^\times x.
+\]
+
+[Note: \  
+By definition, 
+\[
+d^\times x = \frac{p}{p-1} \frac{dx}{\abs{x}_p}		\qquad \text{(c.f. } \S 6, \ \# 26),
+\]
+so
+\[
+\vol_{d^\times x}(\Z_p^\times) \ =\  \vol_{dx}(\Z_p) \ =\  1.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %23
+Take $f = \chi_{\Z_p^\times}$ $-$then
+\begin{align*}
+\widetilde{\chi}_{\Z_p^\times} (\chi) \ 
+&= \  \int_{\Q_p^\times} \chi_{\Z_p^\times} (x) \chi(x) d^\times x \\
+&= \ \int_{\Z_p^\times} \chi(x) d^\times x.
+\end{align*}
+Decompose $\chi$ as in $\S 9$, $\# 10$, hence
+%\[
+%\int_{\Z_p^\times} \chi(x) d^\times x = \int_{\Z_p^\times} \abs{x}_p^{\sqrt{-1}} \chi(p^{-v(x)}x) d^\times x
+%\]
+\begin{align*}
+\int_{\Z_p^\times} \chi(x) d^\times x \ 
+&=\  \int_{\Z_p^\times} \abs{x}_p^{\sqrt{-1}\ t} \un{\chi}(p^{-v(x)}x) d^\times x\\
+&=\  \int_{\Z_p^\times}  \un{\chi}(x) d^\times x\\
+&=\ 
+\begin{cases}
+ \ 0  \qquad (\un{\chi} \not\equiv 1)\\
+\ 1  \qquad (\un{\chi} \equiv 1)
+\end{cases}
+.
+\end{align*}
+
+
+
+%%----------------------------------------------------------------------------------------------10
+According to $\S 9$, $\# 2$, a unitary character $\chi \in \widehat{(\Q_p^\times)}$ is unramified if its restriction 
+$\un{\chi}$ to $\Z_p^\times$ is trivial.  
+Therefore the upshot is that the Mellin transform of $\chi_{\Z_p^\times}$ 
+is the characteristic function of the set of unramified elements of $\widehat{(\Q_p^\times)}$.
+\end{x}
+
+\vspace{0.1cm}
+%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%
+%%%%%
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+%\vspace{0.1cm}
+
+
+
+
+
+Let $\K$ be a finite extension of $\Q_p$ $-$then
+\[
+\K^\times \thickapprox \Z \times R^\times
+\]
+and the generalities developed in \S9 go through with but minor changes when $\Q_p$ is replace by $\K$.
+
+In particular$:$ $\forall$ $\chi \in \widehat{K}^\times$, there is a splitting
+\[
+\chi(a) = \abs{a}_\K^{\sqrt{-1}\  t} \un{\chi}(\pi^{-v(a)}a),
+\]
+where $t$ is real and 
+\[
+-(\pi/\log q) < t \le \pi / \log q.
+\]
+
+[Note: \  $\chi$ is \un{unramified} if it is trivial on $R^\times$.$]$
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %1
+The $"\pi"$ in the first instance is a prime element (c.f. $\S 5$, $\# 10$) and $\abs{\pi}_\K = \ds\frac{1}{q}$.  
+On the other hand, the $"\pi"$ in the second instance is $3.14\ldots$ .
+
+\vspace{0.4cm}
+
+The extension of the theory  from $\sB(\Q_p)$ to $\sB(\K)$ is straightforward, the point of departure being the observation that
+\[
+\int_{\pi^nR} \chi_{\K,p}(a) da = \mu_\K(R) \ 
+\begin{cases}
+\ q^{-n} \qquad (n = -d, -d+1, \ldots)\\
+\  0 \qquad \quad (n = -d-1, -d-2, \ldots)
+\end{cases}
+.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CONVENTION} \ %2
+Normalize the Haar measure on $\K$ by stipulating that $\ds\int_R da = q^{-d/2}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %3
+Given $f \in L^1(\K)$, its 
+\un{Fourier transform}
+\index{Fourier transform} 
+is the function 
+\[
+\widehat{f}:\K \lra \C
+\]
+defined by the rule
+\[
+\begin{aligned}
+\widehat{f}(b)	
+=&  \int_{\K} f(a) \chi_{\K,p,b} (a) da\\	
+=&  \int_{\K} f(a) \chi_{\K,p} (ab) da.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf THEOREM} \ %4
+$\forall$ $f \in \mathbf{INV}(\K)$,
+\[
+\widehat{\widehat{f}\hspace{0.1cm}}(a) = f(-a)	\qquad (a \in \K).
+\]
+
+\vspace{0.1cm}
+
+PROOF \  
+It suffices to check this for a single function, so take $f = \chi_R$, 
+in which case the work has already been done in the Appendix to $\S 8$.  
+To review:
+
+\vspace{0.4cm}
+
+\indent\indent$\text{\textbullet} \quad \widehat{\chi}_R(b)$
+%\begin{align*} 
+\indent\indent\indent\indent\quad \  \ $=\  \ds\int_{\K} \chi_R(a) \chi_{\K,p} (ab)da$\\
+\indent\indent\indent\indent\indent\indent\indent\indent\indent $=\  \ds\int_{R} \chi_{\K,p} (ab)da$\\
+\indent\indent\indent\indent\indent\indent\indent\indent\indent $=\  q^{-d/2} \chi_{\Delta_\K}(b)$.\\
+%\end{align*}
+
+\vspace{0.1cm}
+
+\indent\indent$\text{\textbullet} \quad \int_{\K} q^{-d/2} \chi_{\Delta_\K}(b) \chi_{\K,p} (ab)db \quad $
+%\begin{align*} 
+$ =\  q^{-d/2} \ds\int_{\Delta_\K} \chi_{\K,p} (ab)db$\\
+\indent\indent\indent\indent\indent\indent\indent\indent\indent $=\  \chi_R(a) \qquad \  \text{(loc. cit., $\# 13$)}$\\
+\indent\indent\indent\indent\indent\indent\indent\indent\indent $=\  \chi_R(-a)$.
+%\end{align*}
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %5
+It is clear that 
+\[
+\sB(k) \subset \mathbf{INV}(\K).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %6
+The arrow $f \ra \widehat{f}$ is a linear bijection of $\sB(k)$ onto itself.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CONVENTION} \ %7
+Put
+\[
+d^\times a = \frac{q}{q-1} \frac{da}{\abs{a}_\K}.
+\]
+Then $d^\times a$ is a Haar measure on $\K^\times$ and 
+\[
+\vol_{d^\times a} (R^\times) = \vol_{da}(R) = q^{-d/2}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %8
+Given $f \in L^1(\K^\times, d^\times a)$, its 
+\un{Mellin transform}
+\index{Mellin transform} 
+$\widetilde{f}$ is the Fourier transform of $f$ per $\K^\times:$
+\[
+\widetilde{f}(\chi) = \int_{\K^\times} f(a) \chi(a) d^\times a.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %9
+Take $f = \chi_{R^\times}$ $-$then
+
+\[
+\widetilde{\chi}_{R^\times}(\chi) = \ 
+\begin{cases}
+0 \quad\qquad \ \  (\un{\chi} \ne 1)\\
+q^{-d/2} \qquad (\chi \equiv 1)
+\end{cases}
+.\]
+
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%
+%\quad \text{$(r \ge 1)$} \text{ }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

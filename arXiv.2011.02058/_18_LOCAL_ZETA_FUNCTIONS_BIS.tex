@@ -1,0 +1,197 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{18}.\quad  LOCAL ZETA FUNCTIONS (BIS)}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+To be in conformity with the global framework laid down in \S17, we shall reformulate the local theory of \S11 and \S12.
+
+\vspace{0.25cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+Given $f \in \mathcal{S}(\R)$ and a unitary character $\omega : \R^\times \ra \T$, the 
+\un{local zeta function}
+\index{local zeta function} 
+attached to the pair $(f,\omega)$ is
+\[
+Z(f,\omega,s) = \int_{\R^\times} f(x) \omega(x) \abs{x}^s d^\times x 		\qquad (\Re (s) > 0).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf THEOREM} \ %02
+There exists a meromorphic function $\rho(\omega,s)$ such that $\forall \ f$,
+\[
+\rho(\omega,s) = \frac{Z(f,\omega,s) }{Z(\widehat{f},\ov{\omega},1-s) }.
+\]
+
+Decompose $\omega$ as a product:
+\[
+\omega(x) = (\sgn\  x)^\sigma \abs{x}^{-\sqrt{-1} \ w} \qquad (\sigma \in \{0,1\}, w \in \R).
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %03
+Write (cf. \S11, \#9)
+\[
+L(\omega,s) =\ 
+\begin{cases}
+\Gamma_\R (s - \sqrt{-1} \ w) \quad \quad \quad (\sigma = 0)
+\vspace{0.25cm}\\
+\Gamma_\R (s - \sqrt{-1} \ w + 1 )  \ \quad (\sigma = 1)
+\end{cases}
+.
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf FACT} \ %14
+\[
+\rho(\omega,s) = \ 
+\begin{cases}
+\ds\frac{L(\omega,s) }{L(\omega,1-s)} \quad \quad \quad \quad (\sigma = 0)
+\vspace{0.25cm}\\
+-\sqrt{-1} \ \ds\frac{L(\omega,s) }{L(\ov{\omega},1-s)}  \  \quad (\sigma = 1)
+\end{cases}
+.\]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+
+
+\begin{x}{\small\bf REMARK} \ %05
+The complex case can be discussed analogously but it will not be needed in the sequel.
+\\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %06
+Given $f \in \sB(\Q_p)$ and a unitary character $\omega:\Q_p^\times \ra \T$, 
+the 
+\un{local zeta function}
+\index{local zeta function} 
+attached to the pair $(f,\omega)$ is
+\[
+Z(f,\omega,s) = \int_{\Q_p^\times} f(x) \omega(x) \abs{x}_p^s d^\times x \qquad (\Re (s) > 0).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %07
+There exists a meromorphic function $\rho(\omega,s)$ such that $\forall$ $f$,
+\[
+\rho(\omega,s) = \frac{Z(f,\omega,s) }{Z(\widehat{f},\ov{\omega},1-s) }.
+\]
+
+Decompose $\omega$ as a product:
+\[
+\omega(x) = \un{\omega}(x) \abs{x}_p^{-\sqrt{-1} \ w} \qquad (\un{\omega} \in \widehat{\Z_p^\times}, \ w \in \R).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %08
+Write (cf. \S12, \ \#8)
+\[
+L(\omega,s) =\ 
+\begin{cases}
+(1 - \omega(p)p^{-s})^{-1}   \quad (\un{\omega} = 1)
+\vspace{0.25cm}\\
+\ 1  \  \quad \quad \quad \quad \quad \quad \quad (\un{\omega} \ne 1)
+\end{cases}
+.\]
+
+[Note: \  if $\un{\omega}$ = 1, then
+\[
+\omega(p) = \abs{p}_p^{-\sqrt{-1}\ w} = p^{\sqrt{-1}\ w}.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\vspace{0.15cm}
+\begin{x}{\small\bf FACT} \ %09
+$(\un{\omega} = 1)$
+\[
+\rho(\omega,s) \ = \  \frac{L(\omega,s) }{L(\ov{\omega},1-s)} \ = \  \frac{1 - \ov{\omega}(p)p^{-(1-s)}}{1 - \omega(p)p^{-s}}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------03
+
+
+\begin{x}{\small\bf FACT} \ %10
+$(\un{\omega} \ne 1$)
+\[
+\rho(\omega,s) = \tau(\omega) \hspace{0.05cm} \un{\omega}(-1) \hspace{0.05cm} p^{n(s \ + \ \sqrt{-1} \  -1)},
+\]
+where
+\[
+\tau(\omega) = \sum_{i = 1}^r \un{\omega}(e_i) \chi_p(p^{-n}e_i)
+\]
+and $\deg \omega = n \ge 1.$
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+
+
+It can happen that
+\\
+\[
+Z(f,\omega,s)  \ \equiv \  0.
+\]
+To illustrate, suppose that $\omega(-1) = -1$ and $f(x) = f(-x)$.  Working with $\Q_p^\times$ $($the story for $\R^\times$ being the same$)$, we have
+\\
+\begin{align*}
+Z(f,\omega,s)	\ 	
+&=\vsx\  \int_{\Q_p^\times} f(x) \omega(x) \abs{x}_p^s d^\times x\\
+&=\vsx\  \int_{\Q_p^\times} f(-x) \omega(-x) \abs{-x}_p^s d^\times x\\
+&=\vsx\ \omega(-1)  \int_{\Q_p^\times} f(x) \omega(x) \abs{x}_p^s d^\times x\\	
+&=\vsx\ \omega(-1) Z(f,\omega,s)\\
+&=\vsx\ -Z(f,\omega,s).
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

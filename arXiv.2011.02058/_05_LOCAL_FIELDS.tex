@@ -1,0 +1,550 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{5}.\quad  LOCAL FIELDS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+%\ \indent 
+
+
+\ \indent Let $\K$ be a field of characteristic 0 equipped with a non-archimedean absolute value $\acdot$.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ 
+Let
+\index{$R$}
+\index{$R^\times$}
+\[
+\begin{cases}
+R = \{a \in \K: \abs{a} \le 1\}\\
+R^\times = \{a \in \K: \abs{a} = 1\}
+\end{cases}
+.
+\]
+\end{x}
+
+\begin{x}{\small\bf LEMMA} \ 
+$R$ is a commutative ring with unit and $R^\times$ is its multiplicative group of invertible elements.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ 
+Let
+\index{$P$}
+\[
+P = \{a \in \K: \abs{a} < 1\}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %4
+$P$ is a maximal ideal.
+\end{x}
+
+\vspace{0.1cm}
+
+Therefore the quotient $R/P$ is a field, the 
+\un{residue field}
+\index{residue field} of $\K$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf THEOREM} \ %5
+$\K$ is locally compact iff the following conditions are satisfied.
+
+\vspace{0.1cm}
+
+\indent 1. \ $\K$ is a complete metric space.\\
+\indent 2. \  $R/P$ is a finite field.\\
+\indent 3. \  $\abs{\K^\times}$ is a nontrivial discrete subgroup of $\R_{>0}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %6
+A 
+\un{local field}
+\index{local field} is a locally compact field of characteristic 0.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %7
+$\R$ and $\C$ are local fields.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %8
+$\Q_{p}$ is a local field.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+Assume that $\K$ is a non-archimedean local field.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %9
+$R$ is compact.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+$P$ is principal, say $P = \pi$R, and 
+\[
+\abs{\K^\times}  = \abs{\pi}^{\Z}, \quad \text{where } 0 < \abs{\pi} < 1.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: Such a $\pi$ is said to be a \un{prime element}\index{prime element}.]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %11
+A nontrivial discrete subgroup $\Gamma$ of $\R_{>0}$ is free on one generator $ 0 < \gamma < 1:$
+\[
+\Gamma = \{\gamma^n:n \in \Z\}.
+\]
+This said, choose $\pi$ with the largest absolute value $<$ 1, thus $\pi \in P \subset  R \Rightarrow \pi R \subset P.$
+In the other direction, 
+\[
+a \in P \Rightarrow \abs{a} \le \abs{\pi} \Rightarrow \frac{a}{\pi} \in R.
+\]
+And
+\[
+a = \pi \cdot \frac{a}{\pi}  \Rightarrow a \in \pi R.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %12
+A locally compact topological vector space over a local field is necessarily finite dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %13
+$\K$ is a finite extension of $\Q_{p}$ for some $p$.
+
+\vspace{0.1cm}
+
+PROOF \ 
+First, $\K\supset \Q$ (since char $\K = 0$).  
+Second, the restriction of $\acdot$ to $\Q$ is equivalent to $\acdot_{p}$ $(\exists \ p$)
+(cf. \S1, \#20), 
+hence the closure of $\Q$ in $\K$ "is" $\Q_{p}$ $($since $\K$ is complete$)$. Third, $\K$ is finite dimensional over $\Q_{p}$ $($since $\K$ is locally compact).
+\end{x}
+%%----------------------------------------------------------------------------------------------03
+\indent There is also a converse.
+\begin{x}{\small\bf THEOREM} \ %14
+Let $\K$ be a finite extension of $\Q_{p}$ $-$then $\K$ is a local field.
+
+\vspace{0.1cm}
+
+\indent PROOF \ 
+In view of $\#5$, it suffices to equip $\K$ with a non-archimedean absolute value subject to the conditions 1, 2, 3. 
+But, by the extension principle (cf. $\S$3, $\#$11), $\acdot_{p}$ extends uniquely to $\K$. 
+This extension is non-archimedean and points 1, 3 are manifest. 
+As for point 2, it suffices to observe that the canonical arrow
+\[
+\Z_{p}/p\Z_{p} \ra R/P
+\]
+is injective and
+\[
+[R/P:\F_p] \le [\K:\Q_{p}] < \infty.
+\] 
+\indent [Details: To begin with,
+\[
+\Q_{p} \cap P = p\Z_{p},
+\]
+thus the inclusion $\Z_{p} \ra$ R induces an injection
+\[
+\Z_{p}/p\Z_{p} \ra R/P.
+\] 
+Put now $n = [\K:\Q_{p}]$ and let $A_{1}, ..., A_{n+1} \in R$ 
+$-$then the claim is that the residue classes $\ov{A}_{1}, ..., \ov{A}_{n+1}  \in$ 
+$R/P$ are linearly dependent over $\Z_{p}/p\Z_{p}$.  
+In any event, 
+there are elements $x_{1}, ..., x_{n+1} \in \Q_{p}$ such that 
+\[
+\sum_{i=1}^{n+1} x_iA_i = 0, 
+\]
+matters being arranged in such a way that 
+\[
+\max\abs{x_i}_{p} = 1.
+\]
+Therefore the $ x_{i} \in \Z_{p}$ and not every residue class $\ov{x}_{i} \in \Z_{p}/p\Z_{p}$ is zero. But then
+%%----------------------------------------------------------------------------------------------04
+\[
+\sum_{i=1}^{n+1} \ov{x}_i \ov{A}_i = 0
+\]
+is a nontrivial dependence relation.]\\
+\end{x}
+
+\vspace{0.1cm}
+
+ 
+\begin{x}{\small\bf SCHOLIUM} \ %15
+A non-archimedean field of characteristic zero is a local field iff it is a finite extension of $\Q_{p}$ $(\exists$ $p)$.
+\end{x}
+
+\vspace{0.1cm}
+
+Let $\K/\Q_{p}$ be a finite extension of degree $n$ $-$then the 
+\un{canonical absolute value}
+\index{canonical absolute value}  
+on $\K$ is given by
+\[
+\abs{a}_{p} = \abs{N_{\K/\Q_{p}}(a)}_{p}^{1/n}.
+\]
+
+\vspace{0.1cm}
+
+[Note: The 
+\un{normalized absolute value}
+\index{normalized absolute value}  
+on $\K$ is given by
+\[
+\abs{a}_\K = \abs{a}_{p}^{n}.
+\]
+Its intrinsic significance will emerge in due course but for now observe that $\acdot_{\K}$ is equivalent to $\acdot_{p}$ and is non-archimedean (cf. $\S 1, \  \#23$).]
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %16
+The range of $\restr{\acdot_{p}}{\K^\times}$  is $\abs{\pi}_{p}^\Z.$
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %17
+The 
+\un{ramification index}
+\index{ramification index} 
+ of $\K$ over $\Q_{p}$ is the positive integer
+\[
+e = [\abs{\K^\times}_{p}:\abs{Q^\times_p}_{p}].
+\]
+I.e.,
+\[
+e = [\abs{\pi}_{p}^\Z:\abs{p}_{p}^\Z].
+\]
+Therefore
+\[
+\abs{\pi}_{p}^{e} = \abs{p}_{p} \qquad (= \frac{1}{p}).
+\]
+
+%%----------------------------------------------------------------------------------------------05
+[Consider $\Z$ and e$\Z$  $-$then the generator 1 of $\Z$  is related to the generator e of e$\Z$ by the triviality 
+$1 + \cdots + 1 = e\cdot 1 = e$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.} } \ %18
+If $\pi^\prime$ has the property that $\abs{\pi^\prime}_p^{e}$ = ${\abs{p}}_{p}$ then $\pi^\prime$ is a prime element.
+\\
+\indent [Using obvious notation, write $\pi^\prime$ = ${\pi^{v(\pi)}}u$, thus
+\[
+\begin{aligned}
+\abs{p}_{p} \ 
+&= \  \abs{\pi^\prime}_p^{e}\\ 
+&= \  {(\abs{\pi}^{v(\pi)}_p)}^e \\
+&= \ {(\abs{\pi}^{e}_p)}^{v(\pi)} \\
+&= \ {\abs{p}_{p}}^{v(\pi)},
+\end{aligned}
+\]
+thus v($\pi$) = 1.]\\
+\end{x}
+
+\begin{x}{\small\bf NOTATION} \ 
+\[
+q \equiv \card R/P = (\card \F_p)^f = p^f,
+\]
+so
+\[
+f = [R/P:\F_p],
+\]
+the 
+\un{residual index}
+\index{residual index}  
+of $\K$ over $\Q_{p}$.\\
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %20
+Let $\K/\Q_{p}$ be a finite extension of degree $n$ $-$then
+\[
+n = [\K:\Q_{p}] = ef.
+\]
+\end{x}
+
+
+
+\begin{x}{\small\bf APPLICATION} \ %21
+\[
+\begin{aligned}
+{\abs{\pi}}_\K \ 
+= \ \abs{\pi}_p^n \\
+= \ \abs{p}_{p}^{n/e} \\
+= \ \left(\frac{1}{p}\right)^{n/e} \\
+= \ \left({\frac{1}{p}}\right)^f \\
+= \ \frac{1}{p^f} \\
+= \ \frac{1}{q}.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------06
+
+View $p$ as an element of $\K$:
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad $\abs{p}_{p} =  \abs{N_{\K/\Q_{p}}(p)}_{p}^{1/n}= \abs{p^n}_{p}^{1/n} = \abs{p}_{p}$.
+
+\qquad \textbullet \quad $\abs{p}_{\K} 
+= \abs{N_{\K/\Q_{p}}(p)}_{p} 
+= \abs{p^n}_{p} 
+= \ds\frac{1}{p^n} 
+= \ds\frac{1}{p^{ef}} 
+= {\left(\ds\frac{1}{p^f}\right)}^e 
+= q^{-e}.$
+
+\vspace{0.3cm}
+
+\begin{x}{\small\bf DEFINITION} \  %22
+A finite extension $\K/\Q_{p}$ is
+
+\vspace{0.1cm}
+
+\qquad \textbullet\quad \un{unramified}\index{unramified} if $e = 1$
+
+\qquad \textbullet\quad \un{ramified}\index{ramified} if $f = 1$.
+
+\end{x}
+
+\vspace{0.1cm}
+
+Take the case $\K = \Q_{p}$ $-$then $e = 1$, hence $\K$ is unramified, and $f = 1$, hence $\K$ is ramified.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %23
+If $\K/\Q_{p}$ is is unramified, then $p$ is a prime element.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %24
+$\forall$ $n = 1, 2, \ldots$,  there is up to isomorphism one unramified extension $\K/\Q_{p}$ of degree $n$.
+\end{x}
+
+\vspace{0.1cm}
+
+Let $\K/\Q_{p}$ be a finite extension.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %25
+The group $M^\times$ of roots of unity of order prime to $p$ in $\K$ is cyclic of order 
+\[
+p^f - 1 \quad \text{$(= q-1)$}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %26
+The set M = $M^\times$ $\cup$ \{0\} is  a set of coset representatives for $R/P$. Therefore (cf. $\S4$, $\#$43)
+\[
+\K^\times \approx \Z \times R^\times \approx \Z \times \Z/(q-1)\Z \times1 + P.
+\]
+\end{x}
+%%----------------------------------------------------------------------------------------------07
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %27
+Let
+\index{$\K_{ur}$}
+\[
+\K_{ur} = \Q_p(M^\times).
+\]
+\end{x}
+
+
+\begin{x}{\small\bf LEMMA} \ %28
+$\K_{ur}$ is the maximal unramified extension of $\Q_p$ in $\K$ and
+\[
+[\K_{ur}:\Q_p] = f.
+\]
+\end{x}
+
+\begin{x}{\small\bf REMARK} \ %29
+The maximal unramified extension 
+$(\Q_p^{c\ell})_{ur} \subset \Q_p^{c\ell}$ 
+is the field extension generated by all roots of unity of order prime to $p$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf QUADRATIC EXTENSIONS} \ \ %30
+\index{Quadratic extensions}
+(cf. $\S 4$, $\#56$)  \ Suppose that $p \ne$ 2, 
+let $\tau \in \Q_p^\times - (\Q_p^\times)^2$, and form the quadratic extension
+\[
+\Q_p(\tau) = \{x + y\sqrt{\tau} : x, y \in \Q_p\}.
+\]
+Then the canonical absolute value on $\Q_p(\sqrt{\tau})$ is given by
+\[
+\begin{aligned}
+\abs{x + y\sqrt{\tau}}_p \ 
+&= \ \abs{N_{\Q_p(\sqrt{\tau})/\Q_p}   (x + y\sqrt{\tau}}_p^{1/2} \\
+&= \ \abs{x^2 - \tau y^2}_p^{1/2}.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CLASSIFICATION} \ %31
+Consider the three possibilities
+\[
+\Q_p(\sqrt{p}), \ \Q_p(\sqrt{\tau}), \ \Q_p(\sqrt{p \tau}),
+\]
+thus here $ef = 2$.
+\begin{itemize}
+\item $\Q_p(\sqrt{p})$ is ramified or still, $e = 2$.
+
+\vspace{0.1cm}
+
+[Note that
+\[
+\abs{\sqrt{p}}_p^2 = \abs{0^2 - (p)1^2}_p = \abs{p}_p = \frac{1}{p}.]
+\]
+%%----------------------------------------------------------------------------------------------08
+\item $\Q_p(\sqrt{p \zeta})$ is ramified or still, $e = 2$.\\
+
+\vspace{0.1cm}
+
+[Note that
+\[
+\abs{\sqrt{p \zeta}}^2 
+= \abs{0^2 - (p \zeta)1^2}_p 
+= \abs{p \zeta}_p 
+= \abs{p}_p \cdot \abs{\zeta}_p 
+= \abs{p}_p = \frac{1}{p}.]
+\]
+
+If $e = 1$, then in either case, the value group would be $p^{\Z}$, an impossibility since 
+$\ds\frac{1}{\sqrt{p}} \notin p^{\Z}$, so $e = 2$.
+\item $\Q_p(\sqrt{\zeta})$ is unramified or still, $e = 1$.
+\end{itemize}
+
+\vspace{0.1cm}
+
+[There is up to isomorphism one unramified extension $\K$ of $\Q_p$ of degree 2 (cf. $\# 24$)].
+
+\vspace{0.1cm}
+
+[Instead of quoting theory, one can also proceed directly, it being simplest to work instead with $\Q_p(\sqrt{a})$, 
+where $1 < a < p$ is an integer that is not a square mod $p$ (cf. $\S 4$, $\#57$) 
+$-$then the residue field of $\Q_p(\sqrt{a})$ is $\F_p(\sqrt{a})$, hence $f = 2$, hence $e = 1$ (since $n = 2$).]
+\end{x}
+
+\vspace{0.1cm}
+
+The preceding developments are absolute, i.e., based at $\Q_p$.  
+It is also possible to relativize the theory.  
+Thus let $\LL/\K$, $\K/\Q_p$ be finite extensions.  
+Append subscripts to the various quantities involved:
+\[
+\begin{cases}
+R_\K \supset P_{\K}, \ R_\K/P_{\K}, \ e_{\K}, \ f_{\K}, \ M_\K^\times \\
+R_\LL \supset P_{\LL}, \ R_\LL/P_{\LL}, \ e_{\LL}, \ f_{\LL}, \ M_\LL^\times
+\end{cases}
+.
+\]
+Introduce
+\[
+\begin{cases}
+e(\LL/\K) = [\abs{\LL^\times}:\abs{\K^\times}] \\
+f(\LL/\K) = [R_\LL/P_\LL:R_\K/P_\K]
+\end{cases}
+.
+\]
+\vspace{0.2cm}
+%%----------------------------------------------------------------------------------------------09
+
+\begin{x}{\small\bf LEMMA} \ %32
+\[
+[\LL:\K] = e(\LL/\K)f(\LL/\K).
+\]
+
+\indent PROOF \   We have
+\[
+\begin{cases}
+[\LL:\Q_p ] = e_\LL f_\LL \\
+[\K:\Q_p] = e_\K f_\K
+\end{cases}
+\qquad (\text{ cf. $\# 20$}).
+\]
+Therefore
+\[
+[\LL:\K] = \frac{[\LL:\Q_p] }{[\K:\Q_p]} = \frac{e_\LL f_\LL}{e_\K f_\K} = e(\LL/\K) f(\LL/\K).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %33
+Let $\LL/\K$, $\K/\Q_p$ be finite extensions $-$then there exists a unique maximal intermediate extension 
+$\K \subset \K_{ur} \subset \LL$ that is unramified over $\K$.
+
+\vspace{0.1cm}
+
+[In fact, 
+\[
+\K_{ur} = \K(M_\LL^\times) \subset \LL.]
+\]
+
+[Note: The extension $\LL/\K_{ur}$ is ramified.]
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

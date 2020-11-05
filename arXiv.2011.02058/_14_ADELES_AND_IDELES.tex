@@ -1,0 +1,587 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{14}.\quad  ADELES AND IDELES}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\begin{x}{\small\bf DEFINITION} \ %1
+The set of 
+\underline{finite adeles}
+\index{finite adeles} 
+is the restricted product
+\[
+\A_{\fin} \ = \ \prod\limits_p (\Q_p: \Z_p).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %2
+The set of 
+\underline{adeles}
+\index{adeles} 
+is the product
+\[
+\A \ = \ \A_{\fin} \times \R.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %3
+$\A$ is a locally compact abelian group (under addition).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %4
+$\A$ is a subring of \quad $\prod\limits_p \Q_p \times \R$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+The image of the diagonal map
+\[
+\Q \ra \prod\limits_p \Q_p \times \R
+\]
+lies in $\A$, so $\Q$ can be regarded as a subring of $\A$.
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %5
+$\Q$ is a discrete subspace of $\A$.
+
+\vspace{0.1cm}
+
+PROOF \ 
+To establish the discreteness of $\Q \subset \A$, one need only exhibit a neighborhood \mU of 0 in $\A$ such that $\Q \cap U = \{0\}$.  
+To this end, consider
+\[
+U \ = \  \prod\limits_p \\ Z_p \ \times \  ] -\frac{1}{2},\frac{1}{2}[.
+\]
+If $x \in \Q \cap U$, then $\abs{x}_p \le 1$ $\forall \ p$.  
+But \ $\bigcap\limits_p (\Q \cap \Z_p) = \Z$, so $x \in \Z$.  
+And further, $\abs{x}_{\infty} < \frac{1}{2}$, hence finally $x = 0$.
+\end{x}
+
+\vspace{0.1cm}
+
+%\allowdisplaybreaks
+
+\begin{x}{\small\bf FACT} \ %6
+Let G be a locally compact group and let $\Gamma \subset G$ be a discrete 
+%%----------------------------------------------------------------------------------------------02
+subgroup $-$then $\Gamma$ is closed in G and $G/\Gamma$ is a locally compact Hausdorff space.
+\end{x}
+
+
+%\vspace{0.1cm}
+
+%\allowdisplaybreaks
+
+\begin{x}{\small\bf THEOREM} \ %7
+The quotient $\A/\Q$ is a compact Hausdorff space.
+
+\vspace{0.01cm}
+
+PROOF \  
+Since $\Q \subset \A$ is a discrete subgroup, $\Q$ must be closed in $\A$ and the quotient  $\A/\Q$ must be Hausdorff.  
+As for compactness, it suffices to show that the compact set $\prod\limits_p \Z_p \times [0,1]$ contains a set of representatives of  
+$\A/\Q$ because this implies that the projection
+\[
+\prod\limits_p \Z_p \times [0,1] \ra \A/\Q
+\]
+is surjective, hence that  $\A/\Q$ is the continuous image of a compact set.  
+So let $x \in \A$ $-$then there is a finite set $S$ of primes such that $p \notin S \implies x_p \in \Z_p$.  
+For $p \in S$, write
+\[
+x_p = f(x_p) + [x_p], 
+\]
+thus $[x_p] \in \Z_p$ and if $q \ne p$ is another prime,
+\begin{align*}
+\abs{f(x_p)}_q \ 
+&=\  \abs{\sum_{n = v(x_p)}^{-1} a_n p^n}_q \\
+&\le\  \sup\{\abs{a_np^n}_q\} \\
+&\le\  1.
+\end{align*}
+Agreeing to denote $f(x_p)$ by  $r_p$, write
+\[
+x = (x - r_p) + r_p. 
+\]
+Then $r_p$ is a rational number and per $x - r_p$, $S$ reduces to $S - \{p\}$.  
+Proceed from here by iteration to get 
+\[
+\allowdisplaybreaks
+x = y + r, 
+\]
+where $\forall$ $p$, $y_p \in \Z_p$, and $r \in \Q$.
+At infinity,
+\[
+\allowdisplaybreaks
+x_\infty = y_\infty + r \quad (r_\infty = r)
+\]
+%%----------------------------------------------------------------------------------------------03
+and there is a unique $k \in \Z$ such that
+\[
+y_\infty = (y_\infty - k) + k 
+\]
+with $ 0 \le y_\infty - k < 1$.  
+Accordingly,
+\[
+y = y + r = (y - k) + k + r.
+\]
+And
+\[
+\forall \ p, \quad (y - k)_p = y_p - k_p = y_p - k \in \Z_p, 
+\]
+while
+\[
+x_\infty = (y_\infty - k) + k + r.
+\]
+It therefore follows that $x$ can be written as the sum of an element in $\prod\limits_p \Z_p \times [0,1]$ and a rational number, the contention.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf DEFINITION} \ %8
+The topological group $\A/\Q$ is called the 
+\underline{adele class group}.
+\index{adele class group}
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf DEFINITION} \ %9
+Let $G$ be a locally compact group and let $\Gamma \subset G$ be a discrete subgroup $-$then a 
+\underline{fundamental domain}
+\index{fundamental domain} 
+for $G/\Gamma$ is a Borel measurable subset $D \subset G$ which is a system of representatives for $G/\Gamma$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf LEMMA} \ %10
+The set
+\[
+D = \prod\limits_p \Z_p \times [0,1[
+\]
+is a fundamental domain for $\A/\Q$.
+
+\vspace{0.1cm}
+
+PROOF \  
+The claim is that every $x \in \A$ can be written uniquely as $d + r$, where $d \in D, r \in \Q$.  
+The proof of \#7 settles existence, thus the remaining issue is uniqueness:
+\[
+d_1 + r_1 = d_2 + r_2 \implies d_1 = d_2,\  r_1 = r_2
+\]
+To see this, consider
+%%----------------------------------------------------------------------------------------------04
+\[
+\rho = d_1 - d_2 = r_2 - r_1 \in (D-D) \cap \Q.
+\]
+
+\qquad\qquad \textbullet \quad $\forall$ p, $\rho = \rho_p \in D_p - D_p = D_p = \Z_p$ 
+
+\qquad\qquad\qquad $\implies \rho \in \bigcap\limits_p \ (\Q \cap \Z_p) = \Z$.
+
+\qquad\qquad \textbullet \quad $\rho = \rho_\infty \in D_\infty - D_\infty = \  ]-1,1[.$
+
+Therefore
+\[
+\rho \in  \Z \  \cap \   ]-1,1[ \   \implies \   \rho = 0.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf REMARK} \ %11
+$\Q$ is dense in $\A_\fin$.
+
+\vspace{0.1cm}
+
+[The point is that $\Z$ is dense in $\ds\prod\limits_p \Z_p$.$]$
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %12
+The set of 
+\underline{finite ideles}
+\index{finite ideles} 
+is the restricted product
+\[
+\I_{\fin}\ = \ \prod\limits_p (\Q_p^\times:\Z_p^\times).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %13
+The set of 
+\underline{ideles}
+\index{ideles} 
+is the product
+\[
+\I = \I_{\fin} \times \R^\times.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %14
+$\I$ is a locally compact abelian group $($under multiplication$)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+Algebraically, $\I$  can be identified with $\A^\times$ but there is a topological issue since when endowed with the relative topology, $\A^\times$ is not a topological group: Multiplication is continuous but inversion is not continuous.
+
+\begin{x}{\small\bf LEMMA} \ %15
+Equip $\A \times \A$ with the product topology and define
+%%----------------------------------------------------------------------------------------------05
+\begin{align*}
+\phi : \I 	&\ra \A \times \A\\	
+x 		&\mapsto \bigl(x, \frac{1}{x}\bigr).
+\end{align*}
+Endow the image $\phi(\I)$ with the relative topology $-$then $\phi$ is a topological isomorphism of $\I$ onto $\phi(\I)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+The image of the diagonal map
+\[
+\Q^\times \lra \prod\limits_p \Q_p \times \R^\times
+\]
+lies in $\I$, so $\Q^\times$ can be regarded as a subgroup of $\I$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %16
+$\Q^\times$ is a discrete subspace of $\I$.
+
+\vspace{0.1cm}
+
+PROOF \  
+$\Q$ is a discrete subspace of $\A$ (cf. \#5), hence  $\Q \times \Q$ is a discrete subspace of $\A \times \A$, 
+hence $\phi(\Q^\times)$ is a discrete subspace of $\phi(\I)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+Consequently, $\Q^\times$ is a closed subgroup of $\I$ and the quotient $\I/\Q^\times$ is a locally compact Hausdorff space but, as opposed to the adelic situation, it is not compact (see below).
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %17
+The topological group $\I/\Q^\times$ is called the 
+\underline{idele class group}.
+\index{idele class group}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %18
+Given $x \in \I$, put
+\[
+\abs{x}_\A = \prod_{p \le \infty} \abs{x_p}_p.
+\]
+Extend the definition of $\acdot_\A$ to all of $\A$ by setting $\abs{x}_\A = 0$ if $x \in \A  - \A^\times$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %19
+$\forall$ $x \in \Q^\times$, $\abs{x}_\A = 1$ (cf. \S1, \  \#21 ).
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------06
+
+
+\begin{x}{\small\bf LEMMA} \ %20
+The homomorphism
+\[
+\acdot_\A : \I \ra \R_{> 0}^\times
+\]
+is continuous and surjective.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Omitting the verification of continuity, fix $t \in \R_{> 0}^\times$ and let $x$ be the idele specified by
+\[x_p = \ 
+\begin{cases}
+\ 1 \quad \text{$(p < \infty)$}\\
+\ t \quad \text{$(p = \infty)$}
+\end{cases}
+.\]
+Then $\abs{x}_\A = t.$
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf SCHOLIUM} \ %21
+The idele class group $\I/\Q^\times$ is not compact.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf NOTATION} \ %22
+Let
+\[
+\I^1  \ = \ \ker \acdot_\A.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %23
+$x \in \I^1 \implies x_\infty \in \Q^\times$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %24
+The quotient $\I^1/\Q^\times$ is a compact Hausdorff space, in fact
+\[
+\I^1/\Q^\times \ \thickapprox \  \prod\limits_p \Z_p^\times,
+\]
+hence
+\[
+\prod\limits_p \Z_p^\times \times \{1\}
+\]
+is a fundamental domain for $\I^1/\Q^\times$.
+
+\vspace{0.1cm}
+
+PROOF \  
+The arrow 
+\[
+\prod\limits_p \Z_p^\times \ra \I^1/\Q^\times
+\]
+that sends $x$ to $(x,1)\Q^\times$ is an isomorphism of topological groups.
+%%----------------------------------------------------------------------------------------------07
+
+[In obvious notation, the inverse is the map
+\[
+x \ = \  (x_{\fin}, x_\infty) \ra \frac{1}{x_\infty} x_{\fin}.]
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %25
+$\forall$ p, $\Z_p^\times$ is totally disconnected.  
+But a product of totally disconnected spaces is totally disconnected, thus $\prod\limits_p \Z_p^\times$ is totally disconnected, thus $\I^1/\Q^\times$ is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %26
+ $\prod\limits_p \Z_p^\times \times \R_{>0}^\times$ is a fundamental domain for $\I^1/\Q^\times$.
+
+\vspace{0.1cm}
+
+[Note: \ If $r \in \Q$ and if $\abs{r}_p = 1$ $\forall$ p, then $r = \pm1.]$
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %27
+\[
+\I \ \thickapprox \ \I^1 \times  \R_{>0}^\times.
+\]
+
+\vspace{0.1cm}
+
+PROOF \  
+The arrow
+\[
+\I \ra \I^1 \times  \R_{>0}^\times
+\]
+that sends x to $(\widetilde{x}, \abs{x}_\A)$, where 
+
+\[(\widetilde{x})_p = \ 
+\begin{cases}
+x_p \quad \quad (p < \infty)\\
+\ds\frac{x_\infty}{\abs{x}_\A} \  \quad (p = \infty)
+\end{cases}
+,\]
+is an isomorphism of topological groups.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %28
+There is a disjoint decomposition
+%%----------------------------------------------------------------------------------------------08
+\[
+\I_{\fin} = \coprod_{q \in \Q_{>0}^\times} q\bigl(\prod\limits_p \Z_p^\times\bigr).
+\]
+
+\vspace{0.1cm}
+
+PROOF \  The right hand side is obviously contained in the left hand side.  
+To go the other way, fix an $x \in \I_{\fin}$ $-$then $\abs{x}_\A \in  \Q_{>0}^\times$.  
+Moreover, 
+$\abs{x}_\A x \in \I_{\fin}$ and $\forall \ p$, $\abs{ \abs{x}_\A x_p}_p = 1$ 
+(for $x_p = p^ku \ (u \in \Z_p^\times) \implies \abs{x}_\A = p^{-k}r  \ (r \in \Q_p^\times$, $r$ coprime to $p$)), hence
+\[
+\abs{x}_\A x \in \prod\limits_p \Z_p^\times.
+\]
+Now write
+\[
+x = \abs{x}_\A^{-1} (\abs{x}_\A x)
+\]
+to conclude that
+\[
+x \in q \prod\limits_p \Z_p^\times \qquad (q = \abs{x}_\A^{-1} ).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %29
+There is a disjoint decomposition
+\[
+\I_{\fin} \ \cap \ \prod\limits_p \Z_p \ = \ \coprod_{n \in \N} \ n\bigl(\prod\limits_p \Z_p^\times\bigr).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+Normalize the Haar measure $d^\times x$ on $\I_{\fin}$ by assigning the open-compact subgroup $\prod\limits_p \Z_p^\times$ total volume 1.
+\vspace{0.2cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %30
+Suppose that $\Re (s) > 1$ $-$then
+%%----------------------------------------------------------------------------------------------09
+\allowdisplaybreaks
+\begin{align*}
+\int_{\I_{\fin} \hspace{0.03cm}\cap \hspace{0.03cm} \prod\limits_p \Z_p} \abs{x}_\A^s d^\times x 	\ 
+&= \sum_{n \in \N} \ \int_{n(\prod\limits_p \Z_p^\times)} \abs{x}_\A^s d^\times x \\	
+&= \sum_{n \in \N} \ \int_{\prod\limits_p \Z_p^\times} \abs{nx}_\A^s d^\times x \\
+&= \sum_{n \in \N} n^{-s} \vol_{d^\times x} \bigl(\prod\limits_p \Z_p^\times\bigr) \\
+&= \sum_{n \in \N} n^{-s} \\
+&= \zeta(s). 
+\end{align*}
+
+\vspace{0.1cm}
+
+[Note: \  Let $x \in \prod\limits_p \Z_p^\times:$\\
+
+\qquad\qquad $\implies  \  \abs{x_p}_p \ = \ 1 	\quad  \forall p$, 
+\begin{align*}
+\implies \abs{nx}_\A \quad \ 	
+&= \prod\limits_p \abs{nx_p}_p \\	
+&= \prod\limits_p \abs{n}_p \abs{x_p}_p \\	
+&= \prod\limits_p \abs{n}_p \\
+&= \prod\limits_p \abs{n}_p \cdot n \cdot \frac{1}{n} \\
+&= 1\cdot \frac{1}{n}\\
+&= n^{-1}.]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+
+The idelic absolute value $\acdot_\A$ can be interpreted measure theoretically.
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------10
+
+\begin{x}{\small\bf NOTATION} \ %31
+Write
+\[
+dx_\A = \prod_{p \le \infty} dx_p
+\]
+for the Haar measure $\mu_\A$ on $\A$ (cf. \S13, \#16).
+\end{x}
+
+\vspace{0.1cm}
+
+
+Consider a function of the form $f = \prod\limits_{p \le \infty} f_p$, where $\forall$ $p, f_p$ is a continuous, 
+integrable function on $\Q_p$ and for all but a finite number of $p$, 
+$f_p = \chi_{\Z_p}$ 
+%$f_p = \chis{\Z_p}$ 
+$-$then
+\[
+\int_\A f(x)dx_\A = \prod_{p \le \infty}  \int_{\Q_p}	f_p(x_p) dx_p	\qquad (\text{cf.} \ \S13, \  \#18),
+\]
+it being understood that $\Q_\infty = \R$.
+
+\vspace{0.1cm}
+
+
+
+
+\begin{x}{\small\bf LEMMA} \ %32
+Let $M \subset \A$ be a Borel set with $0 < \mu_\A (M) < \infty$ $-$then $\forall$ $x \in \I$,
+\[
+\frac{\mu_\A (xM)}{\mu_\A (M)} = \abs{x}_\A.
+\]
+
+\vspace{0.1cm}
+
+PROOF \   Take $M = D = \prod\limits_p \Z_p \times [0,1[$ \  (cf. \#10):
+
+\allowdisplaybreaks
+\begin{align*}
+\mu_\A (xM) 	
+&= \prod\limits_p \mu_{\Q_p} (x_p\Z_p) \times \mu_\R(x_\infty [0,1[)\\	
+&= \prod\limits_p \abs{x_p}_p \mu_{\Q_p} (\Z_p) \times \abs{x_\infty} \mu_\R([0,1[)\\	
+&= \prod\limits_p \abs{x_p}_p \times \abs{x_\infty}_\infty\\
+&= \prod_{p \le \infty} \abs{x_p}_p \\
+&= \abs{x}_\A.
+\end{align*}
+
+[Note: \  Needless to say, multiplication by an idele $x$ is an automorphism of $\A$, thus transforms $\mu_\A$ into a positive constant multiple of itself, the multiplier being $\abs{x}_\A.]$
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,792 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{7}.\quad  HARMONIC ANALYSIS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Let $G$ be a locally compact abelian group.
+
+\vspace{0.25cm}
+
+\begin{x}{\small\bf DEFINITION} \ %1
+A 
+\un{character}
+\index{character} 
+of $G$ is a continuous homomorphism $\chi:G \ra \C^\times$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %2
+Write $\widetilde{G}$ for the group whose elements are the characters of $G$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %3
+A 
+\un{unitary character}
+\index{unitary character} 
+of $G$ is a continuous homomorphism $\chi: G \ra \T$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %4
+Write $\widehat{G}$ for the group whose elements are the unitary characters of $G$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %5
+There is a decomposition
+\[
+\widetilde{G} \approx \widetilde{G}_+ \times \widehat{G},
+\]
+where $\widetilde{G}_+$ is the group of positive characters of $G$.
+
+\vspace{0.1cm}
+
+PROOF \  The only positive unitary character is trivial, so $\widetilde{G}_+ \cap \widehat{G} = \{1\}$.  On the other hand, if $\chi$ is a character, then $\abs{\chi}$ is a positive character, $\chi / \abs{\chi}$ is a unitary character, and $\chi = \abs{\chi} (\ds\frac{\chi}{\abs{\chi}}$).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %6
+Every bounded character of $G$ is a unitary character.
+
+\vspace{0.1cm}
+
+PROOF \  The only compact subgroup of $\R_{>0}$ is the trivial subgroup $\{1\}$.
+\end{x}
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %7
+If $G$ is compact, then every character of $G$ is unitary.
+\end{x}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %8
+Take $G = \Z$ $-$then $\widetilde{G} \approx \C^\times$, the isomorphism being given by the map $\chi \ra \chi (1)$.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+
+\begin{x}{\small\bf EXAMPLE} \ %9
+Take $G = \R$ $-$then $\widetilde{G} \approx \R \times \R $ and every character has the form 
+$\chi (x) = e^{zx}$  $(z \in \C)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+Take $G = \C$ $-$then $\widetilde{G} \approx \C \times \C $ and every character has the form 
+$\chi (x) = \exp(z_1 \Re(x) + z_2 \Im(x))$  \ $(z_1, z_2 \in \C)$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %11
+Take $G = \R^\times$ $-$then $\widetilde{G} \approx \Z/ 2 \Z \times \C$, and every character has the form 
+$\chi (x) = (\sgn x)^\sigma \abs{x}^s$ $(\sigma \in \{0,1\}, \ s \in \C)$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %12
+Take $G = \C^\times$ $-$then $\widetilde{G} \approx \Z \times \C$, 
+and every character has the form $ \chi (x) = \exp(\sqrt{-1} $ $n \arg x) \abs{x}^s$ $(n \in \Z, s \in \C)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %13
+The 
+\un{dual group}
+\index{dual group} 
+of $G$ is $\widehat{G}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ %14
+Let $X$, $Y$ be topological spaces and let $F$ be a subspace of $C(X,Y)$.  
+Given a compact set $K \subset X$ and an open subset $V \subset Y$, 
+let $W(K,V)$ be the set of all $f \in F$ such that $f(K) \subset V$ 
+$-$then the collection $\{W(K,V)\}$ is a subbasis for the 
+\un{compact open topology}
+\index{compact open topology} 
+on $F$.
+
+\vspace{0.1cm}
+$[$Note: The family of finite intersections of sets of the form $W(K,V)$ is then a basis for the compact open topology: 
+Each member has the form $\bigcap\limits_{i= 1}^n W(K_i,V_i)$, where the $K_i \subset X$ 
+are compact and the $V_i \subset Y$ are open.]
+\end{x}
+
+\vspace{0.1cm}
+
+Equip $\widehat{G}$ with the compact open topology.
+\vspace{0.1cm}
+\begin{x}{\small\bf FACT} \ %15
+The compact open topology on $\widehat{G}$ coincides with the topology of uniform convergence on compact subsets of $G$.
+\end{x}
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf LEMMA} \ %16
+$\widehat{G}$ is a locally compact abelian group.
+\end{x}
+
+
+\begin{x}{\small\bf REMARK} \ %17
+$\widetilde{G}$  is also a locally compact abelian group and the decomposition
+\[
+\widetilde{G} \approx \widetilde{G}_+ \times \widehat{G}
+\]
+is topological.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %18
+Take $G = \R$ and given a real number $t$, let $\chi_t(x) = e^{\sqrt{-1}\ tx}$ $-$then $\chi_t$ 
+is a unitary character of $G$ and for any $\chi \in \widehat{G}$, there is a unique $t \in \R$ such that $\chi = \chi_t$, 
+hence $G$ can be identified with $\widehat{G}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+Take $G = \R^2$ and given a point $(t_1,t_2)$, let $\chi_{(t_1,t_2)}(x_1,x_2) = e^{\sqrt{-1}(t_1x_1 + t_2x_2)}$ 
+$-$then $\chi_{(t_1,t_2)}$ is a unitary character of $G$ and for any $\chi \in \widehat{G}$, 
+there is a unique $(t_1,t_2) \in \R^2$ such that $\chi = \chi_{(t_1,t_2)}$, 
+hence $G$ can be identified with $\widehat{G}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %20
+Take $G = \Z/ n\Z$ and given an integer $m = 0, 1, \dotsb, n-1$, let 
+$
+\chi_m(k) = \exp\bigl(2\pi \sqrt{-1} \ \ds\frac{km}{n}\bigr)
+$
+$-$then $\chi_0, \chi_1, \dotsb, \chi_{n-1}$ are characters of $G$, hence $G$ can be identified with $\widehat{G}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %21
+If $G$ is compact, then $\widehat{G}$ is discrete.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %22
+Take $G = \T$ and given $n \in$ $\Z$, let 
+$\chi_n\bigl(e^{\sqrt{-1}\ \theta}\bigr ) = e^{\sqrt{-1} \ n\theta}$ 
+$-$then $\chi_n$ is a unitary character of $G$ and all such have this form, so $\T$ $\approx \Z$.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf LEMMA} \ %23
+If $G$ is discrete, then $\widehat{G}$ is compact.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %24
+Take $G = \Z$ and given $e^{\sqrt{-1}\ \theta}  \in \T$, let $\chi_\theta(n) = e^{\sqrt{-1} \ \theta n}$ 
+$-$then $\chi_\theta$ is unitary character of $G$ and all such have this form, so $\widehat{\Z} \approx \T$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %25
+If $G_1$, $G_2$ are locally compact abelian groups, then 
+$\reallywidehat{G_1 \times G_2}$
+%$\widehat{G_1 \times G_2}$ 
+is topologically isomorphic to $\widehat{G_1} \times \widehat{G_2}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %26
+Take $G = \R^\times$ $-$then 
+\[
+G \approx \Z / 2 \Z \times \R_{>0}^\times \ \approx \ \Z / 2 \Z \times \R, 
+\]
+thus $\widehat{G}$ is topologically isomorphic to $\Z / 2 \Z \times \R:$
+\[
+(u,t) \ra \chi_{(u,t)}			\quad (u \in \Z / 2 \Z, t \in  \R),
+\]
+where
+\[
+\chi_{(u,t)}(x) = \left (\ds\frac{x}{\abs{x}}\right)^u \abs{x}^{\sqrt{-1}\  t}.
+\]
+\end{x}
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %27
+Take $G = \C^\times$ $-$then 
+\[
+G \approx \T \times \R_{>0}^\times \ \approx \T \ \times \R, 
+\]
+thus $\widehat{G}$ is topologically isomorphic to $\Z \times \R:$
+\[
+(n,t) \ra \chi_{n,t}			\quad (n \in \Z , t \in  \R),
+\]
+where
+\[
+\chi_{(n,t)}(z) = \left(\ds\frac{z}{\abs{z}}\right)^n \abs{z}^{\sqrt{-1} \  t}.
+\]
+\end{x}
+
+\vspace{0.5cm}
+
+Denote by $\ev_G$ the canonical arrow 
+$G \ra \reallywidehat{\reallywidehat{G}}:$
+\[
+\ev_G(x) (\chi) = \chi (x).
+\]
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+\begin{x}{\small\bf REMARK} \ %28
+If $G$, $H$ are locally compact abelian groups and if $\phi : G \ra H$ is a continuous homomorphism, then there is a commutative diagram
+\[
+\begin{tikzcd}[sep=large]
+G \ar{d}[swap]{\phi} \ar{rr}{\text{ev}_G}	
+&&\reallywidehat{\reallywidehat{G}} \ar{d}{\reallywidehat{\reallywidehat{\phi}}}\\
+H \ar{rr}{\text{ev}_H} 		
+&&\reallywidehat{\reallywidehat{H}}
+\end{tikzcd}
+\quad .
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\index{Pontryagin duality}
+\begin{x}{\small\bf PONTRYAGIN DUALITY} \ %29
+$\ev_G$ is an isomorphism of groups and a homeomorphism of topological spaces.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf SCHOLIUM} \ %30
+Every compact abelian group is the dual of a discrete abelian group and every discrete abelian group is the dual of a compact abelian group.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %31
+Every finite abelian group $G$ is isomorphic to its dual $\widehat{G}:$ $G \approx \widehat{G}$  (but the isomorphism is not "functorial").
+\end{x}
+
+\vspace{0.1cm}
+
+Let $H$ be a closed subgroup of $G$.
+
+\vspace{0.2cm}
+
+\index{$H^\perp$}
+\begin{x}{\small\bf NOTATION} \ %32
+Put
+\[
+H^\perp = \{\chi \in \widehat{G}: \restr{\chi}{H} = 1\}.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %33
+$H^\perp$ is a closed subgroup of $\widehat{G}$ and H = $H^{\perp \perp}$.
+\end{x}
+
+\vspace{0.1cm}
+
+Let $\pi_H:G \ra G/H$ be the projection and define
+\[\left\{
+\begin{array}{l l}
+\Phi : \widehat{G/H} \ra H^\perp\\
+\Psi : \widehat{G}/H^\perp \ra \widehat{H}
+\end{array}
+\right.\]
+%%----------------------------------------------------------------------------------------------06
+by
+\[\left\{
+\begin{array}{l l}
+\Phi(\chi) = \chi \circ \pi_H \\
+\Psi(\chi H^\perp) = \restr{\chi}{H}.
+\end{array}
+\right.\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %34
+$\Phi$ and $\Psi$ are isomorphisms of topological groups.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %35
+Every unitary character of $H$ extends to a unitary character of $G$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %36
+Let $G$ be a finite abelian group and let $H$ be subgroup of $G$ $-$then $G$ contains a subgroup isomorphic to $G/H$.
+
+[In fact, 
+\[
+G/H  \approx \  \widehat{G/H}\  \approx \  H^\perp \ \subset \  \widehat{G} \ \approx \ G.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %37
+Denote by $\textbf{LCA}$ the category whose objects are the locally compact abelian groups and whose morphisms are the continuous homomorphisms $-$then
+\[
+\widehat{ } : \mathbf{LCA} \ra \mathbf{LCA}
+\]
+is a contravariant functor.  This said, consider the short exact sequence
+\[
+\begin{tikzcd}%[sep=small]
+1 	\ar{r}	
+&H	\ar{r}	
+&G 	\ar{rr}{\pi_H}	
+&&{G/H}	\ar{r}  
+&{1}
+\end{tikzcd}
+\]
+and apply  $ $   $\widehat{ }:$
+\[
+\begin{tikzcd}%[sep=small]
+1 	\ar{r}	
+&{\widehat{G/H} \  \approx \ H^\perp} 	\ar{r}	
+&\widehat{G} 	\ar{r}	
+&{\widehat{H} \ \approx \  \widehat{G}/H^\perp}	\ar{r}  
+&{1}
+\end{tikzcd}
+,
+\]
+which is also a short exact sequence.
+\end{x}
+%%----------------------------------------------------------------------------------------------07
+
+\vspace{0.1cm}
+
+Given f $\in L^1(G)$, its 
+\un{Fourier transform}
+\index{Fourier transform} 
+is the function 
+\[
+\widehat{f} : \widehat{G} \ra \C
+\]
+defined by the rule
+\[
+\widehat{f}(\chi) = \int_G f(x) \chi(x) d \mu_G(x).
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %38
+Take $G = \R$ $-$then $\widehat{\R} \approx \R$ and
+\[
+\widehat{f}(\chi_t) \equiv \widehat{f}(t) = \int_{-\infty}^\infty  f(x) e ^{\sqrt{-1}\  tx} dx.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %39
+Take $G = \R^2$ $-$then $\widehat{\R}^2 \approx \R^2$ and
+\[
+\widehat{f}(\chi_{(t_1,t_2)}) \equiv \widehat{f}(t_1 , t_2) \ 
+= \ \int_{-\infty}^\infty  \int_{-\infty}^\infty  f(x_1, x_2) e ^{\sqrt{-1} \ (t_1 x_1 + t_2 x_2)} dx_1 dx_2.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %40
+Take $G = \T$ $-$then $\widehat{\T} \approx \Z$ and
+\[
+\widehat{f}(\chi_n) \equiv \widehat{f}(n) 
+=  \int_{0}^{2\pi}  f(\theta) e^{\sqrt{-1} \ n \theta} d\theta
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %41
+Take $G = \Z$ $-$then $\widehat{Z} \approx \T$ and
+\[
+\widehat{f}(\chi_\theta) \equiv \widehat{f}(\theta) =  \sum_{n = -\infty}^\infty f(n) e^{\sqrt{-1} \ n \theta}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %42
+Take $G = \Z/n\Z$ $-$then $\widehat{\Z/n\Z} \approx \Z/n\Z$ and
+\[
+\widehat{f}(\chi_m) \equiv \widehat{f}(m) =  \sum_{k = 0}^{n - 1}f(k) \exp(2 \pi \sqrt{-1} \ \frac{km}{n}). 
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %43
+$\widehat{f} : \widehat{G} \ra \C$ is a continuous function on $\widehat{G}$ that vanishes at infinity and
+%%----------------------------------------------------------------------------------------------08
+\[
+\| \widehat{f} \|_\infty \le \| f  \|_1.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\index{$\mathbf{INV}$}
+\begin{x}{\small\bf NOTATION} \ %44
+$\mathbf{INV}(G)$ is the set of continuous functions $f \in L^1(G)$ with the property that $\widehat{f} \in L^1(\widehat{G})$.
+\end{x}
+
+\vspace{0.1cm}
+
+\index{Fourier inversion}
+\begin{x}{\small\bf FOURIER INVERSION} \ %45
+Given a Haar measure $\mu_G$ on $G$, 
+there exists a unique Haar measure $\mu_{\widehat{G}}$ on $\widehat{G}$ such that $\forall f \  \in \mathbf{INV}(G)$,
+\[
+f(x) = \int_{\widehat{G}} \widehat{f}(\chi) \ov{\chi (x)} d\mu_{\widehat{G}} (\chi).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+If $G$ is compact, then it is customary to normalize $\mu_G$ by the requirement $\int_G 1 d\mu_G = 1$.
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %46
+\[ 
+\int_G \chi(x) d\mu_G(x) \ = \  
+\begin{cases}
+\ 1  \quad \text{if} \  \chi = 0\\
+\ 0 \quad \text{if} \ \chi \ne 0
+\end{cases}
+.
+\]
+
+\vspace{0.1cm}
+
+PROOF \  The case $\chi = 0$ is clear.  On the other hand, if $\chi \ne 0$, then there exists $x_0 : \chi (x_0) \ne 1$, hence
+%\[
+\begin{align*}
+\int_G \chi(x) d\mu_G(x) \ 
+&= \ \int_G \chi (x - x_0 + x_0) d\mu_G (x)\\
+&= \ \chi (x_0) \int_G \chi (x - x_0) d\mu_G (x)\\
+&= \ \chi (x_0) \int_G \chi (x) d\mu_G (x)
+\end{align*}
+%\]
+$\implies$
+\[
+\int_G \chi (x) d\mu_G (x) = 0 .
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------09
+
+Assuming still that $G$ is compact ($\implies \widehat{G}$ is discrete), take $f \equiv 1:$
+\[
+\widehat{f}(0) = 1, \   \widehat{f}(\chi) = 0 	 \quad (\chi \ne 0). 
+\]
+I.e.$:$	$\widehat{f}$ is the characteristic function of \{0\}, hence is integrable, thus $f \in \mathbf{INV}(G)$.  
+Accordingly, if $\mu_{\widehat{G}}$ is the Haar measure on $\widehat{G}$ per Fourier inversion, then
+\begin{align*}
+1 \ 
+&= \ f(0) \\
+&= \ \int_{\widehat{G}} \widehat{f}(\chi) d\mu_{\widehat{G}} (\chi) \\
+&= \ \mu_{\widehat{G}} (\{0\}), 
+\end{align*}
+so $\forall$ $\chi \in \widehat{G}$,
+\[
+\mu_{\widehat{G}} (\{\chi\}) = 1.
+\]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %47
+Let $G = \T$ $-$then $d\mu_G = \ds\frac{d\theta}{2\pi}$, so for $f \in \mathbf{INV}(G)$,
+\[
+f(\theta) = \sum_{n = -\infty}^\infty \widehat{f}(n) e^{-\sqrt{-1} \ n \theta},
+\]
+where
+\[
+\widehat{f}(n) = \int_0^{2\pi} f(\theta) e^{\sqrt{-1} \  n \theta} \frac{d\theta}{2\pi}.
+\]
+
+\vspace{0.1cm}
+
+If $G$ is discrete, then it is customary to normalize $\mu_G$ by stipulating that singletons are assigned measure 1.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %48
+There is a conflict if $G$ is both compact and discrete, i.e., if $G$ if finite.
+\end{x}
+
+\vspace{0.1cm}
+
+\allowdisplaybreaks
+Assuming still that $G$ is discrete ( $\implies \widehat{G}$ is compact), take $f(0) = 1, f(x) = 0$ $(x \ne 0):$
+%%----------------------------------------------------------------------------------------------10
+\begin{align*}
+\widehat{f}(\chi)	 \ 
+&= \  \int_G f(x) \chi(x) d\mu_G(x)\\	
+&= \ f(0) \chi(0) \mu_G(\{0\})\\		
+&= \ 1.
+\end{align*}
+I.e.$:$ $\widehat{f}$ is the constant function 1, hence is integrable, thus $f \in \mathbf{INV}(G)$.  Accordingly, if $\mu_{\widehat{G}}$ is the Haar measure on $\widehat{G}$ per Fourier inversion, then
+\begin{align*}
+\mu_{\widehat{G}}(\widehat{G}) 	 \ 
+&= \ \int_{\widehat{G}} 1 d \mu_{\widehat{G}}(\chi)  \\		 						
+&= \  \int_{\widehat{G}} \widehat{f}(\chi) d \mu_{\widehat{G}}(\chi)  \\
+&= \ \int_{\widehat{G}} \widehat{f}(\chi) \chi(0)d \mu_{\widehat{G}}(\chi)  \\	
+&= \ f(0)\\
+&=	\ 1.
+\end{align*}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %49
+Take $G = \Z / n\Z$ and let $\mu_G$ be the counting measure $($thus here $\mu_G(G) = n)$ $-$then $\mu_{\widehat{G}}$ is the counting measure divided by $n$ and for $f \in \mathbf{INV}(G)$, 
+\[
+f(k) = \frac{1}{n} \sum_{m = 0} ^{n - 1} \widehat{f}(m) \exp(-2\pi\sqrt{-1} \ \frac{km}{n}),
+\]
+where
+\[
+\widehat{f}(m) = \sum_{k = 0} ^{n - 1} f(k) \exp(2\pi\sqrt{-1} \ \frac{km}{n}).
+\]
+\end{x}
+
+\begin{x}{\small\bf EXAMPLE} \ %50
+Take $G = \R$ and let $\mu_G = \alpha dx$ $(\alpha > 0)$, hence $\mu_{\widehat{G}} = \beta dt $ $(\beta > 0)$ 
+%%----------------------------------------------------------------------------------------------11
+and we claim that
+\[
+1 = 2\alpha \beta \pi.
+\]
+To establish this, recall first that the formalism is
+\[
+\begin{cases}
+\widehat{f}(t) 	&= \ds\int_{-\infty}^\infty f(x) e^{\sqrt{-1}\  tx} \alpha dx \\	
+\\
+f(x) 	&= \ds\int_{-\infty}^\infty \widehat{f}(t) e^{-\sqrt{-1} \ tx} \beta dx 
+\end{cases}
+.
+\]
+Let $f(x) = e^{-\abs{x}}$ $-$then
+\[
+\frac{2\alpha}{1 + t^2} = \int_{-\infty}^\infty e^{-\abs{x}} e^{\sqrt{-1}\  tx} \alpha dx,
+\]
+so $f \in \mathbf{INV}(G)$, thus
+\[
+\begin{aligned}
+e^{-\abs{x}} \ 
+&=\  \int_{-\infty}^\infty \frac{2\alpha}{1 + t^2} e^{-\sqrt{-1} \ tx} \beta dt \\
+&= \  2\alpha \beta \int_{-\infty}^\infty \frac{e^{-\sqrt{-1}\  tx }}{1 + t^2}dt.
+\end{aligned}
+\]
+Now put $x = 0:$
+\[
+1 = 2\alpha \beta \int_{-\infty}^\infty \frac{dt}{1 + t^2}dt = 2\alpha \beta  \pi,
+\]
+as claimed.  One choice is to take
+\[
+\alpha = \beta = \frac{1}{\sqrt{2\pi}},
+\]
+the upshot being that the Haar measure of $[0,1]$ is not 1 but rather $\ds\frac{1}{\sqrt{2\pi}}$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %51
+Given $f \in L^1(\R)$, let
+\[
+\sF_\R f(t) = \int_{-\infty}^\infty f(x) e^{2\pi \sqrt{-1}\   tx} dx.
+\]
+%%----------------------------------------------------------------------------------------------12
+Therefore
+\begin{align*}
+\sF_\R f(t) \ 
+&=\  \sqrt{2\pi}\   \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(x) e^{2\pi \sqrt{-1}\   tx} dx \\
+&=\   \sqrt{2\pi}\   \widehat{f}(2 \pi t).
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf STANDARDIZATION} \ %52
+$(G = \R)$ Let $f \in \mathbf{INV}(\R)$, $-$then
+\[
+\sF_\R \sF_\R f(x) = f(-x).
+\]
+%\vspace{0.1cm}
+
+[In fact,
+\begin{align*}
+\sF_\R \sF_\R f(x)	 \ 
+&=\  \int_{-\infty}^\infty \sF_\R f(t) e^{2 \pi \sqrt{-1}\  tx} dx \\	
+&=\  \ \int_{-\infty}^\infty \sqrt{2\pi} \widehat{f}(2 \pi t) e^{2 \pi \sqrt{-1}\  tx} dx \\	
+&=\  \ \sqrt{2\pi}  \int_{-\infty}^\infty  \widehat{f}(u) e^{\sqrt{-1}\  ux} \frac{du}{2\pi} \\	
+&=\  \ \frac{1}{\sqrt{2\pi}}  \int_{-\infty}^\infty  \widehat{f}(t) e^{\sqrt{-1}\  tx} dt \\	
+&=\  \ f(-x).]
+\end{align*}
+
+\vspace{0.1cm}
+
+Fourier inversion in the plane takes the form
+\[
+\begin{cases}
+\widehat{f}(t_1, t_2)  \
+= \ \ds\frac{1}{2\pi} \int_{-\infty}^\infty \int_{-\infty}^\infty f(x_1, x_2) e^{\sqrt{-1}\  (t_1x_1 + t_2x_2)} dx_1 dx_2\\
+\\
+f(x_1, x_2)  \ 
+= \ \ds\frac{1}{2\pi} \int_{-\infty}^\infty \int_{-\infty}^\infty \widehat{f}(t_1, t_2) e^{-\sqrt{-1}\  (t_1x_1 + t_2x_2)} dt_1 dt_2
+\end{cases}
+.
+\]
+One may then introduce
+\begin{align*}
+\sF_{\R^2}f(t_1,t_2) \ 
+&= \ \int_{-\infty}^\infty \int_{-\infty}^\infty f(x_1, x_2) e^{2\pi\sqrt{-1}\  (t_1x_1 + t_2x_2)} dx_1 dx_2 \\
+&= \ 2\pi \widehat{f} (2\pi t_1, 2\pi t_2)
+\end{align*}
+%%----------------------------------------------------------------------------------------------13
+and proceeding as above we find that
+\[
+\sF_{\R^2} \sF_{\R^2} f(x_1, x_2) = f(-x_1, -x_2).
+\]
+
+Now identify $\R^2$ with $\C$ and recall that $\trs_{\C /\R} (z) = z + \bar{z}$.  
+Write
+\[
+\begin{cases}
+w = a + \sqrt{-1} \ b\\
+z = x + \sqrt{-1}  \ y
+\end{cases}
+.
+\]
+
+Then
+\[
+wz + \ov{wz} = 2\Re(wz) = 2(ax -by). 
+\]
+Therefore
+\[
+\frac{1}{2\pi} \int_{-\infty}^\infty \int_{-\infty}^\infty f(x,y) e^{2 \sqrt{-1}\ (ax-by)}dx dy = \widehat{f}(2a, -2b).
+\]
+
+\vspace{0.1cm}
+
+[Note: \  Let $\chi_w(z) = \exp(\sqrt{-1}(wz + \ov{wz}))$ 
+$-$then $\chi_w$ is a unitary character of $\C$ and for any $\chi \in \widehat{\C}$, 
+there is a unique $w \in \C$ such that $\chi = \chi_w$, hence $\widehat{\C} = \C$.]\\
+\end{x}
+
+\begin{x}{\small\bf NOTATION} \ %53
+Given $f \in L^1(\R^2)$, let
+\begin{align*}
+\sF_\C f(w) \ 
+&= \  \sF_\C f(a,b)\\
+&= \  2 \sF_{\R^2} f(2a,-2b)\\
+&= \  4 \pi \widehat{f} (4 \pi a, -4\pi b)\\
+&= \  \int_{-\infty}^\infty  \int_{-\infty}^\infty \ f(x,y)e^{4 \pi \sqrt{-1}\  (ax - by)} 2dxdy\\
+\end{align*}
+\end{x}
+
+%%----------------------------------------------------------------------------------------------14
+\begin{x}{\small\bf STANDARDIZATION} \ %54
+$(G = \C)$ Let $f \in \mathbf{INV}(\C)$, $-$then
+\[
+\sF_\C \sF_\C f(x,y) = f(-x, -y).
+\]
+
+[In fact,
+\begin{align*}
+\sF_\C \sF_\C f(x,y) \ 
+&= \  \int_{-\infty}^\infty \int_{-\infty}^\infty \sF_\C f(a,b) e^{4 \pi \sqrt{-1} \ (ax - by)} \ 2dadb \\	
+&= \  \int_{-\infty}^\infty \int_{-\infty}^\infty 4\pi \widehat{f}(4\pi a, -4\pi b) e^{4\pi\sqrt{-1}\  (ax - by)}\  2dadb \\	
+&= \  \frac{4\pi}{(4\pi)^2} \int_{-\infty}^\infty \int_{-\infty}^\infty  \widehat{f}(u,-v) e^{\sqrt{-1}\  (ux - vy)}\  2dudv\\	
+&= \  \frac{1}{2\pi}  \int_{-\infty}^\infty \int_{-\infty}^\infty  \widehat{f}(u,-v) e^{\sqrt{-1}\  (ux - vy)}\  dudv\\	
+&= \  \frac{1}{2\pi}  \int_{-\infty}^\infty \int_{-\infty}^\infty  \widehat{f}(u,-v) e^{-\sqrt{-1}\  (-ux + vy)}\  dudv\\
+&= \  \frac{1}{2\pi}  \int_{-\infty}^\infty \int_{-\infty}^\infty  \widehat{f}(u,v) e^{-\sqrt{-1}\  (-ux - vy)}\  dudv\\
+&= \  f(-x, -y).]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+
+\index{Plancherel theorem}
+\begin{x}{\small\bf PLANCHEREL THEOREM} \ %55
+The Fourier transform restricted to $L^1(G) \cap L^2(G)$ is an isometry 
+(with respect to $L^2$ norms$)$ onto a dense linear subspace of $L^2(\widehat{G})$, 
+hence can be extended uniquely to an isometric isomorphism $L^2(G) \ra L^2(\widehat{G})$.\\
+\end{x}
+
+\vspace{0.1cm}
+
+\index{Parseval theorem}
+\begin{x}{\small\bf PARSEVAL FORMULA} \ %56
+$\forall$ $f, g \in  L^2(G)$,
+\[
+\int_G f(x) \ov{g(x)} d_G(x) = \int_{\widehat{G}} \widehat{f}(\chi) \ov{\widehat{g}(\chi)} d_{\widehat{G}} (\chi).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %57
+In both of these results, the Haar measure on $\widehat{G}$ is per Fourier inversion.
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

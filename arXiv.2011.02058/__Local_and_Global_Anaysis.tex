@@ -1,0 +1,643 @@
+\documentclass[11pt]{book}
+\pagestyle{plain} %this appears to have turned off the header chapter title info at the top of each page
+%\documentclass[10pt]{book}
+\usepackage{geometry}                		
+\geometry{letterpaper}                   		
+\usepackage{graphicx}									
+\usepackage{amssymb}\vspace{0.25cm}
+\usepackage{mathtools}
+\usepackage{setspace}
+\usepackage{tikz-cd}
+%%%%%%%%%%%\usepackage{amsmath, amsthm}
+\usepackage[mathscr]{euscript}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\usepackage[normalem]{ulem}
+\usepackage{manfnt}
+\usepackage{pgfplots}
+\usepackage{pifont}
+\usepackage[safe]{tipa}
+\usepackage{marvosym}
+\usepackage{scalerel,stackengine}
+\usepackage{titlesec}
+\usepackage{makeidx}
+\usepackage{centernot}
+
+\usepackage{xspace}
+\usepackage[noauto]{chappg}
+\usepackage[OT2,T1]{fontenc}
+\usepackage{hyperref}
+%\usepackage{accents}
+\usepackage{amsmath}
+%\usepackage[utf8]{inputenc}
+%\usepackage[english]{babel}
+\usepackage[amsmath,thmmarks]{ntheorem}
+
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+%------------------------------------------------------- \m commands
+\newcommand\mA{%
+$A$\xspace
+}
+\newcommand\mB{%
+$B$\xspace
+}
+\newcommand\mC{%
+$C$\xspace
+}
+\newcommand\mD{%
+$D$\xspace
+}
+\newcommand\mE{%
+$E$\xspace
+}
+\newcommand\mF{%
+$F$\xspace
+}
+\newcommand\mG{%
+$G$\xspace
+}
+\newcommand\mH{%
+$H$\xspace
+}
+\newcommand\mI{%
+$I$\xspace
+}
+\newcommand\mJ{%
+$J$\xspace
+}
+\newcommand\mK{%
+$K$\xspace
+}
+\newcommand\mL{%
+$L$\xspace
+}
+\newcommand\mM{%
+$M$\xspace
+}
+\newcommand\mN{%
+$N$\xspace
+}
+\newcommand\mO{%
+$O$\xspace
+}
+\newcommand\mP{%
+$P$\xspace
+}
+\newcommand\mQ{%
+$Q$\xspace
+}
+\newcommand\mR{%
+$R$\xspace
+}
+\newcommand\mS{%
+$S$\xspace
+}
+\newcommand\mT{%
+$T$\xspace
+}
+\newcommand\mU{%
+$U$\xspace
+}
+\newcommand\mV{%
+$V$\xspace
+}
+\newcommand\mW{%
+$W$\xspace
+}
+\newcommand\mX{%
+$X$\xspace
+}
+\newcommand\mY{%
+$Y$\xspace
+}
+\newcommand\mZ{%
+$Z$\xspace
+}
+%-------------------------------------------------------------------------------------------------------------------mathbb
+\newcommand\A{%
+\mathbb{A}
+}
+\newcommand\C{%
+\mathbb{C}
+}
+\newcommand\E{%
+\mathbb{E}
+}
+\newcommand\F{%
+\mathbb{F}
+}
+\newcommand\HH{%
+\mathbb{H}
+}
+\newcommand\I{%
+\mathbb{I}
+}
+\newcommand\K{%
+\mathbb{K}
+}
+\newcommand\LL{%
+\mathbb{L}
+}
+\newcommand\M{%
+\mathbb{M}
+}
+\newcommand\N{%
+\mathbb{N}
+}
+\newcommand\PP{%
+\mathbb{P}
+}
+\newcommand\Q{%
+\mathbb{Q}
+}
+\newcommand\R{%
+\mathbb{R}
+}
+\newcommand\T{%
+\mathbb{T}
+}
+\newcommand\X{%
+\mathbb{X}
+}
+\newcommand\Y{%
+\mathbb{Y}
+}
+\newcommand\Z{%
+\mathbb{Z}
+}
+%-------------------------------------------------------------------------------------------------------------------
+\newcommand\invh{%
+\Large\textnormal{\textturnh}
+}
+
+%------------------------------------------------------------------------------------------------------------------- bolds
+\newcommand\bB{%
+\textbf{B}\xspace
+}
+
+
+%-------------------------------------------------------------------------------------------------------------------category bolds and some text
+\newcommand\bAB{%
+\textbf{AB}\xspace
+}
+\newcommand\bAFF{%
+\textbf{AFF}\xspace
+}
+\newcommand\bAFFGRP{%
+\textbf{AFF-GRP}\xspace
+}
+\newcommand\bALG{%
+\textbf{ALG}\xspace
+}
+\newcommand\bET{%
+\textbf{\'ET}\xspace
+}
+\newcommand\bGRP{%
+\textbf{GRP}\xspace
+}
+\newcommand\bINV{%
+\textbf{INV}\xspace
+}
+\newcommand\bMOD{%
+\textbf{MOD}\xspace
+}
+\newcommand\bRNG{%
+\textbf{RNG}\xspace
+}
+\newcommand\bSCH{%
+\textbf{SCH}\xspace
+}
+
+\newcommand\bSET{%
+\textbf{SET}\xspace
+}
+
+\newcommand\bTOR{%
+\textbf{TOR}\xspace
+}
+\newcommand\Spec{%
+\text{Spec}
+}
+
+\newcommand\Aut{%
+\text{Aut}\hspace{0.05 cm}
+}
+\newcommand\Mor{%
+\text{Mor}%\hspace{0.05 cm}
+}
+\newcommand\Hom{%
+\text{Hom}%\hspace{0.05 cm}
+}
+
+%-------------------------------------------------------------------------------------------------------------------
+\newcommand\sA{%
+\mathcal{A}
+}
+\newcommand\sB{%
+\mathcal{B}
+}
+\newcommand\sC{%
+\mathcal{C}
+}
+\newcommand\sF{%
+\mathcal{F}
+}
+\newcommand\sS{%
+\mathcal{S}
+}
+\newcommand\sU{%
+\mathcal{U}
+}
+%-------------------------------------------------------------------------------------------------------------------
+\newcommand\cl{%
+\text{c$\ell$}
+}
+\newcommand\ab{%
+\text{ab}
+}
+\newcommand\ur{%
+\text{ur}
+}
+\newcommand\sep{%
+\text{sep}
+}
+\newcommand\Img{%
+\text{Im}\hspace{0.05cm}
+}
+\newcommand\Inv{%
+\text{Inv}\hspace{0.05cm}
+}
+\newcommand\Gal{%
+\text{Gal}
+}
+\newcommand\rec{%
+\text{rec}
+}
+\newcommand\ord{%
+\text{ord}
+}
+\newcommand\pr{%
+\text{pr}
+}
+\newcommand\res{%
+\text{res}
+}
+\newcommand\ind{%
+\text{ind}
+}
+\newcommand\mods{%
+\text{mod}
+}
+\newcommand\id{%
+\text{id}
+}
+\newcommand\itr{%
+\text{int}\hspace{0.05cm}
+}
+\newcommand\nth{%
+\text{th}
+}
+\newcommand\tJ{%
+\text{J}
+}
+\newcommand\tN{%
+\text{N}
+}
+\newcommand\tT{%
+\text{T}
+}
+\newcommand\tV{%
+\text{V}
+}
+\newcommand\GL{%
+\text{GL}
+}
+\newcommand\SL{%
+\text{SL}
+}
+\newcommand\sym{%
+\text{sym}
+}
+\newcommand\trdeg{%
+\text{trdeg}
+}
+\newcommand\Tee{%
+\mathsf{T}
+}
+\newcommand\bbox{%
+\ \Box \ 
+}
+%-------------------------------------------------------------------------------------------------------------------
+
+\newcommand\chis[1]{%
+\chi_{_{#1}}
+}
+%-------------------------------------------------------------------------------------------------------------------
+\newcommand\ra{%
+\rightarrow
+}
+\newcommand\lra{%
+\longrightarrow
+}
+\newcommand\lla{%
+\longleftarrow
+}
+\newcommand\rat{%
+\rightarrowtail
+} 
+\newcommand\thra{%
+\twoheadrightarrow
+}
+\newcommand\la{%
+\leftarrow
+}
+\newcommand\Lra{%
+\Leftrightarrow
+}
+\newcommand\ds{%
+\displaystyle
+}
+\newcommand\bs{%
+\backslash
+}
+
+%-------------------------------------------------------------------------------------------------------------------
+\newcommand\card{%
+\text{card}\hspace{0.05cm}
+}
+\newcommand\con{%
+\text{con}\hspace{0.05cm}
+}
+\newcommand\End{%
+\text{End}\hspace{0.05cm}
+}
+\newcommand\fin{%
+\text{fin}\hspace{0.05cm}
+}
+\newcommand\modxs{%
+\text{mod}%\hspace{0.05cm}
+}
+\newcommand\modx{%
+\text{mod}\hspace{0.05cm}
+}
+\newcommand\vol{%
+\text{vol}%\hspace{0.05cm}
+}
+\newcommand\sgn{%
+\text{sgn}\hspace{0.05cm}
+}
+\newcommand\spp{%
+\text{sp}
+}
+\newcommand\ev{%
+\text{ev}%\hspace{0.05cm}
+}
+\newcommand\tr{%
+\text{tr}\hspace{0.05cm}
+}
+\newcommand\trs{%
+\text{tr}%\hspace{0.05cm}
+}
+\newcommand\ins{%
+\text{in}%\hspace{0.05cm}
+}
+
+\newcommand\un[1]{%
+\underline{#1}\xspace
+}
+\newcommand\ov[1]{%
+\overline{#1}
+}
+\newcommand\acdot{%
+\abs{\hspace{0.05cm} \cdot \hspace{0.05cm}}
+}
+\newcommand\ncdot{%
+\norm{\hspace{0.05cm} \cdot \hspace{0.05cm}}
+}
+\newcommand\restr[2]{%
+%{#1}|_{#2}
+{#1}|{#2}
+}
+\newcommand\compl[1]{%
+%\text{$\widehat{#1}$}
+\text{$\ov{#1}$}
+}
+
+\newcommand\vsx{%
+\vphantom{\int_\int^\int}
+}
+\newcommand\vsy{%
+\vphantom{\int}
+}
+\newcommand\hsx{%
+\hspace{0.05cm}
+}
+
+\newcommand\boxtimesdmc{%
+\raisebox{-.075cm}{$\boxtimes$}
+}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+%---------------------------------------------------------------------------------------------------------
+
+\makeatletter
+\DeclareRobustCommand\widecheck[1]{{\mathpalette\@widecheck{#1}}}
+\def\@widecheck#1#2{%
+    \setbox\z@\hbox{\m@th$#1#2$}%
+    \setbox\tw@\hbox{\m@th$#1%
+       \widehat{%
+          \vrule\@width\z@\@height\ht\z@
+          \vrule\@height\z@\@width\wd\z@}$}%
+    \dp\tw@-\ht\z@
+    \@tempdima\ht\z@ \advance\@tempdima2\ht\tw@ \divide\@tempdima\thr@@
+    \setbox\tw@\hbox{%
+       \raise\@tempdima\hbox{\scalebox{1}[-1]{\lower\@tempdima\box
+\tw@}}}%
+    {\ooalign{\box\tw@ \cr \box\z@}}}
+\makeatother
+
+%---------------------------------------------------------------------------------------------------------
+%%====================================================================
+\newtheoremstyle{xx}% name of the style to be used
+  {4pt}% measure of space to leave above the theorem. E.g.: 3pt
+  {0pt}% measure of space to leave below the theorem. E.g.: 3pt
+  {\upshape}% name of font to use in the body of the theorem
+  %{20pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space \footnotesize
+  {}
+  
+\makeatletter 
+ \newtheoremstyle{myu}%
+  %%%%{\item[\hskip\labelsep \ \bf\underline{##1 \theorem@headerfont ##2:}]}%
+  %{\upshape\item[ \bf\underline{##1 \theorem@headerfont  ##2:}]}%
+  {\upshape\item[ \indent\indent\bf\underline{\theorem@headerfont ##2:}]}%
+\makeatother
+\makeatletter 
+ \newtheoremstyle{myn}%
+  {\item[\hskip\labelsep \ \bf ##1 \theorem@headerfont ##2.]}%
+\makeatother
+\theoremstyle{myn}
+\newtheorem{theoremn}{Theorem} %<-- Normal Theorem Definition
+\theoremstyle{myu}
+{\upshape}
+\newtheorem{x}[theoremn]{}%<-- Underlined Theorem Definition
+
+
+
+
+
+
+%==================================================================
+
+\title{\textbf{Local and Global Analysis}}
+\author{Garth Warner\\
+Department of Mathematics\\
+University of Washington}
+\date{}									% Activate to display a given date or no date
+							% Activate to display a given date or no date
+
+
+
+\titleformat{\chapter}[display]
+{\normalfont\filcenter\huge\bfseries}{}{0pt}{\large}
+%{\normalfont\filcenter%
+%\huge %change this to size needs for the first line
+%\bfseries}{\chaptertitlename\ \thechapter}{20pt} 
+%{\huge %change this to size needs for the second line
+%}
+
+
+\titleformat{\chapter}[display]
+{\normalfont\filcenter\huge\bfseries}{}{0pt}{\large}
+%\titlespacing*{\chapter}
+%{0pt}{10{pt}{20pt}
+
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+\renewcommand{\thesection}{\Alph{section}}
+\renewcommand{\thesubsection}{\Roman{subsection}}
+\setcounter{secnumdepth}{4}
+\setcounter{section}{0}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+%\setcounter{section}{-1}
+\setcounter{chapter}{-1}
+
+
+
+%\renewcommand{\baselinestretch}{1.5}
+%\baselineskip
+\linespread{1.3}
+
+
+%\makeindex  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[OT2,OT1]{fontenc} 
+\newcommand\cyr
+{
+\renewcommand\rmdefault{wncyr} 
+\renewcommand\sfdefault{wncyss} 
+\renewcommand\encodingdefault{OT2} 
+\normalfont
+\selectfont
+}
+
+\DeclareTextFontCommand{\textcyr}{\cyr} 
+\def\cprime{\char"7E } 
+\def\cdprime{\char"7F } 
+\def\eoborotnoye{\char’013} 
+\def\Eoborotnoye{\char’003} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeindex 
+\begin{document}
+
+\maketitle                              % Print title page.
+
+
+
+\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+\setlength{\parskip}{0.1em}
+\include{_acknowledgements}
+\include{_tocX}
+\include{_Preface}
+\pagenumbering{bychapter}
+%\chapter{}
+%\newpage
+%\setcounter{page}{1}
+%\renewcommand{\thepage}{1-\arabic{page}}
+%\renewcommand{\thepage}{1-\arabic{page}}
+\setcounter{chapter}{0}
+\include{_01_ABSOLUTE_VALUES}
+\include{_02_TOPOLOGICAL_FIELDS}
+\include{_03_COMPLETIONS}
+\include{_04_p-ADIC_STRUCTURE_THEORY}
+\include{_05_LOCAL_FIELDS}
+\include{_06_HAAR_MEASURE}
+\include{_07_HARMONIC_ANALYSIS}
+\include{_08_ADDITIVE_p-ADIC_CHARACTER_THEORY}
+\include{_09_MULTIPLICATIVE_p-ADIC_CHARACTER_THEORY}
+\include{_10_TEST_FUNCTIONS}
+\include{_11_LOCAL_ZETA_FUNCTIONS_Rx_OR_Cx}
+\include{_12_LOCAL_ZETA_FUNCTIONS_Qxp}
+\include{_13_RESTRICTED_PRODUCTS}
+\include{_14_ADELES_AND_IDELES}
+\include{_15_GLOBAL_ANALYSIS} %done
+\include{_16_FUNCTIONAL_EQUATIONS} %done
+\include{_17_GLOBAL_ZETA_FUNCTIONS} %done
+\include{_18_LOCAL_ZETA_FUNCTIONS_BIS}
+\include{_19_L-FUNCTIONS} %done
+\include{_20_FINITE_CLASS_FIELD_THEORY}
+\include{_21_LOCAL_CLASS_FIELD_THEORY}
+\include{_22_WEIL_GROUPS_THE_ARCHIMEDEAN_CASE}
+\include{_23_WEIL_GROUPS_THE_NON-ARCHIMEDEAN_CASE}
+\include{_24_THE_WEIL-DELIGNE_GROUP}
+\setcounter{page}{1}
+\renewcommand{\thepage}{APPENDIX A-\arabic{page}}
+\include{_top}
+\renewcommand{\thepage}{APPENDIX B-\arabic{page}}
+\include{_alg}
+\renewcommand{\thepage}{APPENDIX C-\arabic{page}}
+\include{_gal}
+\newpage
+\setcounter{page}{1}
+\renewcommand{\thepage}{References-\arabic{page}}
+\setcounter{page}{1}
+\include{_references}
+\setcounter{page}{1}
+\renewcommand{\thepage}{Index-\arabic{page}}
+\backmatter
+\bibliography{}
+\printindex
+\end{document}    

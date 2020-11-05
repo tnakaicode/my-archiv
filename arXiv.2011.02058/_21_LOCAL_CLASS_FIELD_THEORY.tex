@@ -1,0 +1,362 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{21}.\quad  LOCAL CLASS FIELD THEORY}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Let $\K$ be a local field $-$then there exists a unique continuous homomorphism 
+\[
+\rec_\K : \K^\times \lra \Gal(\K^\ab /\K),
+\]
+the so-called \un{reciprocity map}, that has the properties delineated in the results that follow.
+
+\vspace{0.3cm}
+
+\begin{x}{\small\bf CHART} \ %01
+
+\[
+\begin{tikzcd}[sep=small]
+{}     &{} \ar[dash]{ddd} &{}    &{} \ar[dash]{ddd} &{}\\
+{\text{finite field} \quad \K}  &{}                      &{\Z} &{}                      &{\Gal(\K^\ab /\K)}\\
+{\text{local field} \quad \K}  &{}                      &{\K^\times} &{}                      &{\Gal(\K^\ab /\K)}\\
+{}     &{}  &{}    &{}  &{}
+\end{tikzcd}
+.
+\]
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CONVENTION} \ %02
+An \un{abelian extension} is a Galois extension whose Galois group is abelian.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %03
+The finite abelian extensions $\LL$ of $\K$ correspond 1-to-1 with the open subgroups of $\Gal(\K^\ab/\K)$: 
+\[
+\LL \ \longleftrightarrow \ \Gal(\K^\ab/\LL).
+\]
+
+[Note: \ $\Gal(\LL/\K)$ is a homomorphic image of $\Gal(\K^\ab/\K)$:
+\[
+\Gal(\LL/\K) \ \approx \ \Gal(\K^\ab/\K) / \Gal(\K^\ab/\LL).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %04
+Suppose that $\LL$ is a finite extension of $\K$ $-$then
+\[
+\tN_{\LL/\K}: \LL^\times  \ra \K^\times
+\]
+is continuous, sends open sets to open sets, and closed sets to closed sets.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf LEMMA} \ %05
+Suppose that $\LL$ is a finite extension of $\K$ $-$then 
+\[
+[\K^\times : \tN_{\LL/\K} (\LL^\times)] \ \leq \ [\LL:\K].
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %06
+Suppose that $\LL$ is a finite extension of $\K$ $-$then 
+\[
+[\K^\times : \tN_{\LL/\K} (\LL^\times)] \ = \ [\LL:\K].
+\]
+iff $\LL / \K$ is abelian.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %07
+Given a finite abelian extension $\LL$/$\K$, denote the composition 
+\[
+\begin{tikzcd}[sep=small]
+{\K^\times} \ar{rr}{\rec_\K} &&{\Gal(\K^\ab/\K)} \ar{rr}{\pi_{\LL/\K}} &&{\Gal(\K/\LL)}
+\end{tikzcd}
+\]
+by $(.,\LL/\K)$, the 
+\un{norm residue symbol}.
+\index{norm residue symbol}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %08
+Suppose that $\LL$ is a finite extension of $\K$ $-$then the kernel of $(.,\LL/\K)$ is 
+$\tN_{\LL/\K}(\LL^\times)$, hence 
+\[
+\K^\times / \tN_{\LL/\K}(\LL^\times) \ \approx \ \Gal(\LL/\K).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %09
+Take $\K = \R$, thus $\K^\ab = \C$ and 
+\[
+\tN_{\C/\R}(\C^\times) \ = \ \R_{> 0}^\times.
+\]
+Moreover, 
+\[
+\Gal(\C/\R) \ = \ \{\id_\C,\sigma\},
+\]
+where $\sigma$ is the complex conjugation.  
+Define now
+\[
+\rec_\R:\R^\times \lra \Gal(\R^\ab / \R)
+\]
+by stipulating that
+\[
+\rec_\R(\R_{> 0}^\times) \ = \ \id_\C, \quad \rec_\R(\R_{< 0}^\times) \ = \ \sigma.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+\begin{x}{\small\bf EXAMPLE} \ %10
+Take $\K = \C$ $-$then $\K^\ab = \C = \K$ and matters in this situation are trivial.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %11
+The arrow 
+\[
+\LL \lra \tN_{\LL/\K}(\LL^\times)
+\]
+is a bijection between the finite abelian extensions of $\K$ and the open subgroups of finite index of $\K^\times$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %12
+The arrow $U \ra \rec_\K^{-1}(U)$ is a bijection between open subgroups of $\Gal(\K^\ab/\K)$ and the open subgroups of finite index of $\K^\times$.
+\end{x}
+
+\vspace{0.1cm}
+
+From this point forward, it will be assumed that $\K$ is non-archimedean, hence is a finite extension of $\Q_p$ for some 
+$p$ (cf. \S5, \#13).
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %13
+$\rec_\K$ is injective and its image is a  proper, dense subgroup of $\Gal(\K^\ab/\K)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %14
+\[
+(\R^\times,\LL/\K) \ = \ \Gal(\LL/\K_\ur),
+\]
+where $\K_\ur$ is the largest unramified extension of $\K$ contained in $\LL$ (cf. \S5, \#33).
+\end{x}
+\vspace{0.1cm}
+
+[Note: \ The image
+\[
+(1 + p^i,\LL/\K) \ = \ G^i \qquad (i \geq 1),
+\]
+the 
+\un{i$^\text{th}$ ramification group in the upper numbering} 
+\index{i$^\text{th}$ ramification group in the upper numbering}
+(conventionally, one puts 
+\[
+G^0 \ = \ \Gal(\LL/\K_\ur)
+\]
+%%----------------------------------------------------------------------------------------------04
+and refers to it as the 
+\index{inertia group}
+\un{inertia group}).]
+\vspace{0.3cm}
+
+Working within $\K^\sep$, the extension $\K^\ur$ generated by the finite unramified extensions of $\K$ is called the 
+\un{maximal unramified extension} 
+\index{maximal unramified extension} 
+of $\K$.  
+This is a Galois extension and
+\[
+\Gal(\K^\ur / \K) \ \approx \ \Gal(\F_q^\ab / \F_q),
+\]
+where $\F_q = R/P$ (cf. \S5, \#19).
+
+\vspace{0.25cm}
+
+\begin{x}{\small\bf REMARK} \ %15
+The finite unramified extensions $\LL$ of $\K$ correspond 1-to-1 with the finite extensions of $R/P = \F_q$ and 
+\[
+\Gal(\LL / \K)  \ \approx \ \Gal(\F_{q^n} / \F_q) \qquad (n = [\LL:\K]).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %16
+$\K^\ur$ is the field obtained by adjoinging to $\K$ all roots of unity having order prime to $p$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %17
+$\K^\ur$ is a subfield of $\K^\ab$.
+
+\vspace{0.1cm}
+
+[Cyclotomic extensions are Galois and abelian.]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %18
+There is a commutative diagram
+\[
+\begin{tikzcd}[sep=large]
+{\K^\times} \ar{d}[swap]{v_\K} \ar{rr}{\rec_\K}     &&{\Gal(\K^\ab / \K)} \ar{d} \\
+{\Z}  \ar{rr}[swap]{\rec_q}        &&{\Gal(\F_q^\ab / \F_q)}
+\end{tikzcd}
+,
+\]
+%%----------------------------------------------------------------------------------------------05
+the vertical arrow on the right being the composition
+\begin{align*}
+\Gal(\K^\ab/\K) \ 
+&\ra \  \Gal(\K^\ab /\K) / \Gal(\K^\ab/\K^\ur) \\
+&\approx \ \Gal(\K^\ur/\K)\\
+&\approx \ \Gal(\F_q^\ab/\F_q).
+\end{align*}
+
+%\vspace{0.1cm}
+
+[Note: \ $\forall \ a \in \K^\times$, 
+\[
+\mods_\K(a) \ = \ q^{-\ord_\K(a)}.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %19
+The image of 
+\[
+\restr{\rec_\K(\pi)}{K^\ur} \in \Gal(\K^\ur / \K)
+\]
+in $\Gal(\F_q^\ab / \F_q)$ is $\sigma_q$ (cf. \S20, \#7). 
+
+\vspace{0.1cm}
+
+[Note: \ If $\LL$ is a finite unramified extension of $\K$ and if  \ $\widetilde{\sigma}_{q,n}$ is the generator of 
+$\Gal(\LL/\K)$ which is the lift of the generator $\sigma_{q,n}$ of $\Gal(\F_{q^n} / \F_q)$ ($n = [\LL:\K]$), then 
+\[
+(\pi,\LL/\K) \ = \ \widetilde{\sigma}_{q,n}.]
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FUNCTORALITY} \ %20
+Suppose that $\LL / \K$ is a finite extension of $\K$ $-$then the diagram
+\[
+\begin{tikzcd}[sep=large]
+{\LL^\times} \ar{d}[swap]{\tN_{\LL/\K}} \ar{rr}{\rec_\LL}     &&{\Gal(\LL^\ab / \LL)} \ar{d}{\res} \\
+{\K^\times}  \ar{rr}[swap]{\rec_\K}        &&{\Gal(\K^\ab / \K)}
+\end{tikzcd}
+\]
+commutes.
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------06
+
+\begin{x}{\small\bf DEFINITION} \ %21
+Given a Hausdorff topological group $G$, let $G^*$ be its commutator subgroup, and put 
+$G^\ab = G / \ov{G^*}$ $-$then $\ov{G^*}$ is a closed normal subgroup of $G$ and $G^\ab$ is abelian, the 
+\un{topological abelianization}
+\index{topological abelianization} 
+of $G$.
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %22
+\[
+\Gal(\K^\sep / \K)^\ab \ = \ \Gal(\K^\ab / \K).
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf CONSTRUCTION} \ %23
+Let $G$ be a Hausdorff topological group and let $H$ be a closed subgroup of finite index $-$then the 
+\un{transfer}
+\index{transfer homomorphism} 
+homomorphism $\Tee: G^\ab \ra H^\ab$ is defined as follows:  Choose a section 
+$s:H \backslash G \ra G$ and for $x \in G$, put
+\[
+\Tee(x\ov{G^*}) \ = \ \prod\limits_{\alpha \in H \backslash G} h_{x,\alpha} (\modx \ov{H^*}), 
+\]
+where $h_{x,\alpha} \in H$ is defined by 
+\[
+s(\alpha)x \ = h_{x,\alpha} s(\alpha x).
+\]
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %24
+Suppose that $\LL / \K$ is a finite extension $-$then $\LL^\sep \ \approx \ \K^\sep$ and 
+\[
+\Gal(\LL^\sep  / \LL) \ \subset \ \Gal(\K^\sep  / \K)
+\]
+is a closed subgroup of finite index (viz. $[\LL:\K]$), hence there is a transfer homomorphism
+\[
+\Tee: \Gal(\K^\ab  / \K) \lra \Gal(\LL^\ab  / \LL).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf THEOREM} \ %25
+The diagram
+\[
+\begin{tikzcd}[sep=large]
+{\LL^\times}  \ar{rr}{\rec_\LL}     &&{\Gal(\LL^\ab / \LL)}  \\
+{\K^\times}  \ar{u} \ar{rr}[swap]{\rec_\K}        &&{\Gal(\K^\ab / \K)} \ar{u}[swap]{\Tee}
+\end{tikzcd}
+\]
+commutes.
+\end{x}
+\vspace{0.1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

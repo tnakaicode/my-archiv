@@ -1,0 +1,413 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{3}.\quad  COMPLETIONS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+Let $\acdot$  be a an absolute value on a field $\F$ which satisfies the triangle inequality $-$then per $\acdot$, $\F$ might or might not be complete. 
+%dmc
+(Recall, a metric space is \un{complete} iff every Cauchy sequence converges.)
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %1
+Take $\F = \R$ or $\Q$ and let $\acdot = \acdot_\infty -$then $\R$ is complete but $\Q$ is not.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %2
+Take $\F =  \Q$ and let $\acdot = \acdot_p -$then $\Q$ is not complete.
+
+\vspace{0.05cm}
+
+[To illustrate this, choose $p = 5$ and starting with $x_1 = 2$, define inductively a sequence $\{x_n\}$ of integers subject to
+\[\left\{
+\begin{array}{l l}
+{x_n}^2 + 1 \equiv 0	 \quad \text{ $\mod 5^n$ } \\
+{x_{n+1}} \equiv x_n	 \quad \ \  \text{ $\mod 5^n$ }
+\end{array}
+.
+\right.\]
+Then
+\[
+\abs{x_m - x_n}_5  \ \le \ 5^{-n}		\quad (m > n),
+\]
+so $\{x_n\}$ is a Cauchy sequence and, to get a contradiction, assume that it has a limit x in $\Q$, thus
+\[
+\begin{aligned}
+\abs{x_n^2 + 1}_5 \le \  5^{-n} 
+&\implies \abs{x^2 + 1}_5 = 0 \\
+&\implies x^2 + 1 = 0 \dots .] 
+\end{aligned}
+\]
+\end{x}
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %3
+If an absolute value is not non-archimedean, then it is said to be \un{archimedean}.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf FACT} \ %4
+Suppose that $\F$ is a field which is complete with respect to an archimedean absolute value $\acdot$ 
+$-$then $\F$ is isomorphic to either $\R$ or $\C$ and $\acdot$ is equivalent to $\acdot_\infty.$
+\end{x}
+
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ %5
+Every metric space X has a completion 
+$\compl{X}$
+.  
+Moreover, there is an isometry $\phi:X \ra \compl{X}$ such that $\phi$(X) is dense in $\compl{X}$ and $\compl{X}$ is unique up to isometric isomorphism.  
+%dmc
+(Recall, an isometry is a distance preserving mapping.  An isometry is injective, indeed, is a homeomorphism onto its image.)
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CONSTRUCTION} \ %6
+The standard model for $\compl{X}$ is the set of all Cauchy sequences in $X$ modulo the equivalence relation 
+$\sim$, 
+where
+\[
+\{x_n\} \sim \{y_n\} \Leftrightarrow d(x_n,y_n) \ra 0,
+\]
+the map $\phi:X \ra \compl{X}$ being the rule that sends $x \in$ X to the equivalence class of the constant sequence $x_n = x$.
+
+[Note: The metric on $\compl{X}$ is specified by
+\[
+\ov{d}(\{x_n\},\{y_n\}) = \lim_{n \ra \infty} d(x_n,y_n).]
+\]
+
+Take $X = \F$ and 
+\[
+d(x,y) = \abs{x - y}.
+\]
+Then the claim is that $\compl{\F}$ is a field.  
+E.g.: Let us deal with addition.  
+Given $\ov{x}, \ov{y} \in \compl{\F}$, how does one define $\ov{x} + \ov{y}$ ?  
+To this end, choose sequences
+$
+\begin{cases}
+x_n  \\
+y_n 
+\end{cases}
+$
+in $\F$ such that
+$
+\begin{cases}
+x_n \ra \ov{x} \\
+y_n \ra \ov{y}
+\end{cases}
+$
+$-$then
+%%----------------------------------------------------------------------------------------------03
+\[
+\begin{aligned}
+d(x_n + y_n,x_m + y_m) \ 
+&= \  \abs{x_n + y_n - x_m - y_m}\\
+&= \ \abs{(x_n - x_m ) + (y_n - y_m)}\\
+&\leq \ \abs{x_n - x_m } + \abs{y_n - y_m}.
+\end{aligned}
+\]
+Therefore  $\{x_n + y_n\}$ is a Cauchy sequence in $\F$, hence converges in $\compl{\F}$ to an element $\ov{z}$.  If
+$
+\begin{cases}
+{x_n}^\prime  \\
+{y_n}^\prime
+\end{cases}
+$
+are sequences in $\F$ converging to 
+$
+\begin{cases}
+\ov{x}  \\
+\ov{y}
+\end{cases}
+$
+as well, then $\{x_n^\prime + y_n^\prime\}$ converges in $\compl{\F}$ to an element $\ov{z}^\prime$.  
+And
+\[
+\ov{z} = \ov{z}^\prime.
+\]
+Proof: \ Choose n $\in \N$ such that\\
+
+$
+\indent\indent\indent\indent
+\begin{cases}
+\abs{\ov{z} - (x_n + y_n)} \ \ < \ds\frac{\epsilon}{3}  \\
+\abs{\ov{z}^\prime - (x_n^\prime  + y_n^\prime)} < \ds\frac{\epsilon}{3} 
+\end{cases}
+$
+\\
+and
+\[
+\abs{(x_n + y_n) - (x_n^\prime + y_n^\prime)}  \ 
+\le \  \abs{x_n - x_n^\prime} + \abs{y_n - y_n^\prime} < \frac{\epsilon}{3}.
+\]
+Then
+\[
+\begin{aligned}
+\abs{\ov{z} - \ov{z}^\prime} 
+&\le \ \abs{\ov{z} - (x_n + y_n)} + \abs{\ov{z}^\prime - (x_n + y_n)}\\
+&\le \ \abs{\ov{z} - (x_n + y_n)} + \abs{\ov{z}^\prime - 
+(x_n^\prime + y_n^\prime)} + \abs{(x_n^\prime + y_n^\prime) - (x_n + y_n)} < \epsilon\\
+&\implies \ov{z}= \ov{z}^\prime.
+\end{aligned}
+\]
+Therefore addition in $\F$  extends to $\compl{\F}$.  
+The same holds for multiplication and 
+%%----------------------------------------------------------------------------------------------04
+inversion.  
+Bottom line: $\compl{\F}$ is a field.  
+Furthermore, the prescription 
+\[
+\abs{\ov{x}} = \ov{d}(x,0)  	\quad (\ov{x} \in \compl{\F})
+\]
+is an absolute value on $\compl{\F}$ whose underlying topology is the metric topology.  
+It thus follows that $\compl{\F}$ is a topological field (cf. $\S$2, $\#5$).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %7
+Take $\F = \Q$, $\acdot = \acdot_p -$then the completion $\compl{\F} = \compl{\Q}$ 
+is denoted by $\Q_p$, the field of \un{ $p$-adic numbers}.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %8
+If $\acdot$ is non-archimedean per $\F$, then $\acdot$ is non-archimedean per $\compl{\F}$.
+
+\vspace{0.1cm}
+
+PROOF \   
+Given
+$
+\begin{cases}
+\ov{x}\\
+\ov{y}
+\end{cases}
+\in \compl{\F},
+$
+choose
+$
+\begin{cases}
+x_n\\
+y_n
+\end{cases}
+\in \F 
+$
+such that
+$
+\begin{cases}
+x_n \ra \ov{x}_n  \\
+y_n \ra \ov{y}_n
+\end{cases}
+\text{in } \compl{\F}:
+$
+\allowdisplaybreaks
+\[
+\begin{aligned}
+\abs{\ov{x} - \ov{y}} 
+&\le \ \abs{\ov{x} - x_n + x_n - y_n + y_n - \ov{y}}\\
+&\le \ \abs{\ov{x} - x_n} + \abs{x_n - y_n} + \abs{y_n - \ov{y}}.\\
+& \qquad\quad \downarrow \qquad\qquad\qquad\qquad\quad  \downarrow\\
+& \qquad\quad \  0 \qquad\qquad\qquad\qquad\quad  0
+\end{aligned}
+\]
+And
+\[
+\begin{aligned}
+\abs{x_n - y_n}  \ 
+&\le \  \sup(\abs{x_n},\abs{y_n})\\
+&= \  \frac{1}{2} (\abs{x_n} + \abs{y_n}) + \abs{x_n - y_n})\\
+&\ra \ \frac{1}{2} (\abs{\ov{x}} + \abs{\ov{y}}) + \abs{\ov{x} - \ov{y}})\\
+&= \  \sup(\abs{\ov{x}},\abs{\ov{y}}).
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+\begin{x}{\small\bf LEMMA} \ 
+If $\acdot$ is non-archimedean per $\acdot$, then
+\[
+\{\abs{\ov{x}}: \ov{x} \in \compl{\F}\} = \{\abs{x}: x \in \F\}.
+\]
+
+\vspace{0.1cm}
+
+PROOF \    Take $\abs{\ov{x}} \in \compl{\F}:\ov{x} \ne 0$.  
+Choose x $\in \F:\abs{\ov{x} - x} \ < \ \abs{\ov{x}}.$ 
+Claim: $\abs{\ov{x}} = \abs{x}$.
+\\
+Thus, consider the other possibilities.
+\[
+\begin{aligned}
+\text{\textbullet} \abs{x} < \abs{\ov{x}}:\\
+&\abs{\ov{x} - x} = \abs{\ov{x} + (-x)} = \abs{\ov{x}}	\quad (\text{c.f.}  \ \S1, \ \# 18) < \abs{\ov{x}} \dots \ .\\
+\text{\textbullet} \abs{\ov{x}} < \abs{x}:\\
+&\abs{\ov{x} - x} = \abs{-x + \ov{x}} = \abs{-x}	 \quad (\text{c.f.} \   \S1, \ \# 18) = \abs{x} < \abs{\ov{x}} \dots \ .
+\end{aligned}
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+The image of $\Q_p$ under $\acdot_p$ is the same as the image of $\Q$ under $\acdot_p$, namely
+\[
+\{p^k:k \in\Z\} \cup \{0\}.
+\]
+\end{x}
+\vspace{0.1cm}
+
+Let $\K$ be a field, $\LL/\K$ a finite field extension.\\
+
+\begin{x}{\small\bf EXTENSION PRINCIPLE} \ %11
+Let $\acdot_\K$ be a complete absolute value on $\K$ $-$then there is one and only one extension 
+$\acdot_\LL$ of $\acdot_\K$  to $\LL$ and it is given by
+\[
+\abs{x}_\LL = \abs{N_{\LL/\K}(x)}_\K^{1/n},
+\]
+where n = $[\LL:\K]$.  In addition, $\LL$ is complete with respect to $\acdot_\LL$. 
+
+\vspace{0.1cm}
+
+[Note: $\acdot_\LL$ is non-archimedean if $\acdot_\K$ is non-archimedean.$]$
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %12
+There is a unique extension of $\acdot_\K$ to the algebraic closure 
+$\K^{c\ell}$ 
+of $\K$.\\
+%%----------------------------------------------------------------------------------------------06
+\indent [Note: It is not true in general that $\K^{c\ell}$  is complete.$]$\\
+
+Suppose further that $\LL/\K$ is a Galois extension.  
+Given $\sigma \in$ $\Gal(\LL/\K)$, define 
+$\acdot_\sigma$ by 
+$\abs{x}_\sigma = \abs{\sigma x}_\LL$
+$-$then
+%\[
+%\acdot_\sigma |_\K = \acdot_\K,
+%\]
+\[
+\restr{\acdot_\sigma}{\K} = \acdot_\K,
+\]
+so by uniqueness, $\acdot_\sigma$ = $\acdot_L$. 
+But
+\[
+N_{\LL/\K}(x) = \prod_{\sigma\in \Gal(\LL/\K)} \sigma x
+\]
+\indent\indent$\implies$\\
+\[
+\begin{aligned}
+\abs{N_{\LL/\K}(x)}_\K \ 
+&= \ \abs{N_{\LL/\K}(x)}_\LL \\
+&= \  \bigl |\prod_{\sigma\in \Gal(\LL/\K)} \sigma x \bigr |_\LL\\
+&= \  \prod_{\sigma\in \Gal(\LL/\K)} \abs{\sigma x}_\LL\\
+&= \  \prod_{\sigma\in \Gal(\LL/\K)} \abs{x}_\LL\\
+&= \  \abs{x}_\LL^{\#(\Gal(\LL/\K))}\\
+&= \  \abs{x}_\LL^{[\LL:\K]}\\
+&= \  \abs{x}_\LL^n.
+\end{aligned}
+\]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------App
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+
+\begin{x}{\small\bf APPROXIMATION PRINCIPLE} \ 
+Let $\acdot_1, \dots , \acdot_N$ be pairwise inequivalent non-trivial absolute values on $\F$ .  
+Fix elements $a_1, \dotsb , a_N$ in $\F$ $-$then $\forall$  $\epsilon > 0$, $\exists$ $a_\epsilon \in \F$:
+\[
+\abs{a_\epsilon - a_k}_k \  < \  \epsilon			\quad (k = 1, \dotsb, N). 
+\]
+%%----------------------------------------------------------------------------------------------07
+\indent Let $\compl{\F}_1, \dotsb , \compl{\F}_N$ be the associated completions and let
+\[
+\Delta:\F \ra \prod_{k=1}^N \compl{\F}_k
+\]
+be the diagonal map $-$then the image $\Delta \F$ is dense (i.e., its closure is the whole of $\prod_{k=1}^N \compl{\F}_k$).
+
+[Fix $ \epsilon > 0$ and elements $\ov{a}_1, \dots , \ov{a}_N$ in $\compl{\F}_1, \dots , \compl{\F}_N$ respectively 
+$-$then there exist elements $a_k \in \F$:
+\[
+\abs{a_k - \ov{a}_k}_k < \epsilon			\quad (k = 1, \dots, N). 
+\]
+Choose $a_\epsilon \in \F$:
+\[
+\abs{a_\epsilon  - \ov{a}_k} < \epsilon	\quad (k = 1, \dots, N).
+\]
+Then
+\[
+\begin{aligned}
+\abs{a_\epsilon  - \ov{a}_k}_k 
+&= \ \abs{(a_\epsilon - a_k) + (a_k - \ov{a}_k)}_k\\
+&\le \ \abs{a_\epsilon  - a_k}	 + \abs{a_k  - \ov{a}_k}_k\\
+&< \ 2\epsilon.]
+\end{aligned}
+\]
+\end{x}
+
+\begin{x}{\small\bf \un{N.B.}} \ 
+The product $\prod\limits_{k=1}^N \compl{\F}_k$ carries the product topology and the prescription
+\[
+\begin{aligned}
+d((\ov{a}_1, \dots , \ov{a}_N), (\ov{b}_1, \dots , \ov{b}_N)) 
+&= \ \sup_{1 \le k \le N} d_k(\ov{a}_k, \ov{b}_k) \\
+&= \  \sup_{1 \le k \le N} \abs{\ov{a}_k - \ov{b}_k}_k
+\end{aligned}
+\]
+%%----------------------------------------------------------------------------------------------08
+metrizes the product topology.  Therefore 
+\[
+\begin{aligned}
+d((a_\epsilon, \dots , a_\epsilon), (\ov{a}_1, \dots , \ov{a}_N)) \
+&= \  \sup_{1 \le k \le N} d_k(a_\epsilon, \ov{a}_k)\\
+&= \ \sup_{1 \le k \le N} \abs{a_\epsilon - \ov{a}_k}_k\\
+&< \  2\epsilon.
+\end{aligned}
+\]
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

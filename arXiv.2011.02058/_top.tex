@@ -1,0 +1,600 @@
+\chapter{
+%$\boldsymbol{\S}$\textbf{24}.\quad  THE WEIL-DELIGNE GROUP}
+APPENDIX A: TOPICS IN TOPOLOGY}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+
+
+
+\[
+\text{NEIGHBORHOODS}
+\]
+
+\[
+\text{COMPACTNESS}
+\]
+
+\[
+\text{CONNECTEDNESS}
+\]
+
+\[
+\text{TOPOLOGICAL GROUPS}
+\]
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{NEIGHBORHOODS}
+\]
+
+\begin{x}{\small\bf DEFINITION} \ %01
+If \mX is a topological space and if $x \in X$, then a 
+\un{neighborhood}
+\index{neighborhood} 
+of $x$ is a set \mU which contains an open set \mV containing $x$, the collection $\sU_x$ of all neighborhoods of $x$ 
+being the 
+\un{neighborhood system}
+\index{neighborhood system} 
+at $x$.
+\end{x}
+
+\vspace{0.1cm}
+
+Therefore \mU is a neighborhood of $x$ iff $x \in \itr U$.
+
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf PROPERTIES} \ %02
+of $\sU_x$
+
+\vspace{0.1cm}
+
+\un{N-a} \quad If $U \in \sU_x$, then $x \in U$.
+
+\un{N-b} \quad If $U_1, U_2 \in \sU_x$, then $U_1 \cap U_2 \in \sU_x$.
+
+\un{N-c} \quad If $U \in \sU_x$, then there is a $U_0 \in \sU_x$ such that $U \in \sU_{x_0}$ for each $x_0 \in U_0$.
+
+\un{N-d} \quad If $U \in \sU_x$ and $U \subset V$, then $V \in \sU_x$.
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %03
+A subset $G \subset X$ is open iff \mG contains a neighborhood of each of its points.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %04
+If in a set \mX a nonempty collection $\sU_x$ of subsets of \mX is assigned to each $x \in X$ 
+so as to satisfy N-a through N-d and if a subset $G \subset X$ is deemed ``open'' provided 
+$\forall \ x \in G$, there is a $U \in \sU_x$ such that $U \subset G$, then the result is a topology on \mX 
+in which the neighborhood system at each $x \in X$ is $\sU_x$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %05
+If \mX is a topological space and if $x \in X$, then a 
+\un{neighborhood basis}
+\index{neighborhood basis} 
+at $x$ is a subcollection $\sB_x$ of $\sU_x$ such that $U \in \sU_x$ contains some $V \in \sB_x$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %06
+Take $X = \R^2$ with the usual topology $-$then the set of all squares with sides parallel to the axes and centered at $x$ 
+is a neighborhood basis at $x$.
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------02
+\begin{x}{\small\bf PROPERTIES} \ %07
+of $\sB_x$
+
+\vspace{0.1cm}
+
+\un{NB-a} \quad If $V \in \sB_x$, then $x \in V$.
+
+\un{NB-b} \quad If $V_1, V_2 \in \sB_x$, then there is a $V_3 \in \sB_x$ such that $V_3 \subset V_1 \cap V_2$.
+
+\un{NB-c} \quad If $V \in \sB_x$, then there is a $V_0 \in \sB_x$ such that if $x_0 \in V_0$, then there is a 
+$W \in \sB_{x_0}$ such that $W \subset V$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %08
+A subset $G \subset X$ is open iff \mG contains a basic neighborhood of each of its points.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %09
+If in a set \mX a nonempty collection $\sB_x$ of subsets of \mX is assigned to each $x \in X$ so as to satisfy 
+NB-a through NB-c and if a subset $G \subset X$ is deemed ``open'' provided $\forall \ x \in G$, there is a 
+$V \in \sB_x$ such that $V \subset G$, then the result is a topology on \mX in which a neighborhood  basis 
+at each $x \in X$ is $\sB_x$.
+
+\vspace{0.1cm}
+
+[Put
+\[
+\sU_x \hsx = \hsx \{U \subset X: V \subset U \ (\exists V \in \sB_x)\}.
+\]
+Then $\sU_x$ satisfies N-a through N-d above.]
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+Take $X = \R$ and given $x$, let $\sB_x$ be the $[x,y[$ $(y > x)$ $-$then $\sB_x$ satisfies NB-a through NB-c above, 
+from which a topology on the line, the underlying topological space being the 
+\un{Sorgenfrey line}.
+\index{Sorgenfrey line}.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------03
+\begin{x}{\small\bf DEFINITION} \ %11
+Let \mX be a topological space $-$then a 
+\un{basis}
+\index{basis} 
+for \mX (i.e., for the underlying topology \ldots) is a collection $\sB$ of open sets such that for any open set 
+$G \subset X$ and for any point $x \in G$, there is a set $B \in \sB$ such that $x \in B \subset G$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %12
+If $\sB$ is a collection of open sets, then $\sB$ is a basis for \mX iff $\forall \ x \in X$, the collection
+\[
+\sB_x \hsx = \hsx \{B \in \sB : x \in B \}
+\]
+is a neighborhood basis at $x$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %13
+If \mX is a set and if $\sB$ is a collection of subsets of \mX, then $\sB$ is a basis for a topology on \mX iff 
+\[
+X \hsx = \hsx \bigcup\limits_{B \in \sB} B
+\]
+and given $B_1, B_2 \in \sB$ and $x \in B_1 \cap B_2$, there exists $B_3 \in \sB$ such that $x \in B_3 \subset B_1 \cap B_2$. 
+\end{x}
+
+\vspace{0.1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\setcounter{theoremn}{0}
+
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{COMPACTNESS}
+\]
+
+\begin{x}{\small\bf DEFINITION} \ %01
+A topological space \mX is 
+\un{compact}
+\index{compact} 
+if every open cover of \mX has a finite subcover.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %02
+The Cantor set is compact.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %03
+The continous image of a compact space is compact.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %04
+A one-to-one continuous function from a compact space \mX onto a Hausdorff space \mY is a homeomorphism.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %05
+A topological space \mX is 
+\un{locally compact} 
+\index{locally compact} 
+if each point in \mX has a neighborhood basis consisting of compact sets.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %06
+A Hausdorff space \mX is locally compact iff each point in \mX has a compact neighborhood.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %07
+Every compact Hausdorff space \mX is locally compact.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %08
+The Cantor set is a locally compact Hausdorff space.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %09
+$\R$ is a locally compact Hausdorff space.
+\end{x}
+
+\vspace{0.1cm} 
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+$\Q$ is a Hausdorff space but it is not locally compact ($\Q$ is first category while a locally compact Hausdorff space is second category).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %11
+The Sorgenfrey line is Hausdorff but not locally compact.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %12
+Suppose that $X_i$ $(i \in I)$ is a nonempty topological space $-$then the product 
+$\prod\limits_{i \in I} X_i$ is locally compact iff each $X_i$ is locally compact and all but a finite number of the $X_i$ are compact.
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\setcounter{theoremn}{0}
+
+
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{CONNECTEDNESS}
+\]
+
+\begin{x}{\small\bf DEFINITION} \ %01
+A topological space \mX is 
+\un{connected} 
+\index{connected} 
+if it is not the union of two nonempty disjoint open sets.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %02
+$\Q$ is not connected (write
+\[
+\Q \hsx = \hsx \{x: x > \sqrt{2}\} \hsx \cap \hsx \Q \cup \{x: x < \sqrt{2}\} \hsx \cap \hsx \Q). 
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %03
+$\R$ is connected and the only connected subsets of $\R$ having more than one point are the intervals 
+(open, closed, or half-open, half-closed).
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %04
+A topological space \mX is connected iff the only subsets of \mX that are both open and closed are $\emptyset$ and \mX.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %05
+The continuous image of a connected space is connected.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %06
+Let \mX be a topological space and let $x \in X$ $-$then the 
+\un{component}
+\index{component} 
+$C(x)$ of $x$ is the union of all connected subsets of $X$ containing $x$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %07
+$C(x)$ is a closed subset of \mX.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %08
+$C(x)$ is a maximal connected subset of \mX.
+\end{x}
+
+\vspace{0.1cm}
+
+If $x \neq y$ in \mX, then either $C(x) = C(y)$ or $C(x) \cap C(y) = \emptyset$ (otherwise, 
+$C(x) \cup C(y)$ would be a connected set containing $x$ and $y$ and larger than $C(x)$ or $C(y)$, which is 
+impossible).  Therefore the set of distinct components of \mX forms a partition of \mX.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %09
+Take $X = \Q$ $-$then $\forall \ x \in \Q$, $C(x) = \{x\}$ (under the inclusion $\Q \ra \R$, a connected subset of $\Q$ 
+is sent to a connected subset of $\R$).
+\end{x}
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf DEFINITION} \ %10
+A topological space \mX is 
+\un{totally disconnected}
+\index{totally disconnected} 
+if the components of \mX are singletons, i.e., $\forall \ x \in X$, $C(x) = \{x\}$.
+
+
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %11
+A topological space \mX is totally disconnected iff the only nonempty connected subsets of \mX are the one-point 
+sets (hence \mX is $T_1$).
+
+\vspace{0.1cm}
+
+[Note: \ In every topological space \mX, the empty set and the one-point sets are connected and in a totally disconnected 
+topological space, these are the only connected subsets.]
+\end{x}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %12
+Let \mE be the equivalence relation defined by writing $x \sim y$ if $x$ and $y$ lie in the same component.  
+Equip the set $X/E$ with the identification topology determined by the projection 
+$p:X \ra X/E$ $-$then $X/E$ is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %13
+The Cantor set is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf EXAMPLE} \ %14
+$\Q$ is totally disconnected. 
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %15
+The Sorgenfrey line is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %16
+Every product of totally disconnected topological spaces is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %17
+Every subspace of a totally disconnected topological space is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf REMARK} \ %18
+The continuous image of a totally disconnected space need not be totally disconnected.  
+To appreciate the point, recall that evey compact metric space is the continuous image of the Cantor set.
+\end{x}
+
+
+
+%%----------------------------------------------------------------------------------------------03
+
+
+\begin{x}{\small\bf DEFINITION} \ %19
+A topological space \mX is 
+\un{0-dimensional}
+\index{0-dimensional} 
+if each point of \mX has a neighborhood basis consisting of open-closed sets.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %20
+A 0-dimensional $T_1$-space is totally disconnected.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %21
+The Cantor set is 0-dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %22
+$\Q$ is 0-dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %23
+The Sorgenfrey line is 0-dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %24
+As can be shown by example, a totally disconnected metric space need not be 0-dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %25
+A locally compact Hausdorff space is 0-dimensional iff it is totally disconnected.
+
+\vspace{0.1cm}
+
+[Note: \ In such a space, each point has a neighborhood basis consisting of open-compact sets.]
+\end{x}
+
+\vspace{0.1cm}
+
+A discrete space is 0-dimensional, hence is totally disconnected, hence a product of discrete spaces is totally disconnected, but an infinite product of nontrivial discrete spaces is never discrete.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf DEFINITION} \ %26
+The 
+\un{Cantor space}
+\index{Cantor space} 
+is the countable product of the two-point discrete space.
+\end{x}
+
+\vspace{0.1cm}
+\begin{x}{\small\bf FACT} \ %27
+The Cantor set is homeomorphic to the Cantor space.
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\setcounter{theoremn}{0}
+
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{TOPOLOGICAL GROUPS}
+\]
+\begin{x}{\small\bf DEFINITION} \ %01
+A 
+\un{locally compact (compact)} group 
+\index{locally compact (compact) group} 
+is a topological group \mG that is both locally compact (compact) and Hausdorff.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %02
+If \mG is a locally compact group and if \mH is a closed subgroup, then $G/H$ is a locally compact Hausdorff space.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %03
+If \mG is a locally compact group and if \mH is a closed normal subgroup, then $G/H$ is a locally compact group.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %04
+If \mG is a locally compact group and if \mH is a locally compact subgroup, then \mH is closed in \mG.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %05
+If \mG is a locally compact 0-dimensional group and if \mH is a closed subgroup of \mG, then $G/H$ is 0-dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %06
+If \mG is a totally disconnected locally compact group, then $\{e\}$ has a neighborhood basis consisting of open-compact subgroups.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %07
+If \mG is a totally disconnected compact group,  then $\{e\}$ has a neighborhood basis consisting of open-compact normal subgroups. 
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %08
+If \mG is a locally compact group, then a subgroup \mH is open iff the quotient $G/H$ is discrete.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %09
+If \mG is a compact group, then a subgroup \mH is open iff the quotient $G/H$ is finite.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %10
+If \mG is a locally compact group, then every open subgroup of \mG is closed and every finite index closed subgroup of \mG is open.
+\end{x}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

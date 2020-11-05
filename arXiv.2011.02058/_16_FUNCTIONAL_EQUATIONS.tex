@@ -1,0 +1,199 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{16}.\quad  FUNCTIONAL EQUATIONS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Let
+\[
+\zeta(s) = \sum_{n = 1}^\infty \frac{1}{n^s}	\qquad \text{$(\Re(s) > 1)$}
+\]
+be the Riemann zeta function $-$then $\zeta(s)$ can be meromorphically continued into the whole 
+$s$-plane with a simple pole at $s = 1$ and satisfies there the functional equation
+\[
+\pi^{-s/2}\Gamma(s/2)\zeta(s) \ =\  \pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s).
+\]
+
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf REMARK} \ %01
+The product $\pi^{-s/2}\Gamma(s/2)$ was denoted by $\Gamma_\R(s)$ in \S11, \#8.
+\end{x}
+
+\vspace{0.1cm}
+
+There are many proofs of the functional equation satisfied by $\zeta(s)$.  Of these, we shall single out two, one "classical", the other "modern".
+
+\vspace{0.25cm}
+
+To proceed in the classical vein, start with 
+\[
+\Gamma(s) = \int_0^\infty e^{-x} x^s \frac{dx}{x}			\qquad (\Re(s) > 1).
+\]
+Then by change of variable, 
+\[
+\pi^{-s/2}\Gamma(s/2)n^{-s} = \int_0^\infty e^{-n^2\pi x}x^{s/2} \frac{dx}{x}.
+\]
+So, upon summing from $n = 1$ to $\infty$:
+\[
+\pi^{-s/2}\Gamma(s/2)\zeta(s) = \int_0^\infty \psi(x) x^{s/2} \frac{dx}{x},
+\]
+where
+\[
+\psi(x) = \sum_{n=1}^\infty e^{-n^2\pi x}.
+\]
+Put now
+\[
+\theta(x) \ =\  1 + 2\psi(x) \ =\  \sum_{n \in \Z} e^{-n^2\pi x}.
+\]
+%%----------------------------------------------------------------------------------------------02
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %02
+\[
+\theta\bigl(\frac{1}{x}\bigr) \ =\  \sqrt{x}\  \theta(x).
+\]
+Therefore
+\begin{align*}
+\psi\bigl(\frac{1}{x}\bigr) 	\ 
+&=\  -\frac{1}{2} + \frac{1}{2} \ \theta\bigl(\frac{1}{x}\bigr)\\	
+&=\  -\frac{1}{2} + \frac{\sqrt{x}}{2} \ \theta\bigl(x\bigr)\\
+&=\  -\frac{1}{2} + \frac{\sqrt{x}}{2} + \sqrt{x}\ \psi(x).		
+\end{align*}
+One may then write
+\begin{align*}
+\pi^{-s/2}\Gamma(s/2)\zeta(s) \ 
+&=\vsx\  \int_0^\infty \psi(x) x^{s/2} \frac{dx}{x}\\	
+&=\vsx\  \int_0^1 \psi(x) x^{s/2} \frac{dx}{x} +  \int_1^\infty \psi(x) x^{s/2} \frac{dx}{x}\\
+&=\vsx\  \int_1^\infty  \psi\bigl(\frac{1}{x}\bigr) x^{-s/2} \frac{dx}{x} +  \int_1^\infty \psi(x) x^{s/2} \frac{dx}{x}\\
+&=\vsx\  \int_1^\infty  \bigl(-\frac{1}{2} + \frac{\sqrt{x}}{2} + \sqrt{x} \ \psi(x)\bigr) x^{-s/2} \frac{dx}{x} + 
+\int_1^\infty \psi(x) x^{s/2} \frac{dx}{x}\\	
+&= \frac{1}{s-1} - \frac{1}{s} + \int_1^\infty \psi(x) \bigl(x^{s/2} + x^{(1-s)/2}\bigr) \frac{dx}{x}.			
+\end{align*}
+
+The last integral is convergent for all values of $s$ and thus defines a holomorphic function.  
+Moreover, the last expression is unchanged if $s$ is replaced by $1-s$.  I.e.:
+\[
+\pi^{-s/2}\Gamma(s/2)\zeta(s) = \pi^{-(1-s)/2}\Gamma((1-s)/2)\zeta(1-s).
+\]
+%%----------------------------------------------------------------------------------------------03
+
+\vspace{0.1cm}
+
+The modern proof of this relation uses the adele-idele machinery.  
+
+Thus let
+\[
+\Phi(x) = e^{-\pi x_\infty^2} \prod_p \chi_{\Z_p} (x_p) 	\qquad (x \in \A).
+\]
+Then if $\Re(s) > 1$,
+\begin{align*}
+\int_\I \Phi(x) \abs{x}_\A^s d^\times x	\ 
+&=\vsx\  \int_{\R^\times} e^{-\pi t^2} \abs{t}^s \frac{dt}{\abs{t}} \cdot \prod_p \  \int_{\Q_p^\times} \chi_{\Z_p} (x_p) \abs{x_p}_p^s d^\times x_p\\													
+&=\vsx\  \pi^{-s/2}\Gamma(s/2) \cdot \prod_p \ \int_{\Z_p-\{0\}}  \abs{x_p}_p^s d^\times x_p\\	
+&=\vsx\  \pi^{-s/2}\Gamma(s/2) \cdot \prod_p \frac{1}{1 - p^{-s}} \qquad (\text{cf.} \  \S6, \ \#26) \\	
+&=\vsx\  \pi^{-s/2}\Gamma(s/2) \zeta(s).
+\end{align*}
+
+To derive the functional equation, we shall calculate the integral
+\[
+\int_\I \Phi(x) \abs{x}_\A^s d^\times x
+\]
+in another way.  
+To this end, put
+\[
+D^\times \ =\  \prod_p \Z_p^\times \times \R_{>0}^\times,
+\]
+a fundamental domain for $\I/\Q^\times$ (cf. \S14, \  \# 26), so
+\[
+\I \ =\  \coprod_{r \in \Q^\times} r D^\times \qquad \text{(disjoint union)}.
+\]
+Therefore
+%%----------------------------------------------------------------------------------------------04
+\allowdisplaybreaks
+\begin{align*}
+\int_\I \Phi(x) \abs{x}_\A^s d^\times x	\ 
+&=\vsx\  \sum_{r \in \Q^\times} \int_{rD^\times} \Phi(x) \abs{x}_\A^s d^\times x \\	
+&=\vsx\   \int_{D^\times} \sum_{r \in \Q^\times} \Phi(rx) \abs{rx}_\A^s d^\times x \\	
+&=\vsx\   \int_{D^\times : \abs{x}_\A \le 1} \sum_{r \in \Q^\times} \Phi(rx) \abs{x}_\A^s d^\times x  +  
+\int_{D^\times : \abs{x}_\A \ge 1} \sum_{r \in \Q^\times} \Phi(rx) \abs{x}_\A^s d^\times x.
+\end{align*}
+To proceed further, recall that $\widehat{\Phi} = \Phi$ $(\implies \widehat{\Phi}(0) = \Phi(0) = 1)$, hence (cf. \S15, \#13) 
+\[
+1 + \sum_{r \in \Q^\times} \Phi(rx) = \frac{1}{\abs{x}_\A} + \frac{1}{\abs{x}_\A} \sum_{q \in \Q^\times} \Phi(qx^{-1}). 
+\]
+Accordingly, $\vsx$
+
+\vspace{0.1cm}
+
+$
+\ds\int_{D^\times : \abs{x}_\A \le 1} \sum_{r \in \Q^\times} \Phi(rx) \abs{x}_\A^s d^\times x	\\
+\vsx\text{\qquad\qquad\qquad} = \int_{D^\times : \abs{x}_\A \le 1} (-1 + \frac{1}{\abs{x}_\A} + 
+\frac{1}{\abs{x}_\A} \sum_{q \in \Q^\times} \Phi(qx^{-1}))  \abs{x}_\A^s d^\times x\\	
+\vsx\text{\qquad\qquad\qquad} = \int_{D^\times : \abs{x}_\A \le 1}  (\abs{x}_\A^{s-1}  - \abs{x}_\A^s) d^\times x   +  
+\int_{D^\times : \abs{x}_\A \ge 1} \sum_{q \in \Q^\times} \Phi(qx) \abs{x}_\A^{1-s} d^\times x.\\	
+\\	
+$
+%%----------------------------------------------------------------------------------------------05
+But 
+\begin{align*}
+\int_{D^\times : \abs{x}_\A \le 1}  (\abs{x}_\A^{s-1}  - \abs{x}_\A^s) d^\times x \ 
+&=\vsx\  \int_0^1 (t^{s - 1} - t) \frac{dt}{t} \\
+&=\vsx\  \frac{1}{s-1} - \frac{1}{s}.
+\end{align*}
+So, upon assembling the data, we conclude that 
+\[
+\int_\I \Phi(x) \abs{x}_\A^s d^\times x = \frac{1}{s-1} - \frac{1}{s} + \int_{D^\times : \abs{x}_\A \ge 1} \sum_{q \in \Q^\times} \Phi(qx)) (\abs{x}_\A^s  + \abs{x}_\A^{1-s}) d^\times x.
+\]
+Since the second expression is invariant under the transformation $s \ra 1-s$, the functional equation for $\zeta(s)$ follows once again.
+\end{x}
+
+\begin{x}{\small\bf REMARK} \ %03
+Consider
+\[
+ \int_{D^\times : \abs{x}_\A \ge 1} \sum_{q \in \Q^\times} \Phi(qx)) \ldots \ .
+\]
+Then from the definitions, 
+\begin{align*}
+x \in D^\times
+&\implies x_p \in \Z_p^\times \ \& \  qx_p \in \Z_p \\
+&\implies q \in \Z.
+\end{align*}
+Matters thus reduce to $\vsx$
+\[
+2 \int_1^\infty \ \sum_{n=1}^\infty e^{-n^2 \pi t^2} (t^s + t^{1-s}) \frac{dt}{t}
+\]
+or still,$\vsx$
+\[
+\int_1^\infty \psi(t) (t^{s/2} + t^{(1 - s)/2}) \frac{dt}{t},
+\]
+\end{x}
+the classical expression.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

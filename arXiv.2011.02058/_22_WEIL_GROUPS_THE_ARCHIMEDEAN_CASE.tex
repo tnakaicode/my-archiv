@@ -1,0 +1,396 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{22}.\quad  WEIL GROUPS: THE ARCHIMEDEAN CASE}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+%\ \indent 
+
+\begin{x}{\small\bf DEFINITION} \ %01
+Put $W_\C = \C^\times$, call it the 
+\un{Weil group}
+\index{Weil group} 
+of $\C$, and leave it at that.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+Put 
+\[
+W_\R \ = \ \C^\times \ \cup \ \tJ \C^\times \quad \text{(disjoint union) \quad (J a formal symbol)},
+\]
+where $\tJ^2 = -1$ and $\tJ z \tJ^{-1} = \ov{z}$ (obvious topology on $W_\R$).  Accordingly, there is a nonsplit short exact sequence
+\[
+1 \lra \C^\times \lra W_\R \lra \Gal(\C / \R) \lra 1, 
+\]
+the image of J in $\Gal(\C / \R)$ being complex conjugation.
+
+\vspace{0.1cm}
+
+[Note: \ $H^2(\Gal(\C / \R),\C^\times)$ is cyclic of order 2, thus up to equivalence of extensions of $\Gal(\C / \R)$ by 
+$\C^\times$ per the canonical action of $\Gal(\C / \R)$ on $\C^\times$, there are two possibilities:
+
+\vspace{0.2cm}
+
+1. \quad A split extension
+\[
+1 \lra \C^\times \lra E \lra \Gal(\C / \R) \lra 1.
+\]
+
+2. \quad A nonsplit extension
+\[
+1 \lra \C^\times \lra E \lra \Gal(\C / \R) \lra 1.
+\]
+The Weil group $W$ is a representative of the second situation which is why we took $\tJ^2 = -1$ 
+(rather than $\tJ^2 = +1$).]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %03
+The commutator subgroup $W_\R^*$ of $W_\R$ consists of all elements of the form 
+$J z \tJ^{-1} z^{-1} = \ds\frac{\ov{z}}{z}$, i.e., $W_\R^* = S$, thus is closed.
+\end{x}
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------02
+Let 
+\[
+\pr: W_\R \lra \R^\times
+\]
+be the map sending J to $-1$ and $z$ to $\abs{z}^2$.
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %04
+$S$ is the kernel of pr and pr is surjective.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %05
+The arrow 
+\[
+\pr^\ab: W_\R^\ab \lra \R^\times
+\]
+induced by pr is an isomorphism.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %06
+The inverse $\R^\times \ra W_\R^\ab$ of $\pr^\ab$ is characterized by the conditions 
+\[
+\begin{cases}
+ \ -1 \ra \tJ W_\R^*\\
+ \ x \ra \sqrt{x} \ W_\R^* \qquad (x > 0)
+\end{cases}
+.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %07
+Define
+\[
+\ncdot : W_\R \lra \R_{>0}^\times
+\]
+by the prescription 
+\[
+\norm{z} \ = \ z \ov{z} \quad (z \in \C), \quad \norm{\tJ} = 1.
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %08
+$\ncdot$ drops to a continuous homomorphism $W_\R^\ab \ra \R_{>0}^\times$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %09
+A 
+\un{representation}
+\index{representation} 
+of $W_\R$ is a continuous homomorphism 
+$\rho:W_\R \ra \GL(V)$, where V is a finite dimensional complex vector space.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+If $s \in \C$, then the assignment $w \ra \norm{w}^s$ is a 1-dimensional
+%%----------------------------------------------------------------------------------------------03
+representation of $W_\R$, i.e., is a character.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %11
+If $\chi$ is a character of $\R^\times$, then $\chi \circ \pr$ is a character of $W_\R$ and all such have this form.
+
+[For any $\rho \in \widetilde{W}_\R$, 
+\[
+\rho(\ov{z}) \ = \rho(\tJ z \tJ^{-1}) \ = \  \rho(\tJ) \rho(z) \rho(\tJ)^{-1} \ = \  \rho(z).
+\]
+Therefore
+\[
+1 \ = \ \rho(-1) \qquad (\text{cf.} \ \S7, \ \#12).
+\]
+But 
+\[
+\rho(-1) \ = \ \rho(\tJ^2) \ = \ \rho(\tJ)^2,
+\]
+so $\rho(\tJ) = \pm1$.  This said, the characters of $\R^\times$ are described in \S7, \#11, thus the 1-dimensional 
+representations of $W_\R$ are parameterized by a sign and a complex number $s$:
+
+\qquad \textbullet \quad $(+,s): \rho(z) = \abs{z}^s$, $\rho(\tJ) = + 1$\\
+
+\qquad \textbullet \quad $(-,s): \rho(z) = \abs{z}^s$, $\rho(\tJ) = - 1$.]\\
+
+\vspace{0.1cm}
+
+Let $V$ be a finite dimensional complex vector space.
+
+\vspace{0.1cm}
+
+
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %12
+A linear transformation $T:V \ra V$ is 
+\un{semisimple} 
+\index{semisimple} 
+if every $T$-invariant subspace has a complementary $T$-invariant subspace.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %13
+$T$ is semisimple iff $T$ is diagonalizable, i.e., in some basis $T$ is represented by a diagonal matrix.
+
+\vspace{0.05cm}
+
+[Bear in mind that $\C$ is algebraically closed \ldots \ .]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf DEFINITION} \ %14
+A representation $\rho:W_\R \ra \GL(V)$ is 
+\un{semisimple} 
+\index{semisimple} 
+if $\forall \ w \in W_\R$, 
+$\rho(w):V \ra V$ is semisimple.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %15
+A representation $\rho:W_\R \ra \GL(V)$ is 
+\un{irreducible}
+\index{irreducible} 
+if $V \neq 0$, 
+and the only $\rho$-invariant subspaces are 0 and $V$.
+\end{x}
+
+\vspace{0.1cm}
+
+The irreducible 1-dimensional representations of $W_\R$ are its characters (which, of course, are automatically semisimple).
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %16
+If $\rho:W_\R \ra \GL(V)$ is a semisimple irreducible representation of $W_\R$ of dimension $> 1$, then $\dim V = 2$.
+
+\vspace{0.1cm}
+
+PROOF \ 
+There is a nonzero vector $v \in V$ and a charcter $\chi:\C^\times \ra \C^\times$ such that $\forall \ z \in \C^\times$, 
+\[
+\rho(z) v \ = \ \chi(z) v.
+\]
+Since the span $S$ of $v$, $\rho(\tJ)v$ is a $\rho$-invariant subspace, the assumption of irreducibility implies that $\dim V = 2$.
+
+[To check the $\rho$-invariance of $S$, note that 
+\[
+\begin{cases}
+ \ \rho(z) \rho(\tJ)v \ = \ \rho(z\tJ)v  \ = \ \rho(\tJ\ov{z})v \ = \ \rho(\tJ) \rho(\ov{z}) v \ = \ \rho(\tJ)\chi(\ov{z}) v\\
+ \ \rho(\tJ) \rho(\tJ)v \ = \ \rho(\tJ^2) v \ = \ \rho(-1)v \ = \ \chi(-1) v.]
+\end{cases}
+.
+\]
+
+\vspace{0.1cm}
+
+Given an integer $k$ and a complex number $s$, define a character $\chi_{k,s}:\C^\times \ra \C^\times$ by the prescription
+\[
+\chi_{k,s}(z) \ = \ \Bigl(\frac{z}{\abs{z}}\Bigr)^k \bigl(\abs{z}^2 \bigr)^s
+\]
+and let $\rho_{k,s} = \ind \chi_{k,s}$ be the representation of $W_\R$ which it induces.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+\begin{x}{\small\bf LEMMA} \ %17
+$\rho_{k,s}$ is 2-dimensional.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %18
+$\rho_{k,s}$ is semisimple.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %19
+$\rho_{k,s}$ is irreducible iff $k \neq 0$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %20
+Let
+\[
+\begin{cases}
+ \ \rho_1:W_\R \ra \GL(V_1)\\
+ \ \rho_2:W_\R \ra \GL(V_2)\\
+\end{cases}
+\]
+be representations of $W_\R$ $-$then $(\rho_1,V_1)$ is 
+\un{equivalent} 
+\index{equivalent representations} 
+to $(\rho_2,V_2)$ if there exists an 
+isomorphism $f:V_1 \ra V_2$ such that $\forall \ w \in W_\R$, 
+\[
+f \circ \rho_1(w) \ = \ \rho_2(w) \circ f.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %21
+$\rho_{k_1,s_1}$ is equivalent to $\rho_{k_2,s_2}$ iff $k_1 = k_2$, $s_1 = s_2$ or $k_1 = -k_2$, $s_1 = s_2$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %22
+Every 2-dimensional semisimple irreducible representation of $W_\R$ is equivalent to a unique $\rho_{k,s}$ $(k > 0)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %23
+Therefore the equivalence classes of 2-dimensional semisimple irreducible representations of $W_\R$ are parameterized by 
+the points of $\N \times \C$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %24
+A representation $\rho:W_\R \ra \GL(V)$ is 
+\un{completely reducible}
+\index{completely reducible} 
+if $V$ is the direct sum of a collection of irreducible 
+$\rho$-invariant subspaces.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------06
+
+\begin{x}{\small\bf LEMMA} \ %25
+Let $\rho:W_\R \ra \GL(V)$ be a semisimple representation $-$then $\rho$ is completely reducible.
+
+\vspace{0.1cm}
+
+PROOF \ 
+The characters of $\C^\times$ are of the form $z \ra z^\mu \ov{z}^\nu$ with $\mu$, $\nu \in \C$, $\mu-\nu \in \Z$ and $V$ 
+is the direct sum of subspaces $V_{\mu,\nu}$, where 
+$\restr{\rho(z)}{V_{\mu,\nu}} =  z^\mu \ov{z}^\nu \ \id_{V_{\mu,\nu}}$.  
+Claim: 
+\[
+\rho(\tJ) V_{\mu,\nu} \ = \ V_{\nu,\mu}.
+\]
+Proof:
+$\forall \ v \in V_{\mu,\nu}$,
+\begin{align*}
+\rho(z) \rho(\tJ) v \ 
+&=\vsy\ \rho(\tJ \ov{z} \tJ^{-1}) \rho(\tJ) v\\
+&=\vsy\ \rho(\tJ) \rho(\ov{z}) \rho(\tJ^{-1}) \rho(\tJ) v\\
+&=\vsy\ \rho(\tJ) \rho(\ov{z}) v\\
+&=\vsy\ \rho(\tJ) \ov{z}^\mu z^\nu v\\
+&=\vsy\ \rho(\tJ) z^\nu \ov{z}^\mu v\\
+&=\vsy\ z^\nu \ov{z}^\mu \rho(\tJ) v.
+\end{align*}
+
+Proceeding:
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad \un{$\mu = \nu$} \ Choose a basis of eigenvectors for $\rho(\tJ)$ on $V_{\mu,\nu}$ $-$then 
+the span of each eigenvector is a 1-dimensional $\rho$-invariant subspace.
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad \un{$\mu \neq \nu$} Choose a basis $v_1, \ldots v_r$ for $V_{\mu,\nu}$ and put 
+$v_i^\prime = \rho(\tJ) v_i$ $(1 \leq i \leq r)$ $-$then $\C v_i \oplus \C v_i^\prime$
+is a 2-dimensional $\rho$-invariant subspace and the direct sum 
+\[
+\bigoplus\limits_{i = 1}^r \ (\C v_i \oplus \C v_i^\prime)
+\]
+equals 
+\[
+V_{\mu,\nu} \oplus V_{\nu,\mu}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------07
+\begin{x}{\small\bf REMARK} \ %26
+Suppose that $\rho:W_\R \ra \GL(V)$ is a representation $-$then 
+\begin{align*}
+\tJ^2 = -1 
+&\implies  (-1) \tJ \cdot \tJ = 1\\
+&\implies (-1) \tJ  = \tJ^{-1}
+\end{align*}
+\qquad\qquad\qquad\qquad $\implies$ 
+\begin{align*}
+\rho(\tJ)^{-1}\ 
+&= \ \rho(\tJ^{-1})\\
+&= \ \rho((-1)\tJ)\\
+&= \ \rho(-1)\rho(\tJ).
+\end{align*}
+On the other hand, if $\tJ^2 = 1$ (the split extension situation (cf. \#2)), then 
+\begin{align*}
+\id_V \ 
+&= \  \rho(1) \\
+&= \ \rho(\tJ^2)\\
+&=\ \rho(\tJ)\rho(\tJ).
+\end{align*}
+\qquad\qquad\qquad\qquad $\implies$ 
+\[
+\rho(\tJ)^{-1} \ = \ \rho(\tJ).
+\]
+\end{x}
+\vspace{0.1cm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

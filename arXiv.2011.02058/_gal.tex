@@ -1,0 +1,1236 @@
+\chapter{
+TOPICS IN GALOIS THEORY}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\[
+\text{GALOIS CORRESPONDENCES}
+\]
+
+\[
+\text{FINITE GALOIS THEORY}
+\]
+
+\[
+\text{INFINITE GALOIS THEORY}
+\]
+
+\[
+\text{$\K^\sep$ AND $\K^\ab$}
+\]
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+\[
+\text{GALOIS CORRESPONDENCES}
+\]
+
+Given a field $\F$, $\Aut(\F)$ stands for its associated group of field automorphisms.
+
+
+\begin{x}{\small\bf EXAMPLE} \ %01
+Take $\F = \Q$ $-$then $\Aut(\Q)$ is trivial.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %02
+Take $\F = \R$ $-$then $\Aut(\R)$ is trivial.
+
+\vspace{0.1cm}
+
+[Let $\phi \in \Aut(\R)$ $-$then $\restr{\phi}{\Q} = \id_\Q$.  Next: 
+\begin{align*}
+x < y \implies \phi(y) - \phi(x) \ 
+&=\ \phi(y - x) \\
+&=\ \phi((\sqrt{y - x}\hsx)^2) \\
+&=\ \phi(\sqrt{y - x}\hsx)^2 \\
+&> \ 0.
+\end{align*}
+If now $\phi \neq \id_\R$, choose $x$ such that $\phi(x) \neq x$ $-$then there are two possibilities.
+
+\vspace{0.1cm}
+
+\qquad\qquad \textbullet \quad $x < \phi(x)$: \ Choose $q \in \Q$: $x < q < \phi(x)$, so 
+$\phi(x) < \phi(q) = q < \phi(x)$.   Contradiction.
+
+\vspace{0.1cm}
+
+\qquad\qquad \textbullet \quad $\phi(x) < x$: \ Choose $q \in \Q$: $\phi(x) < q < x$, so
+$\phi(x) < q= \phi(q) < \phi(x)$.  Contradiction.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %03
+Take $\F = \C$ $-$then $\Aut(\C)$ is infinite.
+
+\vspace{0.1cm}
+
+[Any automorphism $\phi:\C \ra \C$ will fix $\Q$ and any continuous automorphism $\phi:\C \ra \C$ will fix its closure $\R$, 
+there being two such, viz. the identity and the complex conjugation, all others being discontinuous.]
+
+\vspace{0.1cm}
+
+[Note: \ As an illustration, consider the automorphism
+\[
+a +  b \hsx \sqrt{2} \ra a - b \hsx \sqrt{2} \qquad (a, b \in \Q)
+\]
+of the field $\Q(\sqrt{2})$ $-$then it can be extended to an automorphism of $\C$ via the following procedure.
+
+\vspace{0.1cm}
+
+\qquad\qquad 1. \ Extend to $\K \equiv \Q(\sqrt{2})^\cl \subset \C$.
+
+%%----------------------------------------------------------------------------------------------02
+
+\vspace{0.1cm}
+
+\qquad\qquad 2. \ Choose a transcendence basis \mS for $\C/\K$ and extend to $\K(S)$. 
+
+\vspace{0.1cm}
+
+\qquad\qquad 3. \ Extend from $\K(S)$ to $\C$.]
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %04
+Let \mG be a group of automorphisms of $\F$ $-$then the subfield 
+\[
+\Inv(G) \hsx = \hsx \{x: \sigma x = x\} \qquad (\sigma \in G)
+\]
+is called the 
+\un{invariant field}
+\index{invariant field} 
+associated with \mG.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %05
+Given a subfield $\E \subset \F$, the group consisting of all automorphisms of $\F$ leaving every element of $\E$ invariant is 
+denoted by $\Gal(\F/\E)$, the 
+\un{Galois group}
+\index{Galois group} 
+of $\F$ over $\E$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %06
+Take $\E = \R$, $\F = \C$ $-$then $\Gal(\C/\R) = \{\id_\C,\sigma\}$, where $\sigma$ is the complex conjugation.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %07
+Take $\E = \Q$, $\F = \Q((2)^{1/3})$ $-$then $\Gal(\Q((2)^{1/3}) / \Q)$ is trivial.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE}  \ %08
+Take $\E = \Q$, $\F = \Q(\omega_n)$ ($\omega_n$ a primitive $n^\nth$ root of unity in $\C$) $-$then 
+\[
+\Gal(\Q(\omega_n) / \Q) \approx (\Z/n\Z)^\times.
+\]
+%$\Gal(\Q(\omega_n) / \Q) \approx (\Z/n\Z)^\times$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %09
+We have
+\[
+G \subset \Gal(\F/\Inv(G)).
+\]
+\end{x}
+
+
+\begin{x}{\small\bf FACT} \ %10
+We have
+\[
+\E \subset \Inv(\Gal(\F/\E)).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %11
+\[
+G \hsx \subset\hsx \Gal(\F/\E) \hsx\Leftrightarrow\hsx \E \hsx\subset\hsx \Inv(G).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf FACT} \ %12
+\\
+
+\qquad\qquad \textbullet \quad $G_1 \subset G_2 \subset \Aut(\F) \implies \Inv(G_1) \supset \Inv(G_2)$.
+
+\vspace{0.1cm}
+
+\qquad\qquad \textbullet \quad $\E_1 \subset \E_2 \subset \F \implies \Gal(\F/\E_2) \subset \Gal(\F/\E_1)$.
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %13
+Let $\F$ be a field.
+
+\qquad\qquad \textbullet \quad A 
+\un{Galois group}
+\index{Galois group}
+on $\F$ is a group \mG of automorphisms of $\F$ such that 
+\[
+G \hsx = \hsx \Gal(\F/\Inv(G)).
+\]
+
+\vspace{0.1cm}
+
+\qquad\qquad \textbullet \quad An 
+\un{invariant field}
+\index{invariant field}
+in $\F$ is a subfield $\E$ of $\F$ such that 
+\[
+\E \hsx = \hsx \Inv(\Gal(\F/\E)).
+\]
+
+\vspace{0.1cm}
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf EXAMPLE} \ %14
+$\Aut(\F)$ is a Galois group on $\F$.
+
+\vspace{0.1cm}
+
+[For 
+\begin{align*}
+\Aut(\F) \ 
+&\subset \Gal(\F/\Inv(\Aut(\F)))\\
+&=\ \Aut(\F).]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %15
+$\{\id_\F\}$ is a Galois group on $\F$
+
+\vspace{0.1cm}
+
+[For 
+\begin{align*}
+\{\id_\F\} \ 
+&\subset \Gal(\F/\Inv(\{\id_\F\}))\\
+&=\ \Gal(\F/\F) \\
+&=\ \{\id_\F\}.]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf EXAMPLE} \ %16
+$\F$ is an invariant field on $\F$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf REMARK} \ %17
+Recall that a field is 
+\un{prime}
+\index{prime} 
+if it possesses no proper subfields, these being the fields 
+isomorphic to $\Q$ (characteristic 0) or 
+isomorphic to $\Z/p\Z$ (characteristic p).  
+A prime field admits no automorphism other than the identity.
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf ABSOLUTE GALOIS CORRESPONDENCE} \ %18
+Let $\F$ be a field.
+
+\qquad \textbullet \quad If $\E$ is a subfield of $\F$, then $\Gal(\F/\E)$ is a Galois group on $\F$.
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If \mG is a group of automorphisms of $\F$, then $\Inv(G)$ is an invariant field in $\F$.
+
+\vspace{0.1cm}
+
+And:  \ The arrow $\E \ra \Gal(\F/\E)$ from the set of all invariant fields in $\F$ to the set of all Galois groups 
+on $\F$ and the arrow $G \ra \Inv(G)$ from the set of all Galois groups on $\F$ to the set of all invariant fields in $\F$ 
+are mutually inverse inclusion reversing bijections. 
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf RELATIVE GALOIS CORRESPONDENCE} \ %19
+Let $\K$ be a field and let $\LL$ be a field extension of $\K$.
+
+
+\qquad \textbullet \quad If $\K \subset \E \subset \LL$, then $\Gal(\LL/\E)$ is a Galois group on $\LL$ contained in 
+$\Gal(\LL/\K)$.
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If \mG is a subgroup of $\Gal(\LL/\K)$, then $\Inv(G)$ is an invariant field in $\LL$ containing 
+$\K$.
+
+\vspace{0.1cm}
+
+And: \ The arrow $\E \ra \Gal(\LL/\E)$ from the set of all invariant fields in $\LL$ containing $\K$ to the set of all Galois 
+groups on $\LL$ contained in $\Gal(\LL/\K)$ and the arrow $G \ra \Inv(G)$ from the set of all Galois groups on $\LL$ 
+contained in $\Gal(\LL/\K)$ to the set of all invariant fields in $\LL$ containing $\K$ are mutually inverse inclusion reversing bijections. 
+
+
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{theoremn}{0}
+
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{FINITE GALOIS THEORY}
+\]
+
+\begin{x}{\small\bf DEFINITION} \ %01
+A field extension $\LL/\K$ is 
+\un{Galois over $\K$}
+\index{Galois over $\K$} 
+(or is a 
+\un{Galois extension of $\K$})
+\index{Galois extension of $\K$} 
+if $\LL$ is algebraic over $\K$ and $\K$ is an invariant field on $\L$ or still, 
+\[
+\K \hsx = \hsx \Inv(\Gal(\LL/\K)).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %02
+If $\LL/\K$ is a finite Galois extension and if $\LL \supset \E \supset \K$ is an intermediate field, then $\LL$ is Galois over $\E$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %03
+If $\LL/\K$ is a finite Galois extension and if $\LL \supset \E \supset \K$ is an intermediate field, then $\E$ is Galois over $\K$ 
+iff $\Gal(\LL/\E)$ is a normal subgroup of $\Gal(\LL/\K)$. 
+
+\vspace{0.1cm}
+
+[Note: \ Under the assumption that $\E$ is Galois over $\K$, there is an arrow of restriction
+\[
+\Gal(\LL/\K) \ra \Gal(\E/\K).
+\]
+It is surjective with kernel $\Gal(\LL/\E)$, from which an exact sequence of groups:
+\[
+1 \ra \Gal(\LL/\E) \ra \Gal(\LL/\K)  \ra \Gal(\E/\K) \ra 1.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf RECOGNITION  PRINCIPLE} \ %04
+If $\LL/\K$ is a finite extension, then $\LL$ is Galois over $\K$ iff 
+\[
+\card \Gal(\LL/\K) \hsx = \hsx [\LL:\K].
+\]
+
+\vspace{0.1cm}
+
+[Note: \ If $\LL/\K$ is a finite extension, then a priori
+\[
+\card \Gal(\LL/\K) \hsx \leq \hsx [\LL:\K],
+\]
+the inequality being strict in general.  Matters break down if it is a question of infinite extensions.  
+E.g.: \ If $\Q^\cl$ is an algebraic closure of $\Q$, then 
+\[
+[\Q^\cl:\Q] \hsx = \hsx \aleph_0
+\]
+%%----------------------------------------------------------------------------------------------02
+while
+\[
+\card \Gal(\Q^\cl / \Q) \hsx = \hsx 2^{\aleph_0}.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %05
+Let $\F$ be a field of characteristic 0 and let $a \in \F^\times - (\F^\times)^2$.
+
+Form the quadratic extension $\F(\sqrt{a})$ $-$then $[\F(\sqrt{a}):\F] = 2$, while 
+$\Gal(\F(\sqrt{a}) / \F) = \{\id,\sigma\}$ $(\sigma(\sqrt{a}) = - \sqrt{a})$.  
+Therefore $\F(\sqrt{a})$ is a Galois extension of $\F$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %06
+Take $\K = \Q$, $\LL = \Q((2)^{1/3})$ $-$then $[\Q((2)^{1/3}):\Q] = 3$ but 
+$\Gal(\Q((2)^{1/3}) / \Q)$ is trivial.  Therefore $\Q((2)^{1/3})$ is not a Galois extension of $\Q$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %07
+Take $\K = \Q$, $\LL = \Q((2)^{1/3}, \omega)$, where 
+\[
+\omega \hsx = \hsx \exp(2 \pi \sqrt{-1} / 3).
+\]
+Then
+\[
+[\Q((2)^{1/3}, \omega):\Q] \hsx = \hsx  
+[\Q((2)^{1/3}, \omega):\Q((2)^{1/3})]  \cdot [\Q((2)^{1/3}):\Q] \hsx = \hsx
+2 \cdot 3 \hsx = \hsx 6.
+\]
+On the other hand, the six functions 
+\begin{align*}
+&\vsy(2)^{1/3} \ra (2)^{1/3}, \quad \omega \ra \omega\\
+&\vsy(2)^{1/3} \ra \omega(2)^{1/3}, \quad \omega \ra \omega\\
+&\vsy(2)^{1/3} \ra (2)^{1/3}, \quad \omega \ra \omega^2\\
+&\vsy(2)^{1/3} \ra \omega(2)^{1/3}, \quad \omega \ra \omega^2\\
+&\vsy(2)^{1/3} \ra \omega^2 (2)^{1/3}, \quad \omega \ra \omega\\
+&\vsy(2)^{1/3} \ra \omega^2 (2)^{1/3}, \quad \omega \ra \omega^2
+\end{align*}
+extend to distinct automorphisms of $\Q((2)^{1/3}, \omega) /\Q$.
+%%----------------------------------------------------------------------------------------------03
+Therefore $\Q((2)^{1/3}, \omega)$ is a Galois extension of $\Q$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FUNDAMENTAL THEOREM OF FINITE GALOIS THEORY}  \ %08
+Suppose that $\LL$ is a finite Galois extension of $\K$.
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If $\LL \supset \E \supset \K$, then
+\[
+[\Gal(\LL/\K):\Gal(\LL/\E)] \hsx = \hsx  [\E:\K].
+\]
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If $G \subset \Gal(\LL/\K)$, then 
+\[
+[\Inv(G):\K] \hsx = \hsx [\Gal(\LL/\K):G].
+\]
+
+\vspace{0.1cm}
+
+And: \ The arow $\E \ra \Gal(\LL/\E)$ from the set of all intermediate fields between $\K$ and $\LL$ 
+to the set of all subgroups of $\Gal(\LL/\K)$ and the arrow $G \ra \Inv(G)$ from the 
+set of all subgroups of $\Gal(\LL/\K)$ to the set of all intermediate fields between $\K$ and $\LL$ 
+are mutually inverse inclusion reversing bijections.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %09
+Given a finite Galois extension $\LL/\K$, the problem of determining all intermediate fields 
+$\LL \supset \E \supset \K$ amounts to finding all subgroups of $\Gal(\LL/\K)$, a finite problem.
+
+\vspace{0.1cm}
+
+[Note: \ The fact that there are but finitely many intermediate fields cannot be established by a vector space argument alone.]
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+The field $\Q((2)^{1/3}, \omega)$ is Galois over $\Q$ and its Galois group is a group of order 6, there being two 
+possibilities, viz. the cyclic group $\Z/6\Z$ and the symmetric group $S_3$.  
+Since $\Q((2)^{1/3})$ is not Galois over $\Q$, the group 
+\[
+\Gal(\Q((2)^{1/3}, \omega) / \Q((2)^{1/3}))
+\]
+is not a normal subgroup of $\Gal(\Q((2)^{1/3}, \omega) / \Q$).  %XXX
+But every subgroup of an abelian group
+%%----------------------------------------------------------------------------------------------04
+is normal, so the conclusion is that 
+\[
+G \hsx \equiv \hsx \Gal(\Q((2)^{1/3}, \omega) / \Q) \hsx \approx \hsx S_3.  %XXX
+\]
+Proceeding, there are $\Q$-automorphisms $\sigma, \tau$ of  $\Q((2)^{1/3}, \omega)$ defined by the specification
+\[
+\begin{cases}
+\ \sigma : (2)^{1/3} \ra \omega(2)^{1/3}, \quad \omega \ra \omega\\
+\ \tau : (2)^{1/3} \ra (2)^{1/3}, \quad \omega \ra \omega^2
+\end{cases}
+.
+\]
+Then $\sigma$ has order 3, $\tau$ has order 2, and $\sigma \tau \neq \tau \sigma$.  
+The subgroups of \mG are 
+\[
+\langle \id \rangle, \quad 
+\langle \sigma \rangle, \quad
+\langle \tau \rangle, \quad
+\langle \sigma \tau \rangle, \quad
+\langle \sigma^2 \tau \rangle, \quad
+G
+\]
+and the corresponding intermediate fields are
+\[
+\Q((2)^{1/3}, \omega), \quad
+\Q(\omega), \quad
+\Q((2)^{1/3}), \quad
+\Q(\omega^2 (2)^{1/3}), \quad
+\Q(\omega(2)^{1/3}), \quad
+\Q.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %11
+Let $\K$ be a finite Galois extension of $\F$ and let $\LL$ be an arbitrary finite extension of $\F$ $-$then 
+$\K \vee \LL \supset \LL$ is a Galois extension and 
+\[
+\Gal(\K \vee \LL / \LL) \hsx \approx \hsx \Gal(\K / \K \cap \LL).
+\]
+In addition, 
+\[
+[\K \vee \LL:\LL] \hsx = \hsx [\K:\K \cap \LL].
+\]
+
+\vspace{0.1cm}
+
+[Note: \ Tacitly, $\K$ and $\LL$ lie inside some common field $\M$, hence $\K \vee \LL$ is the subfield of $\M$ 
+generated by $\K$ and $\LL$.  This said, the arrow 
+\[
+\Gal(\K \vee \LL /\LL) \ra \Gal(\K / \K \cap \LL)
+\]
+sends $\sigma$ to its restriction $\restr{\sigma}{\K}$.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf FACT} \ %12
+Suppose that $\LL$ is a finite Galois extension of $\K$ $-$then
+
+\vspace{0.3cm}
+
+\qquad \textbullet \quad $\tN_{\LL / \K} (x) \hsx = \hsx \ds\prod\limits_{\sigma \in \Gal(\LL / \K)} \sigma x$
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------05
+
+\qquad \textbullet \quad $\tT_{\LL / \K} (x) \hsx = \hsx \ds\sum\limits_{\sigma \in \Gal(\LL / \K)} \sigma x$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NORMAL BASIS THEOREM} \ %13
+If $\LL / \K$ is finite Galois, then $\exists \ x \in \LL$ such that $\{\sigma x: \sigma \in \Gal(\LL / \K)\}$ is a basis for $\LL / \K$.
+\end{x}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{theoremn}{0}
+
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{INFINITE GALOIS THEORY}
+\]
+
+\begin{x}{\small\bf FACT} \ %01
+If $\K$ is a field and if $\LL$ is an infinite Galois extension of $\K$, then 
+\[
+\card \Gal(\LL / \K) \hsx \geq \hsx 2^{\aleph_0}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf APPLICATION} \ %02
+The Galois group of an infinite Galois extension cannot be cyclic.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %03
+If $\F$ is a field and if $G \subset \Aut(\F)$ is a finite group of automorphisms of $\F$, then \mG is a Galois group on $\F$: 
+The a priori containment
+\[
+G \hsx\subset\hsx \Gal(\F / \Inv(G))
+\]
+is an equality: 
+\[
+G \hsx = \hsx \Gal(\F / \Inv(G)).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %04
+In general, an infinite group of automorphisms of a field need not be a Galois group.
+\end{x}
+
+\vspace{0.1cm}
+
+Given a field $\F$ and an element $a \in \F$, let $D_a$ denote the discrete topological space having $\F$ as its set of points 
+$-$then the elements of the product
+\[
+\prod\limits_{a \in \F} D_a
+\]
+are just the maps $\F^\F$ from $\F$ to $\F$.
+
+When equipped with the product topology, $\F^\F$  is Hausdorff and totally disconnected 
+(but not discrete if $\card \F \geq \aleph_0$).  
+Since $\Aut(\F)$ is contained in $\F^\F$, it can be endowed with the relativized product topology, the so-called 
+\un{finite topology}.
+\index{finite topology}
+\vspace{0.2cm}
+
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf \un{N.B.}} \ %05
+Given $\phi \in \Aut(\F)$ and a finite subset \mA of $\F$, let $\Omega_\phi(A)$ be the set of all automorphisms of $\F$ 
+that agree with $\phi$ on \mA $-$then $\Omega_\phi(A)$ is open and the collection $\{\Omega_\phi(A)\}$ is a neighborhood basis at $\phi$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %06
+In the finite topology, $\Aut(\F)$ is a topological group (as well as being Hausdorff and totally disconnected).
+\end{x}
+
+\vspace{0.1cm}
+
+In what follows, if $\Gamma \subset \Aut(\F)$ is a group of automorphisms of $\F$, it will be understood that $\Gamma$ 
+carries the relativized finite topology.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf FACT} \ %07
+Suppose that $\Gamma \subset \Aut(\F)$ is compact $-$then $\Gamma$ is a Galois group on $\F$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %08
+A group of automorphisms of $\F$ is compact iff it is closed in $\Aut(\F)$ and has finite orbits.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %09
+If $\K$ is a field and if $\LL$ is an extension of $\K$, then 
+\[
+\Gal(\LL / \K) \subset \Aut(\LL)
+\]
+is closed.
+\end{x}
+
+
+\begin{x}{\small\bf FACT} \ %10
+If $\K$ is a field and if $\LL$ is an algebraic extension of $\K$, then 
+\[
+\Gal(\LL / \K) \subset \Aut(\LL)
+\]
+is compact.
+
+\vspace{0.1cm}
+
+[Note: \ If $\LL$ is finite over $\K$ (hence algebraic), then $\Gal(\LL / \K)$ is discrete.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %11
+The compactness of the Galois group does not characterize algebraic extensions (there exist transcendental extensions with a finite Galois group).
+
+%%----------------------------------------------------------------------------------------------03
+
+\vspace{0.1cm}
+
+[Note: \ If $\K$ is an infinite field and if $\K(\xi)$ is a simple transcendental extension of $\K$, then $\Gal(\K(\xi) / \K)$ is not compact.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FUNDAMENTAL THEOREM OF INFINITE GALOIS THEORY} \ %12
+
+Suppose that $\LL$ is an infinite Galois extension of $\K$ (hence algebraic, hence $\Gal(\LL / \K)$ compact).
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If $\LL \supset \E \supset \K$, then $\Gal(\LL / \E)$ is a closed subgroup of $\Gal(\LL/\K)$ 
+(thus is a compact subgroup of $\Gal(\LL/\K)$).  
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If \mG is a closed subgroup of $\Gal(\LL/\K)$ (thus is a compact subgroup of $\Gal(\LL/\K))$, then 
+$\Inv(G)$ is an intermediate field between $\K$ and $\LL$.
+
+\vspace{0.1cm}
+
+And: \ The arrow $\E \ra \Gal(\LL/\E)$ from the set of all intermediate fields between $\K$ and $\LL$  to the set of all closed  
+subgroups of $\Gal(\LL/\K)$ and the arrow $G \ra \Inv(G)$ from the set of all closed  
+subgroups of $\Gal(\LL/\K)$ to the set of all intermediate fields between $\K$ and $\LL$
+are mutually inverse inclusion reversing bijections. 
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %13
+Since $\LL / \K$ is an infinite Galois extension, $\Gal(\LL / \K)$ always contains a subgroup that is not closed.
+
+\vspace{0.1cm}
+
+[Any infinite group has a countably infinite subgroup (consider the subgroup generated by a countably infinite subset).  
+On the other hand, an infinite compact totally disconnected Hausdorff group has cardinality at least that of the continuum 
+(it has a quotient which is homeomorphic to the Cantor set).]
+\end{x}
+
+\vspace{0.1cm}
+
+
+
+\begin{x}{\small\bf FACT} \ %14
+$\E/\K$ is finite iff $\Gal(\LL / \E)$ is open.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %15
+$\E/\K$ is Galois iff $\Gal(\LL / \E)$ is normal.
+
+\vspace{0.1cm}
+
+[Note: \ Canonically, 
+\[
+\Gal(\E / \K) \hsx \approx \hsx \Gal(\LL / \K) / \Gal(\LL  / \E),
+\]
+this being a topological identification if $\Gal(\LL / \K)  / \Gal(\LL / \E)$ is given the quotient topology.]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------04
+\begin{x}{\small\bf \un{N.B.}} \ %16
+$\LL$ is Galois over $\E$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf NOTATION} \ %17
+
+\vspace{0.2cm}
+
+\qquad \textbullet \quad
+$\ds\bigvee\limits_{i \in I} \E_i$ is the subfield generated by the union $\ds\bigcup\limits_{i \in I} \E_i$.
+
+\vspace{0.1cm}
+
+
+\qquad \textbullet \quad
+$\ds\bigvee\limits_{i \in I} G_i$ is the subgroup generated by the union $\ds\bigcup\limits_{i \in I} G_i$.
+
+\vspace{0.1cm}
+
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %18
+Let $\LL$ be an infinite Galois extension of $\K$.
+
+\vspace{0.2cm}
+
+\qquad \textbullet \quad If $\E_i$ $(i \in I)$ is a nonempty family of intermediate fields between $\K$ and $\LL$, then 
+\[
+\Gal \biggl(\hsx \LL / \bigcap\limits_{i \in I} \E_i \biggr) \  = \  
+\ov{\bigvee\limits_{i \in I} \Gal(\LL / \E_i)}.
+\]
+
+\vspace{0.1cm}
+
+\qquad \textbullet \quad If $G_i$ $(i \in I)$ is a nonempty family of closed subgroups of $\Gal(\LL / \K)$, then 
+\[
+\Inv \biggl(\hsx\bigcap\limits_{i \in I} G_i \biggr) \  = \  
+\bigvee\limits_{i \in I} \Inv(G_i).
+\]
+
+\vspace{0.1cm}
+
+
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %19
+Take $\K = \Q$, $\LL =\Q(\sqrt{2},\sqrt{3},\sqrt{5}, \ldots)$ (incorporate all primes) $-$then $\LL$ is Galois 
+(and infinite) over $\K$ (being the union of 
+$\Q$, 
+$\Q(\sqrt{2})$, 
+$\Q(\sqrt{2},\sqrt{3})$, 
+$\Q(\sqrt{2},\sqrt{3},\sqrt{5})$ 
+and so on).  Here $\Gal(\LL / \K)$ is a countably infinite direct product of copies of $\Z / 2\Z$.  
+Accordingly, every $\K$-automorphism of $\LL$ differet from $\id_\LL$ is an element of order 2.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %20
+Take $\K = \Q$, $\LL = A(\C / \Q)$ $-$then $\LL$ is Galois (and infinite) over $\K$.
+\end{x}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setcounter{theoremn}{0}
+
+\newpage
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+
+\[
+\text{$\K^\sep$ AND $\K^\ab$}
+\]
+
+Let $\K$ be a field, $\LL/\K$ a field extension.
+
+\vspace{0.3cm}
+
+\begin{x}{\small\bf DEFINITION} \ %01
+An element of $\LL$ is 
+\un{separable}
+\index{separable (element of a field)} 
+if it is algebraic over $\K$ and is a simple zero of its minimal polynomial.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf NOTATION} \ %02
+$S(\LL/\K)$ is the set of all elements of $\LL$ that are separable over $\K$.
+
+\vspace{0.1cm}
+
+[Note: \ Therefore
+\[
+S(\LL/\K) \subset A(\LL/\K)
+\]
+and 
+\[
+S(\LL/\K) \hsx = \hsx A(\LL/\K)
+\]
+if the characteristic of $\K$ is zero.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %03
+$S(\LL/\K)$ is the 
+\un{separable closure}
+\index{separable closure} 
+of $\K$ in $\LL$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %04
+$S(\LL/\K)$ is a field.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %05
+If $\LL \supset \E \supset \K$ and $\E$ is a separable extension of $\K$, then $\E \subset S(\LL/\K)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %06
+$\K^\cl$ is the algebraic closure of $\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %07
+If $\K$ is not perfect, then $\K^\cl$ is not Galois over $\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION}  \ %08
+$\K^\sep$ is the separable closure of $\K$ in $\K^\cl$:
+\[
+\K^\sep \hsx = \hsx S(\K^\cl/\K).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %09
+$\K^\sep$ is the maximal separable extension of $\K$.
+\end{x}
+%%----------------------------------------------------------------------------------------------02
+
+\begin{x}{\small\bf FACT} \ %10
+$\K^\sep$ is a Galois extension of $\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %11
+
+\[
+\Gal(\K^\sep/\K)
+\]
+is the 
+\un{absolute Galois group}
+\index{absolute Galois group} 
+of $\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %12
+If \hsx $\LL/\K$ is Galois, then $\Gal(\LL/\K)$ is a homomorphic image of $\Gal(\K^\sep/\K)$.
+
+\vspace{0.1cm}
+
+[This is because $\Gal(\LL/\K)$ can be identified with the quotient
+\[
+\Gal(\K^\sep/\K) / \Gal(\K^\sep/\LL).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %13
+Take $\K = \F_p$ $-$then $\Gal(\F_p^\sep /\F_p)$ can be identified with \ 
+$\lim\limits_{\substack{\lla\\ n \in \N}} \Z/n\Z$ 
+(the set of all (equivalence classes) of sequences $\{a_n\} = \{a_1, a_2, \ldots \}$ 
+of natural numbers such that 
+\[
+a_n \hsx \equiv \hsx a_m \hsx \text{(mod $m$)}
+\]
+whenever $m|n$).
+
+\vspace{0.1cm}
+
+[Bear in mind that $\forall \ n \in \N$, there is a Galois extension $\K_n/\F_p$ with $[\K_n:\F_p] = n$ and 
+$\Gal(\K_n/\F_p) \approx \Z/n\Z$.]
+
+\vspace{0.1cm}
+
+[Note: \ Let $\phi:\F_p^\sep \ra \F_p^\sep$ be the Frobenius automorphism: $\phi(x) = x^p$.  
+Let $G = \langle \phi \rangle$ $-$then 
+\[
+\Inv(G)\hsx = \hsx \F_p, \quad  \Inv(\Gal(\F_p^\sep /\F_p)) \hsx = \hsx \F_p,
+\]
+yet 
+\[
+G \hsx \neq \hsx \Gal(\F_p^\sep /\F_p).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------03
+
+\begin{x}{\small\bf NOTATION} \ %14
+$\Gal^*(\K^\sep/\K)$ 
+\index{$\Gal^*(\K^\sep/\K)$ } 
+is the commutator subgroup of $\Gal(\K^\sep/\K)$ .
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf FACT} \ %15
+\[
+\Inv(\Gal^*(\K^\sep/\K)) \hsx = \hsx \Inv(\ov{\Gal^*(\K^\sep/\K})).
+\]
+
+\vspace{0.1cm}
+
+[Put
+\[
+\Gamma \hsx = \hsx \Gal^*(\K^\sep/\K).
+\]
+Then
+\[
+\Gamma \hsx\subset\hsx \ov{\Gamma} \implies \Inv(\ov{\Gamma}) \subset \Inv(\Gamma).
+\]
+To go the other way, let $x \in \Inv(\Gamma)$, $\ov{\gamma} \in \ov{\Gamma}$ and claim: 
+$\ov{\gamma} x = x$ (hence $x \in \Inv(\ov{\Gamma})$).  
+If $\ov{\gamma} \in \Gamma$, we are through; otherwise, 
+$\ov{\gamma}$ is an accumulation point of $\Gamma$, thus since 
+$\Omega_{\ov{\gamma}} (\{x\})$ is a neighborhood of $\ov{\gamma}$, it must contain a 
+$\gamma \in \Gamma$ $(\gamma \neq \ov{\gamma}$).  
+But
+\[
+\gamma \in \Gamma \cap \Omega_{\ov{\gamma}} (\{x\}) \implies 
+\gamma \in  \Omega_{\ov{\gamma}} (\{x\}) \implies 
+\gamma x \hsx = \hsx \ov{\gamma} x.
+\]
+Meanwhile, 
+\[
+\gamma \in \Gamma  \ \& \ x \in \Inv(\Gamma) \implies \gamma x = x.
+\]
+Therefore $\ov{\gamma} x = x$.]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %16
+\[
+\ov{\Gal^*(\K^\sep/\K})
+\]
+is a closed normal subgroup of $\Gal(\K^\sep/\K)$.
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %17
+
+\[
+\Inv(\Gal^*(\K^\sep/\K))
+\]
+is called the 
+\un{maximal abelian extension}
+\index{maximal abelian extension} 
+of $\K$, denote it by $\K^\ab$.
+\index{$\K^\ab$}
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------04
+
+\begin{x}{\small\bf FACT} \ %18
+$\K^\ab$ is a Galois extension of $\K$ and $\Gal(\K^\ab/\K)$ is an abelian group.
+
+\vspace{0.1cm}
+
+[Since
+\[
+\ov{\Gal^*(\K^\sep/\K)}
+\]
+is a closed normal subgroup of $\Gal(\K^\sep/\K)$, it follows that
+\begin{align*}
+\K^\ab \ 
+&=\ \Inv ( \Gal^*(\K^\sep/\K) )\\
+&=\ \Inv(\ov{\Gal^*(\K^\sep/\K)})
+\end{align*}
+is a Galois extension of  $\K$ and
+\begin{align*}
+\Gal(\K^\ab/\K) \ 
+&\approx\ \Gal(\K^\sep/\K) / \Gal(\K^\sep/\K^\ab)\\
+&=\ \Gal(\K^\sep/\K) / \ov{\Gal^*(\K^\sep/\K)}
+\end{align*}
+But the group on the RHS is isomorphic to 
+\[
+\Gal(\K^\sep/\K) / \Gal^*(\K^\sep/\K) / \ov{\Gal^*(\K^\sep/\K)} / \Gal^*(\K^\sep/\K),
+\]
+thus is a homomorphic image of the abelian group
+\[
+\Gal(\K^\sep/\K) / \Gal^*(\K^\sep/\K).]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf DEFINITION} \ %19
+A Galois extesnsion $\LL/\K$ is said to be 
+\un{abelian}
+\index{abelian (field extension)}
+if $\Gal(\LL/\K)$ is abelian.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %20
+The field $\K^\ab$ has no extensions that are abelian Galois extensions of $\K$.
+
+\vspace{0.1cm}
+
+[Let $\LL/\K^\ab$ be an abelian Galois extensions of $\K$:
+\[
+\LL \hsx = \hsx \Inv(\Gal(\K^\sep/\K)) \supset \K^\ab \hsx = \hsx \Inv(\Gal^*(\K^\sep/\K))
+\]
+%%----------------------------------------------------------------------------------------------05
+\qquad\qquad $\implies$
+\[
+\Gal^*(\K^\sep/\K) \hsx\supset\hsx \Gal(\K^\sep/\LL).
+\]
+On the other hand, $\Gal(\K^\sep/\LL)$ is normal ($\LL/\K$ being Galois) and 
+\[
+\Gal(\K^\sep/\K) /  \Gal(\K^\sep/\LL) \hsx \approx \hsx \Gal(\LL/\K),
+\]
+which is abelian by hypothesis, thus
+\[
+\Gal(\K^\sep/\LL) \supset \Gal^*(\K^\sep/\K).
+\]
+Therefore
+\[
+\Gal(\K^\sep/\LL) \ = \  \Gal^*(\K^\sep/\K).
+\]
+And then
+\begin{align*}
+\LL \ 
+&\vsy=\ \Inv(\Gal(\K^\sep/\LL))\\
+&\vsy=\ \Inv(\Gal^*(\K^\sep/\K))\\
+&\vsy=\ \K^\ab.]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %21
+$\K^\ab$ is generated by the set of finite abelian Galois extensions of $\K$ in $\K^\sep$.
+
+\vspace{0.1cm}
+
+[Every finite Galois extension of $\K$ inside $\K^\ab$ is necessarily abelian.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %22
+Take $\K = \Q$ $-$then the splitting field $\Q(n)$ of the polynomial $X^n - 1$ is called the 
+\un{cyclotomic field}
+\index{cyclotomic field} 
+of the $n^\nth$ roots of unity.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf FACT} \ %23
+$\Q(n)$ is a Galois extension of $\Q$ and $\Gal(\Q(n)/\Q)$ is isomorphic to 
+$(\Z/n\Z)^\times$, hence $\Gal(\Q(n)/\Q)$ is abelian.
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------06
+
+Accordingly, every intermediate field $\E$ between $\Q$ and $\Q(n)$ is abelian Galois (per $\Q$).
+
+\vspace{0.1cm}
+
+[$\Gal(\Q(n) / \Q)$ is abelian, hence every subgroup of $\Gal(\Q(n) / \Q)$ is normal, hence in particular 
+$\Gal(\Q(n) / \E)$ is normal, hence $\E/\Q$ is Galois.  And 
+\[
+\Gal(\E) / \Q) \hsx \approx \hsx \Gal(\Q(n) / \Q) / \Gal(\Q(n) / \E).]
+\]
+
+\vspace{0.2cm}
+
+The Kronecker-Weber theorem states that every finite abelian Galois extension of $\Q$ is contained in some $\Q(n)$, 
+thus $\Q^\ab$ is the infinite cyclotomic extension $\Q(1, 2, \ldots)$.
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %24
+$\Q^\ab$ is generated by the torsion points of the action of $\Z$ on $\C^\times$.
+
+\vspace{0.1cm}
+
+[Note: \ Given $n \in \Z$, $x \in \C^\times$, $(n,x) \ra n \cdot x = x^n$.]
+\end{x}
+
+
+\vspace{0.3cm}
+
+\[
+\text{ADDENDUM}
+\]
+\setcounter{theoremn}{0}
+
+\vspace{0.1cm}
+
+If \mG is a group, then the subgroup $G^*$ generated by the commutators $x y x^{-1}y^{-1}$ is the 
+\un{commutator subgroup}
+\index{commutator subgroup} 
+of \mG.
+
+\vspace{0.2cm}
+
+\qquad\qquad \textbullet \quad $G^*$ is a normal subgroup of \mG.
+
+\vspace{0.1cm}
+
+\qquad\qquad \textbullet \quad $G / G^*$ is abelian.
+
+\vspace{0.1cm}
+
+And if $H \subset G$ is normal and if $G/H$ is abelian, then $H \supset G^*$.
+
+\vspace{0.1cm}
+
+%%\begin{x}{\small\bf FACT} \ %01
+
+\vspace{0.3cm}
+
+{\small\bf FACT}
+If  $\LL/\K$ is an infinite Galois extension and if $N \subset \Gal(\LL/\K)$ is a normal subgroup, then 
+$\ov{N} \subset \Gal(\LL/\K)$ is a closed normal subgroup. 
+%%\end{x}
+
+
+
+
+
+
+
+

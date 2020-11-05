@@ -1,0 +1,418 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{19}.\quad  L-FUNCTIONS}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+\ \indent 
+Let $\omega:\I/\Q^\times \ra \T$ be a unitary character.
+
+\vspace{0.25cm}
+
+\begin{x}{\small\bf LEMMA} \ %01
+There is a unique unitary character $\un{\omega}$ of $\I/\Q^\times $ of finite order and a unique real number $w$ such that
+\[
+\omega \hsx = \hsx \un{\omega}\acdot_\A^{-\sqrt{-1}\ w}.
+\]
+
+[Note: \  To say that $\un{\omega}$ is of finite order means that there exists a positive integer $n$ such that 
+$\un{\omega}(x)^n = 1$ $\forall$ $x \in \I$.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %02
+\[
+\omega \hsx =\hsx  \prod_p \omega_p \times \omega_\infty,
+\]
+where
+\[
+\omega_p \hsx =\hsx  \un{\omega}_p \acdot_p^{-\sqrt{-1}\ w}
+\]
+and
+\[
+\omega_\infty \hsx =\hsx  (\sgn)^\sigma \acdot_\infty^{-\sqrt{-1}\ w}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %03
+\[
+L(\omega,s) = \prod_p L(\omega_p,s) \times L(\omega_\infty,s).
+\]
+\end{x}
+
+\begin{x}{\small\bf RAPPEL} \ %04
+\[L(\omega_p,s) =\ 
+\begin{cases}
+\ (1 - \omega_p(p)p^{-s})^{-1}   \quad (\un{\omega}_p = 1)\\
+\ 1  \qquad \qquad\qquad \qquad  (\un{\omega}_p \ne 1)
+\end{cases}
+\quad (\text{cf.} \ \S18, \ \#8).
+\]
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------02
+
+[Note: \  The set $S_\omega$ of primes for which $\un{\omega}_p \ne 1$ is finite.$]$
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SUBLEMMA} \ %05
+\[
+\abs{x} < 1 \implies \log (1 - x) = -\sum_{k = 1}^\infty \frac{x^{k}}{k}.
+\]
+Therefore
+\begin{align*}
+\abs{x} > 1 \implies  \log \frac{1}{1 - x^{-1}}
+&=  \log 1 - \log (1 - x^{-1})\\
+&=  -\bigl( -\sum_{k = 1}^\infty \frac{x^{-k}}{k}\bigr)\\
+&=  \sum_{k = 1}^\infty \frac{x^{-k}}{k}.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf \un{N.B.}} \ %06
+\[
+\log f(z) = \log \abs{f(z)} + \sqrt{-1} \  \arg f(z) 
+\]
+\qquad \qquad\qquad \qquad$\implies$
+\[
+\Re \log f(z) = \log \abs{f(z)}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf LEMMA} \ %07
+The product
+\[
+\prod_p L(\omega_p,s)
+\]
+is absolutely convergent provided $\Re (s) > 1$.
+
+\vspace{0.1cm}
+
+PROOF \ 
+Ignoring $S_\omega$ $($a finite set$)$, it is a question of estimating
+\[
+\prod \frac{1}{\abs{ 1 - \omega_p(p) p^{-s}}}.
+\]
+%%----------------------------------------------------------------------------------------------03
+So take its logarithm and consider
+\allowdisplaybreaks
+\begin{align*}
+\sum \log \bigl(\frac{1}{\abs{ 1 - \omega_p(p) p^{-s}}}\bigr) \ 	
+&=\  \sum \Re \log \bigl(\frac{1}{ 1 - \omega_p(p) p^{-s}}\bigr)\\
+&\\
+&=\  \Re \sum \log \bigl(\frac{1}{ 1 - \omega_p(p) p^{-s}}\bigr)\\
+&\\	
+&=\  \Re \sum \sum_{k = 1}^\infty \frac{\omega_p(p)^k p^{-ks}}{k}.	
+\end{align*}
+The claim then is that the series
+\[
+\sum \sum_{k = 1}^\infty \frac{\omega_p(p)^k p^{-ks}}{k}
+\]
+is absolutely convergent.  
+But
+\[
+\sum \sum_{k = 1}^\infty \abs{\frac{\omega_p(p)^k p^{-ks}}{k}} \ =\   \sum \sum_{k = 1}^\infty \frac{p^{-k\Re(s)}}{k}
+\]
+which is bounded by
+
+\allowdisplaybreaks
+\begin{align*}
+\sum\limits_p \sum_{k = 1}^\infty \frac{p^{-k\Re(s)}}{k} \ 
+&=\vsx\  \sum\limits_p \sum_{k = 1}^\infty \frac{p^{-k(1 + \delta)}}{k}	\qquad (\Re(s) = 1 + \delta)\\	
+&\le\vsx \sum\limits_p \sum_{k = 1}^\infty p^{-k(1 + \delta)}\\	
+&=\vsx\  \sum\limits_p \frac{p^{-(1 + \delta)}}{1 - p^{-(1 + \delta)}}\\	
+&=\vsx\  \sum\limits_p \frac{1}{p^{1 + \delta}(1 - p^{-(1 + \delta)})}\\	
+&=\vsx\  \sum\limits_p \frac{1}{p^{(1 + \delta)} - 1}\\	
+&\le\vsx\  2 \ \sum\limits_p \frac{1}{p^{1 + \delta}}\\	
+&<\vsx \  \infty.
+\end{align*}
+\end{x}
+
+\begin{x}{\small\bf EXAMPLE} \ %08
+Take $\omega = 1$ $-$then
+\begin{align*}
+L(\omega,s) \ 
+&=\  \prod_p \frac{1}{1 - p^{-s}} \times \Gamma_\R(s)\\ 
+&=\  \pi^{-s/2} \Gamma(s/2) \zeta(s).
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %09
+$L(\omega,s)$ is a holomorphic function of $s$ in the strip $\Re(s) > 1.$
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %10
+$L(\omega,s)$ admits a meromorphic continuation to the whole $s$-plane (see below).
+\end{x}
+
+\vspace{0.1cm}
+
+\allowdisplaybreaks
+
+Owing to \S17, \#4, $\forall$ $f \in \sB_\infty(\A)$, 
+\allowdisplaybreaks
+\[
+Z(f,\omega,s) \hsx = \hsx Z(\hat{f},\ov{\omega},1-s).
+\]
+%%----------------------------------------------------------------------------------------------05
+To exploit this, assume that 
+\[
+f \ = \ \prod_p \ f_p \times f_\infty,
+\]
+where $\forall \ p$, $f_p \in \sB(\Q_p)$ and $f_p = \chi_{\Z_p}$ for all but a finite number of $p$, while 
+$f_\infty \in \sS(\R)$ $-$then 
+\begin{align*}
+Z(f,\omega,s) \ 
+&= \ \int_\I f(x) \omega(x) \abs{x}_\A^s d^\times x\\
+&= \ \prod_p \ \int\limits_{\Q_p^\times} f_p(x_p) \omega_p(x_p) \abs{x_p}_p^s d^\times x_p 
+\times 
+\int\limits_{\R^\times} f_\infty(x_\infty)\omega_\infty(x_\infty) \abs{x_\infty}_\infty^s d^\times x_\infty\\
+&= \ \prod_p Z(f_p,\omega_p,s) \times Z(f_\infty,\omega_\infty,s)
+\end{align*}
+and analogously for $Z(\widehat{f},\ov{\omega}, 1 - s)$.
+
+\vspace{0.1cm}
+
+Therefore
+%%----------------------------------------------------------------------------------------------06 (ish)
+\allowdisplaybreaks
+\begin{align*}
+\allowdisplaybreaks
+1 \ 
+&=\vsx\ \frac{Z(f,\omega,s)}{Z(\widehat{f},\ov{\omega}, 1 - s)} \\
+&=\vsx \ \prod_p 
+\frac{Z(f_p,\omega_p,s)}{Z(\widehat{f}_p,\ov{\omega}_p, 1 - s)} \times 
+\frac{Z(f_\infty,\omega_\infty,s)}{Z(\widehat{f}_\infty,\ov{\omega}_\infty, 1 - s)}\\
+&=\vsx \ \prod_p \rho(\omega_p,s) \times \rho(\omega_\infty,s)\\
+&=\vsx \ \prod_{p \notin S_\omega} \rho(\omega_p,s) \times 
+\prod_{p \in S_\omega} \rho(\omega_p,s) \times \rho(\omega_\infty,s)\\
+%%----------------------------------------------------------------------------------------------06
+&=\vsx \ \prod_{p \notin S_\omega} \frac{L(\omega_p,s)}{L(\ov{\omega}_p,1-s)} \times 
+\prod_{p \in S_\omega} \rho(\omega_p,s) \times \frac{L(\omega_\infty,s)}{L(\ov{\omega}_\infty,1-s)}\\
+&=\vsx \ 
+\prod_{p \in S_\omega} \rho(\omega_p,s) \times 
+\prod_{p \notin S_\omega} \frac{L(\omega_p,s)}{L(\ov{\omega}_p,1-s)} \times
+\prod_{p \in S_\omega} \frac{L(\omega_p,s)}{L(\ov{\omega}_p,1-s)} \times \frac{L(\omega_\infty,s)}{L(\ov{\omega}_\infty,1-s)}\\
+&=\vsx \ \prod_{p \in S_\omega} \rho(\omega_p, s) \times 
+\prod_p 
+\frac{L(\omega_p,s)}{L(\ov{\omega}_p,1-s)} \times 
+\frac{L(\omega_\infty,s)}{L(\ov{\omega}_\infty,1-s)}\\
+&=\vsx \ \prod_{p \in S_\omega} \rho(\omega_p, s) \times 
+\ds\frac
+{\ds\prod\limits_p L(\omega_p,s) \times L(\omega_\infty,s)}
+{\ds\prod\limits_p L(\ov{\omega}_p,1-s) \times L(\ov{\omega}_\infty,1-s)}\\
+&=\vsx \ \prod_{p \in S_\omega} \rho(\omega_p, s) \times \frac{L(\omega,s)}{L(\ov{\omega},1-s)}\\
+&=\vsx \ \prod_{p \in S_\omega} \varepsilon(\omega_p, s) \times \frac{L(\omega,s)}{L(\ov{\omega},1-s)}
+\qquad\qquad (\text{cf.} \ \S12, \ \#11)\\
+&=\vsx \ \varepsilon(\omega, s) \times \frac{L(\omega,s)}{L(\ov{\omega},1-s)},
+\end{align*}
+where 
+\[
+\varepsilon(\omega, s) \ = \ \prod\limits_{p \in S_\omega} \ \varepsilon(\omega_p, s).
+\]
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf THEOREM} \ %11
+\[
+L(\ov{\omega}, 1 - s) \ = \ \varepsilon(\omega, s) \ L(\omega,s).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %12
+Take $\omega = 1$ (cf. \# 8) $-$then $\varepsilon(\omega,s) = 1$ and
+\[
+L(\ov{\omega}, 1 - s) \ = \ L(\omega,s)
+\]
+\end{x}
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------07
+translates into 
+\[
+\pi^{-(1-s)/2} \Gamma((1-s)/2) \zeta(1-s) \ = \ \pi^{-s/2}\Gamma(s/2) \zeta(s) \qquad (\text{cf.} \ \# 16).
+\]
+\vspace{0.1cm}
+
+Make the following explicit choice for 
+\[
+f \ = \ \prod_p \ f_p \times f_\infty.
+\]
+
+\qquad \textbullet \quad If $\un{\omega}_p = 1$, let
+\[
+f_p(x_p) \ = \ \chi_p(x_p) \chi_{\Z_p}(x_p).
+\]
+Then
+\[
+Z(f_p,\omega_p,s) \ = \ L(\omega_p,s).
+\]
+
+\qquad \textbullet \quad If $\un{\omega}_p \neq 1$ and deg $\omega_p = n \geq 1$, let
+\[
+f_p(x_p) \ = \ \chi_p(x_p) \chi_{p^{-n}\Z_p} (x_p).
+\]
+
+Then 
+\[
+Z(f_p, \omega_p, s) \ = \ \tau(\omega_p) \ \frac{p^{1 + n(s + \sqrt{-1} \ w - 1)}}{p-1} \ L(\omega_p,s).
+\]
+
+At infinity, take 
+\[
+f_\infty(x_\infty)  \ = \ e^{-\pi x_\infty^2} \ (\sigma = 0) \ \ \text{or} \ \  
+f_\infty(x_\infty)  \ = \ x_\infty e^{-\pi x_\infty^2} \ (\sigma = 1).
+\]
+Then
+\[
+Z(f_\infty,x_\infty,s) \ = \ L(\omega_\infty,s).
+\]
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %13
+Put
+\[
+H(\omega,s) \ = \ \prod\limits_{p \in S_\omega} \ \tau(\omega_p) \frac{p^{1 + n(s + \sqrt{-1} \ w - 1)}}{p-1}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+%%----------------------------------------------------------------------------------------------08
+\begin{x}{\small\bf \un{N.B.}} \ %14
+$H(\omega,s)$ is a never zero entire function of $s$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %15
+\[
+Z(f,\omega,s) \ = \  H(\omega,s) L(\omega,s).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+Since $Z(f,\omega,s)$ is a meromorphic function of $s$ (cf. \S17, \#4), it therefore follows that $L(\omega,s)$ is a meromorphic function of $s$.
+
+\vspace{0.1cm}
+
+Working now within the setting of \S17, we distinguish two cases per $\omega$.
+
+\vspace{0.1cm}
+
+1. \quad $\omega$ is nontrivial on $\I^1$, hence $\un{\omega} \neq 1$ and in this situation,  
+$Z(f,\omega,s)$ is a holomorphic function of $s$, hence the same is true of $L(\omega,s)$.
+
+\vspace{0.1cm}
+
+2. \quad $\omega$ is trivial on $\I^1$ $-$then $\omega = \acdot_\A^{-\sqrt{-1} \ w}$ 
+and there are simple poles at 
+\[
+\begin{cases}
+\ s = \sqrt{-1} \  w \quad \text{with residue} \  -f(0) \ \text{if} \ f(0) \neq 0\\
+\ s = \sqrt{-1} \  w + 1 \quad \text{with residue} \  \widehat{f}(0) \ \text{if} \ \widehat{f}(0) \neq 0
+\end{cases}
+.
+\]
+But $\forall \ p$, $\omega_p = \acdot_p^{-\sqrt{-1} \ w}$ ($\implies \un{\omega}_p = 1$), so 
+$f_p(0) = 1$.  
+And likewise $f_\infty(0) = 1$ $(\sigma = 0)$.    
+Conclusion: $f(0) = 1$.  
+As for the Fourier transforms, $\widehat{f}_p = \chi_{\Z_p}$ $\implies$ $\widehat{f}_p(0) = 1$.  
+Also $\widehat{f}_\infty = f_\infty$ $(\sigma = 0)$ $\implies$ $\widehat{f}_\infty(0) = 1$.  
+Conclusion: $\widehat{f}(0) = 1$.  
+The respective residues are therefore $-1$ and 1.
+\vspace{0.2cm}
+
+
+\begin{x}{\small\bf THEOREM} \ %15
+Suppose that 
+$\omega_{1,p} = \omega_{2,p}$ for all but finitely many $p$ and 
+$\omega_{1,\infty} = \omega_{2,\infty}$ $-$then 
+$\omega_1 = \omega_2$.  
+
+\vspace{0.1cm}
+
+PROOF \ 
+Put $\omega = \omega_1 \omega_2^{-1}$, thus $\omega_p = 1$ for all $p$ outside a finite set $S$ of primes, so 
+%%----------------------------------------------------------------------------------------------09
+\begin{align*}
+\allowdisplaybreaks
+L(\omega,s) \ 
+&=\vsx \ \prod_p L(\omega_p,s) \times L(\omega_\infty,s) \\
+&=\vsx \ \prod_{p \in S} L(\omega_p,s) \prod_{p \notin S} L(1_p,s) \times L(1_\infty,s) \\
+&=\vsx\ L(1,s) \ \prod_{p \in S} \frac{L(\omega_p,s)}{L(1_p,s)}\\
+&=\vsx\ L(1,s) \ \prod_{p \in S} \frac{1 - p^{-s}}{1 - \alpha_p p^{-s}},
+\end{align*}
+where 
+$\alpha_p = \omega_p(p)$ if $\un{\omega}_p = 1$ and 
+$\alpha_p = 0$ if $\un{\omega}_p \neq 1$, and each factor 
+\[
+\frac{1 - p^{-s}}{1 - \alpha_pp^{-s}}
+\]
+is nonzero at $s = 0$ and $s = 1$.  
+Therefore $L(\omega,s)$ has a simple pole at $s = 0$ and $s = 1$.  
+Consider the decomposition
+\[
+\omega = \un{\omega} \acdot_\A^{-\sqrt{-1} \ w} \qquad (\text{cf.} \  \S19, \ \#1).
+\]
+Then $\un{\omega} = 1$ since otherwise $L(\omega,s)$ would be holomorphic, which it isn't.  
+But then from the theory, $L(\omega,s)$ has simple poles at
+\[
+\begin{cases}
+\ s = \sqrt{-1} \  w \quad \text{with residue} \  -1\\
+\ s = \sqrt{-1} \  w + 1 \quad \text{with residue} \  1
+\end{cases}
+,
+\]
+thereby forcing $w = 0$, which implies that $\omega = 1$, i.e., $\omega_1 = \omega_2$.   
+
+\vspace{0.1cm}
+
+[Note: \ In the end, $\omega_p = 1$ $\forall \ p$, hence 
+\[
+\prod\limits_{p \in S} \ \frac{1 - p^{-s}}{1 - \alpha_p p^{-s}} \ = \ 
+\prod\limits_{p \in S} \ \frac{1 - p^{-s}}{1 - p^{-s}}  \ = \ 1,
+\]
+as it has to be.]
+\end{x}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

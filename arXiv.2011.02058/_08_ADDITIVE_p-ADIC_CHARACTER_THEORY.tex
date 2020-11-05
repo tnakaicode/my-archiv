@@ -1,0 +1,870 @@
+\chapter{
+$\boldsymbol{\S}$\textbf{8}.\quad  ADDITIVE p-ADIC CHARACTER THEORY}
+\setlength\parindent{2em}
+\setcounter{theoremn}{0}
+%%----------------------------------------------------------------------------------------------01
+
+%\ \indent 
+
+\begin{x}{\small\bf FACT} \ %1
+Every proper closed subgroup of $\T$ is finite.
+\end{x}
+
+\vspace{0.1cm}
+
+Suppose that $G$ is compact abelian and totally disconnected.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %2
+If $\chi \in \widehat{G}$, then the image $\chi(G)$ is a finite subgroup of $\T$.
+
+\vspace{0.1cm}
+
+PROOF \  $\ker \chi$ is closed and 
+\[
+\chi(G) \thickapprox G / \ker \chi.
+\]
+But the quotient $G / \ker \chi$ is 0-dimensional, hence totally disconnected.  
+Therefore $\chi(G)$ is totally disconnected.  
+Since $\T$ is connected, it follows that $\T \ne \chi(G)$, thus $\chi(G)$ is finite.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %3
+The torsion of $\R/\Z$ is $\Q/\Z$, so $\chi$ factors through the inclusion
+\[
+\Q/\Z \hookrightarrow \R/\Z, \quad \text{i.e., } \chi(G) \subset \Q/\Z.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+The foregoing applies in particular to $G = \Z_p$.
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %4
+Every character of $\Q_p$ is unitary.
+
+\vspace{0.1cm}
+
+PROOF \   This is because
+\[
+\Q_p \ = \  \bigcup_{n \in \Z} p^n \Z_p,
+\]
+where the $p^n \Z_p$ are compact, thus $\S7$, $\# 7$ is applicable.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %5
+If $\chi \in \widehat{\Q}_p$ is nontrivial, then there exists an $n \in \Z$ such that $\chi \equiv 1$ on $p^n\Z_p$ but $\chi \not\equiv 1$ on $p^{n-1}\Z_p$.
+
+\vspace{0.1cm}
+
+PROOF \  Consider a ball $B$ of radius $\frac{1}{2}$ about 1 in 
+$\C^\times$ $-$then the only subgroup of  $\C^\times$ contained in $B$ is the trivial subgroup and, by continuity, $\chi(p^n \Z_p)$ must be inside $B$ for all sufficiently large $n$, thus must be 
+%%----------------------------------------------------------------------------------------------02
+identically 1 there.
+%\\
+%$\hfill \blacksquare$
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %6
+The 
+\un{conductor}
+\index{conductor} 
+$\con \chi$ of a nontrivial $\chi \in \widehat{\Q}_p$ is the largest subgroup $p^n \Z_p$ 
+on which $\chi$ is trivial (and $n$ is the minimal integer with this property).
+
+\vspace{0.2cm}
+
+A typical $x \ne 0$ of $\Q_p$ has the form
+\begin{align*}
+x \ 
+&=\  \sum_{n = v(x)}^\infty a_n p^n \qquad ( a_n \in \sA, v(x) \in \Z) \\
+&=\  f(x) + [x].
+\end{align*}
+Here the 
+\un{fractional part}
+\index{fractional part} 
+f(x) of $x$ is defined by the prescription
+\[
+f(x) \ = \ 
+\begin{cases}
+\sum\limits_{n = v(x)}^{-1} a_np^n \quad \ \   \text{if} \  v(x) < 0\\
+0  \qquad\qquad\qquad \text{if} \ v(x) \geq 0
+\end{cases}
+\]
+and the 
+\un{integral part} 
+\index{integral part} 
+$[x]$ of $x$ is defined by the prescription
+\[
+[x] = \sum_{n = 0 }^\infty a_np^n,
+\]
+with $f(0) = 0$, $[0] = 0$ by convention.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %7
+\[
+f(x) \in \Z\bigl[\frac{1}{p}\bigr] \subset \Q,
+\]
+where
+\[
+\Z\bigl[\frac{1}{p}\bigr] = \{\frac{n}{p^k}: n \in \Z, k \in \Z\},
+\]
+%%----------------------------------------------------------------------------------------------03
+while $[x] \in \Z_p$.
+\end{x}
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf OBSERVATION} \ %8
+\begin{align*}
+0 \ 
+&\leq \ f(x) \\
+&= \ \sum\limits_{1 \le j \le -v(x)} \frac{a_{-j}}{p^j} \\
+&<\  (p-1) \sum_{j = 1}^\infty \frac{1}{p^j}\\ 
+&=\  1 
+\end{align*}
+\qquad\qquad\qquad\qquad$\implies$
+\[
+f(x) \in [0,1[ \ \cap \  \Z\bigl[\frac{1}{p}\bigr].
+\]
+
+Let $\mu_{p^\infty}$ stand for the group of roots of unity in $\C^\times$ having order a power of $p$, 
+thus $\mu_{p^\infty}$ is a $p$-group and there is an increasing sequence of cyclic groups
+\[
+\begin{cases}
+\mu_p \subset \mu_{p^2} \subset \cdots \subset \mu_{p^k} \subset  \cdots \\
+\mu_{p^\infty} = \bigcup\limits_{k \ge 0}  \mu_{p^k} 
+\end{cases}
+,
+\]
+where
+\[
+ \mu_{p^k}  = \{z \in \C^\times : z^{p^k} = 1\}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %9
+Denote by $\mu$ the group of all roots of unity in $\C^\times$, hence
+\[
+\mu = \bigcup\limits_{m \ge 1}  \mu_m, \quad \mu_m = \{z \in \C^\times : z^m = 1\}.
+\]
+Then $\mu$ is an abelian torsion group and $\mu_{p^\infty}$ is the $p$-Sylow subgroup of $\mu$, 
+i.e., the maximal $p$-subgroup of $\mu$.
+\vspace{0.2cm}
+
+%%----------------------------------------------------------------------------------------------04
+Put
+\[
+\chi_p(x) = \exp(2\pi \sqrt{-1} \ f(x)) \qquad ( x \in \Q_p).
+\]
+Then
+\[
+\chi_p: \Q_p \ra \T
+\]
+and $\Z_p \subset \ker \chi_p$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf EXAMPLE} \ %10
+Suppose that $v(x) = -1$, so $x = \ds\frac{k}{p} + y$ with $0 < k \le p-1$ and $y \in \Z_p:$
+\[
+\chi_p(x) = \exp(2\pi \sqrt{-1} \ \frac{k}{p}) = \zeta^k,
+\]
+where $\zeta = \exp(2\pi \sqrt{-1}/p)$ is a primitive $p^{th}$ root of unity.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %11
+$\chi_p$ is a unitary character
+
+\vspace{0.1cm}
+
+PROOF \  Given $x, y \in \Q_p$, write
+\begin{align*}
+f(x+y) - f(x) - f(y) \ 
+&=\  x + y - [x+y] - (x - [x]) - (y - [y]) \\
+&=\  [x] + [y] - [x+y] \in \Z_p.
+\end{align*}
+But at the same time
+\[
+f(x+y) - f(x) - f(y) \in \Z\bigl[\frac{1}{p}\bigr].
+\]
+Thus
+\[
+f(x+y) - f(x) - f(y) \in \Z\bigl[\frac{1}{p}\bigr] \cap \Z_p = \Z
+\]
+and so
+\[
+\exp(2\pi \sqrt{-1} \ (f(x + y) - f(x) - f(y)) = 1
+\]
+%%----------------------------------------------------------------------------------------------05
+or still, 
+\[
+\chi_p(x + y) = \chi_p(x) \chi_p(y).
+\]
+Therefore $\chi_p : \Q_p \ra \T$ is a homomorphism.  
+As for continuity, it suffice to check this at 0, matters then being clear $($since $\chi_p$ is trivial in a neighborhood of 0$)$ 
+$(\Z_p$ is open and $0 \in  \Z_p)$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %12
+The kernel of $\chi_p$ is $\Z_p$.
+
+\vspace{0.1cm}
+
+[A priori, the kernel of $\chi_p$ consists of those $x \in \Q_p$ such that $f(x) \in \Z$.  
+Therefore
+\[
+\con  \chi_p = \Z_p.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %13 
+The image of $\chi_p$ is $\mu_{p^\infty}$.
+
+\vspace{0.1cm}
+
+[A priori, the image of $\chi_p$ consists of the complex numbers of the form
+\[
+\exp( 2\pi \sqrt{-1} \ \frac{k}{p^m}) \ = \ \exp(2\pi \sqrt{-1}/p^m)^k.
+\]
+Since $\exp(2\pi \sqrt{-1}/p^m)$ is a root of unity of order $p^m$, these roots generate $\mu_{p^\infty}$ 
+as $m$ ranges over the positive integers.]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf SCHOLIUM} \ %14
+$\chi_p$ implements an isomorphism
+\[
+\Q_p/\Z_p \thickapprox \mu_{p^\infty}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf REMARK} \ %15
+%%----------------------------------------------------------------------------------------------06
+\begin{align*}
+x \in p^{-k}\Z_p	&\Leftrightarrow p^{k}x \in \Z_p\\	
+								&\Leftrightarrow \chi_p(p^{k}x) = 1\\
+								&\Leftrightarrow \chi_p(x)^{p^k} = 1\\
+								&\Leftrightarrow \chi_p(x) \in \mu_{p^k}.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ %16
+Let $p$ be a prime $-$then a group is 
+\un{$p$-primary}
+\index{$p$-primary group} 
+if every element has order a power of $p$.
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf RAPPEL} \ %17
+Every abelian torsion group $G$ is a direct sum of its $p$-primary subgroups $G_p$.
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: \ The $p$-primary component of $G_p$ is the $p$-Sylow subgroup of $G$.]
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf NOTATION} \ %18
+$\Z(p^\infty)$ is the $p$-primary component of  $\Q /  \Z$.  
+
+Therefore
+\[
+\Q / \Z \ \thickapprox \ \bigoplus_p \ \Z(p^\infty).
+\]
+\end{x}
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %19
+$\Z(p^\infty)$ is isomorphic to $\mu_{p^\infty}$.
+
+\vspace{0.1cm}
+
+[$\Z(p^\infty)$ is generated by the $1/p^n$ in $\Q /  \Z$.]
+
+\vspace{0.2cm}
+
+Therefore
+\[
+\Q /  \Z \ \thickapprox \ \bigoplus_p \  \mu_{p^\infty} \ \thickapprox \ \bigoplus_p \  \Q_p /  \Z_p.
+\]
+
+[Note: Consequently, 
+\begin{align*}
+\End(\Q / \Z)	\ 
+&\thickapprox \ \End \bigl(\bigoplus\limits_p \ \Q_p /  \Z_p\bigr)\\	
+&\thickapprox \ \prod\limits_p \End(\Q_p /  \Z_p)\\	
+&\thickapprox \ \prod \limits_p \Z_p.]
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------07 ish
+
+
+\begin{x}{\small\bf REMARK} \ %20
+$\widehat{\Z}_p$ is isomorphic to $\mu_{p^\infty}$ (c.f. $\# 26$ infra).
+\end{x}
+
+\vspace{0.1cm}
+
+
+Given $t \in \Q_p$, let $L_t$ be left multiplication by $t$ and put $\chi_{p,t} = \chi_p \circ L_t$ 
+$-$then $\chi_{p,t}$ is continuous and $\forall \ x \in \Q_p$,
+\[
+\chi_{p,t}(x) = \chi_p(tx).
+\]
+
+[Note: Trivially, $\chi_{p,0} \equiv 1$.  And $\forall$ $t \ne 0$, 
+\[
+\con \chi_{p,t} = p^{-v(t)}\Z_p.
+\]
+
+Proof: \ 
+\begin{align*}
+x \in \text{ con }\chi_{p,t}\ 	
+&\Leftrightarrow\  tx \in  \Z_p\\			
+&\Leftrightarrow\  \abs{tx}_p \le 1\\
+&\Leftrightarrow\  \abs{x}_p \le \frac{1}{\abs{t}_p} = p^{v(t)}\\
+&\Leftrightarrow\  x \in p^{-v(t)} \Z_p.]	
+\end{align*}
+Next
+\begin{align*}
+\chi_{p,t}(x+y)	\  
+&=\  \chi_p(t(x+y))\\	
+&=\  \chi_p(tx+ty)\\	
+&=\  \chi_p(tx)\chi_p(ty)\\		
+&=\   \chi_{p,t}(x)\chi_{p,t}(y).
+\end{align*}
+%%----------------------------------------------------------------------------------------------08
+Therefore $\chi_{p,t} \in \widehat{\Q}_p$.
+
+Next
+\begin{align*}
+\chi_{p,t+s}(x)	\ 
+&= \ \chi_p((t+s)x)\\	
+&= \ \chi_p(tx+sx)\\	
+&= \ \chi_p(tx)\chi_p(sx)\\		
+&= \ \chi_{p,t}(x)\chi_{p,s}(x).
+\end{align*}
+Therefore the arrow
+\begin{align*}
+\Xi_p:\Q_p	&\ra \widehat{\Q}_p\\	
+t &\mapsto \chi_{p,t}
+\end{align*}
+is a homomorphism.
+
+\vspace{0.2cm}
+											
+\begin{x}{\small\bf LEMMA} \ %21
+If $t\ne s$, then $\chi_{p,t} \ne \chi_{p,s}$.
+
+\vspace{0.1cm}
+
+PROOF \  If to the contrary, $\chi_{p,t} = \chi_{p,s}$, then $\forall$ $x \in \Q_p$, $\chi_p(tx) = \chi_p(sx)$ or still, 
+$\forall$ $x \in \Q_p$, $\chi_p((t-s)x) = 1$. 
+But $L_{t-s}: \Q_p \ra \Q_p$ is an automorphism, hence $\chi_p$ is trivial, which it isn't.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %22
+The set
+\[
+\Xi_p(\Q_p) \ = \  \{\chi_{p,t}: t \in \Q_p\}
+\]
+is dense in $\widehat{\Q}_p$.
+
+\vspace{0.1cm}
+
+PROOF \  Let $H$ be the closure in $\widehat{\Q}_p$ of the $\chi_{p,t}$.  
+Consider the quotient $\widehat{\Q}_p/H$.  
+To get a contradiction, assume that $H \ne\widehat{\Q}_p$, 
+thus that there is a nontrivial $\xi \in \widehat{\widehat{\Q}}_p$ which is trivial on $H$.   
+By definition, $H^\perp$ is computed in $\widehat{\widehat{\Q}}_p$, which by Pontryagin duality, is 
+%%----------------------------------------------------------------------------------------------09
+identified with $\Q_p$, so spelled out
+\[
+H^\perp = \{x \in \Q_p: \ev_{\Q_p}\restr{(x)}{H} = 1\}.
+\]
+Accordingly, for some $x$, $\xi=  \ev_{\Q_p}(x)$, hence $\forall \ t$, 
+\begin{align*}
+\xi(\chi_{p,t}) \ 
+&=\  \ev_{\Q_p}(x)(\chi_{p,t})  \\
+&=\  \chi_{p,t}(x) \\
+&=\  \chi_p(tx) \\
+&= 1,
+\end{align*}
+which is possible only if $x = 0$ and this implies that $\xi$ is trivial.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %23
+The arrows
+\[
+\begin{cases}
+\Q_p	\ra \Xi_p(\Q_p)\\	
+\Xi_p(\Q_p)\ra  \Q_p\
+\end{cases}
+\]
+are continuous.
+\end{x}
+
+
+Therefore $\Xi(\Q_p)$ is a locally compact subgroup of $\widehat{\Q}_p$.  
+But a locally compact subgroup of a locally compact group is closed.  
+Therefore $\Xi_p(\Q_p) = \widehat{\Q}_p$. 
+
+In summary$:$
+\begin{x}{\small\bf THEOREM} \ %24
+$\widehat{\Q}_p$ is topologically isomorphic to $\Q_p$ via the arrow
+\[
+\Xi_p:\Q_p		\ra  \widehat{\Q}_p.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %25
+Fix $t$ $-$then $\restr{\chi_{p,t}}{\Z_p} = 1$ iff $t \in \Z_p$.
+
+\vspace{0.1cm}
+
+PROOF \  Recall that the kernel of $\chi_p$ is $\Z_p$.
+%%----------------------------------------------------------------------------------------------10 ish
+\[
+\begin{aligned}
+&\text{\textbullet} \quad t \in \Z_p, \ x \in \Z_p \implies tx \in \Z_p \implies \chi_p(tx) = 1 \implies \restr{\chi_{p,t}}{\Z_p} = 1.\\
+&\text{\textbullet} \quad \restr{\chi_{p,t}}{\Z_p} = 1 \implies \chi_{p,t}(1) = 1 \implies \chi_p(t) = 1 \implies t \in \Z_p.
+\end{aligned}
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %26
+$\widehat{\Z}_p$ is isomorphic to $\mu_{p^\infty}$.
+
+\vspace{0.1cm}
+
+$[\widehat{\Z}_p$ can be computed as $\widehat{\Q}_p/\Z_p^\perp$.  
+But $\Z_p^\perp$, when viewed as a subset of $\Q_p$, consists of those $t$ such that $\restr{\chi_{p, t}}{\Z_p} = 1.$ 
+Therefore 
+\[
+\widehat{\Z}_p \ 
+\thickapprox \ \widehat{\Q}_p/\Z_p \ 
+\thickapprox \ \Q_p /\Z_p \ 
+\thickapprox \ \mu_{p^\infty}.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+
+\begin{x}{\small\bf NOTATION} \ %27
+Let
+\[
+x_\infty(x) = \exp(-2\pi \sqrt{-1} \  x) \qquad (x \in \R).
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\index{Product principle}
+\begin{x}{\small\bf PRODUCT PRINCIPLE} \ %28
+$\forall$ $x \in \Q$,
+\[
+\prod_{p \le \infty} \chi_p(x) \ = \ 1.
+\]
+
+\vspace{0.1cm}
+
+PROOF \  Take $x$ positive $-$then there exist primes $p_1, \cdots, p_n$ such that $x$ admits a representation
+\[
+x \ = \ 
+\frac{N_1}{p_1^{\alpha_1}} + 
+\frac{N_2}{p_2^{\alpha_2}} + \cdots + 
+\frac{N_n}{p_n^{\alpha_n}} + M,
+\]
+where the $\alpha_k$ are positive integers, the $N_k$ are positive integers 
+$(1 \le N_k < p_k^{\alpha_k} - 1)$, and $M \in \Z$.  
+Appending a subscript to $f$, we have
+\[
+f_{p_k}(x) \ = \ 
+\frac{N_k}{p_k^{\alpha_k}}, \quad f_p(x) = 0 \quad (p \ne p_k, \ k = 1, 2, \ldots, n).
+\]
+Therefore
+%%----------------------------------------------------------------------------------------------11 ish
+\begin{align*}
+\prod_{p < \infty} \chi_p(x) \ 	
+&= \  \prod_{1 \le k \le n} \chi_{p_k}(x)\\	
+&= \  \prod_{1 \le k \le n} \exp(2\pi\sqrt{-1}\ 	 f_{p_k}(x))\\
+&= \  \exp(2\pi\sqrt{-1}\ 	 \sum_{k = 1}^n f_{p_k}(x))\\
+&= \  \exp(2\pi\sqrt{-1}\ 	 (x - M))\\
+&= \  \exp(2\pi\sqrt{-1}\ 	 x)
+\end{align*}
+\qquad\qquad$\implies$
+\begin{align*}
+\prod_{p \le \infty} \chi_p(x) \ 	
+&=\ \prod_{p < \infty} \chi_p(x) \chi_\infty (x) \\	
+&=\ \exp(2\pi\sqrt{-1}\ 	 x) \exp(-2\pi\sqrt{-1}\ 	 x)\\							
+&=\ 1.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+%%%%%%%%%%%%%%%%%%%
+%%%%%
+
+\[
+\textbf{APPENDIX}
+\]
+\setcounter{theoremn}{0}
+
+Let $\K$ be a finite extension of $\Q_p$.
+\vspace{0.25cm}
+
+\begin{x}{\small\bf THEOREM} \ %1
+The topological groups $\K$ and $\widehat{\K}$ are topologically isomorphic.
+
+\vspace{0.1cm}
+
+[Put
+\begin{align*}
+\chi_{\K,p}(a) \ 
+&=\  \exp(2\pi \sqrt{-1} \ f(\tr_{\K/\Q_p}(a)))\\
+&=\ \chi_p(\tr_{\K/\Q_p}(a))
+\end{align*}
+and given $b \in \K$, put
+\[
+\chi_{\K,p,b}(a) = \chi_{\K,p}(ab).
+\]
+Proceed from here as above.]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------12
+
+\begin{x}{\small\bf REMARK} \ %2
+Every character of $\K$ is unitary.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %3
+\[
+\begin{cases}
+\ a \in R 	&\implies \tr_{\K/ \Q_p}(a) \in \Z_p\\	
+\ a \in P &\implies \tr_{\K/ \Q_p}(a) \in p\Z_p	
+\end{cases}
+.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf DEFINITION} \ %4
+The 
+\un{differential of $\K$}
+\index{differential of $\K$} 
+is the set
+\[
+\Delta_\K = \{b \in \K:\tr_{\K/ \Q_p}(R b) \subset \Z_p\}.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %5
+$\Delta_\K$ is a proper $R$-submodule of $\K$ containing $R$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %6
+There exists a unique nonnegative integer $d$ 
+$-$\un{the differential exponent} \un{of $\K$}
+\index{the differential exponent of $\K$} 
+$-$characterized by the condition that
+\[
+\pi^{-d}R = \Delta_\K.
+\]
+
+[This follows from the theory of "fractional ideals" $($details omitted$)$.]
+\end{x}
+
+\vspace{0.1cm}
+
+[Note: $\chi_{\K,p}$ is trivial on $\pi^{-d}R$ but is nontrivial on $\pi^{-d-1}R.]$
+
+\vspace{0.2cm}
+
+\begin{x}{\small\bf LEMMA} \ %7
+Let $e$ be the ramification index of $\K$ over $\Q_p$ (cf. $\S5$, $\#17)$ $-$ then
+\[
+a \in P^{-e+1} \implies \tr_{\K/ \Q_p}(a) \in \Z_p.
+\]
+
+\vspace{0.1cm}
+
+PROOF \  Let
+\[
+a \in P^{-e+1} = \pi^{-e+1}R = \pi^{-e}(\pi R) =  \pi^{-e}P,
+\]
+%%----------------------------------------------------------------------------------------------13
+so $a = \pi^{-e}b \ (b \in P)$.  
+Write $p = \pi^eu$ and consider $pa$:
+\[
+pa = \pi^eu\pi^{-e}b = ub.
+\]
+But
+\begin{align*}
+\abs{u} = 1, \  \abs{b} < 1 	\ 
+&\implies\  \abs{ub} < 1\\	
+&\implies\  ub \in P\\
+&\implies\  \tr_{\K/ \Q_p}(ub) \in p\Z_p\\
+&\implies\  \tr_{\K/ \Q_p}(pa) \in p\Z_p\\
+&\implies\  p\tr_{\K/ \Q_p}(a) \in p\Z_p\\
+&\implies\  \tr_{\K/ \Q_p} \in \Z_p.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf APPLICATION} \ %8
+\[
+d \ge e-1.
+\]
+
+[It suffices to show that
+\[
+P^{-e+1} \subset \Delta_\K \quad  (\equiv \pi^{-d}R).
+\]
+Thus let $a \in  P^{-e+1}$, say $a = \pi^eb$  $(b \in P)$, and let $r \in R$ $-$then the claim is that
+\[
+\tr_{\K/ \Q_p}(ar) \in \Z_p.
+\]
+But
+\[
+ar = \pi^{-e}br \in \pi^e P \quad (\abs{br} < 1)
+\]
+or still,
+\[
+ar \in P^{-e+1} \implies \tr_{\K/ \Q_p}(ar) \in \Z_p.]
+\]
+\end{x}
+
+\vspace{0.1cm}
+%%----------------------------------------------------------------------------------------------14
+
+\begin{x}{\small\bf REMARK} \ %9
+Therefore $d = 0 \implies e = 1$, hence in this situation, $\K$ is unramified.
+
+[Note: There is also a converse, viz. if $\K$ is unramified, then $d = 0.$]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf \un{N.B.}} \ %10
+It can be shown that
+\[
+\tr_{\K/ \Q_p}(R) = \Z_p \ \text{ iff } \ d = e-1.
+\]
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf CRITERION} \ %11
+Fix $b \in \K$ $-$then
+\[
+b \in \Delta_\K \Leftrightarrow \forall \  a \in R, \ \chi_{\K,p}(ab) = 1.
+\]
+
+\vspace{0.1cm}
+
+PROOF \ 
+
+\indent\indent \textbullet \quad 
+$a \in R, b \in \Delta_\K  \ \implies\  ab \in \Delta_\K$
+
+$\indent\indent\indent\indent\indent\implies\  \tr_{\K/ \Q_p}(ab) \in \Z_p$
+
+$\indent\implies$
+\[
+\chi_{\K,p}(ab) = \chi_p(\tr_{\K/ \Q_p}(ab)) = 1.
+\]
+\indent\indent\textbullet \quad 
+$\forall \ a \in R, \ \chi_{\K,p}(ab) = 1$ 
+
+$\indent\implies\ \forall \ a \in R, \  \tr_{\K/ \Q_p}(ab) \in \Z_p$
+
+$\indent\implies\  b \in \Delta_\K$.
+
+Normalize Haar measure on $\K$ by the condition
+\[
+\mu_\K(R) = \int_{R} da = q^{-d/2}.
+\]
+Let $\chi_R$ be the characteristic function of $R$ $-$then
+%%----------------------------------------------------------------------------------------------15
+\[
+\int_\K \chi_R(a) \chi_{\K,p}(ab) da = \int_R \chi_{\K,p}(ab)da.
+\]
+
+\indent\indent\textbullet \quad 
+$b \in \Delta_\K \implies \chi_{\K,p}(ab) = 1 \quad (\forall$ $a \in R)$
+
+$\hspace{2.65cm} \implies \int_R\chi_{\K,p}(ab)da = \mu_\K(R) = q^{-d/2}$.
+
+\indent\indent\textbullet \quad 
+$b \notin \Delta_\K \implies \chi_{\K,p}(ab) \ne 1$ $(\exists$ $a \in R)$  
+
+$\hspace{2.65cm}\implies \int_R\chi_{\K,p}(ab)da = 0$.
+
+
+\text{}\\
+Consequently, as a function of $b$,
+\[
+\int_R\chi_{\K,p}(ab)da =q^{-d/2} \chi_{\Delta_\K} (b),
+\]
+$\chi_{\Delta_\K}$ the characteristic function of $\Delta_\K$.
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %12
+\[
+[\pi^{-d}R:R] = q^d.
+\]
+Therefore
+\begin{align*}
+\mu_\K(\Delta_\K) \ 
+&=\  \mu_\K(\pi^{-d}R)\\	
+&=\  q^d\mu_\K(R)\\
+&= q^d q^{-d/2}\\								
+&=\  q^{d/2}.
+\end{align*}
+\end{x}
+
+\vspace{0.1cm}
+
+\begin{x}{\small\bf LEMMA} \ %13
+$\forall$ $a \in \K$,
+\[
+\int_\K q^{-d/2} \chi_{\Delta_\K} (b) \chi_{\K,p} (ab) db = \chi_R(a).
+\]
+
+\vspace{0.1cm}
+
+%%----------------------------------------------------------------------------------------------16
+PROOF \  The left hand side reduces to
+\[
+q^{-d/2} \int_{\Delta_\K} \chi_{\K,p} (ab) db
+\]
+and there are two possibilities
+
+\indent\indent\textbullet \quad 
+$a \in R  \implies ab \in \Delta_\K \quad (\forall \ b \in \Delta_\K)$
+
+$\hspace{2.4cm}\implies \tr_{\K/ \Q_p}(ab) \in \Z_p$
+
+$\hspace{2.4cm}\implies \chi_{\K,p}(ab) = 1$
+
+$\indent\implies$
+\begin{align*}
+q^{-d/2} \int_{\Delta_\K} \chi_{\K,p}(ab)db \ 
+&=\  q^{-d/2} \mu_\K(\Delta_\K) \\
+&=\  q^{-d/2} q^{d/2}  \\
+&=\  1.
+\end{align*}
+
+
+\indent\indent\textbullet \quad 
+$a \notin R: \chi_{K,p}(ab) \ne 1 \quad (\exists \  b \in \Delta_\K)$
+
+$\qquad\qquad\implies$
+\[
+q^{-d/2} \int_{\Delta_\K} \chi_{\K,p}(ab)db = 0.
+\]
+
+%$\hspace{2.65cm} q^{-d/2} \int_{\Delta_\K} \chi_{\K,p}(ab)db = 0$.
+%\vspace{0.1cm}
+
+To detail the second point of this proof, work with the normalized absolute value 
+(cf. $\S 6, \ \# 18$) and recall that 
+$\abs{\pi}_K = \ds\frac{1}{q}$ 
+(cf. $\S 5, \ \# 21$).  
+Accordingly, 
+\[
+x \in \pi^n R \Leftrightarrow \abs{x}_\K \le q^{-n}.
+\]
+Fix $a \notin R$ $-$then the claim is that $b \ra \chi_{\K,p}(ab)$ $(b \in \Delta_\K)$ is nontrivial.  
+For
+%%----------------------------------------------------------------------------------------------17 ish
+\begin{align*}
+\chi_{\K,p}(ab) = 1 	\ 
+&\Leftrightarrow\  ab \in \pi^{-d}R\\
+&\Leftrightarrow\  \abs{ab}_\K \le q^d\\
+&\Leftrightarrow\  \abs{a}_\K \abs{b}_\K \le q^d\\
+&\Leftrightarrow\   \abs{b}_\K \le \frac{q^d}{\abs{a}_\K} = q^{d+v(a)}.
+\end{align*}
+But
+\begin{align*}
+a \notin R 	
+&\implies\  v(a) < 0\\
+&\implies\  -v(a) > 0\\
+&\implies\  -d-v(a) > -d\\
+&\implies\ \pi^{-d-v(a)}R \subsetneqq \pi^{-d}R,
+\end{align*}
+a proper containment.
+\end{x}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,171 @@
+\begin{theindex}
+
+  \item $H^\perp$, \hyperpage{7-5}
+  \item $P$, \hyperpage{5-1}
+  \item $R$, \hyperpage{5-1}
+  \item $R^\times$, \hyperpage{5-1}
+  \item $\K_{ur}$, \hyperpage{5-6}
+  \item $\Q_p$, \hyperpage{4-1}
+  \item $\complement_p$, \hyperpage{4-17}
+  \item $\mathbb  {Z} _p$, \hyperpage{4-4}
+  \item $\mathbb  {Z} _p^\times $, \hyperpage{4-4}
+  \item $\mathbf{INV}$, \hyperpage{7-7}
+  \item $\rec_q$, \hyperpage{20-2}
+  \item $\sA$, \hyperpage{4-1}
+  \item $\sB(G)$, \hyperpage{10-2}
+  \item $\sB(\A_{\fin})$, \hyperpage{15-3}
+  \item $\sB_\infty(\A)$, \hyperpage{15-3}
+  \item $n$-dimensional special representation, \hyperpage{24-2}
+  \item $p$-adic absolute value, \hyperpage{1-5}
+  \item $p$-adic integers, \hyperpage{4-4}
+  \item $p$-adic units, \hyperpage{4-5}
+  \item $p$-primary group, \hyperpage{8-5}
+  \item $p\mathbb  {Z} _p$, \hyperpage{4-4}
+
+  \indexspace
+
+  \item absolute value, \hyperpage{1-1}
+  \item absolute values equivalence , \hyperpage{1-2}
+  \item adele class group, \hyperpage{14-3}
+  \item adeles, \hyperpage{14-1}
+
+  \indexspace
+
+  \item Bruhat space, \hyperpage{10-2}, \hyperpage{15-3}
+  \item Bruhat-Schwartz space, \hyperpage{15-3}
+
+  \indexspace
+
+  \item canonical absolute value, \hyperpage{5-4}
+  \item character, \hyperpage{7-1}
+  \item compact open topology, \hyperpage{7-2}
+  \item completely reducible, \hyperpage{22-5}
+  \item conductor, \hyperpage{8-2}, \hyperpage{9-2}
+
+  \indexspace
+
+  \item Deligne representation, \hyperpage{24-1}
+  \item Deligne representation, direct sum, \hyperpage{24-4}
+  \item Deligne representation, indecomposable, \hyperpage{24-6}
+  \item Deligne representation, invariant subspace, \hyperpage{24-5}
+  \item Deligne representation, isomorphic, \hyperpage{24-5}
+  \item Deligne representation, semisimple, \hyperpage{24-6}
+  \item Deligne representation, tensor product, \hyperpage{24-4}
+  \item Deligne representations, contragredient, \hyperpage{24-4}
+  \item differential of $\K$, \hyperpage{8-11}
+  \item dual group, \hyperpage{7-2}
+
+  \indexspace
+
+  \item equivalent representations, \hyperpage{22-5}
+
+  \indexspace
+
+  \item finite adeles, \hyperpage{14-1}
+  \item finite ideles, \hyperpage{14-4}
+  \item Fourier inversion, \hyperpage{7-7}
+  \item Fourier transform, \hyperpage{7-6}, \hyperpage{10-4}, 
+		\hyperpage{10-10}
+  \item fractional part, \hyperpage{8-2}
+  \item functional equation, \hyperpage{11-3}, \hyperpage{12-2}
+  \item fundamental domain, \hyperpage{14-3}
+
+  \indexspace
+
+  \item global zeta function, \hyperpage{17-1}
+
+  \indexspace
+
+  \item Haar measure, \hyperpage{6-1}
+
+  \indexspace
+
+  \item i$^\text{th}$ ramification group in the upper numbering, 
+		\hyperpage{21-3}
+  \item idele class group, \hyperpage{14-5}
+  \item ideles, \hyperpage{14-4}
+  \item inertia group, \hyperpage{21-4}
+  \item integral part, \hyperpage{8-2}
+  \item irreducible, \hyperpage{22-4}
+
+  \indexspace
+
+  \item local field, \hyperpage{5-1}
+  \item local zeta function, \hyperpage{11-1}, \hyperpage{12-1}, 
+		\hyperpage{18-1, 18-2}
+
+  \indexspace
+
+  \item maximal unramified extension, \hyperpage{21-4}
+  \item Mellin transform, \hyperpage{10-8}, \hyperpage{10-11}
+
+  \indexspace
+
+  \item non-archimedean, \hyperpage{1-4}
+  \item norm residue symbol, \hyperpage{21-2}
+  \item normalized absolute value, \hyperpage{5-4}
+  \item normalized Haar measure, \hyperpage{6-8}
+
+  \indexspace
+
+  \item order, \hyperpage{1-2}
+
+  \indexspace
+
+  \item Parseval theorem, \hyperpage{7-14}
+  \item place, \hyperpage{1-4}
+  \item Plancherel theorem, \hyperpage{7-13}
+  \item Pontryagin duality, \hyperpage{7-5}
+  \item prime element, \hyperpage{5-2}
+  \item principal units, \hyperpage{4-11}
+  \item Product principle, \hyperpage{8-9}
+
+  \indexspace
+
+  \item Quadratic extensions, \hyperpage{5-7}
+
+  \indexspace
+
+  \item Radon measure, \hyperpage{6-1}
+  \item ramification index, \hyperpage{5-4}
+  \item ramified, \hyperpage{5-6}
+  \item ramified of degree $n \ge 1$, \hyperpage{9-2}
+  \item reduction mod $p$, \hyperpage{4-8}
+  \item representation, \hyperpage{22-2}, \hyperpage{24-2}
+  \item representation of $\SL(2,\C)$, \hyperpage{24-8}
+  \item residual index, \hyperpage{5-5}
+  \item residue field, \hyperpage{5-1}
+  \item restricted open rectangle, \hyperpage{13-1}
+  \item restricted product, \hyperpage{13-1}
+  \item restricted product topology, \hyperpage{13-2}
+
+  \indexspace
+
+  \item Schwartz space, \hyperpage{10-1}
+  \item semisimple, \hyperpage{22-3}
+  \item shells, \hyperpage{4-10}
+  \item standard (test function), \hyperpage{10-1, 10-2}
+
+  \indexspace
+
+  \item test functions, \hyperpage{10-1}
+  \item test functions (on \mG), \hyperpage{10-2}
+  \item the differential exponent of $\K$, \hyperpage{8-11}
+  \item topological abelianization, \hyperpage{21-5}
+  \item topological field, \hyperpage{2-2}
+  \item transfer homomorphism, \hyperpage{21-6}
+  \item triangle inequality, \hyperpage{1-3}
+  \item trivial absolute value, \hyperpage{1-1}
+
+  \indexspace
+
+  \item ultrametric inequality, \hyperpage{1-4}
+  \item unitary character, \hyperpage{7-1}
+  \item unramified, \hyperpage{5-6}
+
+  \indexspace
+
+  \item Weil group, \hyperpage{22-1}
+  \item Weil-Deligne group, \hyperpage{24-1}
+
+\end{theindex}
