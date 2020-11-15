@@ -1,0 +1,57 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{#1}
+\csname url@rmstyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{rudenko2019human}
+A.~Rudenko, L.~Palmieri, M.~Herman, K.~M. Kitani, D.~M. Gavrila, and K.~O.
+  Arras, ``Human motion trajectory prediction: A survey,'' \emph{arXiv preprint
+  arXiv:1905.06113}, 2019.
+
+\bibitem{oord2017neural}
+A.~van~den Oord, O.~Vinyals, \emph{et~al.}, ``Neural discrete representation
+  learning,'' in \emph{Advances in Neural Information Processing Systems},
+  2017, pp. 6306--6315.
+
+\bibitem{pena1999empirical}
+J.~M. Pena, J.~A. Lozano, and P.~Larranaga, ``An empirical comparison of four
+  initialization methods for the k-means algorithm,'' \emph{Pattern recognition
+  letters}, vol.~20, no.~10, pp. 1027--1040, 1999.
+
+\bibitem{lloyd1982kmeans}
+S.~Lloyd, ``Least squares quantization in pcm,'' \emph{IEEE transactions on
+  information theory}, vol.~28, no.~2, pp. 129--137, 1982.
+
+\bibitem{hug2017reliability}
+R.~Hug, S.~Becker, W.~H{\"u}bner, and M.~Arens, ``On the reliability of
+  lstm-mdl models for pedestrian trajectory prediction,'' \emph{VIIth
+  International Workshop on Representation, analysis and recognition of shape
+  and motion FroM Image data (RFMI 2017)}, 2017.
+
+\bibitem{robicquet2016learning}
+A.~Robicquet, A.~Sadeghian, A.~Alahi, and S.~Savarese, ``Learning social
+  etiquette: Human trajectory understanding in crowded scenes,'' in
+  \emph{European conference on computer vision}.\hskip 1em plus 0.5em minus
+  0.4em\relax Springer, 2016, pp. 549--565.
+
+\bibitem{sadeghiankosaraju2018trajnet}
+A.~Sadeghian, V.~Kosaraju, A.~Gupta, S.~Savarese, and A.~Alahi, ``Trajnet:
+  Towards a benchmark for human trajectory prediction,'' \emph{arXiv preprint},
+  2018.
+
+\end{thebibliography}

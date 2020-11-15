@@ -1,0 +1,206 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+%In case you encounter the following error:
+%Error 1010 The PDF file may be corrupt (unable to open PDF file) OR
+%Error 1000 An error occurred while parsing a contents stream. Unable to analyze the PDF file.
+%This is a known problem with pdfLaTeX conversion filter. The file cannot be opened with acrobat reader
+%Please use one of the alternatives below to circumvent this error by uncommenting one or the other
+%\pdfobjcompresslevel=0
+%\pdfminorversion=4
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{color}
+\usepackage{graphicx}
+
+\title{\LARGE \bf
+	A Short Note on Analyzing Sequence Complexity in Trajectory Prediction Benchmarks	
+}
+
+
+\author{Ronny Hug$^{1}$, Stefan Becker$^{1}$, Wolfgang H\"ubner$^{1}$ and Michael Arens$^{1}$% <-this % stops a space
+	\thanks{$^{1}$Fraunhofer IOSB, Ettlingen, Fraunhofer Institute of Optronics, System Technologies and Image Exploitation, 76275 Ettlingen, Germany
+		{\tt\small first.lastname@iosb.fraunhofer.de}}%
+	\thanks{Fraunhofer IOSB is a member of the Fraunhofer Center for Machine Learning.}%
+}
+
+
+\begin{document}
+	
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+	
+The analysis and quantification of sequence complexity is an open problem frequently encountered when defining trajectory prediction benchmarks.
+In order to enable a more informative assembly of a data basis, an approach for determining a dataset representation in terms of a small set of distinguishable prototypical sub-sequences is proposed.
+The approach employs a sequence alignment followed by a learning vector quantization (LVQ) stage.
+A first proof of concept on synthetically generated and real-world datasets shows the viability of the approach.
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction} 
+An open question frequently encountered in the context of trajectory prediction is the quantification of dataset complexity, leading to hard-to-solve or too simple benchmarks.
+Current attempts in standardized benchmarking, e.g. \emph{TrajNet++} as mentioned in \cite{rudenko2019human}, originate from heuristics or experience-based criteria when assembling the data basis.
+
+Dissecting trajectory datasets, each dataset can be reduced to a small number of prototypical sub-sequences specifying distinct motion patterns, where each sample can be assumed to be a variation of these prototypes. % TODO passt das so mit den sub-sequecnes und motion patterns?
+Following this assumption, the quantification of dataset complexity can be based on the number and variation of prototypes.
+Towards this end, an approach for determining prototypes from a dataset is proposed.
+The approach applies an alignment step followed by vector quantization for clustering aligned samples. 
+Experiments are conducted on a synthetically generated dataset and an exemplary standard benchmarking dataset in order to provide a first proof of concept.
+Lastly, potential uses of the proposed approach are discussed.
+
+\section{Sequence Alignment}
+\label{sec:da}
+Given a set of trajectories (\emph{samples}) $\mathcal{X} = \{X_1, ..., X_N\}$, as sequences of $M$ subsequent points $X_i = \{\mathbf{x}^i_1, ..., \mathbf{x}^i_M\}$, each sample is first normalized by moving it into a self-centered reference frame and scaling it to unit length:
+\begin{align}
+	X^{norm}_i = \left\{\frac{\mathbf{x}^i_j - \bar{\mathbf{x}}}{\mathbf{x}^i_M - \mathbf{x}^i_1} | j \in [1,..,M] \right\}.
+\end{align}
+%It has to be noted that this normalization solely serves the purpose of moving all samples into a common value range and is not a good normalization by itself due to the isolated treatment of each samples.  % TODO: das eingefügt, paper kenne ich keine die über so eine normalisierung sprechen, außer evtl. pu zhang
+It has to be noted that this normalization solely serves the purpose of moving all samples into a common value range and is not a good normalization in terms of pooling similar samples. % TODO: stimmt das so?
+Then, all samples are aligned with a single prototype $\hat{Y} = \left\{\mathbf{\hat{y}}_1, \mathbf{\hat{y}}_2, ..., \mathbf{\hat{y}}_M \right\}$ by using affine transformations, which are retrieved from a regression model $\phi: X \rightarrow \{\mathbf{t},\alpha,s\}$.
+$\hat{Y}$ and $\phi$ are learned by minimizing the mean squared error between each sample $\phi(X^{norm}_i)$ and the prototype $\hat{Y}$
+\begin{align}
+\label{eq:loss_da}
+	\mathcal{L}_{DA}(\phi(X^{norm}_i), \hat{Y}) = \frac{1}{M} \sum^M_{j=1} \|\mathbf{x}^i_j - \mathbf{\hat{y}}_j\|^2_2
+\end{align}
+using stochastic gradient descent.
+This is different to linear factor models, where the whole training set has to be considered.
+With respect to equation \ref{eq:loss_da} and the affine transformation, the trivial solution that maps all samples onto the origin has to be avoided.
+A brute force approach to this problem is to enforce a minimum scale. 
+These steps result in a minimum variance alignment of all samples with respect to the learned prototype.
+Further, by learning the prototype and the transformation concurrently, the prototype adapts to the most dominant motion pattern and the normalized data is aligned accordingly. 
+
+\begin{figure*}[t!]
+	\setlength{\tabcolsep}{0.5pt}  % 1pt
+	\begin{center}	
+		\begin{tabular}{cc|ccccc}
+			\hline
+			\includegraphics[width=0.139\textwidth]{synth_data.png} &
+			\includegraphics[width=0.139\textwidth]{synth_alignment.png} &
+			\includegraphics[width=0.139\textwidth]{synth_fat_proto_00.png} &
+			\includegraphics[width=0.139\textwidth]{synth_fat_proto_01.png} &
+			\includegraphics[width=0.139\textwidth]{synth_fat_proto_02.png} &
+			\includegraphics[width=0.139\textwidth]{synth_fat_proto_03.png} & \\
+			
+			\includegraphics[width=0.139\textwidth]{hyang_data.png} &
+			\includegraphics[width=0.139\textwidth]{hyang_alignment.png} &	
+			\includegraphics[width=0.139\textwidth]{hyang_fat_proto_00_every-3.png} &
+			\includegraphics[width=0.139\textwidth]{hyang_fat_proto_04_every-3.png} &
+			\includegraphics[width=0.139\textwidth]{hyang_fat_proto_05_every-3.png} &
+			\includegraphics[width=0.139\textwidth]{hyang_fat_proto_06_every-3.png} &
+			\includegraphics[width=0.139\textwidth]{hyang_fat_proto_02_every-3.png}	\\
+			\hline
+			
+			\small Data & \small Aligned Data & \small \small Constant & \small Curve (l) & \small Curve (r) & \small Acceleration & \small Deceleration \\
+			&& \multicolumn{5}{c}{\small Prototypes}
+		\end{tabular}
+	\end{center}
+	\caption{Data, aligned data and learned prototypes for the synthetic dataset SGTD (top) and the SDD-hyang dataset (bottom).
+	For clarity only every 2nd or 3rd trajectory point is plotted for SGTD and SDD-hyang prototypes respectively.}
+	\label{fig:results}
+\end{figure*}
+
+\section{Learning Vector Quantization} 
+\label{sec:vq}
+Clustering approaches can be applied after alignment, since the alignment approach distributes random errors homogeneously over the sequence. 
+For clustering, a vector quantization (LVQ) approach is proposed, which is inspired by \cite{oord2017neural} and can directly be integrated in a deep learning framework.
+Here, aligned samples are mapped onto $K$ prototypes $\mathcal{Z} = \{Z_1, ..., Z_K\}$, with $Z_i = \{\mathbf{z}^i_1, ..., \mathbf{z}^i_M\}$, in quantized space.
+This results in a concise set of prototypes representing the given dataset.
+The prototypes are learned by minimizing the mean squared error between the aligned samples and the respective closest prototype in quantized space:
+\begin{align}
+\begin{split}
+	\mathcal{L}_{LVQ} &= \frac{1}{M} \sum^M_{j=1} \|\mathbf{x}_j - z_q(j)\|^2_2 + \gamma \cdot L_{global}, \\
+	\text{with} \\
+	z_q(j) &= \mathbf{z}_{argmin_k \|\mathbf{x}_j - \mathbf{z}_k\|^2_2}, \\
+	L_{global} &= \frac{1}{N \cdot M \cdot K} \sum_{i=1}^{N}\sum_{j=1}^{M}\sum_{k=1}^{K} \| \mathbf{x}^i_j - \mathbf{z}^k_j \|^2_2.
+\end{split}
+\end{align}
+In addition, a regularization term $L_{global}$, calculating the global error across all prototypes and all samples, is employed for driving all prototypes towards the prototype of the dominant motion pattern. 
+Therefore, the regularization is used for capturing information from less frequent samples.
+Due to the fact that, it is unknown how many prototypes are necessary, unnecessary prototypes can be identified by their similarity to the dominant prototype and thus be sorted out later, in case $K$ is too large.
+
+\textbf{Initialization.} Due to the winner takes all strategy, $\mathcal{L}_{LVQ}$ only updates prototypes that have supporting samples.
+While the regularization term tries to account for this, initializing the $K$ prototypes appropriately helps improving the quantization results.
+Thus, a Forgy initialization is applied, i.e. randomly selected samples from the dataset are used as initial prototypes \cite{pena1999empirical}. 
+This follows common practice of other vector quantization approaches, like for example K-means \cite{lloyd1982kmeans}. 
+
+\textbf{Refinement.} A heuristic refinement scheme is employed in order to remove unnecessary prototypes when $K$ was too large.
+Starting with the prototype which is supported by most training samples, additional prototypes are added based on their dissimilarity to previously added prototypes and their impact on the global error given the refined set of prototypes. % TODO: versteht man das?
+By choosing prototypes that maximize the global error, a wider coverage of motion patterns is ensured.
+Thus, unnecessary prototypes, especially those similar to the most dominant prototype, can be sorted out.
+
+\section{Qualitative Evaluation}
+\label{sec:eval}
+As a first proof of concept, a qualitative evaluation is conducted on a synthetically generated dataset (\emph{SGTD}) and the combined \emph{hyang} scenes \cite{hug2017reliability} taken from the \emph{stanford drone dataset} (SDD, \cite{robicquet2016learning}).
+SGTD consists of $200$ randomly distributed trajectories consisting of $M=31$ points\footnote{This number is arbitrary and does not affect the viability of the approach.}, with random orientations and different normally distributed speed profiles. 
+It covers $4$ motion patterns: constant ($125$ samples), accelerated ($33$ samples), and curvilinear ($29$ (left) and $13$ (right) samples; direction change by $\alpha \sim \mathcal{U}(80, 90)$ degrees in either direction).
+For SDD-hyang, the rate has been reduced to 6 samples per second.
+This achieves a more noticeable difference between subsequent trajectory points.
+Further, all trajectory segments containing $54$ points\footnote{Corresponds to the first quartile with respect to the number of trajectory points for all trajectories} are considered for training. 
+Since this is a real world dataset, the generating features are unknown.
+Yet the occurrence of all basic motion patterns (constant, acceleration, decelerated and curvilinear motion) is expected reflecting its complexity. 
+For both datasets, $K=10$ prototypes are used, providing sufficient capacity to capture all relevant features while also allowing to test the proposed regularization and refinement strategies.
+
+The results of the alignment and the learned prototypes are depicted in figure \ref{fig:results}.
+For SGTD (first row), it can be seen that all samples are aligned such that they follow a common mean orientation and similar samples are pooled together.
+All 4 prototypes necessary for modeling the dataset were found with correct association between data and prototypes.
+For SDD-hyang, there is not an as clear separation between different motion patterns. 
+However, a similar behavior can be observed when looking at the aligned data.
+Further, as expected, the quantization yields an additional prototype corresponding to a decelerated motion.
+
+\section{Discussion and Future Work}
+At last, given the results in section \ref{sec:eval}, future work building on the proposed approach are discussed.
+
+\subsection{Complexity Analysis of Standard Benchmarking Datasets}
+A thorough complexity analysis of standard benchmarking datasets for trajectory prediction, building on the proposed approach should be considered.
+Analyzing the complexity of these datasets could offer more insight on their viability for evaluating certain aspects of machine learning models.
+
+\subsection{Deriving a Benchmark from Insights}
+Insights gained from dataset complexity analysis could be used for deriving a new benchmark for trajectory prediction, that specifically targets different aspects of a given model.
+This could provide a viable complementary benchmark to the recently published \emph{TrajNet++} benchmark (mentioned in \cite{rudenko2019human}; successor of \emph{TrajNet} \cite{sadeghiankosaraju2018trajnet}).
+
+\subsection{Data Preprocessing}
+The proposed approach may also serve as universal preprocessing stage for trajectory prediction models.
+Thus an experimental study should be conducted for comparing preprocessing approaches.
+
+
+\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bibliography}
+
+
+
+\end{document}
