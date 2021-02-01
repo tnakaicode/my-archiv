@@ -1,0 +1,295 @@
+\documentclass[
+%journal=ancac3, % for ACS Nano
+%journal=acbcct, % for ACS Chem. Biol.
+%journal=jacsat, % for undefined journal
+journal=jctcce,
+manuscript=letter]{achemso}
+
+
+\usepackage[version=3]{mhchem} % Formula subscripts using \ce{}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{breqn}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\erfc}{erfc}
+\DeclareMathOperator{\erf}{erf}
+\newcommand*{\mycommand}[1]{\texttt{\emph{#1}}}
+
+\author{Bj\"orn Stenqvist}
+\email{bjorn.stenqvist@teokem.lu.se}
+\affiliation[Lund University]
+{Department of Chemistry, Division of Physical Chemistry, Lund University, Sweden}
+\alsoaffiliation[Lund University]
+{Department of Chemistry, Division of Theoretical Chemistry, Lund University, Sweden}
+\author{Vidar Aspelin}
+\email{vidar.aspelin@teokem.lu.se}
+\author{Mikael Lund}
+\email{mikael.lund@teokem.lu.se}
+\affiliation[Lund University]
+{Department of Chemistry, Division of Theoretical Chemistry, Lund University, Sweden}
+
+\title{Supporting Information:\\ Generalized Moment Correction for Long-Ranged Electrostatics}
+
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thepage}{S\arabic{page}}
+
+\begin{document}
+
+\section{Derivation of image charges}\label{app:B}
+By using $r_p=c_pr$ and $\hat{z}_{p} = z_{p}/z$ it is possible to transform Eq.~7 (main text) into Eq.~\ref{eq:transformed}.
+\begin{equation}
+\label{eq:transformed}
+\begin{bmatrix}
+       1    \\[0.3em]
+       1  \\[0.3em]
+       \vdots          \\[0.3em]
+       1      
+     \end{bmatrix} + \begin{bmatrix}  
+  1 & 1 & \cdots & 1 \\
+  c_1 & c_2 & \cdots & c_P \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  c_1^{P-1} & c_2^{P-1} & \cdots & c_P^{P-1}
+     \end{bmatrix}
+     \begin{bmatrix}
+       \hat{z}_{1}    \\[0.3em]
+       \hat{z}_{2}  \\[0.3em]
+       \vdots          \\[0.3em]
+       \hat{z}_{P} 
+     \end{bmatrix}
+     = \begin{bmatrix}
+       0    \\[0.3em]
+       0  \\[0.3em]
+       \vdots          \\[0.3em]
+       0      
+     \end{bmatrix}.
+\end{equation}
+The solution\cite{el2003explicit} to Eq.~\ref{eq:transformed}, by using $c_p=q^{-p}$, is
+\begin{equation}
+\label{eq:moment_derivation_0}
+\hat{z}_p = -\frac{   \prod_{\substack{i = 1 \\ i \ne p }}^{P} (1 - q^{-i})   }{\prod_{\substack{i = 1 \\ i \ne p }}^{P} (q^{-p} - q^{-i})  }.
+\end{equation}
+In the bottom product of Eq.~\ref{eq:moment_derivation_0} we factor out $q^{-p}$, and then split all products into cases when $i<p$ and $i>p$. These modifications are shown in Eq.~\ref{eq:moment_derivation_1}.
+\begin{equation}
+\label{eq:moment_derivation_1}
+\hat{z}_p  = -\frac{   \prod_{\substack{i = 1 \\ i \ne p }}^{P} (1 - q^{-i})   }{\prod_{\substack{i = 1 \\ i \ne p }}^{P} q^{-p}(1 - q^{-i+p})  } = \frac{   \prod_{i = 1}^{p-1} (1 - q^{-i})\prod_{i = p+1}^{P} (1 - q^{-i})   }{q^{-p(P-1)}\prod_{i = 1 }^{p-1} (1 - q^{-i+p})\prod_{i = p+1}^{P} (1 - q^{-i+p})  }
+\end{equation}
+Further modification by variable substitution ($i^{\prime}=i-p$ in the top and bottom right products, and $i^{\prime}=-i+p$ in the bottom left product) gives Eq.~\ref{eq:moment_derivation_2}.
+\begin{equation}
+\label{eq:moment_derivation_2}
+\hat{z}_p  = -\frac{   \prod_{i = 1}^{p-1} (1 - q^{-i})\prod_{i = 1}^{P-p} (1 - q^{-i-p})   }{q^{-p(P-1)}\prod_{i = 1 }^{p-1} (1 - q^{i})\prod_{i = 1}^{P-p} (1 - q^{-i})  }
+\end{equation}
+From Eq.~\ref{eq:moment_derivation_2} and onward we will re-letter the new index symbol $i^{\prime}$ with the old $i$ when using variable substitution, i.e. $i^{\prime}\to i$ in this case. This to avoid multiple indexes and thus confusions with other entities. Further simplification of the two left products (by factoring out $q^{-i}$ from the top one) gives Eq.~\ref{eq:moment_derivation_2p}.
+\begin{equation}
+\label{eq:moment_derivation_2p}
+\hat{z}_p =  (-1)^pq^{p(2P-p-1)/2} \frac{   \prod_{i = 1}^{P-p} (1 - q^{-i-p})   }{\prod_{i = 1}^{P-p} (1 - q^{-i})  }
+\end{equation}
+We now factor out $q^{-i-p}$ from the top product and $q^{-i}$ from the bottom product giving Eq.~\ref{eq:next}, where we also note the cancellation of the $(-1)^{P-p}$ factors.
+\begin{equation}
+\label{eq:next}
+\hat{z}_p =  (-1)^pq^{p(2P-p-1)/2} \frac{\prod_{i = 1}^{P-p}q^{-i-p}  \prod_{i = 1}^{P-p} (1 - q^{i+p})   }{\prod_{i = 1}^{P-p}q^{-i}\prod_{i = 1}^{P-p} (1 - q^{i})  }
+\end{equation}
+Simplification of the left products yield
+\begin{equation}
+\label{eq:nextnext}
+\hat{z}_p = (-1)^pq^{p(p-1)/2} \frac{\prod_{i = 1}^{P-p} (1 - q^{i+p})   }{\prod_{i = 1}^{P-p} (1 - q^{i})  }.
+\end{equation}
+By making the variable substitution $i^{\prime} = P-i-p+1$ in the top product we get Eq.~\ref{eq:nextnextnext} where we note that the products together are equal to the $q$-binomial coefficient\cite{comtetadvanced} ${P \brack P-p}_q = {P \brack p}_q$.
+\begin{equation}
+\label{eq:nextnextnext}
+\hat{z}_p = (-1)^pq^{p(p-1)/2} \frac{\prod_{i = 1}^{P-p} (1 - q^{P-i+1})   }{\prod_{i = 1}^{P-p} (1 - q^{i})  }
+\end{equation}
+Thus we now have arrived at
+\begin{equation}
+\label{eq:moment_derivation_4}
+\hat{z}_p  = (-1)^pq^{p(p-1)/2}{P \brack p}_q.
+\end{equation}
+
+\section{Self-energy}\label{app:D}
+Starting from Eq.~7 (main text) we note that if a particle is positioned in the origin, i.e. $r=0$, then the equation becomes
+\begin{equation}
+\label{eq:finalselfMatrix}
+\begin{bmatrix}
+       1    \\[0.3em]
+       0  \\[0.3em]
+       \vdots          \\[0.3em]
+       0      
+     \end{bmatrix}z + \begin{bmatrix}  
+  1 & 1 & \cdots & 1 \\
+  r^{\prime}_1 & r^{\prime}_2 & \cdots & r^{\prime}_P \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  r^{\prime P-1}_1 & r^{\prime P-1}_2 & \cdots & r^{\prime P-1}_P
+     \end{bmatrix}
+     \begin{bmatrix}
+       z_{1}^{\prime}    \\[0.3em]
+       z_{2}^{\prime}  \\[0.3em]
+       \vdots          \\[0.3em]
+       z_{P}^{\prime} 
+     \end{bmatrix}
+     = \begin{bmatrix}
+       0    \\[0.3em]
+       0  \\[0.3em]
+       \vdots          \\[0.3em]
+       0      
+     \end{bmatrix}.
+\end{equation}
+Here we have indexed the image charges with primes as to distinguish them from the charges when we calculate the potential from a particle at position $r>0$. Note that in Eq.~\ref{eq:finalselfMatrix} there is only a charge present due to the centered particle and no higher order moments. Assuming that the image particles needed to cancel this charge (and all higher order moments generated by themselves in the process) are positioned at $r^{\prime}_p=c^{\prime}_pr^{\prime}$ where $r^{\prime}>0$ is any point, then Eq.~\ref{eq:finalselfMatrix} converts to Eq.~\ref{eq:finalMatrix_self} which has its solution\cite{el2003explicit} shown in Eq.~\ref{eq:moment_derivation_0_self} where we have used $c^{\prime}_p=q^{-p}$.
+\begin{dmath}
+\label{eq:finalMatrix_self}
+\begin{bmatrix}
+       1    \\[0.3em]
+       0  \\[0.3em]
+       \vdots          \\[0.3em]
+       0      
+     \end{bmatrix} + \begin{bmatrix}  
+  1 & 1 & \cdots & 1 \\
+  c^{\prime}_1 & c^{\prime}_2 & \cdots & c^{\prime}_P \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  c^{\prime P-1}_1 & c^{\prime P-1}_2 & \cdots & c^{\prime P-1}_P
+     \end{bmatrix}
+     \begin{bmatrix}
+       \hat{z}^{\prime}_{1}    \\[0.3em]
+       \hat{z}^{\prime}_{2}  \\[0.3em]
+       \vdots          \\[0.3em]
+       \hat{z}^{\prime}_{P} 
+     \end{bmatrix}
+     = \begin{bmatrix}
+       0    \\[0.3em]
+       0  \\[0.3em]
+       \vdots          \\[0.3em]
+       0      
+     \end{bmatrix}
+\end{dmath}
+\begin{equation}
+\label{eq:moment_derivation_0_self}
+\hat{z}^{\prime}_p = -\frac{\prod_{\substack{i = 1 \\ i \ne p }}^{P} (-q^{-i})}{\prod_{\substack{i = 1 \\ i \ne p }}^{P} (q^{-p} - q^{-i})  }
+\end{equation}
+By condensing these products into one, and splitting the result as to give products for $i<p$ and $i>p$, we get
+\begin{equation}
+\label{eq:moment_derivation_0_self2}
+\hat{z}^{\prime}_p = -\frac{1}{\prod{\substack{i = 1 \\ i \ne p }}^{P}(1-q^{-p+i})} = -\frac{1}{\prod_{\substack{i = 1}}^{p-1}(1-q^{-p+i})\prod_{\substack{i = p+1 }}^{P}(1-q^{-p+i})}.
+\end{equation}
+Variable substitution using $i^{\prime}=i-p$ in the right product gives
+\begin{equation}
+\label{eq:moment_derivation_0_self3}
+\hat{z}^{\prime}_p = -\frac{1}{\prod_{\substack{i = 1}}^{p-1}(1-q^{-p+i})\prod_{\substack{i = 1 }}^{P-p}(1-q^{i})}
+\end{equation}
+and by factoring out $q^{-p+i}$ from the left product we get
+\begin{equation}
+\label{eq:moment_derivation_0_self4}
+\hat{z}^{\prime}_p = -(-1)^{p-1}\frac{q^{(p-1)p/2}}{\prod_{\substack{i = 1}}^{p-1}(1-q^{p-i})\prod_{\substack{i = 1 }}^{P-p}(1-q^{i})}.
+\end{equation}
+Using these moments, the self-energy becomes
+\begin{equation}
+\label{eq:self_1}
+E_{{\rm Self}} = \frac{e^2}{4\pi\varepsilon_0\varepsilon_r}\sum_{j = 1}^{N} \frac{z_j^2}{R_c}\sum_{p=1}^P \frac{\left(-(-1)^{p-1}\frac{q^{(p-1)p/2}}{\prod_{\substack{i = 1}}^{p-1}(1-q^{p-i})\prod_{\substack{i = 1 }}^{P-p}(1-q^{i})} \right)}{q^{-(p-1)}}.
+\end{equation}
+Reshuffling the terms in Eq.~\ref{eq:self_1} gives Eq.~\ref{eq:self_2}.
+\begin{equation}
+\label{eq:self_2}
+E_{{\rm Self}} = -\frac{e^2}{4\pi\varepsilon_0\varepsilon_r}\sum_{j = 1}^{N} \frac{z_j^2}{R_c}\sum_{p=1}^P(-1)^{p-1}\frac{q^{(p-1)p/2}q^{(p-1)}}{\prod_{\substack{i = 1}}^{p-1}(1-q^{p-i})\prod_{\substack{i = 1 }}^{P-p}(1-q^{i})}
+\end{equation}
+The denominators in Eq.~\ref{eq:self_2} are polynomials with only non-negative powers. Thus, if $q\to 0$ only the constant term $1$ will be none-vanishing. In the same limit the numerator will be zero for every $p>1$ and thus the entire far-right sum will equal one in the limit $q\to 0$, which stems from the $p=1$ term. The final expression (independent of $P$) for the far right sum in the limit $q\to 0$ is thus $1$ as is shown in Eq.~\ref{eq:self_3}. The choice of $q$ seems somewhat arbitrary however our choice of $q\to 0$ comes from the following arguments: In the original derivation for the potential we chose to mirror the particle position in the cut-off as to get the image particle positions. However, this is not possible to do when the particle is in the origin (since then we would have to divide by zero). Thus, we choose to mirror an identical particle infinitesimally close ($q\to 0$) to the origin.
+\begin{equation}
+\label{eq:self_3}
+E_{{\rm Self}} = -\frac{e^2}{4\pi\varepsilon_0\varepsilon_rR_c}\sum_{j = 1}^{N} z_j^2
+\end{equation}
+
+\section{Dielectric constant}\label{app:H}
+The dielectric constant, $\varepsilon_r$, has been derived within a known theoretical framework\cite{neumann1986computer} where the key equation is
+\begin{dmath}
+\label{eq:orgDiel}
+\frac{\varepsilon_r - 1}{\varepsilon_r + 2}\left[1 - \frac{\varepsilon_r - 1}{\varepsilon_r + 2}\tilde{T}(0) \right]^{-1} = \frac{1}{3\varepsilon_0}\frac{\langle M^2 \rangle}{3Vk_BT}.
+\end{dmath}
+Here $\langle M^2\rangle$ are the fluctuations of the dipole moment $\boldsymbol{M}=\sum_{i=1}^{\mathcal{N}}\boldsymbol{\mu}_i$, $k_B$ is the Boltzmann constant, and $V$ the volume of the unit cell. Different values of $\tilde{T}(0)$ is used depending on the method. In the following derivations we want to stress that $q=q(r)$. In order to get first higher order interactions, we write
+\begin{equation}
+\nabla\left(\frac{\mathcal{S}(q)}{r} \right) = \frac{\nabla\mathcal{S}(q)}{r} + \mathcal{S}(q)\nabla\left(\frac{1}{r}\right)
+\end{equation}
+where $\nabla$ is the gradient operator. Further second higher order interactions then are obtained as
+\begin{equation}
+\nabla^T\nabla\left(\frac{\mathcal{S}(q)}{r} \right)  =  \frac{\nabla^T\nabla\mathcal{S}(q)}{r} + \nabla^T\mathcal{S}(q)\nabla\left(\frac{1}{r}\right) + \nabla^T\left(\frac{1}{r}\right)\nabla\mathcal{S}(q) + \mathcal{S}(q)\nabla^T\nabla\left(\frac{1}{r}\right).
+\end{equation}
+Note that $\mathcal{S}(q)$ is not angle-dependent and thus
+\begin{equation}
+\nabla\mathcal{S}(q) = {\bf \hat{r}}\frac{\partial}{\partial r}\mathcal{S}(q).
+\end{equation}
+However, by further apply $\nabla^T$ to this we get
+\begin{equation}
+\nabla^T\nabla\mathcal{S}(q) = {\bf \hat{r}}^T{\bf \hat{r}}\frac{\partial^2}{\partial r^2}\mathcal{S}(q) + \frac{\frac{\partial}{\partial r}\mathcal{S}(q)}{r}\left({\bf I} - {\bf \hat{r}}^T{\bf \hat{r}}   \right).
+\end{equation}
+The total expression for $\nabla^T\nabla\left(\mathcal{S}(q)/r \right)$ can be parted like
+\begin{equation}
+\label{eq:T2_exp}
+\nabla^T\nabla\left(\frac{\mathcal{S}(q)}{r} \right) = a(r)\left(3\bf{\hat{r}}^T{\bf \hat{r}} - {\bf I}\right) + b(r){\bf I}
+\end{equation}
+where
+\begin{equation}
+\label{eq:T2_exp_a}
+a(r) = \frac{\frac{\partial^2}{\partial r^2}\mathcal{S}(q)}{3r} - \frac{\frac{\partial}{\partial r}\mathcal{S}(q)}{r^2} + \frac{\mathcal{S}(q)}{r^3}
+\end{equation}
+and
+\begin{equation}
+\label{eq:T2_exp_b}
+b(r) = \frac{\frac{\partial^2}{\partial r^2}\mathcal{S}(q)}{3r}.
+\end{equation}
+In order to get the proper evaluation of the dielectric constant we have to evaluate the integrals\cite{neumann1986computer}
+\begin{equation}
+A(k) = -3\int_{0}^{\infty}r^2j_2(kr)a(r)dr
+\end{equation}
+and
+\begin{equation}
+B(k) = 3\int_{0}^{\infty}r^2j_0(kr)b(r)dr.
+\end{equation}
+For $k=0$, i.e. evaluation of the static dielectric constant, the spherical Bessel functions becomes $j_0(0) = 1$ and $j_2(0) = 0$. Therefore $A(0)$ has the trivial solution zero (since the singularity of $a(r)$ in $r=0$ has been explicitly dealt with\cite{neumann1986computer}) and we now only have to evaluate $B(0)$. Thus, we have
+\begin{equation}
+B(0) = \int_{0}^{R_c}r\frac{\partial^2}{\partial r^2}\mathcal{S}(q)dr
+\end{equation}
+where the limit $\infty$ has changed to $R_c$ due to the fact that we use $\mathcal{S}(q) \equiv 0$ for $q>1$, that is $r> R_c$. Integration by parts gives
+\begin{equation}
+B(0) = \left[r\frac{\partial}{\partial r}\mathcal{S}(q) \right]_{0}^{R_c} - \int_0^{R_c}\frac{\partial}{\partial r}\mathcal{S}(q)dr = 1
+\end{equation}
+which is true for all the tested pair potentials except $q$-potential using $P=1$ where $B(0)=0$. Finally, we note that $\tilde{T}(0) = B(0)$ and thus the derivation is done. 
+
+\section{Larger systems}
+The density, dielectric constant, Kirkwood factor $G_K$, standard deviation of the total energy, and diffusion coefficient, for the different potentials are presented in Table~\ref{tbl:denteSI}. Here $*$ indicate a large system, i.e. a system where $R_c$ is less than a fourth of the cubic system side-length. In this case the number of water molecules was $\mathcal{N}=5000$. The three consistent differences we see are a larger diffusion coefficient, $G_K$, and $\sigma_E$ in a larger system. System dependencies of the first are well-known\cite{Tazi_2012} and our results are consistent with this observation. Increases of the second are small and could fall under the uncertainty given by the standard deviation. Yet the increase of the standard deviation of the energy is noticeable for all $q$-potentials and Ewald. However both SP1 and SP3 are consistently low in this regard.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{ c | c c c | c c | c c c | c c | c c c | c c |}
+    %\hline
+    \multirow{2}{*}{Potential} & \multicolumn{5}{c|}{$R_c=1.28$~nm, $*$} & \multicolumn{5}{c|}{$R_c=1.28$~nm} & \multicolumn{5}{c|}{$R_c=1.60$~nm} \\ & $\rho$ & $\varepsilon_r$ & $G_K$ & $\sigma_E$ & $D$ & $\rho$ & $\varepsilon_r$ & $G_K$ & $\sigma_E$ & $D$ & $\rho$ & $\varepsilon_r$ & $G_K$ & $\sigma_E$ & $D$ \\\hline
+    $q(P=1)$ & 1099 & --- & 3.5 & --- & --- & 1106 & ---  & 3.2 & --- & --- & 1073 & --- & 3.0 & --- & --- \\
+    $q(P=2)$ & 1002 & 68 & 3.0 & 27 & 2.3 & 1002 & 75 & 3.0 & 15 & 2.2 & 1000 & 69 & 2.9 & 11 & 2.7 \\
+    $q(P=3)$ & 1001 & 68 & 3.0 & 11 & 2.5 & 1001 & 70 & 3.0 & 8 & 2.5 & 1000 & 76 & 3.0 & 3 & 2.4 \\
+    $q(P=4)$ & 1001 & 67 & 3.0 & 17 & 2.6 & 1000 & 67 & 2.9 & 6 & 2.5 & 1000 & 69 & 2.9 & 10 & 2.4 \\
+    $q(P=5)$ & 1001 & 67 & 3.0 & 18 & 2.6 & 1001 & 67 & 2.9 & 8 & 2.6 & 1000 & 72 & 2.9 & 12 & 2.3 \\
+    $q(P=6)$ & 1001 & 69 & 3.1 & 11 & 2.7 & 1001 & 71 & 3.0 & 4 & 2.4 & 1000 & 68 & 2.9 & 3 & 2.7 \\
+    $q(P=7)$ & 1001 & 66 & 3.0 & 12 & 2.8 & 1001 & 68 & 2.9 & 4 & 2.4 & 1000 & 69 & 2.9 & 3 & 2.5 \\
+    $q(P=8)$ & 1001 & 69 & 3.0 & 22 & 2.7 & 1001 & 70 & 2.9 & 6 & 2.6 & 1000 & 71 & 3.0 & 6 & 2.5 \\
+    $q(P=\infty)$ & 1001 & 76 & 3.1 & 18 & 2.7 & 1001 & 66 & 2.9 & 4 & 2.7 & 1000 & 67 & 2.9 & 4 & 2.5 \\\hline
+    SP1 &   996 & 74 & 3.1 & 1 & 3.1 &   996 & 69 & 2.9 & 1 & 2.8 &   996 & 68 & 2.9 & 1 & 2.8\\
+    SP3 &   998 & 74 & 3.0 & 0 & 2.7 &   998 & 66 & 2.9 & 0 & 2.5 &   998 & 71 & 3.0 & 0 & 2.5 \\\hline
+    Ewald & 998 & 68 & 3.0 & 17 & 2.8 & 998 & 73 & 3.0 & 2 & 2.6 & 998 & 69 & 3.0 & 6 & 2.9 \\
+    \hline
+    Exp. & 997 & 79 & --- & --- & 2.3 & 997 & 79 & --- & --- & 2.3 & 997 & 79 & --- & --- & 2.3 \\
+    %\hline
+    \end{tabular}
+    \caption{Density $\rho$ [kg/m$^3$], relative dielectric constant $\varepsilon_r$ [unitless], Kirkwood factor $G_K$ [unitless], standard deviation of total energy $\sigma_E$ [kJ/mol], and diffusion coefficient $D$ [m$^2$/s/10$^{-9}$], for the different potentials applied on a bulk water-system and experimental reference\cite{harned1958physical,Mills1973Self}.}
+    \label{tbl:denteSI}
+\end{table}
+
+\bibliography{manuscript}
+
+\end{document}
