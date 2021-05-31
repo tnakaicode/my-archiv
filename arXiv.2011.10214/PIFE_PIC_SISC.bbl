@@ -1,0 +1,386 @@
+\begin{thebibliography}{10}
+
+\bibitem{2019AdjeridChaabaneLinYue}
+{\sc S.~Adjerid, N.~Chaabane, T.~Lin, and P.~Yue}, {\em An immersed
+  discontinuous finite element method for the {S}tokes problem with a moving
+  interface}, J. Comput. Appl. Math., 362 (2019), pp.~540--559,
+  \url{https://doi.org/10.1016/j.cam.2018.07.033},
+  \url{https://doi.org/10.1016/j.cam.2018.07.033}.
+
+\bibitem{2009AdjeridLin}
+{\sc S.~Adjerid and T.~Lin}, {\em A {$p$}-th degree immersed finite element for
+  boundary value problems with discontinuous coefficients}, Appl. Numer. Math.,
+  59 (2009), pp.~1303--1321, \url{https://doi.org/10.1016/j.apnum.2008.08.005},
+  \url{http://dx.doi.org/10.1016/j.apnum.2008.08.005}.
+
+\bibitem{2020AdjeridLinZhuang}
+{\sc S.~Adjerid, T.~Lin, and Q.~Zhuang}, {\em Error {E}stimates for an
+  {I}mmersed {F}inite {E}lement {M}ethod for {S}econd {O}rder {H}yperbolic
+  {E}quations in {I}nhomogeneous {M}edia}, J. Sci. Comput., 84 (2020), p.~35,
+  \url{https://doi.org/10.1007/s10915-020-01283-0},
+  \url{https://doi.org/10.1007/s10915-020-01283-0}.
+
+\bibitem{2019AdjeridMoon}
+{\sc S.~Adjerid and K.~Moon}, {\em An immersed discontinuous {G}alerkin method
+  for acoustic wave propagation in inhomogeneous media}, SIAM J. Sci. Comput.,
+  41 (2019), pp.~A139--A162, \url{https://doi.org/10.1137/16M1090934},
+  \url{https://doi.org/10.1137/16M1090934}.
+
+\bibitem{2018BaiCaoChuZhang}
+{\sc J.~Bai, Y.~Cao, Y.~Chu, and X.~Zhang}, {\em An improved immersed finite
+  element particle-in-cell method for plasma simulation}, Comput. Math. Appl.,
+  75 (2018), pp.~1887--1899, \url{https://doi.org/10.1016/j.camwa.2017.08.001},
+  \url{https://doi.org/10.1016/j.camwa.2017.08.001}.
+
+\bibitem{Smith_DomainDecomp_1996}
+{\sc {Barry Smith}, {Petter Bj{\o}rstad}, and {William Gropp}}, {\em Domain
+  Decomposition: Parallel Multilevel Methods for Elliptic Partial Differential
+  Equations}, Cambridge University Press, 1996.
+
+\bibitem{Berg_epsl1978_lunar_terminator_config}
+{\sc O.~E. Berg}, {\em A lunar terminator configuration}, Earth and Planetary
+  Science Letters, 39 (1978), pp.~377--381,
+  \url{https://doi.org/10.1016/0012-821X(78)90025-0}.
+
+\bibitem{Apollo17_PSR_1973}
+{\sc O.~E. Berg, F.~F. Richardson, and H.~Burton}, {\em Apollo 17 preliminary
+  science report}, Technical Report NASA SP-330, National Aeronautics and Space
+  Administration, 1973.
+
+\bibitem{1991BirdsallLangdon}
+{\sc C.~K. Birdsall and A.~B. Langdon}, {\em Plasma Physics via Computer
+  Simulation (Series in Plasma Physics)}, Institute of Physisc Publishing,
+  1991.
+
+\bibitem{Birdsall_Langdon_2005}
+{\sc C.~K. Birdsall and A.~B. Langdon}, {\em Plasma Physics via Computer
+  Simulation}, Taylor \& Francis Group, New York, 2005.
+
+\bibitem{2006CampLinLinSun}
+{\sc B.~Camp, T.~Lin, Y.~Lin, and W.~Sun}, {\em Quadratic immersed finite
+  element spaces and their approximation capabilities}, Adv. Comput. Math., 24
+  (2006), pp.~81--112, \url{https://doi.org/10.1007/s10444-004-4139-8},
+  \url{http://dx.doi.org/10.1007/s10444-004-4139-8}.
+
+\bibitem{2017CaoZhangZhang}
+{\sc W.~Cao, X.~Zhang, and Z.~Zhang}, {\em Superconvergence of immersed finite
+  element methods for interface problems}, Adv. Comput. Math., 43 (2017),
+  pp.~795--821, \url{https://doi.org/10.1007/s10444-016-9507-7},
+  \url{http://dx.doi.org/10.1007/s10444-016-9507-7}.
+
+\bibitem{YCao_YChu_XMHe_TLin_1}
+{\sc Y.~Cao, Y.~Chu, X.-M. He, and T.~Lin}, {\em An iterative immersed finite
+  element method for an electric potential interface problem based on given
+  surface electric quantity}, J. Comput. Phys., 281 (2015), pp.~82--95.
+
+\bibitem{2016CaoChuZhangZhang}
+{\sc Y.~Cao, Y.~Chu, X.~Zhang, and X.~Zhang}, {\em Immersed finite element
+  methods for unbounded interface problems with periodic structures}, J.
+  Comput. Appl. Math., 307 (2016), pp.~72--81,
+  \url{https://doi.org/10.1016/j.cam.2016.04.020},
+  \url{http://dx.doi.org/10.1016/j.cam.2016.04.020}.
+
+\bibitem{Chu_ijnam2017_software}
+{\sc Y.~Chu, D.~Han, Y.~Cao, X.~He, and J.~Wang}, {\em \mbox{An}
+  \mbox{I}mmersed-\mbox{F}inite-\mbox{E}lement \mbox{P}article-in-\mbox{C}ell
+  \mbox{S}imulation \mbox{T}ool for \mbox{P}lasma \mbox{S}urface
+  \mbox{I}nteraction}, International Journal of Numerical Analysis and
+  Modeling, 14 (2017), pp.~175--200.
+
+\bibitem{delzanno_pop2015_oml_vs_pic}
+{\sc G.~L. Delzanno and X.-Z. Tang}, {\em Comparison of dust charging between
+  orbital-motion-limited theory and particle-in-cell simulations}, Physics of
+  Plasmas, 22 (2015), p.~113703, \url{https://doi.org/10.1063/1.4935697},
+  \url{http://scitation.aip.org/content/aip/journal/pop/22/11/10.1063/1.4935697}.
+
+\bibitem{Freeman_moon1975_electric}
+{\sc J.~W. Freeman and M.~Ibrahim}, {\em Lunar electric fields, surface
+  potential and associated plasma sheaths}, The Moon, 14 (1975), pp.~103--114,
+  \url{https://doi.org/10.1007/BF00562976},
+  \url{http://link.springer.com/article/10.1007%2FBF00562976}.
+
+\bibitem{2020GuoLin2}
+{\sc R.~Guo and T.~Lin}, {\em An immersed finite element method for elliptic
+  interface problems in three dimensions}, J. Comput. Phys., 414 (2020),
+  pp.~109478, 22, \url{https://doi.org/10.1016/j.jcp.2020.109478},
+  \url{https://doi.org/10.1016/j.jcp.2020.109478}.
+
+\bibitem{2020GuoLinLin}
+{\sc R.~Guo, T.~Lin, and Y.~Lin}, {\em Error estimates for a partially
+  penalized immersed finite element method for elasticity interface problems},
+  ESAIM Math. Model. Numer. Anal., 54 (2020), pp.~1--24,
+  \url{https://doi.org/10.1051/m2an/2019051},
+  \url{https://doi.org/10.1051/m2an/2019051}.
+
+\bibitem{2020GuoZhang}
+{\sc R.~Guo and X.~Zhang}, {\em Solving three-dimensional interface problems
+  with immersed finite elements: A-priori error analysis}, arXiv preprint
+  arXiv:2004.08984,  (2020).
+
+\bibitem{2016GuzmanSanchezSarkis2}
+{\sc J.~Guzm\'an, M.~A. S\'anchez, and M.~Sarkis}, {\em Higher-order finite
+  element methods for elliptic problems with interfaces}, ESAIM Math. Model.
+  Numer. Anal., 50 (2016), pp.~1561--1583,
+  \url{https://doi.org/10.1051/m2an/2015093}.
+
+\bibitem{Halekas_grl2007_lunar_charging}
+{\sc J.~S. Halekas, G.~T. Delory, D.~A. Brain, R.~P. Lin, M.~O. Fillingim,
+  C.~O. Lee, R.~A. Mewaldt, T.~J. Stubbs, W.~M. Farrell, and M.~K. Hudson},
+  {\em Extreme lunar surface charging during solar energetic particle events},
+  Geophysical Research Letters, 34 (2007), p.~L02111,
+  \url{https://doi.org/10.1029/2006GL028517},
+  \url{http://onlinelibrary.wiley.com/doi/10.1029/2006GL028517/full}.
+
+\bibitem{Halekas_jgr2008_lp}
+{\sc J.~S. Halekas, G.~T. Delory, R.~P. Lin, T.~J. Stubbs, and W.~M. Farrell},
+  {\em Lunar prospector observations of the electrostatic potential of the
+  lunar surface and its response to incident currents}, Journal of Geophysical
+  Research, 113 (2008), p.~A09102, \url{https://doi.org/10.1029/2008JA013194},
+  \url{http://sprg.ssl.berkeley.edu/adminstuff/webpubs/2008_jgr_A09102.pdf}.
+
+\bibitem{Halekas_pss2011_new_views}
+{\sc J.~S. Halekas, Y.~Saito, G.~T. Delory, and W.~M. Farrell}, {\em New views
+  of the lunar plasma environment}, Planetary and Space Science, 59 (2011),
+  pp.~1681--1694, \url{https://doi.org/10.1016/j.pss.2010.08.011}.
+
+\bibitem{Han_usc_dissertation2015}
+{\sc D.~Han}, {\em Particle-in-Cell Simulations of Plasma Interactions with
+  Asteroidal and Lunar Surfaces}, PhD thesis, University of Southern
+  California, 2015.
+
+\bibitem{Han_ieeetps2019_asteroid}
+{\sc D.~Han and J.~Wang}, {\em {3-{D} {F}ully-{K}inetic {P}article-in-{C}ell
+  {S}imulations of {S}mall {A}steroid {C}harging in the {S}olar {W}ind}}, IEEE
+  Transactions on Plasma Science, 47 (2019), pp.~3682--3688,
+  \url{https://doi.org/10.1109/TPS.2019.2919895}.
+
+\bibitem{Han_ieee2016_charging}
+{\sc D.~Han, J.~Wang, and X.~He}, {\em {\mbox{A} Nonhomogeneous
+  Immersed-Finite-Element Particle-in-Cell Method for Modeling Dielectric
+  Surface Charging in Plasmas}}, IEEE Transactions on Plasma Science, 44
+  (2016), pp.~1326--1332, \url{https://doi.org/10.1109/TPS.2016.2580698},
+  \url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7506060}.
+
+\bibitem{Han_jsr_2018_lunar}
+{\sc D.~Han, J.~Wang, and X.~He}, {\em { {I}mmersed {F}inite {E}lement
+  {P}article-in-{C}ell {S}imulations of {P}lasma {C}harging at the {L}unar
+  {T}erminator}}, Journal of Spacecraft and Rockets, 55 (2018), pp.~1490--1497,
+  \url{https://doi.org/10.2514/1.A34002}.
+
+\bibitem{Han_ife_jcp2016}
+{\sc D.~Han, P.~Wang, X.~He, T.~Lin, and J.~Wang}, {\em {\mbox{A} 3D immersed
+  finite element method with non-homogeneous interface flux jump for
+  applications in particle-in-cell simulations of plasma-lunar surface
+  interactions}}, Journal of Computational Physics, 321 (2016), pp.~965--980,
+  \url{https://doi.org/10.1016/j.jcp.2016.05.057},
+  \url{http://www.sciencedirect.com/science/article/pii/S0021999116302029}.
+
+\bibitem{2019HeZhang}
+{\sc C.~He and X.~Zhang}, {\em {Residual-based a posteriori error estimation
+  for immersed finite element methods}}, J. Sci. Comput.,  (2019 in press, DOI:
+  10.1007/s10915-019-01071-5), pp.~1--29.
+
+\bibitem{XHe_NMPDE2008_IFE}
+{\sc X.~He, T.~Lin, and Y.~Lin}, {\em Approximation capablity of a bilinear
+  immersed finite element space}, Numerical Methods for Partial Differential
+  Equations, 24 (2008), pp.~1265--1300,
+  \url{https://doi.org/10.1002/num.20318}.
+
+\bibitem{XHe_IFE_NonHomo_2011}
+{\sc X.~He, T.~Lin, and Y.~Lin}, {\em Immersed finite element methods for
+  elliptic interface problems with non-homogeneous jump conditions},
+  International Journal of Numerical Analysis and Modeling, 8 (2011),
+  pp.~284--301.
+
+\bibitem{2013HeLinLinZhang}
+{\sc X.~He, T.~Lin, Y.~Lin, and X.~Zhang}, {\em Immersed finite element methods
+  for parabolic equations with moving interface}, Numer. Methods Partial
+  Differential Equations, 29 (2013), pp.~619--646,
+  \url{https://doi.org/10.1002/num.21722},
+  \url{http://dx.doi.org/10.1002/num.21722}.
+
+\bibitem{lunarsourcebook_1991}
+{\sc G.~H. Heiken, D.~T. Vaniman, and B.~M. French}, {\em Lunar Sourcebook: A
+  User's Guide to the Moon}, Cambridge University Press, 1991.
+
+\bibitem{Hockney_Eastwood_1988}
+{\sc R.~W. Hockney and J.~W. Eastwood}, {\em Computer Simulation Using
+  Particles}, Adam Hilger, 1988.
+
+\bibitem{JDJackson_book_1}
+{\sc J.~D. Jackson}, {\em Classical electrodynamics}, Wiley, New York,
+  third~ed., 1999.
+
+\bibitem{2015JianChuCaoCaoHeXia}
+{\sc H.~Jian, Y.~Chu, H.~Cao, Y.~Cao, X.~He, and G.~Xia}, {\em
+  Three-dimensional ife-pic numerical simulation of background pressure's
+  effect on accelerator grid impingement current for ion optics}, Vacuum, 116
+  (2015), pp.~130--138.
+
+\bibitem{2005KafafyLinLinWang}
+{\sc R.~Kafafy, T.~Lin, Y.~Lin, and J.~Wang}, {\em Three-dimensional immersed
+  finite element methods for electric field simulation in composite materials},
+  Internat. J. Numer. Methods Engrg., 64 (2005), pp.~940--972,
+  \url{https://doi.org/10.1002/nme.1401},
+  \url{http://dx.doi.org/10.1002/nme.1401}.
+
+\bibitem{RK_AIAA_2005_3691_WholeSubscaleIonOptics}
+{\sc R.~Kafafy and J.~Wang}, {\em Whole subscale ion optics simulation: Direct
+  ion impingement and electron backstreaming}, in 41st AIAA/ASME/SAE/ASEE Joint
+  Propulsion Conference and Exhibit, AIAA 2005-3691, Tucson, Arizona, July
+  2005, \url{https://doi.org/10.2514/6.2005-3691}.
+
+\bibitem{RK_JPP_2007_WholeIonOptics}
+{\sc R.~Kafafy and J.~Wang}, {\em Whole ion optics gridlet simulations using a
+  hybrid-grid immersed-finite-element particle-in-cell code}, Journal of
+  Propulsion and Power, 23 (2007), pp.~59--68,
+  \url{https://doi.org/10.2514/1.21346}.
+
+\bibitem{2005KafafyWangLin}
+{\sc R.~Kafafy, J.~Wang, and T.~Lin}, {\em A hybrid-grid
+  immersed-finite-element particle-in-cell simulation model of ion optics
+  plasma dynamics}, Dyn. Contin. Discrete Impuls. Syst. Ser. B Appl.
+  Algorithms, 12 (2005), pp.~1--16.
+
+\bibitem{RK_IEEE_2006_Plume_HybridGrid}
+{\sc R.~I. Kafafy and J.~Wang}, {\em A hybrid grid immersed finite element
+  particle-in-cell algorithm for modeling spacecraft-plasma interactions}, IEEE
+  Transactions on Plasma Science, 34 (2006), pp.~2114--2124,
+  \url{https://doi.org/10.1109/TPS.2006.883404}.
+
+\bibitem{1998Li}
+{\sc Z.~Li}, {\em The immersed interface method using a finite element
+  formulation}, Appl. Numer. Math., 27 (1998), pp.~253--267,
+  \url{https://doi.org/10.1016/S0168-9274(98)00015-4},
+  \url{http://dx.doi.org/10.1016/S0168-9274(98)00015-4}.
+
+\bibitem{2003LiLinWu}
+{\sc Z.~Li, T.~Lin, and X.~Wu}, {\em New {C}artesian grid methods for interface
+  problems using the finite element formulation}, Numer. Math., 96 (2003),
+  pp.~61--98, \url{https://doi.org/10.1007/s00211-003-0473-x},
+  \url{http://dx.doi.org/10.1007/s00211-003-0473-x}.
+
+\bibitem{2015LinLinZhang}
+{\sc T.~Lin, Y.~Lin, and X.~Zhang}, {\em Partially penalized immersed finite
+  element methods for elliptic interface problems}, SIAM J. Numer. Anal., 53
+  (2015), pp.~1121--1144, \url{https://doi.org/10.1137/130912700},
+  \url{http://dx.doi.org/10.1137/130912700}.
+
+\bibitem{2013LinSheenZhang}
+{\sc T.~Lin, D.~Sheen, and X.~Zhang}, {\em A locking-free immersed finite
+  element method for planar elasticity interface problems}, J. Comput. Phys.,
+  247 (2013), pp.~228--247.
+
+\bibitem{2019LinSheenZhang}
+{\sc T.~Lin, D.~Sheen, and X.~Zhang}, {\em {A nonconforming immersed finite
+  element method for elliptic interface problems}}, J. Sci. Comput., 79 (2019),
+  pp.~442--463.
+
+\bibitem{CLu_JWan_YCao_XMHe_1}
+{\sc C.~Lu, J.~Wan, Y.~Cao, and X.-M. He}, {\em {A fully decoupled iterative
+  method with three-dimensional anisotropic immersed finite elements for
+  Kaufman-type discharge problems}}, Comput. Meth. Appl. Mech. Eng.,
+  (accepted, 2020).
+
+\bibitem{CLu_ZYang_JBai_YCao_XMHe_1}
+{\sc C.~Lu, Z.~Yang, J.~Bai, Y.~Cao, and X.-M. He}, {\em {Three-dimensional
+  immersed finite element method for anisotropic magnetostatic/electrostatic
+  interface problems with non-homogeneous flux jump}}, Int. J. Numer. Meth.
+  Eng., 121 (2020), pp.~2107--2127.
+
+\bibitem{Lund_AIAA_2020_1549_LunarCrater}
+{\sc \mbox{David Lund}, \mbox{Jianxun Zhao}, \mbox{Alexander Lamb}, and
+  \textnormal{Daoru Han}}, {\em \textnormal{Fully Kinetic PIFE-PIC Simulations
+  of Plasma Charging at Lunar Craters}}, in AIAA SciTech 2020, AIAA 2020-1549,
+  Orlando, Florida, January 6-10, 2020,
+  \url{https://doi.org/10.2514/6.2020-1549}.
+
+\bibitem{lunarsourcebook_ch7_regolith}
+{\sc D.~S. McKay, G.~Heiken, A.~Basu, G.~Blanford, S.~Simon, R.~Reedy, B.~M.
+  French, and J.~Papike}, {\em Lunar Sourcebook: A User's Guide to the Moon},
+  Cambridge University Press, 1991, ch.~7: The Lunar Regolith, pp.~285--356.
+
+\bibitem{moontrek}
+{\sc NASA-JPL}, {\em {M}oon {T}rek}, July 2018,
+  \url{https://trek.nasa.gov/moon/index.html}.
+\newblock {A}ccessed 7/15/2018.
+
+\bibitem{Poppe_icarus2012_topography}
+{\sc A.~R. Poppe, M.~Piquette, A.~Likhanskii, and M.~Hor\'{a}nyi}, {\em The
+  effect of surface topography on the lunar photoelectron sheath and
+  electrostatic dust transport}, Icarus, 221 (2012), pp.~135--146.
+
+\bibitem{Reasoner_jgr1972_lunar_photoe_layer}
+{\sc D.~L. Reasoner and W.~J. Burke}, {\em Characteristics of the lunar
+  photoelectron layer in the geomagnetic tail}, Journal of Geophysical
+  Research, 77 (1972), pp.~6671--6687,
+  \url{https://doi.org/10.1029/JA077i034p06671},
+  \url{http://onlinelibrary.wiley.com/doi/10.1029/JA077i034p06671/full}.
+
+\bibitem{shkuratov_icarus2001_regolith}
+{\sc Y.~G. Shkuratov and N.~V. Bondarenko}, {\em Regolith layer thickness
+  mapping of the moon by radar and optical data}, Icarus, 149 (2001),
+  pp.~329--338, \url{https://doi.org/doi:10.1006/icar.2000.6545},
+  \url{http://www.sciencedirect.com/science/article/pii/S001910350096545X}.
+
+\bibitem{Stubbs_LunarSurfaceCharging_2005}
+{\sc T.~J. Stubbs, J.~S. Halekas, W.~M. Farrell, and R.~R. Vondrak}, {\em Lunar
+  surface charging: A global perspective using lunar prospector data}, in
+  Workshop on Dust in Planetary Systems (ESA SP-643), H.~Krueger and A.~Graps,
+  eds., Kauai, Hawaii, USA, September 26 - 30, 2005, pp.~181--184,
+  \url{http://adsabs.harvard.edu/abs/2007ESASP.643..181S}.
+
+\bibitem{tang_pop2014_oml}
+{\sc X.-Z. Tang and G.~L. Delzanno}, {\em Orbital-motion-limited theory of dust
+  charging and plasma response}, Physics of Plasmas, 21 (2014), p.~123708,
+  \url{https://doi.org/10.1063/1.4904404},
+  \url{http://scitation.aip.org/content/aip/journal/pop/21/12/10.1063/1.4904404}.
+
+\bibitem{DH_AIAA_2013_3888_JPC}
+{\sc \textnormal{Daoru Han} and \mbox{Joseph J. Wang}}, {\em
+  \textnormal{{S}imulations of {I}on {T}hruster {P}lume {C}ontamination with
+  {A} {W}hole {G}rid {S}puttered {M}o {S}ource {M}odel}}, in 49th
+  AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, AIAA 2013-3888,
+  San Jose, California, July 14 - 17, 2013,
+  \url{https://doi.org/10.2514/6.2013-3888}.
+
+\bibitem{2010VallaghePapadopoulo}
+{\sc S.~Vallagh{\'e} and T.~Papadopoulo}, {\em A trilinear immersed finite
+  element method for solving the electroencephalography forward problem}, SIAM
+  J. Sci. Comput., 32 (2010), pp.~2379--2394,
+  \url{https://doi.org/10.1137/09075038X},
+  \url{http://dx.doi.org/10.1137/09075038X}.
+
+\bibitem{JW_IEEE_2006_PlumeParallel}
+{\sc J.~Wang, Y.~Cao, R.~Kafafy, J.~Pierru, and V.~K. Decyk}, {\em Simulations
+  of ion thruster plume-spacecraft interactions on parallel supercomputer},
+  IEEE Transactions on Plasma Science, 34 (2006), pp.~2148--2158,
+  \url{https://doi.org/10.1109/TPS.2006.883406}.
+
+\bibitem{JW_IEEE_2008_LunarDust}
+{\sc J.~Wang, X.~He, and Y.~Cao}, {\em Modeling electrostatic levitation of
+  dust particles on lunar surface}, IEEE Transactions on Plasma Science, 36
+  (2008), pp.~2459--2466, \url{https://doi.org/10.1109/TPS.2008.2003016}.
+
+\bibitem{Willis_1973_phe_se}
+{\sc R.~Willis, M.~Anderegg, B.~Feuerbacher, and B.~Fitton}, {\em Photoemission
+  and secondary electron emission from lunar surface material}, in Photon and
+  Particle Interactions with Surfaces in Space, R.~Grard, ed., vol.~37 of
+  Astrophysics and Space Science Library, Springer Netherlands, 1973,
+  pp.~389--401, \url{https://doi.org/10.1007/978-94-010-2647-5\_25},
+  \url{http://dx.doi.org/10.1007/978-94-010-2647-5_25}.
+
+\bibitem{Will_ieeetps2019_asteroid}
+{\sc W.~Yu, D.~Han, and J.~Wang}, {\em {{Numerical} {Simulations} of {Dust}
+  {Dynamics} {Around} {Small} {Asteroids}}}, IEEE Transactions on Plasma
+  Science, 47 (2019), pp.~3724--3730,
+  \url{https://doi.org/10.1109/TPS.2019.2920263}.
+
+\bibitem{Yu_AIAA2016_5447_asteroid}
+{\sc W.~Yu, J.~J. Wang, and D.~Han}, {\em {N}umerical {M}odeling of {D}ust
+  {D}ynamics {A}round {S}mall {A}steroids}, in AIAA SPACE Forum 2016, AIAA
+  2016-5447, Long Beach, California, September 13 - 16, 2016,
+  \url{https://doi.org/10.2514/6.2016-5447},
+  \url{https://arc.aiaa.org/doi/abs/10.2514/6.2016-5447}.
+
+\end{thebibliography}

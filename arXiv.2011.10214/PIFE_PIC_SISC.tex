@@ -1,0 +1,1915 @@
+\documentclass{siamart171218}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx} % \num, converting to scientific format
+\usepackage{longtable,tabularx}
+\setlength\LTleft{0pt}
+
+%% added packages
+%\graphicspath{{figures_only/}}
+\usepackage{xcolor}
+\usepackage{tablefootnote}
+% \usepackage{caption}
+\usepackage{siunitx}
+
+\usepackage{subfigure}			% subcaptions for subfigures
+\usepackage{subfigmat}			% matrices of similar subfigures, aka small mulitples
+
+\usepackage{comment}
+% \usepackage[doi=false,isbn=false,url=false,eprint=false]{biblatex}
+
+\usepackage{multirow}
+
+
+%% new commands
+\newcommand{\coloring}[1]{\textcolor{black}{#1}} % *black* for final version
+\newcommand{\X}{$\times$}
+
+
+\input{xiaoming_symbol}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{PIFE-PIC: Parallel Immersed-Finite-Element Particle-in-Cell
+for 3-D Kinetic Simulations of Plasma-Material Interactions%
+\thanks{%
+Submitted to the editors \today.
+\funding{This work was financially supported in part by
+NASA-Missouri Space Grant Consortium through NASA-EPSCoR-Missouri,
+and NSF through grants DMS-2005272 and OAC-1919789. % this is the MRI grant for HPC clusters
+D. Lund was also supported in part by NASA-Missouri Space Grant Consortium Scholarships.
+} % funding
+} % thanks
+} % title
+
+\author{
+Daoru Han\footnotemark[2]%
+\thanks{Department of Mechanical and Aerospace Engineering,
+Missouri University of Science and Technology, Rolla, MO 65409
+(\email{handao@mst.edu},\email{dclgzb@mst.edu}).}
+\and
+Xiaoming He%
+\thanks{Department of Mathematics and Statistics,
+Missouri University of Science and Technology, Rolla, MO 65409 (\email{hex@mst.edu})}
+\and
+David Lund\footnotemark[2]%
+\and
+Xu Zhang%
+\thanks{Department of Mathematics, Oklahoma State University,
+Stillwater, OK 74078 (\email{xzhang@okstate.edu})}}
+
+%\author{
+%David Lund\footnotemark[2]%
+%\thanks{Department of Mechanical and Aerospace Engineering,
+%Missouri University of Science and Technology, Rolla, MO 65409
+%(\email{dclgzb@mst.edu}, \email{handao@mst.edu}).}
+%% \and Jianxun Zhao%
+%\and Xu Zhang%
+%\thanks{Department of Mathematics, Oklahoma State University,
+%Stillwater, OK 74078 (\email{xzhang@okstate.edu})},
+%\and Xiaoming He%
+%\thanks{Department of Mathematics and Statistics,
+%Missouri University of Science and Technology, Rolla, MO 65409 (\email{hex@mst.edu})}
+%\and Daoru Han\footnotemark[2]}
+
+
+\begin{document}
+\newcommand{\BibTeX}{{\scshape Bib}\TeX\xspace}
+\maketitle
+\begin{abstract}
+This paper presents a recently developed particle simulation code package PIFE-PIC,
+which is a novel three-dimensional (3-D)
+Parallel Immersed-Finite-Element (IFE) Particle-in-Cell (PIC) simulation model
+for particle simulations of plasma-material interactions.
+This framework is based on the recently developed non-homogeneous
+electrostatic IFE-PIC algorithm,
+which is designed to handle complex plasma-material interface conditions
+associated with irregular geometries using a Cartesian-mesh-based PIC.
+Three-dimensional domain decomposition is utilized
+for both the electrostatic field solver with IFE
+and the particle operations in PIC
+to distribute the computation among multiple processors.
+A simulation of the orbital-motion-limited (OML) sheath of a dielectric sphere
+immersed in a stationary plasma is carried out to validate PIFE-PIC
+and profile the parallel performance of the code package.
+% Parallel efficiency up to approximately 110\% superlinear speedup was achieved
+% for strong scaling test.
+Furthermore, a large-scale simulation
+of plasma charging at a lunar crater
+containing 2 million PIC cells (10 million FE/IFE cells)
+and about 520 million particles,
+running for 20,000 PIC steps in about 109 wall-clock hours,
+is presented to demonstrate the high-performance computing capability of PIFE-PIC.
+
+\end{abstract}
+
+\begin{keywords}
+	immersed-finite-element,
+	particle-in-cell,
+    parallel domain decomposition,
+	plasma-material interactions
+\end{keywords}
+
+\begin{AMS}
+	% AMS subject classification: 
+	35R05, 65N30, 65Y05
+\end{AMS}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+\phantomsection
+
+
+Particle modeling of plasma dynamics has emerged as one of the most
+appropriate algorithms for first-principle-based modeling
+of many plasma-material interaction (PMI)
+problems.
+One of the fundamental phenomena in plasma-material interactions is surface charging.
+When an object is immersed in a plasma,
+its surface will collect charge from the plasma
+until it reaches an equilibrium surface potential determined by the current balance condition.
+Many plasma-material interaction problems involve multiple objects with complex geometries,
+therefore the interface conditions between the plasma and object need to be accurately resolved.
+
+Being one of the most popular kinetic methods for collisionless plasma simulations,
+the Particle-in-Cell (PIC) method \cite{1991BirdsallLangdon}
+models the charged particles as macro-particles and tracks the motions of particles
+in the electrostatic/electromagnetic field.
+The electric potential in a PIC simulation domain
+is governed by the second-order elliptic partial differential equations (PDEs)
+with discontinuous dielectric coefficients
+and non-homogeneous flux jumps across the material surface interface.
+Numerical methods based on structured meshes, especially Cartesian meshes,
+are particularly desirable in these simulations
+because they enable efficient particle tracking and save computing time
+in particle-mesh interactions.
+
+The immersed-finite-element (IFE) method is a finite element method (FEM)
+for solving interface problems using interface-independent meshes
+such as Cartesian meshes.
+The main idea of IFE is to adjust approximating functions locally
+to accommodate the physical interface conditions.
+An IFE method can achieve optimal convergence on an interface-independent mesh
+with the number and location of the degrees-of-freedom isomorphic
+to the standard FEM on the same mesh.
+The first IFE method was introduced by Z. Li in \cite{1998Li}
+for solving one-dimensional (1-D) elliptic interface problems with piecewise linear polynomials.
+Since then, the IFE method has been extended to higher-order approximations
+\cite{2009AdjeridLin, 2006CampLinLinSun, 2017CaoZhangZhang, 2016GuzmanSanchezSarkis2},
+higher-dimensional elliptic interface problems
+\cite{2020GuoLin2, 2020GuoZhang,2003LiLinWu, 2019HeZhang, 2015LinLinZhang,
+2019LinSheenZhang, 2010VallaghePapadopoulo},
+and other interface problems with other PDE models
+\cite{2019AdjeridChaabaneLinYue,2020AdjeridLinZhuang,2019AdjeridMoon,2020GuoLinLin,
+2013HeLinLinZhang,2013LinSheenZhang}.
+
+Over the past decade, the IFE method has been successfully used
+together with PIC in plasma particle simulations
+\cite{2018BaiCaoChuZhang, 2016CaoChuZhangZhang,
+2015JianChuCaoCaoHeXia,2005KafafyLinLinWang, 2005KafafyWangLin}.
+Recently, a non-homogeneous IFE-PIC algorithm has been developed
+for particle simulations of plasma-material interactions with complex geometries
+while maintaining the computational speed of the Cartesian-mesh-based PIC
+\cite{Chu_ijnam2017_software, Han_usc_dissertation2015, Han_ieee2016_charging,
+Han_ife_jcp2016,CLu_JWan_YCao_XMHe_1,CLu_ZYang_JBai_YCao_XMHe_1}.
+%
+To the best of our knowledge, most existing IFE-PIC algorithms are serial.
+The non-parallel algorithms have limitations in their capability
+to handle large-scale particle simulations
+and their efficiency in using multiple processors at the algorithm level.
+For a typical large-scale 3-D PIC simulation,
+millions to billions of particles are tracked in the computation domain
+that contains millions of elements.
+With the availability of multi-processor computational facilities,
+the call for parallel IFE-PIC algorithms is urgent.
+
+The goal of this paper is to develop and test a new Parallel IFE-PIC package
+for particle simulations of electrostatic plasma-material interactions,
+namely, PIFE-PIC.
+We utilize a 3-D domain decomposition technique
+for both \emph{field-solve} and \emph{particle-push} procedures of the PIC model.
+The computations are distributed into multiple subdomains
+which can be handled independently by multiple processors.
+The key is how to efficiently exchange the information between these subdomains.
+In this work, neighboring subdomains have a small overlapping (``guard cells'') region
+which will be used as a common region to interchange the PDE solutions and the particle data.
+Extensive numerical experiments show that
+our PIFE-PIC scheme significantly outperforms the serial IFE-PIC scheme.
+Although it maintains a similar accuracy as the serial IFE-PIC computational scheme,
+the high parallel performance dramatically reduces the computational time
+for problems of practical interests.
+Hence, large-scale kinetic simulations of plasma-material interactions
+can be carried out much more efficiently.
+
+The rest of this paper is organized as follows.
+In Section \ref{sec:pifepic}, we describe the details of 3-D domain decomposition
+for both IFE (field-solve) and PIC (particle-push) procedures of PIFE-PIC.
+In Section \ref{sec:validation}, we present a code validation
+using a 3-D sheath problem
+of a dielectric sphere immersed in a stationary plasma.
+Section \ref{sec:scaling} presents a parallel efficiency test of
+the PIFE-PIC code for strong scaling.
+Section \ref{sec:lunar} presents an application of PIFE-PIC
+to simulations of lunar surface charging at a crater.
+Finally, a summary and conclusion are given in Section \ref{sec:conclusion}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Parallel IFE-PIC Algorithms}
+\label{sec:pifepic}
+\phantomsection
+
+
+\subsection{Overview of PIC and IFE-PIC}
+
+PIC is a widely-used kinetic particle simulation method for plasma dynamics
+\cite{Birdsall_Langdon_2005,Hockney_Eastwood_1988}.
+In PIC, charged particles of plasma species are represented
+by a number of simulation particles
+(also referred to as macro-particles or super-particles)
+distributed ``freely'' in the entire computation domain,
+while the field quantities such as electric potential are discretized on a mesh
+(thus the name ``particle-in-cell'').
+The kernel of PIC method is the ``PIC loop''
+which includes four essential steps: scatter, field-solve, gather, and particle-push
+(Figure \ref{fig:picloop}).
+Within a PIC loop, quantities carried by the simulation particles
+are weighted onto the mesh nodes (``scatter'') to form the right-hand side (RHS) term
+of the PDE for the solution of the electrostatic/electromagnetic field (``field-solve''),
+which is in turn interpolated at particle positions (``gather'')
+to update the velocity and position of the particles (``particle-push'').
+Such data exchange between particles and field quantities
+will iterate for a desired number of steps
+(or till a convergence criterion is met)
+to obtain the self-consistent solution of both particles and fields.
+
+\begin{figure}[ht!]
+\centering
+{\includegraphics[width=0.5\textwidth]{flowchart_pic_loop.png}}
+\caption{Four essential steps in a PIC loop.}
+\label{fig:picloop}
+\end{figure}
+
+For problems of plasma-material interactions,
+the mathematical model
+is an interface problem including
+the electrostatic/electromagnetic field problem
+in a self-consistent solution to the corresponding plasma dynamics problem
+(Figure \ref{fig:domain}),
+together with the appropriate interface conditions
+between the plasma region and the material region (Figure \ref{fig:interface}).
+%%
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+%
+\subfigure[Computation domain including the interface]%
+{\includegraphics[width=0.35\textwidth]{domain.pdf}\label{fig:domain}}
+%
+\subfigure[Electric flux jump across the interface]%
+{\includegraphics[width=0.4\textwidth]{interface.pdf}\label{fig:interface}}
+\end{subfigmatrix}
+\caption{A sketch of the interface problem and interface condition.}
+\label{fig:sketch}
+\end{figure}
+%%
+For electrostatic problems presented in this work,  
+we consider the following boundary value problem of the elliptic equation
+that governs the distribution of the electric potential $\phi$
+\cite{JDJackson_book_1}:
+\begin{eqnarray}
+-\nabla \cdot \big( \varepsilon \nabla \phi(X) \big) &=&
+\rho(X),~~X=(x,y,z) \in {\Omega^- \cup \Omega^+},
+\label{bvp_pde_nonhomogeneous flux jump} \\
+\phi(X) &=& g(X),~~ X \in {\Gamma_D},
+\label{eq:bvp_bc_nonhomogeneous flux jump} \\
+ \frac{\partial \phi(X)}{\partial\textbf{n}_{\Gamma_N}} &=& p(X),~~ X \in {\Gamma_N}.
+\label{eq:bvp_bc2_nonhomogeneous flux jump}
+\end{eqnarray}
+Here, $\Omega\in \real^3$ is assumed to be a cuboidal domain,
+which is divided into two subdomains $\Omega^+$ and $\Omega^-$
+by an interface surface $\Gamma$ such that
+$\overline{\Omega}= \overline{\Omega^-} \cup \overline{\Omega^+} \cup \Gamma$.
+$\Gamma_D$ and $\Gamma_N$ are the Dirichlet and Neumann boundaries
+such that $\partial\Omega = \Gamma_D \cup \Gamma_N$.
+The vector $\textbf{n}_{\Gamma_N}$ is the unit outward normal of $\Gamma_N$.
+See the sketch in Figure \ref{fig:domain}.
+The functions $\rho$, $g$, and $p$ are
+the source term, Dirichlet boundary function, and Neumann boundary function, respectively.
+The electric field $\mathbf{E} = -\nabla \phi(X)$ is discontinuous
+across the interface $\Gamma$ with the following jump conditions imposed:
+\begin{eqnarray}
+\left. \left[\phi(X) \right] \right|_\Gamma &=& 0,
+\label{eq:bvp_int_1_nonhomogeneous flux jump} \\
+\left. \left[
+\varepsilon \frac{\partial \phi(X)}{\partial\textbf{n}_{\Gamma}}
+\right]
+\right|_{\Gamma}
+&=& q(X),
+%= -(\varepsilon_2 \mathbf{E_2} - \varepsilon_1 \mathbf{E_1}) \cdot \mathbf{n}_\Gamma
+%= -\sigma_s
+\label{eq:bvp_int_2_nonhomogeneous flux jump}
+\end{eqnarray}
+where the jump $[\cdot]_\Gamma$ is defined by
+$[w(X)]_\Gamma := w^+(X)|_\Gamma - w^-(X)|_\Gamma$.
+The vector $\textbf{n}_{\Gamma}$ is the unit normal of $\Gamma$
+pointing from $\Omega^-$ to $\Omega^+$.
+The material-dependent coefficient $\varepsilon{(X)}$ is discontinuous across the interface.
+Without loss of generality, we assume it is a piecewise constant function defined by
+\begin{eqnarray*}
+\varepsilon(X) = \left\{ \begin{array} {ll}
+\varepsilon^-, ~~X \in \Omega^-, \\
+\varepsilon^+, ~~X \in \Omega^+,
+\end{array} \right.
+\end{eqnarray*}
+where $\min(\varepsilon^+,\varepsilon^-) >0$.
+
+%% {\color{red} I feel this paragraph is kind of redundant
+%% because we have sufficiently addressed this issue in Section 1}.
+In many applications of scientific and engineering interest,
+the shape of the interface $\Gamma$ is usually non-trivial.
+Traditionally, when solving field problems involving complex-shaped objects,
+an unstructured body-fitting mesh is employed to improve accuracy
+(Figure \ref{fig:ifepic:mesh:a}).
+However, a structured mesh, such as Cartesian mesh (Figure \ref{fig:ifepic:mesh:b}),
+is more advantageous in kinetic PIC modeling
+of plasma dynamics from the perspective of computing speed and efficiency,
+although, it has been limited to problems with relatively simple geometries
+due to accuracy considerations inherited from finite-difference-based schemes.
+To solve this dilemma while taking into account both accuracy and efficiency,
+the immersed-finite-element particle-in-cell (IFE-PIC) method
+was developed
+to handle complex interface conditions associated with irregular geometries
+while maintaining the computational speed of the Cartesian-mesh-based PIC.
+The detailed IFE formulation and IFE-PIC steps
+are archived in \cite{Han_ife_jcp2016}
+and the flowchart of the serial IFE-PIC algorithm
+is shown in Figure \ref{fig:flowchart:serial}.
+Over the past few years, the IFE-PIC method has matured to successfully model
+plasma dynamics problems arising from many space applications,
+such as ion thruster grid optics
+\cite{RK_AIAA_2005_3691_WholeSubscaleIonOptics,RK_JPP_2007_WholeIonOptics},
+ion propulsion plume-induced contamination
+\cite{RK_IEEE_2006_Plume_HybridGrid,JW_IEEE_2006_PlumeParallel,
+DH_AIAA_2013_3888_JPC},
+charging of lunar and asteroidal surfaces
+\cite{Han_usc_dissertation2015,Han_ife_jcp2016,Han_ieee2016_charging,
+YCao_YChu_XMHe_TLin_1,
+Han_jsr_2018_lunar,
+Han_ieeetps2019_asteroid,
+Will_ieeetps2019_asteroid},
+and dust transport dynamics around small asteroids
+\cite{Yu_AIAA2016_5447_asteroid}.
+
+%%
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+%
+\subfigure[Unstructured body-fitting finite element (FE) mesh]%
+{\label{fig:ifepic:mesh:a}\includegraphics[width=0.45\textwidth]{body-fitted-mesh.pdf}}
+%
+\subfigure[Structured immersed-finite-element (IFE) mesh based on Cartesian mesh]%
+{\label{fig:ifepic:mesh:b}\includegraphics[width=0.45\textwidth]{nonbody-fitted-mesh.pdf}}
+\end{subfigmatrix}
+\caption{Illustration of traditional body-fitting finite-element mesh and
+novel structured immersed-finite-element mesh.}
+\label{fig:ifepic:mesh}
+\end{figure}
+%%
+
+%%
+\begin{figure}[ht!]
+\centering
+{\includegraphics[width=0.8\textwidth]{flowchart_serial.png}}
+\caption{Flowchart of serial IFE-PIC.}
+\label{fig:flowchart:serial}
+\end{figure}
+%%
+
+\subsection{3-D Domain Decomposition in PIFE-PIC}
+
+In our proposed PIFE-PIC algorithm,
+the 3-D computational domain is decomposed along each dimension
+using the Message Passing Interface (MPI) architecture (Figure \ref{fig:pifepic:blocks}).
+The domain is first decomposed into cuboid blocks with the same PIC mesh resolution.
+Each subdomain is handled by a processor for both field-solve
+and particle-push procedures of the PIC method.
+%
+\begin{figure}[ht!]
+\centering
+{\includegraphics[width=0.72\textwidth]{pic_block_all.png}}
+\caption{3-D domain decomposition for PIC blocks. Overlapping cells are not displayed.
+In this example, the global domain is decomposed into 2$\times$3$\times$4 subdomains.
+The blue-red color scale indicates the MPI rank of each subdomain.}
+\label{fig:pifepic:blocks}
+\end{figure}
+%
+Two overlapping PIC cells (``guard cells'') in each dimension are used in PIFE-PIC
+(Figure \ref{fig:2dmesh}).
+Therefore, the boundaries of each subdomain are either on the global boundary
+or in the interior of its neighboring subdomains.
+Local IFE mesh is then generated for each subdomain.
+By virtue of the IFE formulation,
+PIC and IFE can use different mesh resolutions.
+In PIFE-PIC, PIC mesh is globally uniform.
+However, IFE mesh could be globally non-uniform
+but still locally uniform within each subdomain.
+The data interaction between IFE and PIC meshes of different resolutions
+is described in detail in \cite{RK_IEEE_2006_Plume_HybridGrid}.
+Figures \ref{fig:2dmesh} and \ref{fig:3dmesh}
+illustrate the 2-D and 3-D views of the domain decomposition
+% with overlapping cells
+and different resolutions.
+
+
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{3} % number of columns
+\subfigure[Subdomains with two overlapping PIC cells in each dimension,
+globally uniform PIC mesh.]
+{\includegraphics[trim={4cm 0.5cm 9cm 0}, clip, width=0.25\textwidth]%
+{initial_field_innerBC_sketch.png}}
+\subfigure[Subdomains with two overlapping PIC cells in each dimension,
+globally uniform IFE mesh.]
+{\includegraphics[trim={3cm 0 10cm 0}, clip, width=0.25\textwidth]%
+{ife_mesh_guardcell_v162_1_yz.png}}
+\subfigure[Subdomains with two overlapping PIC cells in each dimension,
+globally non-uniform IFE mesh.]%
+{\includegraphics[trim={3cm 0 10cm 0}, clip, width=0.25\textwidth]%
+{ife_mesh_guardcell_v162_3_yz.png}}
+\end{subfigmatrix}
+\caption{2-D projection showing the domain decomposition for PIC and IFE
+with overlapping cells and different resolutions.}
+\label{fig:2dmesh}
+\end{figure}
+
+
+
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+\subfigure[A globally uniform IFE mesh.]%
+{\includegraphics[trim={6cm 3cm 2cm 0}, clip, width=0.45\textwidth]%
+{ife_mesh_uniform.png}}
+\subfigure[A globally non-uniform IFE mesh.]%
+{\includegraphics[trim={6cm 3cm 2cm 0}, clip, width=0.45\textwidth]%
+{ife_mesh_nonuniform.png}}
+\end{subfigmatrix}
+\caption{%
+3-D view of globally uniform and non-uniform IFE meshes.
+The IFE mesh for each subdomain is uniform (locally),
+but could be non-uniform for different subdomains (globally).
+}
+\label{fig:3dmesh}
+\end{figure}
+
+\subsection{Parallel Algorithm for IFE Field Solver}
+
+For the parallel electrostatic field solver, Dirichlet-Dirichlet domain decomposition
+with overlapping cells is used to distribute the subdomains
+among multiple MPI processes \cite{Smith_DomainDecomp_1996}.
+For each subdomain,
+the IFE solver is the same as the sequential IFE method
+with Dirichlet boundary conditions \cite{XHe_NMPDE2008_IFE,XHe_IFE_NonHomo_2011}.
+These Dirichlet boundary conditions are imposed at the boundaries of the subdomain,
+which are interior for the neighboring subdomains
+(Figure \ref{fig:innerBC}, left).
+Therefore, the field solution at respective neighboring subdomains are used as
+Dirichlet boundary conditions for each subdomain.
+Within each field-solve step, inner iterations are performed such that
+the solutions of the overlapping cells are exchanged
+and updated as the new Dirichlet boundary conditions
+for the respective neighboring subdomains.
+It is noted here that
+since PIFE-PIC uses 3-D domain decomposition,
+such MPI data exchange will be carried out
+at guard cell nodes on ``surfaces''
+(+/- neighbor in one direction, such as Rank 1 and Rank 2 in Figure \ref{fig:innerBC}),
+``edges'' (+/- neighbor in two directions,
+such as Rank 3 and Rank 6 in Figure \ref{fig:innerBC}),
+and ``vertices'' (+/- neighbor in three directions).
+We denote this level of iteration as the ``Domain Decomposition Method (DDM)'' iteration.
+The relative error $e_\mathrm{rel}$ of DDM is defined with the $L^2$ norm as below:
+\begin{equation}
+e_\mathrm{rel} =
+\frac{\norm{\phi_\mathrm{new} - \phi_{\mathrm{old}}}_{L^2}}{\|\phi_{\mathrm{old}}\|_{L^2}}
+\end{equation}
+where $\phi_\mathrm{new}$ and $\phi_\mathrm{old}$ denote solutions
+at the new and old steps in the DDM iteration, respectively.
+
+
+\subsection{Parallel Scheme for PIC Procedures}
+In PIFE-PIC, simulation particles belonging to the same subdomain are stored together
+on the processor that solves the electrostatic field of the same subdomain
+(Figure \ref{fig:innerBC}, right).
+In this sense, ``particle quantities'' and ``field quantities'' of each subdomain
+are handled by the same processor.
+Each processor (MPI rank) handles its own particles belonging to its domain
+without guard cells (see Figure \ref{fig:pifepic:blocks}).
+In particle-push, particles crossing the inner boundaries
+are sent to the corresponding rank based on their destination positions.
+Note that such particle motion includes similar cases as data exchange for field-solve,
+which are ``crossing one surface''
+(+/- neighbor in one direction, such as Rank 1 and Rank 2 in Figure \ref{fig:innerBC}),
+``crossing an edge (two surfaces)''
+(+/- neighbor in two directions, such as Rank 3 and Rank 6 in Figure \ref{fig:innerBC}),
+and ``crossing a vertex (three surfaces)''
+(+/- neighbor in three directions).
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.80\textwidth]{innerBC_marked.png}
+\caption{MPI data exchange among neighboring subdomains within DDM iteration.
+The thick edges (black and red) represent the boundaries of each subdomain without guard cells.
+Left: for field-solve operations: at inner boundaries with guard cells,
+the nodes at a certain subdomain's boundary (e.g., Rank 1's boundary nodes)
+are also interior nodes of its neighboring subdomain (e.g., Rank 2).
+Therefore, the field quantities stored on interior nodes of Rank 2
+are sent to Rank 1 and used as Dirichlet boundary nodes.
+Since PIFE-PIC has 3-D domain decomposition,
+such MPI data exchange will be carried out
+at guard cell nodes on ``surfaces''
+(+/- neighbor in one direction, such as Rank 1 and Rank 2),
+``edges'' (+/- neighbor in two directions, such as Rank 3 and Rank 6),
+and ``vertices'' (+/- neighbor in three directions, not shown on this 2-D illustration).
+Right: For particle-push operations:
+each processor handles its own particles belonging to its domain
+without guard cells (see Figure \ref{fig:pifepic:blocks}).
+In particle-push, particles crossing the inner boundaries
+are sent to the corresponding rank based on their destination positions.
+Note such particle motion includes similar cases as data exchange for field-solve,
+which are ``crossing one surface''
+(+/- neighbor in one direction, such as Rank 1 and Rank 2),
+``crossing an edge (two surfaces)''
+(+/- neighbor in two directions, such as Rank 3 and Rank 6),
+and ``crossing a vertex (three surfaces)''
+(+/- neighbor in three directions, not shown on this 2-D illustration).
+For charge-weighting, contributions from all neighboring subdomains are summed together
+at respective inner boundary nodes.}
+\label{fig:innerBC}
+\end{figure}
+
+
+\subsection{Flowchart for PIFE-PIC}
+
+Figure \ref{fig:flowchart:parallel} shows the flowchart of PIFE-PIC.
+The steps in red color are major steps involving MPI operations
+associated with domain decomposition.
+% The relative error of PIC iteration is defined in the same way as the DDM iteration,
+% except using the solutions at the current and last PIC iteration steps,
+% rather than DDM iteration steps.
+In total, there are three levels of iteration in PIFE-PIC.
+The first level is the matrix-solving iteration
+which uses the preconditioned conjugate gradient (PCG) algorithm (PCG level).
+The second one checks the relative error in the iterations
+of the domain decomposition method (DDM level).
+% The third one checks for the convergence of the PIC iteration to steady state (PIC level).
+% The third one tracks the relative error for the PIC iteration
+% and checks the steady state of PIC solution (PIC level).
+The third one tracks the solution of each PIC step (PIC level).
+
+
+\begin{figure}[ht!]
+\centering
+{\includegraphics[width=0.8\textwidth]{flowchart_parallel.png}}
+\caption{Flowchart of PIFE-PIC.}
+\label{fig:flowchart:parallel}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Code Validation}
+\label{sec:validation}
+\phantomsection
+
+
+We apply the PIFE-PIC code to simulate the charging of a small dielectric
+sphere immersed in a collisionless and stationary plasma
+in the orbital-motion-limited (OML) sheath regime.
+Successful validations of the serial IFE-PIC against analytic OML solutions are
+presented in earlier work \cite{Han_ife_jcp2016,Han_ieee2016_charging}.
+
+\subsection{Problem Description and Simulation Setup}
+
+We consider a stationary, collisionless hydrogen plasma
+of equal ion and electron temperatures ($T_i = T_e$).
+The analytic expressions for ion and electron densities in the plasma are given by
+the revised OML theory \cite{tang_pop2014_oml,delzanno_pop2015_oml_vs_pic}.
+Therefore, the analytic potential profile near the sphere can be numerically solved
+from Poisson's equation in spherical coordinates.
+
+\subsubsection{Computation Domain and Mesh}
+
+In the simulation, we use a computation domain of a 5\X 5\X 5
+Debye cube with a globally uniform PIC mesh
+with the size of $h = 0.1 \lambda_D$ in all dimensions,
+where $\lambda_D$ is the Debye length of the plasma.
+The entire simulation domain has 50\X 50\X 50 = 125,000 PIC cells
+which is 125,000\X 5 = 625,000 tetrahedral FE/IFE cells
+as each cuboid PIC cell is partitioned into 5 tetrahedral FE/IFE cells
+in 3-D IFE-PIC \cite{Han_ife_jcp2016,Han_ieee2016_charging}.
+The IFE mesh size is also globally uniform and the same as that of the PIC mesh.
+The dielectric sphere is centered at $(0,0,0)$ with a radius of $R_s = 0.401$.
+Due to symmetry in all three dimensions, only $1/8$ of the sphere is included in the domain.
+The entire domain is partitioned into 5$\times$5$\times$5 subdomains
+with each subdomain computed by one MPI process.
+Figure \ref{fig:oml_mesh_setup} shows the 3-D IFE mesh
+and setup used in the simulation.
+
+
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+\subfigure[IFE mesh]%
+{\label{fig:oml_mesh}
+\includegraphics[width=0.45\textwidth]{oml_125_global_domain.png}}
+\subfigure[Simulation setup]%
+{\label{fig:oml_setup}%
+\includegraphics[width=0.45\textwidth]{oml_125_oml_setup.png}}
+\end{subfigmatrix}
+\caption{%
+IFE mesh and setup used in the 3-D OML sheath problem for code validation.
+In this example, the global domain is decomposed into
+5$\times$5$\times$5 subdomains.
+}
+\label{fig:oml_mesh_setup}
+\end{figure}
+
+\subsubsection{Field Setup}
+At $X_{\max}$, $Y_{\max}$, and $Z_{\max}$ boundaries, the potentials are set to $0$
+as the reference potential.
+At $X_{\min}$, $Y_{\min}$, and $Z_{\min}$ boundaries, zero-Neumann boundary conditions
+are applied due to symmetry
+(Figure \ref{fig:oml_setup}).
+The relative permittivity of the sphere is set to $4$.
+The floating potential of the sphere
+is calculated from the non-homogeneous flux jump condition at the sphere surface.
+
+\subsubsection{Particle Setup}
+The simulation is carried out using the realistic ion-to-electron mass ratio of
+$m_i / m_e = 1836$.
+Particles are pre-loaded into the domain before the initial field solution,
+and injected into the domain at
+$X_{\max}$, $Y_{\max}$, and $Z_{\max}$ within each PIC step.
+Particles hitting the $X_{\min}$, $Y_{\min}$, and $Z_{\min}$ boundaries are reflected
+due to symmetry.
+Particles hitting the $X_{\max}$, $Y_{\max}$, and $Z_{\max}$ are absorbed and removed
+from the simulation.
+The normalized time step size was set to be 0.01.
+There were 125 particles (5\X 5\X 5) per species,
+per cell being loaded/injected into the domain.
+
+\subsection{Simulation Results}
+
+The simulation of the validation case finished in about 2 hours
+for a total of 50,000 PIC steps
+on the \emph{Foundry} cluster provided
+by the Center of High-Performance Computing Research
+at Missouri University of Science and Technology.
+The computing nodes are configured with
+Dell C6525 nodes each having
+four node chassis with each node containing dual 32-core AMD EPYC Rome 7452 CPUs
+with 256 GB DDR4 RAM and six 480GB SSD drives in RAID 0.
+All other simulations presented in this work
+were also carried out on the same cluster.
+
+%%For this test case, the maximum number of PCG iterations was set to 1000
+%%[XXX 100 or 50 XXX it's OK because this limit was never hit]
+%%with a tolerance of \num{1e-6},
+%%the max number of initial DDM iterations
+%%(solving the initial electrostatic field before main PIC loop starts)
+%%was set to 150 %% accoridng to the plot, DDM converged at about ~100
+%%and the max number of DDM iterations at each PIC iteration step was set to 50
+%%with a tolerance of \num{1e-2},
+%%and the PIC tolerance of relative error was set to \num{1e-2}
+%%with a buffer of 1,000 steps
+%%(i.e., PIC iteration would stop if the relative error is below
+%%\num{1e-2} for 1,000 consecutive PIC steps).
+
+For this test case, the maximum number of PCG iterations was set to
+60  with a tolerance \coloring{(for relative residual)} of \num{1e-6},
+the max number of initial DDM iterations
+(solving the initial electrostatic field before main PIC loop starts)
+was set to 150
+and the max number of DDM iterations at each PIC iteration step was set to
+50 with a tolerance of \num{1e-2}.
+% and the PIC tolerance of relative error was set to \num{1e-1}.
+The simulation was set to run 50,000 PIC steps.
+% even when PIC tolerance was reached.
+
+\subsubsection{Initial Field Solution}
+The initial field solution (the zeroth PIC step)
+took about 100 DDM iterations which are more than
+what is needed at each step of the main PIC loop,
+to converge in terms of the relative error \num{1e-2}.
+The idea of setting a relatively larger DDM iteration number
+is to obtain a better initial field for the main PIC loop.
+Since the initial field was solved only once,
+the extra DDM iterations contributed little to the overall wall-clock time
+of the entire simulation.
+
+\subsubsection{Solution History of Main PIC Loop}
+
+Figure \ref{fig:convergence_history} shows the field solution
+convergence history
+including the \coloring{max absolute PCG residual and max DDM relative error}
+as a function of PIC steps in the main PIC loop.
+A few phenomena are observed here:
+\begin{enumerate}
+\item For most PIC steps, PCG took about 45-50 iterations
+to reach the tolerance of \num{1e-6}.
+The ``max'' in the vertical axis stands for ``max among all subdomains''
+(first plot);
+
+\item The maximum PCG absolute residual of the matrix solver has been maintained
+below \num{1e-6} (second plot);
+
+\item At early PIC steps, most DDM steps took about tens of iterations to converge
+below \num{1e-2},
+while later on as PIC approaches steady state,
+most DDM steps were able to converge within about 10$\sim$15 iterations
+(third and forth plots).
+
+\end{enumerate}
+
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.85\textwidth]%
+{oml_125_v235_5x5x5_benchmark_5_main_convergence_history_50000_v2.png}
+\caption{%
+Field convergence history of the code validation test case,
+PCG absolute residual and DDM relative error.
+The green line on max DDM relative error plot is the DDM tolerance.
+% The green line on the max PIC relative error plot is the PIC tolerance.
+}
+\label{fig:convergence_history}
+\end{figure}
+
+
+Figure \ref{fig:particle_history} shows the global particle number history.
+% of a certain subdomain (of rank z02y02x02).
+At the steady state,
+there are approximately \num{1.56e7} particles in the entire global domain.
+% the electrons and ions both have approximately
+%% 1.25$\times$10$^5$
+%\num{1.25e5} particles in a local subdomain
+%and \num{1.56e7} particles in the entire global domain.
+It is also shown that the numbers of particles
+reached steady state at normalized simulation time of about $\hat{t} = 125$.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.80\textwidth]%
+{oml_125_v235_benchmark_5_particle_history_block_z02y02x02_v2.png}
+\caption{%
+Global particle history of the code validation test case.
+``ns1'' represents the number of Species \#1 particles which is the number of electrons,
+while ``ns2'' represents the number of Species \#2 particles
+which is the number of ions.
+``ntot'' is the total number of particles (electrons plus ions).
+}
+\label{fig:particle_history}
+\end{figure}
+
+\subsubsection{Comparison with Analytic Solution}
+
+Figure \ref{fig:results} shows the comparison between PIFE-PIC simulation results
+against analytic solution for the OML sheath problem as well as a 3-D potential contour.
+%The numerical results of ion density profile,
+%electron density profile, as well as 
+The potential profile agrees very well with the analytic solution,
+as also shown in earlier work with the serial IFE-PIC
+\cite{Han_ieee2016_charging,Han_ife_jcp2016}.
+
+
+\begin{figure}[ht]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+%\subfigure[Ion density profile]%
+%{\includegraphics[width=0.35\textwidth]{oml_125/v234_oml_125_5x5x5_ion_den_t500.png}}
+%\subfigure[Electron density profile]%
+%{\includegraphics[width=0.35\textwidth]{oml_125/v234_oml_125_5x5x5_ele_den_t500.png}}
+\subfigure[Potential profile]%
+%{\includegraphics[width=0.40\textwidth]{oml_125/v235_benchmark_4.png}}
+{\includegraphics[width=0.45\textwidth]{oml_125_v235_benchmark_5.png}}
+\subfigure[3-D potential contour]%
+{\includegraphics[width=0.45\textwidth]{oml_125_v235_benchmark_5_contour.png}}
+\end{subfigmatrix}
+\caption{%
+Validation of OML sheath solution: PIFE-PIC vs. analytic and 3-D potential contours.}
+\label{fig:results}
+\end{figure}
+
+
+
+\subsection{Performance Profiling}
+
+Table \ref{tab:profiling} shows the detailed timer profile of PIFE-PIC
+on the validation simulation
+for the entire 50,000 PIC steps:
+total wall-clock time and
+percentage of total wall-clock time
+for each main component of the PIFE-PIC procedures, namely,
+``gather'',
+``particle-push'',
+``particle-push-comm'' (adjust particles at local boundaries and communication among subdomains),
+``scatter'',
+``field-solve'',
+``field-solve-phibc'' (communication among subdomains
+and update local potential boundary conditions),
+and ``other'' (including particle injection at global boundaries
+and particle collection at objects).
+The percentage breakdown shows
+the procedures of `particle-push' and `field-solve'
+took the majority of the computing (wall-clock) time.
+The computing time of `particle-push' essentially depends on the number of simulation particles
+in the domain,
+which also affects the accuracy and smoothness of the source term for Poisson's equation.
+Therefore, in practical PIC simulations,
+large numbers of particles are preferred when computing resources are available.
+The computing time of `field-solve' essentially
+depends on 1) the size of each subdomain (number of mesh cells and nodes)
+and 2) the number of DDM iterations.
+The size of each subdomain can be determined by the domain decomposition configurations,
+while the number of DDM iterations is affected by
+the DDM relative error tolerance and the max number of DDM iterations.
+In the following section, we vary the size of each subdomain
+and max number of DDM iterations
+to investigate the strong scaling performance of PIFE-PIC.
+
+\begin{table}[ht!]
+  \begin{center}
+    \caption{Time percentage breakdown for all 50,000 PIC steps.}
+    \vspace{-0.5cm}
+    \label{tab:profiling}
+\resizebox{\textwidth}{!}{%
+    \begin{tabular}{c|c|c}
+    \hline
+    \hline
+      \textbf{Computing step} & \textbf{Wall-clock time (s)}
+      & \textbf{Percent of total wall-clock time (\%)}\\ %
+    \hline
+    \hline
+      {Total wall-clock time } & {6672.31} & {100.00}\\ %
+      {Total gather time} & 744.88 & 11.16 \\ % <--
+      {Total particle-push time} & 3153.67 & 47.26 \\ % <--
+ 	{Total particle-push-comm (AdjustOuter local) time$^*$} & 1652.67 & 24.77$^*$ \\ % <--
+      {Total scatter time} & 48.48 & 3.72 \\ % <--
+      {Total field-solve time} & 2129.57 & 31.92 \\ % <--
+	{Total field-solve-phibc (Update Phi BC) time$^{**}$} & 310.79 & 4.66$^{**}$ \\ % <--
+      {Total other time} & 95.71 & 5.93 \\ % <--
+      \hline
+    \end{tabular}
+}
+  \end{center}
+\footnotesize{$^*$ Included in the `particle-push time'}\\
+\footnotesize{$^{**}$ Included in the `field-solve time'}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\section{Parallel Efficiency: Strong Scaling}
+\label{sec:scaling}
+\phantomsection
+
+
+For most large-scale problems of practical interests,
+the problem size is usually determined by the physical phenomena to be resolved.
+Therefore, to test the parallel efficiency of PIFE-PIC,
+we use the \emph{strong} scaling approach such that
+the problem size is \emph{fixed} while the number of processors increases.
+For this set of tests, the problem size was fixed
+as a 10$\times$10$\times$10 Debye cube
+with a globally uniform PIC mesh size of $h = 0.1 \lambda_D$ in all dimensions.
+The entire simulation domain has 100$\times$100$\times$100 = 1 million PIC cells
+(5 million tetrahedral FE/IFE cells)
+{and about 54 million particles}.
+For these runs,
+the max number of PCG iteration was set to 150 with a tolerance of \num{1e-6}.
+For the initial field solution,
+the max number of DDM iteration was set to 100,
+while for each step within the main PIC loop,
+the max number of DDM iteration
+was set to be 10 and 6 for two different groups
+with same tolerance of \num{1e-2}.
+%and the PIC tolerance of relative error was set to be \num{1e-2}
+%with a buffer for steady state set to 1,000.
+The normalized time step size was set to be 0.01 and
+all simulations ran for 20,000 PIC steps.
+The speedup is defined as $S = {T_s}/{T_p}$,
+where $T_s$ is the serial runtime and $T_p$ is the
+parallel runtime on $p$ MPI processes.
+The strong scaling parallel efficiency is then
+defined as $E = S/p = {T_s}/{(p \cdot T_p)}$.
+% \subsection{Domain Decomposition Configurations}
+% \subsection{Parallel Efficiency}
+We chose two groups of configurations to test the parallel efficiency:
+
+\begin{itemize}
+\item Group I: Using at most 10 DDM iterations per main-loop PIC step;
+
+\item Group II: Using at most 6 DDM iterations per main-loop PIC step.
+
+\end{itemize}
+The timer data was taken over all 20,000 PIC steps.
+Table \ref{tab:scaling:config} lists the domain decomposition configurations
+for each test case.
+Table \ref{tab:scaling:results} lists the total wall-clock time,
+speedup, and parallel efficiency of each case for both Group I and Group II.
+% The columns of $E_{\mathrm{I}}$ and $E_{\mathrm{II}}$
+% denote the parallel efficiency of each test case of each group.
+
+\begin{table}[ht!]
+\centering
+\caption{Domain Decomposition Configurations for Strong Scaling Test Cases}
+\label{tab:scaling:config}
+% \begin{tabular}{c|c|c}
+\begin{tabular}%
+{%
+>{\centering}m{1.5cm}
+|>{\centering}m{2.8cm}
+|>{\centering}m{2.8cm}
+|>{\centering\arraybackslash}m{2.8cm}
+}%
+% |>{\centering}m{1.5cm}
+% |>{\centering}m{1.5cm}
+% |>{\centering\arraybackslash}m{1.5cm}}
+\hline
+\# of subdomains &DD Configurations
+&Size of smallest subdomain (cells)
+&Size of biggest subdomain (cells)\\
+% &$E_{\mathrm{I}}$
+% &$E_{\mathrm{II}}$\\
+% &$E_{\mathrm{III}}$\\
+\hline
+1 (serial) &1$\times$1$\times$1 &100$\times$100$\times$100 &100$\times$100$\times$100 \\
+% &100\% &100\% \\% &100\% \\
+%
+64 &4$\times$4$\times$4 &25$\times$25$\times$25 &25$\times$25$\times$25 \\
+% &99.66\% &110.22\% \\% &133.80\% \\
+%
+80 &4$\times$4$\times$5 &20$\times$20$\times$20 &25$\times$25$\times$25 \\
+% &98.03\% &111.01\% \\% &131.59\% \\
+%
+100 &4$\times$5$\times$5 &20$\times$20$\times$20 &25$\times$25$\times$25 \\
+% &83.89\% &106.87\% \\% &131.21\% \\
+%
+125 &5$\times$5$\times$5 &20$\times$20$\times$20 &20$\times$20$\times$20 \\
+% &70.61\% &91.81\% \\% &129.79\% \\
+%
+%%150 &5$\times$5$\times$6 &15$\times$15$\times$15 &20$\times$20$\times$20
+%%&80.10\% &102.56\% \\% &119.78\% \\
+%
+180 &5$\times$6$\times$6 &15$\times$15$\times$15 &20$\times$20$\times$20 \\
+% &68.47\% &90.52\% \\% &111.82\% \\
+%
+216 &6$\times$6$\times$6 &15$\times$15$\times$15 &17$\times$17$\times$17 \\
+% &62.04\% &82.48\% \\% &100.11\% \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[ht!]
+\centering
+\caption{Strong Scaling Test Results}
+\label{tab:scaling:results}
+% \begin{tabular}{c|c|c}
+\begin{tabular}%
+{%
+>{\centering}m{1.5cm}
+% |>{\centering}m{2.8cm}
+% |>{\centering}m{2.8cm}
+% |>{\centering}m{2.8cm}
+||>{\centering}m{2.0cm}
+|>{\centering}m{1.6cm}
+|>{\centering}m{1.5cm}
+||>{\centering}m{2.0cm}
+|>{\centering}m{1.6cm}
+|>{\centering\arraybackslash}m{1.5cm}
+}%
+\hline
+% \multirow{number rows}{width}{text}
+\# of subdomains
+% &DD Configurations
+% &Size of smallest subdomain (cells)
+% &Size of biggest subdomain (cells)
+&Total time $T_{\mathrm{I}}$ (min)
+&Speedup $S_{\mathrm{I}}$
+&Efficiency $E_{\mathrm{I}}$ (\%)
+&Total time $T_{\mathrm{II}}$ (min)
+&Speedup $S_{\mathrm{II}}$
+&Efficiency $E_{\mathrm{II}}$ (\%)\\
+% &\multicolumn{3}{c}{Group I}\\
+\hline
+1 (serial) &12,509 &1 &100 &12,509 &1 &100\\
+64 &196 &63.78 &99.66 &177 &70.54 &110.22\\
+80 &160 &78.42 &98.03 &141 &88.81 &111.01\\
+100 &149 &83.89 &83.89 &117 &106.87 &106.87\\
+125 &142 &88.26 &70.61 &109 &114.76 &91.81\\
+180 &102 &123.24 &68.47 &77 &162.93 &90.51\\
+216 &93 &134.01 &62.04 &70 &178.16 &82.48\\
+\hline
+\end{tabular}
+\end{table}
+
+% \subsubsection{Group I: Maximum 10 DDM Iterations}
+% \label{sec:10_DDM_sec}
+%Figures \ref{fig:10_DDM} and \ref{fig:6_DDM} plot the total wall-clock time
+%and the percentage of total wall-clock time
+% the speedup,
+% and the parallel efficiency
+%to show the performance of PIFE-PIC
+%across different number of processors for Group I and Group II.
+%In Figure \ref{1a}, as the number of CPUs increases,
+%the total wall-clock time for all parallel configurations is significantly 
+%faster than the serial version.
+%In Figure \ref{1b}, the percentage of total wall-clock time breakdown
+%is fairly consistent across all parallel configurations.
+%It also shows the majority of the wall-clock time
+%was always consumed by the field-solve step.
+
+
+Figure \ref{fig:scaling:percentage}
+plot the percentage of total wall-clock time 
+to show the performance of PIFE-PIC
+across different number of processors for Group I and Group II.
+The percentage of total wall-clock time breakdown
+is fairly consistent across all parallel configurations.
+It also shows the majority of the wall-clock time
+was always consumed by the field-solve step.
+
+
+
+%\begin{figure}[ht]
+%\centering
+%\begin{subfigmatrix}{2}% number of columns
+%\subfigure[Total wall-clock time \label{1a}]%
+%{\includegraphics[width=0.75\textwidth]{v235_oml_scaling/10DDM_new/wall_clock_time_v3.png}}
+%\subfigure[Percentage \label{1b}]%
+%{\includegraphics[width=0.75\textwidth]{v235_oml_scaling/10DDM_new/percentage.png}}
+%%%\subfigure[Speedup \label{1c}]%
+%%%{\includegraphics[width=0.45\textwidth]{v235_oml_scaling/10DDM/speedup.png}}
+%%%\subfigure[Parallel efficiency \label{1d}]%
+%%%{\includegraphics[width=0.45\textwidth]{v235_oml_scaling/10DDM/efficiency.png}}
+%\end{subfigmatrix}
+%\caption{%
+%Group I: Total wall-clock time and percentage of total wall-clock time
+%% speedup, and parallel efficiency
+%for all PIC steps.
+%% with (100, 10) DDM iterations.
+%}
+%\label{fig:10_DDM}
+%\end{figure}
+%
+%%
+%\begin{figure}[ht]
+%\centering
+%\begin{subfigmatrix}{2}% number of columns
+%\subfigure[Total wall-clock time]%
+%{\includegraphics[width=0.75\textwidth]{v235_oml_scaling/6DDM_new/wall_clock_time_v3.png}}
+%\subfigure[Percentage]%
+%{\includegraphics[width=0.75\textwidth]{v235_oml_scaling/6DDM_new/percentage.png}}
+%%%\subfigure[Speedup]%
+%%%{\includegraphics[width=0.45\textwidth]{v235_oml_scaling/6DDM/speedup.png}}
+%%%\subfigure[Parallel efficiency]%
+%%%{\includegraphics[width=0.45\textwidth]{v235_oml_scaling/6DDM/efficiency.png}}
+%\end{subfigmatrix}
+%\caption{%
+%Group II: Total wall-clock time and percentage of total wall-clock time
+%% speedup, and parallel efficiency
+%for all PIC steps.
+%% with (100, 6) DDM iterations.
+%}
+%\label{fig:6_DDM}
+%\end{figure}
+
+
+%
+\begin{figure}[ht]
+\centering
+\begin{subfigmatrix}{2}% number of columns
+\subfigure[Group I]%
+{\includegraphics[width=0.75\textwidth]{percentage10.png}}
+\subfigure[Group II]%
+{\includegraphics[width=0.75\textwidth]{percentage6.png}}
+\end{subfigmatrix}
+\caption{%
+Percentage of total wall-clock time
+for all PIC steps.
+}
+\label{fig:scaling:percentage}
+\end{figure}
+
+
+% \clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Application to Lunar Crater Charging}
+\label{sec:lunar}
+\phantomsection
+
+
+In this section, we apply PIFE-PIC to simulate the plasma charging
+at a lunar crater under average solar wind (S.W.) conditions
+to demonstrate the large-scale simulation capability of PIFE-PIC.
+In the following, we will first briefly describe the lunar surface charging problem,
+% then the plasma conditions
+then introduce the setup of the simulation,
+and finally present the results and discussion.
+
+
+\subsection{Problem Description}
+
+The problem considered is solar wind plasma charging near the lunar surface,
+specifically, near the lunar craters at the terminator region
+for lunar exploration missions.
+The Moon is directly exposed
+to the solar radiation and various space plasma environments
+which directly interact with the lunar surface.
+A direct consequence of such interactions is surface charging.
+Observations have found that the potential of the sunlit surface is typically
+a few tens of volts positive with respect to ambient due to photoelectron emission,
+while that of the surface in shadow can be hundreds to thousands of volts negative
+because of the hot electron flux from ambient plasma
+that can dominate the charging process
+\cite{Apollo17_PSR_1973,
+Freeman_moon1975_electric,
+Halekas_grl2007_lunar_charging,
+Halekas_jgr2008_lp,
+Halekas_pss2011_new_views,Reasoner_jgr1972_lunar_photoe_layer,Stubbs_LunarSurfaceCharging_2005,
+Willis_1973_phe_se}.
+Both solar illumination and plasma flow
+can have a substantial influence on lunar surface charging.
+At the lunar terminator,
+the rugged surface terrain, such as that near a crater,
+generates localized plasma wakes and shadow regions which
+can lead to strong differential charging at the surface
+\cite{Berg_epsl1978_lunar_terminator_config,Poppe_icarus2012_topography,
+JW_IEEE_2008_LunarDust}.
+Both the localized plasma flow field and the charged lunar surface are expected
+to have substantial influence on the charging of spacecraft/landers/rovers/habitats
+for future surface missions.
+
+The lunar surface is covered by the lunar regolith layer which separates the solid bedrock
+from the plasma environment.
+The regolith layer in most areas is about 4 to 20 meters thick
+\cite{lunarsourcebook_ch7_regolith,shkuratov_icarus2001_regolith}.
+A complete model of plasma charging on the lunar surface
+needs to explicitly take into account
+the properties of the regolith layer, such as permittivity, layer thickness,
+and the lunar electrical ground.
+
+The serial version of IFE-PIC method has been successfully applied to
+simulations of lunar plasma charging
+\cite{Han_jsr_2018_lunar}.
+In order to illustrate the high performance computing capability
+of the PIFE-PIC package in this paper,
+we % follow the same approach as in Ref. \cite{Han_jsr_2018_lunar}
+apply PIFE-PIC to a much larger scale parallel simulation with
+a larger simulation domain including a lunar crater
+and much more simulation particles.
+%
+% \subsection{Plasma Environment}
+%
+The plasma environment is chosen to be the average solar wind
+and photoelectron parameters at the lunar surface \cite{JW_IEEE_2008_LunarDust},
+as shown in Table \ref{tab:solarwind}.
+It is noted here that the Debye length of photoelectrons at 90$^\circ$ Sun elevation angle
+(1.38 m) is used as the reference length to normalize spatial dimensions in PIFE-PIC.
+
+
+
+\begin{table}[ht!]
+\begin{center}
+\caption{Average solar wind and photoelectron
+(at 90$^\circ$ Sun elevation angle) parameters}
+\label{tab:solarwind}
+\begin{tabular}{m{0.18\textwidth}
+               |>{\centering}m{0.10\textwidth}|>{\centering}m{0.11\textwidth}
+               |>{\centering}m{0.11\textwidth}|>{\centering}m{0.16\textwidth}
+               |>{\centering\arraybackslash}m{0.1\textwidth}}
+    \hline
+    \hline
+    & {Number density \textit{n}, cm$^{-3}$}
+    & {Drifting velocity \textit{v$_d$}, km/s}
+    & {Thermal velocity \textit{v$_t$}, km/s}
+    & {Temperature \textit{T}, eV}
+    & {Debye length \textit{$\lambda_D$}, m}\\ %
+    \hline
+    {S.W. electron} & 8.7 & 468 & 1453 & 12 & 8.73\\ % <--
+    {S.W. ion} & 8.7 & 468 & 31 & 10 & N/A$^*$\\ % <--
+    {Photoelectron} & 64 & N/A$^*$ & 622 & 2.2 & 1.38\\ % <--
+    \hline
+\end{tabular}
+
+\end{center}
+\footnotesize{$^*$ N/A denotes ``not applicable''}
+\end{table}
+
+
+
+\subsection{Simulation Setup}
+
+\subsubsection{Lunar Crater Geometry and Simulation Domain}
+In PIFE-PIC, the geometry of the lunar crater is realized through an algebraic equation
+describing the surface terrain in the form of $z = z(x,y)$
+where $z$ denotes the surface height.
+For the lunar crater considered here,
+the shape is realized by a few characteristic parameters
+such as inner-rim radius, outer-rim radius, depth, rim height, etc.
+(Figure \ref{fig:lunarcrater})
+according to the \emph{Lunar Sourcebook} \cite{lunarsourcebook_1991}.
+The specific diameter of a real lunar crater can be measured
+through NASA Jet Propulsion Laboratory's website, Moon Trek \cite{moontrek}.
+The crater considered in this study has these characteristic dimensions:
+inner-rim radius 10.5$\times$1.38 = 14.49 m,
+top-rim radius 20.2$\times$1.38 = 27.88 m,
+outer-rim radius 30.9$\times$1.38 = 42.64 m,
+and top height 6.7$\times$1.38 = 9.25 m.
+Details of the approach to set up the lunar crater geometry is given in
+Ref. \cite{Lund_AIAA_2020_1549_LunarCrater}.
+
+
+%%
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+%
+\subfigure[The geometry of the lunar crater realized in PIFE-PIC.
+Color contours show the ``sunlight index'' indicating the inner product
+of Sun vector (10$^{\circ}$ above the ground in the $X-Z$ plane)
+and local surface normal vector.]%
+{\label{fig:lunarcrater}\includegraphics[width=0.45\textwidth]%
+{sunlight_index.png}}
+%
+\subfigure[The simulation domain including the lunar bedrock (below the blue layer) and
+the lunar regolith (between the blue and green layers).
+The light-blue edges show the domain decomposition
+(8\X 4\X 4 = 128 MPI processes).]%
+{\label{fig:lunardomain}\includegraphics[width=0.45\textwidth]%
+{sunlight_domain_half.png}}
+\end{subfigmatrix}
+\caption{The lunar crater geometry and simulation domain.}
+\label{fig:lunar:domain}
+\end{figure}
+%%
+
+The simulation domain has 200$\times$100$\times$100 = 2 million PIC cells
+(10 million tetrahedral FE/IFE cells)
+including {half} of the lunar crater due to symmetry with respect to
+the $X$-$Z$ plane at $y=0$
+(Figure \ref{fig:lunarcrater}).
+Each PIC cell is a 1.38$\times$1.38$\times$1.38 cube.
+In physical units, the domain size is approximately
+276 m by 138 m by 138 m.
+At the $Z_{\min}$ boundary,
+the simulation domain includes a layer of
+the lunar bedrock with a thickness of
+$L_{\mathrm{bedrock}}$ = 4.5$\times$1.38 = 6.21 m.
+On top of the bedrock is a layer of dielectric regolith with a thickness
+of $L_{\mathrm{regolith}}$ = (9.5 - 4.5)$\times$1.38 = 6.9 m.
+The relative permittivities of the lunar regolith layer and the bedrock
+are taken to be
+$\epsilon_{\mathrm{regolith}} = 4$
+and $\epsilon_{\mathrm{bedrock}} = 10$,
+respectively \cite{lunarsourcebook_1991}.
+3-D domain decomposition of 8\X 4\X 4 (total 128 MPI processes)
+is used to run the simulation (Figure \ref{fig:lunardomain}).
+
+
+\subsubsection{Particle and Field Boundary Conditions}
+
+Particles representing solar wind ions and electrons
+are pre-loaded and injected into the domain
+with an angle of 10$^{\circ}$ towards the surface
+in the $X$-$Z$ plane (Figure \ref{fig:lunarcrater}).
+Particles representing photoelectrons are generated at the sunlit regions
+according to the local sunlight index.
+At the global $X_{\min}$, $X_{\max}$, $Y_{\max}$, and $Z_{\max}$ domain boundaries,
+ambient solar wind particles are injected.
+Particles hitting the global $Y_{\min}$ boundary are reflected due to symmetry.
+Particles hitting the lunar surface are collected and their charges are accumulated
+to calculate surface charging.
+
+% \subsubsection{Field}
+Dirichlet boundary condition of $\Phi = 0$ is applied
+at the $Z_{\max}$ boundary (the unperturbed solar wind), whereas
+Neumann boundary condition of zero electric field is applied on
+all other five domain boundaries.
+The PCG max iterations was set to 150 with a tolerance of \num{1e-6}
+\coloring{(for relative residual)}.
+The max number of DDM iteration for initial field solution was set to 800
+and the max number of DDM iteration for each step
+within the main PIC loop
+was set to 200 with a tolerance of \num{1e-3}.
+% and the PIC tolerance of relative error was set to be \num{1e-1}
+The simulation ran for 20,000 PIC steps.
+% with a buffer for steady state set to 1,000.
+
+% \subsection{Results and Discussion}
+
+\subsection{Convergence History}
+% wall-clock time about 120+10 hrs
+% SLURM Job_id=302527 Name=v234.3-lunar.3-eps10-4.5-solver Ended,
+% Run time 5-09:49:46, COMPLETED, ExitCode 0
+
+% SLURM Job_id=376000 Name=v235-sisc-448 Ended, Run time 4-13:04:05,
+% COMPLETED, ExitCode 0
+
+The run took about 109 hours to finish 20,000 PIC steps with the time step size of
+0.05 (total simulation time till $\hat{t} = 1,000$).
+Figure \ref{fig:lunar:convergence} shows the convergence history
+of the lunar crater charging simulation
+including the \coloring{max absolute PCG residual and max DDM relative error}
+and particle number histories.
+It is shown that the field solution residuals and relative errors started to level off
+near PIC step of 10,000 ($\hat{t} = 500$),
+and at steady state, the entire domain had about 520 million particles.
+The results presented below are taken at $\hat{t} = 1,000$.
+
+%%
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{1} % number of columns
+%
+\subfigure[Field solution PCG absolute residual and DDM relative error history.]%
+{\label{fig:lunar:convergence:residual}
+\includegraphics[trim={3cm 0 3cm 0}, clip, width=0.75\textwidth]%
+{main_convergence_history_20000_new.png}}
+%
+\subfigure[Global particle number history.]%
+{\label{fig:lunar:convergence:particle}
+\includegraphics[trim={3cm 0 3cm 0}, clip, width=0.75\textwidth]%
+{particle_history_block_z04y01x04_global.png}}
+\end{subfigmatrix}
+\caption{The lunar crater simulation convergence history.}
+\label{fig:lunar:convergence}
+\end{figure}
+%%
+
+
+\subsection{Surface Charging Results}
+
+Figure \ref{fig:lunar:densities}
+illustrate the density contours of solar wind ions, solar wind electrons,
+photoelectrons, and total space charge near the crater.
+The solar wind ion and electron density contours
+clearly exhibit a localized plasma wake formed by the crater rim.
+The photoelectron density contours clearly exhibit the lack of photoemission
+in the shadow region.
+The total space charge density contours show the non-neutral regions
+associated with the wake caused by the crater rim.
+
+
+%%
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+%
+\subfigure[Solar wind ion density contours.]%
+{\includegraphics[width=0.45\textwidth]%
+{swi_t1000_good_zoomin.png}}
+%
+\subfigure[Solar wind electron density contours.]%
+{\includegraphics[width=0.45\textwidth]%
+{swe_t1000_good_zoomin.png}}
+%
+\subfigure[Photoelectron density contours.]%
+{\includegraphics[width=0.45\textwidth]%
+{phe_t1000_good_zoomin.png}}
+%
+\subfigure[Total charge density contours.]%
+{\includegraphics[width=0.45\textwidth]%
+{tot_t1000_good_zoomin.png}}
+\end{subfigmatrix}
+\caption{Normalized density contours.
+For electrons, numerical values include a negative sign
+indicating the negative charges.
+The densities are normalized by 64 cm$^{-3}$
+and the spatial dimensions are normalized by 1.38 m.}
+\label{fig:lunar:densities}
+\end{figure}
+%%
+
+
+Figure \ref{fig:lunar:potential}
+illustrates the potential contours of the domain and near the crater.
+It is shown,
+for the average solar wind conditions considered here,
+the surface potential in the sunlit region of the crater
+is charged to about 16$\times$2.2 $\simeq$ 35 V
+while the surface in the shadow region is charged to about
+-24$\times$2.2 $\simeq$ -53 V.
+It is noted as this length scale is on the order of tens of meters,
+such differential surface charging will affect the lunar surface activities
+for exploration missions, such as the risk of discharging/arcing
+and horizontal/vertical transport of lofted charged lunar dusts.
+
+%%
+\begin{figure}[ht!]
+\centering
+\begin{subfigmatrix}{2} % number of columns
+%
+\subfigure[Potential contours showing the differential charging near the lunar crater.]%
+{\label{fig:d}\includegraphics[width=0.44\textwidth]%
+{phi_t1000_good_zoomout.png}}
+%
+\subfigure[Zoom-in view of the potential contours near the lunar crater.]%
+{\label{fig:dd}\includegraphics[width=0.44\textwidth]%
+{phi_t1000_good_zoomin.png}}
+\end{subfigmatrix}
+\caption{Potential contours of lunar crater charging.
+The potential values are normalized by 2.2 V
+and the spatial dimensions are normalized by 1.38 m.}
+\label{fig:lunar:potential}
+\end{figure}
+%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \clearpage
+\phantomsection
+\section{Summary and Conclusion}
+\label{sec:conclusion}
+
+In this paper, we presented a most recently developed 3D
+parallel immersed-finite-element particle-in-cell method,
+namely, PIFE-PIC,
+for kinetic particle simulations of plasma-material interactions
+especially electrostatic surface charging.
+PIFE-PIC is based on the serial non-homogeneous electrostatic IFE-PIC algorithm,
+which was designed to handle complex interface conditions
+associated with irregular geometries
+while maintaining the computational speed Cartesian-mesh-based PIC.
+3D domain decomposition is used in both field-solve and particle-push procedures of PIC
+to distribute the computation among multiple processors.
+A validation case of 3-D OML sheath of a dielectric sphere immersed
+in a stationary plasma was carried out
+and results agreed well with the analytic solution.
+A series of strong scaling tests were performed to profile the parallel efficiency
+for a problem of fixed size
+which has 1 million PIC cells (5 million tetrahedral FE/IFE cells),
+about 54 million particles,
+and running 20,000 PIC steps
+on the Foundry cluster at Missouri University of Science and Technology.
+Parallel efficiency up to approximately 110\% superlinear speedup was achieved.
+
+%%The results show that at early PIC steps, efficiency was as high as about 50\%
+%%for the domain decomposition configuration of 5$\times$5$\times$5 subdomains,
+%%which is believed to be close to the optimal configuration for MPI parallelism
+%%for this particular problem size.
+%%Towards later PIC steps, as PIC approaches steady state,
+%%higher parallel efficiency was achieved at as high as about 64\%
+%%with the 5$\times$5$\times$5 domain decomposition configuration.
+
+An application of PIFE-PIC to a larger problem, solar wind plasma charging at a lunar crater,
+is presented to show the capability of PIFE-PIC for practical problems
+of science and engineering interest.
+The lunar crater charging simulation has 2 million PIC cells
+(10 million tetrahedral FE/IFE cells),
+about 520 million particles,
+and running for 20,000 PIC steps.
+The simulation finished in about 109 wall-clock hours
+with domain decomposition of 8$\times$4$\times$4 = 128 MPI processes.
+This demonstrates that PIFE-PIC can be utilized to carry out
+realistic large-scale particle simulations of plasma-material interactions
+routinely on supercomputers with distributed memory.
+
+
+
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\phantomsection
+
+%%\bibliographystyle{siamplain}
+%%\bibliography%
+%%{bibtex/han_refs_vim_20200730_NSF_CAREER,%
+%%bibtex/my_pub_vim_url_off_textnormal_noStar_20200810,%
+%%bibtex/xiaoming_ref_papers,%
+%%bibtex/xiaoming_ref_books_20180612,%
+%%bibtex/david_added_20191130,%
+%%bibtex/referencesNew}
+
+
+\begin{thebibliography}{99}
+
+\bibitem{2019AdjeridChaabaneLinYue}
+{\sc S.~Adjerid, N.~Chaabane, T.~Lin, and P.~Yue}, {\em An immersed
+  discontinuous finite element method for the {S}tokes problem with a moving
+  interface}, J. Comput. Appl. Math., 362 (2019), pp.~540--559.
+% \url{https://doi.org/10.1016/j.cam.2018.07.033},
+% \url{https://doi.org/10.1016/j.cam.2018.07.033}.
+
+\bibitem{2009AdjeridLin}
+{\sc S.~Adjerid and T.~Lin}, {\em A {$p$}-th degree immersed finite element for
+  boundary value problems with discontinuous coefficients}, Appl. Numer. Math.,
+  59 (2009), pp.~1303--1321.
+%  \url{https://doi.org/10.1016/j.apnum.2008.08.005},
+%  \url{http://dx.doi.org/10.1016/j.apnum.2008.08.005}.
+
+\bibitem{2020AdjeridLinZhuang}
+{\sc S.~Adjerid, T.~Lin, and Q.~Zhuang}, {\em Error {E}stimates for an
+  {I}mmersed {F}inite {E}lement {M}ethod for {S}econd {O}rder {H}yperbolic
+  {E}quations in {I}nhomogeneous {M}edia}, J. Sci. Comput., 84 (2020), p.~35.
+%  \url{https://doi.org/10.1007/s10915-020-01283-0},
+%  \url{https://doi.org/10.1007/s10915-020-01283-0}.
+
+\bibitem{2019AdjeridMoon}
+{\sc S.~Adjerid and K.~Moon}, {\em An immersed discontinuous {G}alerkin method
+  for acoustic wave propagation in inhomogeneous media}, SIAM J. Sci. Comput.,
+  41 (2019), pp.~A139--A162.
+%  \url{https://doi.org/10.1137/16M1090934},
+%  \url{https://doi.org/10.1137/16M1090934}.
+
+\bibitem{2018BaiCaoChuZhang}
+{\sc J.~Bai, Y.~Cao, Y.~Chu, and X.~Zhang}, {\em An improved immersed finite
+  element particle-in-cell method for plasma simulation}, Comput. Math. Appl.,
+  75 (2018), pp.~1887--1899.
+%  \url{https://doi.org/10.1016/j.camwa.2017.08.001},
+%  \url{https://doi.org/10.1016/j.camwa.2017.08.001}.
+
+\bibitem{Smith_DomainDecomp_1996}
+{\sc {Barry Smith}, {Petter Bj{\o}rstad}, and {William Gropp}}, {\em Domain
+  Decomposition: Parallel Multilevel Methods for Elliptic Partial Differential
+  Equations}, Cambridge University Press, 1996.
+
+\bibitem{Berg_epsl1978_lunar_terminator_config}
+{\sc O.~E. Berg}, {\em A lunar terminator configuration}, Earth and Planetary
+  Science Letters, 39 (1978), pp.~377--381.
+%  \url{https://doi.org/10.1016/0012-821X(78)90025-0}.
+
+\bibitem{Apollo17_PSR_1973}
+{\sc O.~E. Berg, F.~F. Richardson, and H.~Burton}, {\em Apollo 17 preliminary
+  science report}, Technical Report NASA SP-330, National Aeronautics and Space
+  Administration, 1973.
+
+\bibitem{1991BirdsallLangdon}
+{\sc C.~K. Birdsall and A.~B. Langdon}, {\em Plasma Physics via Computer
+  Simulation (Series in Plasma Physics)}, Institute of Physisc Publishing,
+  1991.
+
+\bibitem{Birdsall_Langdon_2005}
+{\sc C.~K. Birdsall and A.~B. Langdon}, {\em Plasma Physics via Computer
+  Simulation}, Taylor \& Francis Group, New York, 2005.
+
+\bibitem{2006CampLinLinSun}
+{\sc B.~Camp, T.~Lin, Y.~Lin, and W.~Sun}, {\em Quadratic immersed finite
+  element spaces and their approximation capabilities}, Adv. Comput. Math., 24
+  (2006), pp.~81--112.
+%  \url{https://doi.org/10.1007/s10444-004-4139-8},
+%  \url{http://dx.doi.org/10.1007/s10444-004-4139-8}.
+
+\bibitem{2017CaoZhangZhang}
+{\sc W.~Cao, X.~Zhang, and Z.~Zhang}, {\em Superconvergence of immersed finite
+  element methods for interface problems}, Adv. Comput. Math., 43 (2017),
+  pp.~795--821.
+%  \url{https://doi.org/10.1007/s10444-016-9507-7},
+%  \url{http://dx.doi.org/10.1007/s10444-016-9507-7}.
+
+\bibitem{YCao_YChu_XMHe_TLin_1}
+{\sc Y.~Cao, Y.~Chu, X.-M. He, and T.~Lin}, {\em An iterative immersed finite
+  element method for an electric potential interface problem based on given
+  surface electric quantity}, J. Comput. Phys., 281 (2015), pp.~82--95.
+
+\bibitem{2016CaoChuZhangZhang}
+{\sc Y.~Cao, Y.~Chu, X.~Zhang, and X.~Zhang}, {\em Immersed finite element
+  methods for unbounded interface problems with periodic structures}, J.
+  Comput. Appl. Math., 307 (2016), pp.~72--81.
+%  \url{https://doi.org/10.1016/j.cam.2016.04.020},
+%  \url{http://dx.doi.org/10.1016/j.cam.2016.04.020}.
+
+\bibitem{Chu_ijnam2017_software}
+{\sc Y.~Chu, D.~Han, Y.~Cao, X.~He, and J.~Wang}, {\em \mbox{An}
+  \mbox{I}mmersed-\mbox{F}inite-\mbox{E}lement \mbox{P}article-in-\mbox{C}ell
+  \mbox{S}imulation \mbox{T}ool for \mbox{P}lasma \mbox{S}urface
+  \mbox{I}nteraction}, International Journal of Numerical Analysis and
+  Modeling, 14 (2017), pp.~175--200.
+
+\bibitem{delzanno_pop2015_oml_vs_pic}
+{\sc G.~L. Delzanno and X.-Z. Tang}, {\em Comparison of dust charging between
+  orbital-motion-limited theory and particle-in-cell simulations}, Physics of
+  Plasmas, 22 (2015), p.~113703.
+%  \url{https://doi.org/10.1063/1.4935697},
+%  \url{http://scitation.aip.org/content/aip/journal/pop/22/11/10.1063/1.4935697}.
+
+\bibitem{Freeman_moon1975_electric}
+{\sc J.~W. Freeman and M.~Ibrahim}, {\em Lunar electric fields, surface
+  potential and associated plasma sheaths}, The Moon, 14 (1975), pp.~103--114.
+%  \url{https://doi.org/10.1007/BF00562976},
+%  \url{http://link.springer.com/article/10.1007%2FBF00562976}.
+
+\bibitem{2020GuoLin2}
+{\sc R.~Guo and T.~Lin}, {\em An immersed finite element method for elliptic
+  interface problems in three dimensions}, J. Comput. Phys., 414 (2020),
+  pp.~109478, 22.
+%  \url{https://doi.org/10.1016/j.jcp.2020.109478},
+%  \url{https://doi.org/10.1016/j.jcp.2020.109478}.
+
+\bibitem{2020GuoLinLin}
+{\sc R.~Guo, T.~Lin, and Y.~Lin}, {\em Error estimates for a partially
+  penalized immersed finite element method for elasticity interface problems},
+  ESAIM Math. Model. Numer. Anal., 54 (2020), pp.~1--24.
+%  \url{https://doi.org/10.1051/m2an/2019051},
+%  \url{https://doi.org/10.1051/m2an/2019051}.
+
+\bibitem{2020GuoZhang}
+{\sc R.~Guo and X.~Zhang}, {\em Solving three-dimensional interface problems
+  with immersed finite elements: A-priori error analysis}, arXiv preprint
+  arXiv:2004.08984,  (2020).
+
+\bibitem{2016GuzmanSanchezSarkis2}
+{\sc J.~Guzm\'an, M.~A. S\'anchez, and M.~Sarkis}, {\em Higher-order finite
+  element methods for elliptic problems with interfaces}, ESAIM Math. Model.
+  Numer. Anal., 50 (2016), pp.~1561--1583.
+%  \url{https://doi.org/10.1051/m2an/2015093}.
+
+\bibitem{Halekas_grl2007_lunar_charging}
+{\sc J.~S. Halekas, G.~T. Delory, D.~A. Brain, R.~P. Lin, M.~O. Fillingim,
+  C.~O. Lee, R.~A. Mewaldt, T.~J. Stubbs, W.~M. Farrell, and M.~K. Hudson},
+  {\em Extreme lunar surface charging during solar energetic particle events},
+  Geophysical Research Letters, 34 (2007), p.~L02111.
+%  \url{https://doi.org/10.1029/2006GL028517},
+%  \url{http://onlinelibrary.wiley.com/doi/10.1029/2006GL028517/full}.
+
+\bibitem{Halekas_jgr2008_lp}
+{\sc J.~S. Halekas, G.~T. Delory, R.~P. Lin, T.~J. Stubbs, and W.~M. Farrell},
+  {\em Lunar prospector observations of the electrostatic potential of the
+  lunar surface and its response to incident currents}, Journal of Geophysical
+  Research, 113 (2008), p.~A09102.
+%  \url{https://doi.org/10.1029/2008JA013194},
+%  \url{http://sprg.ssl.berkeley.edu/adminstuff/webpubs/2008_jgr_A09102.pdf}.
+
+\bibitem{Halekas_pss2011_new_views}
+{\sc J.~S. Halekas, Y.~Saito, G.~T. Delory, and W.~M. Farrell}, {\em New views
+  of the lunar plasma environment}, Planetary and Space Science, 59 (2011),
+  pp.~1681--1694
+%  \url{https://doi.org/10.1016/j.pss.2010.08.011}.
+
+\bibitem{Han_usc_dissertation2015}
+{\sc D.~Han}, {\em Particle-in-Cell Simulations of Plasma Interactions with
+  Asteroidal and Lunar Surfaces}, PhD thesis, University of Southern
+  California, 2015.
+  
+\bibitem{DH_AIAA_2013_3888_JPC}
+{\sc D.~Han and J.J.~Wang}, {\em
+  \textnormal{{S}imulations of {I}on {T}hruster {P}lume {C}ontamination with
+  {A} {W}hole {G}rid {S}puttered {M}o {S}ource {M}odel}}, in 49th
+  AIAA/ASME/SAE/ASEE Joint Propulsion Conference and Exhibit, AIAA 2013-3888,
+  San Jose, California, July 14 - 17, 2013.
+%  \url{https://doi.org/10.2514/6.2013-3888}.
+
+\bibitem{Han_ieeetps2019_asteroid}
+{\sc D.~Han and J.~Wang}, {\em {3-{D} {F}ully-{K}inetic {P}article-in-{C}ell
+  {S}imulations of {S}mall {A}steroid {C}harging in the {S}olar {W}ind}}, IEEE
+  Transactions on Plasma Science, 47 (2019), pp.~3682--3688.
+%  \url{https://doi.org/10.1109/TPS.2019.2919895}.
+
+\bibitem{Han_ieee2016_charging}
+{\sc D.~Han, J.~Wang, and X.~He}, {\em {\mbox{A} Nonhomogeneous
+  Immersed-Finite-Element Particle-in-Cell Method for Modeling Dielectric
+  Surface Charging in Plasmas}}, IEEE Transactions on Plasma Science, 44
+  (2016), pp.~1326--1332.
+%  \url{https://doi.org/10.1109/TPS.2016.2580698},
+%  \url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7506060}.
+
+\bibitem{Han_jsr_2018_lunar}
+{\sc D.~Han, J.~Wang, and X.~He}, {\em { {I}mmersed {F}inite {E}lement
+  {P}article-in-{C}ell {S}imulations of {P}lasma {C}harging at the {L}unar
+  {T}erminator}}, Journal of Spacecraft and Rockets, 55 (2018), pp.~1490--1497.
+%  \url{https://doi.org/10.2514/1.A34002}.
+
+\bibitem{Han_ife_jcp2016}
+{\sc D.~Han, P.~Wang, X.~He, T.~Lin, and J.~Wang}, {\em {\mbox{A} 3D immersed
+  finite element method with non-homogeneous interface flux jump for
+  applications in particle-in-cell simulations of plasma-lunar surface
+  interactions}}, Journal of Computational Physics, 321 (2016), pp.~965--980.
+%  \url{https://doi.org/10.1016/j.jcp.2016.05.057},
+%  \url{http://www.sciencedirect.com/science/article/pii/S0021999116302029}.
+
+\bibitem{2019HeZhang}
+{\sc C.~He and X.~Zhang}, {\em {Residual-based a posteriori error estimation
+  for immersed finite element methods}}, Journal of Scientific Computing,
+  81(3) (2019), pp.~2051--2079.
+%  (2019 in press, DOI: 10.1007/s10915-019-01071-5), pp.~1--29.
+
+\bibitem{XHe_NMPDE2008_IFE}
+{\sc X.~He, T.~Lin, and Y.~Lin}, {\em Approximation capablity of a bilinear
+  immersed finite element space}, Numerical Methods for Partial Differential
+  Equations, 24 (2008), pp.~1265--1300.
+%  \url{https://doi.org/10.1002/num.20318}.
+
+\bibitem{XHe_IFE_NonHomo_2011}
+{\sc X.~He, T.~Lin, and Y.~Lin}, {\em Immersed finite element methods for
+  elliptic interface problems with non-homogeneous jump conditions},
+  International Journal of Numerical Analysis and Modeling, 8 (2011),
+  pp.~284--301.
+
+\bibitem{2013HeLinLinZhang}
+{\sc X.~He, T.~Lin, Y.~Lin, and X.~Zhang}, {\em Immersed finite element methods
+  for parabolic equations with moving interface}, Numer. Methods Partial
+  Differential Equations, 29 (2013), pp.~619--646.
+%  \url{https://doi.org/10.1002/num.21722},
+%  \url{http://dx.doi.org/10.1002/num.21722}.
+
+\bibitem{lunarsourcebook_1991}
+{\sc G.~H. Heiken, D.~T. Vaniman, and B.~M. French}, {\em Lunar Sourcebook: A
+  User's Guide to the Moon}, Cambridge University Press, 1991.
+
+\bibitem{Hockney_Eastwood_1988}
+{\sc R.~W. Hockney and J.~W. Eastwood}, {\em Computer Simulation Using
+  Particles}, Adam Hilger, 1988.
+
+\bibitem{JDJackson_book_1}
+{\sc J.~D. Jackson}, {\em Classical electrodynamics}, Wiley, New York,
+  third~ed., 1999.
+
+\bibitem{2015JianChuCaoCaoHeXia}
+{\sc H.~Jian, Y.~Chu, H.~Cao, Y.~Cao, X.~He, and G.~Xia}, {\em
+  Three-dimensional ife-pic numerical simulation of background pressure's
+  effect on accelerator grid impingement current for ion optics}, Vacuum, 116
+  (2015), pp.~130--138.
+
+\bibitem{2005KafafyLinLinWang}
+{\sc R.~Kafafy, T.~Lin, Y.~Lin, and J.~Wang}, {\em Three-dimensional immersed
+  finite element methods for electric field simulation in composite materials},
+  Internat. J. Numer. Methods Engrg., 64 (2005), pp.~940--972.
+%  \url{https://doi.org/10.1002/nme.1401},
+%  \url{http://dx.doi.org/10.1002/nme.1401}.
+
+\bibitem{RK_AIAA_2005_3691_WholeSubscaleIonOptics}
+{\sc R.~Kafafy and J.~Wang}, {\em Whole subscale ion optics simulation: Direct
+  ion impingement and electron backstreaming}, in 41st AIAA/ASME/SAE/ASEE Joint
+  Propulsion Conference and Exhibit, AIAA 2005-3691, Tucson, Arizona, July
+  2005.
+%  \url{https://doi.org/10.2514/6.2005-3691}.
+
+\bibitem{RK_JPP_2007_WholeIonOptics}
+{\sc R.~Kafafy and J.~Wang}, {\em Whole ion optics gridlet simulations using a
+  hybrid-grid immersed-finite-element particle-in-cell code}, Journal of
+  Propulsion and Power, 23 (2007), pp.~59--68.
+%  \url{https://doi.org/10.2514/1.21346}.
+
+\bibitem{2005KafafyWangLin}
+{\sc R.~Kafafy, J.~Wang, and T.~Lin}, {\em A hybrid-grid
+  immersed-finite-element particle-in-cell simulation model of ion optics
+  plasma dynamics}, Dyn. Contin. Discrete Impuls. Syst. Ser. B Appl.
+  Algorithms, 12 (2005), pp.~1--16.
+
+\bibitem{RK_IEEE_2006_Plume_HybridGrid}
+{\sc R.~I. Kafafy and J.~Wang}, {\em A hybrid grid immersed finite element
+  particle-in-cell algorithm for modeling spacecraft-plasma interactions}, IEEE
+  Transactions on Plasma Science, 34 (2006), pp.~2114--2124.
+%  \url{https://doi.org/10.1109/TPS.2006.883404}.
+
+\bibitem{1998Li}
+{\sc Z.~Li}, {\em The immersed interface method using a finite element
+  formulation}, Appl. Numer. Math., 27 (1998), pp.~253--267.
+%  \url{https://doi.org/10.1016/S0168-9274(98)00015-4},
+%  \url{http://dx.doi.org/10.1016/S0168-9274(98)00015-4}.
+
+\bibitem{2003LiLinWu}
+{\sc Z.~Li, T.~Lin, and X.~Wu}, {\em New {C}artesian grid methods for interface
+  problems using the finite element formulation}, Numer. Math., 96 (2003),
+  pp.~61--98.
+%  \url{https://doi.org/10.1007/s00211-003-0473-x},
+%  \url{http://dx.doi.org/10.1007/s00211-003-0473-x}.
+
+\bibitem{2015LinLinZhang}
+{\sc T.~Lin, Y.~Lin, and X.~Zhang}, {\em Partially penalized immersed finite
+  element methods for elliptic interface problems}, SIAM J. Numer. Anal., 53
+  (2015), pp.~1121--1144.
+%  \url{https://doi.org/10.1137/130912700},
+%  \url{http://dx.doi.org/10.1137/130912700}.
+
+\bibitem{2013LinSheenZhang}
+{\sc T.~Lin, D.~Sheen, and X.~Zhang}, {\em A locking-free immersed finite
+  element method for planar elasticity interface problems}, J. Comput. Phys.,
+  247 (2013), pp.~228--247.
+
+\bibitem{2019LinSheenZhang}
+{\sc T.~Lin, D.~Sheen, and X.~Zhang}, {\em {A nonconforming immersed finite
+  element method for elliptic interface problems}}, J. Sci. Comput., 79 (2019),
+  pp.~442--463.
+
+\bibitem{CLu_JWan_YCao_XMHe_1}
+{\sc C.~Lu, J.~Wan, Y.~Cao, and X.-M. He}, {\em {A fully decoupled iterative
+  method with three-dimensional anisotropic immersed finite elements for
+  Kaufman-type discharge problems}}, Comput. Meth. Appl. Mech. Eng.,
+  (accepted, 2020).
+
+\bibitem{CLu_ZYang_JBai_YCao_XMHe_1}
+{\sc C.~Lu, Z.~Yang, J.~Bai, Y.~Cao, and X.-M. He}, {\em {Three-dimensional
+  immersed finite element method for anisotropic magnetostatic/electrostatic
+  interface problems with non-homogeneous flux jump}}, Int. J. Numer. Meth.
+  Eng., 121 (2020), pp.~2107--2127.
+
+\bibitem{Lund_AIAA_2020_1549_LunarCrater}
+{\sc D.~Lund, J.~Zhao, A.~Lamb, and D.~Han},
+ {\em \textnormal{Fully Kinetic PIFE-PIC Simulations
+  of Plasma Charging at Lunar Craters}}, in AIAA SciTech 2020, AIAA 2020-1549,
+  Orlando, Florida, January 6-10, 2020.
+%  \url{https://doi.org/10.2514/6.2020-1549}.
+
+\bibitem{lunarsourcebook_ch7_regolith}
+{\sc D.~S. McKay, G.~Heiken, A.~Basu, G.~Blanford, S.~Simon, R.~Reedy, B.~M.
+  French, and J.~Papike}, {\em Lunar Sourcebook: A User's Guide to the Moon},
+  Cambridge University Press, 1991, ch.~7: The Lunar Regolith, pp.~285--356.
+
+\bibitem{moontrek}
+{\sc NASA-JPL}, {\em {M}oon {T}rek}, July 2018,
+  \url{https://trek.nasa.gov/moon/index.html}.
+\newblock {A}ccessed 7/15/2018.
+
+\bibitem{Poppe_icarus2012_topography}
+{\sc A.~R. Poppe, M.~Piquette, A.~Likhanskii, and M.~Hor\'{a}nyi}, {\em The
+  effect of surface topography on the lunar photoelectron sheath and
+  electrostatic dust transport}, Icarus, 221 (2012), pp.~135--146.
+
+\bibitem{Reasoner_jgr1972_lunar_photoe_layer}
+{\sc D.~L. Reasoner and W.~J. Burke}, {\em Characteristics of the lunar
+  photoelectron layer in the geomagnetic tail}, Journal of Geophysical
+  Research, 77 (1972), pp.~6671--6687.
+%  \url{https://doi.org/10.1029/JA077i034p06671},
+%  \url{http://onlinelibrary.wiley.com/doi/10.1029/JA077i034p06671/full}.
+
+\bibitem{shkuratov_icarus2001_regolith}
+{\sc Y.~G. Shkuratov and N.~V. Bondarenko}, {\em Regolith layer thickness
+  mapping of the moon by radar and optical data}, Icarus, 149 (2001),
+  pp.~329--338.
+%  \url{https://doi.org/doi:10.1006/icar.2000.6545},
+%  \url{http://www.sciencedirect.com/science/article/pii/S001910350096545X}.
+
+\bibitem{Stubbs_LunarSurfaceCharging_2005}
+{\sc T.~J. Stubbs, J.~S. Halekas, W.~M. Farrell, and R.~R. Vondrak}, {\em Lunar
+  surface charging: A global perspective using lunar prospector data}, in
+  Workshop on Dust in Planetary Systems (ESA SP-643), H.~Krueger and A.~Graps,
+  eds., Kauai, Hawaii, USA, September 26 - 30, 2005, pp.~181--184.
+%  \url{http://adsabs.harvard.edu/abs/2007ESASP.643..181S}.
+
+\bibitem{tang_pop2014_oml}
+{\sc X.-Z. Tang and G.~L. Delzanno}, {\em Orbital-motion-limited theory of dust
+  charging and plasma response}, Physics of Plasmas, 21 (2014), p.~123708.
+%  \url{https://doi.org/10.1063/1.4904404},
+%  \url{http://scitation.aip.org/content/aip/journal/pop/21/12/10.1063/1.4904404}.
+
+
+
+\bibitem{2010VallaghePapadopoulo}
+{\sc S.~Vallagh{\'e} and T.~Papadopoulo}, {\em A trilinear immersed finite
+  element method for solving the electroencephalography forward problem}, SIAM
+  J. Sci. Comput., 32 (2010), pp.~2379--2394.
+%  \url{https://doi.org/10.1137/09075038X},
+%  \url{http://dx.doi.org/10.1137/09075038X}.
+
+\bibitem{JW_IEEE_2006_PlumeParallel}
+{\sc J.~Wang, Y.~Cao, R.~Kafafy, J.~Pierru, and V.~K. Decyk}, {\em Simulations
+  of ion thruster plume-spacecraft interactions on parallel supercomputer},
+  IEEE Transactions on Plasma Science, 34 (2006), pp.~2148--2158.
+%  \url{https://doi.org/10.1109/TPS.2006.883406}.
+
+\bibitem{JW_IEEE_2008_LunarDust}
+{\sc J.~Wang, X.~He, and Y.~Cao}, {\em Modeling electrostatic levitation of
+  dust particles on lunar surface}, IEEE Transactions on Plasma Science, 36
+  (2008), pp.~2459--2466.
+%  \url{https://doi.org/10.1109/TPS.2008.2003016}.
+
+\bibitem{Willis_1973_phe_se}
+{\sc R.~Willis, M.~Anderegg, B.~Feuerbacher, and B.~Fitton}, {\em Photoemission
+  and secondary electron emission from lunar surface material}, in Photon and
+  Particle Interactions with Surfaces in Space, R.~Grard, ed., vol.~37 of
+  Astrophysics and Space Science Library, Springer Netherlands, 1973,
+  pp.~389--401.
+%  \url{https://doi.org/10.1007/978-94-010-2647-5\_25},
+%  \url{http://dx.doi.org/10.1007/978-94-010-2647-5_25}.
+
+\bibitem{Will_ieeetps2019_asteroid}
+{\sc W.~Yu, D.~Han, and J.~Wang}, {\em {{Numerical} {Simulations} of {Dust}
+  {Dynamics} {Around} {Small} {Asteroids}}}, IEEE Transactions on Plasma
+  Science, 47 (2019), pp.~3724--3730.
+%  \url{https://doi.org/10.1109/TPS.2019.2920263}.
+
+\bibitem{Yu_AIAA2016_5447_asteroid}
+{\sc W.~Yu, J.~J. Wang, and D.~Han}, {\em {N}umerical {M}odeling of {D}ust
+  {D}ynamics {A}round {S}mall {A}steroids}, in AIAA SPACE Forum 2016, AIAA
+  2016-5447, Long Beach, California, September 13 - 16, 2016.
+%  \url{https://doi.org/10.2514/6.2016-5447},
+%  \url{https://arc.aiaa.org/doi/abs/10.2514/6.2016-5447}.
+
+\end{thebibliography}
+
+
+\end{document}
