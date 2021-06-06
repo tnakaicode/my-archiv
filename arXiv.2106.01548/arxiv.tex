@@ -1,0 +1,781 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+    \PassOptionsToPackage{numbers, sort}{natbib}
+% before loading neurips_2021
+
+% ready for submission
+% \usepackage{neurips_2021}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+    \usepackage[preprint]{neurips_2021}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+%     \usepackage[final]{neurips_2021}
+
+% to avoid loading the natbib package, add option nonatbib:
+    % \usepackage[nonatbib]{neurips_2021}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{graphicx}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\usepackage{adjustbox}
+\usepackage{xspace}
+\usepackage{caption} 
+\usepackage{paralist}
+\captionsetup[table]{skip=3pt}
+\captionsetup[figure]{skip=3pt}
+\usepackage{array}
+\usepackage{subfigure}
+\usepackage{svg}
+\usepackage{cleveref}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+
+\newcommand{\BG}[1]{\textcolor{blue}{Boqing: #1}}
+\newcommand{\XC}[1]{\textcolor{red}{Xiangning: #1}}
+\newcommand{\CH}[1]{\textcolor{green}{Cho: #1}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\title{When Vision Transformers Outperform ResNets without Pretraining or Strong Data Augmentations}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to break the
+% lines. Using \AND forces a line break at that point. So, if LaTeX puts 3 of 4
+% authors names on the first line, and the last on the second line, try using
+% \AND instead of \And before the third author name.
+
+\author{%
+   Xiangning Chen\textsuperscript{1,2}\thanks{Work done as a student researcher at Google.}
+   \enskip\enskip\enskip\enskip\enskip\enskip\enskip
+   Cho-Jui Hsieh\textsuperscript{2}
+   \enskip\enskip\enskip\enskip\enskip\enskip\enskip
+   Boqing Gong\textsuperscript{1}\\
+   \\
+   \textsuperscript{1}Google Research \enskip\enskip\enskip\enskip\enskip \textsuperscript{2}UCLA\\
+  % Address \\
+  % \texttt{email} \\
+  % \AND
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+  % \And
+  % Coauthor \\
+  % Affiliation \\
+  % Address \\
+  % \texttt{email} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% In the computer vision domain, models built upon transformer and feed-forward layer rely heavily on large-data pretraining or strong augmentations. In this paper, we delve deeper into those ``Conv-free'' architectures and show that they tend to have worse trainability than the standard convolution neural network. They always converge to extreme sharp local minima and suffer large generalization error. By enforcing a smoothness constraint with the recently proposed sharpness-aware optimizer, we substantially improve their performance with simple Inception-style preprocessing (e.g., +5.3\% and +11.0\% top-1 accuracy on ImageNet for ViT-B/16 and Mixer-B/16). The attention map of the enhanced vision transformer also contains more perspicuous information about segmentation. We show that vision transformer can achieve better accuracy and robustness than ResNet when trained from scratch on ImageNet without pretraining and strong augmentations.
+
+%In the computer vision domain, models built upon transformer and feed-forward layer rely heavily on large-data pretraining or strong augmentations. In this paper, we delve deeper into those architectures and show that they always converge to extreme sharp local minima and suffers exploding Hessian eigenvalue.
+
+Vision Transformers (ViTs) and MLPs signal further efforts on replacing hand-wired features or inductive biases with general-purpose neural architectures. Existing works empower the models by massive data, such as large-scale pretraining and/or repeated strong data augmentations, and still report optimization-related problems (e.g., sensitivity to initialization and learning rate). Hence, this paper investigates ViTs and MLP-Mixers from the lens of loss geometry, intending to improve the models' data efficiency at training and generalization at inference. Visualization and Hessian reveal extremely sharp local minima of converged models. By promoting smoothness with a recently proposed sharpness-aware optimizer, we substantially improve the accuracy and robustness of ViTs and MLP-Mixers on various tasks spanning supervised, adversarial, contrastive, and transfer learning (e.g., +5.3\% and +11.0\% top-1 accuracy on ImageNet for ViT-B/16 and Mixer-B/16, respectively, with the simple Inception-style preprocessing). We show that the improved smoothness attributes to sparser active neurons in the first few layers. The resultant ViTs outperform ResNets of similar size and throughput when trained from scratch on ImageNet without large-scale pretraining or strong data augmentations. They also possess more perceptive attention maps. 
+%Under the improved optimization pipeline, we show that Vision Transformers can achieve better accuracy and robustness than ResNets of similar size and throughput when trained from scratch on ImageNet without strong augmentations.
+
+% Furthermore, we make a fair comparison between those three architecture species under the same training pipeline, and show that vision transformers can achieve better accuracy and robustness than ResNets when trained from scratch, 
+% including their clean accuracy, various robustness, and scalability under low-data regime. 
+
+\end{abstract}
+
+
+\section{Introduction}
+Transformers~\cite{vaswani2017attention} have become the de-facto model of choice in natural language processing (NLP)~\cite{devlin2018bert,gpt}. In computer vision,
+there has recently been a surge of interest in end-to-end Transformers~\cite{dosovitskiy2021an,touvron2021training,liu2021swin,fan2021multiscale,arnab2021vivit,bertasius2021space,akbari2021vatt} and MLPs~\cite{tolstikhin2021mlpmixer,touvron2021resmlp,liu2021pay,melas2021you}, prompting the efforts to replace hand-wired features or inductive biases with  general-purpose neural architectures powered by data-driven training. We envision these efforts may lead to a unified knowledge base that produces versatile representations for different data modalities, simplifying the inference and deployment of deep learning models in various application scenarios. 
+
+Despite the appealing potential of moving toward general-purpose neural architectures, the lack of convolution-like inductive bias also challenges the training of vision Transformers (ViTs) and MLPs. When trained on ImageNet~\cite{deng2009imagenet} with the conventional Inception-style data preprocessing~\cite{szegedy2016inception}, Transformers \textit{``yield modest accuracies of a few percentage points below ResNets of comparable size''}~\cite{dosovitskiy2021an}. To boost the performance, existing works resort to large-scale pre-training~\cite{dosovitskiy2021an,arnab2021vivit,akbari2021vatt} and repeated strong data augmentations~\cite{touvron2021training}, resulting in excessive demands of data, computing, and sophisticated tuning of many hyper-parameters. For instance, Dosovitskiy et al.~\cite{dosovitskiy2021an} pre-train ViTs using 304M labeled images, and~\citet{touvron2021training} repeatedly stack four strong image augmentations.
+
+In this paper, we show ViTs can outperform ResNets~\cite{he2016resnet} of even bigger sizes in both accuracy and various forms of robustness by using a principled optimizer, without the need for large-scale pre-training or strong data augmentations. MLP-Mixers~\cite{tolstikhin2021mlpmixer} also become on par with ResNets.
+
+
+We first study the architectures fully trained on ImageNet from the lens of loss landscapes and draw the following findings. First, visualization and Hessian matrices of the loss landscapes reveal that Transformers and MLP-Mixers converge at extremely sharp local minima, whose largest principal curvatures are almost an order of magnitude bigger than ResNets.
+Such effect accumulates when the gradients backpropagate from the last layer to the first, and the initial embedding layer suffers the largest eigenvalue of the corresponding sub-diagonal Hessian.  
+Second, the networks all have very small training errors, and MLP-Mixers are more prone to overfitting than ViTs of more parameters (probably because of the difference in self-attention). 
+Third, ViTs and MLP-Mixers have worse ``trainabilities'' than ResNets following the neural tangent kernel analyses~\cite{pmlr-v119-xiao20b}. 
+
+% ViTs and MLP-Mixers likely suffer from the sharp local minima when generalizing to test data (and slightly out-of-distribution data in the real-world robustness test). Note that an overparameterized neural network's generalization correlates well with both the training error and the flatness of the region at convergence~\cite{keskar2017largebatch, pmlr-v80-kleinberg18a, jastrzebski2018on, pmlr-v119-chen20f, l.2018a, Zela2020Understanding, chaudhari2017entropysgd}. 
+
+% \XC{I merge the two paragraphs}
+
+% \XC{Not sure about the first sentence.}
+We conjecture that the convolution-induced translation equivariance and locality help ResNets escape from bad local minima when trained on visual data. However, we need improved learning algorithms to prevent them from happening to the convolution-free ViTs and and MLP-Mixers. The first-order optimizers (e.g., SGD~\cite{Nesterov1983AMF} and Adam~\cite{kingma2017adam}) only seek the model parameters that minimize the training error. 
+They dismiss the higher-order information such as flatness that correlates with the generalization~\cite{keskar2017largebatch, pmlr-v80-kleinberg18a, jastrzebski2018on, l.2018a, chaudhari2017entropysgd}.
+
+The above study and reasoning lead us to the recently proposed sharpness-aware minimizer (SAM)~\cite{foret2021sharpnessaware} that explicitly smooths the loss geometry during model training. SAM strives to find a solution whose entire neighborhood has low losses rather than focus on any singleton point. We show that the resultant models exhibit smoother loss landscapes, and their generalization capabilities improve tremendously across different tasks including supervised, adversarial, contrastive, and transfer learning (e.g., +5.3\% and +11.0\% top-1 accuracy on ImageNet for ViT-B/16 and Mixer-B/16, respectively, with the simple Inception-style preprocessing). The enhanced ViTs achieve better accuracy and robustness than ResNets of similar and bigger sizes when trained from scratch on ImageNet, without large-scale pretraining or strong data augmentations.
+
+By analyzing some intrinsic model properties, we find the models after SAM reduce the Hessian eigenvalues by activating sparser neurons (on ImageNet), especially in the first few layers. The weight norms increase, implying the commonly used weight decay may not be an effective regularization alone. A side observation is that, unlike ResNets and MLP-Mixers, ViTs have extremely sparse active neurons (less than 5\% for most layers), revealing the redundancy of input image patches and the capacity for network pruning. Finally, we note that ViTs' performance gain also translates to plausible attention maps containing more perspicuous information about semantic segmentation than those trained without the sharpness-aware optimization.
+
+%\begin{itemize}
+%    \item We show that ViT~\cite{dosovitskiy2021an} and MLP-Mixer~\cite{tolstikhin2021mlpmixer} converge to much sharper regions compared with ResNet~\cite{he2016resnet}. Given this observation, we further employ a sharpness-aware optimizer~\cite{foret2021sharpnessaware} and substantially improve both accuracy and robustness of ViT and MLP-Mixer. Without any augmentation, ViT can outperform ResNet with similar throughput when trained from scratch on ImageNet.
+%\end{itemize}
+
+\section{Background and Related Work}
+We briefly review ViTs, MLP-Mixers, and some related works in this section.
+
+\citet{dosovitskiy2021an} show that a pure Transformer architecture~\cite{vaswani2017attention} can achieve state-of-the-art accuracy on image classification by pretraining it on large datasets such as ImageNet-21k~\cite{deng2009imagenet} and JFT-300M~\cite{sun2017revisiting}.
+Their vision Transformer (ViT) is a  stack of residual blocks, each containing a multi-head self-attention, layer normalization~\cite{layer-norm}, and a MLP layer. 
+ViT first embeds an input image $x\in \mathbb{R}^{H\times W\times C}$ into a sequence of features $z\in \mathbb{R}^{N\times D}$ by applying a linear projection over $N$ nonoverlapping image patches $x_p \in \mathbb{R}^{N\times(P^2\cdot C)}$, where $D$ is the feature dimension, $P$ is the patch resolution, and $N=HW/P^2$ is the sequence length.
+The self-attention layers in ViT are global and do not possess the locality and translation equivariance of convolutions. ViT is compatible with the popular architectures in NLP~\cite{devlin2018bert,gpt} and, similar to its NLP counterparts, requires pretraining over massive datasets~\cite{dosovitskiy2021an,akbari2021vatt,arnab2021vivit} and repeated strong data augmentation~\cite{touvron2021training}. Some works specialize the ViT architectures for the visual data~\cite{liu2021swin,yuan2021tokenstotoken,fan2021multiscale,bertasius2021space}.
+
+
+%There are several following works of ViT including carefully crafted training strategies via augmentations and distillation~\cite{touvron2021training}, better patch cropping~\cite{yuan2021tokenstotoken} and hierarchical patch representation~\cite{liu2021swin}.
+
+More recent works find that the self-attention in ViT is not vital for performance, resulting in several architectures  exclusively based on MLPs~\cite{tolstikhin2021mlpmixer,touvron2021resmlp,liu2021pay,melas2021you}. Here we take MLP-Mixer~\cite{tolstikhin2021mlpmixer} as an example. MLP-Mixer shares the same input layer as ViT; namely, it partitions an image into a sequence of nonoverlapping patches/tokens. It then alternates between token and channel MLPs, where the former allows feature fusion from different spatial locations. 
+
+We focus on ViTs and MLP-Mixers in this paper. We denote by ``S'' and ``B''  the small and base model sizes, respectively, and by an integer the image patch resolution. For instance, ViT-B/16 is the base ViT model taking as input a sequence of $16\times16$ patches. Appendices contain more details.
+
+% Compared to the traditional MLP, MLP-Mixer ties the weights of MLPs of the same type; the token MLP independently operates on each token's feature, and the channel MLP independently applies to each feature dimension.
+
+%Similar to ViT, MLP-Mixer also crops the image into a sequence of patches. However, unlike ViT that uses self-attention to allow feature fusion across patches, it uses another token-level MLP to communicate between different spatial locations. Compared to the traditional feature-level MLP that operates on each data point independently, the token-level MLP operates on each feature independently by taking individual columns of the ``patches $\times$ channels'' table as inputs.
+
+
+
+% \begin{table}[!t]
+%     \caption{Hessian eigenvalue (batch size 128).}
+%     \label{tab:hessian}
+%     \centering
+%     \resizebox{.99\textwidth}{!}{
+%     \begin{tabular}{c|ccc|cc|cc|cc|cc}
+%     \toprule
+%     \textbf{Model} & R50 & R101 & R152 & ViT-B/32 & \tabincell{c}{ViT-B/32-\\SAM} & ViT-B/16 & \tabincell{c}{ViT-B/16-\\SAM} & Mixer-B/32 & \tabincell{c}{Mixer-B/32-\\SAM} & Mixer-B/16 & \tabincell{c}{Mixer-B/16-\\SAM} \\ \midrule
+%     \textbf{\#params} & 25M & 44M & 60M & \multicolumn{2}{c|}{88M} & \multicolumn{2}{c|}{87M} & \multicolumn{2}{c|}{60M} & \multicolumn{2}{c}{59M} \\ \midrule
+%     $\kappa$ & 2801.6 &  &  & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} & \multicolumn{2}{c}{3414.1} \\ \midrule
+%     $\bf{\|w\|_2}$ & 282.0 & 294.1 & 307.4 & 270.1 & 347.0 & 269.3 & 353.8 & 201.2 & 361.7 & 197.6 & 389.9 \\ \midrule
+%     \textbf{\tabincell{c}{Hessian \\ Dominant $\lambda$}} & 122.9 & 157.2 & 179.8 & 798.6 & 19.2 & 738.8 & 20.9 & 1229.0 & 20.1 & 1644.4 & 22.5 \\ \midrule
+%     \textbf{\tabincell{c}{ImageNet}} & 76.0 & 77.8 & 78.5 & 69.5 & 73.6 (+4.1) & 74.6 & 79.9 (+5.3) & 62.5 & 72.4 (+9.9) & 66.4 & 77.4 (+11.0) \\ \midrule
+%     \textbf{\tabincell{c}{ImageNet-C}} & 44.6 & 48.5 & 50.0 & 44.0 & 50.7 (+6.7) & 46.6 & 56.5 (+9.9) & 33.8 & 46.2 (+12.4) & 33.8 & 48.8 (+15.0) \\
+%     \bottomrule
+%     \end{tabular}}
+% \end{table}
+
+\begin{figure}
+\centering
+\subfigure[ResNet]{\label{fig:land-resnet}\includegraphics[width=0.19\linewidth]{fig/R50.png}}
+\subfigure[ViT]{\label{fig:land-vit}\includegraphics[width=0.19\linewidth]{fig/ViT-B-32-softmax.png}}
+\subfigure[Mixer]{\label{fig:land-mixer}\includegraphics[width=0.19\linewidth]{fig/Mixer-B-32-softmax.png}}
+\subfigure[ViT-SAM]{\label{fig:land-vit-sam}\includegraphics[width=0.19\linewidth]{fig/ViT-B-32-SAM-softmax.png}}
+\subfigure[Mixer-SAM]{\label{fig:land-mixer-sam}\includegraphics[width=0.19\linewidth]{fig/Mixer-B-32-SAM-softmax.png}}
+% \subfigure[ViT-B/32-21k]{\label{fig:vit-b-32-21k}\includegraphics[width=0.49\linewidth]{fig/ViT-B-32-21k-softmax.png}}
+\vspace{-5pt}
+\caption{Cross-entropy loss landscapes of ResNet-152, ViT-B/16, and Mixer-B/16.
+% \BG{Make them concrete. ResNet-50 or 152? ViT-B/16? MLP-Mixer-B/16?}.
+ViT and MLP-Mixer converge to sharper regions than ResNet when trained on ImageNet with the basic Inception-style preprocessing. SAM, a sharpness-aware optimizer, significantly smooths the landscapes.
+}
+\vspace{-12pt}
+\label{fig:land}
+\end{figure}
+
+% \vspace{-5pct}
+
+\begin{table}
+    \caption{Number of parameters, NTK condition number $\kappa$, Hessian dominate eigenvalue $\lambda_{max}$, accuracy on ImageNet, and accuracy/robustness on ImageNet-C. ViT and MLP-Mixer suffer divergent $\kappa$ and converge to sharp regions of big $\lambda_{max}$; SAM rescues that and leads to better generalization. 
+    % \BG{What about removing the row of $\|w\|_2$?}
+    }
+    \label{tab:hessian}
+    \centering
+    \resizebox{.8\textwidth}{!}{
+    \begin{tabular}{l|c|c|cc|cc}
+    \toprule
+     & ResNet-50 & ResNet-152 & ViT-B/16 & \tabincell{c}{ViT-B/16-\\SAM} & Mixer-B/16 & \tabincell{c}{Mixer-B/16-\\SAM} \\ \midrule
+    \textbf{\#Params} & 25M & 60M & \multicolumn{2}{c|}{87M} & \multicolumn{2}{c}{59M} \\
+    %\midrule
+     %\midrule
+    % $\bf{\|w\|_2}$ & 282.0 & 307.4 & 269.3 & 353.8 & 197.6 & 389.9 \\ %\midrule
+    % $\bf{\|a\|_w}$ & \\ 
+    \textbf{NTK} $\bf{\kappa}$ & 2801.6 & 2801.6 & \multicolumn{2}{c|}{4205.3} & \multicolumn{2}{c}{14468.0} \\
+    \textbf{Hessian $\lambda_{max}$} & 122.9 & 179.8 & 738.8 & \textbf{20.9} & 1644.4 & \textbf{22.5} \\ \midrule
+    \textbf{ImageNet (\%)} & 76.0 & 78.5 & 74.6 & \textbf{79.9} & 66.4 & \textbf{77.4} \\ %\midrule
+    \textbf{ImageNet-C (\%)} & 44.6 & 50.0 & 46.6 & \textbf{56.5} & 33.8 & \textbf{48.8} \\
+    \bottomrule
+    \end{tabular}}
+    \vspace{-8pt}
+\end{table}
+
+
+
+\section{ViTs and MLP-Mixers Converge to Sharp Local Minima}
+
+The current training recipe of ViTs, MLP-Mixers, and related convolution-free architectures relies heavily on massive pretraining~\cite{dosovitskiy2021an,arnab2021vivit,akbari2021vatt} or a bag of strong data augmentations~\cite{touvron2021training,tolstikhin2021mlpmixer,cubuk2019autoaugment, cubuk2019randaugment, zhang2018mixup, yun2019cutmix}. It highly demands data and computing, and leads to many hyper-parameters to tune. Existing works report that ViTs yield inferior accuracy to the ConvNets of similar size and throughput when trained from scratch on ImageNet without the combination of those advanced data augmentations, despite using various regularization techniques (e.g., large weight decay, Dropout~\cite{srivastava14dropout}, etc.).
+For instance,  ViT-B/16~\cite{dosovitskiy2021an} gives rise to 74.6\% top-1 accuracy on the ImageNet validation set (224 image resolution),  compared with 78.5\% of ResNet-152~\cite{he2016resnet}. Mixer-B/16~\cite{tolstikhin2021mlpmixer} performs even worse (66.4\%).
+There also exists a large gap between ViTs and ResNets in robustness tests (e.g., against 19 corruptions in ImageNet-C~\cite{hendrycks2019benchmarking}).
+
+Moreover, \citet{chen2021empirical} find that the gradients can spike and cause a sudden accuracy dip when training ViTs, and \citet{touvron2021training} report the training is sensitive to initialization and hyperparameters. These all point to optimization problems. In this paper, we investigate the loss landscapes of ViTs and MLP-Mixers to understand them from the optimization perspective, intending to reduce their dependency on the large-scale pretraining or strong data augmentations. 
+%indicating the potential optimization problem. 
+
+
+%In this paper, by disentangling the effects of large-data pretraining and strong augmentations, we focus on the architecture itself and aim to identity why those ``Conv-free'' models suffer large generalization error from the optimization perspective.
+%Furthermore, we identify a principled surgery to substantially improve their accuracy and robustness.
+
+
+\textbf{ViTs and MLP-Mixers converge to extremely sharp local minima.} 
+% \BG{TODO. Waiting for further analyses. We'll merge Tables~\ref{tab:hessian}~and~\ref{tab:hessian-layerwise} and the new anslyses later on.}
+It has been extensively studied that the convergence to a flat region whose curvature is small benefits the generalization of neural networks~\cite{keskar2017largebatch, pmlr-v80-kleinberg18a, jastrzebski2018on, pmlr-v119-chen20f, l.2018a, Zela2020Understanding, chaudhari2017entropysgd}. 
+Following~\cite{li2018visualize}, we plot the loss landscapes at convergence when ResNets, ViTs, and MLP-Mixers are trained from scratch on ImageNet with the basic Inception-style preprocessing~\cite{szegedy2016inception} (see Appendices for details).
+As shown in~\Cref{fig:land-resnet,fig:land-vit,fig:land-mixer}, ViTs and MLP-Mixers converge to much sharper regions than ResNets.
+In Table~\ref{tab:hessian}, we further validate the results by computing the dominate Hessian eigenvalue $\lambda_{max}$, which is a mathematical evaluation of the landscape curvature.
+The $\lambda_{max}$ values of ViT and MLP-Mixer are orders of magnitude larger than that of ResNet, and MLP-Mixer suffers the largest curvature among the three species (see Section~\ref{sec:change} for a detailed analysis).
+%The NTK condition number $\kappa$ is a measurement of trainability at initialization without actually optimizing the models.
+%Next we study the property of the architectures after full-trained on ImageNet from the perspective of landscape geometry.
+% We follow~\citet{li2018visualize} to plot the loss landscape of ResNet, ViT, and MLP-Mixer after training on ImageNet from scratch.
+
+% \paragraph{Source of the extremely large $\lambda_{max}$.}
+
+% Please see Section~\ref{sec:change} for a detailed analysis.
+
+
+% {\color{blue}(cho: One anaylsis we can add here is to compute the norm of each Hessian diagonal block (Hessian with respect to a single layer), if there exists any layer that has significantly higher value, we can argue that's the main reason for sharpness.) \BG{It's especially interesting to compute it for the multi-head attention vs.\ feedforward layers.}}
+
+\textbf{Small training errors.}
+This convergence to sharp regions coincides with the training dynamics shown in Figure~\ref{fig:loss-acc} (left).
+Although Mixer-B/16 has fewer parameters than ViT-B/16 (59M vs.\ 87M), it has a smaller training error but much worse test accuracy, implying that using the cross-token MLP to learn the interplay across image patches is more prone to overfitting than ViTs' self-attention mechanism whose behavior is restricted by a softmax.
+Such a difference probably explains that it is easier for MLP-Mixers to get stuck in sharp local minima. 
+% \XC{We don't show resnet here, so is it better to merge this with the former paragraph?}
+
+\textbf{ViTs and MLP-Mixers have worse trainability.} 
+Furthermore, we discover that ViTs and MLP-Mixers suffer poor trainability, defined as the effectiveness of a network to be optimized by gradient descent~\cite{pmlr-v119-xiao20b, burkholz2019init, shin2020trainability}.
+\citet{pmlr-v119-xiao20b} show that the trainability of a neural network can be characterized by the condition number of the associated neural tangent kernel (NTK), $\Theta(x, x') = J(x)J(x')^T$, where $J$ is the Jacobian matrix.
+Denoting by $\lambda_1 \geq \dots \geq \lambda_m$ the eigenvalues of NTK $\Theta_{train}$, the smallest eigenvalue $\lambda_m$ converges exponentially at a rate given by the condition number $\kappa=\lambda_1 / \lambda_m$.
+If $\kappa$ diverges then the network will become untrainable~\cite{pmlr-v119-xiao20b, chen2021neural}.
+As shown in Table~\ref{tab:hessian}, $\kappa$ is pretty stable for ResNets, echoing previous results that ResNets enjoy superior trainability regardless of the depth~\cite{yang2017mean, li2018visualize}.
+However, we observe that the condition number diverges when it comes to ViT and MLP-Mixer, confirming that the training of ViTs desires extra care~\cite{chen2021empirical,touvron2021training}.
+%Although MLP-Mixer is also armed with skip-connection (shown to greatly improve trainability~\cite{yang2017mean}), it still suffers an exploded value of $\kappa$.
+
+\begin{figure}
+\centering
+\subfigure{\includegraphics[width=0.3\linewidth]{fig/iteration-loss-acc.png}}
+\subfigure{\includegraphics[width=0.3\linewidth]{fig/iteration-loss-acc-vit.png}}
+\subfigure{\includegraphics[width=0.3\linewidth]{fig/layer-activate.png}}
+% \subfigure{\includegraphics[width=0.32\linewidth]{fig/iteration-loss-acc-mixer.png}}
+\vspace{-5pt}
+\caption{
+\textbf{Left} and \textbf{Middle}: ImageNet training error and validation accuracy vs.\ iteration for ViTs and MLP-Mixers with different patch sizes, vanilla SGD  or SAM, and basic pre-processing vs.\ repeated augmentations. 
+\textbf{Right}: Percentage of activated neurons at each block of MLP-Mixers.
+}
+\vspace{-10pt}
+\label{fig:loss-acc}
+\end{figure}
+
+
+\section{A Principled Optimizer for Convolution-Free Vision Architectures}
+The commonly used first-order optimizers (e.g., SGD~\cite{Nesterov1983AMF}, Adam~\cite{kingma2017adam}) only seek to minimize the training loss $L_{train}(w)$. 
+They usually dismiss the higher-order information such as curvature that correlates with the generalization~\cite{keskar2017largebatch, chaudhari2017entropysgd, dziugaite2017computing}.
+However, the objective $L_{train}$ for deep neural networks are highly non-convex, making it easy to reach near-zero training error but high generalization error $L_{test}$ during evaluation, let alone their robustness when the test sets have different distributions~\cite{hendrycks2019benchmarking, hendrycks2020faces}. ViTs and MLPs amplify such drawbacks of first-order optimizers due to the lack of inductive bias for visual data, resulting in excessively sharp loss landscapes and poor generalization, as shown in the previous section.
+We hypothesize that smoothing the loss landscapes at convergence can significantly improve the generalization ability of those convolution-free architectures, leading us to the recently proposed sharpness-aware minimizer (SAM)~\cite{foret2021sharpnessaware} that explicitly avoids sharp minima.
+
+\subsection{SAM: Overview}
+%While a variety of regularization methods such as Dropout~\cite{srivastava14dropout} and data augmentations~\cite{cubuk2019autoaugment, zhang2018mixup, cubuk2019randaugment} have been proposed to enhance generalization performance,
+%\citet{foret2021sharpnessaware} take another route, focusing on the loss geometry during optimization.
+Intuitively, SAM~\cite{foret2021sharpnessaware} seeks to find the parameter $w$ whose entire neighbours have low training loss $L_{train}$ by formulating a minimax objective:
+\begin{align}
+    \min_w\ \max_{\|\epsilon\|_2\leq \rho} L_{train}(w+\epsilon),
+\end{align}
+where $\rho$ is the size of the neighbourhood ball.
+Without loss of generality, here we use $l_2$ norm for its strong empirical results~\cite{foret2021sharpnessaware} and omit the regularization term for simplicity. 
+Since the exact solution of the inner maximization $\epsilon^\star = \argmax_{\|\epsilon\|_2\leq \rho}L_{train}(w+\epsilon)$ is hard to obtain, they employ an efficient first-order approximation:
+\begin{align}
+    \hat{\epsilon}(w) = \argmax_{\|\epsilon\|_2\leq\rho}L_{train}(w) + \epsilon^T\nabla_w L_{train}(w)
+    = \rho\nabla_wL_{train}(w)/\|\nabla_wL_{train}(w)\|_2.
+\end{align}
+Under the $l_2$ norm, $\hat{\epsilon}(w)$ is simply a scaled gradient of the current weight $w$.
+After computing $\hat{\epsilon}$, SAM updates $w$ based on the sharpness-aware gradient $\nabla_wL_{train}(w)|_{w+\hat{\epsilon}(w)}$.
+
+
+\subsection{Sharpness-aware optimization substantially improves ViTs and MLP-Mixers}
+We train ViTs and MLP-Mixers with no large-scale pretraining or strong data augmentation.
+We directly apply SAM to the original ImageNet training pipeline of ViTs~\cite{dosovitskiy2021an} without changing any hyperparameters. The pipeline employs the basic Inception-style preprocessing~\cite{szegedy2016inception}. 
+The original training setup of MLP-Mixers~\cite{tolstikhin2021mlpmixer} includes a combination of strong data augmentations;
+we replace it with the same Inception-style preprocessing for a fair comparison. Note that we perform grid search for the learning rate, weight decay, Dropout, and stochastic depth \emph{before} applying SAM. Please refer to Appendices for more details.
+
+\textbf{Smoother regions around the local minima.}
+Thanks to SAM, both ViTs and MLP-Mixers converge at much smoother regions, as shown in \Cref{fig:land-vit-sam,fig:land-mixer-sam}. The curvature measurement, i.e., the largest eigenvalue $\lambda_{max}$ of the Hessian matrix, also decreases to a small value (see Table~\ref{tab:hessian}).
+
+\textbf{Higher accuracy.}
+What comes along is tremendously improved generalization performance. 
+% Table~\ref{tab:compare} details the comparison results, of which we highlight a few here. 
+On the ImageNet validation set, SAM boosts the  top-1 accuracy of ViT-B/16 from 74.6\% to 79.9\%, and Mixer-B/16 from 66.4\% to 77.4\%.
+For comparison, the improvement on a similarly sized ResNet-152 is 0.8\%.
+Empirically, \textit{the degree of improvement negatively correlates with the level of inductive biases built into the architecture.}
+ResNets with inherent translation equivalence and locality benefit less from landscape smoothing than the attention-based ViTs.
+MLP-Mixers gain the most from the smoothed loss geometry.
+Moreover, SAM brings larger improvements to the models of larger capacity (e.g., +4.1\% for Mixer-S/16 vs.\ +11.0\% for Mixer-B/16) and longer patch sequence (e.g., +2.1\% for ViT-S/32 vs.\ +5.3\% for ViT-S/8). See Table~\ref{tab:compare} for more results and Section~\ref{sec:outperform} for more discussions.
+
+
+
+
+\textbf{Better robustness.}
+We also evaluate the models' robustness using ImageNet-R~\cite{hendrycks2020faces} and ImageNet-C~\cite{hendrycks2019benchmarking} and find even bigger impacts of the smoothed loss landscapes. 
+On ImageNet-C, which corrupts images by noise, bad weather, blur, etc., we report the average accuracy against 19 corruptions across five severity.
+As shown in Tables~\ref{tab:hessian}~and~\ref{tab:compare}, the accuracies of ViT-B/16 and Mixer-B/16 increase by 9.9\% and 15.0\%, respectively, after SAM smooths their converged local regions.
+
+\begin{table}
+    \caption{Accuracy and robustness of ResNets, ViTs, and MLP-Mixers trained from scratch on ImageNet with SAM (improvement over the models trained using vanilla SGD is shown in the parentheses). We use the Inception-style preprocessing (with resolution 224) rather than a combination of strong data augmentations. ViTs achieve better accuracy and robustness than ResNets of similar size and throughput (calculated following~\cite{tolstikhin2021mlpmixer}), and MLP-Mixers become on par with ResNets. %Following~\cite{tolstikhin2021mlpmixer}, we sweep the batch sizes in $\{32, 64, \dots, 8192\}$ on TPU-v3 and report the highest throughput for each model.
+    }
+    \label{tab:compare}
+    \centering
+    \resizebox{.9\textwidth}{!}{
+    \begin{tabular}{l|cc|ccc|cc}
+    \toprule
+    \textbf{Model} & \textbf{\#params} & \textbf{\tabincell{c}{Throughput \\ (img/sec/core)}} & \textbf{ImageNet} & \textbf{Real} & \textbf{V2} & \textbf{ImageNet-R} & \textbf{ImageNet-C} \\ \midrule \midrule
+    % \multicolumn{8}{c}{\textbf{Trained on ImageNet-1K}} \\ \midrule 
+    \multicolumn{8}{c}{\textbf{ResNet}} \\ \midrule 
+    % ResNet-50 & \multirow{2}{*}{25M} & \multirow{2}{*}{2161} & 76.0 & 82.4 & 63.6 & 22.2 & 44.6 \\
+    ResNet-50-SAM & 25M & 2161 & 76.7 (+0.7) & 83.1 (+0.7) & 64.6 (+1.0) & 23.3 (+1.1) & 46.5 (+1.9) \\ 
+    % ResNet-101 & \multirow{2}{*}{44M} & \multirow{2}{*}{1334} & 77.8 & 83.9 & 65.3 & 24.4 & 48.5 \\
+    ResNet-101-SAM & 44M & 1334 & 78.6 (+0.8) & 84.8 (+0.9) & 66.7 (+1.4) & 25.9 (+1.5) & 51.3 (+2.8) \\ 
+    % ResNet-152 & \multirow{2}{*}{60M} & \multirow{2}{*}{935} & 78.5 & 84.2 & 66.3 & 25.3 & 50.0 \\
+    ResNet-152-SAM & 60M & 935 & 79.3 (+0.8) & 84.9 (+0.7) & 67.3 (+1.0) & 25.7 (+0.4) & 52.2 (+2.2) \\ 
+    
+    % ResNet-50x2 & \multirow{2}{*}{98M} & \multirow{2}{*}{891} & 78.1 & 83.7 & 65.8 & 23.1 & 46.8 \\
+    ResNet-50x2-SAM & 98M & 891 & 79.6 (+1.5) & 85.3 (+1.6) & 67.5 (+1.7) & 26.0 (+2.9) & 50.7 (+3.9)  \\ 
+    % ResNet-101x2 & \multirow{2}{*}{173M} & \multirow{2}{*}{519} & 78.5 & 84.0 & 66.3 & 24.6 & 49.3 \\
+    ResNet-101x2-SAM & 173M & 519 & 80.9 (+2.4) & 86.4 (+2.4) & 69.1 (+2.8) & 27.8 (+3.2) & 54.0 (+4.7) \\ 
+    % ResNet-152x2 & \multirow{2}{*}{236M} & \multirow{2}{*}{356} & 79.3 & 84.5 & 67.3 & 25.3 & 50.8 \\
+    ResNet-152x2-SAM & 236M & 356 & 81.1 (+1.8) & 86.4 (+1.9) & 69.6 (+2.3) & 28.1 (+2.8) & 55.0 (+4.2) \\ \midrule
+    
+    \multicolumn{8}{c}{\textbf{Vision Transformer}} \\ \midrule 
+    % ViT-S/32 & \multirow{2}{*}{23M} & \multirow{2}{*}{6888} & 68.4 & 75.2 & 54.3 & 19.0 & 43.3 \\
+    ViT-S/32-SAM & 23M & 6888 & 70.5 (+2.1) & 77.5 (+2.3) & 56.9 (+2.6) & 21.4 (+2.4) & 46.2 (+2.9) \\ 
+    % ViT-S/16 & \multirow{2}{*}{22M} & \multirow{2}{*}{2043} & 74.4 & 80.4 & 61.7 & 20.0 & 46.5 \\
+    ViT-S/16-SAM & 22M & 2043 & 78.1 (+3.7) & 84.1 (+3.7) & 65.6 (+3.9) & 24.7 (+4.7) & 53.0 (+6.5) \\ 
+    % ViT-S/14 & \multirow{2}{*}{22M} & \multirow{2}{*}{1234} & 74.8 & 80.3 & 62.0 & 19.7 & 47.2 \\
+    ViT-S/14-SAM & 22M & 1234 & 78.8 (+4.0) & 84.8 (+4.5) & 67.2 (+5.2) & 24.4 (+4.7) & 54.2 (+7.0) \\ 
+    % ViT-S/8 & \multirow{2}{*}{22M} & \multirow{2}{*}{333} & 76.0 & 81.2 & 64.2 & 19.2 & 47.1 \\
+    ViT-S/8-SAM & 22M & 333 & 81.3 (+5.3) & 86.7 (+5.5) & 70.4 (+6.2) & 25.3 (+6.1) & 55.6 (+8.5) \\ 
+    
+    % ViT-B/32 & \multirow{2}{*}{88M} & \multirow{2}{*}{2805} & 69.5 & 75.2 & 55.3 & 19.9 & 44.0 \\
+    ViT-B/32-SAM & 88M & 2805 & 73.6 (+4.1) & 80.3 (+5.1) & 60.0 (+4.7) & 24.0 (+4.1) & 50.7 (+6.7)\\ 
+    % ViT-B/16 & \multirow{2}{*}{87M} & \multirow{2}{*}{863} & 74.6 & 79.8 & 61.3 & 20.1 & 46.6 \\
+    ViT-B/16-SAM & 87M & 863 & 79.9 (+5.3) & 85.2 (+5.4) & 67.5 (+6.2) & 26.4 (+6.3) & 56.5 (+9.9) \\ \midrule
+    % ViT-B/14 & \multirow{2}{*}{87M} & \multirow{2}{*}{516} & 74.9 & 80.1 & 61.1 & 19.2 & 45.8 \\
+    % ViT-B/14-SAM & & & 80.1 (+5.2) & 85.7 (+5.6) & 68.1 (+7.0) & 26.1 (+6.9) & 56.7 (+10.9) \\ \midrule
+    
+    % ViT-B/16$\uparrow$ & 87M & $384^2$ & 77.9 & 83.6 & 64.6 & 21.8 & 51.2 \\
+    % ViT-B/16$\uparrow$-SAM & 87M & $384^2$ & 81.9 (+4.0) & 87.2 (+3.6) & 70.4 (+5.8) & 25.9 (+4.1) & 59.1 (+7.9) \\ \midrule
+    % ViT-B/32$\uparrow$ & 88M & $384^2$ & 73.5 & 79.7 & 59.6 & 20.2 & 48.0 \\
+    % ViT-B/32$\uparrow$-SAM & 88M & $384^2$ & 77.2 (+3.7) & 83.2 (+3.5) & 64.0 (+4.4) & 24.0 (+3.8) & 55.3 (+7.3) \\ \midrule
+    
+    \multicolumn{8}{c}{\textbf{MLP-Mixer}} \\ \midrule 
+    % Mixer-S/32 & \multirow{2}{*}{19M} & \multirow{2}{*}{11401} & 63.9 & 70.3 & 49.5 & 15.9 & 35.2 \\
+    Mixer-S/32-SAM & 19M & 11401 & 66.7 (+2.8) & 73.8 (+3.5) & 52.4 (+2.9) & 18.6 (+2.7) & 39.3 (+4.1) \\ 
+    % Mixer-S/16 & \multirow{2}{*}{18M} & \multirow{2}{*}{4005} & 68.8 & 75.1 & 54.8 & 15.9 & 35.6 \\
+    Mixer-S/16-SAM & 18M & 4005 & 72.9 (+4.1) & 79.8 (+4.7) & 58.9 (+4.1) & 20.1 (+4.2) & 42.0 (+6.4) \\ 
+    % Mixer-S/8 & \multirow{2}{*}{20M} & \multirow{2}{*}{1498} & 70.2 & 76.2 & 56.1 & 15.4 & 34.6 \\
+    Mixer-S/8-SAM & 20M & 1498 & 75.9 (+5.7) & 82.5 (+6.3) & 62.3 (+6.2) & 20.5 (+5.1) & 42.4 (+7.8) \\ 
+    
+    % Mixer-B/32 & \multirow{2}{*}{60M} & \multirow{2}{*}{4209} & 62.5 & 68.1 & 47.6 & 14.6 & 33.8 \\
+    Mixer-B/32-SAM & 60M & 4209 & 72.4 (+9.9) & 79.0 (+10.9) & 58.0 (+10.4) & 22.8 (+8.2) & 46.2 (12.4) \\ 
+    % Mixer-B/16 & \multirow{2}{*}{59M} & \multirow{2}{*}{1390} & 66.4 & 72.1 & 50.8 & 14.5 & 33.8 \\
+    Mixer-B/16-SAM & 59M & 1390 & 77.4 (+11.0) & 83.5 (+11.4) & 63.9 (+13.1) & 24.7 (+10.2) & 48.8 (+15.0) \\ 
+    % Mixer-B/8 & \multirow{2}{*}{64M} & \multirow{2}{*}{466} & 68.6 & 74.3 & 53.9 & 14.3 & 32.0 \\
+    Mixer-B/8-SAM & 64M & 466 & 79.0 (+10.4) & 84.4 (+10.1) & 65.5 (+11.6) & 23.5 (+9.2) & 48.9 (+16.9) \\
+    
+    % \multicolumn{8}{c}{\textbf{Pre-trained on ImageNet-21K}} \\ \midrule
+    % ViT-B/16$\uparrow$ & 87M & $384^2$ & 84.1 & 88.4 & 73.9 & 37.7 & 65.1 \\
+    % ViT-B/16$\uparrow$-SAM & 87M & $384^2$ & 85.5 (+1.4) & 89.6 (+1.2) & 75.9 (+2.0) & 38.6 (+0.9) & 68.1 (+3.0) \\ \midrule
+    % ViT-B/32$\uparrow$ & 88M & $384^2$ & 81.3 & 86.7 & 70.0 & 31.7 & 62.1 \\
+    % ViT-B/32$\uparrow$-SAM & 88M & $384^2$ & 82.3 (+1.0) & 87.7 (+1.0) & 71.5 (+1.5) & 33.0 (+1.3) & 64.1 (+2.0) \\ 
+    \bottomrule
+    
+    \end{tabular}}
+    \vspace{-15pt}
+\end{table}
+
+
+
+\subsection{ViTs outperform ResNets without pretraining or strong data augmentations}
+\label{sec:outperform}
+The performance of a model architecture is often conflated with the training strategies~\cite{bello2021revisiting}, where data augmentations play a key role~\cite{cubuk2019autoaugment,cubuk2019randaugment,zhang2018mixup,xie2020advprop,chen2021robust}. However, the design of data augmentations requires substantial domain expertise and may not translate between images and videos, for instance.
+Thanks to the principled sharpness-aware optimizer, we can remove the advanced augmentations  and focus on the architecture itself (with the basic Inception-style preprocessing).
+% We use the basic Inception-style preprocessing (with image size $224\times 224$ ) when training ResNets, ViTs, and MLP-Mixers. 
+% We use grid search to determine the three basic hyperparameters (learning rate, weight decay, and dropout rate) and report them in the Appendices. 
+
+% As shown in Table~\ref{tab:compare}, 
+When trained from scratch on ImageNet with SAM, \textit{ViTs outperform ResNets of similar and greater  sizes (also comparable throughput at inference)} regarding both clean accuracy (on ImageNet~\cite{deng2009imagenet}, ImageNet-ReaL~\cite{imagenet-real}, and ImageNet V2~\cite{imagenet-v2}) and robustness (on ImageNet-R~\cite{hendrycks2020faces} and ImageNet-C~\cite{hendrycks2019benchmarking}). 
+ViT-B/16 achieves 79.9\%, 26.4\%, and 56.6\% top-1 accuracy on ImageNet, ImageNet-R, and ImageNet-C,  while the counterpart numbers for ResNet-152 are 79.3\%, 25.7\%, and 52.2\%, respectively (see Table~\ref{tab:compare}).
+The gaps between ViTs and ResNets are even wider for small architectures. ViT-S/16 outperforms a similarly sized ResNet-50 by 1.4\% on ImageNet, and 6.5\% on ImageNet-C. SAM also significantly improves MLP-Mixers' results. 
+
+\begin{table}
+    \caption{Dominant eigenvalue $\lambda_{max}$ of the sub-diagonal Hessians for different network components, and norm of the model parameter $w$ and the post-activation $a_k$ of block $k$.
+    Each ViT block consists of a MSA and a MLP, and MLP-Mixer alternates between a token MLP a channel MLP. 
+    Shallower layers have larger $\lambda_{max}$. SAM smooths every component.}
+    \label{tab:hessian-layerwise}
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{lccccccccccc}
+    \toprule
+    \multirow{2}{*}{\textbf{Model}} & \multicolumn{7}{c}{\textbf{$\lambda_{max}$ of diagonal blocks of Hessian}} & \multirow{2}{*}{${\|w\|_2}$} & \multirow{2}{*}{${\|a_1\|_2}$} & \multirow{2}{*}{${\|a_6\|_2}$} & \multirow{2}{*}{${\|a_{12}\|_2}$} \\ \cmidrule{2-8}
+    & Embedding & MSA/Token MLP & MLP/Channel MLP & Block1 & Block6 & Block12 & Whole & & & &  \\ \midrule
+    ViT-B/16 & 300.4 & 179.8 & 281.4 & 44.4 & 32.4 & 26.9 & 738.8 & 269.3 & 104.9 & 104.3 & 138.1 \\ 
+    ViT-B/16-SAM & 3.8 & 8.5 & 9.6 & 1.7 & 1.7 & 1.5 & 20.9 & 353.8 & 117.0 & 120.3 & 97.2 \\ \midrule
+
+    Mixer-B/16 & 1042.3 & 95.8 & 417.9 & 239.3 & 41.2 & 5.1 & 1644.4 & 197.6 & 96.7 & 135.1 & 74.9 \\ 
+    Mixer-B/16-SAM & 18.2 & 1.4 & 9.5 & 4.0 & 1.1 & 0.3 & 22.5 & 389.9 & 110.9 & 176.0 & 216.1 \\
+    \bottomrule
+    \end{tabular}}
+    \vspace{-10pt}
+\end{table}
+
+
+\subsection{Intrinsic changes after SAM}
+\label{sec:change}
+We take a deeper look into the models to understand how they intrinsically change to reduce the Hessian' eigenvalue $\lambda_{max}$ and what the changes imply in addition to the enhanced generalization. 
+% We present the major results as follows and describe implementation details in the Appendices.
+
+%attempting to provide some insights of the intrinsic change and explain why  becomes significantly smaller.
+
+\textbf{Smoother loss landscapes for every network component.}
+In Table~\ref{tab:hessian-layerwise}, we break down the Hessian of the whole architecture into small diagonal blocks of Hessians concerning each set of parameters, attempting to analyze what specific components cause the blowing up of  $\lambda_{max}$ in the models trained without SAM.
+We observe that shallower layers have larger Hessian eigenvalues $\lambda_{max}$,
+and the first linear embedding layer incurs the sharpest geometry.
+% its corresponding $\lambda_{max}$ is up to two orders of magnitude greater than $\lambda_{max}$ of other blocks.
+This agrees with the finding in~\cite{chen2021empirical} that spiking gradients happen early in the embedding layer.
+Additionally, the multi-head self-attention (MSA) in ViTs and the Token MLPs in MLP-Mixers, both of which mix information across spatial locations, have comparably lower $\lambda_{max}$ than the other network components.
+SAM consistently reduces the $\lambda_{max}$ of all network blocks.
+% especially for the first embedding layer that suffers the largest $\lambda_{max}$. 
+
+
+%For MLP-Mixer, we can obtain a recursive formulation of the Hessian matrix since it's a stack of MLPs following~
+
+We can gain insights into the above findings  by the recursive formulation of Hessian matrices for MLPs~\cite{aleksandar2017practical}. 
+Let $h_k$ and $a_k$ be the pre-activation and post-activation values for layer $k$, respectively. They satisfy $h_k = W_k a_{k-1}$ and $a_k = f_k(h_k)$, where $W_k$ is the weight matrix and $f_k$ is the activation function (GELU~\cite{hendrycks2020gaussian} in MLP-Mixers). Here we omit the bias term for simplicity.
+The diagonal block of Hessian matrix $H_k$ with respect to $W_k$ can be recursively calculated as:
+\begin{align}
+    H_k = (a_{k-1} a_{k-1}^T)\otimes \mathcal{H}_k, \quad
+    \mathcal{H}_k = B_k W_{k+1}^T\mathcal{H}_{k+1}W_{k+1}B_k + D_k, \label{eq:hessian1}  \\
+    B_k = \text{diag}(f'_k(h_k)),\qquad D_k = \text{diag}(f''_k(h_k)\frac{\partial L}{\partial a_k}), \label{eq:hessian3}
+\end{align}
+where $\otimes$ is the Kronecker product, $\mathcal{H}_k$ is the pre-activation Hessian for layer $k$, and $L$ is the objective function. 
+%In the GELU case, $D_k$ (curvature of activation function) is very small so the diagonal Hessian block can be represented by a nested product of weight matrices $W_k$ and activation gradient $B_k$. 
+Therefore, the Hessian norm accumulates as the recursive formulation backpropagates to shallow layers, explaining why the first block has much larger $\lambda_{max}$ than the last block in Table~\ref{tab:hessian-layerwise}.
+
+\textbf{Greater weight norms.} After applying SAM, we find that the norm of the post-activation value $a_{k-1}$ and the weight $W_{k+1}$ become even bigger (see Table~\ref{tab:hessian-layerwise}), indicating that the commonly used weight decay may not effectively regularize ViTs and MLP-Mixers.
+
+\textbf{Sparser active neurons in MLP-Mixers.} 
+Given the recursive formulation~\eqref{eq:hessian1} to \eqref{eq:hessian3}, we identify another intrinsic measure of MLP-Mixers that contribute to the Hessian: the number of activated neurons. Indeed, $B_k$ is determined by the activated neurons whose values are greater than zero, since the first-order derivative of GELU becomes much smaller when the input is negative. 
+% The second-order term of $D_k$ is also small for GELU and can be safely discarded. 
+As a result, the number of active GELU neurons is directly connected to the Hessian norm.
+Figure~\ref{fig:loss-acc} (right) shows the proportion of activated neurons for each block, counted using 10\% of the ImageNet training set.
+We can see that SAM greatly reduces the proportion of activated neurons for the first few layers, pushing them to much sparser states.
+This result also suggests the potential redundancy of image patches.
+
+\textbf{ViTs' active neurons are highly sparse.}
+Although~\Cref{eq:hessian1,eq:hessian3} only involve MLPs, we still observe a decrease of activated neurons in the first layer of ViTs (but not as significant as in MLP-Mixers).
+More interestingly, we find that the proportion of activated neurons in ViT is much smaller than that in ResNets or MLP-Mixers --- less than 5\% neurons have values greater than zero for most ViT layers. In other words, ViTs offer a huge potential for network pruning. This sparsity may also  explain why one Transformer can handle multi-modality signals (vision, text, and audio)~\cite{akbari2021vatt}.  %We leave this for future work.
+
+\begin{figure}
+\centering
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/8.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/8-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/8-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/1.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/1-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/1-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/2.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/2-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/2-S16-SAM.png}} \\
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/5.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/5-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/5-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/6.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/6-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/6-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/22.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/22-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/22-S16-SAM.png}} \\
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/18.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/18-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/18-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/20.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/20-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/20-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/21.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/21-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/21-S16-SAM.png}} \\
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/16-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/16-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/17.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/17-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/17-S16-SAM.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/3.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/3-S16.png}}
+\subfigure{\includegraphics[width=0.08\linewidth]{fig/attn/3-S16-SAM.png}}
+\vspace{-5pt}
+\caption{Raw images (\textbf{Left}) and attention maps of ViT-S/16 with (\textbf{Right}) and without (\textbf{Middle}) sharpness-aware optimization. ViT-S/16 with less sharp local optimum contains perceptive segmentation information in its attention maps.
+%The attention map of ViT with SAM contains more information about the image segmentation than the vanilla counterpart. 
+% \BG{ViT-B/16? Please confirm which ViT}
+}
+\vspace{-10pt}
+\label{fig:attn}
+\end{figure}
+
+\textbf{More perceptive attention maps in ViTs.} We visualize ViT-S/16's attention map of the classification token averaged over the last multi-head attentions in Figure~\ref{fig:attn} following~\citet{caron2021emerging}.
+Interestingly, the ViT model optimized with SAM can encode plausible segmentation information, giving rise to better interpretability than the one trained via the conventional SGD optimization.
+
+\textbf{Higher training errors.}
+As shown in Figure~\ref{fig:loss-acc} (Left), ViT-B/16 with SAM has a higher training error than the one trained with vanilla SGD.
+Such regularization effect also takes place when we use strong data augmentations in training, which forces the network to explicitly learn priors like rotation and translation equivariance in RandAugment~\cite{cubuk2019randaugment} and linear interpolation in mixup~\cite{zhang2018mixup}.
+However, the augmentations are sensitive to different training settings (Section~\ref{sec:aug}) and result in highly noisy loss curves (Figure~\ref{fig:loss-acc} (Middle)). %the training loss curve when using augmentations is much noisier.
+
+
+%\paragraph{Regularized training error.}
+
+% \paragraph{Increased weight norms.} As shown in Table~\ref{tab:hessian}, the $l_2$ norms of the weights become greater after we trained the models with SAM, indicating that the commonly used weight decay may not effectively regularize ViTs and MLP-Mixers.
+
+
+
+% \XC{Some observations: 1) \#activated neurons for the first few layers are much fewer after using SAM. 2) \#activated neurons for token mixing are much larger than channel mixing. 3) The weight norm for every layer is enlarged after SAM.}
+
+
+
+\section{Comparison Experiments and Ablation Studies}
+Section~\ref{sec:outperform} shows that ViTs outperform ResNets when trained from scratch on ImageNet with the basic Inception-style preprocessing for both clean accuracy and robustness.
+In this section, we provide a more comprehensive study about SAM's effect on various vision models and under different training setups (e.g., varying the amount of training data, cross-entropy loss vs.\ contrastive loss, strong data augmentations, and transfer learning). 
+
+% \subsection{A Fair Comparison between ResNet, ViT, and MLP-Mixer}
+
+
+
+%However, the performance of MLP-Mixer still lies behind although SAM improves it the most. 
+
+
+\begin{wrapfigure}{R}{.32\textwidth}
+% \begin{figure}[!t]
+\vspace{-25pt}
+\centering
+\subfigure{\includegraphics[width=\linewidth]{fig/num-imagenet.png}}
+\vspace{-10pt}
+\subfigure{\includegraphics[width=\linewidth]{fig/num-improve.png}}
+\vspace{-5pt}
+\caption{
+ImageNet validation accuracy (\textbf{Top}) and improvement (\textbf{Bottom}) brought by SAM on different  training sets.% of various sizes.
+% \textbf{Right:} Accuracy and robustness improvement for ViT and MLP-Mixer with different model scale and patch size.
+% ViT can match or outperform ResNet when the training set is larger than 1/2 ImageNet, and landscape smoothing leads to larger improvement with fewer images.
+}
+\label{fig:improve}
+% \end{figure}
+\vspace{-30pt}
+\end{wrapfigure}
+
+
+\subsection{SAM enables ViTs and MLP-Mixers to scale down and up with the training set size}
+\label{sec:scale}
+Previous studies scale up training data to show massive pretraining trumps inductive biases~\cite{dosovitskiy2021an,tolstikhin2021mlpmixer}. %ViT achieves state of the art on various image recognition tasks when pretrained on JFT-300M~\cite{sun2017revisiting}.
+Here we show SAM further enables ViTs and MLP-Mixers to handle small-scale training data well. %equipped with landscape smoothing already outperforms ResNet when trained from scratch on ImageNet, we take the opposite route and test the performance of those ``Conv-free'' architectures with fewer training examples provided.
+We randomly sample 1/4 and 1/2 images from each ImageNet class to compose two smaller-scale training sets, i.e., i1k (1/4) and i1k (1/2) in Figure~\ref{fig:improve} with 320,291 and 640,583 images, respectively. We also include ImageNet-21k to pretrain the models with SAM, followed by fine-tuning on ImageNet-1k without SAM. The ImageNet validation set remains intact.
+%The accuracy is still reported on the standard ImageNet validation set (50,000 images).
+
+As expected, fewer training examples amplify the drawback of ViTs and MLP-Mixers' lack of the convolutional inductive bias --- their accuracies decline much faster than ResNets' (see the top panel in Figure~\ref{fig:improve} and the corresponding numbers  in Table~\ref{tab:aug}). 
+% The Appendices additionally contain their accuracies trained without SAM; 
+When trained with 1/4 of the ImageNe training images, ViT-B/16 has top-1 accuracy 52.4\%, Mixer-B/16 gives 37.2\%, but ResNet-152  maintains as high as 68.0\%.
+%Fewer training samples leads to sharper landscape and poorer generalization, and SAM performs even better under such low-data regime. \XC{not sure whether we can claim this.} 
+
+However, SAM can drastically rescue ViTs and MLP-Mixers' performance decrease on smaller training sets.  Figure~\ref{fig:improve} (bottom) shows that \textit{the improvement brought by SAM over vanilla SGD training is proportional to the number of training images.} 
+When trained on i1k (1/4), it boosts ViT-B/16 and Mixer-B/16 by 14.4\% and 25.6\%, escalating their results to 66.8\% and 62.8\%, respectively. It also tells that ViT-B/16-SAM matches the performance of ResNet-152-SAM even with only 1/2 ImageNet training data. %, but still underperforms on 1/4 training set. ResNet-152-SAM until
+
+%We further plot the accuracy vs. the number of training images in Figure~\ref{fig:improve} (top) after all architectures are enhanced by SAM. ViT can match the performance of ResNet with 1/2 data, but still underperforms on 1/4 training set. The results show that the requirement for training samples after considering the loss geometry is still MLP-Mixer $>$ ViT $>$ ResNet.
+
+
+
+% \subsection{Ablations}
+
+\subsection{SAM complements strong augmentation and is more robust to different training settings}
+\label{sec:aug}
+%A combination of augmentations can also greatly improve ViT and MLP-Mixer~\cite{touvron2021training, tolstikhin2021mlpmixer}.
+%However, each augmentation policy usually has its own hyperparameters, the learning rate and regularization also need to be jointly adjusted.
+%So it's computationally expensive to tune a stack of various augmentations.
+
+Following the training pipeline in~\cite{tolstikhin2021mlpmixer}, we also study how SAM interplays with the strong data augmentations of 
+%that share the same number of data sweeps as vanilla training for analysis purpose.
+%For both ViT and MLP-Mixer, the extra augmentations include 
+mixup~\cite{zhang2018mixup} (with probability $0.5$) and RandAugment~\cite{cubuk2019randaugment} (with two layers and magnitude $15$). 
+%, their learning rate, weight decay, Dropout, and stochastic depth are tuned accordingly.
+Table~\ref{tab:aug} shows the effects of the augmentations, SAM, and their combination on  ImageNet and three subsets of training images. %-- the subset/50pct and subset/25pct mentioned above and the official subset/10pct.
+SAM benefits ViT-B/16 and Mixer-B/16 more than the strong data augmentations, especially when the training set is small. When the training set contains only 1/10 of ImageNet training images, SAM outperforms data augmentations by 7.6\% for ViT-B/16. Besides, SAM and the strong data augmentations are complementary for most test cases. %For ViT, we observe that the gap between augmentations and SAM is enlarged as the training set becomes smaller (e.g., SAM outperforms augmentations by 0.3\% vs. 7.6\% on ImageNet and subset/10pct).
+
+The results demonstrate SAM is  more robust to the change of training settings than the combination of strong  augmentation methods. Figure~\ref{fig:loss-acc} (middle) plots the training loss when using strong augmentations. It is very noisy, implying the difficulty of tuning their hyperparameters.
+In comparison, SAM is a principled optimizer that introduces only one additional hyperparameter $\rho$. Appendices report the experiments of tuning $\rho$, which does not complicate other hyper-parameters.% (i.e., the perturbation strength) without the need to adjust other hyperparameters (see Appendices for some experience to tune $\rho$). %across tasks, while the employed augmentations need to be manually adjusted for each task.
+%For MLP-Mixer, we can see that SAM performs slightly better than augmentations, and their simple combination leads to even better results.
+
+
+
+\begin{table}
+    \caption{Data augmentation, SAM, and their combination applied to different model architectures trained on ImageNet and its subsets.}
+    \label{tab:aug}
+    \centering
+    \resizebox{.85\textwidth}{!}{
+    \begin{tabular}{lc|cc|cccc|cccc}
+    \toprule
+    \multirow{2}{*}{\textbf{Training Set}} & \multirow{2}{*}{\textbf{\#Images}} & \multicolumn{2}{c|}{\textbf{ResNet-152}} & \multicolumn{4}{c|}{\textbf{ViT-B/16}} & \multicolumn{4}{c}{\textbf{Mixer-B/16}} \\
+    & & Vanilla & SAM & Vanilla & SAM & AUG & \tabincell{c}{SAM \\ + AUG} & Vanilla & SAM & AUG & \tabincell{c}{SAM \\ + AUG} \\ \midrule 
+    % \multicolumn{12}{c}{\textbf{ImageNet top-1 Accuracy (\%)}} \\ \midrule 
+    ImageNet & 1,281,167 & 78.5 & 79.3 & 74.6 & 79.9 & 79.6 & 81.5 & 66.4 & 77.4 & 76.5 & 78.1 \\ \midrule
+    i1k (1/2) & 640,583 & 74.2 & 75.6 & 64.9 & 75.4 & 73.1 & 75.8 & 53.9 & 71.0 & 70.4 & 73.1 \\ %\midrule
+    i1k (1/4) & 320,291 & 68.0 & 70.3 & 52.4 & 66.8 & 63.2 & 65.6 & 37.2 & 62.8 & 61.0 & 65.8 \\ %\midrule
+    i1k (1/10) & 128,116 & 54.6 & 57.1 & 32.8 & 46.1 & 38.5 & 45.7 & 21.0 & 43.5 & 43.0 & 51.0 \\
+    % \multicolumn{12}{c}{\textbf{ImageNet-C top-1 Accuracy (\%)}} \\ \midrule
+    % ImageNet & 1,281,167 & 50.0 & 52.2 & 46.6 & 56.5 & & & 33.8 & 48.8 \\ \midrule
+    % Subset/50pct & 640,583 &  \\ \midrule
+    % Subset/25pct & 320,291 &  \\ \midrule
+    % Subset/10pct & 128,116 &  \\ 
+    \bottomrule
+    \end{tabular}}
+    \vspace{-10pt}
+\end{table}
+
+\subsection{SAM complements contrastive learning}
+\label{sec:contrastive}
+In addition to data augmentations and large-scale pretraining, another notable way of improving a neural model's generalization is (supervised) contrastive learning~\cite{chen2020simclr,He2020moco,caron2021emerging,khosla2020supcon}. We couple SAM with the supervised contrastive learning~\cite{khosla2020supcon} for 350 epochs, followed by fine-tuning the classification head by 90 epochs for both ViT-S/16 and ViT-B/16.
+% The fine-tuning epochs of the classification head are both 90 epochs.
+%We use the LAMB optimizer~\cite{You2020Large} with 2,048 batch size (no memory bank~\cite{He2020moco}) and simply tune the base learning rate as 1e-3, leaving other hyperparameters the same as the purely supervised settings. 
+Please see the Appendices for more implementation details. Compared to the training procedure without SAM, we find considerable performance gain thanks to SAM's smoothing of the contrastive loss geometry, improving the ImageNet top-1 accuracy of ViT-S/16 from 77.0\% to 78.1\%, and ViT-B/16 from 77.4\% to 80.0\%.
+%Note that we expect the results to be higher as we don't perform extensive hyperparameter tuning.
+
+
+\subsection{When ViTs and MLP-Mixers meet both SAM and adversarial training}
+Interestingly, SAM and adversarial training are both minimax problems except that SAM's inner maximization is with respect to the network weights, while the latter concerns about the input for defending contrived attack~\cite{madry2018towards, Wong2020Fast}.
+Moreover, similar to SAM, \citet{shafahi2019free} suggest that adversarial training can flatten and smooth the loss landscape. In light of these connections,  we study ViTs and MLP-Mixers under the adversarial training framework.
+To incorporate SAM, we formulate a three-level objective:
+\begin{align}
+    \min_w\ \max_{\epsilon \in \mathbb{S}_{sam}}\ \max_{\delta \in \mathbb{S}_{adv}} L_{train}(w+\epsilon, x+\delta, y),
+\end{align}
+where $\mathbb{S}_{sam}$ and $\mathbb{S}_{adv}$ denote the allowed perturbation norm balls for the model parameter $w$ and input image $x$, respectively.
+Note that we can simultaneously obtain the gradients for computing $\epsilon$ and $\delta$ by backpropagation only once.
+To lower the training cost,  we use fast adversarial training~\cite{Wong2020Fast} with the $l_\infty$ norm for $\delta$, and the maximum per-pixel change is set as 2/255. 
+
+Table~\ref{tab:adv} evaluates the models' clean accuracy, real-world robustness, and adversarial robustness (under 10-step PGD attack~\cite{madry2018towards}). %The benefit of SAM for ViTs and MLP-Mixers is clear. adversarial training is even larger than vanilla training.
+%As shown in Table~\ref{tab:adv},
+It is clear that the landscape smoothing significantly improves the convolution-free architectures for both clean and adversarial accuracy. However, we observe a slight accuracy decrease on clean images for ResNets despite gain for robustness.
+Similar to our previous observations, \textit{ViTs surpass similar-size ResNets when adversarially trained on ImageNet with the basic Inception-style preprocessing for both clean accuracy and adversarial robustness.}
+
+
+\begin{table}
+    \caption{Comparison under the adversarial training framework on ImageNet (numbers in the parentheses denote the improvement over the standard adversarial training without SAM). With similar model size and throughput, ViTs-SAM can still outperform ResNets-SAM for clean accuracy and adversarial robustness. 
+    % \BG{Probably move this table to Appendices and keep a shorter version in the main text.}
+    }
+    % {\color{blue}(cho: maybe also add model size and throughput here? Otherwise readers need to read previous table to see which entry should they compare.)}
+    \label{tab:adv}
+    \centering
+    \resizebox{.95\textwidth}{!}{
+    \begin{tabular}{l|cc|ccc|ccc}
+    \toprule
+    \textbf{Model} & \textbf{\#params} & \textbf{\tabincell{c}{Throughput \\ (img/sec/core)}} & \textbf{ImageNet} & \textbf{Real} & \textbf{V2} & \textbf{PGD-10} & \textbf{ImageNet-R} & \textbf{ImageNet-C} \\ \midrule
+    \midrule
+    \multicolumn{9}{c}{\textbf{ResNet}} \\ \midrule 
+    % ResNet-50 & \multirow{2}{*}{25M} & \multirow{2}{*}{2161} & 70.8 & 78.2 & 57.4 & 53.2 & 26.1 & 42.8 \\
+    ResNet-50-SAM & 25M & 2161 & 70.1 (-0.7) & 77.9 (-0.3) & 56.6 (-0.8) & 54.1 (+0.9) & 27.0 (+0.9) & 42.7 (-0.1) \\
+    % ResNet-101 & \multirow{2}{*}{44M} & \multirow{2}{*}{1334} & 74.0 & 80.9 & 61.0 & 57.4 & 28.9 & 46.6 \\
+    ResNet-101-SAM & 44M & 1334 & 73.6 (-0.4) & 81.0 (+0.1) & 60.4 (-0.6) & 58.8 (+1.4) & 29.5 (+0.6) & 46.9 (+0.3) \\
+    % ResNet-152 & \multirow{2}{*}{60M} & \multirow{2}{*}{935} & 75.5 & 82.1 & 62.6 & 59.2 & 29.4 & 48.5 \\
+    ResNet-152-SAM & 60M & 935 & 75.1 (-0.4) & 82.3 (+0.2) & 62.2 (-0.4) & 61.0 (+1.8) & 30.8 (+1.4) & 49.1 (+0.6) \\ \midrule
+    
+    \multicolumn{9}{c}{\textbf{Vision Transformer}} \\ \midrule 
+    % ViT-S/16 & \multirow{2}{*}{22M} & \multirow{2}{*}{2043} & 72.0 & 79.0 & 58.8 & 52.8 & 26.0 & 45.9 \\
+    ViT-S/16-SAM & 22M & 2043 & 73.2 (+1.2) & 80.7 (+1.7) & 60.2 (+1.4) & 58.0 (+5.2) & 28.4 (+2.4) & 47.5 (+1.6) \\ 
+    % ViT-B/32 & \multirow{2}{*}{88M} & \multirow{2}{*}{2805} & 66.9 & 73.5 & 53.2 & 47.6 & 23.0 & 43.4 \\
+    ViT-B/32-SAM & 88M & 2805 & 69.9 (+3.0) & 76.9 (+3.4) & 55.7 (+2.5) & 54.0 (+6.4) & 26.0 (+3.0) & 46.4 (+3.0) \\ 
+    % ViT-B/16 & \multirow{2}{*}{87M} & \multirow{2}{*}{863} & 72.8 & 78.8 & 59.3 & 54.3 & 25.1 & 46.4 \\
+    ViT-B/16-SAM & 87M & 863 & 76.7 (+3.9) & 82.9 (+4.1) & 63.6 (+4.3) & 62.0 (+7.7) & 30.0 (+4.9) & 51.4 (+5.0) \\ \midrule 
+    
+    \multicolumn{9}{c}{\textbf{MLP-Mixer}} \\ \midrule 
+    % Mixer-S/16 & \multirow{2}{*}{18M} & \multirow{2}{*}{4005} & 64.9 & 71.8 & 50.3 & 46.0 & 20.3 & 35.4 \\
+    Mixer-S/16-SAM & 18M & 4005 & 67.1 (+2.2) & 74.5 (+2.3) & 52.8 (+2.5) & 50.1 (+4.1) & 22.9 (+2.6) & 37.9 (+2.5) \\ 
+    % Mixer-B/32 & \multirow{2}{*}{60M} & \multirow{2}{*}{4209} & 60.2 & 66.2 & 45.3 & 40.6 & 18.3 & 34.9 \\
+    Mixer-B/32-SAM & 60M & 4209 & 69.3 (+9.1) & 76.4 (+10.2) & 54.7 (+9.4) & 54.5 (+13.9) & 26.3 (+8.0) & 43.7 (+8.8) \\ 
+    % Mixer-B/16 & \multirow{2}{*}{59M} & \multirow{2}{*}{1390} & 62.8 & 69.0 & 48.3 & 42.5 & 18.5 & 33.4 \\
+    Mixer-B/16-SAM & 59M & 1390 & 73.9 (+11.1) & 80.8 (+11.8) & 60.2 (+11.9) & 59.8 (+17.3) & 29.0 (+10.5) & 45.9 (+12.5)\\
+    \bottomrule
+    
+    \end{tabular}}
+    \vspace{-10pt}
+\end{table}
+
+
+
+\subsection{ViTs and MLP-Mixers with smoother loss geometry transfer better to downstream tasks}
+\label{sec:downstream}
+%Although landscape smoothing greatly improves the performance of ViT and MLP-Mixer when trained from scratch on ImageNet, the generalization of the learned representations on downstream tasks is also of vital importance.
+Finally, we study the role of smoothed loss geometry in transfer learning. 
+We select four datasets to test ViTs and MLP-Mixers' transferabilities: CIFAR-10/100~\cite{Krizhevsky09learningmultiple}, Oxford-IIIT Pets~\cite{parkhi2012cats}, and Oxford Flowers-102~\cite{nilsback2008flower}. 
+We fine-tune all the models with image resolution $224$ using vanilla SGD. For comparison, we also include  ResNet-50-SAM and ResNet-152-SAM in the experiments. Table~\ref{tab:downstream} summarizes the results, which confirm that the enhanced models also perform better after fine-tuning and that MLP-Mixers gain the most from the sharpness-aware optimization.
+
+
+\begin{table}
+    \caption{Accuracy on downstream tasks of the models pretrained on ImageNet. SAM improves ViTs and MLP-Mixers' transferabilities to the tasks. ViTs transfer better than ResNets of similar sizes.}
+    \label{tab:downstream}
+    \centering
+    \resizebox{.99\textwidth}{!}{
+    \begin{tabular}{l|c|c|cc|cc|cc|cc}
+    \toprule
+    \textbf{\%} & \tabincell{c}{ResNet-\\50-SAM} & \tabincell{c}{ResNet-\\152-SAM} & ViT-S/16 & \tabincell{c}{ViT-S/16-\\SAM} & ViT-B/16 & \tabincell{c}{ViT-B/16-\\SAM} & Mixer-S/16 & \tabincell{c}{Mixer-S/16-\\SAM} & Mixer-B/16 & \tabincell{c}{Mixer-B/16-\\SAM} \\ \midrule
+    \textbf{CIFAR-10} & 97.4 & 98.2 & 97.6 & 98.2 & 98.1 & 98.6 & 94.1 & 96.1 & 95.4 & 97.8 \\ %\midrule
+    \textbf{CIFAR-100} & 85.2 & 87.8 & 85.7 & 87.6 & 87.6 & 89.1 & 77.9 & 82.4 & 80.0 & 86.4 \\ %\midrule
+    \textbf{Flowers} & 90.0 & 91.1 & 86.4 & 91.5 & 88.5 & 91.8 & 83.3 & 87.9 & 82.8 & 90.0 \\ %\midrule
+    \textbf{Pets} & 91.6 & 93.3 & 90.4 & 92.9 & 91.9 & 93.1 & 86.1 & 88.7 & 86.1 & 92.5 \\ \midrule
+    \textbf{Average} & 91.1 & 92.6 & 90.0 & 92.6 & 91.5 & 93.2 & 85.4 & 88.8 & 86.1 & 91.7 \\
+    \bottomrule
+    \end{tabular}}
+    \vspace{-5pt}
+\end{table}
+
+
+
+\section{Conclusion and Discussion}
+\label{sec:conclusion}
+This paper presents a detailed analysis of the convolution-free ViTs and MLP-Mixers from the lens of the loss landscape geometry, intending to reduce the models' dependency on massive pretraining and/or strong data augmentations. We arrive at the sharpness-aware minimizer (SAM) after observing sharp local minima of the converged models. 
+%We first perform a detailed analysis and show that ViTs and MLP-Mixers converge to extreme sharp local minima.
+By explicitly regularizing the loss geometry through SAM, the models enjoy much flatter loss landscapes and improved generalization regarding accuracy and robustness. %on various tasks spanning supervised, adversarial, and contrastive learning.
+The resultant ViT models outperform ResNets of comparable size and throughput when learned with no pretraining or strong augmentations. Further investigation reveals that the smoothed loss landscapes attribute to much sparser activated neurons in the first few layers. Moreover, ViTs after SAM offer perceptive attention maps.
+%Another finding is that ViTs have much less activated neurons, possibly explaining its multi-modality capability.
+
+Future work will focus on the following limitations of the work. The update to $\epsilon$ is approximated up to the first order by one step only, and it may be improved by considering multiple steps or higher orders of updates. Besides SGD for the network weights, SAM incurs another round of
+%We leave this as an exciting future direction.
+%Despite the greatly improved generalization, the principles sharpness-aware optimizer employed in this paper requires another 
+forward and backward propagations to update $\epsilon$. It is desired to reduce the computation cost. Finally, we hope SAM can help develop advanced neural architectures that are efficient in data and computation. Potential negative societal impacts are mainly concerned with the applications of convolution-free architectures, whose impacts may be related to this work.
+%incurring additional computational cost and may lead to more $CO_2$ emission.
+%We hope the study in Section~\ref{sec:change} about the intrinsic change in the enhanced model can bring some insights, promoting architectures require less image patch and regularization method of the same overhead as the vanilla version. 
+
+
+
+
+
+\bibliographystyle{plainnat}
+\bibliography{bib}
+
+\clearpage
+
+\input{appendices}
+
+
+\end{document}

@@ -1,0 +1,390 @@
+\appendix
+
+\section*{Appendices}
+
+
+\section{Architectures}
+Table~\ref{tab:arch} specifies the ViT~\cite{dosovitskiy2021an,vaswani2017attention} and MLP-Mixer~\cite{tolstikhin2021mlpmixer} architectures used in this paper.
+``S'' and ``B'' denote the small and base model scales following~\cite{dosovitskiy2021an, touvron2021training, tolstikhin2021mlpmixer}, followed by the size of each image patch.
+For instance, ``B/16'' means the model of base scale with non-overlapping image patches of resolution $16\times 16$.
+We use the input resolution $224\times 224$ throughout the paper. 
+Following~\citet{tolstikhin2021mlpmixer}, we sweep the batch sizes in $\{32, 64, \dots, 8192\}$ on TPU-v3 and report the highest throughput for each model.
+% \BG{The throughput is calculated by ...}.
+
+
+
+\begin{table}[!h]
+    \caption{Specifications of the ViT and MLP-Mixer architectures used in this paper. 
+    We train all the architectures with image resolution $224\times 224$.
+    % \BG{Probably move this table to Appendices and keep a shorter version in the main text.}
+    }
+    \label{tab:arch}
+    \centering
+    \resizebox{.99\textwidth}{!}{
+    \begin{tabular}{l|ccccccccc}
+    \toprule
+    \textbf{Model} & \textbf{\#params} & \textbf{\tabincell{c}{Throughput \\ (img/sec/core)}} & \textbf{\tabincell{c}{Patch \\ Resolution}} & \textbf{\tabincell{c}{Sequence \\ Length}} & \textbf{Hidden Size} & \textbf{\#heads} & \textbf{\#layers} & \textbf{\tabincell{c}{Token MLP \\ Dimension}} & \textbf{\tabincell{c}{Channel MLP \\ Dimension}} \\ \midrule
+    ViT-S/32 & 23M & 6888 & $32\times 32$ & 49 & 384 & 6 & 12 & -- & -- \\ 
+    ViT-S/16 & 22M & 2043 & $16\times 16$ & 196 & 384 & 6 & 12 & -- & -- \\ 
+    ViT-S/14 & 22M & 1234 & $14\times 14$ & 256 & 384 & 6 & 12 & -- & -- \\ 
+    ViT-S/8 & 22M & 333 & $8\times 8$ & 784 & 384 & 6 & 12 & -- & -- \\
+    ViT-B/32 & 88M & 2805 & $32\times 32$ & 49 & 768 & 12 & 12 & -- & -- \\
+    ViT-B/16 & 87M & 863 & $16\times 16$ & 196 & 768 & 12 & 12 & -- & -- \\
+    \midrule
+    Mixer-S/32 & 19M & 11401 & $32\times 32$ & 49 & 512 & -- & 8 & 256 & 2048 \\
+    Mixer-S/16 & 18M & 4005 & $16\times 16$ & 196 & 512 & -- & 8 & 256 & 2048 \\
+    Mixer-S/8 & 20M & 1498 & $8\times 8$ & 784 & 512 & -- & 8 & 256 & 2048 \\
+    Mixer-B/32 & 60M & 4209 & $32\times 32$ & 49 & 768 & -- & 12 & 384 & 3072 \\
+    Mixer-B/16 & 59M & 1390 & $16\times 16$ & 196 & 768 & -- & 12 & 384 & 3072 \\
+    Mixer-B/8 & 64M & 466 & $8\times 8$ & 784 & 768 & -- & 12 & 384 & 3072 \\
+    
+    \bottomrule
+    
+    \end{tabular}}
+\end{table}
+
+\section{Visualization}
+\subsection{Loss landscape}
+We use the ``filter normalization'' method~\cite{li2018visualize} to visualize the loss function curvature shown in Figure~1 in the main text. %~\ref{fig:land}. 
+For a fair comparison, we use the cross-entropy loss when plotting the landscapes for all architectures, although the original training objective is the sigmoid loss for ViTs and MLP-Mixers. Note that their sigmoid loss geometry is even sharper.
+We equally sample 2,500 points on the 2D projection space and compute the losses using 10\% of the ImageNet training images (i.e., the i1k~(1/10) subset in the main text)~\cite{chen2020simclr} to save computation.
+
+\subsection{Attention map}
+The visualization of the ViT's attention maps (Figure~3 in the main text) %~\ref{fig:attn}
+follows~\cite{caron2021emerging}.
+We average the self-attention scores of the ``classification token'' from the last MSA layer to obtain a matrix $A\in \mathbb{R}^{H/P \times W/P}$, where $H$, $W$, $P$ are the image height, image width, and the patch resolution, respectively. 
+Then we upsample $A$ to the image shape $H\times W$ before generating the figure.
+
+\section{Hessian Eigenvalue}
+The Hessian matrix requires second-order derivative, so we compute the Hessian (and all the sub-diagonal Hessian) $\lambda_{max}$ using 10\% of the ImageNet training images (i.e., i1k~(1/10)) via power iteration~\footnote{\url{https://en.wikipedia.org/wiki/Power_iteration}},
+where we use 100 iterations to ensure its convergence.
+% We use 100 iterations, which is enough for the power iteration to converge.
+% \BG{which converges in ... iterations in our experiments.}
+
+\section{NTK Condition Number}
+We compute the neural tangent kernel with batch size 48 and average over the i1k (1/10) subset.
+Notice that the computation is based on the architecture at initialization without training.
+As the activation plays an important role when computing NTK --- we find that smoother activation functions enjoy smaller condition numbers, we replace the GELU in ViT and MLP-Mixer with ReLU for a fair comparison with ResNet.
+
+\section{Training Details}
+Except for the experiments in Section~5.2 (SAM combined with strong data augmentations) and Section~5.3 (contrastive learning), we train all the models from scratch on ImageNet with the basic Inception-style preprocessing~\cite{szegedy2016inception}, i.e., a random image crop and a horizontal flip with probability 50\%. 
+Please see Table~\ref{tab:details} for the detailed training settings.
+We simply follow the original training settings of ResNet and ViT~\cite{alexander202bit, dosovitskiy2021an}. 
+For MLP-Mixer, we remove the strong augmentations in its original training pipeline and perform a grid search over the learning rate in $\{0.003, 0.001\}$, weight decay in $\{0.3, 0.1, 0.03\}$, Dropout rate in $\{0.1, 0.0\}$, and stochastic depth in $\{0.1, 0.0\}$.
+Note that training for 90 epochs is enough for ResNets to converge, and longer schedule brings almost no effect.
+For all the experiments, we use 128 TPU-v3 cores (2 per chip), resulting in 32 images per core.
+The SAM computation for $\hat{\epsilon}$ is conducted on each core independently. %\BG{I recall that, if you compute it collectively over all chips, the performance drops. Is that right?} \XC{I haven't tried that, but according to the SAM paper (Figure 3), m=1 is better than m=64, where m=128 in our case.}
+
+
+\begin{table}
+    \caption{Hyperparameters for training from scratch on ImageNet with basic Inception-style preprocessing and $224\times 224$ image resolution. 
+    }
+    \label{tab:details}
+    \centering
+    \resizebox{.7\textwidth}{!}{
+    \begin{tabular}{l|ccc}
+    \toprule
+    & \textbf{ResNet} & \textbf{ViT} & \textbf{MLP-Mixer} \\ \midrule
+    Data augmentation & \multicolumn{3}{c}{Inception-style} \\
+    Input resolution & \multicolumn{3}{c}{$224\times 224$} \\
+    Batch size & \multicolumn{3}{c}{4096} \\
+    Epoch & 90 & 300 & 300 \\
+    Warmup steps & 5K & 10K & 10K \\
+    Peak learning rate & $0.1\times \frac{\text{batch\ size}}{256}$ & 3e-3 & 3e-3 \\
+    Learning rate decay & cosine & cosine & linear \\
+    Optimizer & SGD & AdamW & AdamW \\
+    SGD Momentum & $0.9$ & -- & -- \\
+    Adam $(\beta_1, \beta_2)$ & -- & (0.9, 0.009) & (0.9, 0.009) \\
+    Weight decay & 1e-3 & 0.3 & 0.3 \\
+    Dropout rate & 0.0 & 0.1 & 0.0 \\
+    Stochastic depth & -- & -- & 0.1 \\
+    Gradient clipping & -- & 1.0 & 1.0 \\
+    % SAM $\rho$ & $[0.02, 0.05]$ & $[0.15, 0.25]$ & $[0.4, 0.5]$ \\
+    \bottomrule
+    
+    \end{tabular}}
+\end{table}
+
+
+
+\subsection{Perturbation strength in SAM}
+Different architecture species favor different strengths of perturbation $\rho$.
+We perform a grid search over $\rho$ and report the best results --- Table~\ref{tab:rho} reports the corresponding strengths used in our ImageNet experiments. Besides, we  show the results when varying $\rho$ in Table~\ref{tab:rho-vary}.
+Similar to~\cite{foret2021sharpnessaware}, we also find that a relative small $\rho \in [0.02, 0.05]$ works the best for ResNets.
+However, larger $\rho$ gives rise to the best results for ViTs and MLP-Mixers.
+We also observe that architectures with larger capacities and longer input sequences prefer stronger perturbation strengths.
+Interestingly, the choice of $\rho$ coincides with our previous observations.
+Since MLP-Mixers suffer the sharpest landscapes, they need the largest perturbation strength.
+As strong augmentations and contrastive learning already improve generalization, the suitable $\rho$ becomes significantly smaller.
+Note that we do not re-tune any other hyperparameters when using SAM. 
+
+
+
+
+\begin{table}
+    \caption{The SAM perturbation strength $\rho$ for training on ImageNet. 
+    ViTs and MLP-Mixers favor larger $\rho$ than ResNets does.
+    Larger models with longer patch sequences need stronger strengths.
+    }
+    \label{tab:rho}
+    \centering
+    \resizebox{.51\textwidth}{!}{
+    \begin{tabular}{l|cc}
+    \toprule
+    \textbf{Model} & \textbf{Task} & \textbf{SAM $\rho$} \\ \midrule \midrule
+    \multicolumn{3}{c}{ResNet} \\ \midrule
+    ResNet-50-SAM & supervised & 0.02 \\
+    ResNet-101-SAM & supervised & 0.05 \\
+    ResNet-152-SAM & supervised & 0.02 \\
+    ResNet-50x2-SAM & supervised & 0.05 \\
+    ResNet-101x2-SAM & supervised & 0.05 \\
+    ResNet-152x2-SAM & supervised & 0.05 \\
+    ResNet-50-SAM & adversarial & 0.05 \\
+    ResNet-101-SAM & adversarial & 0.05 \\
+    ResNet-152-SAM & adversarial & 0.05 \\ \midrule
+    \multicolumn{3}{c}{ViT} \\ \midrule
+    ViT-S/32-SAM & supervised & 0.05 \\
+    ViT-S/16-SAM & supervised & 0.1 \\
+    ViT-S/14-SAM & supervised & 0.1 \\
+    ViT-S/8-SAM & supervised & 0.15 \\
+    ViT-B/32-SAM & supervised & 0.15 \\
+    ViT-B/16-SAM & supervised & 0.2 \\
+    ViT-B/16-AUG-SAM & supervised & 0.05 \\
+    ViT-S/16-SAM & adversarial & 0.1 \\
+    ViT-B/32-SAM & adversarial & 0.1 \\
+    ViT-B/16-SAM & adversarial & 0.1 \\
+    ViT-S/16-SAM & supervised contrastive & 0.02 \\
+    ViT-B/16-SAM & supervised contrastive & 0.02 \\ \midrule
+    \multicolumn{3}{c}{MLP-Mixer} \\ \midrule
+    Mixer-S/32-SAM & supervised & 0.1 \\
+    Mixer-S/16-SAM & supervised & 0.15 \\
+    Mixer-S/8-SAM & supervised & 0.2 \\
+    Mixer-B/32-SAM & supervised & 0.35 \\
+    Mixer-B/16-SAM & supervised & 0.6 \\
+    Mixer-B/8-SAM & supervised & 0.6 \\
+    Mixer-B/16-AUG-SAM & supervised & 0.2 \\
+    Mixer-S/16-SAM & adversarial & 0.05 \\
+    Mixer-B/32-SAM & adversarial & 0.25 \\
+    Mixer-B/16-SAM & adversarial & 0.25 \\
+    \bottomrule
+    
+    \end{tabular}}
+\end{table}
+
+
+
+\begin{table}
+    \caption{ImageNet top-1 accuracy (\%) of ViT-B/16 and Mixer-B/16 when trained from scratch with different perturbation strength $\rho$ in SAM.
+    }
+    \label{tab:rho-vary}
+    \centering
+    \resizebox{.8\textwidth}{!}{
+    \begin{tabular}{l|cccccccccc}
+    \toprule
+    SAM $\rho$ & 0.0 & 0.05 & 0.1 & 0.2 & 0.25 & 0.35 & 0.4 & 0.5 & 0.6 & 0.65 \\ \midrule
+    ViT-B/16 & 74.6 & 77.5 & 78.8 & \textbf{79.9} & 79.3 & -- & -- & -- & -- & -- \\
+    Mixer-B/16 & 66.4 & 69.5 & -- & -- & 74.1 & 74.7 & 75.6 & 76.9 & \textbf{77.4} & 77.1 \\
+    \bottomrule
+    
+    \end{tabular}}
+\end{table}
+
+
+
+
+\subsection{Training on ImageNet subsets}
+In Section~5.1, we train the models on ImageNet subsets, and the hyperparameters have to be adjusted accordingly.
+We simply change the batch size to maintain similar total iterations and keep all other settings the same, i.e., 2048 for i1k (1/2), 1024 for i1k (1/4), and 512 for i1k (1/10).
+We do not scale the learning rate as we find the scaling harms the performance.
+
+
+\subsection{Training with strong augmentations}
+We tune the learning rate and regularizations when using strong augmentations (mixup with probability 0.5, RandAugment with two layers and magnitude 15) in Section~5.2 following~\cite{tolstikhin2021mlpmixer}.
+For ViT, we use 1e-3 peak learning rate, 0.1 weight decay, 0.1 Dropout, and 0.1 stochastic depth;
+For MLP-Mixer, those hyperparameters are exactly the same as~\cite{tolstikhin2021mlpmixer}, peak learning rate as 1e-3, weight decay as 0.1, Dropout as 0.0, and stochastic depth as 0.1. Other settings are unchanged (Table~\ref{tab:details}).
+
+
+\subsection{Contrastive learning}
+In Section~5.3, we train ViTs under the supervised contrastive learning framework~\cite{khosla2020supcon}.
+We take the classification token output from the last layer as the encoded representation and retain the structures of the projection and classification heads~\cite{khosla2020supcon}.
+We employ a batch size 2048 without memory bank~\cite{He2020moco} and use AutoAugment~\cite{cubuk2019autoaugment} with strength 1.0 following~\cite{khosla2020supcon}.
+For the 350-epoch pretraining stage, the contrastive loss temperature is set as 0.1,
+and we use the LAMB optimizer~\cite{You2020Large} with learning rate $0.001\times \frac{\text{batch size}}{256}$ along with a cosine decay schedule.
+For the second stage, we train the classification head for 90 epochs via a RMSProp optimizer~\cite{Tieleman2012rmsprop} with base learning rate 0.05 and exponential decay.
+The weight decays are set as 0.3 and 1e-6 for the first and second stages, respectively.
+We use a small SAM perturbation strength under the contrastive learning framework $\rho=0.02$.
+
+
+
+\subsection{Adversarial learning}
+We use the fast adversarial training~\cite{Wong2020Fast} (FGSM with random start) with the $l_\infty$ norm and maximum per-pixel change 2/255 during training. 
+All the hyperparameters remain the same as the vanilla supervised training.
+When evaluating the adversarial robustness, we use the PGD attack~\cite{madry2018towards} with the same maximum per-pixel change 2/255.
+The total number of attack steps is 10, and the step size is 0.25/255.
+
+
+
+\subsection{Fine-tuning on downstream tasks}
+We use image resolution $224\times 224$ during fine-tuning on downstream tasks, other settings exactly follow~\cite{dosovitskiy2021an, tolstikhin2021mlpmixer} (see Table~\ref{tab:finetune-details}). 
+Note that we do not employ SAM during fine-tuning.
+We perform a grid search over the base learning rates on small sub-splits of the training sets (10\% for Flowers and Pets, 2\% for CIFAR-10/100).
+After that, we fine-tune on the entire training sets and report the results on the respective test sets.
+
+\begin{table}
+    \caption{Hyperparameters for downstream tasks. All models are fine-tuned with $224\times 224$ resolution, a batch size of 512, cosine learning rate decay, no weight decay, and grad clipping at global norm 1.
+    }
+    \label{tab:finetune-details}
+    \centering
+    \resizebox{.7\textwidth}{!}{
+    \begin{tabular}{lccc}
+    \toprule
+    \textbf{Dataset} & \textbf{Total steps} & \textbf{Warmup steps} & \textbf{Base LR} \\ \midrule
+    CIFAR-10 & 10K & 500 & \multirow{4}{*}{\{0.001, 0.003, 0.01, 0.03\}} \\ 
+    CIFAR-100 & 10K & 500 & \\
+    Flowers & 500 & 100 &  \\
+    Pets & 500 & 100 & \\
+    \bottomrule
+    
+    \end{tabular}}
+\end{table}
+
+\section{Longer Schedule of Vanilla SGD}
+\label{sec:longer}
+Since SAM needs another forward and backward propagation to compute $\hat{\epsilon}$, its training overhead is~$\sim 2\times$ of the vanilla baseline. We also experiment with $2\times$ schedule vanilla training (600 epochs).
+We observe that training longer brings no effect on both clean accuracy and robustness, indicating that the current 300 training epochs for ViTs and MLP-Mixers are enough for them to converge.
+
+
+
+
+% \begin{figure}
+% \centering
+% \subfigure[]{\includegraphics[width=0.32\linewidth]{fig/throughput-imagenet.png}}
+% \subfigure[]{\includegraphics[width=0.32\linewidth]{fig/imagenet-imagenetc.png}}
+% \subfigure[]{\includegraphics[width=0.32\linewidth]{fig/imagenet-imagenetr.png}}
+% \caption{
+% \textbf{Left:} ImageNet accuracy vs. throughput at inference time.
+% \textbf{Middle:} ImageNet-C accuracy vs. ImageNet accuracy.
+% \textbf{Right:} ImageNet-R accuracy vs. ImageNet accuracy.
+% }
+% \label{fig:throughput-robustness}
+% \end{figure}
+
+
+% \section{Full Table}
+% \Cref{tab:compare-raw,tab:adv-raw} are the full versions of~\Cref{tab:compare,tab:adv}, including vanilla baseline without SAM.
+
+% \begin{table}
+%     \caption{Full version of Table~\ref{tab:compare}.
+%     }
+%     \label{tab:compare-raw}
+%     \centering
+%     \resizebox{.99\textwidth}{!}{
+%     \begin{tabular}{l|cc|ccc|cc}
+%     \toprule
+%     \textbf{Model} & \textbf{\#params} & \textbf{\tabincell{c}{Throughput \\ (img/sec/core)}} & \textbf{ImageNet} & \textbf{Real} & \textbf{V2} & \textbf{ImageNet-R} & \textbf{ImageNet-C} \\ \midrule \midrule
+%     % \multicolumn{8}{c}{\textbf{Trained on ImageNet-1K}} \\ \midrule 
+%     \multicolumn{8}{c}{\textbf{ResNet}} \\ \midrule 
+%     ResNet-50 & \multirow{2}{*}{25M} & \multirow{2}{*}{2161} & 76.0 & 82.4 & 63.6 & 22.2 & 44.6 \\
+%     ResNet-50-SAM & & & 76.7 (+0.7) & 83.1 (+0.7) & 64.6 (+1.0) & 23.3 (+1.1) & 46.5 (+1.9) \\ \midrule
+%     ResNet-101 & \multirow{2}{*}{44M} & \multirow{2}{*}{1334} & 77.8 & 83.9 & 65.3 & 24.4 & 48.5 \\
+%     ResNet-101-SAM & & & 78.6 (+0.8) & 84.8 (+0.9) & 66.7 (+1.4) & 25.9 (+1.5) & 51.3 (+2.8) \\ \midrule
+%     ResNet-152 & \multirow{2}{*}{60M} & \multirow{2}{*}{935} & 78.5 & 84.2 & 66.3 & 25.3 & 50.0 \\
+%     ResNet-152-SAM & & & 79.3 (+0.8) & 84.9 (+0.7) & 67.3 (+1.0) & 25.7 (+0.4) & 52.2 (+2.2) \\ \midrule
+    
+%     ResNet-50x2 & \multirow{2}{*}{98M} & \multirow{2}{*}{891} & 78.1 & 83.7 & 65.8 & 23.1 & 46.8 \\
+%     ResNet-50x2-SAM & & & 79.6 (+1.5) & 85.3 (+1.6) & 67.5 (+1.7) & 26.0 (+2.9) & 50.7 (+3.9)  \\ \midrule
+%     ResNet-101x2 & \multirow{2}{*}{173M} & \multirow{2}{*}{519} & 78.5 & 84.0 & 66.3 & 24.6 & 49.3 \\
+%     ResNet-101x2-SAM & & & 80.9 (+2.4) & 86.4 (+2.4) & 69.1 (+2.8) & 27.8 (+3.2) & 54.0 (+4.7) \\ \midrule
+%     ResNet-152x2 & \multirow{2}{*}{236M} & \multirow{2}{*}{356} & 79.3 & 84.5 & 67.3 & 25.3 & 50.8 \\
+%     ResNet-152x2-SAM & & & 81.1 (+1.8) & 86.4 (+1.9) & 69.6 (+2.3) & 28.1 (+2.8) & 55.0 (+4.2) \\ \midrule
+    
+%     \multicolumn{8}{c}{\textbf{Vision Transformer}} \\ \midrule 
+%     ViT-S/32 & \multirow{2}{*}{23M} & \multirow{2}{*}{6888} & 68.4 & 75.2 & 54.3 & 19.0 & 43.3 \\
+%     ViT-S/32-SAM & & & 70.5 (+2.1) & 77.5 (+2.3) & 56.9 (+2.6) & 21.4 (+2.4) & 46.2 (+2.9) \\ \midrule
+%     ViT-S/16 & \multirow{2}{*}{22M} & \multirow{2}{*}{2043} & 74.4 & 80.4 & 61.7 & 20.0 & 46.5 \\
+%     ViT-S/16-SAM & & & 78.1 (+3.7) & 84.1 (+3.7) & 65.6 (+3.9) & 24.7 (+4.7) & 53.0 (+6.5) \\ \midrule
+%     ViT-S/14 & \multirow{2}{*}{22M} & \multirow{2}{*}{1234} & 74.8 & 80.3 & 62.0 & 19.7 & 47.2 \\
+%     ViT-S/14-SAM & & & 78.8 (+4.0) & 84.8 (+4.5) & 67.2 (+5.2) & 24.4 (+4.7) & 54.2 (+7.0) \\ \midrule
+%     ViT-S/8 & \multirow{2}{*}{22M} & \multirow{2}{*}{333} & 76.0 & 81.2 & 64.2 & 19.2 & 47.1 \\
+%     ViT-S/8-SAM & & & 81.3 (+5.3) & 86.7 (+5.5) & 70.4 (+6.2) & 25.3 (+6.1) & 55.6 (+8.5) \\ \midrule
+    
+%     ViT-B/32 & \multirow{2}{*}{88M} & \multirow{2}{*}{2805} & 69.5 & 75.2 & 55.3 & 19.9 & 44.0 \\
+%     ViT-B/32-SAM & & & 73.6 (+4.1) & 80.3 (+5.1) & 60.0 (+4.7) & 24.0 (+4.1) & 50.7 (+6.7)\\ \midrule
+%     ViT-B/16 & \multirow{2}{*}{87M} & \multirow{2}{*}{863} & 74.6 & 79.8 & 61.3 & 20.1 & 46.6 \\
+%     ViT-B/16-SAM & & & 79.9 (+5.3) & 85.2 (+5.4) & 67.5 (+6.2) & 26.4 (+6.3) & 56.5 (+9.9) \\ \midrule
+%     % ViT-B/14 & \multirow{2}{*}{87M} & \multirow{2}{*}{516} & 74.9 & 80.1 & 61.1 & 19.2 & 45.8 \\
+%     % ViT-B/14-SAM & & & 80.1 (+5.2) & 85.7 (+5.6) & 68.1 (+7.0) & 26.1 (+6.9) & 56.7 (+10.9) \\ \midrule
+    
+%     % ViT-B/16$\uparrow$ & 87M & $384^2$ & 77.9 & 83.6 & 64.6 & 21.8 & 51.2 \\
+%     % ViT-B/16$\uparrow$-SAM & 87M & $384^2$ & 81.9 (+4.0) & 87.2 (+3.6) & 70.4 (+5.8) & 25.9 (+4.1) & 59.1 (+7.9) \\ \midrule
+%     % ViT-B/32$\uparrow$ & 88M & $384^2$ & 73.5 & 79.7 & 59.6 & 20.2 & 48.0 \\
+%     % ViT-B/32$\uparrow$-SAM & 88M & $384^2$ & 77.2 (+3.7) & 83.2 (+3.5) & 64.0 (+4.4) & 24.0 (+3.8) & 55.3 (+7.3) \\ \midrule
+    
+%     \multicolumn{8}{c}{\textbf{MLP-Mixer}} \\ \midrule 
+%     Mixer-S/32 & \multirow{2}{*}{19M} & \multirow{2}{*}{11401} & 63.9 & 70.3 & 49.5 & 15.9 & 35.2 \\
+%     Mixer-S/32-SAM & & & 66.7 (+2.8) & 73.8 (+3.5) & 52.4 (+2.9) & 18.6 (+2.7) & 39.3 (+4.1) \\ \midrule
+%     Mixer-S/16 & \multirow{2}{*}{18M} & \multirow{2}{*}{4005} & 68.8 & 75.1 & 54.8 & 15.9 & 35.6 \\
+%     Mixer-S/16-SAM & & & 72.9 (+4.1) & 79.8 (+4.7) & 58.9 (+4.1) & 20.1 (+4.2) & 42.0 (+6.4) \\ \midrule
+%     Mixer-S/8 & \multirow{2}{*}{20M} & \multirow{2}{*}{1498} & 70.2 & 76.2 & 56.1 & 15.4 & 34.6 \\
+%     Mixer-S/8-SAM & & & 75.9 (+5.7) & 82.5 (+6.3) & 62.3 (+6.2) & 20.5 (+5.1) & 42.4 (+7.8) \\ \midrule
+    
+%     Mixer-B/32 & \multirow{2}{*}{60M} & \multirow{2}{*}{4209} & 62.5 & 68.1 & 47.6 & 14.6 & 33.8 \\
+%     Mixer-B/32-SAM & & & 72.4 (+9.9) & 79.0 (+10.9) & 58.0 (+10.4) & 22.8 (+8.2) & 46.2 (12.4) \\ \midrule
+%     Mixer-B/16 & \multirow{2}{*}{59M} & \multirow{2}{*}{1390} & 66.4 & 72.1 & 50.8 & 14.5 & 33.8 \\
+%     Mixer-B/16-SAM & & & 77.4 (+11.0) & 83.5 (+11.4) & 63.9 (+13.1) & 24.7 (+10.2) & 48.8 (+15.0) \\ \midrule
+%     Mixer-B/8 & \multirow{2}{*}{64M} & \multirow{2}{*}{466} & 68.6 & 74.3 & 53.9 & 14.3 & 32.0 \\
+%     Mixer-B/8-SAM & & & 79.0 (+10.4) & 84.4 (+10.1) & 65.5 (+11.6) & 23.5 (+9.2) & 48.9 (+16.9) \\
+    
+%     % \multicolumn{8}{c}{\textbf{Pre-trained on ImageNet-21K}} \\ \midrule
+%     % ViT-B/16$\uparrow$ & 87M & $384^2$ & 84.1 & 88.4 & 73.9 & 37.7 & 65.1 \\
+%     % ViT-B/16$\uparrow$-SAM & 87M & $384^2$ & 85.5 (+1.4) & 89.6 (+1.2) & 75.9 (+2.0) & 38.6 (+0.9) & 68.1 (+3.0) \\ \midrule
+%     % ViT-B/32$\uparrow$ & 88M & $384^2$ & 81.3 & 86.7 & 70.0 & 31.7 & 62.1 \\
+%     % ViT-B/32$\uparrow$-SAM & 88M & $384^2$ & 82.3 (+1.0) & 87.7 (+1.0) & 71.5 (+1.5) & 33.0 (+1.3) & 64.1 (+2.0) \\ 
+%     \bottomrule
+    
+%     \end{tabular}}
+% \end{table}
+
+
+
+
+% \begin{table}
+%     \caption{Full version of Table~\ref{tab:adv}.
+%     % \BG{Probably move this table to Appendices and keep a shorter version in the main text.}
+%     }
+%     % {\color{blue}(cho: maybe also add model size and throughput here? Otherwise readers need to read previous table to see which entry should they compare.)}
+%     \label{tab:adv-raw}
+%     \centering
+%     \resizebox{.99\textwidth}{!}{
+%     \begin{tabular}{l|cc|ccc|ccc}
+%     \toprule
+%     \textbf{Model} & \textbf{\#params} & \textbf{\tabincell{c}{Throughput \\ (img/sec/core)}} & \textbf{ImageNet} & \textbf{Real} & \textbf{V2} & \textbf{PGD-10} & \textbf{ImageNet-R} & \textbf{ImageNet-C} \\ \midrule
+%     \midrule
+%     \multicolumn{9}{c}{\textbf{ResNet}} \\ \midrule 
+%     ResNet-50 & \multirow{2}{*}{25M} & \multirow{2}{*}{2161} & 70.8 & 78.2 & 57.4 & 53.2 & 26.1 & 42.8 \\
+%     ResNet-50-SAM & & & 70.1 (-0.7) & 77.9 (-0.3) & 56.6 (-0.8) & 54.1 (+0.9) & 27.0 (+0.9) & 42.7 (-0.1) \\ \midrule
+%     ResNet-101 & \multirow{2}{*}{44M} & \multirow{2}{*}{1334} & 74.0 & 80.9 & 61.0 & 57.4 & 28.9 & 46.6 \\
+%     ResNet-101-SAM & & & 73.6 (-0.4) & 81.0 (+0.1) & 60.4 (-0.6) & 58.8 (+1.4) & 29.5 (+0.6) & 46.9 (+0.3) \\ \midrule
+%     ResNet-152 & \multirow{2}{*}{60M} & \multirow{2}{*}{935} & 75.5 & 82.1 & 62.6 & 59.2 & 29.4 & 48.5 \\
+%     ResNet-152-SAM & & & 75.1 (-0.4) & 82.3 (+0.2) & 62.2 (-0.4) & 61.0 (+1.8) & 30.8 (+1.4) & 49.1 (+0.6) \\ \midrule
+    
+%     \multicolumn{9}{c}{\textbf{Vision Transformer}} \\ \midrule 
+%     ViT-S/16 & \multirow{2}{*}{22M} & \multirow{2}{*}{2043} & 72.0 & 79.0 & 58.8 & 52.8 & 26.0 & 45.9 \\
+%     ViT-S/16-SAM & & & 73.2 (+1.2) & 80.7 (+1.7) & 60.2 (+1.4) & 58.0 (+5.2) & 28.4 (+2.4) & 47.5 (+1.6) \\ \midrule
+%     ViT-B/32 & \multirow{2}{*}{88M} & \multirow{2}{*}{2805} & 66.9 & 73.5 & 53.2 & 47.6 & 23.0 & 43.4 \\
+%     ViT-B/32-SAM & & & 69.9 (+3.0) & 76.9 (+3.4) & 55.7 (+2.5) & 54.0 (+6.4) & 26.0 (+3.0) & 46.4 (+3.0) \\ \midrule
+%     ViT-B/16 & \multirow{2}{*}{87M} & \multirow{2}{*}{863} & 72.8 & 78.8 & 59.3 & 54.3 & 25.1 & 46.4 \\
+%     ViT-B/16-SAM & & & 76.7 (+3.9) & 82.9 (+4.1) & 63.6 (+4.3) & 62.0 (+7.7) & 30.0 (+4.9) & 51.4 (+5.0) \\ \midrule 
+    
+%     \multicolumn{9}{c}{\textbf{MLP-Mixer}} \\ \midrule 
+%     Mixer-S/16 & \multirow{2}{*}{18M} & \multirow{2}{*}{4005} & 64.9 & 71.8 & 50.3 & 46.0 & 20.3 & 35.4 \\
+%     Mixer-S/16-SAM & & & 67.1 (+2.2) & 74.5 (+2.3) & 52.8 (+2.5) & 50.1 (+4.1) & 22.9 (+2.6) & 37.9 (+2.5) \\ \midrule
+%     Mixer-B/32 & \multirow{2}{*}{60M} & \multirow{2}{*}{4209} & 60.2 & 66.2 & 45.3 & 40.6 & 18.3 & 34.9 \\
+%     Mixer-B/32-SAM & & & 69.3 (+9.1) & 76.4 (+10.2) & 54.7 (+9.4) & 54.5 (+13.9) & 26.3 (+8.0) & 43.7 (+8.8) \\ \midrule
+%     Mixer-B/16 & \multirow{2}{*}{59M} & \multirow{2}{*}{1390} & 62.8 & 69.0 & 48.3 & 42.5 & 18.5 & 33.4 \\
+%     Mixer-B/16-SAM & & & 73.9 (+11.1) & 80.8 (+11.8) & 60.2 (+11.9) & 59.8 (+17.3) & 29.0 (+10.5) & 45.9 (+12.5)\\
+%     \bottomrule
+    
+%     \end{tabular}}
+% \end{table}
+
