@@ -2,36 +2,43 @@
 Title: Archive docemuent NOTE
 ---
 - [1. arXiv.2006.07392 Application of Mean Curvature Flow for surface parametrizations](#1-arxiv200607392-application-of-mean-curvature-flow-for-surface-parametrizations)
-- [2. arXiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons](#2-arxiv190803795-non-adiabatic-effects-on-electron-beam-quality-for-frequency-tunablegyrotrons)
-- [3. arXiv.1001.0559 JULIUS AND JULIA: MASTERING THE ART OF THE SCHWARZ LEMMA](#3-arxiv10010559-julius-and-julia-mastering-the-art-of-the-schwarz-lemma)
-- [4. arXiv.1005.0739 Three-dimensional relativistic particle-in-cell hybridcode based on an exponential integrator](#4-arxiv10050739-three-dimensional-relativistic-particle-in-cell-hybridcode-based-on-an-exponential-integrator)
-- [5. archive 047_AO-95-30](#5-archive-047_ao-95-30)
-- [6. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf](#6-archive-airbone-antenna-using-geometrical-theory-of-diffraction-and-mompdf)
-- [7. archive Determination of Propagation contents.pdf](#7-archive-determination-of-propagation-contentspdf)
-- [8. archive On the Theory of Corrugated Plane Surface.pdf](#8-archive-on-the-theory-of-corrugated-plane-surfacepdf)
-- [9. archive PrincipleOfGyrotron.pdf](#9-archive-principleofgyrotronpdf)
-  - [9.1. Cavity](#91-cavity)
-  - [9.2. Oscilation of Gyrotron](#92-oscilation-of-gyrotron)
-- [10. archive Stratton1946.pdf](#10-archive-stratton1946pdf)
-- [11. archive Theory of Irregular Waveguides with slowy changing parameters.pdf](#11-archive-theory-of-irregular-waveguides-with-slowy-changing-parameterspdf)
+- [2. arXiv.1302.7054 Oblique-ECE Radial and Phase Detector of Rotating Magnetic Islands applied toAlignment and Phase-locked Modulation of ECCD for NTM Stabilization](#2-arxiv13027054-oblique-ece-radial-and-phase-detector-of-rotating-magnetic-islands-applied-toalignment-and-phase-locked-modulation-of-eccd-for-ntm-stabilization)
+- [3. arXiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons](#3-arxiv190803795-non-adiabatic-effects-on-electron-beam-quality-for-frequency-tunablegyrotrons)
+- [4. arXiv.1001.0559 MASTERING THE ART OF THE SCHWARZ LEMMA](#4-arxiv10010559-mastering-the-art-of-the-schwarz-lemma)
+- [5. arXiv.1005.0739 3D relativistic particle-in-cell hybridcode based on an exponential integrator](#5-arxiv10050739-3d-relativistic-particle-in-cell-hybridcode-based-on-an-exponential-integrator)
+- [6. archive 047_AO-95-30](#6-archive-047_ao-95-30)
+- [7. archive Experimental Study on Generation of a Higher Order Mode for W-band Gyrotron Oscillator.pdf](#7-archive-experimental-study-on-generation-of-a-higher-order-mode-for-w-band-gyrotron-oscillatorpdf)
+- [8. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf](#8-archive-airbone-antenna-using-geometrical-theory-of-diffraction-and-mompdf)
+- [9. archive Determination of Propagation contents.pdf](#9-archive-determination-of-propagation-contentspdf)
+- [10. archive On the Theory of Corrugated Plane Surface.pdf](#10-archive-on-the-theory-of-corrugated-plane-surfacepdf)
+- [11. archive RF wave simulation for cold edge plasmas using the MFEM library.pdf](#11-archive-rf-wave-simulation-for-cold-edge-plasmas-using-the-mfem-librarypdf)
+- [12. archive PrincipleOfGyrotron.pdf](#12-archive-principleofgyrotronpdf)
+  - [12.1. Cavity](#121-cavity)
+  - [12.2. Oscilation of Gyrotron](#122-oscilation-of-gyrotron)
+- [13. archive Stratton1946.pdf](#13-archive-stratton1946pdf)
+- [14. archive Theory of Irregular Waveguides with slowy changing parameters.pdf](#14-archive-theory-of-irregular-waveguides-with-slowy-changing-parameterspdf)
 
 ## 1. arXiv.2006.07392 Application of Mean Curvature Flow for surface parametrizations
 
 - <https://github.com/mkazhdan/ConformalizedMCF.git>
 
-## 2. arXiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons
+## 2. arXiv.1302.7054 Oblique-ECE Radial and Phase Detector of Rotating Magnetic Islands applied toAlignment and Phase-locked Modulation of ECCD for NTM Stabilization
+
+## 3. arXiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons
 
 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons
 
-## 3. arXiv.1001.0559 JULIUS AND JULIA: MASTERING THE ART OF THE SCHWARZ LEMMA
+## 4. arXiv.1001.0559 MASTERING THE ART OF THE SCHWARZ LEMMA
 
 tar.gx file is broken
 
-## 4. arXiv.1005.0739 Three-dimensional relativistic particle-in-cell hybridcode based on an exponential integrator
+## 5. arXiv.1005.0739 3D relativistic particle-in-cell hybridcode based on an exponential integrator
 
-- <https://github.com/ALaDyn/piccante>
+- <https://github.com/ALaDyn/piccante.git>
+- <https://github.com/ricardo-fonseca/zpic.git>
+- <https://github.com/TFDzarm/picFoam.git>
 
-## 5. archive 047_AO-95-30
+## 6. archive 047_AO-95-30
 
 Precise recursive formula forcalculating spot size in optical waveguides and accurate evaluation of splice loss
 
@@ -50,7 +57,9 @@ $$ \begin{aligned}
     \omega^{(n+1)} &= \frac{4 \int x^2 exp( -(\frac{x}{\omega^{(n)}})^2 ) f(x) dx }{\int exp( -(\frac{x}{\omega^{(n)}})^2 ) f(x) dx}^{1/2} \\
 \end{aligned} $$
 
-## 6. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf
+## 7. archive Experimental Study on Generation of a Higher Order Mode for W-band Gyrotron Oscillator.pdf
+
+## 8. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf
 
 CHAPTER
 
@@ -65,11 +74,13 @@ CHAPTER
 - V TRAFFIC ALERT AND COLLISION AVOIDANCE SYSTEM ANALYSIS
 - VI SUMMARY   AND CONCLUSIONS
 
-## 7. archive Determination of Propagation contents.pdf
+## 9. archive Determination of Propagation contents.pdf
 
-## 8. archive On the Theory of Corrugated Plane Surface.pdf
+## 10. archive On the Theory of Corrugated Plane Surface.pdf
 
-## 9. archive PrincipleOfGyrotron.pdf
+## 11. archive RF wave simulation for cold edge plasmas using the MFEM library.pdf
+
+## 12. archive PrincipleOfGyrotron.pdf
 
 - La Agusu, T. Idehara, H. Mori, T. Saito, I. Ogawa and S.Mitsudo, Int. J. Infrared Millim. Waves28, 315 (2007)
 - T. Idehara and Y. Shimizu, Phys. Plasmas1, 3145 (1994).
@@ -79,7 +90,7 @@ CHAPTER
 - K. Kreischer, R.J. Temkin, H.R. Fetterman and W. Mulli-gan, IEEE Trans. Microw. Theory Tech.MTT-32, 481(1984).
 - S.H. Gold and A.W. Fliflet, Int. J. Electron.72, 779 (1992)
 
-### 9.1. Cavity
+### 12.1. Cavity
 
 ![cavity](./img/2020-04-07-19-23-36.png)
 
@@ -116,7 +127,7 @@ $$ Q_{diff,min} = \omega L / v_{gr} = 4\pi (L/\lambda)^2 $$
 
 実際は出口での反射による因子がかかり，$Q_{diff}$は$Q_{diff,min}$の２倍程度の値をとることが多い
 
-### 9.2. Oscilation of Gyrotron
+### 12.2. Oscilation of Gyrotron
 
 ジャイロトロンでの発振を，サイクロトロン放射の立場ではなく，空胴中において電場と相互作用する電子の運動を考え，電子の運動エネルギーの変化から検討することが通常行われている
 
@@ -137,7 +148,7 @@ $$ F = \frac{E_0}{B_0} \beta_{\partial 0}^{n-4} (\frac{n^{n-1}}{n!2^{n-1}} J_{m+
 
 $\theta=\omega t -n\phi$で定義され、時間に対してゆっくりと変化する。
 
-## 10. archive Stratton1946.pdf
+## 13. archive Stratton1946.pdf
 
 - THEFIELDEQUATIONS
 - MAXWELL'SEQUATIONS
@@ -212,7 +223,7 @@ $\theta=\omega t -n\phi$で定義され、時間に対してゆっくりと変�
   - 3.1 EquationsofFieldandPotential
   - 3.2 BoundaryConditions
 
-## 11. archive Theory of Irregular Waveguides with slowy changing parameters.pdf
+## 14. archive Theory of Irregular Waveguides with slowy changing parameters.pdf
 
 Table of Contents
 
