@@ -3,7 +3,10 @@ arXiv.*/*.log
 arXiv.*/*.out
 arXiv.*/*.synctex.gz
 arXiv.*/*.dvi
-#arXiv.*/*.pdf
+arXiv.*/*.fls
+arXiv.*/*.fdb_latexmk
+arXiv.*/*.bbl
+arXiv.*/*.blg
 
 #tmp
 tmp/*
