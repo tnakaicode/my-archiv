@@ -131,22 +131,36 @@ $$ Q_{diff,min} = \omega L / v_{gr} = 4\pi (L/\lambda)^2 $$
 
 ジャイロトロンでの発振を，サイクロトロン放射の立場ではなく，空胴中において電場と相互作用する電子の運動を考え，電子の運動エネルギーの変化から検討することが通常行われている
 
-$$ \frac{d \mathbb{e}}{dt} = -e v \cdot E $$  
+$$ \frac{d \mathcal{E}}{dt} = -e v \cdot E $$  
 $$ \frac{d p}{dt} = -e E - \frac{e}{cc} v x E $$  
 
+変数を規格化する。$\gamma$は相対論的因子。
+
 $$ u = \frac{2}{\beta_{\partial 0}^2} (1 - \frac{\gamma}{\gamma_0}) $$  
-$$ \iota = \pi \frac{\beta_{\partial 0}^2}{\beta_{\parallel 0}} (\frac{z}{\lambda}) $$  
+$$ \zeta = \pi \frac{\beta_{\partial 0}^2}{\beta_{\parallel 0}} (\frac{z}{\lambda}) $$  
+$$ \mathcal{E} = m_e c^2 \gamma $$
 
 弱い相対論的電子ビームに対して，電子の運動は次の２つの方程式で記述される。
 
-$$ \frac{du}{d\iota} = 2Ff(\iota) (1-u)^{n/2} sin(\theta) $$  
-$$ \frac{d\theta}{d\iota} = \Delta - u - nFf(\iota) (1-u)^{n/2-1} cos(\theta) $$  
+$$ \frac{du}{d\zeta} = 2Ff(\zeta) (1-u)^{n/2} sin(\theta) $$  
+$$ \frac{d\theta}{d\zeta} = \Delta - u - nFf(\zeta) (1-u)^{n/2-1} cos(\theta) $$  
+
+2つ目の式の第2項($u = (2/\beta_{\partial 0}^2) (1 - \gamma/\gamma_0)$) は相対論効果による位相変化。
+電子の垂直方向のエネルギーのうち、、電磁波のエネルギーへの変換効率は$\eta_{\perp}=u(\zeta_{out})$で計算できる。
+
+$$ \eta = \frac{\gamma_0 - \gamma}{\gamma_0 - 1} = \frac{\beta_{\perp0}^2}{2(1-\gamma_0^{-1})^{\eta_{\perp}}} $$
 
 Fは規格化された電場
 
 $$ F = \frac{E_0}{B_0} \beta_{\partial 0}^{n-4} (\frac{n^{n-1}}{n!2^{n-1}} J_{m+-n} (k_{\partial}R_b)) $$  
 
-$\theta=\omega t -n\phi$で定義され、時間に対してゆっくりと変化する。
+$\theta=\omega t -n\phi$で定義され、時間に対してゆっくりと変化する(各振動数$\omega$, 電子の位相$\phi$)。
+
+$$ \Delta = \frac{2}{\beta_{\perp0}^2} (1 - \frac{n\omega_{c0}}{\omega}) $$
+
+空洞共振器入口でのサイクロトロン角振動数
+
+$$ \omega_{c0} = e \frac{B_0}{m_e\gamma_0} $$
 
 ## 13. archive Stratton1946.pdf
 
