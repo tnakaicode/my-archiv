@@ -1,0 +1,62 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Data acquisition model}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Reconstruction from incomplete Fourier data}{3}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Reconstruction from the real part}{3}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Reconstruction from the imaginary part}{5}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Reconstruction from the phase}{5}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Reconstruction from the magnitude}{5}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}A short overview}{8}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Mathematical foundations}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}One-dimensional signals}{9}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Continuous-time case}{9}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Discrete-time case}{17}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}Multi-dimensional signals}{20}{section.2.2}%
+\contentsline {chapter}{\numberline {3}Current reconstruction methods}{22}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Gerchberg-Saxton method}{23}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Fienup's algorithms for phase retrieval}{26}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Fundamental developments in optimization methods\FN@sf@gobble@optonly {}}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Complex gradient}{30}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Complex Hessian}{32}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Application to the phase retrieval problem}{33}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Special properties}{37}{subsection.4.3.1}%
+\contentsline {section}{\numberline {4.4}Concluding remarks (disappointing)}{43}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Concluding remarks (encouraging)}{44}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Approximate Fourier phase knowledge for non-negative signals---first success\FN@sf@gobble@optonly }{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Developing an efficient optimization method}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Simulations and Results}{47}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Concluding remarks}{52}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Approximate Fourier phase data for arbitrary signals---why does it help?\FN@sf@gobble@optonly {}}{54}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Optimization methods: the problem and the remedy}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Experimental results}{60}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Concluding remarks}{65}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Phase retrieval combined with digital holography\FN@sf@gobble@optonly {}}{66}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Basic reconstruction algorithm}{66}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Relation to holography}{71}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Reconstruction method for imprecise reference beam}{72}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Experimental results}{73}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Concluding remarks}{82}{section.7.5}%
+\contentsline {chapter}{\numberline {8}Designing boundaries for phase retrieval\FN@sf@gobble@optonly }{83}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Review of existing methods}{83}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Our reconstruction method}{85}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Numerical results}{88}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Concluding remarks}{97}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Bandwidth extrapolation using sparsity constraints\FN@sf@gobble@optonly \FN@sf@gobble@optonly }{99}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Background information}{100}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Sparsity based super-resolution}{101}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Sparsity based sub-wavelength CDI}{102}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Finding suitable basis}{103}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Experiments}{103}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Our sparsity-based reconstruction method for CDI}{111}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Comparison with other methods}{118}{section.9.7}%
+\contentsline {subsection}{\numberline {9.7.1}Without a regularization}{118}{subsection.9.7.1}%
+\contentsline {subsection}{\numberline {9.7.2}Replacing $l_0$ with another norm}{119}{subsection.9.7.2}%
+\contentsline {subsection}{\numberline {9.7.3}Methods based on alternating projections}{120}{subsection.9.7.3}%
+\contentsline {subsubsection}{\nonumberline Gerschberg type methods}{120}{section*.56}%
+\contentsline {subsubsection}{\nonumberline Fienup's Hybrid Input-Output method}{122}{section*.58}%
+\contentsline {subsection}{\numberline {9.7.4}Relation to compressed sensing}{123}{subsection.9.7.4}%
+\contentsline {section}{\numberline {9.8}A method for automatic grid determination, and the (un)importance of the basis function}{125}{section.9.8}%
+\contentsline {subsection}{\numberline {9.8.1}The impact of the basis function}{127}{subsection.9.8.1}%
+\contentsline {subsection}{\numberline {9.8.2}A method for automatic determination of an optimal grid}{130}{subsection.9.8.2}%
+\contentsline {section}{\numberline {9.9}Concluding remarks}{134}{section.9.9}%
+\contentsline {chapter}{\numberline {10}Afterword}{135}{chapter.10}%

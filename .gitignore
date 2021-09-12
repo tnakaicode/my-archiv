@@ -2,11 +2,14 @@ arXiv.*/*.aux
 arXiv.*/*.log
 arXiv.*/*.out
 arXiv.*/*.synctex.gz
+arXiv.*/*.synctex
 arXiv.*/*.dvi
 arXiv.*/*.fls
 arXiv.*/*.fdb_latexmk
 arXiv.*/*.bbl
 arXiv.*/*.blg
+arXiv.*/*.bib
+arXiv.*/*.thm
 
 #tmp
 tmp/*

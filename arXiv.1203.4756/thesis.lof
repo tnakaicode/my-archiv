@@ -1,0 +1,213 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces CDI process}}{1}{figure.caption.3}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{1}{subfigure.1.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{1}{subfigure.1.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{1}{subfigure.1.3}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Signal decomposition into even and odd parts}}{4}{figure.caption.4}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{4}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{4}{subfigure.2.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{4}{subfigure.2.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{4}{subfigure.2.4}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces The importnace of phase in signals}}{7}{figure.caption.5}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{7}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{7}{subfigure.3.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{7}{subfigure.3.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{7}{subfigure.3.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Two pulses with the same autocorrelation}}{15}{figure.caption.6}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{15}{subfigure.1.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{15}{subfigure.1.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{15}{subfigure.1.3}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Two pulses with the same autocorrelation}}{17}{figure.caption.7}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{17}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{17}{subfigure.2.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{17}{subfigure.2.3}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Schematic description of the Gerchberg-Saxton algorithm.\relax }}{24}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Projection in the Fourier domain}}{26}{figure.caption.9}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Convex relaxation of phase bounds}}{46}{figure.caption.10}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{46}{subfigure.1.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{46}{subfigure.1.2}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Caffeine molecule}}{48}{figure.caption.11}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{48}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{48}{subfigure.2.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{48}{subfigure.2.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{48}{subfigure.2.4}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces A natural image (Lena)}}{49}{figure.caption.12}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{49}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{49}{subfigure.3.2}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Reconstruction with approximately known phase}}{50}{figure.caption.13}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{50}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{50}{subfigure.4.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{50}{subfigure.4.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{50}{subfigure.4.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Reconstruction from noisy data}}{51}{figure.caption.14}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{51}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{51}{subfigure.5.2}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Three possible scenarios in the Fourier domain}}{57}{figure.caption.15}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{57}{subfigure.1.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{57}{subfigure.1.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Small magnitude: good direction.}}}{57}{subfigure.1.3}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Test images}}{61}{figure.caption.16}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{61}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{61}{subfigure.2.2}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Success rate of our method}}{62}{figure.caption.17}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Reconstruction results for phase uncertainty of 1.57 radians}}{63}{figure.caption.18}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{63}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{63}{subfigure.4.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{63}{subfigure.4.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{63}{subfigure.4.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{63}{subfigure.4.5}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {}}}{63}{subfigure.4.6}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Error behavior in the case of loose support}}{64}{figure.caption.19}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{64}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{64}{subfigure.5.2}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Error behavior in the case of tight support}}{65}{figure.caption.20}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{65}{subfigure.6.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{65}{subfigure.6.2}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Schematic representation of the experiment.\relax }}{67}{figure.caption.21}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Possible scenarios in Fourier domain holography}}{69}{figure.caption.22}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{69}{subfigure.2.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{69}{subfigure.2.2}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Test image}}{73}{figure.caption.23}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Image reconstructed by the holographic technique using a small square as the reference beam}}{75}{figure.caption.24}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{75}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{75}{subfigure.4.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{75}{subfigure.4.3}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Image reconstructed by our method}}{76}{figure.caption.25}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{76}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{76}{subfigure.5.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{76}{subfigure.5.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{76}{subfigure.5.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{76}{subfigure.5.5}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {}}}{76}{subfigure.5.6}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Reconstruction speed of our method}}{77}{figure.caption.26}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{77}{subfigure.6.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{77}{subfigure.6.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{77}{subfigure.6.3}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Fourier domain error vs. phase error in the reference beam}}{78}{figure.caption.27}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{78}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{78}{subfigure.7.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{78}{subfigure.7.3}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Object domain error vs. phase error in the reference beam}}{79}{figure.caption.28}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{79}{subfigure.8.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{79}{subfigure.8.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{79}{subfigure.8.3}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Corrected object domain error vs. phase error in the reference beam}}{80}{figure.caption.29}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{80}{subfigure.9.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{80}{subfigure.9.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{80}{subfigure.9.3}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Image reconstructed by the holographic method and our method}}{81}{figure.caption.30}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{81}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{81}{subfigure.10.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{81}{subfigure.10.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{81}{subfigure.10.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{81}{subfigure.10.5}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {}}}{81}{subfigure.10.6}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Artificial mask design.\relax }}{86}{figure.caption.31}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces ``Strong'' known part leads to the phase retrieval problem with approximately known Fourier phase.\relax }}{87}{figure.caption.32}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Test images}}{89}{figure.caption.33}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{89}{subfigure.3.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{89}{subfigure.3.2}%
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Error growth in the Hayes-Quatieri recursive algorithm}}{90}{figure.caption.34}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{90}{subfigure.4.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{90}{subfigure.4.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{90}{subfigure.4.3}%
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Artificial mask with test images.\relax }}{92}{figure.caption.35}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{92}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{92}{subfigure.5.2}%
+\contentsline {figure}{\numberline {8.6}{\ignorespaces Lena's reconstruction speed with flat mask values.}}{93}{figure.caption.36}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{93}{subfigure.6.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{93}{subfigure.6.2}%
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Phantom's reconstruction speed with flat mask values.}}{94}{figure.caption.37}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{94}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{94}{subfigure.7.2}%
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Lena's reconstruction speed with random mask values}}{94}{figure.caption.38}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{94}{subfigure.8.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{94}{subfigure.8.2}%
+\contentsline {figure}{\numberline {8.9}{\ignorespaces Phantom's reconstruction speed with random mask values}}{95}{figure.caption.39}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{95}{subfigure.9.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{95}{subfigure.9.2}%
+\contentsline {figure}{\numberline {8.10}{\ignorespaces Lena's reconstruction quality}}{96}{figure.caption.40}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{96}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{96}{subfigure.10.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{96}{subfigure.10.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{96}{subfigure.10.4}%
+\contentsline {figure}{\numberline {8.11}{\ignorespaces Phantom's reconstruction quality}}{97}{figure.caption.41}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{97}{subfigure.11.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{97}{subfigure.11.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{97}{subfigure.11.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{97}{subfigure.11.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Test images}}{105}{figure.caption.42}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{105}{subfigure.1.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{105}{subfigure.1.2}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Reconstruction results for the SOD image.\relax }}{107}{figure.caption.43}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces SOD image: available power spectrum.\relax }}{108}{figure.caption.44}%
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Reconstruction results for the "random" image.\relax }}{110}{figure.caption.45}%
+\contentsline {figure}{\numberline {9.5}{\ignorespaces Fourier domain magnitude of the ``random'' image}}{111}{figure.caption.46}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{111}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{111}{subfigure.5.2}%
+\contentsline {figure}{\numberline {9.6}{\ignorespaces The full grid.\relax }}{112}{figure.caption.47}%
+\contentsline {figure}{\numberline {9.7}{\ignorespaces Support restriction by the low-resolution image}}{113}{figure.caption.48}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{113}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{113}{subfigure.7.2}%
+\contentsline {figure}{\numberline {9.8}{\ignorespaces Reconstruction stages for the example of the ``random'' image}}{115}{figure.caption.49}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{115}{subfigure.8.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{115}{subfigure.8.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{115}{subfigure.8.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{115}{subfigure.8.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{115}{subfigure.8.5}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {}}}{115}{subfigure.8.6}%
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {}}}{115}{subfigure.8.7}%
+\contentsline {subfigure}{\numberline {(h)}{\ignorespaces {}}}{115}{subfigure.8.8}%
+\contentsline {subfigure}{\numberline {(i)}{\ignorespaces {}}}{115}{subfigure.8.9}%
+\contentsline {figure}{\numberline {9.9}{\ignorespaces ``Random'' image: objective function value}}{116}{figure.caption.50}%
+\contentsline {figure}{\numberline {9.10}{\ignorespaces Reconstruction result for the ``random'' image}}{116}{figure.caption.51}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{116}{subfigure.10.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{116}{subfigure.10.2}%
+\contentsline {figure}{\numberline {9.11}{\ignorespaces SOD image: objective function value}}{117}{figure.caption.52}%
+\contentsline {figure}{\numberline {9.12}{\ignorespaces Reconstruction result for the SOD image}}{117}{figure.caption.53}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{117}{subfigure.12.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{117}{subfigure.12.2}%
+\contentsline {figure}{\numberline {9.13}{\ignorespaces Reconstruction without a regularization on $x$}}{119}{figure.caption.54}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{119}{subfigure.13.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{119}{subfigure.13.2}%
+\contentsline {figure}{\numberline {9.14}{\ignorespaces Reconstruction using $l_2$ regularization}}{120}{figure.caption.55}%
+\contentsline {figure}{\numberline {9.15}{\ignorespaces Gerschberg type method: results of reconstruction}}{122}{figure.caption.57}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{122}{subfigure.15.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{122}{subfigure.15.2}%
+\contentsline {figure}{\numberline {9.16}{\ignorespaces Fienup's HIO method: ``random'' image results of reconstruction}}{123}{figure.caption.59}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{123}{subfigure.16.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{123}{subfigure.16.2}%
+\contentsline {figure}{\numberline {9.17}{\ignorespaces Fienup's HIO method: SOD image results of reconstruction}}{123}{figure.caption.60}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{123}{subfigure.17.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{123}{subfigure.17.2}%
+\contentsline {figure}{\numberline {9.18}{\ignorespaces Fourier phase of the ``random'' image}}{124}{figure.caption.61}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{124}{subfigure.18.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{124}{subfigure.18.2}%
+\contentsline {figure}{\numberline {9.19}{\ignorespaces The sought signal imposed on a sensor with circular pixels}}{127}{figure.caption.62}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{127}{subfigure.19.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{127}{subfigure.19.2}%
+\contentsline {figure}{\numberline {9.20}{\ignorespaces Basis functions that do not allow a perfect reconstruction}}{128}{figure.caption.63}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{128}{subfigure.20.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{128}{subfigure.20.2}%
+\contentsline {figure}{\numberline {9.21}{\ignorespaces Reconstruction in the case of basis functions that do not match the sought signal.\relax }}{129}{figure.caption.64}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{129}{subfigure.21.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{129}{subfigure.21.2}%
+\contentsline {figure}{\numberline {9.22}{\ignorespaces Reconstruction of the ``random'' image using different basis functions}}{130}{figure.caption.65}%
+\contentsline {figure}{\numberline {9.23}{\ignorespaces Objective function value versus grid pitch size}}{131}{figure.caption.66}%
+\contentsline {figure}{\numberline {9.24}{\ignorespaces Objective function behavior versus the grid pitch size}}{133}{figure.caption.67}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{133}{subfigure.24.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{133}{subfigure.24.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{133}{subfigure.24.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{133}{subfigure.24.4}%
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {}}}{133}{subfigure.24.5}%
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {}}}{133}{subfigure.24.6}%
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {}}}{133}{subfigure.24.7}%
+\addvspace {10\p@ }
