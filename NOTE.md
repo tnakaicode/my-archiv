@@ -6,18 +6,20 @@ Title: Archive docemuent NOTE
 - [3. arXiv.1908.03795 Non-Adiabatic Effects on Electron Beam Quality for Frequency-TunableGyrotrons](#3-arxiv190803795-non-adiabatic-effects-on-electron-beam-quality-for-frequency-tunablegyrotrons)
 - [4. arXiv.1001.0559 MASTERING THE ART OF THE SCHWARZ LEMMA](#4-arxiv10010559-mastering-the-art-of-the-schwarz-lemma)
 - [5. arXiv.1005.0739 3D relativistic particle-in-cell hybridcode based on an exponential integrator](#5-arxiv10050739-3d-relativistic-particle-in-cell-hybridcode-based-on-an-exponential-integrator)
-- [6. archive 047_AO-95-30](#6-archive-047_ao-95-30)
-- [7. archive Experimental Study on Generation of a Higher Order Mode for W-band Gyrotron Oscillator.pdf](#7-archive-experimental-study-on-generation-of-a-higher-order-mode-for-w-band-gyrotron-oscillatorpdf)
-- [8. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf](#8-archive-airbone-antenna-using-geometrical-theory-of-diffraction-and-mompdf)
-- [9. archive Determination of Propagation contents.pdf](#9-archive-determination-of-propagation-contentspdf)
-- [10. archive On the Theory of Corrugated Plane Surface.pdf](#10-archive-on-the-theory-of-corrugated-plane-surfacepdf)
-- [11. archive RF wave simulation for cold edge plasmas using the MFEM library.pdf](#11-archive-rf-wave-simulation-for-cold-edge-plasmas-using-the-mfem-librarypdf)
-- [12. archive Non-uniform Emission  Studies of a MagnetronInjection Gun.pdf](#12-archive-non-uniform-emission--studies-of-a-magnetroninjection-gunpdf)
-- [13. archive PrincipleOfGyrotron.pdf](#13-archive-principleofgyrotronpdf)
-  - [13.1. Cavity](#131-cavity)
-  - [13.2. Oscilation of Gyrotron](#132-oscilation-of-gyrotron)
-- [14. archive Stratton1946.pdf](#14-archive-stratton1946pdf)
-- [15. archive Theory of Irregular Waveguides with slowy changing parameters.pdf](#15-archive-theory-of-irregular-waveguides-with-slowy-changing-parameterspdf)
+- [6. arXiv.1904.00239 Hermite-Gaussian Mode Detection viaConvolution Neural Networks](#6-arxiv190400239-hermite-gaussian-mode-detection-viaconvolution-neural-networks)
+- [7. arXiv.1807.08569 Low-Cost and Low-Weight Horn and ReflectorAntennas through 3D Printing](#7-arxiv180708569-low-cost-and-low-weight-horn-and-reflectorantennas-through-3d-printing)
+- [8. archive 047_AO-95-30](#8-archive-047_ao-95-30)
+- [9. archive Experimental Study on Generation of a Higher Order Mode for W-band Gyrotron Oscillator.pdf](#9-archive-experimental-study-on-generation-of-a-higher-order-mode-for-w-band-gyrotron-oscillatorpdf)
+- [10. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf](#10-archive-airbone-antenna-using-geometrical-theory-of-diffraction-and-mompdf)
+- [11. archive Determination of Propagation contents.pdf](#11-archive-determination-of-propagation-contentspdf)
+- [12. archive On the Theory of Corrugated Plane Surface.pdf](#12-archive-on-the-theory-of-corrugated-plane-surfacepdf)
+- [13. archive RF wave simulation for cold edge plasmas using the MFEM library.pdf](#13-archive-rf-wave-simulation-for-cold-edge-plasmas-using-the-mfem-librarypdf)
+- [14. archive Non-uniform Emission  Studies of a MagnetronInjection Gun.pdf](#14-archive-non-uniform-emission--studies-of-a-magnetroninjection-gunpdf)
+- [15. archive PrincipleOfGyrotron.pdf](#15-archive-principleofgyrotronpdf)
+  - [15.1. Cavity](#151-cavity)
+  - [15.2. Oscilation of Gyrotron](#152-oscilation-of-gyrotron)
+- [16. archive Stratton1946.pdf](#16-archive-stratton1946pdf)
+- [17. archive Theory of Irregular Waveguides with slowy changing parameters.pdf](#17-archive-theory-of-irregular-waveguides-with-slowy-changing-parameterspdf)
 
 ## 1. arXiv.2006.07392 Application of Mean Curvature Flow for surface parametrizations
 
@@ -39,7 +41,11 @@ tar.gx file is broken
 - <https://github.com/ricardo-fonseca/zpic.git>
 - <https://github.com/TFDzarm/picFoam.git>
 
-## 6. archive 047_AO-95-30
+## 6. arXiv.1904.00239 Hermite-Gaussian Mode Detection viaConvolution Neural Networks
+
+## 7. arXiv.1807.08569 Low-Cost and Low-Weight Horn and ReflectorAntennas through 3D Printing
+
+## 8. archive 047_AO-95-30
 
 Precise recursive formula forcalculating spot size in optical waveguides and accurate evaluation of splice loss
 
@@ -58,9 +64,9 @@ $$ \begin{aligned}
     \omega^{(n+1)} &= \frac{4 \int x^2 exp( -(\frac{x}{\omega^{(n)}})^2 ) f(x) dx }{\int exp( -(\frac{x}{\omega^{(n)}})^2 ) f(x) dx}^{1/2} \\
 \end{aligned} $$
 
-## 7. archive Experimental Study on Generation of a Higher Order Mode for W-band Gyrotron Oscillator.pdf
+## 9. archive Experimental Study on Generation of a Higher Order Mode for W-band Gyrotron Oscillator.pdf
 
-## 8. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf
+## 10. archive Airbone Antenna using Geometrical theory of Diffraction and MoM.pdf
 
 CHAPTER
 
@@ -75,18 +81,18 @@ CHAPTER
 - V TRAFFIC ALERT AND COLLISION AVOIDANCE SYSTEM ANALYSIS
 - VI SUMMARY   AND CONCLUSIONS
 
-## 9. archive Determination of Propagation contents.pdf
+## 11. archive Determination of Propagation contents.pdf
 
-## 10. archive On the Theory of Corrugated Plane Surface.pdf
+## 12. archive On the Theory of Corrugated Plane Surface.pdf
 
-## 11. archive RF wave simulation for cold edge plasmas using the MFEM library.pdf
+## 13. archive RF wave simulation for cold edge plasmas using the MFEM library.pdf
 
-## 12. archive Non-uniform Emission  Studies of a MagnetronInjection Gun.pdf
+## 14. archive Non-uniform Emission  Studies of a MagnetronInjection Gun.pdf
 
 - <https://www.slac.stanford.edu/pubs/slacreports/>
 - EGUN-AN ELECTRON OPTICS AND GUN DESIGN PROGRAM <https://www.slac.stanford.edu/pubs/slacreports/reports10/slac-r-331.pdf>
 
-## 13. archive PrincipleOfGyrotron.pdf
+## 15. archive PrincipleOfGyrotron.pdf
 
 - La Agusu, T. Idehara, H. Mori, T. Saito, I. Ogawa and S.Mitsudo, Int. J. Infrared Millim. Waves28, 315 (2007)
 - T. Idehara and Y. Shimizu, Phys. Plasmas1, 3145 (1994).
@@ -96,7 +102,7 @@ CHAPTER
 - K. Kreischer, R.J. Temkin, H.R. Fetterman and W. Mulli-gan, IEEE Trans. Microw. Theory Tech.MTT-32, 481(1984).
 - S.H. Gold and A.W. Fliflet, Int. J. Electron.72, 779 (1992)
 
-### 13.1. Cavity
+### 15.1. Cavity
 
 ![cavity](./img/2020-04-07-19-23-36.png)
 
@@ -133,7 +139,7 @@ $$ Q_{diff,min} = \omega L / v_{gr} = 4\pi (L/\lambda)^2 $$
 
 実際は出口での反射による因子がかかり，$Q_{diff}$は$Q_{diff,min}$の２倍程度の値をとることが多い
 
-### 13.2. Oscilation of Gyrotron
+### 15.2. Oscilation of Gyrotron
 
 ジャイロトロンでの発振を，サイクロトロン放射の立場ではなく，空胴中において電場と相互作用する電子の運動を考え，電子の運動エネルギーの変化から検討することが通常行われている
 
@@ -168,7 +174,7 @@ $$ \Delta = \frac{2}{\beta_{\perp0}^2} (1 - \frac{n\omega_{c0}}{\omega}) $$
 
 $$ \omega_{c0} = e \frac{B_0}{m_e\gamma_0} $$
 
-## 14. archive Stratton1946.pdf
+## 16. archive Stratton1946.pdf
 
 - THEFIELDEQUATIONS
 - MAXWELL'SEQUATIONS
@@ -243,7 +249,7 @@ $$ \omega_{c0} = e \frac{B_0}{m_e\gamma_0} $$
   - 3.1 EquationsofFieldandPotential
   - 3.2 BoundaryConditions
 
-## 15. archive Theory of Irregular Waveguides with slowy changing parameters.pdf
+## 17. archive Theory of Irregular Waveguides with slowy changing parameters.pdf
 
 Table of Contents
 
