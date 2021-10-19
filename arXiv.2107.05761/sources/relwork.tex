@@ -1,0 +1,147 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Related Work}
+\label{sec:relwork}
+
+% Cite some classic work on implementing math functions
+% Kahan papers
+% Faster math functions
+% Higham
+
+% speed-accuracy with func impls:
+%   VDT, Intel etc
+%   daisy
+%   green
+
+% speed-accuracy has been looked at by:
+%   fptuner
+%   precimonoius
+%   hifptuner
+
+% accuracy, but not speed:
+%   herbie
+%   salsa
+
+% speed, but not accuracy:
+%   stoke
+
+Implementing mathematical functions in floating point has a long history.
+\citet{kahan, kahan-log}, \citet{higham},
+  \citet{muller}, and \citet{cody-waite}
+  all made monumental contributions to the field.
+These authors all leveraged earlier work on approximation theory
+  developed by mathematicians like Pafnutiy Chebyshev
+  and Charles-Jean de la Vall\'ee Poussin.
+Robin Green's recent talks on the topic~[\citeyear{faster-math-functions,even-faster-math-functions}]
+  are a good introduction to and survey of the field.
+Standard library implementations tend to be accurate
+  to within 1 or a few ulps~\cite{glibc-accuracy},
+  but some implementations have been produced
+  with a ``gold-standard'' accuracy of  a half ulp,
+  including MPFR~\cite{mpfr} and CRLibm~\cite{crlibm}.
+Most implementations of library functions like \F{exp} or \F{sin}
+  are manually verified, and bugs are sometimes discovered~\cite{intel-sin,faster-math-functions}.
+However, a few of the Intel Math Kernel Library implementations
+  of functions like \F{log}, \F{sin}, and \F{tan} have been verified
+  with semi-automated methods~\cite{verified-math-h},
+  and some verified synthesis techniques are available~\cite{jay-p-lim}.
+\name could these libraries or any other libraries.
+
+Using lower-accuracy library function implementations
+  is an established, if infrequent, program optimization technique.
+The CERN math library
+  used in \name, VDT \cite{cern},
+   was created to allow developers to manually tune this tradeoff.
+VDT is also carefully optimized for SIMD support,
+  which \name does not currently attempt.
+There are other similar libraries that \name does not yet incorporate
+  such as
+  Intel MKL~\cite{mkl}, CEPHES~\cite{cephes},
+  and VC's math functions~\cite{vc}.
+
+\citet{daisy-libm} have attempted to automate
+  the implementation selection problem
+  in the Daisy numerical compiler~\cite{daisy}.
+In a certain sense,
+  these authors approach a similar problem to \name, but in reverse.
+In their approach,
+  Daisy starts by analyzing the user's expression
+  to derive an accuracy bound for each call to a library function.
+Daisy then leverages MetaLibm's
+  parametric implementations~\cite{metalibm}
+  to generate a custom implementation for this accuracy bound.
+We experimented with using MetaLibm in a similar way.
+However, we ultimately found that enumerating the space
+  of possible library function implementations was a superior approach,
+  not only because it searches over
+  a broader range of implementation choices
+  than MetaLibm's parameterized implementations
+  but also because it allows for much more accurate error estimation
+  and thus greater speedups.
+Daisy also returns a single implementation,
+  while \name returns the full speed-accuracy Pareto curve.
+
+While not specific to floating point, the Green framework~\cite{green-frame}
+  does allow replacing math functions with faster variations in the spirit of
+  approximate computing.
+Instead of relying on error analysis, the code under test must be accompanied
+  by a quality of service metric.
+Green provides statistical metrics but does not guarantee worst case behavior.
+Another downside of this approach is that it scales linearly
+  in the number of possible implementation configurations,
+  which itself grows combinatorially in the number of available implementations and call sites.
+
+Several tools attempt to
+  speeding up floating point computation
+  by computing intermediate values to lower precision.
+Precimonious~\cite{precimonious} approaches the problem by sampling points and
+  dynamically testing the speed and error while lowering precision of
+  intermediates in a random search.
+Blame Analysis~\cite{prec-blame}
+  instead dynamically determines which intermediates have low impact on error,
+  and then select those intermediates as candidates for lowering.
+HiFPTuner~\cite{hifptuner} improves further upon this method
+  by performing a static analysis of the expression
+  to group intermediates and hierarchically search the space of precisions.
+CRAFT~\cite{lam} is similar to this line of work,
+  but performs the dynamic analysis at a binary level.
+None of these tools can guarantee a sound error bound.
+FPTuner~\cite{fptuner}, on the other hand, performs precision tuning
+   while also guaranteeing an overall error bound.
+Its use of error Taylor forms and integer linear programming
+  was an inspiration for \name.
+Optimizing value precision is orthogonal to \name's purpose,
+  and could potentially integrated into \name.
+
+Other tools improve the accuracy of a floating point expression without an explicit
+  concern for speed.
+The Herbie~\cite{herbie} and Salsa~\cite{salsa} tools
+  attempt to increase the accuracy of a floating-point expression
+  by rewriting it using algebraic and analytic identities.
+While these tools do not consider speed,
+  they do sometimes discover rewrites
+  that both increase accuracy and improve runtime~\cite{herbie}.
+More recently, the Herbie authors have added support
+  for combining rewriting with precision tuning
+  to explore the speed-accuracy trade-off of lower-precision arithmetic~\cite{pherbie}.
+Finally, the \textsc{Stoke} tool uses stochastic search over assembly instructions
+  to improve runtime without much reducing accuracy~\cite{stoke-fp}.
+While this sometimes discovers valuable algebraic rearrangements,
+  this approach cannot implement a complex library function like \F{exp} or \F{sin}.
+\textsc{Stoke} also cannot bound the worst-case error
+  of its tuned floating-point expressions;
+  it can only bound the difference between the original and optimized version.
+In any case, none of these tools currently considers
+  changing the implementation of library functions as \name does.
+Integrating \name with these tools
+  would likely discover new speedups and further refine
+  the speed-accuracy Pareto curves discovered.
+
+
+
+
+
+
+\end{document}

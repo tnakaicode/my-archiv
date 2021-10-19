@@ -1,0 +1,170 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Selecting optimal implementations}
+\label{sec:optimization}
+
+Between the various libraries listed above,
+  and the parameterized implementations from MetaLibm,
+  there are dozens of implementations
+  of \F{sin}, \F{cos}, \F{tan}, \F{exp}, and \F{log},
+  which makes selecting the right one a chore.
+\name uses its error and cost models
+  to encode the implementation selection problem
+  as an integer linear program
+  and select the right configurations automatically.
+
+\subsection{Encoding Configuration Selection}
+
+\begin{figure}
+\newcommand{\eqnbox}[1]{\fbox{\textsc{#1}}\;}
+\begin{mathpar}
+\eqnbox{DefVar}
+t_{i,j} \in \{ 0, 1 \} \and
+\eqnbox{PickOne}
+\sum_j t_{i, j} = 1 \and
+\eqnbox{SetEps}
+\varepsilon_i = \sum_j t_{i,j} \varepsilon_{f_j} \land
+\delta_i = \sum_j t_{i,j} \delta_{f_j} \and
+\eqnbox{MinErr}
+\min \sum_i A_i \varepsilon_i + \sum_i B_i \delta_i \and
+\eqnbox{SetCost}
+c_i = \sum_j t_{i,j} c_{f_j} \and
+\eqnbox{MinCost}
+\min \sum_i c_i
+\end{mathpar}
+\caption{And integer-linear-program formulation of the implementation
+  selection problem.}
+\label{fig:ilp-form}
+\end{figure}
+
+A valid implementation selection
+  must minimize both overall error and execution time
+  while making a discrete choice of implementation for each use site.
+This naturally fits the integer linear programming paradigm;
+  a full integer linear program is given in \Cref{fig:ilp-form}.
+The key decision variables for the linear program
+  are boolean variables that determine
+  which implementation is used at each use site:
+  $n \times m$ boolean variables $t_{i,j}$,
+  where $t_{i,j}$ is true if use site $i$ uses implementation $f_j$
+  (\textsc{DefVar}).
+Note that for a fixed $i$, the $t_{i,j}$ sum to 1 (\textsc{PickOne}).
+
+The two key constraints on these decision variables
+  are to minimize the error and cost models.
+First, the $\varepsilon_i$, $\delta_i$, and cost $c_i$
+  of the chosen implementation for each use site $i$
+  are computed (\textsc{SetEps} and \textsc{SetCost}).
+Note that these constraints embed
+  the $\varepsilon_f$, $\delta_f$, and $c_f$ constants
+  for the available implementations of each function.
+Then, the error and cost models are minimized
+  in the integer linear program.
+The cost model is just the sum of per-use-site costs,
+  so is simple to express (\textsc{MinCost}).
+The error model, on the other hand,
+  is the linear expression described in \Cref{sec:error-and-cost-models}.
+In our implementation
+  error Taylor series are computed
+  with FPTaylor~\cite{fptaylor}
+  and each optimization problem is solved
+  using the Gelpia~\cite{gelpia}
+  sound global nonlinear optimization engine.
+
+To solve these constraints,
+  the integer-linear-program solver
+  must support two additional features.
+The $\varepsilon_{f_j}$ and $\delta_{f_j}$ coefficients
+  in this linear program
+  typically vary dramatically in magnitude,
+  (rounding error can differ dramatically
+  between implementations).
+Unfortunately, many common ILP solvers
+  produce errors or invalid solutions
+  when coefficients vary so widely,
+  likely due to rounding error inside the solver itself.
+An exact rational ILP solver is thus necessary.
+Furthermore, the error and cost models
+  are usually at odds with one another and
+  cannot be minimized simultaneously.
+Instead of a single solution to the conflicting goals
+  there is a set of points where decreasing error must increase cost,
+  and vice versa.
+The ILP solver in question must implement
+  a Pareto mode which can find this set automatically.
+(Repeated ILP queries with a varying error bound also work,
+  but an in-solver Pareto mode is typically much more efficient.)
+\name uses Z3 as its ILP solver~\cite{z3};
+  Z3 uses exact rational arithmetic
+  and has an efficient Pareto mode.
+A particularly handy aspect of Z3's Pareto modes
+  is that the points are generated sequentially, not all at once,
+  so users can start exploring \name-suggested configurations
+  even while \name is still running.
+
+\subsection{Verification and Timing}
+
+The Pareto-optimal solutions
+  to the integer linear program in \Cref{fig:ilp-form}
+  are Pareto-optimal for \name's error and cost \textit{models}.
+But \textit{modeled} and \textit{real} speed and accuracy,
+  differ enough to shift the position of the points.
+\name thus recomputes true error and measures actual speed in a post pass.
+
+\name's error model simplifies floating-point error in several ways.
+For one, \cref{rdmodel} mildly overestimates floating point error.
+Dropping higher-order terms from the error Taylor form
+  then underestimates error
+  when the $\varepsilon$ and $\delta$ values are large---%
+  that is, for particularly inaccurate function implementations.
+Then, linearizing the error model in \cref{linearform}
+  overapproximates by ignoring correlations between different terms.
+So, \name recalculates the accuracy
+  of all configurations returned by the ILP solver
+  using FPTaylor's most accurate \F{fp-power2} mode.%
+\footnote{
+Unfortunately, incorporating fixes into the optimization problem
+  would require mixed, global optimization
+  with both linear and quadratic constraints (MIQP)
+  which is too difficult and slow for available solvers.
+}
+Since the recalculation is working with a fixed implementation selection,
+  the higher-order and correlation terms can be included
+  and a sound worst-case error bound can be returned.
+
+\name's cost model also oversimplifies.
+Needless to say, modern CPUs are complex,
+  with features like out-of-order execution and branch prediction
+  that \name's cost model ignores.
+Runtime also typically depends on the larger application context;
+  a table-based function implementation runs much faster
+  if the table stays resident in cache.
+\name thus measures the speed
+  of each configuration returned by the ILP solver.
+To make sure the measurement is accurate,
+  \name uses the maximum-speed compiler flags,
+  averages multiple measurements,
+  pre-generates random valid inputs,
+  and binds the timing program to a core,
+  just like when computing $c_f$ for each implementation.
+
+After accuracies are recalculated and speeds measured,
+  it is possible for some configurations returned by the ILP solver
+  to no longer be on the Pareto frontier---%
+  that is, for one of the returned points
+  to in fact be both faster and more accurate than another.
+\name filters out such points
+  by sorting returned points by actual speed,
+  and removing any points whose accuracy is not monotonically increasing.
+This filtering is just a convenience for the user,
+  and removes, on average, only $26\%$ of the points.
+Usually, the points removed by this process are still
+  quite close to the Pareto frontier;
+  however, removing these points
+  means the user needs to explore fewer configurations
+  and can find a good configuration more quickly.
+
+
+\end{document}

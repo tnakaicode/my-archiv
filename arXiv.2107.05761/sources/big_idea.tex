@@ -1,0 +1,138 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{The Big Idea in One Formula}
+\label{sec:big-idea}
+
+Floating-point arithmetic deterministically
+  approximates real-number arithmetic.
+The error of this approximation
+  is given the rounding model
+  $y(1 + \varepsilon) + \delta$,
+  which formally states
+\begin{equation}\label{rdmodel}
+\forall\:x \in D,
+\exists\:|\varepsilon_x| \le \varepsilon_f,
+|\delta_x| \le \delta_f,
+\quad
+\tilde{f}(x) = f(x) (1 + \varepsilon_x) + \delta_x,
+\end{equation}
+In other words,
+  a floating-point computation $\tilde{f}(x)$
+  is equal to its true mathematical value $f(x)$,
+  but with a relative error of $\varepsilon_x$
+  (bounded by $\varepsilon_f$)
+  and an absolute error of $\delta_x$
+  (bounded by $\delta_f$).
+Both $\varepsilon_x$ and $\delta_x$ are necessary
+  to bound the error for both normal and subnormal numbers.%
+\footnote{This is more important in our context
+  than in traditional uses of error Taylor series,
+  because $\delta_f$ can be quite large
+  for some function implementations.}
+The constants $\varepsilon_f$ and $\delta_f$,
+  depend on the particular function implementation $\tilde{f}$
+  and characterize its accuracy.
+
+\subsection{Error Taylor Series}
+\label{ssec:aspec}
+
+\Cref{rdmodel} bounds the error of a single call to $f$,
+  but a floating-point expressions calls multiple functions,
+  and their errors interact to affect
+  the \emph{overall} error of that expression.
+Consider the composition $\tilde{f}(\tilde{g}(x))$.
+Expanding according to \cref{rdmodel} yields
+\begin{equation}\label{exfn}
+  \tilde{f}(\tilde{g}(x)) = f(g(x)(1 + \underbrace{\varepsilon_1) + \delta_1}_{\text{from }\tilde{g}})(1 + \underbrace{\varepsilon_2) + \delta_2}_{\text{from }\tilde{f}}
+\end{equation}
+Here, the $\varepsilon_1$, $\delta_1$, $\varepsilon_2$, and $\delta_2$ terms
+  are variables bounded by constants $\varepsilon_f$, $\delta_f$, $\varepsilon_g$, and $\delta_g$
+  that characterize the error of $\tilde{f}$ and $\tilde{g}$.%
+\footnote{The difference between, say, $\varepsilon_1$ and $\varepsilon_f$
+  is subtle---the first represents the actual rounding error,
+  while the second represents a worst-case error bound.
+  The reader can ignore likely the difference without much harm.}
+Error Taylor series are a state-of-the-art technique
+  to bound the maximum error of this expression
+  based on the insight
+  that the $\varepsilon$ and $\delta$ parameters are always small.
+
+The core idea is to expand \Cref{exfn}
+  as a Taylor series in the $\varepsilon$s and $\delta$s:
+\[
+\tilde{f}(\tilde{g}(x)) =
+f(g(x)) + f'(g(x))g(x)\varepsilon_1 + f'(g(x))\delta_1
++ f(g(x))\varepsilon_2 + \delta_2 + o(\varepsilon^2)
+\]
+The first term in this Taylor series represents the exact output,
+  so the other terms represent the error.
+Ignore for a moment the higher-order terms represented by $o(\varepsilon^2)$ as
+  they are usually insignificant;
+  the other four linear terms are called
+  the \textit{first-order error} of the computation.
+
+Since these four terms are linear
+  in the $\varepsilon$ and $\delta$ terms,
+  the maximum error occurs
+  when each $\varepsilon$ and $\delta$
+  has the largest possible magnitude
+  and the same sign as the term it is multiplied by:
+\begin{equation}\label{taylorform}
+|\tilde{f}(\tilde{g}(x)) - f(g(x))| \le
+\max_x \left( |f'(g(x))g(x)| \varepsilon_g \\ +
+|f'(g(x))| \delta_g +
+|f(g(x))| \varepsilon_f +
+| 1 | \delta_f + o(\varepsilon^2) \right)
+\end{equation}
+Note that $\varepsilon_f$ and similar are constants, not variables,
+  so bounding the maximum error of the linear terms
+  just requires optimizing a complicated function of $x$,
+  which can be done using a global nonlinear optimization package.
+The higher-order terms can also be bounded,
+  via Lagrange's theorem for the remainder of a Taylor series,
+  again using global non-linear optimization.%
+\footnote{
+  Typically, the higher-order terms are too small to make a difference,
+    but they are necessary to establish a sound error bound.}
+Error Taylor series thus provide
+  an elegant, rigorous, and relatively accurate way
+  to bound the error of an arbitrary floating-point expression.
+Recent work
+  focuses on automating this idea~\cite{fptaylor}
+  and scaling it larger programs~\cite{satire}.
+
+\subsection{The Idea}
+
+\name's key insight is to treat $\varepsilon_f$ and $\delta_f$
+  not as constants but as variables.
+By triangle inequality,
+\begin{multline}\label{linearform}
+  | \tilde{f}(\tilde{g}(x)) - f(g(x)) | \le
+\max_x \left( |f'(g(x))g(x)| \varepsilon_g + |f'(g(x))| \delta_g + |f(g(x))|
+\varepsilon_f + | 1 | \delta_f \right) \le \\
+\underbrace{\left( \max_x |f'(g(x))g(x)| \right)}_{\text{constant }A_1} \varepsilon_g
++ \underbrace{\left( \max_x |f'(g(x))| \right)}_{\text{constant }B_1} \delta_g
++ \underbrace{\left( \max_x |f(g(x))| \right)}_{\text{constant }A_2} \varepsilon_f
++ \underbrace{\left( \max_x | 1 | \right)}_{\text{constant }B_2} \delta_f
+\end{multline}
+The coefficients $A_i$ and $B_i$
+  in front of each $\varepsilon_f$ and $\delta_g$
+  are numbers that can be directly computed
+  using a global nonlinear optimizer.
+This simple rearrangement thus
+  converts the error Taylor series from a simple numeric bound
+  to a linear \emph{error model}
+  that gives the accuracy of the overall expression
+  in terms of the errors of each individual function implementation.%
+\footnote{
+This derivation focuses on bounding absolute error,
+  but an analogous error form can be derived for the relative error
+  by divided each coefficient by $|f(g(x))|$.}
+\name uses this linear error model in an integer linear program
+  to search for optimal speed-accuracy trade-offs
+  and then presents those trade-offs to the user.
+
+
+\end{document}

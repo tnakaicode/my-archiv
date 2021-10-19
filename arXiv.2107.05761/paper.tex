@@ -1,0 +1,94 @@
+\documentclass[acmsmall]{acmart}
+\settopmatter{printfolios=true,printccs=false,printacmref=false}
+
+\usepackage{blindtext}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{subfiles}
+\usepackage{todonotes}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{mathpartir}
+\usepackage{amsmath}
+
+\renewcommand{\todo}[1]{{\color{red}{[#1]}}\xspace}
+
+\newcommand{\F}[1]{\text{\textsf{#1}}\xspace}
+\newcommand{\K}[1]{\text{\textbf{#1}}\xspace}
+\newcommand{\name}{OpTuner\xspace}
+\newcommand{\XXX}{\todo{\ensuremath{X\%}}}
+\newcommand{\float}[2]{\ensuremath{#1 \cdot 10^{#2}}}
+
+\input{sources/data.tex}
+
+\setcopyright{acmcopyright}
+\bibliographystyle{ACM-Reference-Format}
+\citestyle{acmauthoryear}
+
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{10.1145/1122445.1122456}
+\acmConference[PL'18]{ACM SIGPLAN Conference on Programming Languages}{January 01--03, 2018}{New York, NY, USA}
+\acmYear{2018}
+\acmISBN{}
+\acmDOI{}
+\startPage{1}
+\setcopyright{none}
+
+\keywords{Floating point, rounding error, performance, approximation
+  theory, synthesis, optimization}
+
+\begin{document}
+
+\title{Faster Math Functions, Soundly}
+
+\author{Ian Briggs}
+\email{ibriggs@cs.utah.edu}
+\affiliation{%
+  \institution{University of Utah}
+  \city{Salt Lake City}
+  \state{UT}
+  \country{USA}
+}
+
+\author{Pavel Panchekha}
+\email{pavpan@cs.utah.edu}
+\affiliation{%
+  \institution{University of Utah}
+  \city{Salt Lake City}
+  \state{UT}
+  \country{USA}
+}
+
+\subfile{sources/abstract.tex}
+
+\maketitle
+
+\subfile{sources/introduction.tex}
+
+\subfile{sources/big_idea.tex}
+
+\subfile{sources/case_study_dedup.tex}
+
+\subfile{sources/implementations.tex}
+
+\subfile{sources/bounds.tex}
+
+\subfile{sources/optimization.tex}
+
+\subfile{sources/ranges.tex}
+
+\subfile{sources/evaluation.tex}
+
+\subfile{sources/relwork.tex}
+
+\subfile{sources/conclusion.tex}
+
+\appendix
+\subfile{sources/case_study_methods.tex}
+
+\bibliography{bibliography}
+
+\end{document}

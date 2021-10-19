@@ -1,0 +1,29 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\name makes floating-point computations faster
+  by choosing the right implementation
+  of library functions like \F{exp} or \F{sin}.
+\name uses a linear error model
+  and integer linear programming
+  to select the best implementations to use
+  (from among standard mathematical libraries
+  and generated implementations)
+  for each use of a library function in a floating-point expression.
+It then verifies the optimal configurations
+  and presents the user with a speed-accuracy Pareto curve
+  summarizing the available optimization options.
+Across \nBenchmarks benchmarks,
+  \name demonstrates speedups of up to \nBenchmarkLargeSpeedup,
+  with speedups of \nBenchmarkSafeSpeedup available
+  at negligible accuracy increases.
+\name thus demonstrates the possibilities
+  of a hitherto-underexplored avenue
+  for floating-point program optimization.
+
+
+\end{document}

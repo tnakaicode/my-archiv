@@ -1,0 +1,370 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Case Study}
+\label{sec:case_study}
+
+% * why choose a ray tracer?
+%   - probably lots of math/angles inside
+%   - they are performance sensitive
+%   - since output is 8 bits per color they are less accuracy sensitive
+%   - output can easily be compared and verified against a standard
+Ray tracers are complex, numerically intense software
+  that can run for hours or even days:
+  the perfect target for \name.
+Moreover, ray tracers are naturally tolerant of inaccuracy
+  since they produce an image with only eight bits per color channel
+  and the resulting images are often further compressed by image and video codecs.
+We therefore conducted a case study applying \name to an expression extracted
+  from POV-Ray~\cite{povray},
+  a full-featured, widely-used, and mature ray tracer
+  in continuous development since 1992.
+
+Searching POV-Ray's source code for calls to \F{sin} and \F{cos}
+  directed us to a custom table-based implementations
+  the two mathematical functions.
+Related comments, commented-out code, and older releases
+  revealed that the developers of the 3.5 release, likely around 2004,
+  concluded that the system implementations of these functions
+  were too slow for their use case, and so wrote custom implementations
+  to exploit two features of their use case:
+  that POV-Ray only calls \F{sin} and \F{cos} with inputs between $-\pi$ and $\pi$;
+  and that POV-Ray can tolerate significant inaccuracy in the result.
+These custom implementations are used to compute the following expression,
+  which is the input to \name:
+\begin{equation}\label{povprog}
+\begin{array}{l}
+ \K{require}\: \theta, \phi \in [-\pi, \pi] \land n_x, n_y, n_z \in [-1, 1] \\
+  \K{let}\: c = \cos(\theta), d_y = \sin(\theta)           \\
+  \K{let}\:  d_x = c \cdot \cos(\phi), d_z = c \cdot \sin(\phi) \\
+  \K{return}\:  n_x \cdot d_x + n_y \cdot d_y + n_z \cdot d_z
+\end{array}
+\end{equation}
+This expression is the ``photon incidence computation'' in POV-Ray's ``caustics'' module.
+Caustics are light effects like the lensing effects of glass or the
+  pattern at the bottom of a swimming pool;
+  to model these, POV-Ray shoots virtual photons at the scene
+  and calculates how these photons move using the photon incidence computation.
+The expression above computes the reflected energy
+  of an incoming photon (with direction given by $\theta$ and $\phi$)
+  reflected from a surface with normal vector $n$.
+Millions of photon paths must be used to achieve realistic results,
+  so photon incidence computation is a bottleneck,
+  responsible for as much as \nPovRayPhotonsPercent of POV-Ray's total runtime
+  when caustics are enabled.%
+\footnote{
+Speed is so important to POV-Ray
+  that the caustics model FAQ includes advice
+  on tuning the number of photons to trade off
+  between quality and run time~\cite{povray-wiki}.
+Many POV-Ray scene files don't even enable caustics,
+  lowering the quality of the resulting render.
+}
+
+\subsection{Changing Function Implementations}
+
+\begin{figure}
+  \begin{subfigure}[t]{.48\linewidth}
+    \includegraphics[width=\linewidth]{images/double_all_glibc.png}
+    \caption{\F{grenadine} rendered using GLibC \F{sin} and \F{cos}.}
+    \label{fig:grenadine-glibc}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[t]{.48\linewidth}
+    \includegraphics[width=\linewidth]{images/double_all_const.png}
+    \caption{Same with $\F{sin}(x) = x$ and $\F{cos}(x) = -x$.}
+    \label{fig:grenadine-crappy}
+  \end{subfigure}%
+  \caption{
+    Two renderings of the \F{grenadine} scene using POV-Ray.
+    On the left, the reference rendering
+      uses GLibC's implementations of \F{sin} and \F{cos},
+      which is accurate but quite slow.
+    On the right, using crude approximations of \F{sin} and \F{cos}
+      is much faster, but leads to obvious visual artifacts
+      (look at the the orange slice, cocktail surface, and glass bottom).
+    We tested several variations and $\F{cos}(x) = -x$
+      was the fastest ``crude'' approximation.
+  }
+  \label{fig:grenadines}
+\end{figure}
+
+Developing a custom \F{sin} and \F{cos} implementation
+  for use in just this computation was a sharp insight
+  on the part of the POV-Ray developers.
+Photon incidence spends almost all of its time
+  inside the \F{sin} and \F{cos} functions,
+  and the custom \F{sin} and \F{cos} implementations
+  are \nPovProgTableSpeedup faster%
+\footnote{
+Timing measurements in this section refer specifically to the version of POV-Ray
+  included in the SPEC 2017 benchmark suite,
+  though both modern versions as well as versions going back to 2004
+  contain code substantially similar to that discussed.}
+  than the system GLibC libraries.
+These custom implementations use 255-entry tables
+  of \F{sin} and \F{cos} values between $-\pi$ and $\pi$,
+  similar to that shown in \Cref{fig:table-based}.
+Of course, due to the limited size of the tables,
+  the custom \F{sin} and \F{cos} are also
+  significantly less accurate than the system libraries;
+  but the increased speed was worth it
+  to the POV-Ray developers.
+This optimization demonstrates the expertise
+  that the POV-Ray developers are fortunate enough to poses.
+
+% * talking about accuracy -> render quality
+But can we do better---can we find
+  even faster and more accurate implementations of \F{sin} and \F{cos}
+  for this particular expression?
+For example, $\sin(x) \approx x$, at least for $x \approx 0$;
+  implementing \F{sin} and \F{cos} with such crude approximations
+  speeds up POV-Ray by another \nPovRayConstSpeedup
+  over and above the POV-Ray developers' version.
+But now the cost in accuracy is too steep:
+  a standard test scene, \F{grenadine},
+  rendered with this ultra-fast \F{sin} implementation
+  looks like \Cref{fig:grenadine-crappy},
+  with unrealistic highlights and lighting effects
+  where glass interacts with the water in the drink or in the orange.
+The resulting render is
+  very different from the ground truth in \Cref{fig:grenadine-glibc}
+  and looks worse than without caustics enabled at all.
+
+Fortunately, there are dozens of implementations of \F{sin}
+  between the extremes of GLibC and $\sin(x) \approx x$.
+\name's linear \textit{error models} provide a simple way
+  to quantify the effect of different function implementations
+  and thereby search this space of possibilities.
+\name computes \Cref{povprog}'s error model as:
+\begin{equation}\label{errmodel}
+  \mathcal{E} =
+  1.41 \varepsilon_{c1}
+  + \varepsilon_{s1}
+  + \varepsilon_{c2}
+  + \varepsilon_{s2}
+  + 1.41 \delta_{c1}
+  + \delta_{s1}
+  + \delta_{c2}
+  + \delta_{s2}
+  + \float{2.09}{-15}
+\end{equation}
+Here, $\mathcal{E}$ is the overall error of \Cref{povprog}
+  and the $\varepsilon$ and $\delta$ variables
+  measure the accuracy of each call to \F{sin} and \F{cos}.
+For any given choice of \F{sin} and \F{cos} implementations,
+  \Cref{errmodel} estimates the impact
+  of that choice on accuracy, which can be used
+  to efficiently search for good implementation choices.
+Note that unlike the error models in \Cref{sec:big-idea},
+  this error model includes a constant term, \float{2.09}{-15}.
+This constant term represents error due from operators
+  that \name cannot tune, in this case addition and multiplication.
+
+\begin{figure}
+  \begin{subfigure}{.31\linewidth}
+      \includegraphics[width=\linewidth]{images/double_all_povray_diff.png}
+      \caption{Errors from POV-Ray's table-based \F{sin} and \F{cos}.}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}{.31\linewidth}
+      \includegraphics[width=\linewidth]{images/double_optuner_77_diff.png}
+      \caption{Errors from \name's suggested configuration.}
+  \end{subfigure}%
+  \hfill%
+  \begin{minipage}{.31\linewidth}
+  \caption{
+      Differences from the reference rendering
+        for two tuned versions of POV-Ray.
+      On the left, POV-Ray's table-based \F{sin} and \F{cos}
+        has significant, easily-visible errors.
+      On the right, the chosen \name configuration
+        produces minimal errors yet retains
+        almost all of the table-based version's speed.
+      \name makes finding such configurations easy.
+  }
+  \label{fig:grenadine-compare}
+  \end{minipage}
+\end{figure}
+
+Plugging some values into the model gives a good feel
+  for the scale of errors from using differing implementations.
+For the double precision implementations of both \F{sin} an \F{cos} provided by
+  GLibC the corresponding $\varepsilon$ and $\delta$ are
+  $\float{2.22}{-16}$ and $\float{5}{-324}$.
+Using these values gives an overall error of $\float{3.07}{-15}$,
+  which goes some way toward explaining
+  why using GLibC generates the correct render in \Cref{fig:grenadine-glibc}.
+The POV-Ray developers' implementations
+  have $\varepsilon = 0$ and $\delta = 0.02473$,
+  leading to an overall error of $0.11$,
+  $\float{3.56}{13}$ times larger than GLibC,
+  explaining some of the errors seen in \Cref{fig:grenadine-compare}.
+The crude approximations of $\sin(x) = x$ and $\cos(x) = -x$,
+  meanwhile, produce an error of $16.28$
+  (for a value actually between $-1$ and $1$),
+  which explains the terrible rendering in \Cref{fig:grenadine-crappy}.
+In other words, the error model makes it easy
+  to estimate how choosing certain function implementations
+  impacts the error of a floating-point expression.
+
+\subsection{How \name Works}
+
+The error model is convenient
+  for sketching out the benefits of alternative function implementations.
+Yet with two calls to \F{sin} and two calls to \F{cos},
+  each of which could use a different implementation,
+  \cref{povprog} has millions of possible configurations.
+What's needed is a tool that uses \cref{errmodel}
+  to automatically elevate implementation choices
+  that optimally trade speed for accuracy.
+
+\name does just this.
+Since only the application developers can decide
+  how much accuracy to trade for speed,
+  \name outputs a \textit{speed-accuracy Pareto curve},
+  where each point on the curve
+  is the most accurate configuration possible at a given speed.
+To derive this curve,
+  \name combines the error model above
+  with a simple profiled \textit{cost model}
+  that estimates the time to evaluate each function implementation.
+Importantly, both the error and cost models are linear,
+  which allows \name to phrase the choice of implementation
+  as an integer linear program.
+\name can then use an off-the-shelf ILP solver
+  to compute points along the speed-accuracy Pareto curve.
+For example, \name can tune POV-Ray's photon incidence computation
+  against a collection of \nSinImpls \F{sin} implementations
+  and \nCosImpls \F{cos} implementations,
+  a space of \nPovRayPossible possible configurations.
+Out of this vast search space,
+  \name produces the speed-accuracy Pareto curve
+  shown in \Cref{fig:povray-expression},
+  with just \nPovProgConfigs configurations,
+  in \nPovProgOptunerTime.
+
+Automating implementation selection with \name
+  also makes novel optimizations possible.
+For example,
+  a function implementations that is only called
+  on a restricted range of inputs
+  can often be faster without being less accurate.%
+\footnote{Handling large input ranges
+  usually uses higher-precision arithmetic,
+  such as with Cody-Waite range reduction~\cite{cody-waite},
+  which is complex and expensive.}
+\name automates this optimization
+  by extending the integer linear program
+  to also compute bounds on the value of any expression,
+  allowing it to use restricted-range implementations
+  when their arguments are in range.
+To make use of this,
+  \name includes custom, reduced-range implementations
+  of \F{exp}, \F{log}, \F{sin}, \F{cos}, and \F{tan}
+  that are much faster than traditional, full range, implementations.
+Normally, reduced-range implementations are dangerous,
+  since using them on out-of-range inputs can lead to disasterous results.
+But the sound error bounds computed by \name
+  make this complex and dangerous optimization easy and safe.
+
+\subsection{Results}
+
+The \nPovProgConfigs configurations chosen by \name
+  are shown in \Cref{fig:povray-expression}.
+Each point in that plot is a configuration---%
+  a choice of library implementation for each call to \F{sin} and \F{cos}---%
+  and its location on the plot gives that configuration's speed
+  and worst-case accuracy bound.
+These configurations range from
+  an extreme-accuracy configuration,
+  which uses the verified CRLibM library for each call site
+  and is \nPovProgCrlibmAccuracyIncrease more accurate
+  and \nPovProgCrlibmSlowdown slower than GLibC,
+  to an extreme-speed configuration,
+  which uses custom implementations
+  and is \nPovProgFastSpeedup faster and
+  \nPovProgFastAccuracyDecrease less accurate than GLibC
+  (that is, it has a relative error of \nPovProgFastRelativeError).
+Somewhere in between these extremes
+  is the red starred point in \Cref{fig:povray-expression},
+  which uses custom order 13/15 implementations for the \F{sin} calls
+  and a custom order 14 implementation for \F{cos},
+  all fit to the $[-\pi, \pi]$ input range.
+This configuration is \nPovProgLosslessSpeedup faster
+  and \nPovProgLosslessAccuracyDecrease less accurate
+  than the GLibC configuration;
+  that makes it both faster and more accurate
+  than the POV-Ray developers' custom table-based \F{sin} and \F{cos},
+  shown with a green star in \Cref{fig:povray-expression}.
+
+\begin{figure}
+  \begin{subfigure}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{images/case_study_expression.png}
+    \caption{Speed-accuracy Pareto curve for \Cref{povprog}}
+    \label{fig:povray-expression}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}{0.48\linewidth}
+    \includegraphics[width=\linewidth]{images/case_study_end_to_end.png}
+    \caption{Speed-accuracy Pareto curve for POV-Ray}
+    \label{fig:povray-end2end}
+  \end{subfigure}
+  \caption{Speed vs. accuracy for various configurations of \Cref{povprog}.
+    On the left, speed and accuracy for just \Cref{povprog};
+      on the right, speed and accuracy for POV-Ray as a whole
+      (on the \F{grenadine} scene).
+    Speedup is normalized to the all-GLibC configuration.
+    \name's configurations are marked in blue and red,
+      while the POV-Ray developers' custom implementation
+      is marked with a green star.
+    \name's tuned configurations are both faster and more accurate
+      than the developers' custom implementation.
+    The orange circle in the graph on the right
+      relates to future work described in \Cref{sec:cs-methods}.
+    }
+\end{figure}
+
+Using \name's suggested configurations
+  can lead to end-to-end application speedups.
+We produced modified versions of POV-Ray
+  for each of \name's suggested configurations
+  and plotted both their overall run time
+  and the quality of their outputs in \Cref{fig:povray-end2end}.%
+\footnote{
+  Image quality is measured using
+  the structural similarity index measure~\cite{ssim},
+  a standard measure of image quality.
+  In particular, we use the SPEC 2017 benchmarking harness
+  to measure both SSIM and runtime.
+  More details of the methodology are given
+  in \Cref{sec:cs-methods}
+}
+POV-Ray is a naturally-error-tolerant program
+  as shown by the blue streak on the left-hand-side of the figure:
+  \name's \nPovRaySatConfigs most accurate configurations
+  all render the reference image exactly.
+Likewise, there's a limit to how much POV-Ray can be sped up
+  just by changing function implementation,
+  for Amdahl's-law-like reasons.
+The red starred configuration hits both these limits,
+  with results identical to the reference rendering,
+  but produced roughly \nPovRayLosslessSpeedup faster.
+By contrast, the green starred point,
+  which is the POV-Ray developers' implementation,
+  is both slower and has noticable errors
+  (\Cref{fig:grenadine-compare}).
+Of course, it is up to the POV-Ray developers to decide
+  how much accuracy loss is acceptable
+  and how large a speed-up makes up for a given level of error.
+But here, \name's proposed configurations
+  are simultaneously faster and more accurate.
+Moreover, the point marked in red is not the only option
+  produced by \name;
+  the developers can experiment with different configurations
+  and easily find one that is faster and less accurate
+  if they so desire.
+
+
+\end{document}

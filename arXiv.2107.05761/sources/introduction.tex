@@ -1,0 +1,161 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Introduction}
+\label{sec:introduction}
+
+Floating-point arithmetic is foundational for scientific, engineering,
+  and mathematical software.
+This is because, while floating-point arithmetic is approximate,
+  most applications tolerate minute errors~\cite{cern}.
+In fact, a speed-accuracy trade-off
+  is ever-present in numerical software engineering:
+  mixed-and lower-precision floating-point~\cite{fptuner,precimonious,salsa,hifptuner},
+  alternative numerical representations~\cite{bfloat16,posit,block-numbers},
+  quantized or fixed-point arithmetic~\cite{fixed},
+  rewriting~\cite{pherbie},
+  and various forms of lossy compression~\cite{fpcompression1,fpcompression2}
+  all promise faster but less accurate programs.
+In each case,
+  the challenge is helping the numerical software engineer
+  apply the technique
+  and explore the trade-offs available.
+
+The implementation of library functions like \F{sin}, \F{exp}, or \F{log}
+  is one instance of this ever-present speed-accuracy trade-off.
+Traditional library implementations, such as those in GLibC,
+  guarantee that all but maybe the last bit are correct.
+This high accuracy comes at a cost:
+  these traditional implementations tend to be slow.
+Recent work shows that substantial speed-ups are possible%
+  ~\cite{cern,metalibm,daisy-libm,vanover}
+  if the accuracy requirement is relaxed.
+But achieving that speed-up in practice is challenging,
+  because it requires carefully selecting
+  among alternate function implementations~\cite{intel,cern,amd,openlibm},
+  and proving accuracy bounds for the tuned program.
+All this requires manual effort and deep expertise,
+  along with a substantial investment of time and effort.
+
+We propose \name, a sound, automatic tool
+  for exploring the speed-accuracy trade-offs of library function implementations.
+For any floating-point expression,
+  \name selects the best \F{exp}, \F{log}, \F{sin}, \F{cos}, or \F{tan}
+  implementation to use for each call site in the program
+  and presents the user with a speed-accuracy Pareto curve.
+This Pareto curve
+  shows only the best-in-class tuned implementations,
+  condensing millions of possible configurations
+  into a few dozen that the user can rapidly explore
+  to speed up their computation.
+Each point on the curve is also annotated
+  with a rigorously-derived sound error bound
+  allowing non-experts to understand
+  its impact on the accuracy of their code.
+%% \name summarizes implementations
+%%   from libraries such as GLibC, AMD Libm, OpenLibm, VDT, and RLibm,
+%%   or even synthesized implementations via frameworks like MetaLibm.
+%%   with \textit{accuracy specifications} that describe their accuracy and runtime.
+%% \name then uses a combination
+%%   of error Taylor series and integer linear programming
+%%   to combine these per-function speed-accuracy trade-offs
+%%   to compute the speed-accuracy Pareto curve.
+
+\name's key insight
+  is that error Taylor series, a state of the art technique
+  for bounding floating-point error,
+  can be extended to derive
+  a \textit{linear error model}
+  that predicts the error of the expression
+  based on the error of the individual function implementations used.
+This linear error model is combined
+  with a simple, linear, cost model for expression run time
+  to create an integer linear program
+  whose discrete variables encode the choice
+  of function implementation for each use site.
+An off-the-shelf integer linear programming solver
+  is then be used to rapidly search
+  through millions of possible implementation choices
+  to find the points along the speed-accuracy Pareto curve
+  for the input expression.
+The error and speed is then verified by timed execution and computation of a
+  sound error bound before being
+  presented to the user.
+
+One of the benefits of this approach
+  is that \name can perform optimizations
+  too difficult or nit-picky for humans to perform.
+We illustrate this
+  by introducing custom implementations
+  for \F{exp}, \F{log}, \F{sin}, \F{cos}, and \F{tan}
+  that are only valid on a restricted range of inputs.
+The restricted range allows
+  the use of simplified range reduction methods
+  that are much faster than a traditional implementation.
+Using these new implementations requires proving
+  that their input is within a certain range of values,
+  even when taking into account
+  the rounding error incurred computing that input.
+We extend \name to automatically perform such proofs,
+  and therefore transparently mix
+  these range-restricted implementations with existing libraries
+  to achieve even better speed-accuracy trade-offs.
+
+We evaluate \name on \nBenchmarks standard benchmarks
+  from the FPBench 2.0~\cite{fpbench} and Herbie 1.5 suites~\cite{herbie}.
+\name tunes these benchmarks using
+  \nOptunerImpls implementations
+  of \F{sin}, \F{cos}, \F{tan}, \F{exp}, and \F{log},
+  ranging in accuracy across \nOptunerImplErrorOrders different orders of magnitude
+  and with speeds that vary by a factor of \nOptunerImplSpeed.
+\name can provide a speedup of \nBenchmarkSafeSpeedup
+  while maintaining high accuracy,
+  and for error-tolerant applications
+  the \name-optimized benchmarks
+  are up to \nBenchmarkLargeSpeedup faster
+  than ones that use the GLibC implementations.
+
+To highlight the benefits of \name,
+  we perform a case study with the POV-Ray ray tracer.
+POV-Ray is a state-of-the-art CPU ray tracer
+  and part of the SPEC 2017 benchmark collection.
+We find that POV-Ray
+  spends a substantial portion of its runtime
+  inside calls to \F{sin} and \F{cos},
+  and the POV-Ray developers
+  maintain custom \F{sin} and \F{cos} implementations
+  that are faster but less accurate
+  in order to achieve acceptable speed.
+We show that \name can automate this kind of optimization,
+  achieving an end-to-end \nPovRayLosslessSpeedup speed-up
+  with no loss in output quality.
+This is both faster and higher quality
+  than the POV-Ray developers' own efforts.
+Moreover, other points on \name's speed-accuracy Pareto curve
+  could be useful to the POV-Ray developers
+  or even to users with complex geometries.
+
+
+\medskip
+\noindent
+In summary, our main insight
+  is that error Taylor series can be used
+  to derive a \textit{linear error model}
+  for the accuracy of a floating-point expression
+  in terms of the function implementations it uses.
+That allows us to construct \name, a tool with:
+\begin{itemize}
+\item Accuracy specifications for widely used mathematical libraries (\Cref{sec:implementations});
+\item Automatically-derived linear cost models for error and runtime (\Cref{sec:error-and-cost-models});
+\item An integer linear formulation of the implementation selection problem (\Cref{sec:optimization});
+\item Extensions to handle function implementations with restricted input ranges (\Cref{sec:ranges});
+\item Fast, range-restricted implementations of \F{exp}, \F{log}, \F{sin}, \F{cos}, and \F{tan}.
+\end{itemize}
+\Cref{sec:evaluation} demonstrates
+  that by leveraging these components
+  \name can dramatically speed up standard floating-point benchmarks
+  with minimal loss of accuracy.
+
+
+\end{document}

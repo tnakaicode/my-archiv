@@ -1,0 +1,300 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+We evaluate whether \name
+  can automatically select function implementations
+  to achieve a trade-off between speed and accuracy.
+The data is gathered on a machine
+  with an Intel i7-4793K processor and 32GB of DDR3 memory
+  running Debian 10.10 (Buster), GCC 8.3.0, GLibC 2.28, Sollya 7.0, and Python 3.7.3.
+
+\subsection{Methodology}
+\label{sec:methodology}
+
+\begin{figure*}
+ \setlength{\tabcolsep}{2pt}
+  \begin{minipage}[t]{0.78\linewidth}
+  \begin{tabular}{lll}
+    \textbf{Function} $\sin(x)$ &
+    \textbf{Function} $\cos(x)$ &
+    \textbf{Function} $\tan(x)$ \\
+
+    {\color{orange}$\bullet$}: $D = [-62.83, 64.40]$ &
+    {\color{orange}$\bullet$}: $D = [-62.83, 64.40]$ &
+    {\color{orange}$\bullet$}: $D = [-39.26, 40.05]$ \\
+
+    {\color{blue}$\bullet$}: $D = [-1.571, 1.571]$ &
+    {\color{blue}$\bullet$}: $D = [-1.571, 1.571]$ &
+    {\color{blue}$\bullet$}: $D = [-0.1, 0.89]$ \\
+
+    {\color{cyan}$\bullet$}: $D = [-3.142, 3.142]$ &
+    {\color{cyan}$\bullet$}: $D = [-3.142, 3.142]$ &
+    \\
+
+    \fbox{\includegraphics[width=0.30\linewidth]{images/Table_2_sin.png}} &
+    \fbox{\includegraphics[width=0.30\linewidth]{images/Table_2_cos.png}} &
+    \fbox{\includegraphics[width=0.30\linewidth]{images/Table_2_tan.png}}
+  \end{tabular}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[t]{0.20\linewidth}
+    \scriptsize
+    \textbf{Legend} \\[0.025in]
+    {\color{green!60!black}$\bullet$}: Standard libraries \\
+    {\color{purple}$\bullet$}: MetaLibm \F{exp} \\[0.025in]
+    Custom: \\
+    {\color{orange}$\bullet$}: mild range reduction \\
+    {\color{blue}$\bullet$}: no range reduction \\
+    {\color{cyan}$\bullet$}: no range reduction \\
+  \end{minipage}
+
+  \vspace{0.5cm}
+
+  \begin{minipage}{0.52\linewidth}
+  \begin{tabular}{ll}
+    \textbf{Function} $\exp(x)$ &
+    \textbf{Function} $\log(x)$ \\
+
+    {\color{orange}$\bullet$}: $D = [-34.75, 35.45]$ &
+    {\color{orange}$\bullet$}: $D = [\float{1.5}{-4}, 4096]$ \\
+
+    {\color{blue}$\bullet$}: $D = [-0.1, 0.79]$ &
+    {\color{blue}$\bullet$}: $D = [0.65, 1.6]$ \\
+
+
+    \fbox{\includegraphics[width=0.45\linewidth]{images/Table_2_exp.png}} &
+    \fbox{\includegraphics[width=0.45\linewidth]{images/Table_2_log.png}} \\
+  \end{tabular}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}{0.45\linewidth}
+  \caption{
+    The available implementations for \name.
+    Accuracy is shown in log-scale on the horizontal axis,
+      while runtime is plotted on the vertical axis.
+    The plot's bottom border represents a runtime of 0,
+      while the dashed line is a break in the vertical axis
+      with CRLibM lying above the break.
+    Note that the synthesized implementations
+      with simplified range reduction are significantly faster.
+  }
+  \label{fig:functions}
+  \end{minipage}
+
+
+\end{figure*}
+
+% Choice of benchmarks
+We evaluate \name on \nBenchmarks benchmarks
+  from the FPBench suite~\cite{fpbench} as well as
+  the \F{haskell} benchmark suite from Herbie 1.5~\cite{herbie},
+  originally extracted from Haskell packages via a compiler plugin.
+Specifically, we select all benchmarks
+  that use the \F{exp}, \F{log}, \F{sin}, \F{cos}, or \F{tan} functions
+  and do not contain loops or tensors (which \name does not support).
+Within these benchmarks \F{exp}, \F{log}, \F{sin}, \F{cos}, and \F{tan} are
+  used a collective \nBenchmarkUseSites times;
+  the only other library function called is a single use of \F{atan},
+  for which we use the GLibC implementation.
+Thirteen benchmarks have a single input, ten have two inputs, eleven have three
+  inputs, and the remainder have four or more inputs.
+Some of the benchmarks come equipped with input ranges defined for them,
+  but, for those that did not,
+  we choose input ranges that avoid domain errors such as division by zero.
+
+% Choice of functions
+\name tunes these benchmarks using a total
+  of \nOptunerImpls implementations
+  of library functions \F{exp}, \F{log}, \F{sin}, \F{cos}, and \F{tan}
+  drawn from
+  the standard mathematical libraries
+  and parameterized MetaLibm implementations
+  described in \Cref{ssec:libraries}.
+\Cref{fig:functions} plots the accuracies and costs
+  for standard mathematical libraries (in green);
+  MetaLibm's parameterized \F{exp} implementation (in purple);
+  and \name's custom, range-restricted implementations
+  (in blue, cyan, and orange).
+The various implementations span
+  from half an ulp of error to a relative error of $10\%$,
+  and the fastest implementation
+  is usually about $5\times$ faster than GLibC
+  while the slowest is usually about $5\times$ slower.
+In between these extremes,
+  there is a smooth trade-off between speed and accuracy.
+
+\subsection{Results}
+
+\begin{figure}
+  \begin{subfigure}{.5\linewidth}
+    \includegraphics[width=\linewidth]{images/zoomed_aggregate.png}
+    \caption{High-accuracy configurations}
+    \label{fig:aggregatezoom}
+  \end{subfigure}%
+  \begin{subfigure}{.5\linewidth}
+    \includegraphics[width=\linewidth]{images/aggregate.png}
+    \caption{All configurations of any accuracy}
+    \label{fig:aggregate}
+  \end{subfigure}
+    \caption{
+      \name's optimized implementations of \nBenchmarks benchmarks.
+      Each point's accuracy and runtime is normalized
+      so that using the GLibC implementations for each function
+      gives a speedup and relative error of $1\times$.}
+    \label{fig:bothaggregates}
+\end{figure}
+
+\Cref{fig:bothaggregates} contains all \nBenchmarks
+  speed-accuracy Pareto curves,
+  with \nBenchImpls configurations in total.
+In the plot, each line represents a single benchmark,
+  and each heavy dot along that line
+  is a configuration produced by \name.
+The benchmarks are
+  normalized so that the ``standard'' implementation
+  that uses GlibC for each use site is at $(1, 1)$.
+
+
+On the left, in \Cref{fig:aggregatezoom},
+  are all benchmark implementations
+  with error no more than $10\times$ larger
+  than the standard implementation.
+Note that even with just one decimal digit more error,
+  speedups of $50\%$, $100\%$
+  and sometimes even $150\%$ are possible.
+Note also the cluster of points
+  below and to the left of $(1, 1)$.
+These points represent configurations that are
+  more accurate but also slower than GLibC,
+  generally using the correctly-rounded CRLibM functions.
+A few points in the plot are above and to the left of $(1, 1)$:
+  these configurations are both faster and more accurate than GLibC,
+  generally by mixing CRLibM and custom implementations.
+In this case, \name is truly offering speed for free.
+All told, \Cref{fig:aggregatezoom} shows
+  than \name can produce impressive speedups
+  with minimal expertise or knowledge of numerical analysis.
+
+The right-hand plot, in \Cref{fig:aggregate},
+  instead focuses on applications tolerant of significant error,
+  such as POV-Ray.
+Here, implementations with dramatically higher error are plotted,
+  and correspondingly larger speedups are achieved.
+The points on this figure generally use
+  \name's custom implementations,
+  which are the fastest ones available.
+The speedups here are as large as \nBenchmarkLargeSpeedup.
+However, the available speedup is limited
+  in benchmarks that use mathematical operations
+  that \name does not tune
+  and in benchmarks with few use sites.
+For an average benchmark, therefore,
+  the maximum speedup reaches \nBenchmarkAvgMaxSpeedup.
+Of course, by the logic of the Pareto curve,
+  this maximum speedup comes with minimal accuracy,
+  and not all applications are as error-tolerant as POV-Ray.
+Nevertheless, the figure shows that most benchmarks' Pareto curves
+  feature a steady upward slope,
+  meaning that
+  decreasing accuracy consistently buys increasing speed.
+Many applications could fruitfully use \name
+  to explore the possibilities that this trade-off offers.
+
+On most benchmarks \name runs in a few minutes.
+\name's run time depends on several factors:
+  the number of use sites;
+  the complexity of the expression;
+  the number of input arguments;
+  and in a few cases the input range used.
+On our test machine,
+  \nBenchmarksUnderThreeMinutes of the \nBenchmarks benchmarks complete in under three minutes
+  and \nBenchmarksUnderTenMinutes complete in under ten.
+The remaining four benchmarks contain the most use sites and thus have
+  the most output configurations to verify and time.
+\name generates output configurations incrementally,
+  so for these slowest benchmarks,
+  users would have \name's first configurations available much sooner,
+  usually a few minutes in.
+
+\subsection{Detailed Analysis}
+
+
+A close inspection of the \name's selected configurations
+  demonstrates that these speedups often come from noticing
+  use sites that have little impact on accuracy.
+Consider the benchmark \F{problem\_3\_3\_2},
+  originally from a mathematical textbook~\cite{nmse}:
+\[
+\begin{array}{l}
+\K{require}\: 0 \le \mathit{x} \le 0.75 \land 0 \le \mathit{eps} \le 0.0078125\\
+\K{return}\: \tan(\mathit{x} + \mathit{eps}) - \tan(\mathit{x})
+\end{array}
+\]
+\name mixes GLibC's \F{tan} for the first call and VDT's \F{tan} for the second
+  to give a \nDetailedOneSpeedup speedup over pure GLibC while only increasing
+  relative error from \nDetailedOneErrorGlibc to \nDetailedOneErrorChosen.
+The first call to \F{tan} has a larger argument than the second
+  call to \F{tan}, and due to \F{tan}'s steep increase in the region just to the
+  right of $0$ this gives the first call a higher impact on overall accuracy.
+\name notices this and uses a more accurate implementation for
+  the first call than the second call.
+
+
+\name's optimizations can be even more subtle;
+  consider this complex sine benchmark:
+\[
+\begin{array}{l}
+\K{require}\:0 \le \mathit{re} \le 10 \land 0 \le \mathit{im} \le 10\\
+\K{return}\: (0.5 \cdot \sin(\mathit{re})) \cdot (\exp(-\mathit{im}) - \exp(\mathit{im}))
+\end{array}
+\]
+The second call to \F{exp} requires more accuracy than the first
+  because $\mathit{im}$ is positive,
+  so the first \F{exp} returns smaller values than the second
+  and thus has less impact on the expression's error.
+Meanwhile, the output of the \F{sin} call
+  is multiplied $\exp(-\mathit{im}) + \exp(\mathit{im})$
+  and its error is thus magnified.
+In view of these effects,
+  \name selects a high accuracy \F{sin} (such as CRLibM's)
+  and two different \F{exp} implementations
+  (say, order-9 and order-12 custom implementations)
+  along the speed-accuracy Pareto curve.
+This unintuitive mix of implementations leads to a \nDetailedTwoSpeedup speedup
+  over an all GlibC configuration while only increasing error from
+  \nDetailedTwoErrorGlibc to \nDetailedTwoErrorChosen.
+
+These same patterns occur far along the speed-accuracy Pareto curve.
+Consider the \F{logexp} benchmark:
+\[
+\begin{array}{l}
+\K{require}\:0 \le x \le 8 \\
+\K{return}\: \log(1 + \exp (x))
+\end{array}
+\]
+At lower accuracies \name will select
+  VDT's float variation of \F{log}
+  and a custom order-7 \F{exp} implementation.
+This yields a speedup of \nDetailedThreeSpeedup,
+  paid for an accuracy drop from \nDetailedThreeErrorGlibc to \nDetailedThreeErrorChosen.
+As in all these examples, the most important thing to note
+  is the extensive expertise and time commitment necessary
+  to do a similar optimizations by hand.
+
+
+%% Similarly, the \F{probability} benchmark,
+%%   originally drawn from the \F{math-functions} Haskell library,
+%%   calls both \F{log} and \F{exp}:
+%% \[
+%% \begin{array}{l}
+%% \K{require}\: 0 \le x \le 4 \land 1 \le y \le 5 \land 0 \le z \le 10 \\
+%% \K{return}\: \exp(x + y \cdot \log(y) - z)
+%% \end{array}
+%% \]
+
+
+\end{document}

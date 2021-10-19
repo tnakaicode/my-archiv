@@ -1,0 +1,193 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Leveraging Restricted Input Ranges}
+\label{sec:ranges}
+
+As discussed in \Cref{ssec:libraries},
+  there are advantages to reduced range function implementations:
+  by skipping range reduction entirely,
+  or by using faster but less accurate range reductions,
+  a function implementation can be dramatically sped up
+  without meaningfully increasing its error.
+However, restricted-range implementations can only be safely used
+  by proving that its input lies within that restricted range.
+
+\subsection{Modeling Input Ranges}
+
+When a function is called in a floating-point expression,
+  the range of inputs it is called on
+  depends on not only the mathematical value of the input expression
+  but also on how much error that input is computed with.
+This dependence means that
+  choosing a rougher approximation for one part of a computation
+  can change what implementations are available in a later part of the computation.
+Determining where a reduced-range implementation can be used
+  is therefore like flattening a rug with a bump in it---%
+  as soon as one part is fixed another part pushes back up---%
+  because replacing one function implementation with another
+  will also change the range of its output
+  and thus the valid implementations of other function calls.
+Yet the advantages of reduced-range implementations
+  are too large to pass up.
+
+Formally, consider a sequence of function assignments
+  $\tilde{x}_n := \tilde{f_n}(\tilde{x}_{n-a_n}, \tilde{x}_{n-b_n}, \ldots)$,
+  except that the function $\tilde{f}_n$ is only valid
+  when its first argument is in the range $[d_1, d_2]$
+  (functions with range restrictions on other arguments work analogously).
+Since $\tilde{f_n}$ is in fact called on $\tilde{x}_{n-a_n}$,
+  we must establish that $d_1 < \tilde{x}_{n-a_n} < d_2$.
+Following the idea of the error Taylor series,
+\[
+|\tilde{x}_{n-a_n} - x_{n-a_n}| \leq
+\sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i}
++ o(\varepsilon^2)
+\]
+  where the $A^n_i$ and $B^n_i$ constants
+  are as defined in \Cref{sec:error-and-cost-models}.
+For now, ignore the higher-order terms.
+Now, suppose $x_{n-a_n}$,
+  the true mathematical value of $\tilde{x}_{n - a_n}$,
+  is bounded within $[a_1, a_2]$ for all $x \in I$;
+  \name computes these bounds using Gelpia.
+The requirement $d_1 < \tilde{x}_{n-a_n} < d_2$ can then be rewritten:
+\newcommand{\lra}{\operatorname{\Longleftrightarrow}\;}
+\begin{align}
+ &d_1 < x_{n-a_n} \pm \left( \sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i} \right)< d_2 \nonumber\\
+ \lra& d_1 < a_1 - \left(\sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i} \right) \land
+ a_2 + \left( \sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i} \right) < d_2 \nonumber \\
+ \lra& \left(\sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i}\right) < a_1-d_1
+ \land \left(\sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i}\right) < d_2 - a_2 \nonumber \\
+ \lra& \left(\sum_i A^n_i \varepsilon_{f_i} + \sum_i B^n_i \delta_{f_i}\right) < \min(a_1-d_1, d_2 - a_2)
+ \label{inputvalid}
+\end{align}
+Define the constant $S_{i,j}$
+  to be the right hand side value, $\min(a_1 - d_1, d_2 - a_2)$,
+  for using implementation $\tilde{f}_j$ at use site $i$.
+Crucially, the right hand side value
+  depends only on the function input range $[d_1, d_2]$
+  and the argument's error-free range $[a_1, a_2]$.
+Thus, the final inequality of \Cref{inputvalid}
+  is a linear inequality over the same $\varepsilon$ and $\delta$ variables
+  as the integer linear program in \Cref{sec:optimization}.
+\name adds the following inequality
+  to the integer linear program:
+\[
+\newcommand{\eqnbox}[1]{\fbox{\textsc{#1}}\;}
+\eqnbox{InRange} t_{i,j} \implies \sum_k A^i_k \varepsilon_k + \sum_k B^i_k \delta_k < S_{i,j},
+\]
+The implication can also be written as a pure ILP statement,
+  but the ILP solver \name uses, Z3,
+  supports implication statements like these directly.
+Note that in some cases, the constant $S_{i,j}$ can be negative,
+  meaning that $\tilde{f}_j$ cannot be used.
+
+Just like with \name's use of the linear error model,
+  a post-pass is necessary
+  to take into account the higher-order terms
+  that \name ignores during ILP solving.
+This post-pass recomputes the input range
+  using the most accurate rounding model
+  and with higher-order terms bounded using Lagrange's theorem,
+  and removes the point from the speed-accuracy Pareto curve
+  if adding the higher-order terms makes the chosen implementations invalid.
+In practice this occurs for \nBenchDomainViolationRate of points,
+  mostly at the far end of the Pareto curve where error is already high.
+
+\subsection{Implementing New Restricted-range Libraries}
+\label{ssec:bounding}
+
+To test \name's support for restricted input ranges,
+  we used MetaLibm to implement custom restricted-range versions
+  of $\sin$, $\cos$, $\tan$, $\exp$, and $\log$.
+Our implementations are based on those of \citet{faster-math-functions,even-faster-math-functions}:
+  they fit a polynomial of 1--\nMaxTerms terms
+  using over a function-specific core interval $I$,
+  and then use either no range reduction
+  or a custom, simplified range reduction
+  without higher-precision arithmetic operations.
+Since these range reductions use simplified arithmetic,
+  they are accurate over roughly 1--50 multiples of $I$,
+  with an accuracy/input range trade-off
+  on top of the accuracy/speed trade-off.
+Traditionally, restricted-range implementations
+  are hidden from library users
+  because it is too easy to misuse them.
+Because \name is sound, this fear no longer applies.
+
+Implementing these functions
+  was relatively straightforward thanks to MetaLibm,
+  but deriving accuracy bounds was more challenging.
+Inaccuracy---error---comes from three sources:
+  algorithmic error, or
+  the difference between the polynomial and the function being implemented;
+  rounding error, or
+  the error of evaluating the polynomial in floating-point arithmetic;
+  and reduction error
+  from error in the range reduction and reconstruction steps.
+To derive a sound bound
+  we bound each type of error separately and then sum them,
+  once for the $\varepsilon$ parameter
+  and once for the $\delta$ parameter.
+The algorithmic error is a purely mathematical artifact,
+  and Sollya can compute it automatically
+  (it is computed in the inner loop of the Remez exchange algorithm).
+To bound the rounding error we use FPTaylor
+  with the most accurate \F{fp-power2} error model.
+While FPTaylor's bounds are very tight they can in rare cases
+  be edged out by manual error analysis,
+  such as \citet{horner-bound}'s bound
+  on the rounding error of a Horner-form polynomial.
+To get the best possible bound
+  we use the tigher of FPTaylor's and Oliver's bound,
+  since both are sound error estimates.
+The reduction error, however, is harder to analyze.
+
+Range reduction typically involves a mix
+  of integer and floating-point computations,
+  so to bound it we use the approach of Lee, Sharma, and Aiken~\citep{verbit}.
+In mixed integer-floating point computations
+  the integer values are constant
+  for some range of floating-point values;
+  for example, when rounding a floating-point value to an integer;
+  all of the float values in the range $[0.5,1.5]$ round to $1$.
+A single mixed-integer-floating-point computation
+  is therefore broken down into multiple computations
+  only floating-point variables and integer constants,
+  where different computations are used for different $x$ values.
+Our restricted-range implementations
+  compute $k = \lfloor x / \pi \rfloor$;
+  this expression for $k$ is monotonic
+  so a fixed $k$ values corresponds to an interval of $x$ values.
+The error of the remaining floating-point operations
+  is computed using FPTaylor,
+  and FPTaylor is again used
+  to determine how the approximating polynomial modulates that error.
+Aggregating across all $k$ values results in the overall reduction error.
+Generally, larger $k$ values lead to larger input ranges
+  but also greater error.
+To account for this, we give a single implementation
+  multiple accuracy specifications (as if it were multiple functions)
+  with narrower input ranges having lower error.
+
+On the 8-core machine used for this paper,
+  verifying the bounds for  the complete collection
+  of \nOptunerImpls custom implementations
+  of \F{exp}, \F{log}, \F{sin}, \F{cos}, and \F{tan}
+  takes approximately \nTotalGenerationTime.
+On average, for each implementation,
+  generating the approximating polynomial takes \nSollyaAvg,
+  verifying its accuracy without range reduction
+  takes \nErrorVerrifyAvg,
+  and verifying its accuracy with range reduction
+  takes an additional \nReductionErrorAvg
+  for each $k$ bound.
+Importantly,
+  though verifying these implementations takes a lot of time,
+  it only needs to be done once,
+  and the resulting implementations and accuracy bounds
+  are distributed with \name.
+
+\end{document}

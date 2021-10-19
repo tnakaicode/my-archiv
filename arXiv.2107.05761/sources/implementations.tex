@@ -1,0 +1,233 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Mathematical Function Implementation Background}
+\label{sec:implementations}
+
+While the mathematics behind approximating transcendental functions
+  is well understood,
+  numerous choices, like approximation method,
+  polynomial order, table size, and range reduction strategy,
+  all impact both accuracy and speed.
+
+
+\begin{figure}
+\begin{subfigure}{0.60\textwidth}
+\includegraphics[width=\textwidth]{images/poly.pdf}
+\caption{Polynomial approximation and error}
+\label{fig:poly}
+\end{subfigure} \hfill%
+\begin{subfigure}{0.315\textwidth}
+\includegraphics[width=\textwidth]{images/table.pdf}
+\caption{Table approximation}
+\label{fig:table-approx}
+\end{subfigure}
+\caption{
+Approximations $P(x)$ of an arbitrary function $f(x)$.
+A order-1 polynomial approximation is shown on the left;
+  a $4$-entry table based approximation is shown on the right.
+In the middle, an illustration of the equioscillation theorem:
+  the polynomial approximation is optimal
+  error reaches its highest value the maximum
+  number of times.
+}
+\label{fig:approx}
+\end{figure}
+
+
+\begin{figure}
+\begin{subfigure}{0.48\textwidth}
+\scriptsize
+\begin{verbatim}
+double ml2_raw_wide_sin_13(double x){
+  double x2 = x * x;
+  double pa, pa1, pa3, pa5, pa7, pa9, pa11, pa13;
+  pa13 =  0x1.52a851954275cp-33;
+  pa11 = -0x1.ae00bdd2a86a8p-26 + x2 * pa13;
+  pa9  =  0x1.71dce463cf737p-19 + x2 * pa11;
+  pa7  = -0x1.a019fce360596p-13 + x2 * pa9;
+  pa5  =  0x1.11111109020a6p-7  + x2 * pa7;
+  pa3  = -0x1.5555555540916p-3  + x2 * pa5;
+  pa1  =  0x1.ffffffffffdc9p-1  + x2 * pa3;
+  pa   = x * pa1;
+  return pa;
+}
+\end{verbatim}
+\caption{An order-13 polynomial function approximation}
+\label{fig:poly-based}
+\end{subfigure}%
+\hfill%
+\begin{subfigure}{0.48\textwidth}
+\scriptsize
+\begin{verbatim}
+double sin_table[255];
+
+void fill_table() {
+  for(i=0; i<255; i++){
+    theta = (double)(i-127)*M_PI/127.0;
+    sin_table[i] = sin(theta);
+  }
+}
+
+double table_sin(double x){
+  int index = (x*127.0/M_PI) + 127;
+  return sin_table[index];
+}
+\end{verbatim}
+\caption{A size-255 table-based function approximation}
+\label{fig:table-based}
+\end{subfigure}
+\caption{
+  Two possible approximations of \F{sin} for $x \in [-\pi, \pi]$.
+  The one on the left uses an order-13 order polynomial
+    and achieves an absolute error of \nScarySinError
+    and a run time of \nScarySinTime on our reference machine.
+  The on on the right
+    is the table based implementation used by POV-Ray,
+    with an absolute error of $0.02473$
+    and a run time of \nPovRayTableImplTime.}
+\end{figure}
+
+
+\subsection{Approximating over an Interval}
+
+The core technique in implementing a mathematical function
+  is approximating a function $f$ over a small input range $I$.
+One method is to find a polynomial $P(x)$ that approximates $f$.
+While techniques like Taylor series and Chebyshev approximations,
+  which optimize for the average case, are better known,
+  implementations usually optimize for worst-case errors.
+The Remez exchange algorithm~\cite{remez},
+  which solves for local minima and maxima of $f(x) - P(x)$
+  by the Chebyshev equioscillation theorem~\cite{equioscillation},
+  is the standard way of deriving coefficients for $P$
+  that minimize worst-case error.
+\Cref{fig:poly} illustrates this approach.
+Remez exchange is implemented in the the Sollya tool~\cite{sollya},
+  which additionally uses the LLL algorithm~\cite{lll}
+  to tune the coefficients for the floating-point domain.
+The end result of this process is an implementation
+  similar to the one shown in \Cref{fig:poly-based}.
+The number of terms in the polynomial is the key parameter to this process;
+  an implementation can approximate a target functions like $\sin$ or $\exp$
+  with anywhere from one to dozens of terms,
+  offering a spectrum with higher-order approximations
+  being more accurate but also slower.
+The input interval $I$ is also an important input;
+  generally speaking, wider input intervals yield worse approximations.
+Even once a polynomial is found, there are more choices to make.
+For example, the polynomial
+\(
+  P(x) = a_0 + a_1 \cdot x + a_2 \cdot x^2 + \dotsb
+\)
+is usually evaluated via Horner's rule,
+\(
+  P(x) = a_0 + x\cdot(a_1 + x\cdot(a_2 + x\cdot(\dotsb)))
+\),
+  but there are other evaluation schemes as well,
+  like Estrin’s Method for parallelization with SIMD
+  or compensated summation for higher accuracy.
+
+Table-based implementations are an alternative to pure polynomial approximation.
+In a table-based implementation,
+  the interval $I$ is split into many smaller intervals,
+  often hundreds or thousands of them,
+  and then some uniform method is used to approximate the function
+  on each of those smaller intervals.
+A simple table-based implementation like this
+  tabulates $f(x)$ for evenly spaced $x$ values,
+  like the $\sin$ table in the back of an old-school math textbook;
+  such an implementation is shown in \Cref{fig:table-based}.
+A more sophisticated approach
+  may store polynomial coefficients in the table,
+  or use complex interpolation schemes to fill in intermediate values.
+Just as with polynomial implementations,
+  a table-based scheme has many parameters for the implementor to choose:
+  table size, interpolation scheme, subdivision algorithm, and so on;
+  and again, these parameters affect both speed and accuracy,
+  and may depend on machine-specific parameters like cache size.
+
+\subsection{Range Reduction}
+
+Neither polynomial nor table-based approximation
+  works well over a large input interval $I$,
+  so the most challenging part of approximating a mathematical function
+  is making sure the function can be applied to an arbitrary input.
+This is called \textit{range reduction and reconstruction}.
+Range reduction and reconstruction bookend the polynomial or table,
+  transforming the input to lie within the polynomial or table's input range
+  and then adjusting the output to fit the original input.
+
+\begin{figure}
+\hfill%
+\begin{minipage}[c]{.56\textwidth}
+\includegraphics[width=\textwidth]{images/range_reduction.pdf}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\textwidth}
+\caption{
+\small
+Range reduction and reconstruction for \F{sin}.
+The input point, somewhere along the input domain, is mapped via range reduction
+  into the interval $[0,\pi/2]$ for evaluation, then mapped back via
+  reconstruction to the correct output value.
+This reduction takes advantage of the cyclic nature of \F{sin}, the symmetry of
+  the sections of \F{sin} above and below $y=0$, and the mirror symmetry
+  present in each half cycle.
+Reconstruction of \F{sin} needs only determine the correct sign of the output.
+}
+\end{minipage}\hfill
+\label{fig:range}
+\end{figure}
+
+
+Consider implementing \F{sin} over a large range.
+Since \F{sin} is periodic, $\sin(x) = \sin(x \bmod 2\pi)$;
+  and furthermore, $x \bmod 2\pi$ is bounded
+  to the range $[0, 2\pi]$.
+Thus, \F{sin} can be implemented over a large range
+  by using a polynomial or table for the range $[0, 2\pi]$
+  and \emph{reducing} other inputs to lie within that range.
+We can take advantage of other symmetries
+  to restrict the range further.
+For example, $\sin(x) = -\sin(x - \pi)$;
+  for inputs $x \in [\pi, 2\pi]$ the right hand side of this equation
+  calls $\sin$ on inputs $x - \pi \in [0, \pi]$.
+So, a polynomial or table fit to $[0, \pi]$ is enough,
+  but in this case a \emph{reconstruction} step is necessary
+  to take the output on the reduced input
+  (in this case, $\sin(x - \pi)$)
+  and compute from it the output for the original input
+  (in this case, by negating the reduced output).
+Both reduction and reconstruction are shown in \cref{fig:range}.
+Other identities, like the double-angle formula,
+  can also be used for range reduction,
+  and the same general principle
+  of using function identities to reduce the input range
+  can apply to $\log$, $\exp$, or any other functions
+  with identities to leverage.
+
+Reducing the interval $I$ that the polynomial or table is fit to
+  usually makes the approximation itself
+  either more accurate or faster (by using fewer terms).
+But range reduction and  reconstruction
+  can slow the implementation down
+  and add error of their own.
+Traditionally, math libraries have used higher-precision arithmetic,
+  such as in Cody \& Waite reduction~\cite{cody-waite},
+  to implement range reduction with no error.
+This maximizes accuracy, especially for very large inputs
+  (imagine computing $\F{sin}(10^{10})$),
+  but is also very slow because it requires computing $x \bmod 2\pi$
+  in very high precision using thousands of bits of $\pi$.
+But range reduction can also trade accuracy for speed.
+For example, $x \bmod 2\pi$ can be computed
+  by just evaluating $x - \lfloor x / 2 \pi \rfloor$ in double precision.
+This introduces errors
+  (from approximating $\pi$ and from division)
+  but is significantly faster than high-precision arithmetic.
+There are also intermediate choices with more or less error.
+Thus, the choice of range reduction
+  again presents a trade-off between accuracy and speed.
+
+\end{document}

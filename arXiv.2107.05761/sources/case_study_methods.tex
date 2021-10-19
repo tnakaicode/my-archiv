@@ -1,0 +1,146 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\section{Appendix: Case Study Methodology}
+\label{sec:cs-methods}
+
+% * SPEC specifics
+%   - not a contrived example
+%   - 'grenadine' which is a file included in povray's source
+%   - the SPEC scene was not used due to lack of photon model
+%   - talk about SSIM, which SPEC uses to compare images
+%   - include the ideas of max difference, and blocks at 1
+To evaluate POV-Ray's speed and accuracy
+  for different function implementation configurations,
+  we leveraged the SPEC 2017 benchmark suite,
+  which includes POV-Ray.
+SPEC 2017 includes a standard compilation harness
+  and a standard quality measure,
+  the structural similarity index measure~\cite{ssim},
+  which assigns each $8\times8$ pixel block a score from $-1$ to $+1$,
+  with $+1$ indicating an exact match.
+The minimum block score is then used to evaluate image quality,
+  with scores over \nSpecThreshold considered acceptable.
+The benchmark scene used by SPEC does not use the photons feature,
+  but POV-Ray ships many standard scenes to demonstrate its capabilities,
+  and we use one of those, \F{grenadine},
+  to avoid creating our own contrived example.
+
+% * baseline
+%   - we want to look at the problem before the hand rolled impl was used, back
+%       when the double version was being replaced
+%   - this is so we can see how our tool could have helped the programmer
+%   - baseline is glibc since that is what most would use by default
+%   - image is the same as most accurate
+%   - there is a difference with the benchmark error between these two, but at
+%       the whole program level the resulting images are pixel identical
+The version of POV-Ray included in SPEC 2017
+  includes and uses the custom \F{sin} and \F{cos} implementations
+  described in \Cref{sec:case_study}.
+These implementations are quite simplistic;
+  a condensed version of \F{sin} is shown in \Cref{fig:table-based}.
+The input $x$ is converted to an integer from $0$ to $254$
+  by simple linear transformation:
+  $i = (x / \pi + 1) * 127$, rounded down.
+Then a hard-coded table is used to look up $\sin((i - 127)*\pi / 127) \pi$.
+This implementation is quite inaccurate---%
+  $i$ only has 8 bits of information---%
+  but is also quite fast, likely because during a tight loop
+  the hard-coded table stays loaded in cache.
+\name's fastest implementations, meanwhile, are all polynomial-based.
+Nonetheless, some of the configurations it finds
+  are both faster and more accurate than the POV-Ray implementations,
+  suggesting that \name could have helped the POV-Ray developers
+  speed up caustics.
+
+One challenge in this evaluation is the choice of baseline.
+SPEC uses POV-Ray's custom table-based implementations
+  to generate its reference image,
+  but as mentioned above those implementations are inaccurate.
+We therefore modified POV-Ray
+  to use the \F{sin} and \F{cos} implementations from GLibC,
+  which POV-Ray had historically used
+  (prior to the development of the custom table-based implementations),
+  and used that implementation
+  to generate our reference images as well as our performance baseline.
+We also verified
+  that a rendering using CRLibM's~\cite{crlibm} \F{sin} and \F{cos}
+  produces the exact same image;
+  since CRLibM is maximally accurate,
+  this further justifies the use of GLibC as a baseline.
+Code comments in the POV-Ray source code
+  confirm that before POV-Ray added
+  its custom \F{sin} and \F{cos} implementations,
+  it used GLibC (or other system math library) implementations,
+  making this baseline historically plausible.
+
+% * how we used the tool
+%   - extracted the code as an fpcore
+%   - run the tool (include timing the tool, and timing the generated versions)
+%   - this gives us the benchmark error/speed graph
+%   - cool, but this is not applicable to the end to end
+%   - run full povray in spec to get walltime for the whole thing, and SSIM
+%   - this gives us the real end to end
+To use \name with POV-Ray,
+   we first extracted the expression seen in \Cref{povprog}
+   and recorded it in FPCore, \name's input language.
+The bounds on the input variables were easily established
+  since the angle values were already known to be bounded
+  and the $n$ values come from a unit normal.
+We then ran \name to generate the configurations
+  along the speed-accuracy Pareto curve.
+For each resulting configuration,
+  we produced a patched version of POV-Ray
+  by injecting the source code
+  for all of \name's supported implementations into POV-Ray
+  and using macros and compiler flags to select which one is used.
+The SPEC harness was then used
+  to determine both the speedup and the quality of the resulting rendering.
+This allows us to measure \name's outputs
+  not just in terms of the isolated extracted expression
+  but also in end-to-end real terms
+  for a large and performance-sensitive software project.
+
+Besides the change in function implementations,
+  the POV-Ray developers made a second change
+  to the photon incidence computation,
+  again trading away accuracy to gain speed,
+  but in this case by modifying the storage format
+  instead of by changing the implementation of functions.
+Specifically, instead of storing incidence angles as double-precision values,
+  as prior POV-Ray releases and commented-out code did,
+  they changed some internal data structures
+  to store the index $i$ directly.
+Since indices can be stored in a single byte,
+  this reduces the memory used for the photon table%
+\footnote{It also seems to reduce padding and alignment issues,
+  since double-precision values have to be 8-byte aligned on our system.}
+  which speeds POV-Ray up by a further \nPovRayCharSpeedup,
+  resulting in the speed and accuracy shown by the orange circle
+  in \Cref{fig:povray-end2end}.
+This is faster than the best speed-up achievable
+  by tuning function implementations alone.
+\name only supports double-precision computation
+  and cannot make storage optimizations,
+  so it cannot directly propose a similar optimization.
+That said, we did make some ad-hoc modifications to \name
+  to generate error models for 8-bit inputs
+  and to produce a speed-accuracy Pareto curve with them.
+\name is again able to find configurations
+  both faster and more accurate than that used in POV-Ray.
+This is possible because POV-Ray's implementation
+  is still inaccurate, even for 8-bit inputs,
+  because when building the table it evaluates \F{sin}
+  at the location corresponding to index $i$,
+  instead of the location corresponding to $i + \frac12$.
+These results are tentative:
+  our ``8-bit'' function implementations are just
+  wrapped versions of our double-precision implementations,
+  and \name's support for 8-bit values is limited.
+That said, these results suggest that
+  precision tuning along the lines of FPTuner~\cite{fptuner} or POP~\cite{pop}
+  could be combined with \name's tuning of function implementations
+  to suggest even faster and more accurate configurations.
+
+\end{document}

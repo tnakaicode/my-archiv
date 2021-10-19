@@ -1,0 +1,47 @@
+\documentclass[paper.tex]{subfiles}
+
+\begin{document}
+
+\begin{abstract}
+
+Standard library implementations
+  of functions like \F{sin} and \F{exp}
+  optimize for accuracy, not speed,
+  because they are intended for general-purpose use.
+But applications tolerate inaccuracy
+  from cancellation, rounding error, and singularities---%
+  sometimes even very high error---%
+  and many application
+  could tolerate error in function implementations as well.
+This raises an intriguing possibility:
+  speeding up numerical code
+  by tuning standard function implementations.
+
+This paper thus introduces \name,
+  an automatic method for selecting
+  the best implementation of mathematical functions
+  at each use site.
+\name assembles dozens of implementations
+  for the standard mathematical functions
+  from across the speed-accuracy spectrum.
+\name then uses error Taylor series and integer linear programming
+  to compute optimal assignments
+  of function implementation to use site
+  and presents the user with a speed-accuracy Pareto curve
+  they can use to speed up their code.
+In a case study on the POV-Ray ray tracer,
+  \name speeds up a critical computation,
+  leading to a whole program speedup of \nPovRayLosslessSpeedup
+  with no change in the program output
+  (whereas human efforts result in slower code and lower-quality output).
+On a broader study of \nBenchmarks standard benchmarks,
+  \name matches \nOptunerImpls implementations
+  to \nBenchmarkUseSites use sites
+  and demonstrates speed-ups
+  of \nBenchmarkSafeSpeedup for negligible decreases in accuracy
+  and of up to \nBenchmarkLargeSpeedup for error-tolerant applications.
+
+\end{abstract}
+
+
+\end{document}
