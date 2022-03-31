@@ -4,15 +4,15 @@ import sys
 import time
 import os
 import tarfile
-from optparse import OptionParser
+import argparse
 
 if __name__ == '__main__':
     argvs = sys.argv
-    parser = OptionParser()
-    parser.add_option("--dir", dest="dir", default=None)
-    parser.add_option("--name", dest="name", default="DailyReport")
-    opt, argc = parser.parse_args(argvs)
-    print(opt, argc)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dir", dest="dir", default=None)
+    parser.add_argument("--name", dest="name", default="DailyReport")
+    opt = parser.parse_args()
+    print(opt, argvs)
 
     tar = tarfile.open(tar_name, "w")
     tar.add("./src/")

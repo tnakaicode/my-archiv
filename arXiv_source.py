@@ -5,15 +5,15 @@ import time
 import os
 import glob
 import tarfile
-from optparse import OptionParser
+import argparse
 
 if __name__ == '__main__':
     argvs = sys.argv
-    parser = OptionParser()
-    parser.add_option("--tar", dest="tar", default="../../Downloads/1908.03795")
-    parser.add_option("--url", dest="url", default="https://arxiv.org/e-print/2005.03337")
-    opt, argc = parser.parse_args(argvs)
-    print(opt, argc)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--tar", dest="tar", default="../../Downloads/1908.03795")
+    parser.add_argument("--url", dest="url", default="https://arxiv.org/e-print/2005.03337")
+    opt = parser.parse_args()
+    print(opt, argvs)
 
     basename = os.path.basename(opt.tar)
     base_dir = "arXiv." + basename
