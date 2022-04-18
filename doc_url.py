@@ -7,6 +7,7 @@ import requests
 import datetime
 import argparse
 
+
 def split_filename(filename="../temp_20200408000/not_ignore.txt"):
     name = os.path.basename(filename)
     dir_name = os.path.dirname(filename)
@@ -19,7 +20,7 @@ if __name__ == '__main__':
     argvs = sys.argv
     parser = argparse.ArgumentParser()
     parser.add_argument("--url", dest="url",
-                      default='https://link.springer.com/content/pdf/10.1007%2F978-3-642-28255-3_4.pdf')
+                        default='https://link.springer.com/content/pdf/10.1007%2F978-3-642-28255-3_4.pdf')
     opt = parser.parse_args()
     print(opt, argvs)
 
