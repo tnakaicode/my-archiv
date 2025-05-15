@@ -15,3 +15,6 @@ arXiv.*/*.thm
 tmp/*
 temp_*/*
 */temp_*/*
+
+*.zip
+archive_MCNP/B-10-Lib80x/*
