@@ -158,3 +158,82 @@ title: meta fatigue memo
 - **環境効果**: 真空中では効果なし、大気中・水中で顕著
 
 これらの文献は、あなたが観察した「休止後の破断」現象の理論的・実験的裏付けとなります。
+
+## ULCF／LCF／HCF／VHCF を意識的に横断しながら、コイル（ヘリカル）ばねの疲労破壊を理論＋実験でまとめた文献
+
+① 全領域（ULCF～VHCF）を俯瞰できる「核となる文献」
+✅ Kobelev, V. “Fundamentals of Springs Mechanics” (Springer, 2024)
+特に Chapter 11: Fatigue of Spring Materials / Chapter 12: Factors Affecting the Fatigue Life of Springs
+
+ばね材料の疲労を LCF–HCF–VHCF の連続体として整理
+応力寿命（S–N）、ひずみ寿命（ε–N）、き裂進展（FCG）を 同一枠組みで議論
+ばね長さ・剛性のサイクル依存変化を解析的に導出
+
+コイルばねに特化しつつ、領域横断で議論している 最重要文献
+
+あなたのモデル整理（Basquin＋Coffin–Manson＋機能劣化）と完全に同じ思想
+
+② コイルばね × VHCF/HCF を直接扱った決定的研究
+✅ **Tiwari, A. (2012)
+“Very High Cycle Fatigue behavior of helical compression springs: Numerical and experimental analysis”**
+
+ヘリカル圧縮ばねそのものを対象
+10⁷～10⁹ 回の VHCF 試験
+fish‑eye（内部欠陥起点）破面を SEM で詳細解析
+表面起点（HCF）→ 内部起点（VHCF）への遷移を明確に示す
+
+「ばねでも VHCF は別世界」であることを実験で証明
+ショットピーニングの限界も議論
+
+VHCF × コイルばねでは事実上の代表文献
+
+✅ **Ballo et al. (2022)
+“Wires for spring construction: full scale fatigue experimental tests” (Meccanica)**
+
+ばね用実寸ワイヤで HCF～VHCF 試験
+10⁷回以下：表面欠陥起点
+10⁷回超：内部介在物起点
+
+S–N 曲線の 折れ点（HCF→VHCF） を実験的に確認
+
+Tiwari 論文をワイヤレベルで裏付ける研究
+
+③ LCF～HCF をつなぐ「ばね特有の疲労研究」
+✅ **Chin et al. (2023)
+“Fatigue Life Modelling of Steel Suspension Coil Springs…” (Materials)**
+
+実働振動から ひずみ履歴 → ε–N（LCF）評価
+Morrow モデルを使用
+
+ばねは LCF と HCF が混在することを明示
+
+ULCF は扱わないが、LCF/HCF 境界の現実的研究
+
+✅ **Ghuge et al. (2023)
+“Experimental validation of multiaxial fatigue theories to estimate fatigue life of helical compression spring”**
+
+実ばねでの疲労試験
+Fatemi–Socie（ひずみ系）が LCF に有効
+
+**「応力基準では LCF を誤る」**ことを実験で示す
+
+④ ULCF を理論的に補完する必読レビュー（ばねへの外挿）
+✅ **Xu et al. (2023)
+“Ultra-Low Cycle Fatigue Life Prediction Model—A Review” (Metals)**
+
+ULCF を微視的延性破壊多孔塑性（Gurson）連続体損傷に分類
+
+ばね論文ではないが初期数十～数百回の大塑性挙動をどう扱うかの理論的基盤
+
+ULCF を含めるなら必読
+
+✅ 「ULCF/LCF/HCF/VHCF を意識的に横断して“ばね疲労”を整理した文献」は存在する
+✅ Kobelev（Springer）＋Tiwari（VHCFばね） が中核
+✅ 実務・研究ともに
+「ばね疲労は HCF だけでは完結しない」 という立場が国際的に確立しつつある
+
+Coffin (1969)：時間依存疲労の基礎概念を提示
+Solomon (1972)：LCF き裂進展における保持時間効果を定量化
+Wei & Landes (1969)：持続荷重で疲労き裂進展が加速
+Barsom (1971)：K_{ISCC} 以下でも保持時間が効く
+James & Knecht (1975)：保持で進展速度が 10 倍以上
