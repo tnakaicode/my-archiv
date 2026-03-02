@@ -1,0 +1,832 @@
+================================================================================
+ITER Physics Expert Group on Confinement and Transport
+詳細分析結果
+================================================================================
+
+ファイル: ..\arXiv\archive\ITER_Physics_Expert_Group_on_Confinement_and_Transport_1999_Nucl._Fusion_39_2175.pdf
+総ページ数: 76
+
+
+================================================================================
+1. 文書の基本情報
+================================================================================
+{
+  "title": "Chapter 2: Plasma confinement and transport",
+  "authors": "ITER Physics Expert Group on Confinement and Transport"
+}
+
+================================================================================
+2. プロファイルパラメータ (α値と数式)
+================================================================================
+{
+  "pedestal": [
+    " (e.g.Fig. 4). There is considerable variation in the experimen- tal results for the scaling of the pedestal width.Experiments on JT-60U have reported that elec-tron and ion temperature pedestal widths \u000escale as \u000e/\u001a pi, the poloidal ion Larmor radius, in the ELM free phase [256], and that it is 2{3 times greaterin",
+    " hscales as \u000e Ti/TPED i with \u000en=\u000eTi. Recent JET experiments on the isotope scaling indicate that thepedestal height increases strongly with the isotopemass [259]. In ASDEX-Upgrade, the barrier width \u000e is fairly constant ( \u000e\u00182{2.5 cm) and is independent ofI, again implying it is not related to \u001a pi[254]. Experiments on DIII-D with parameters chosen tobe simil",
+    "he current di\u000busive ballooning [30]and neoclassical tearing modes [31{33]. At a colli-sional plasma edge, there is a range of ﬂuid insta-bilities driven by gradients in pressure, resistivityand current. In Table 1, we give a summary viewof plasma instabilities that are possible underlying mechanisms for plasma turbulence in tokamaks. In the edge region, it is po",
+    "s that obtain H-mode. The \frst to beidenti\fed was the formation of a transport barrier atthe plasma edge [209] where the density and temper-ature gradients steepen after the transition. The for-mation of this barrier is associated with a drop in theD \u000bradiation all around the plasma, indicating a sig- ni\fcant decrease in the particle outﬂux. In additio",
+    "a/m)150 200Wth (MJ) 0.6MA1.0MA1.0MA 0.8MA1.2MA Figure 5. Relation between thermal stored energy and edge electron pressure gradient for discharges in ASDEX-Upgrade near the ideal ballooning limit at the edge [254]. The study of the H-mode pedestal parameters can be separated into the analysis of the scalingof the width of the ste",
+    "on, which is expected to be set by turbulence suppres- sion physics [220], and the magnitude of the edgegradient. The height and width of the H-mode trans-port barrier depends on the type and level of ELMactivity (Chapter 3, Section 2.6, and Chapter 4, Sec-tion 3.8; see also Section 5.2 of this Chapter). Thehig",
+    " x i m u mp r e s s u r e gradient is usually consistent with ideal ballooningmode stability at the edge [255]. However, data fromDIII-D shows that the edge gradient can exceed thenominal in\fnite- nballooning limit [252] by factors of 2{3. Type III ELMs often, but not always, havelower pedestal pressures and lower con\fnement (e.g.Fig. 4). There is considerable va",
+    "o ideal low-nkink ballooning modes. The \fcollapse can be avoided through the bene\fcial e\u000bects of an H-mode pedestal and pressure pro\fle broadening [165],and through increased plasma triangularity [166]. As contrasted with reverse shear operation on JT-60U, nearly steady state operation of these plasmas hasbeen dem",
+    "hancement factor relative to the ITER93H-P scaling [180], and PEDrefers to values at the top of the H-mode pedestal(see Fig. 4 and [252]). ASDEX-Upgrade also showsa direct relation between stored energy and pedestalpressure gradient (Fig. 5) [254]. Nuclear Fusion, Vol. 39, No. 12 (1999) 2193  === Page 21 ===  ITER",
+    "     averaged over ELMsPED Figure 4. H-mode energy con\fnement enhancement factor relative to ITER93 H-mode scaling increases withincreasing H-mode pedestal pressure (kPa) averaged overELMs in DIII-D [252]. 000.20.40.60.8 50Type I ELMs Type III ELMs 100 Ñpe (kPa/m)150 200Wth (MJ) 0.6MA1.0MA1.0MA 0.8MA1.2MA Figure 5. Relation between thermal stored energy",
+    "for discharges in ASDEX-Upgrade near the ideal ballooning limit at the edge [254]. The study of the H-mode pedestal parameters can be separated into the analysis of the scalingof the width of the steep pressure gradient region, which is expected to be set by turbulence suppres- sion physics [220], and the magnitud"
+  ]
+}
+
+================================================================================
+3. スケーリング則
+================================================================================
+{
+  "tau_E": [
+    "\u0003 \u0002M0:97q−2:52\"−0:55\u00142:72:(19) The RMSE for this (Eq. (18)) \ft, which is shown in Fig. 9, is 15.8%. For ease of future reference, wecall this scaling IPB98(y). Its con\fnement time pre-diction for ITER is 6.0 s. As described in Section 6.4,other empirical log-linear scalings have been derivedthat are based on subsets of the standard dataset andwhich use another de\fnition of kappa to account forthe relatively high con\fnement in the bean shapedPBX-M tokamak. One such scaling, IPB98(y,2), is mentioned in particular. It is expressed in engineer- ing variables as \u001c ELMy E;th=0:0562I0:93B0:15P−0:69n0:41 \u0002M0:19R1:97\"0:58\u00140:78 a(20) 2204 Nuclear Fusion, Vol. 39, No. 12 (1999)  === Page 32 ===  Chapter 2: Plasma con\fnement and transport (",
+    "hen Alcator C-MOD is removed from the dataset on which IPB(y,2) was based. Everything else beingkept the same, this leads to, instead of Eq. (20), theIPB98(y,3) scaling in Table 5, which gives a verysimilar point prediction for ITER as IPB98(y,2). Atpresent, available physical empirical evidence is feltnot to be conclusive enough to justify making a pref-erential recommendation between the just mentionedlog-linear scalings. The scalings (18) and (20) are not very di\u000ber- ent from the ITERH.EP",
+    "(%) \u001cE(s) IPB98(y) 3.65 0.97 0.08 0.41 −0:63 1.93 0.67 0.23 0.20 1398 15.8 6.0 IPB98(y,1) 5.03 0.91 0.15 0.44 −0:65 2.05 0.72 0.57 0.13 1398 15.3 5.9 IPB98(y,2) 5.62 0.93 0.15 0.41 −0:69 1.97 0.78 0.58 0.19 1310 14.5 4.9 IPB98(y,3) 5.64 0.88 0.07 0.40 −0:69 2.15 0.78 0.64 0.20 1273 14.2 5.0 IPB98(y,4) 5.87 0.85 0.29 0.39 −0:70 2.08 0.76 0.69 0.17 714 14.1 5.1 (1)The quantity \u0014ahas been de\fned as area/ \u0019a2in",
+    "he inner inter-val corresponds roughly to a ‘ 2 3log-non-linear’ interval. The centre of the intervals approximately coincides withthe average of the IPB98(y) and IPB98(y,2) scalings. con\fnement time Ω i\u001cEcan be expressed as Ωi\u001cE=F(\u001a\u0003;\u0017\u0003;\ffpig): (27) The list of other parameters fpigis long (see Eq. (8)). Table 1 in [74] presents a list of 18 dimensionless parameters. Representative examples are q,\u0014,R=a, Ti=Te,Ze\u000b, sing",
+    ") ITERH-P92y ll DB2 (ELMy) 2.9 15.1 2.0 17.5 5.7 ITERH-P93 ll DB2 (ELM free)(1)0.7 18.5 0.8 19.3 6.1 IPB98(y) ll DB3 (ELMy)(2)−0:8 15.2 −0:6 15.8 6.0 IPB98(y,1) ll DB3 (ELMy) 0.4 14.7 0.6 15.3 5.9IPB98(y,2) ll DB2.8 (ELMy) 0.6 14.5 1.2 15.6 4.9 IPB98(y,3) ll DB2.5 (ELMy) −0:6 14.2 −1:0 16.1 5.0 IPB98(y,4) ll DB3r(IS) (ELMy) (3)5.8 16.7 6.3 17.3 5.1 DK96(y) ia DB2.5 (ELMy) 1.1 14.4 0.3 16.5 5.4 DK96(y) ia DB2.8 (ELMy)(4)−0:8 14.6 −0:4 15.3 5.0 OK96(y) o"
+  ],
+  "P_threshold": [
+    "rmined from the analysis of the database. This leads to the following expression (10), given in [271], where thereader can \fnd a complete derivation: P thr=C(R=a;\u0014;q;\u000b )BT\u0016n0:75 eR2(\u0016neR2)\u000b(10) where Cis a non-dimensional coe\u000ecient. Using the database version ITERTH DB2.1 (September 1996),one \fnds: −0:25\u0014a\u00140:25 and C=( 0:45\u00060:1)\u0002 0:6 \u000b. The range in \u000bis obtained by analys",
+    "tension ofthis approach to the H-mode power threshold is alsounder consideration. For discharges with identicaldimensionless parameters, the relation P thresha3=4= const. is predicted. One can also note that uncon-strained, power law regression analyses of global con-\fnement scaling ful\fl a constraint on the exponentsderived from Eq. (27). Based on present evi",
+    "hold dependence on plasma con\fguration and parameters, studied insingle devices during the past years [171, 260{268]can be summarized as follows. The threshold poweris about 2 times lower for the single null (SN) con\fg-uration with the ion rBdrift towards the X-point, than for the opposite direction or double null (DN)con\fguration; the threshold is about 2 times lowerin de",
+    "hydrogen; reduction of neu-tral density and impurities by appropriate wall con- ditioning and good divertor retention is favourable for achieving low threshold powers. The studies insingle devices also show a rather clear linear depen-dence of P thron \u0016neandBT. However, the size depen- dence, an essential element for extrapolation, cannotbe deduced from experiments",
+    "nor radius, plasma surface area, RMSE of the regression, the lower values of the 95% con\fdence interval (usual de\fnition) of the ITER prediction, the threshold power predicted for ITER, the upper 95% con\fdence interval, the results of the sum determined by constraint with dimensionless parameters (see later in the text). The units used arem −3,T ,m ,m2,M W . 0.1110ASDEX ASDEX Upgrade Alcator C-M",
+    " the density exponent Xin the Kadomtsev constraint, 8X+5Y−4Z= 3, and maintaining Y=1 , as explained in [271]. Expression (10) leads to arange for the threshold power prediction for ITERbetween \u001850 MW and \u0018200 MW. The uncertainty is dominated by the Rdependence, R 1:5{R2:5.S i n c e this work was performed, e\u000borts have been made toreduce the scattering of the data, and are expected tosomewhat r",
+    " dataset. Accord-ing to present knowledge, e\u000bects causing a particu-larly high threshold in ITER are not expected. Onthe contrary, one may expect the threshold powerin ITER to be kept low for the two following rea-sons. First, if one assumes that the above conditions that provided the lowest threshold values in present t o k a m a k sc a nb ea c h i e v e di nI T E R ,o n em a yr e d u c e the numerical factor of ex"
+  ]
+}
+
+================================================================================
+4. 輸送モデル
+================================================================================
+{
+  "codes": [
+    {
+      "code": "transp",
+      "context": "  === Page 1 ===  Chapter 2: Plasma confinement and transport To cite this article: ITER Physics Expert Group on Confinement and Transport et al 1999 Nucl. Fusion  39 2175   View the article online  for updates and enhancements. You may also like  Thermal en"
+    },
+    {
+      "code": "Transp",
+      "context": "Plasma confinement and transport To cite this article: ITER Physics Expert Group on Confinement and Transport et al 1999 Nucl. Fusion  39 2175   View the article online  for updates and enhancements. You may also like  Thermal energy confinement properties of  ELMy H mode plasmas in JT-60U  H. Urano, Y. K"
+    },
+    {
+      "code": "Transp",
+      "context": "y confinement properties of  ELMy H mode plasmas in JT-60U  H. Urano, Y. Kamada, H. Shirai et al. - Transport and confinement physics:  Chapter 2 of the special issue: on the path  to tokamak burning plasma operation  M. Yoshida, R.M. McDermott, C. Angioni  et al.- Chapter 8: Plasma operation and control "
+    },
+    {
+      "code": "transp",
+      "context": "rom IP address 133.63.21.1 on 02/03/2026 at 01:13  === Page 2 ===  Chapter 2: Plasma con\fnement and transport ITER Physics Expert Groups on Con\fnement and Transport and Con\fnement Modelling and Database\u0003 ITER Physics Basis Editorsy ITER EDA, Naka Joint Work Site, Mukouyama,Naka-machi, Naka-gun, Ibaraki-ke"
+    },
+    {
+      "code": "Transp",
+      "context": "Page 2 ===  Chapter 2: Plasma con\fnement and transport ITER Physics Expert Groups on Con\fnement and Transport and Con\fnement Modelling and Database\u0003 ITER Physics Basis Editorsy ITER EDA, Naka Joint Work Site, Mukouyama,Naka-machi, Naka-gun, Ibaraki-ken, Japan Abstract. Physics knowledge in plasma con\fneme"
+    },
+    {
+      "code": "transport code",
+      "context": " dimensional constraints on the form ofthese laws in the scaling studies. It is also recognizedthat transport codes solving radial transport equa- tions numerically are also useful for obtaining quan- titative predictions. As a result, three approachesare being pursued at the moment for providing pre-dictions for"
+    },
+    {
+      "code": "transport code",
+      "context": "d. Nevertheless, the Kadomtsev description o\u000bers a basis for incorporating the e\u000bects of sawteeth intransport codes. The basic features of such a modelfor the e\u000bect of the sawtooth are as follows. Whenq 0falls below unity (or some other critical value, say 0.7), a repetitive ﬂattening of TeandTi(and possi- blyn) "
+    },
+    {
+      "code": "Transport code",
+      "context": "ntial redistribu-tion of alpha particles has been observed on TFTR,although losses are small [293]. Transport codes for simulating burning plasmas can prescribe an instan- taneous loss of alpha heating power at the sawtoothcrash to represent a possible loss of alpha particles,which then recovers over an alpha par"
+    },
+    {
+      "code": "transport code",
+      "context": "ays models and modellers who have placed simulations on the ITER pro\fle database. A large variety oftransport codes using various procedures { rangingfrom fully predictive (sources/sinks computed by thecode) to fully interpretive (sources/sinks taken fromthe database) { have been used to test the modelsagainst ex"
+    },
+    {
+      "code": "transport code",
+      "context": "assumptions made by these codes, the model test- ing outputs were found to depend on the particular transport code being used. To overcome this di\u000e-culty, a standard procedure has been de\fned andused as a reference. This standard procedure pre-scribes a reference set of transport equations andstandard inputs (sou"
+    }
+  ],
+  "mechanisms": [
+    {
+      "mechanism": "neoclassical transport",
+      "context": "nsport in a tokamak. For the usual lowcon\fnement regime (L-regime) in auxiliary heatedtokamaks, the neoclassical transport theory predictscon\fnement times longer than those experimentallymeasured by up to two orders of magnitude for theelectrons and one order of magnitude for the ions.Plasma turbulence is probably a domi"
+    },
+    {
+      "mechanism": "neoclassical parallel transport",
+      "context": " be in good agreement with theoretical predictions [11, 12]. Therefore, the the-oretical picture of neoclassical parallel transport isconsistent with experiment. The ﬂuxes contain all the dynamic information on the transport processes. While neoclassical the-ory gives an explicit expression for them, there isnot a general form fo"
+    },
+    {
+      "mechanism": "neoclassical the-ory gives an explicit expression for them, there isnot a general form for turbulent transport",
+      "context": "nt with experiment. The ﬂuxes contain all the dynamic information on the transport processes. While neoclassical the-ory gives an explicit expression for them, there isnot a general form for turbulent transport. In prac-tice, these ﬂuxes have been parametrized by analogywith the structure given by neoclassical theory. For instance, the simplest assumption of di\u000busive ﬂuxes would give Γ a=−Da@na @r(5) \bia=−\u001f"
+    },
+    {
+      "mechanism": "neoclassical thermaldi\u000busivity may sometimes play a signi\fcant role,particularly in enhanced con\fnement regimes withtransport",
+      "context": "kamaks experience alevel of anomalous transport that exceeds neoclas-sical values, although the ion neoclassical thermaldi\u000busivity may sometimes play a signi\fcant role,particularly in enhanced con\fnement regimes withtransport barriers (modi\fcations to the basic the-ory to account for such features as the steep gra-dients in these cases are being developed). This anomalous transport is believed to be caused by the \fne scal"
+    },
+    {
+      "mechanism": "neoclassical transport",
+      "context": "has been modelled using ITG models; the ulti-mate saturation with density has been attributedto ion neoclassical transport [108]. However, thesesimple models are sometimes challenged by other 2216 Nuclear Fusion, Vol. 39, No. 12 (1999)  === Page 44 ===  Chapter 2: Plasma con\fnement and transport experimental results, suc"
+    },
+    {
+      "mechanism": "anomalous transport",
+      "context": " ===  Chapter 2: Plasma con\fnement and transport Table 1. Main instabilities that contribute to the anomalous transport losses in tokamaks [29] ( \u0011j=d e n s i t y scale length/temperature scale length for species j). Source of Group Instability free energy Subspecies Properties Ion \u0011imodes rTi Slab modes !\u0014!\u0003i Instabi"
+    },
+    {
+      "mechanism": "anomalous transport",
+      "context": "associated with the more peaked current pro\fle for this transient phase. As with ohmic plasmas, the anomalous transport loss is governed by microturbulence whose source, however, is still not known. Measurements of densityﬂuctuations during parametric scans show changesin ﬂuctuation levels and radial correlation lengt"
+    },
+    {
+      "mechanism": "anomalous transport",
+      "context": "ressions for transport ﬂuxes [4, 340, 341] (Section 2). However, most tokamaks experience alevel of anomalous transport that exceeds neoclas-sical values, although the ion neoclassical thermaldi\u000busivity may sometimes play a signi\fcant role,particularly in enhanced con\fnement regimes withtransport barriers (modi\fcation"
+    },
+    {
+      "mechanism": "anomalous transport",
+      "context": "-ory to account for such features as the steep gra-dients in these cases are being developed). This anomalous transport is believed to be caused by the \fne scale turbulent ﬂuctuations that are observedin tokamaks. These, in turn, are believed to be theresult of the non-linear saturation of various micro-instabilities:"
+    },
+    {
+      "mechanism": "anomalous ion transport",
+      "context": "expected from ﬂuctuations on the colli-sionless skin depth scale [107]. Recent extensions toinclude anomalous ion transport guided by dimen-sional analysis (uniquely, in that it allows the Debyelength to enter) and experiment have led to thesemiempirical transport (SET) model [370]. Finally, we mention the canonical pro\fl"
+    },
+    {
+      "mechanism": "turbulent plasma transport",
+      "context": "es for projecting con\fnement properties to ITER are provided.Theoretical approaches to describing a turbulent plasma transport in a tokamak are outlined and phenomenology of major energy con\fnement regimes observed in tokamaks, including those with edge and internal transport barriers, is described. The chapter is focused on"
+    },
+    {
+      "mechanism": "turbulent transport",
+      "context": "s. While neoclassical the-ory gives an explicit expression for them, there isnot a general form for turbulent transport. In prac-tice, these ﬂuxes have been parametrized by analogywith the structure given by neoclassical theory. For instance, the simplest assumption of di\u000busive ﬂuxes would give Γ a=−Da@na @r(5) \bia=−\u001f"
+    },
+    {
+      "mechanism": "turbulent di\u000busivities has been adopted in an adhoc fashion in some of the transport",
+      "context": "k function (logarithmic or just a constant) ofthe plasma parameters [44,45]. This formulation ofthe turbulent di\u000busivities has been adopted in an adhoc fashion in some of the transport models. The scale invariance approach [46,47] is an alter- native approach for the determination of the trans-port coe\u000ecients. It is based on the idea of interme-diate asymptotics [48], and, in some "
+    },
+    {
+      "mechanism": "turbulent transport",
+      "context": "ical models; active work is under-way to understand and resolve the reasons for the di\u000berences. The turbulent transport picture seems to \ft some of the qualitative features of perpendicular transport in a tokamak. To provide a sound basis for this mech- anism, research e\u000bort has been concentrated on iden-tifying the c"
+    },
+    {
+      "mechanism": "turbulent transport",
+      "context": "l evidence that E\u0002Bveloc- ity shear (i.e. radially varying pro\fle of the E\u0002B plasma ﬂow) can reduce turbulent transport, as will be discussed in Sections 3.3 and 4.1. The theories seem consistent with the observation of a causal cor-relation between the buildup of the sheared radialelectric \feld and the suppression of"
+    },
+    {
+      "mechanism": "ITG); these are the electrostatic ITG driftmode",
+      "context": "us, in the core of the plasma there aremicro-instabilities driven by the ion temperature gra-dient (ITG); these are the electrostatic ITG driftmodes and trapped ion modes. These modes areoften characterized by a value \u0011 i=d(lnTi)=d(lnn), and referred to as ‘ \u0011imodes’. Others are driven by the electron temperature gradient: electrostatic trapped "
+    },
+    {
+      "mechanism": "ITG-mode",
+      "context": "ristics of this layer are signi\fcant in the overall plasma performance and in divertor e\u000bects. Sti\u000b ITG-mode turbulent transport models [75, 243] predict that the core temperature is stronglylinked to the edge temperature, suggesting thatITER may require relatively high edge temperaturefor ignition. This re"
+    },
+    {
+      "mechanism": "ITG mode",
+      "context": " T e\u0019Ti. A current and key issue for tokamak transport is: how ‘sti\u000b’ is the transport arising from ITG modes,where the ion heat di\u000busivity depends on the depar-ture of the ITG from a critical gradient. In a ‘sti\u000b’system, where the ion heat ﬂux increases rapidlywhen the critical gradient is exceeded, small "
+    },
+    {
+      "mechanism": "ITG theories result in a sti\u000b system [75]. Tran-sient L-mode",
+      "context": "nties in the critical gradient, it is dif-\fcult to apply dimensionless scaling to sti\u000b systems.Some ITG theories result in a sti\u000b system [75]. Tran-sient L-mode transport experiments on ASDEX-Upgrade, however, suggest the system is not sti\u000b [91]. ELMs constitute a rather uncontrolled bound- ary condition for heat transport. To minimize ELM e\u000bects on transpor"
+    },
+    {
+      "mechanism": "ITG mode",
+      "context": " to be theresult of the non-linear saturation of various micro-instabilities: electron drift waves, ITG modes, pres-sure driven ballooning modes, etc. Many estimates(e.g. mixing length ones) of the turbulent trans-port coe\u000ecients associated with these ﬂuctuationshave been made over the years [17, 28, 29] (S"
+    },
+    {
+      "mechanism": "tem",
+      "context": "cha-tov Inst.), F. Ryter (IPP Garching), T. Takizuka (JAERI). Additional contributing authors: G. Bateman (Lehigh U.), G. Bracco (ENEA, Frascati), D.J. Campbell (NET Garching),T.N. Carlstrom (General Atomics), Yu.N. Dnestrovski (Kur-chatov Inst.), T. Fujita (JAERI), A. Fukuyama (Okayama U.),P. Gohil (G"
+    },
+    {
+      "mechanism": "tem",
+      "context": "ry approximate description of the physicalprocesses taking place, since no knowledge of theheating, temperature or density pro\fles, or atomic physics for that matter, is built into the analysis. The log-linear form itself is equivalent to assuming thata single turbulence mechanism with one scale size i"
+    },
+    {
+      "mechanism": "tem",
+      "context": "ce mechanism, one canobtain directly, by a simple projection, from thoseof current experiments, the temperature and densitypro\fles in ITER, provided the source pro\fles of heatand particles are the same. A further key advantageof this approach is that the MHD stability properties(i.e. the ELM and sawtoo"
+    },
+    {
+      "mechanism": "tem",
+      "context": "e purely theoretical and the semi-empirical type, which arereasonably successful in reproducing the temperaturepro\fles in the core (Section 8.4). The edge region0:9<r = a< 1 is still a problem, since, at the present time, there is no tested model for this region. Cou-pled with the strong sensitivity of"
+    },
+    {
+      "mechanism": "tem",
+      "context": "oss the magnetic surfaces due to Coulomb colli-sions in a stable, quiescent toroidal con\fnement sys-tem. This process, which takes account of the parti-cle orbits in an axisymmetric inhomogenous toroidalmagnetic \feld [1] and leads to higher levels of colli- sional transport than in a cylindrical plasma"
+    }
+  ]
+}
+
+================================================================================
+5. 標準運転シナリオ
+================================================================================
+{
+  "L-mode": [
+    "h the \frstapproach recommended as the most robust at the present time. Special attention is paid to analysis of uncertainties in con\fnement predictions. Empirical scaling relations for projecting the L-mode to H-mode power threshold based on regression analysis of an extensive database are discussed. Particleand toroidal momentum con\fnement and their relation to energy con\fnement are reviewed. \u0003ITER Physics Expert Group on Con\fnement and Trans- port: M. Wakatani (Kyoto U., chair), V.S. Mukhovatov (ITE",
+    " 2176 2. Mechanisms of transport in a tokamak 2178 3. Experimental description of con\fnement and transport 2184 3.1. Introduction . . . . . . . . . . . . . . . 2184 3.2. General results for ohmic and L-mode 21853.3. Regimes with edge transport barrier (H-mode) and recommended regimefor ITER . . . . . . . . . . . . . . . . 2186 3.4. Regimes with internal transport barriers2187 3.4.1. Barriers associated with reversed or weak magnetic shear2188 3.4.2. Other improved core con\fne- ment regimes without edg",
+    "22026.3. Power law scaling expressions . . . . . 2203 6.3.1. ELMy H-mode thermal con- \fnement scalings . . . . . . . . 2204 6.3.2. ELM free H-mode thermal con\fnement scaling . . . . . . . 2205 6.3.3. L-mode thermal con\fnement scaling . . . . . . . . . . . . . . 2205 6.4. Point and interval estimation for the con\fnement time in ITER . . . . . . . 2206 7. Scaling studies with similar dimension- less physics parameters 2209 7.1. Basics . . . . . . . . . . . . . . . . . . 22097.2. Discharges with identica",
+    "(less than a factor of two). A larger range of variation in \u001a\u0003can be obtained by using di\u000berent devices, but in this case the experi-ments are even more di\u000ecult. At present, and for thelow con\fnement L-mode, some experimental resultsfor the energy con\fnement time, \u001c E,a r ec o n s i s t e n t with, or close to, Bohm type scaling [74, 76, 77], while others are between Bohm and gyroBohm [78].In the high con\fnement mode (H-mode), the di\u000bu-sivities seem to be consistent with gyroBohm scal-ing. However, th",
+    "o- instabilities is \u001a i, a simple random walk argument leads to transport coe\u000ecients that are character-ized by a gyroBohm scaling. However, this seemsto disagree with the experimental observation in L-mode plasma con\fnement. To explain a departure of the core turbulence from a gyroBohm scaling, two kinds of models have been proposed so far. First, many instabilities are sensitive to the toroidal geom-etry. This geometrical e\u000bect introduces a couplingbetween poloidal components. In a homogeneous sys-t",
+    "e themselves functions of nandTand their radial gradients, i.e. the transport ﬂuxes are non-linearfunctions of the driving gradients. In fact, many theo-ries of turbulent transport have this feature. L-modetransient transport experiments on ASDEX-Upgrade[91] indicate that for small, ECH generated electron temperature transients, the response is adequately described by such di\u000busivities. H o w e v e r ,an u m b e ro fd r a m a t i co b s e r v a t i o n s involving transient behaviour pose serious chal",
+    "he application of auxiliary power, while producinghigher energy content in the tokamak, is associatedwith a degradation in energy con\fnement time rela- tive to that in the ohmic phase; this so-called L-mode is also discussed in Section 3.2. As a consequence, anignited tokamak operating in L-mode would have tobe unacceptably large. Fortunately, it was discoveredthat when su\u000ecient auxiliary power was applied, atransition to an improved con\fnement mode, the H- 2184 Nuclear Fusion, Vol. 39, No. 12 (1999) ",
+    " associatedwith a degradation in energy con\fnement time rela- tive to that in the ohmic phase; this so-called L-mode is also discussed in Section 3.2. As a consequence, anignited tokamak operating in L-mode would have tobe unacceptably large. Fortunately, it was discoveredthat when su\u000ecient auxiliary power was applied, atransition to an improved con\fnement mode, the H- 2184 Nuclear Fusion, Vol. 39, No. 12 (1999)  === Page 12 ===  Chapter 2: Plasma con\fnement and transport mode, occurred. This mode, wh",
+    " negative, or low, mag-netic shear in the centre of the plasma, are described,and in Section 3.5, improved con\fnement regimesinvolving edge radiation are discussed. 3.2. General results for ohmic and L-mode An ohmic plasma is one that is resistively heated with a power given by I pVres,w h e r e Ipis the plasma current and Vresis the resistive portion of the loop voltage. The electrons are heated directly, while theions are heated by the equipartition energy ﬂow fromthe electrons. There are two princi",
+    " the ohmic scalings, resultingin a degradation of global con\fnement. This mode ofoperation, with degraded energy con\fnement time, iscalled the L-, or low con\fnement, mode. Character-istic features of L-mode plasmas are the low temper-atures and temperature gradients near the plasmaperiphery. The L-mode is typi\fed by not only a degrada- tion in con\fnement from the ohmic value, but acontinuous degradation of con\fnement with increas- ing auxiliary heating power. While the con\fnement was found to be a str"
+  ],
+  "H-mode": [
+    " energy con\fnement regimes observed in tokamaks, including those with edge and internal transport barriers, is described. The chapter is focused on the energy con\fnement in thehigh con\fnement regime (H-mode) with the edge localized MHD modes, the basic operational regime of ITER. Three approaches are being pursued: (i) derivation of empirical global scaling laws; (ii) non-dimensionally similar studies; and (iii) one dimensional transport modelling codes, with the \frstapproach recommended as the most r",
+    "approach recommended as the most robust at the present time. Special attention is paid to analysis of uncertainties in con\fnement predictions. Empirical scaling relations for projecting the L-mode to H-mode power threshold based on regression analysis of an extensive database are discussed. Particleand toroidal momentum con\fnement and their relation to energy con\fnement are reviewed. \u0003ITER Physics Expert Group on Con\fnement and Trans- port: M. Wakatani (Kyoto U., chair), V.S. Mukhovatov (ITERJCT, co-c",
+    " Experimental description of con\fnement and transport 2184 3.1. Introduction . . . . . . . . . . . . . . . 2184 3.2. General results for ohmic and L-mode 21853.3. Regimes with edge transport barrier (H-mode) and recommended regimefor ITER . . . . . . . . . . . . . . . . 2186 3.4. Regimes with internal transport barriers2187 3.4.1. Barriers associated with reversed or weak magnetic shear2188 3.4.2. Other improved core con\fne- ment regimes without edge radiation . . . . . . . . . . . . 2189 3.5. Enhance",
+    "ar Fusion, Vol. 39, No. 12 c/circlecopyrt1999, IAEA, Vienna 2175  === Page 3 ===  ITER Physics Basis 6. Global energy con\fnement scalings 2201 6.1. Introduction . . . . . . . . . . . . . . . 22016.2. H-mode global con\fnement database . 22026.3. Power law scaling expressions . . . . . 2203 6.3.1. ELMy H-mode thermal con- \fnement scalings . . . . . . . . 2204 6.3.2. ELM free H-mode thermal con\fnement scaling . . . . . . . 2205 6.3.3. L-mode thermal con\fnement scaling . . . . . . . . . . . . . . 2205 6.4",
+    ". Global energy con\fnement scalings 2201 6.1. Introduction . . . . . . . . . . . . . . . 22016.2. H-mode global con\fnement database . 22026.3. Power law scaling expressions . . . . . 2203 6.3.1. ELMy H-mode thermal con- \fnement scalings . . . . . . . . 2204 6.3.2. ELM free H-mode thermal con\fnement scaling . . . . . . . 2205 6.3.3. L-mode thermal con\fnement scaling . . . . . . . . . . . . . . 2205 6.4. Point and interval estimation for the con\fnement time in ITER . . . . . . . 2206 7. Scaling studies ",
+    " . . . . . . . 22016.2. H-mode global con\fnement database . 22026.3. Power law scaling expressions . . . . . 2203 6.3.1. ELMy H-mode thermal con- \fnement scalings . . . . . . . . 2204 6.3.2. ELM free H-mode thermal con\fnement scaling . . . . . . . 2205 6.3.3. L-mode thermal con\fnement scaling . . . . . . . . . . . . . . 2205 6.4. Point and interval estimation for the con\fnement time in ITER . . . . . . . 2206 7. Scaling studies with similar dimension- less physics parameters 2209 7.1. Basics . . . . .",
+    "he analysis. The log-linear form itself is equivalent to assuming thata single turbulence mechanism with one scale size isresponsible for the transport. This seems unlikely tobe the case for the ELMy H-mode, the operationalmode foreseen for ITER, where the core region may 2176 Nuclear Fusion, Vol. 39, No. 12 (1999)  === Page 4 ===  Chapter 2: Plasma con\fnement and transport be dominated by short wavelength turbulence of the gyroBohm type, and the behaviour in the edge region is possibly determined by ",
+    "e database, but their e\u000bect on theITER predictions is, as yet, unclear. The degradationof con\fnement associated with proximity to opera-tional limits, such as the Greenwald density limit, \f limit and H-mode power threshold, is still an area ofactive studies and is not yet well quanti\fed by the available database. One can assess the statistical uncertainty in the ITER energy con\fnement time \u001c ITERusing the tech- niques that are described in Section 6.4. The 95%interval estimate for the prediction of \u001c ",
+    "ssess the statistical uncertainty in the ITER energy con\fnement time \u001c ITERusing the tech- niques that are described in Section 6.4. The 95%interval estimate for the prediction of \u001c ITERfrom the ELMy H-mode log-linear scaling Eq. (26) is \u001cITER= 4:4{6.8 s. With this narrow uncertainty interval, ITER would de\fnitely ignite, although operation athigher current or higher density might be required to preserve ignition at the lower end of this inter- val. A larger interval, \u001c ITER =3:5{8.0 s, has been deriv",
+    "ping con\fdence intervals, and e\u000borts need to be directedin the next few years at reducing the con\fdence inter-val of each technique. There is a further uncertainty associated with the use of the ELMy H-mode as the operating regime,in that there is a power threshold that has to beexceeded before the ELMy H-mode is achieved. Thisis discussed in detail in Section 4; the presently pro-jected power in ITER would appear to be su\u000ecient Nuclear Fusion, Vol. 39, No. 12 (1999) 2177  === Page 5 ===  ITER Physics"
+  ],
+  "ELMy H-mode": [
+    "sis 6. Global energy con\fnement scalings 2201 6.1. Introduction . . . . . . . . . . . . . . . 22016.2. H-mode global con\fnement database . 22026.3. Power law scaling expressions . . . . . 2203 6.3.1. ELMy H-mode thermal con- \fnement scalings . . . . . . . . 2204 6.3.2. ELM free H-mode thermal con\fnement scaling . . . . . . . 2205 6.3.3. L-mode thermal con\fnement scaling . . . . . . . . . . . . . . 2205 6.4. Point and interval estimation for the con\fnement time in ITER . . . . . . . 2206 7. Scaling studies ",
+    "nto the analysis. The log-linear form itself is equivalent to assuming thata single turbulence mechanism with one scale size isresponsible for the transport. This seems unlikely tobe the case for the ELMy H-mode, the operationalmode foreseen for ITER, where the core region may 2176 Nuclear Fusion, Vol. 39, No. 12 (1999)  === Page 4 ===  Chapter 2: Plasma con\fnement and transport be dominated by short wavelength turbulence of the gyroBohm type, and the behaviour in the edge region is possibly determined by ",
+    "can assess the statistical uncertainty in the ITER energy con\fnement time \u001c ITERusing the tech- niques that are described in Section 6.4. The 95%interval estimate for the prediction of \u001c ITERfrom the ELMy H-mode log-linear scaling Eq. (26) is \u001cITER= 4:4{6.8 s. With this narrow uncertainty interval, ITER would de\fnitely ignite, although operation athigher current or higher density might be required to preserve ignition at the lower end of this inter- val. A larger interval, \u001c ITER =3:5{8.0 s, has been deriv",
+    "erlapping con\fdence intervals, and e\u000borts need to be directedin the next few years at reducing the con\fdence inter-val of each technique. There is a further uncertainty associated with the use of the ELMy H-mode as the operating regime,in that there is a power threshold that has to beexceeded before the ELMy H-mode is achieved. Thisis discussed in detail in Section 4; the presently pro-jected power in ITER would appear to be su\u000ecient Nuclear Fusion, Vol. 39, No. 12 (1999) 2177  === Page 5 ===  ITER Physics",
+    "nce inter-val of each technique. There is a further uncertainty associated with the use of the ELMy H-mode as the operating regime,in that there is a power threshold that has to beexceeded before the ELMy H-mode is achieved. Thisis discussed in detail in Section 4; the presently pro-jected power in ITER would appear to be su\u000ecient Nuclear Fusion, Vol. 39, No. 12 (1999) 2177  === Page 5 ===  ITER Physics Basis to exceed the threshold, provided the transition to the H-mode is achieved at a low density. Besid",
+    "to be su\u000ecient Nuclear Fusion, Vol. 39, No. 12 (1999) 2177  === Page 5 ===  ITER Physics Basis to exceed the threshold, provided the transition to the H-mode is achieved at a low density. Besides the ELMy H-mode, several other improved con\fnement modes have already been real-ized, as discussed in Section 3. One of the mostpromising ones is the negative, or reversed, shearcon\fguration, which involves an internal transportbarrier. It can be used to realize a continuous opera- tion of the tokamak, since there",
+    "positive dependence of con\fnement on Aifrom gyrokinetic calculations and theories based on non-linear ion Landau damping [53], there is not yet asatisfactory theoretical explanation of this e\u000bect. ForELMy H-mode, ELMs could cause an isotope e\u000bect Nuclear Fusion, Vol. 39, No. 12 (1999) 2183  === Page 11 ===  ITER Physics Basis to appear through boundary conditions. Phenomeno- logical observations will be described in Section 3. 3. Fast time-scales and non-local e\u000bects When a transient local perturbation in ",
+    "ompari-son [121]. devices under a limited range of operating con- ditions. In addition, steady state operation in many of these modes remains to be demon-strated. The H-mode with edge localized modes(ELMy H-mode) has been run for as long as20 s on JET [127], with the duration limitedonly by power supply considerations. (2) The H-mode requires little in the way of spe- cial wall conditioning, unlike, for example, thesupershot regime, although it does bene\ft fromreduced particle recycling. (3) The H-mode exh",
+    "n\fnement scaling [136]and\f N=\f=(I=aB T). The highest transient value ofFFusachieved so far in negative central shear discharges is about 1.2 [6], which should be com- pared with FFus=0:64 expected in ELMy H-mode in ITER. In TFTR ERS plasmas [6, 137{139], dramatic reductions in the ion thermal conductivity and par-ticle di\u000busivity are found shortly after the onset ofnearly balanced neutral beam injection. Both quanti-ties fall to or below present day standard neoclassicalpredictions. Evidence for exceptiona",
+    "ough JT-60U shows larger reductions in the presence of higher fre-quency ‘giant ELMs’ [283,306]. A more general inves-tigation of the inﬂuence of ELMs on \u001c Ewas done by establishing a scaling of \u001cEin ELMy H-mode [305]. A comparison with a similar scaling for the ELM free H-mode shows that, for present experiments, thereduction in \u001c Eis indeed around 10{20%. For larger devices, especially for the ITER parameters, the twoscalings agree within the statistical errors. Such aresult is expected if ELMs can be co"
+  ],
+  "steady.*?state": [
+    "n plasma density nor temperature Tis applied to a tokamak, one might expect its e\u000bect to propagate across themagnetic surfaces on a time-scale that is related tothe di\u000busion coe\u000ecients characterizing steady stateparticle and energy balance. In fact, observations ofheat pulses generated by, for instance, sawtooth col-lapses or localized auxiliary heating such as ECRH, show that these signals propagate as if the di\u000busion coe\u000ecient exceeded that determined from steadystudies by a factor typically in the range ",
+    "a shapes and identical line averageddensities, plasma currents, toroidal \felds and input powers at the time of compari-son [121]. devices under a limited range of operating con- ditions. In addition, steady state operation in many of these modes remains to be demon-strated. The H-mode with edge localized modes(ELMy H-mode) has been run for as long as20 s on JET [127], with the duration limitedonly by power supply considerations. (2) The H-mode requires little in the way of spe- cial wall conditioning, unlik",
+    "liary heatingearly in the plasma discharge. The enhanced per-formance of these plasmas is, at present, transient, however, and experiments are now being designed to extend this regime of operation to steady state.Recently, ELMy reversed shear H-mode dischargeswere sustained in DIII-D [134] and JT-60U [135] for1.5 s, although with a relatively low \fgure of meritF Fus=\fNH=q2=0:5, where His the enhancement factor above the L-mode con\fnement scaling [136]and\f N=\f=(I=aB T). The highest transient value ofFFusachi",
+    "ion insuch regimes. Pressure and density pro\fles in ERS plasmas are characterized by strong central peaking, with the transport barrier located at or near the loca-tion of the minimum in the qpro\fle. Steady state operation is limited by plasma disruption, triggeredeither by q minfalling below 2, or by the high pressure gradient region slowly expanding through the radiusof weak magnetic shear. Signi\fcant reductions in transport are also observed on DIII-D in NCS plasmas with ITBs [130,141,142]. As in TFTR, t",
+    " through the bene\fcial e\u000bects of an H-mode pedestal and pressure pro\fle broadening [165],and through increased plasma triangularity [166]. As contrasted with reverse shear operation on JT-60U, nearly steady state operation of these plasmas hasbeen demonstrated [8]. In JFT-2M, the improved L-mode is transiently obtained just after an H{L transition [167]. The other improved L-mode is transiently obtained with counter neutral beam injection associated with apeaking of the electron density. A transient increas",
+    "nticipated transport propertiesof the fuel species, helium ash and impurities. A key factor determining performance projections for ITER is the fraction of helium ash accumulationduring long pulse or steady state operation. The pri-mary e\u000bect is dilution of the fuel and reduction ofthe fusion power. The impact of helium ash can bequanti\fed in terms of the simple ratio of the e\u000bec- tive helium particle con\fnement time to the global energy con\fnement time, \u001c \u0003 He=\u001cE,w h e r e \u001c\u0003 Hetakes into account \fnite rec",
+    "ount \fnite recycling and helium pumping;that is \u001c \u0003 He=\u001cHe=(1−Re\u000b) (30) where \u001cHeis the particle con\fnement time for helium nuclei, and Re\u000bis the e\u000bective recycling coe\u000ecient (<1) to the core plasma. Steady state ignited solu- tions exist only for values of the ratio \u0011=\u001c\u0003 He=\u001cE< \u0011crit,w h e r e \u0011critis a number of order 10. A full derivation has been given by Reiter [377,378]; herewe will merely sketch the main ideas of that deriva-tion. The key point is that the fusion power production rate and the helium ",
+    "and the energy con\fnement time \u001cE[409{416]. Figure 25 shows a comparison of \u001c\u001ewith\u001cEmeasured in JET during tangential neutral beam injection [416]. One can see that \u001c\u001eand\u001cEare approximately equal for steady state L-mode and ELMy H-mode discharges,in agreement with earlier results obtained on ASDEX[413] and Doublet III [411]. Experiments on Dou-blet III have shown that \u001c \u001eand\u001cEscale in the same 2228 Nuclear Fusion, Vol. 39, No. 12 (1999)  === Page 56 ===  Chapter 2: Plasma con\fnement and transport way with p",
+    "a current and neutral beam power. These results, together with the identical shapes of the beam energy and the toroidal angular momentum deposition pro\fles, suggest that heat and momentumtransport at steady state conditions are governed byrelated mechanisms [22]. There are, however, experimental conditions when \u001c \u001edeviates from \u001cE. In the transient ELM free phase of hot ion H-mode discharges in JET, the angularmomentum con\fnement time reaches a value of onlyabout 0.6 times the energy con\fnement time (seeFig",
+    ".5 1.0 0.5 00 0.5 1.0 1.5 t E (s)tf (s) Figure 25. Toroidal angular momentum con\fnement time of thermal particles during neutral beam injectionversus simultaneously measured energy con\fnement timefor steady state L-mode and ELMy H-mode discharges(crosses), and for transient ELM free phase of hot ionH-mode discharges (squares) in JET [415]. because of lack of appropriate techniques. It can be found, however, from Eq. (9), if other terms inthe equation are known. Recently, the toroidal andpoloidal rotation ve"
+  ],
+  "advanced.*?scenario": [
+    "a@Ta @r: (7) In practice, each of the ﬂuxes depends on all the thermodynamic forces (pro\fle gradients) and a fullmatrix of ﬂuxes must be considered, including non-di\u000busive and non-diagonal terms. For advanced toka-mak scenarios, it is important to include the radialelectric \feld [13] in the transport model, since the gradient of the radial electric \feld is predicted to reduce transport coe\u000ecients [14], and the coupling of its evolution to the set of equations given above. Thecalculation of the plasma pro\fles using Eqns ("
+  ]
+}
+
+================================================================================
+完全なテキスト (最初の10ページ)
+================================================================================
+
+
+--- Page 1 ---
+
+Chapter 2: Plasma confinement and transport
+To cite this article: ITER Physics Expert Group on Confinement and Transport et al 1999 Nucl. Fusion 
+39 2175
+ 
+View the article online  for updates and enhancements. You may also like 
+Thermal energy confinement properties of 
+ELMy H mode plasmas in JT-60U 
+H. Urano, Y. Kamada, H. Shirai et al. -
+Transport and confinement physics: 
+Chapter 2 of the special issue: on the path 
+to tokamak burning plasma operation 
+M. Yoshida, R.M. McDermott, C. Angioni 
+et al.-
+Chapter 8: Plasma operation and control 
+Y. Gribov, D. Humphreys, K. Kajiwara et 
+al.-
+This content was downloaded from IP address 133.63.21.1 on 02/03/2026 at 01:13
+
+--- Page 2 ---
+
+Chapter 2: Plasma connement and transport
+ITER Physics Expert Groups on Connement and
+Transport and Connement Modelling and Database
+ITER Physics Basis Editorsy
+ITER EDA, Naka Joint Work Site, Mukouyama,Naka-machi, Naka-gun, Ibaraki-ken, Japan
+Abstract. Physics knowledge in plasma connement and transport relevant to design of a reactor-scale
+tokamak is reviewed and methodologies for projecting connement properties to ITER are provided.Theoretical approaches to describing a turbulent plasma transport in a tokamak are outlined and
+phenomenology of major energy connement regimes observed in tokamaks, including those with edge
+and internal transport barriers, is described. The chapter is focused on the energy connement in thehigh connement regime (H-mode) with the edge localized MHD modes, the basic operational regime
+of ITER. Three approaches are being pursued: (i) derivation of empirical global scaling laws; (ii)
+non-dimensionally similar studies; and (iii) one dimensional transport modelling codes, with the rstapproach recommended as the most robust at the present time. Special attention is paid to analysis
+of uncertainties in connement predictions. Empirical scaling relations for projecting the L-mode to
+H-mode power threshold based on regression analysis of an extensive database are discussed. Particleand toroidal momentum connement and their relation to energy connement are reviewed.
+ITER Physics Expert Group on Connement and Trans-
+port: M. Wakatani (Kyoto U., chair), V.S. Mukhovatov (ITERJCT, co-chair), K.H. Burrell (General Atomics), J.W. Con-nor (UKAEA, Culham), J.G. Cordey (JET), Yu.V. Esipchuk
+( K u r c h a t o vI n s t . ) ,X .G a r b e t( C E A ,C a d a r a c h e ) ,S . V .L e b e -
+dev (Ioe Inst.), M. Mori (JAERI), K. Toi (NIFS), S.M. Wolfe(MIT). ITER Physics Expert Group on Connement Mod-elling and Database: J.G. Cordey (JET, chair), D. Boucher
+(ITER JCT, co-chair), A.N. Chudnovskii (Kurchatov Inst.),
+J.W. Connor (UKAEA, Culham), J.C. DeBoo (General Atom-ics), W.A. Houlberg (ORNL), S.M. Kaye (PPPL), Y. Miura(JAERI), Y. Ogawa (U. of Tokyo), M.V. Osipenko (Kurcha-tov Inst.), F. Ryter (IPP Garching), T. Takizuka (JAERI).
+Additional contributing authors: G. Bateman (Lehigh U.), G.
+Bracco (ENEA, Frascati), D.J. Campbell (NET Garching),T.N. Carlstrom (General Atomics), Yu.N. Dnestrovski (Kur-chatov Inst.), T. Fujita (JAERI), A. Fukuyama (Okayama U.),P. Gohil (General Atomics), M.J. Greenwald (MIT), T. Hoang
+(CEA, Cadarache), G.M.D. Hogeweij (FOM Inst.), A.E. Hub-
+bard (MIT), O.J.W.F. Kardaun (IPP, Garching), J.E. Kin-sey (Lehigh U.), J.A. Konings (General Atomics), M. Mar-inucci (ENEA, Frascati), Y.R. Martin (CRPP/EPFL, Lau-sanne), D.R. Mikkelsen (PPPL), J. Ongena (EERM-KMS),
+T.H. Osborne (General Atomics), F.W. Perkins (ITER JCT),
+A.R. Polevoi (Kurchatov Inst.), M.N. Rosenbluth (ITERJCT), D.P. Schissel (General Atomics), J.A. Snipes (MIT),P.M. Stubbereld (JET), E.J. Synakowski (PPPL), A. Taroni(JET), K. Thomsen (JET), M.F. Turner (UKAE, Culham),
+N.A. Uckan (ORNL), M. Valovic (UKAE, Culham), G. Vlad
+(ENEA, Frascati), R.E. Waltz (General Atomics), J. Weiland( C h a l m e r sU . ) ,H .Z o h m( S t u t t g a r tU .) .
+yITER Physics Basis Editors: F.W. Perkins (ITER JCT),
+D.E. Post (ITER JCT), N.A. Uckan (ORNL), M. Azumi(JAERI), D.J. Campbell (NET), N. Ivanov (RRC-Kurchatov),
+N.R. Sautho (PPPL), M. Wakatani (Kyoto Univ.). Addi-
+tional contributing editors: W.M. Nevins (LLNL), M. Shimada
+(JAERI), J. Van Dam (Univ. Texas).Contents
+1. Introduction 2176
+2. Mechanisms of transport in a
+tokamak 2178
+3. Experimental description of
+connement and transport 2184
+3.1. Introduction . . . . . . . . . . . . . . . 2184
+3.2. General results for ohmic and L-mode 21853.3. Regimes with edge transport barrier
+(H-mode) and recommended regimefor ITER . . . . . . . . . . . . . . . . 2186
+3.4. Regimes with internal transport barriers2187
+3.4.1. Barriers associated with
+reversed or weak magnetic shear2188
+3.4.2. Other improved core conne-
+ment regimes without edge
+radiation . . . . . . . . . . . . 2189
+3.5. Enhanced connement with edge radi-
+ation . . . . . . . . . . . . . . . . . . . 2190
+4. L{H and H{L transition physics 2192
+4.1. Physical processes of transition . . . . 21924.2. Edge pedestal . . . . . . . . . . . . . . 21934.3. Power threshold scaling . . . . . . . . 2195
+5. Impact of global instabilities on
+transport 2198
+5.1. Sawteeth . . . . . . . . . . . . . . . . . 21985.2. Edge localized modes . . . . . . . . . . 2200
+Nuclear Fusion, Vol. 39, No. 12 c/circlecopyrt1999, IAEA, Vienna 2175
+
+--- Page 3 ---
+
+ITER Physics Basis
+6. Global energy connement scalings 2201
+6.1. Introduction . . . . . . . . . . . . . . . 22016.2. H-mode global connement database . 22026.3. Power law scaling expressions . . . . . 2203
+6.3.1. ELMy H-mode thermal con-
+nement scalings . . . . . . . . 2204
+6.3.2. ELM free H-mode thermal
+connement scaling . . . . . . . 2205
+6.3.3. L-mode thermal connement
+scaling . . . . . . . . . . . . . . 2205
+6.4. Point and interval estimation for the
+connement time in ITER . . . . . . . 2206
+7. Scaling studies with similar dimension-
+less physics parameters 2209
+7.1. Basics . . . . . . . . . . . . . . . . . . 22097.2. Discharges with identical dimension-
+less parameters . . . . . . . . . . . . . 2211
+7.3. Results of experiments with similar
+dimensionless parameters . . . . . . . 2211
+7.4. Limitations on transport scaling stud-
+ies with similar dimensionless param-eters . . . . . . . . . . . . . . . . . . . 2213
+7.5. Summary . . . . . . . . . . . . . . . . 2215
+8. One dimensional transport models 2215
+8.1. Introduction . . . . . . . . . . . . . . . 22158.2. Theoretical and semi-empirical trans-
+port models . . . . . . . . . . . . . . . 2216
+8.3. Plasma prole database . . . . . . . . 2219
+8.4. Results of one dimensional modelling
+tests . . . . . . . . . . . . . . . . . . . 2219
+8.5. Predictions of transport models for
+ITER . . . . . . . . . . . . . . . . . . 2222
+9. Particle transport: hydrogen,
+helium, impurities 2225
+10.Momentum connement 222811.Summary 2231
+A ITER energy connement
+projection 2232
+A1. Point and interval estimation based
+on log-linear and log-non-linear scal-ing expressions . . . . . . . . . . . . . 2232
+A2. Framework for interval estimation . . 2235
+1. Introduction
+The most developed concept for realizing con-
+tinuous energy (electricity) production from fusionreactions is the tokamak, based on an axisymmet-
+ric toroidal plasma. In recent years there has been
+considerable development of databases and accumu-
+lation of knowledge of the behaviour of tokamak plas-mas around the world, and these make it possible todesign an experimental fusion reactor for energy pro-duction. However, a degree of uncertainty still existsin predicting the connement properties and plasmaperformance in such a device.
+A precise theory of the classical collisional trans-
+port losses has been developed. Since this does not
+completely explain the transport processes acrossmagnetic surfaces (as discussed in Section 2), addi-tional processes driven by plasma turbulence arerequired to be taken into account. Signicant theo-retical eorts are being devoted to understanding thecross-eld transport in tokamaks due to the turbu-lence, and a few models are broadly consistent withpresent experiments. On the other hand, since toka-
+maks with a range of sizes, operating parameters
+and heating powers have been constructed, empir-ical scaling laws derived from these are useful forpredicting plasma performance in any new device.Furthermore, the empirical scalings serve as a bench-mark for theoretical models. One expects that pre-dictions with such scaling laws will be improved ifone imposes dimensional constraints on the form ofthese laws in the scaling studies. It is also recognizedthat transport codes solving radial transport equa-
+tions numerically are also useful for obtaining quan-
+titative predictions. As a result, three approachesare being pursued at the moment for providing pre-dictions for connement, these are: (a) derivation ofempirical global scaling laws; (b) non-dimensionallysimilar studies; and (c) one dimensional transportmodelling codes.
+The main strengths of the empirical energy con-
+nement scaling method (described in Section 6) are
+its simplicity and the fact that all of the physicalprocesses are contained within the data. Its mainweakness is that the modelling of the energy con-nement time 
+Eby a simple log-linear form, or
+even by more sophisticated forms, can only, at best,be a very approximate description of the physicalprocesses taking place, since no knowledge of theheating, temperature or density proles, or atomic
+physics for that matter, is built into the analysis. The
+log-linear form itself is equivalent to assuming thata single turbulence mechanism with one scale size isresponsible for the transport. This seems unlikely tobe the case for the ELMy H-mode, the operationalmode foreseen for ITER, where the core region may
+2176
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+--- Page 4 ---
+
+Chapter 2: Plasma connement and transport
+be dominated by short wavelength turbulence of the
+gyroBohm type, and the behaviour in the edge region
+is possibly determined by MHD events such as the
+edge localized modes (ELMs). These two processeswill scale dierently with the main scaling parame-ter
+, the normalized Larmor radius ( i=a).
+There is also the possibility that there are hidden
+parameters that are not being taken into accountin the analysis. One parameter that may aect theconnement in some situations, but which is notpresently being taken into account, is the edge neu-
+tral pressure; another possible important parame-
+ter is the Mach number of the toroidal rotation M
+(V
+=cs). Both these parameters are currently
+being added to the database, but their eect on theITER predictions is, as yet, unclear. The degradationof connement associated with proximity to opera-tional limits, such as the Greenwald density limit, 
+limit and H-mode power threshold, is still an area ofactive studies and is not yet well quantied by the
+available database.
+One can assess the statistical uncertainty in the
+ITER energy connement time 
+ITERusing the tech-
+niques that are described in Section 6.4. The 95%interval estimate for the prediction of 
+ITERfrom the
+ELMy H-mode log-linear scaling Eq. (26) is ITER=
+4:4{6.8 s. With this narrow uncertainty interval,
+ITER would denitely ignite, although operation athigher current or higher density might be required
+to preserve ignition at the lower end of this inter-
+val. A larger interval, 
+ITER =3:5{8.0 s, has been
+derived by taking various non-log-linear forms andother considerations into account. At the lower endof this range the minimum Q(thermonuclear
+power/input power) would be above 6.
+The dimensionless physics parameter scaling tech-
+n i q u e( d e s c r i b e di nS e c t i o n7 )o v e r c o m e so n eo fthe shortcomings of the energy connement scaling
+approach, namely the inﬂuence of the plasma pro-
+les on the connement. In fact, in the simple caseof a single dominant turbulence mechanism, one canobtain directly, by a simple projection, from thoseof current experiments, the temperature and densityproles in ITER, provided the source proles of heatand particles are the same. A further key advantageof this approach is that the MHD stability properties(i.e. the ELM and sawtooth behaviour, discussed in
+Section 5) would be the same in ITER as those of
+the similarity discharge in the present device.
+The technique does not entirely overcome one of
+the major possible shortcomings of the log-linearenergy connement scaling approach, that is the exis-tence of dierent types of turbulence dominating the
+edge and core regions. In this situation, a more com-
+plex projection of the proles of a current device to
+ITER would be required.
+Another concern with this technique is whether
+all of the key dimensionless parameters have beenidentied. Several theoretical papers have proposedthat the turbulence in a tokamak can be quenched byshear in the toroidal ﬂow. This implies that the Machnumber Mis an important dimensionless parameter.
+This is certainly not being kept constant in the 
+
+scaling experiments completed so far, which use neu-
+tral beam injection heating. Clearly, experiments inwhich the Mach number is varied around the val-ues anticipated for ITER, while other dimensionlessparameters (i.e. 
+,and) are kept xed, are
+required. (Toroidal momentum connement is dis-cussed in Section 10.)
+The range of uncertainty of the ITER prediction
+using this technique is quite large for extrapolation
+from a single machine (see Table 8). This uncertainty
+comes about from the narrow range in 
+available on
+a given machine (typically a factor of 2) comparedto the distance in 
+(a factor of 5 :5i nJ E T )b y
+which one has to extrapolate to ITER. To reducethis uncertainty, a database with joint 
+scans from
+dierent devices will be required.
+Work on the full one dimensional modelling
+approach is progressing well and there are currently
+several one dimensional models, of both the purely
+theoretical and the semi-empirical type, which arereasonably successful in reproducing the temperatureproles in the core (Section 8.4). The edge region0:9<r = a< 1 is still a problem, since, at the present
+time, there is no tested model for this region. Cou-pled with the strong sensitivity of some of the ‘stier’one dimensional models to the edge conditions, thismakes the prediction of the performance of ITER
+using this technique rather dicult, as is shown in
+Section 8.5. An additional uncertainty is the dier-ing manners in which the models treat stabilizationof the turbulence by EBvelocity shear.
+The three techniques do at least have overlapping
+condence intervals, and eorts need to be directedin the next few years at reducing the condence inter-val of each technique.
+There is a further uncertainty associated with the
+use of the ELMy H-mode as the operating regime,in that there is a power threshold that has to beexceeded before the ELMy H-mode is achieved. Thisis discussed in detail in Section 4; the presently pro-jected power in ITER would appear to be sucient
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2177
+
+--- Page 5 ---
+
+ITER Physics Basis
+to exceed the threshold, provided the transition to
+the H-mode is achieved at a low density.
+Besides the ELMy H-mode, several other
+improved connement modes have already been real-ized, as discussed in Section 3. One of the mostpromising ones is the negative, or reversed, shearconguration, which involves an internal transportbarrier. It can be used to realize a continuous opera-
+tion of the tokamak, since there is a signicant frac-
+tion of bootstrap current with a self-consistent pro-le. The RI-mode also has attractive features such asa high connement at very high density, approach-ing or exceeding the Greenwald density limit, withthe major portion of plasma energy radiated fromplasma periphery.
+Furthermore, in order to achieve continuous oper-
+ation, particle control is essential, in addition to heatexhaust. Thus, for DT burning plasmas, helium ashexhaust is an important requirement; the heliumdensity as well as the impurity ion density must bekept suciently low in order to minimize the dilu-tion of fuel ions. To solve these problems, the particletransport properties in fusion plasmas must be char-acterized; this is discussed in Section 9. In particular,the sawtooth seems crucial for controlling the helium
+ash and impurities in the central region and ELMs
+at the plasma edge; these are discussed in Section 5.
+Finally, it should be noted that there are several
+interesting, but unresolved, challenges to our under-standing of transport, such as prole resilience, theisotope eect, non-local eects, fast time-scale phe-
+nomena, etc. A better understanding of these pro-
+cesses could contribute to improving the predictionof the fusion performance of reactor grade plasmas.
+2. Mechanisms of transport
+in a tokamak
+There is a precisely formulated theoretical model
+for the transport of plasma particles and energyacross the magnetic surfaces due to Coulomb colli-sions in a stable, quiescent toroidal connement sys-tem. This process, which takes account of the parti-cle orbits in an axisymmetric inhomogenous toroidalmagnetic eld [1] and leads to higher levels of colli-
+sional transport than in a cylindrical plasma (which
+is called classical transport), is known as neoclas-sical transport [2{5], and will always be present ina tokamak. The classical diusion coecient can beestimated by D
+cei2
+efor plasma particles, and
+the ion thermal diusivity by iii2
+i,w h i c his greater than both Dcand the electron thermal
+diusivity eee2
+eby a factor of ( mi=me)1=2.
+Here, is a 90collision frequency and is a Lar-
+mor radius, =Vth=Ω, which is proportional to the
+ratio of a thermal speed Vthto a cyclotron frequency
+Ω=eB=mc ,w h e r e B=jBjis the magnetic eld
+strength and mis the particle mass. The neoclas-
+sical transport levels exceed the classical ones bygeometrical factors: q
+2"−3=2in the low collision fre-
+quency ‘banana’ regime ( <1:0) and q2in the col-
+lisional ﬂuid limit, as a result of the toroidal geome-
+try. Here, "=r=Ris the inverse aspect ratio, with r
+andRbeing the minor and major radii of the mag-
+netic surface, and qrBT=RB pis the safety factor,
+where BTandBpare the toroidal and poloidal mag-
+netic eld components, respectively. The collisional-ity parameter is 
+e=!b,w h e r e eei="is
+the eective collision frequency for particle detrap-ping, and !
+b"1=2Vth=(Rq) is the trapped particle
+averaged bounce frequency.
+In spite of its larger value, neoclassical trans-
+port cannot normally explain the observed perpen-
+dicular transport in a tokamak. For the usual lowconnement regime (L-regime) in auxiliary heatedtokamaks, the neoclassical transport theory predictsconnement times longer than those experimentallymeasured by up to two orders of magnitude for theelectrons and one order of magnitude for the ions.Plasma turbulence is probably a dominating eectin causing plasma cross-eld transport. However, for
+some improved connement regimes and in localized
+regions of the plasma, transport can be reduced tothe neoclassical level [6{8].
+The objective of the transport calculations is the
+determination of the magnitudes and radial prolesof the plasma parameters (such as density, temper-ature, etc.). To do so, it is useful to formulate thetransport problem in a macroscopic way [9]. Ontransport time-scales, a ﬂuid representation is gen-erally used. Axisymmetry is assumed and plasma
+observables are averaged on a ﬂux surface over the
+poloidal angle. In this way, a set of one dimensionalﬂuid like equations can be derived to represent theevolution of the density, momentum and energy foreach plasma species:
+@n
+a
+@t=−1
+r@
+@r(rΓa)+Sa (1)
+mana@Via
+@t=−1
+r@
+@r(ria)+Mia (2)
+3
+2na@Ta
+@t=−1
+r@
+@r[r(Qa+5
+2ΓaTa)] +Pa(3)
+2178 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+--- Page 6 ---
+
+Chapter 2: Plasma connement and transport
+and the poloidal magnetic eld, Bp, diusion equa-
+tion:
+@Bp
+@t=@
+@r
+0r@(rBp)
+@r
+−@
+@r(Jb):(4)
+Here, the subindex aindicates the particle species,
+the subindex iindicates the components of the veloc-
+ity vectors, Γ a,aandQaare the particle, momen-
+tum and energy ﬂuxes, and Sa,MaandPaare the
+source, sink and transfer terms for particles, momen-tum, and energy. The radius ris a generalized minor
+radius that labels each magnetic surface.
+In the magnetic eld diusion equation, Eq. (4), 
+is the parallel resistivity and J
+bis the bootstrap cur-
+rent predicted by neoclassical theory. To understandthe origin of this neoclassical eect, we observe thatthe circulating electrons carry the parallel currentin response to the toroidal electric eld and othercurrent drive inputs. This parallel current responseis determined by the balance between the collisional
+friction of circulating electrons with ions and the vis-
+cous drag on their poloidal ﬂow produced by col-lisions with the trapped electrons. The predictedparallel resistivity, , agrees well with experimental
+results. Another element of the parallel transport,the bootstrap current [10],
+J
+bp"
+Bpdp
+dr
+has also been shown to be in good agreement with
+theoretical predictions [11, 12]. Therefore, the the-oretical picture of neoclassical parallel transport isconsistent with experiment.
+The ﬂuxes contain all the dynamic information
+on the transport processes. While neoclassical the-ory gives an explicit expression for them, there isnot a general form for turbulent transport. In prac-tice, these ﬂuxes have been parametrized by analogywith the structure given by neoclassical theory. For
+instance, the simplest assumption of diusive ﬂuxes
+would give
+Γ
+a=−Da@na
+@r(5)
+ia=−ia@Via
+@r(6)
+Qa=−a@Ta
+@r: (7)
+In practice, each of the ﬂuxes depends on all the
+thermodynamic forces (prole gradients) and a fullmatrix of ﬂuxes must be considered, including non-diusive and non-diagonal terms. For advanced toka-mak scenarios, it is important to include the radialelectric eld [13] in the transport model, since the
+gradient of the radial electric eld is predicted to
+reduce transport coecients [14], and the coupling of
+its evolution to the set of equations given above. Thecalculation of the plasma proles using Eqns (1){(4)requires the knowledge of these diusivities and alsothe appropriate boundary conditions, particularlyas the predictions of some ‘sti’ transport modelsinvolving marginally stable proles can be sensitiveto these [15]. The boundary conditions will be dis-cussed at the end of this Section and in Section 4.2.
+The determination of the diusivities has long been
+the goal of transport studies. There are many exist-ing reviews on this topic [16{23] and, here, we giveonly a very simplied overview. In understanding thetransport coecients, there are three possible waysof making progress: (1) theoretical; (2) numericalsimulation; and (3) experimental. We discuss theseapproaches in the remainder of this section.
+We have seen that the transport theory based
+on particle collisions can incorporate the geometryof the tokamak magnetic system, but neoclassicaltheory still assumes that the plasma is in equilib-rium and is axisymmetric. Real tokamak plasmasalways show the presence of a broad spectrum of ﬂuc-tuations, e.g. in plasma density, temperature, andelectromagnetic elds [17, 24]; thus, real tokamakplasmas are turbulent and intrinsically three dimen-sional. The turbulent ﬂuctuations give rise to trans-
+port across the equilibrium magnetic surfaces and it
+is necessary to incorporate their eect in a compre-hensive transport theory. From the theoretical pointof view, most of the instabilities that we think areresponsible for the observed plasma turbulence havea very small component of the wavenumber vectorparallel to the magnetic eld, compared to the per-pendicular component. That is, most of the turbulenteddies are quasi-perpendicular to the toroidal mag-
+netic eld. Therefore, we can expect that turbulence
+dominates perpendicular transport, but the inﬂuenceof the plasma turbulence on the parallel transport israther small, as experiment conrms.
+Hydrodynamic turbulence is an unresolved com-
+plex physical problem [25]. Plasma turbulence is evenmore complex. Since we can describe plasmas asa combination of several ﬂuids (an electron ﬂuid
+plus ion ﬂuids), we can imagine plasma turbulence
+as the result of these multiple turbulent ﬂuids cou-pled through electromagnetic, friction, and energyexchange eects. It is not surprising, therefore, thatthere is not yet a theory or even a comprehensiveapproach to this problem.
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2179
+
+--- Page 7 ---
+
+ITER Physics Basis
+Plasma turbulence diers in many ways from ﬂuid
+turbulence, starting from the structure of sources and
+sinks. Plasma turbulence is driven by the free energy
+sources of the many plasma micro-instabilities, essen-tially the gradients of the density and temperature[26{29]. Thus, in the core of the plasma there aremicro-instabilities driven by the ion temperature gra-dient (ITG); these are the electrostatic ITG driftmodes and trapped ion modes. These modes areoften characterized by a value 
+i=d(lnTi)=d(lnn),
+and referred to as ‘ imodes’. Others are driven
+by the electron temperature gradient: electrostatic
+trapped electron and shorter wavelength electro-magnetic 
+edrift modes, and micro-tearing modes.
+There are also ﬂuid like instabilities driven by pres-sure gradients: the current diusive ballooning [30]and neoclassical tearing modes [31{33]. At a colli-sional plasma edge, there is a range of ﬂuid insta-bilities driven by gradients in pressure, resistivityand current. In Table 1, we give a summary viewof plasma instabilities that are possible underlying
+mechanisms for plasma turbulence in tokamaks. In
+the edge region, it is possible that atomic physicsprocesses can play a part, so that in addition to thoseinstabilities shown in Table 1, another candidate atthe plasma edge is the ionization instability [34{36],even if the validity of the linear theories has beenquestioned [37]. The plasma drives couple directly,through these instabilities, to a broad range of turbu-lence scale lengths. Therefore, in general, one cannot
+separate between the driving and inertial ranges, as
+is done in hydrodynamic turbulence. The dissipativeterms do not have the simple form of a collisionalviscosity. The complicated magnetic geometry of atokamak adds even more diculties to this problem.In spite of this, research on tokamak plasma turbu-lence has proceeded at several levels: (1) renormaliza-tion of simple sets of equations modelling the turbu-lence; (2) scale invariance and dimensional analysistechniques; and (3) numerical solution of turbulence
+models.
+The renormalization approach starts from per-
+turbation theory. When summing the perturbationseries, the characteristic time-scale associated withthe non-linear processes, 
+c, must be determined in
+a self-consistent manner [38, 39]. If it is approxi-
+mated by the linear time-scale (inverse of the linear
+growth rate, γ, of the appropriate plasma instabil-
+ity), conservation laws are violated. The renormaliza-tion approach introduces a recursive determinationof the non-linear time-scale (in a way similar to thedetermination of the electron mass in quantum elec-trodynamics). The most common closure scheme is
+the direct interaction approximation. The adequacy
+of this closure scheme has been tested with numeri-
+cal calculations within the accuracy achievable withpresent numerical resolution. The determination ofthe basic turbulence scale length, 
+T(mixing length
+like length-scale) [40], and the decorrelation time, c,
+allows the construction of an eective turbulent dif-fusivity, D
+T2
+Tc. In practice, to apply renormal-
+ization techniques, the problem must be reduced toao n e ,o ra tm o s tt w o ,e q u a t i o nm o d e l .O t h e r w i s ei t
+is practically impossible to solve the problem ana-
+lytically, or even numerically. Analytical approachesare also limited because the approximations neededto solve the equations restrict the applicability ofthe solutions to a small range of plasma parameters,while experiments cover, in general, a broad param-eter range. However, these techniques are essentialfor making progress in understanding. In some sim-ple models [41{43], it has been shown that 
+Tis
+proportional to the inverse perpendicular wavenum-
+ber,k?, and the following form for the turbulence
+diusivity can be adopted DTγ=k2
+?,w h e r ei s
+a weak function (logarithmic or just a constant) ofthe plasma parameters [44,45]. This formulation ofthe turbulent diusivities has been adopted in an adhoc fashion in some of the transport models.
+The scale invariance approach [46,47] is an alter-
+native approach for the determination of the trans-port coecients. It is based on the idea of interme-diate asymptotics [48], and, in some simple models,it has been shown to be equivalent to the renormal-ization group technique [49]. In this approach, one
+identies all the independent transformations under
+which the dynamical equations are invariant. It hasbeen applied to several types of turbulence dynamicsand it can be a powerful tool in identifying the maindependences of the diusivities. The minimal formof the scale invariance approach is the dimensionalanalysis that will be discussed in the context of theempirical determination of the transport coecients.Another analytical approach invokes marginal stabil-ity criteria, e.g. [50{52]. Yet another approach is the
+study of the saturation of turbulence spectra by non-
+linear plasma dynamics [53{55].
+The numerical solution of the primitive equations
+allows us to cover a broader parameter range than bythe analytical approaches. It is a promising methodwhen computer capabilities allow calculations withsucient resolution. The numerical calculations canbe carried out at dierent levels as follows.
+2180
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+--- Page 8 ---
+
+Chapter 2: Plasma connement and transport
+Table 1. Main instabilities that contribute to the anomalous transport losses in tokamaks [29] ( j=d e n s i t y
+scale length/temperature scale length for species j).
+Source of
+Group Instability free energy Subspecies Properties
+Ion imodes rTi Slab modes !!i
+Instabilities Toroidal modes i>ic
+Trapped ion modes LTi=R < (LTi=R)crit
+Electron Drift Waves rne Slab modes !!e
+Toroidal modes
+Dissipative trapped rTe "! <  e"3=2Vthe=qR
+electron modes "nq<k ?seLn="cs
+Electron Collisionless trapped rTe e<" !"3=2Vthe=qR
+instabilities electron modes "nq<k ?s1
+emodes rTe Slab modes !pe=c < k ?<−1
+e
+Toroidal modes kkVthe;!be<!<! e
+EM drift waves rne !!e,k?s1
+Resistive rP Fast modes !!e
+ballooning modes Slow modes kkVthe<! Fluid like
+instabilities Current diusive rPk kVthe<!
+ballooning modes
+Here!,kkandk?are the frequency and parallel and perpendicular wavenumbers of the instability, respectively;
+!jis the diamagnetic frequency of species j,!pethe electron plasma frequency, sthe ion Larmor radius at the
+electron temperature, csthe sound speed, LTthe temperature scale length of species j,"nthe ratio of density
+scale length Lnto major radius Randj=Ln=LTj.
+(1)Particle calculations . In this case, the motion
+of individual particles in the plasma is fol-lowed in time. This approach requires consider-able computational resources. A great deal ofprogress has been made by using the gyroki-netic approach. In this approach, the particlemotion is averaged over the fastest time-scale,Ω
+−1, the inverse cyclotron frequency.
+(2)Fluid calculations . Moments of the distribution
+function for each plasma species are followedin time as ﬂuid quantities. A closure scheme is
+needed to limit the number of moments. When
+the closure scheme incorporates Landau damp-ing, the approach is called gyroﬂuid [56]. Theseare absent from reactive ﬂuid models [57].
+Considerable progress has been made in recent
+years through gyrokinetic [58,59] and gyroﬂuid [60]
+calculations, and it has been shown that these cal-culations can be used for the determination of thescaling of 
+Tandcwith plasma parameters [15].
+At present, there is not good agreement betweenthese two numerical models; active work is under-way to understand and resolve the reasons for the
+dierences.
+The turbulent transport picture seems to t some
+of the qualitative features of perpendicular transport
+in a tokamak. To provide a sound basis for this mech-
+anism, research eort has been concentrated on iden-tifying the connection between the observed plasmaﬂuctuations and transport. In doing so, it is con-venient to distinguish between two plasma regions:the core and the edge. At the plasma edge, the ﬂuc-tuations are, in general, large (of the order of theequilibrium quantities). They are dominantly elec-trostatic, unless the plasma pressure approaches the
+ideal magnetohydrodynamic (MHD) stability limit,
+and, because of the low plasma temperature, detailedmeasurements can be made with probes. From thesemeasurements, it has been inferred that the edge par-ticle loss can be explained by ﬂuctuation inducedtransport [24].
+Core ﬂuctuation levels are low (a few per cent
+of the equilibrium values of density, etc.) [17, 24];their measurement by non-intrusive techniques iscomplicated. Several of these techniques are used:
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2181
+
+--- Page 9 ---
+
+ITER Physics Basis
+for instance, beam emission spectroscopy [61], reﬂec-
+tometry [62{64], and correlation measurements of
+electron cyclotron emission (ECE) signals [65, 66].
+The rst two measure density ﬂuctuation levels andthe third electron temperature ﬂuctuations; there-fore, we have no knowledge of the turbulence drivenﬂuxes. The heavy ion beam probe [67] can determineboth density and potential ﬂuctuations, and, there-fore, the particle ﬂux. However, its use has been lim-ited. The ﬂuctuation measurements indicate that thespectrum is peaked at long wavelengths and radial
+correlations lengths are of the order of a centimetre
+or less. In some experiments, ﬂuctuation levels seemto correlate well with global, and even local, trans-port [68], but without determination of the ﬂuxes,no unambiguous correlation with transport can beestablished. The turbulence characteristics are con-sistent with calculations of ITG driven turbulence,but comparisons have only been carried out for alimited number of discharges. Plasma core turbu-lence may have a signicant magnetic component.
+Although there are measurements of the magnetic
+eld ﬂuctuations at a xed wavelength [69], there isnot yet a direct measurement of this component fora broad range of wavenumbers, and its role in trans-port is controversial [70]. Recently, other ﬂuctuationmeasurement techniques have become available thatenable us to measure ion temperature and parallelvelocity ﬂuctuations [68]. Hopefully, these measure-ments will help in clarifying the plasma turbulence
+drive and will shed some light on turbulence induced
+energy transport.
+The turbulence driven transport theory has also
+been eective in the interpretation of improved con-nement regimes. For instance, there is much theo-retical and experimental evidence that EBveloc-
+ity shear (i.e. radially varying prole of the EB
+plasma ﬂow) can reduce turbulent transport, as will
+be discussed in Sections 3.3 and 4.1. The theories
+seem consistent with the observation of a causal cor-relation between the buildup of the sheared radialelectric eld and the suppression of turbulence [71].Some of the limitations of the transport based onturbulence are discussed at the end of this sectiona n di nS e c t i o n8 .
+Since fully convincing transport predictions can-
+not yet be made from rst principles, it is necessary
+to use empirical approaches to predictive transport.Even in this case, the transport coecients cannotbe arbitrarily chosen. There are dimensional con-straints that follow from invariance principles [72,73],discussed more fully in Section 7. These constraintsreduce the number of experiments to be performed
+in order to determine these coecients. To establish
+these constraints, we need to identify the relevant
+invariance principle and dimensionless parameters.This can only be done within some given theoreticalframework. The broader the framework, the less con-strained are the transport coecients. On strict the-oretical grounds, even assuming transport is due toquasi-neutral plasma physics processes, the numberof dimensionless parameters for a conned plasma islarge, up to 19 have been identied [74]. They include
+plasma physics parameters such as , the ratio of the
+plasma kinetic pressure to the magnetic pressure, thecollisionality, 
+e=!b, and the normalized ion
+Larmor radius, i=a. There are also parameters
+describing the magnetic eld geometry, such as thesafety factor q, aspect ratio AR=a, the ellipticity
+, and triangularity of the plasma cross-section,
+and parameters representing the plasma composi-tion:T
+e=Ti,me=mi,Ze, etc. For a local diusion
+coecient, we have to include the parameters related
+to plasma proles, such as the ratios of scale lengths,
+LT=R,Ln=R, etc. From dimensional arguments, and
+assuming a power law dependence on , the diu-
+s i v i t i e sc a nb ee x p r e s s e di nt h ef o l l o w i n gf o r m :
+D=css()F(;;q;A ;; ;L T=R;
+Ln=R;:::;m e=mi;Te=Ti)( 8 )
+where csp
+Te=miis the sound speed, s=p2miTe=eBis the ion Larmor radius evaluated at
+the electron temperature, and Fis a function of
+the dimensionless parameters that is to be deter-mined. The main change in plasma parameters ingoing from present experiments to the fusion reac-tor is in the value of 
+. Therefore, determining
+the transport scalings with is critical. Two lim-
+its that are often discussed in transport studies are
+dened by Eq. (8). When = 1, the scaling law is
+called gyroBohm. This is the expected scaling frommost local turbulence theories for which the turbu-lent scale length 
+Tis proportional to i.F o r=0 ,
+the scaling is called Bohm, when the turbulence scalelength involves the macroscopic size of the plasma.Of course the connement time can be determinedby boundary conditions on the transport equations,
+as well as the thermal diusivities themselves; this
+could introduce a dierent dependence on 
+[75] as
+discussed in Section 4.2.
+A series of experiments have been performed to
+resolve the scaling of Dwith dierent dimensionless
+parameters, in particular with . They will be dis-
+2182 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+--- Page 10 ---
+
+Chapter 2: Plasma connement and transport
+cussed in Section 7. In a given device, tokamak dis-
+charges that have the same dimensionless parameters
+apart from must be produced. The level of control
+required for these experiments makes them very di-cult. In present devices, only a limited range of varia-tion in 
+can be achieved (less than a factor of two).
+A larger range of variation in can be obtained by
+using dierent devices, but in this case the experi-ments are even more dicult. At present, and for thelow connement L-mode, some experimental resultsfor the energy connement time, 
+E,a r ec o n s i s t e n t
+with, or close to, Bohm type scaling [74, 76, 77],
+while others are between Bohm and gyroBohm [78].In the high connement mode (H-mode), the diu-sivities seem to be consistent with gyroBohm scal-ing. However, the problem is more complicated thanstated because the electron diusivity may be dier-ent from the ion diusivity. The separation betweenboth transport channels requires more diagnosticsand makes the analysis of the experimental resultsmore dicult. Only a few experiments separating
+electron and ion channels have been performed; they
+will be discussed later in this section. Scalings of D
+withand
+have also been carried out.
+The basis of this empirical approach to the deter-
+mination of the transport coecients needs to beestablished. The non-dimensional parameter scal-ings are based on plasma physics. However, plasmaexperiments are aected by edge conditions, plasmawall interactions, etc. If these boundary conditionsmodify connement in an essential manner, the
+non-dimensionally similar discharges would not be
+enough to determine the scaling of the transportcoecients. To test the basis of this approach, dis-charges with the same dimensionless parametersmust be set up in devices of dierent sizes to test ifthey are equivalent. Experiments comparing similardischarges from DIII-D and JET have given positiveresults [79].
+The basic picture and scalings for plasma trans-
+port presented here are challenged by some exper-
+imental observations. These observations underline
+t h ef a c tt h a tw ea r ef a rf r o mh a v i n gr e s o l v e da l lthe scientic issues in plasma transport. Examplesof these open questions are as follows.
+1. Bohm scaling and local ﬂuctuations
+Since the basic scale length of the micro-
+instabilities is 
+i, a simple random walk argument
+leads to transport coecients that are character-ized by a gyroBohm scaling. However, this seemsto disagree with the experimental observation in L-mode plasma connement. To explain a departure of
+the core turbulence from a gyroBohm scaling, two
+kinds of models have been proposed so far. First,
+many instabilities are sensitive to the toroidal geom-etry. This geometrical eect introduces a couplingbetween poloidal components. In a homogeneous sys-tem, this results in eigenmodes that extend over thesize of the device, similar to phonons in a crys-tal. In the linear regime, this leads to the conceptof ‘global’ eigenmodes that exhibit non-gyroBohmradial lengths and growth rates [80{83]. However,
+it is expected that these correlations over large dis-
+tances are destroyed in a fully developed turbulence,which should, therefore, exhibit a gyroBohm scal-ing. This may not be true close to the turbulencethreshold when the turbulence level is low. Indeed,a simplied numerical simulation shows long livedglobal modes in this case. More precisely, the corre-lation lengths scale as 
+i, but the correlation time
+does not follow the gyroBohm prediction [84]. Thesecond kind of model relies on the concept of self-
+organized criticality [85], for which the paradigm
+is the sandpile. Such a system exhibits large scaleevents (avalanches), which dominate the transportscaling in spite of their scarcity [86,87]. This leads toa non-gyroBohm behaviour. A velocity shear resultsin a recovery of a gyroBohm scaling through adecorrelation process of the large scale events [88].The correlation lengths scale as a gyroradius in thismodel. Moreover, the gradients are below the crit-
+ical value for moderate ﬂuxes. Most of these mod-
+els predict the scaling of the correlation lengths andtimes. Therefore, the experimental determination ofthe scaling of correlation functions should clarify thisissue.
+2. Isotope eect on plasma connement
+In Eq. (8), if we only consider the scaling of D
+with the ion atomic mass, we obtain D/A
+=2
+iF(Ai)
+(=0f o rB o h mm o d e l s , = 1 for gyroBohm).
+Unless there is a strong dependence of Fon the ion
+mass, this result does not agree with experiment. Oneobserves in almost all tokamaks that plasma proper-ties depend on the plasma gas [89], and, contraryto what is expected from the simple scaling, con-nement has a positive dependence on A
+i. Although
+there are some preliminary indications supporting
+a positive dependence of connement on Aifrom
+gyrokinetic calculations and theories based on non-linear ion Landau damping [53], there is not yet asatisfactory theoretical explanation of this eect. ForELMy H-mode, ELMs could cause an isotope eect
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2183
