@@ -1,0 +1,1696 @@
+================================================================================
+ITER Physics Basis - ECCD/ECRH Detailed Analysis
+================================================================================
+
+=== CHAPTER 6: Energetic Particles, Heating and Current Drive ===
+Total pages: 46
+
+--- First 5 Pages (Table of Contents) ---
+
+--- Page 1 ---
+Chapter 6: Plasma auxiliary heating and current
+drive
+To cite this article: ITER Physics Expert Group on Energetic Particles, Heating and Current Drive and
+ITER Physics Basis Editors 1999 Nucl. Fusion  39 2495 
+ 
+View the article online  for updates and enhancements. You may also like 
+Modelling of transitions between L- and H- 
+mode in JET high plasma current plasmas 
+and application to ITER scenarios 
+including tungsten behaviour 
+F. Koechl, A. Loarte, V. Parail et al. -
+Progress on the application of ELM control 
+schemes to ITER scenarios from the non- 
+active phase to DT operation 
+A. Loarte, G. Huijsmans, S. Futatani et al. -
+Development of advanced inductive 
+scenarios for ITER 
+T.C. Luce, C.D. Challis, S. Ide et al. -
+This content was downloaded from IP address 133.63.21.1 on 02/03/2026 at 01:53
+
+--- Page 2 ---
+Chapter 6: Plasma auxiliary heating and current drive
+ITER Physics Expert Group on Energetic Particles,
+Heating and Current Drive
+ITER Physics Basis Editorsy
+ITER EDA, Naka Joint Work Site, Mukouyama,Naka-machi, Naka-gun, Ibaraki-ken, Japan
+Abstract. Heating and current drive systems must full several roles in ITER operating scenarios:
+heating through the H-mode transition and to ignition; plasma burn control; current drive and currentprole control in steady state scenarios; and control of MHD instabilities. They must also perform
+ancillary functions, such as assisting plasma start-up and wall conditioning. It is recognized that no
+one system can satisfy all of these requirements with the degree of ﬂexibility that ITER will require.Four heating and current drive systems are therefore under consideration for ITER: electron cyclotron
+waves at a principal frequency of 170 GHz; fast waves operating in the range 40{70 MHz (ion cyclotron
+waves); lower hybrid waves at 5 GHz; and neutral beam injection using negative ion beam technologyfor operation at 1 MeV energy. It is likely that several of these systems will be employed in parallel.
+The systems have been chosen on the basis of the maturity of physics understanding and operating
+experience in current experiments and on the feasibility of applying the relevant technology to ITER.
+Here, the fundamental physics describing the interaction of these heating systems with the plasma
+is reviewed, the relevant experimental results in the exploitation of the heating and current drivecapabilities of each system are discussed, key aspects of their application to ITER are outlined, and
+the major technological developments required in each area are summarized.
+ITER Physics Expert Group on Energetic Par-
+ticles, Heating, and Current Drive: J. Jacquinot (JET,chair), S. Putvinski (ITER JCT, co-chair), G. Bosia (ITERJ C T ) ,A .F u k u y a m a( O k a y a m aU . ) ,R .H e m s w o r t h( C E A -
+Cadarache), S. Konovalov (RRC-Kurchatov), W.M. Nevins
+(LLNL), F Perkins (ITER JCT), K.A. Rasumova (RRC-Kurchatov), F. Romanelli (ENEA-Frascati), K. Tobita(JAERI), K. Ushigusa (JAERI), J.W. Van Dam (U. Texas),V. Vdovin (RRC-Kurchatov), S. Zweben (PPPL). Addi-
+tional contributing authors : M. Makowski (ITER JCT),
+R. Koch (ERM/KMS-Brussels), J.-G. W egrowe (CEA-
+Cadarache), V.V. Alikaev (RRC-Kurchatov), B. Beaumont(CEA-Cadarache), A. B ecoulet (CEA-Cadarache), S. Bern-
+abei (PPPL), V.P. Bhatnagar (EC-Brussels), S. Br emond
+(CEA-Cadarache), M.D. Carter (ORNL), C.D. Challis (JET),
+A. C^ote (CCFM-Varennes), D.A. D’Ippolito (Lodestar Corp.-
+Boulder), F. Engelmann (NET), L.-G. Eriksson (CEA-Cadarache), N. Fujisawa (ITER JCT), G. Giruzzi (CEA-Cadarache), C. Gormezano (JET), R. Harvey (CompX-
+Del Mar), J. Heikkinen (VTT-Finland), T. Hellsten (RIT-
+Stockholm), Y. Ikeda (JAERI), T.T.C. Jones (JET),H. Kimura (JAERI), B. Lloyd (UKAEA-Culham), T. Luce(GA-San Diego), D. Moreau (CEA-Cadarache), O. Naito(JAERI), F. Nguyen (CEA-Cadarache), 
+
+--- Page 3 ---
+ITER Physics Basis
+3. Fast wave heating and current drive 2505
+3.1. Introduction . . . . . . . . . . . . . . . 25053.2. Physics and performance of power
+coupling . . . . . . . . . . . . . . . . . 2506
+3.3. Modelling . . . . . . . . . . . . . . . . 2508
+3.4. Heating scenarios and database . . . . 2509
+3.4.1. General ICRH database . . . . 25093.4.2. Scenarios for basic ITER
+applications . . . . . . . . . . . 2510
+3.4.3. ICRF in advanced scenarios . . 25113.4.4. Other ICRH scenarios . . . . . 2511
+3.5. Current drive . . . . . . . . . . . . . . 2512
+3.6. Plasma production . . . . . . . . . . . 25123.7. The functions of the ICRF system
+in ITER . . . . . . . . . . . . . . . . . 2513
+4. Lower hybrid heating and current
+drive 2513
+4.1. Introduction and basic physics . . . . 2513
+4.2. LH current drive eciency . . . . . . . 25154.3. Current prole control and improved
+plasma performance with LHCD . . . 2516
+4.4. LH power coupling . . . . . . . . . . . 2517
+4.5. LHW and H-mode plasmas . . . . . . 2518
+4.6. Interaction of LHWs with fast ions . . 25194.7. Theoretical progress and model
+validation . . . . . . . . . . . . . . . . 2519
+4.8. Heating and current drive in ITER . . 25204.9. Technological issues . . . . . . . . . . 2521
+5. Neutral beam heating and current
+drive 2521
+5.1. Introduction . . . . . . . . . . . . . . . 25215.2. Interaction of neutral beams with
+plasmas . . . . . . . . . . . . . . . . . 2522
+5.2.1. Neutral beam ionization
+cross-section . . . . . . . . . . 2523
+5.2.2. Beam ion thermalization and
+plasma heating . . . . . . . . . 2524
+5.3. Neutral beam current drive . . . . . . 2525
+5.3.1. Introduction . . . . . . . . . . 25255.3.2. Theory of NB current drive . . 25265.3.3. NB current drive experiments . 2527
+5.3.4. ITER predictions for NB
+current drive . . . . . . . . . . 2529
+5.4. Plasma rotation induced by neutral
+beam . . . . . . . . . . . . . . . . . . . 2529
+5.4.1. Momentum transfer from
+beam ions to bulk plasma . . . 2530
+5.4.2. Observed time variation of
+plasma rotation with NB . . . 25305.4.3. Projected toroidal rotation
+from NBI momentum input
+in ITER . . . . . . . . . . . . . 2531
+5.5. Negative ion based neutral beam
+development . . . . . . . . . . . . . . . 25325.5.1. N-NB on JT-60U . . . . . . . . 2532
+5.5.2. Development programme . . . 2532
+5.6. Conclusion . . . . . . . . . . . . . . . 2533
+1. Introduction
+The need for external heating power in addition
+to the ohmic heating power resulting from the toka-mak plasma current has been recognized since theearly days of tokamak research. As plasma temper-
+ature rises, the plasma resistivity decreases as T
+3=2
+e
+and the role played by the ohmic heating gradually
+becomes less important. The auxiliary heating sys-tems in ITER have to perform several tasks. Theirfundamental role is to deliver sucient central heat-ing power to access the H-mode connement regime;to control the plasma temperature as the density isincreased to bring the plasma to the desired operat-ing point; and to control
+
+--- Page 4 ---
+Chapter 6: Plasma auxiliary heating and current drive
+Table 1. Salient features of the four auxiliary heating systems in use on tokamaks
+Overall Development/
+System Frequency/ Maximum power system demonstration
+energy coupled to plasma eciency required Remarks
+Demonstratedin tokamaks28{157 GHz 2.8 MW, 0.2 s
+ECRF 30{40%Power sources
+and windows,
+o-axis CDProvides
+o-axis CDITER needs 150{170 GHz 50 MW, S S
+Demonstrated
+in tokamaks25{120 MHz22 MW, 3 s (L-mode);
+1 6 . 5M W ,3s( H - m o d e )
+ICRF 50{60%ELM tolerant
+systemProvides ion
+heating andsmaller ELMsITER needs 40{75 MHz 50 MW, S S
+Demonstrated
+in tokamaks1.3{8 GHz2.5 MW, 120 s;
+10 MW, 0.5 s
+LHRF 45{55%Launcher,
+coupling to
+H-modeProvides
+o-axis CDITER needs 5 GHz 50 MW, S S
+Demonstrated
+in tokamaks80{140 keV40 MW, 2 s;
+20 MW, 8 s
++ve ion 35{45% NoneNot
+applicable
+ITER needs None None
+NBI
+Demonstrated
+in tokamaks0.35 MeV5.2 MW, D
+−,0 . 8s
+(from 2 sources)
+−ve ion
+ITER needs 1 MeV 50 MW, S S 37%System, tests
+on tokamak,
+plasma CDprovides
+rotation
+‘S S’ indicates steady state
+Auxiliary power systems based on these four heat-
+ing methods have been successfully used on large,
+medium and small tokamaks worldwide. Salient fea-
+tures of these systems are summarized in Table 1.Power levels close to ITER requirements havealready been demonstrated on present large toka-maks. General considerations applying to ITER con-ditions are given below, while the specic physicsbasis for each system will be found in the followingsections.
+(a)Central power deposition
+The fundamental role of auxiliary heating is to
+initiate the fusion burn. For diusive heat transport,the maximum connement, and, therefore, the min-
+imum power requirement, is obtained with central
+heating. Hence, the auxiliary heating power shouldbe deposited near the plasma centre. However, due tothe mixing eects of sawteeth in the ITER referencescenario, it is sucient to deposit power within thesawtooth inversion radius. Three out of four ITERcandidate heating methods { ECRF, ICRF and NBI
+{ are capable of providing central plasma heating for
+the reference operation scenarios for ITER. At the
+reference plasma parameters, the lower hybrid waves(LHWs) can penetrate only to the outer part of theplasma cross-section, r>0:5a, and, hence, the major
+objective of LHRF in ITER is o-axis current driveand current prole control.
+(b)Current drive
+Steady state operation of the tokamak requires
+that at least 20% of the plasma current is providedby an external source, the remainder being gener-ated by the plasma itself (the bootstrap current).In addition, this current needs to be generated at
+two locations: on (or near) the axis, in order to con-
+trol the central qvalue; and far o-axis, to con-
+trol plasma stability. The on-axis requirement caneasily be met by ECRF, ICRF and NBI. The o-axis requirement involves driving a larger current(>2 MA) at a lower electron temperature, which
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2497
+
+--- Page 5 ---
+ITER Physics Basis
+implies operating close to the theoretical CD e-
+ciency limit. LHRF and ECRF are considered for
+this task.
+(c)Plasma rotation
+It is known from present experiments and theo-
+retical considerations that plasma rotation is ben-ecial and can play an important role in suppres-sion of plasma instabilities, such as locked and erroreld modes, ideal MHD, tearing modes and others.It is also believed that rotational shear can improveplasma connement and can help in the transitionto the advanced connement modes, which are envi-
+sioned to be candidates for steady state operation
+in ITER (see Chapter 2); though the relative contri-butions of external momentum input and local pres-sure gradients require further clarication. Neverthe-less, the provision of plasma rotation is an impor-tant goal for ITER auxiliary systems. It is clearthat tangential NBI injection provides momentuminput to the plasma core (and has been used, forexample, to suppress mode locking and error eldmodes). Hence, NBI is capable of driving toroidal
+plasma rotation in ITER. Among RF systems, only
+ICRH is proven by present experiments to be capa-ble of inducing a signicant plasma rotation. How-ever, the mechanisms of ICRF driven plasma rota-tion are not fully understood, and, hence, the extrap-olation of ICRH rotation drive capability to ITER isquestionable.
+(d)Direct ion heating
+The H-mode power threshold is proportional to
+the plasma density [1] (see also Section 4 of Chap-ter 2 for a discussion of the H-mode power threshold).
+In ITER operation, it is proposed to produce the
+transition to H-mode at lower densities, so that anL-mode to H-mode transition can be achieved withno more than 100 MW of auxiliary power. As thedensity is increased, the H-mode can be maintainedbecause of additional heating from fusion alpha par-ticles. In the initial stages, when the alpha particlepower is small, power directly applied to ions is moreeective in increasing the ion stored energy, because
+power given to electrons can be lost by radiation or
+radial transport before it is collisionally transferredto the ions.
+(e)Future developments
+The above candidate auxiliary heating systems all
+require further developments to meet ITER needs(see, for example, [2]). ECRF requires developmentof power sources and windows and a demonstra-
+tion of o-axis current drive eciency on medium
+sized tokamaks. ICRF requires development of edge
+localized mode (ELM) tolerant coupling systems. Itis worth noting that signicant recent progress hasbeen made in the testing of ITER scenarios in DTplasmas [3]. LHRF requires launcher development,in particular with a view to coupling in H-modeplasmas. Negative ion beams require development ofsources and power supply systems and further testson tokamak plasmas, both to conrm the current
+drive eciency expected in the electron drag regime
+and to assess the inﬂuence of instabilities driven byfast ions.
+Undoubtedly, the power required to bring ITER
+to ignition can be
+
+
+================================================================================
+=== ECCD/ECRH Related Pages (Chapter 6) ===
+================================================================================
+
+Found 14 pages with ECCD/ECRH content
+
+
+============================================================
+Page 2
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+ITER Physics Expert Group on Energetic Particles,
+Heating and Current Drive
+ITER Physics Basis Editorsy
+ITER EDA, Naka Joint Work Site, Mukouyama,Naka-machi, Naka-gun, Ibaraki-ken, Japan
+Abstract. Heating and current drive systems must full several roles in ITER operating scenarios:
+heating through the H-mode transition and to ignition; plasma burn control; current drive and currentprole control in steady state scenarios; and control of MHD instabilities. They must also perform
+ancillary functions, such as assisting plasma start-up and wall conditioning. It is recognized that no
+one system can satisfy all of these requirements with the degree of ﬂexibility that ITER will require.Four heating and current drive systems are therefore under consideration for ITER: electron cyclotron
+waves at a principal frequency of 170 GHz; fast waves operating in the range 40{70 MHz (ion cyclotron
+waves); lower hybrid waves at 5 GHz; and neutral beam injection using negative ion beam technologyfor operation at 1 MeV energy. It is likely that several of these systems will be employed in parallel.
+The systems have been chosen on the basis of the maturity of physics understanding and operating
+experience in current experiments and on the feasibility of applying the relevant technology to ITER.
+Here, the fundamental physics describing the interaction of these heating systems with the plasma
+is reviewed, the relevant experimental results in the exploitation of the heating and current drivecapabilities of each system are discussed, key aspects of their application to ITER are outlined, and
+the major technological developments required in each area are summarized.
+ITER Physics Expert Group on Energetic Par-
+ticles, Heating, and Current Drive: J. Jacquinot (JET,chair), S. Putvinski (ITER JCT, co-chair), G. Bosia (ITERJ C T ) ,A .F u k u y a m a( O k a y a m aU . ) ,R .H e m s w o r t h( C E A -
+Cadarache), S. Konovalov (RRC-Kurchatov), W.M. Nevins
+(LLNL), F Perkins (ITER JCT), K.A. Rasumova (RRC-Kurchatov), F. Romanelli (ENEA-Frascati), K. Tobita(JAERI), K. Ushigusa (JAERI), J.W. Van Dam (U. Texas),V. Vdovin (RRC-Kurchatov), S. Zweben (PPPL). Addi-
+tional contributing authors : M. Makowski (ITER JCT),
+R. Koch (ERM/KMS-Brussels), J.-G. W egrowe (CEA-
+Cadarache), V.V. Alikaev (RRC-Kurchatov), B. Beaumont(CEA-Cadarache), A. B ecoulet (CEA-Cadarache), S. Bern-
+abei (PPPL), V.P. Bhatnagar (EC-Brussels), S. Br emond
+(CEA-Cadarache), M.D. Carter (ORNL), C.D. Challis (JET),
+A. C^ote (CCFM-Varennes), D.A. D’Ippolito (Lodestar Corp.-
+Boulder), F. Engelmann (NET), L.-G. Eriksson (CEA-Cadarache), N. Fujisawa (ITER JCT), G. Giruzzi (CEA-Cadarache), C. Gormezano (JET), R. Harvey (CompX-
+Del Mar), J. Heikkinen (VTT-Finland), T. Hellsten (RIT-
+Stockholm), Y. Ikeda (JAERI), T.T.C. Jones (JET),H. Kimura (JAERI), B. Lloyd (UKAEA-Culham), T. Luce(GA-San Diego), D. Moreau (CEA-Cadarache), O. Naito(JAERI), F. Nguyen (CEA-Cadarache), J.-M. Noterdaeme
+(IPP-Garching), W. Ott (IPP-Garching), C.C. Petty (GA-
+San Diego), A. Polevoi (RRC-Kurchatov), R. Prater (GA-SanDiego), J. Rogers (Intevac-Santa Clara), F. Santini (ENEA-Frascati), F.-X. S¨ oldner (JET), D. Stork (JET), E. Thomp-
+son (ITER JCT), G. Tonon (CEA-Cadarache), A. Tuccillo
+(ENEA-Frascati), E. Westerhof (FOM-Rijnhuizen), H. Zohm(IPF-Stuttgart).
+yITER Physics Basis Editors: F.W. Perkins (ITER JCT),
+D.E. Post (ITER JCT), N.A. Uckan (ORNL), M. AzumiContents
+1. Introduction 2496
+2. ECRF physics 2498
+2.1. Introduction . . . . . . . . . . . . . . . 24982.2. Heating and current drive . . . . . . . 2499
+2.2.1. Propagation and absorption . . 24992.2.2. Upshifted/downshifted
+ECCD scenarios . . . . . . . . 2499
+2.2.3. Codes . . . . . . . . . . . . . . 25002.2.4. Experimental results . . . . . . 25002.2.5. Transport studies . . . . . . . . 2501
+2.3. Plasma heating and H-mode access . . 25012.4. Start-up and wall conditioning . . . . 25012.5. MHD stabilization with ECRF . . . . 25022.6. Other results . . . . . . . . . . . . . . 2503
+2.6.1. ELMs . . . . . . . . . . . . . . 25032.6.2. Eect of ECH on sawteeth . . 2504
+2.7. Application to ITER . . . . . . . . . . 2504
+2.7.1. Technological issues . . . . . . 25042.7.2. Heating and current drive in
+the ITER reference discharge . 2504
+(JAERI), D.J. Campbell (NET), N. Ivanov (RRC-Kurchatov),
+N. Sautho (PPPL), M. Wakatani (Kyoto Univ.). Additional
+contributing editors : W.M. Nevins (LLNL), E. Righi (NET).
+Nuclear Fusion, Vol. 39, No. 12 c/circlecopyrt1999, IAEA, Vienna 2495
+
+============================================================
+Page 3
+============================================================
+ITER Physics Basis
+3. Fast wave heating and current drive 2505
+3.1. Introduction . . . . . . . . . . . . . . . 25053.2. Physics and performance of power
+coupling . . . . . . . . . . . . . . . . . 2506
+3.3. Modelling . . . . . . . . . . . . . . . . 2508
+3.4. Heating scenarios and database . . . . 2509
+3.4.1. General ICRH database . . . . 25093.4.2. Scenarios for basic ITER
+applications . . . . . . . . . . . 2510
+3.4.3. ICRF in advanced scenarios . . 25113.4.4. Other ICRH scenarios . . . . . 2511
+3.5. Current drive . . . . . . . . . . . . . . 2512
+3.6. Plasma production . . . . . . . . . . . 25123.7. The functions of the ICRF system
+in ITER . . . . . . . . . . . . . . . . . 2513
+4. Lower hybrid heating and current
+drive 2513
+4.1. Introduction and basic physics . . . . 2513
+4.2. LH current drive eciency . . . . . . . 25154.3. Current prole control and improved
+plasma performance with LHCD . . . 2516
+4.4. LH power coupling . . . . . . . . . . . 2517
+4.5. LHW and H-mode plasmas . . . . . . 2518
+4.6. Interaction of LHWs with fast ions . . 25194.7. Theoretical progress and model
+validation . . . . . . . . . . . . . . . . 2519
+4.8. Heating and current drive in ITER . . 25204.9. Technological issues . . . . . . . . . . 2521
+5. Neutral beam heating and current
+drive 2521
+5.1. Introduction . . . . . . . . . . . . . . . 25215.2. Interaction of neutral beams with
+plasmas . . . . . . . . . . . . . . . . . 2522
+5.2.1. Neutral beam ionization
+cross-section . . . . . . . . . . 2523
+5.2.2. Beam ion thermalization and
+plasma heating . . . . . . . . . 2524
+5.3. Neutral beam current drive . . . . . . 2525
+5.3.1. Introduction . . . . . . . . . . 25255.3.2. Theory of NB current drive . . 25265.3.3. NB current drive experiments . 2527
+5.3.4. ITER predictions for NB
+current drive . . . . . . . . . . 2529
+5.4. Plasma rotation induced by neutral
+beam . . . . . . . . . . . . . . . . . . . 2529
+5.4.1. Momentum transfer from
+beam ions to bulk plasma . . . 2530
+5.4.2. Observed time variation of
+plasma rotation with NB . . . 25305.4.3. Projected toroidal rotation
+from NBI momentum input
+in ITER . . . . . . . . . . . . . 2531
+5.5. Negative ion based neutral beam
+development . . . . . . . . . . . . . . . 25325.5.1. N-NB on JT-60U . . . . . . . . 2532
+5.5.2. Development programme . . . 2532
+5.6. Conclusion . . . . . . . . . . . . . . . 2533
+1. Introduction
+The need for external heating power in addition
+to the ohmic heating power resulting from the toka-mak plasma current has been recognized since theearly days of tokamak research. As plasma temper-
+ature rises, the plasma resistivity decreases as T
+3=2
+e
+and the role played by the ohmic heating gradually
+becomes less important. The auxiliary heating sys-tems in ITER have to perform several tasks. Theirfundamental role is to deliver sucient central heat-ing power to access the H-mode connement regime;to control the plasma temperature as the density isincreased to bring the plasma to the desired operat-ing point; and to control excursions about this oper-
+ating point after it has been achieved. There are sec-
+ondary requirements such as non-inductive centralcurrent drive ( >0.2 MA m
+−2) and an o-axis cur-
+rent drive capability ( >2 MA) for current prole con-
+trol. Auxiliary heating systems are also required toheat non-fusion plasmas in early operating phases(for example, while commissioning the divertor tar-get plates) and to achieve a ‘soft landing’ duringthe current termination phase while avoiding den-sity limit disruptions (see Section 3 of Chapter 3 for
+a discussion of disruptive density limits). The capa-
+bilities to control sawteeth or m=2 ,n=1m o d e s ;
+to induce plasma rotation in order to avoid lockedmodes; and to stabilize resistive tearing instabilitiesare other desirable features. There are also require-ments for plasma initiation, start-up assist, and wallconditioning (see Chapter 8).
+Four auxiliary heating and current drive methods
+are considered for ITER. These include electromag-netic waves in three frequency ranges:
+(i) the electron cyclotron resonance frequency
+(ECRF);
+(ii) the ion cyclotron resonance frequency (ICRF);
+and
+(iii) the lower hybrid resonance frequency (LHRF).
+In addition, we consider heating and current drive
+by
+(iv) neutral beam injection (NBI).
+2496
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 4
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+Table 1. Salient features of the four auxiliary heating systems in use on tokamaks
+Overall Development/
+System Frequency/ Maximum power system demonstration
+energy coupled to plasma eciency required Remarks
+Demonstratedin tokamaks28{157 GHz 2.8 MW, 0.2 s
+ECRF 30{40%Power sources
+and windows,
+o-axis CDProvides
+o-axis CDITER needs 150{170 GHz 50 MW, S S
+Demonstrated
+in tokamaks25{120 MHz22 MW, 3 s (L-mode);
+1 6 . 5M W ,3s( H - m o d e )
+ICRF 50{60%ELM tolerant
+systemProvides ion
+heating andsmaller ELMsITER needs 40{75 MHz 50 MW, S S
+Demonstrated
+in tokamaks1.3{8 GHz2.5 MW, 120 s;
+10 MW, 0.5 s
+LHRF 45{55%Launcher,
+coupling to
+H-modeProvides
+o-axis CDITER needs 5 GHz 50 MW, S S
+Demonstrated
+in tokamaks80{140 keV40 MW, 2 s;
+20 MW, 8 s
++ve ion 35{45% NoneNot
+applicable
+ITER needs None None
+NBI
+Demonstrated
+in tokamaks0.35 MeV5.2 MW, D
+−,0 . 8s
+(from 2 sources)
+−ve ion
+ITER needs 1 MeV 50 MW, S S 37%System, tests
+on tokamak,
+plasma CDprovides
+rotation
+‘S S’ indicates steady state
+Auxiliary power systems based on these four heat-
+ing methods have been successfully used on large,
+medium and small tokamaks worldwide. Salient fea-
+tures of these systems are summarized in Table 1.Power levels close to ITER requirements havealready been demonstrated on present large toka-maks. General considerations applying to ITER con-ditions are given below, while the specic physicsbasis for each system will be found in the followingsections.
+(a)Central power deposition
+The fundamental role of auxiliary heating is to
+initiate the fusion burn. For diusive heat transport,the maximum connement, and, therefore, the min-
+imum power requirement, is obtained with central
+heating. Hence, the auxiliary heating power shouldbe deposited near the plasma centre. However, due tothe mixing eects of sawteeth in the ITER referencescenario, it is sucient to deposit power within thesawtooth inversion radius. Three out of four ITERcandidate heating methods { ECRF, ICRF and NBI
+{ are capable of providing central plasma heating for
+the reference operation scenarios for ITER. At the
+reference plasma parameters, the lower hybrid waves(LHWs) can penetrate only to the outer part of theplasma cross-section, r>0:5a, and, hence, the major
+objective of LHRF in ITER is o-axis current driveand current prole control.
+(b)Current drive
+Steady state operation of the tokamak requires
+that at least 20% of the plasma current is providedby an external source, the remainder being gener-ated by the plasma itself (the bootstrap current).In addition, this current needs to be generated at
+two locations: on (or near) the axis, in order to con-
+trol the central qvalue; and far o-axis, to con-
+trol plasma stability. The on-axis requirement caneasily be met by ECRF, ICRF and NBI. The o-axis requirement involves driving a larger current(>2 MA) at a lower electron temperature, which
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2497
+
+============================================================
+Page 5
+============================================================
+ITER Physics Basis
+implies operating close to the theoretical CD e-
+ciency limit. LHRF and ECRF are considered for
+this task.
+(c)Plasma rotation
+It is known from present experiments and theo-
+retical considerations that plasma rotation is ben-ecial and can play an important role in suppres-sion of plasma instabilities, such as locked and erroreld modes, ideal MHD, tearing modes and others.It is also believed that rotational shear can improveplasma connement and can help in the transitionto the advanced connement modes, which are envi-
+sioned to be candidates for steady state operation
+in ITER (see Chapter 2); though the relative contri-butions of external momentum input and local pres-sure gradients require further clarication. Neverthe-less, the provision of plasma rotation is an impor-tant goal for ITER auxiliary systems. It is clearthat tangential NBI injection provides momentuminput to the plasma core (and has been used, forexample, to suppress mode locking and error eldmodes). Hence, NBI is capable of driving toroidal
+plasma rotation in ITER. Among RF systems, only
+ICRH is proven by present experiments to be capa-ble of inducing a signicant plasma rotation. How-ever, the mechanisms of ICRF driven plasma rota-tion are not fully understood, and, hence, the extrap-olation of ICRH rotation drive capability to ITER isquestionable.
+(d)Direct ion heating
+The H-mode power threshold is proportional to
+the plasma density [1] (see also Section 4 of Chap-ter 2 for a discussion of the H-mode power threshold).
+In ITER operation, it is proposed to produce the
+transition to H-mode at lower densities, so that anL-mode to H-mode transition can be achieved withno more than 100 MW of auxiliary power. As thedensity is increased, the H-mode can be maintainedbecause of additional heating from fusion alpha par-ticles. In the initial stages, when the alpha particlepower is small, power directly applied to ions is moreeective in increasing the ion stored energy, because
+power given to electrons can be lost by radiation or
+radial transport before it is collisionally transferredto the ions.
+(e)Future developments
+The above candidate auxiliary heating systems all
+require further developments to meet ITER needs(see, for example, [2]). ECRF requires developmentof power sources and windows and a demonstra-
+tion of o-axis current drive eciency on medium
+sized tokamaks. ICRF requires development of edge
+localized mode (ELM) tolerant coupling systems. Itis worth noting that signicant recent progress hasbeen made in the testing of ITER scenarios in DTplasmas [3]. LHRF requires launcher development,in particular with a view to coupling in H-modeplasmas. Negative ion beams require development ofsources and power supply systems and further testson tokamak plasmas, both to conrm the current
+drive eciency expected in the electron drag regime
+and to assess the inﬂuence of instabilities driven byfast ions.
+Undoubtedly, the power required to bring ITER
+to ignition can be provided by several existing meth-ods. This has been clearly demonstrated on presentlarge tokamaks that reached the required ignitiontemperature in a DT environment with both NBIand ICRH methods. However, there is still a needto improve the eciency and multitasking capabil-ities of the auxiliary heating systems. With regard
+to experimental demonstrations, emphasis should be
+placed on simulating the operating conditions ofITER, namely, regimes with low plasma rotation,moderate ion heating and low particle fuelling; andin developing steady state scenarios that require e-cient current drive systems and feedback control ofthe current density prole.
+2. ECRF physics
+2.1. Introduction
+The physics of electron cyclotron (EC) heat-
+ing and current drive (ECCD) is well developedin both experiment and theory [4, 5]. Experiments
+have been performed over more than two decades
+in mirror machines, tokamaks [6], and stellara-tors. These experiments have demonstrated eectiveplasma heating, with reliable access to the H-mode.Experiments have also demonstrated current drive,plasma start-up, and control of sawteeth, ELMs,locked modes, as well as control of m=2m o d e s
+and some types of disruption [7]. EC waves have alsoproven to be a useful tool for transport studies.
+The fundamental properties of EC wave absorp-
+tion and propagation lead directly to its applicationas an auxiliary heating and current drive mechanismin fusion plasmas. Electron cyclotron waves can belaunched in vacuum and propagate directly into theplasma without attenuation or interaction with the
+2498
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 6
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+edge. Consequently, the launching structure does not
+have to be in close proximity to the plasma. The
+waves continue to propagate smoothly within the
+plasma until they encounter the resonance and arelocally absorbed. Absorption is generally completeand does not lead to the formation of an energetic tailor other non-linear eects. This localized absorptionproperty allows control over the deposition proleand lends this heating method particular ﬂexibilityfor such applications as on-axis and o-axis heat-ing and current drive, MHD control, and transport
+studies.
+This heating method is limited primarily by
+refractive eects as the density cut-o is approached.Low frequency density ﬂuctuations of sucientamplitude can also lead to scattering and local-ized random refraction of the wave. Localization ofthe deposition for these and other reasons discussed
+below is generally well above the theoretical min-
+imum of a few wavelengths, being of the order of0.05 of the minor radius. However, this is more than
+sucient for the heating and current drive applica-tions envisioned, and much more localized in com-parison with other heating methods.
+In ITER, the heating and current drive functions
+can be accomplished over the desired operating range
+using xed frequency (170 GHz) sources by launch-ing elliptically polarized ordinary mode (OM) wavesfrom the low eld side (LFS) of the torus, providedthat a modest toroidal steering capability is pro-vided. Steerable injection accommodates the widevariety of plasma equilibria possible in ITER, par-ticularly in the case of advanced tokamak equilib-ria. Start-up assist can be accomplished using lower
+frequency sources and does not require steerable
+injection. Dedicated systems may also be needed forother applications, such as stabilization of neoclas-sical tearing modes, resulting in specialized systemrequirements for modulation capability, frequency,peak power, etc.
+2.2. Heating and current drive
+2.2.1. Propagation and absorption
+Two mechanisms are responsible for absorption of
+electron cyclotron waves [8,9] by the plasma. Inter-
+action of the wave and particle occurs in the pres-
+ence of an elliptically polarized electric eld rotatingin the same direction as the electron at a frequencyclose to the electron gyrofrequency. A second meansof interaction is provided by the Lorentz force arisingfrom the magnetic eld component transverse to thestatic toroidal magnetic eld. If the parallel electron
+velocity,v
+ek6= 0, then a resonance energy exchange
+occurs. In both cases the perpendicular energy of the
+resonant particles is increased.
+The resonance condition for the nth harmonic
+OM is!=nΩe=γ+kkvek,w h e r eΩ e(R)i st h e
+cyclotron frequency, γis the relativistic mass fac-
+tor, andkkis the parallel wavenumber. The width
+of the absorption region is aected by the angle ofincidence, through the broadening of the resonancedue to the relativistic Doppler eect; by the elec-
+tron temperature; and by the divergence of the wave
+beam. For normal propagation, the absorption layeris a few centimetres in width, but it can be increased,if desired, by increasing the beam divergence. Foroblique toroidal propagation, as used for currentdrive applications, the absorption region not onlybroadens but shifts toward lower magnetic elds.Oblique poloidal propagation also shifts the absorp-tion region in this direction.
+Current drive experiments at the fundamental
+and second harmonic EC resonances have been per-formed at a number of facilities, for example DIII-D[10], Tosca, W7-AS, T-10 [11], WT3 and JFT-2M.It was shown (DIII-D, T-10) that for the funda-mental harmonic and power deposition in the cen-tral region, ECCD eciency is in accordance withthe theoretical predictions. In experiments on theW7-AS stellarator, in which there is eectively notoroidal electric eld, agreement between experiment
+and theory was found, taking into account the eect
+of trapped particles, both for fundamental and sec-ond harmonics [12].
+Many of the potential applications of ECH waves
+require o-axis current drive. Here, only a few exper-iments [13] have been carried out and further work isneeded to completely validate the models. The cur-rent drive eciency generally decreases with increas-ing minor radius due to the increasing trapped elec-
+tron fraction [14].
+2.2.2. Upshifted/downshifted ECCD scenarios
+ECCD is based on the generation of an asym-
+metric collisionality by the selective heating of elec-trons moving in a given direction [15]. As a result,
+the collisionality or resistivity is reduced and a net
+toroidal current is generated. Two schemes are pos-sible: downshifted and upshifted. In the downshiftedscheme, power is absorbed on the high eld side(HFS) of the resonance mostly by electrons withN
+kpk<0, while in the upshifted scheme, electrons
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2499
+
+============================================================
+Page 7
+============================================================
+ITER Physics Basis
+withNkpk>0 are heated on the LFS [16]. Here, Nk
+is the parallel index of refraction and pkis the parallel
+momentum. Both schemes rely on absorption of the
+power on one side of the resonance, and thus requirea large optical depth to achieve high eciency.
+The best option for downshifted frequencies is
+with extraordinary mode (XM) injection from theHFS of the resonance. In the case of upshifted fre-quencies, the XM is generally cut o and cannotreach the plasma centre, leaving OM launch as theonly upshifted option. Top OM launch suers from
+a large sensitivity to the injection angle as well as
+signicant second harmonic absorption. LFS OMlaunch, in contrast, provides good control over thedeposition location with signicantly reduced secondharmonic absorption. Note that simultaneous rstand second harmonic absorption is generally unsuit-able, since, in this case, currents are driven at twodierent locations and in opposite directions [17].
+Radial control of the location of the power deposi-
+tion is obtained through oblique launch of the wave in
+the toroidal direction. The resonance can be shiftedby a large fraction of the plasma cross-section [5,18]by varying k
+k, the limit being due to relativistic
+eects and reduced wave damping. Additional useof poloidal steering is generally desirable.
+2.2.3. Codes
+The theory of ECCD is highly advanced, and
+ray tracing/Fokker{Planck codes based on rst prin-ciples can accurately predict the propagation andabsorption of EC waves in a plasma. For currentdrive or high power density cases, Fokker{Planckcodes such as CQL3D [19], ORGAY and BANDIT-3D [20], have proven very eective in understand-ing experimental results quantitatively. These codes
+have been benchmarked [21] in several ways. Exam-
+ples are the calculation of the neoclassical electricconductivity for which analytic expressions exist, orof the low power, linear ECCD eciency for whichadjoint calculations are also available [14]. Anotherexample is a calculation for the parameters of theECCD experiment in DIII-D [10, 21]. Good agree-ment is obtained both between code predictions andexperiment and between the dierent codes them-selves. These codes provide a predictive capability
+for present day experiments as well as giving con-
+dence for the applications of EC waves foreseen inITER.
+The code predictions show that non-thermal
+eects are not to be expected in ITER. Such eectswould be expected for
+P(MW m
+−3)=[n(1019m−3)]2>0:5
+(see [18]), whereas the EC power density in ITER
+will remain well below this critical value.
+2.2.4. Experimental results
+ECCD has been achieved in several tokamaks
+both in the downshifted scheme using oblique
+HFS injection of fundamental X-mode (DIII-D [10],COMPASS-D [22], RTP [23]), and in the upshiftedscheme using oblique LFS injection of either secondharmonic X-mode (T-10 [24], RTP [25]) or funda-mental O-mode (T-10 [11]). The last is the proposedscheme for ECCD in ITER. Results from these exper-iments are dicult to compare directly, since fullnon-inductive current drive is generally not obtainedand dierent techniques are used to determine the
+EC driven currents: either by comparison of loop
+voltages in co-drive and counter-drive discharges
+I
+ECCD =Ip(Vcnt−Vco)=(Vcnt+Vco)
+or by the dierence of the sum of the calculated
+inductive and bootstrap currents and the totalplasma current, I
+
+ECCD =Ip−Icond−Iboot.T h e
+driven currents, I
+ECCD, obtained by the latter anal-
+ysis contain, besides the purely EC driven current, asynergistic contribution that is caused by an increasein the conductivity due to the EC generated non-thermal electrons.
+Maximum measured normalized eciencies, 
+20
+(1020AW−1m−2), range from 20=0:01 (RTP,
+Te3 keV, upshifted or downshifted) and 20=
+0:015 (DIII-D, Te3 keV, downshifted includ-
+ing synergy) to 20=0:03 (T-10,Te7k e V ,
+upshifted). The CD eciency is dened as 20=
+hne20iIECCDR0=Plaunched where hne20iis the vol-
+ume averaged electron density in units of 1020m−3,
+IECCD is the net current driven by the launched EC
+wave power, R0is the major radius measured at the
+magnetic axis of the target plasma, and Plaunched is
+the launched EC wave power. The higher eciency inT-10 is mainly due to the higher temperature reachedin these experiments. These eciencies are in generalagreement with theoretical expectations. The majorparametric dependences, as predicted by linear the-
+ory, have been veried [11], though denitive exper-
+imental data on the quasilinear power dependenceare lacking. Further conrmation of ECCD theorycomes from detailed experiments in the W7-AS stel-larator [26,27]. The measurements in DIII-D and T-10, when adjusted by means of code calculations to
+2500
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 8
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+ﬂatten density proles and lower Ze, as expected
+for ITER, are in line with the temperature depen-
+dence of the eciency as predicted for ITER [28]:
+this leads to the prediction of a maximum eciencyfor ECCD in ITER of 
+20=0:3a tTe(0) = 30 keV
+(see Fig. 1).
+00.050.10.150.20.250.30.35
+0 5 10 15 20 25 30 35<h> (1020 A·W –1· m–2)
+T
+eo (keV) Single ray, T
+e ~ (1-r2) 18 rays, T
+e ~ (1-r2)2
+T-10, accounting for n
+e profile and Z
+eff
+T-10
+DIII-D
+Figure 1. Comparison of predicted on-axis current drive
+and experimental results. The curves (marked by and/C6) are simulations showing the inﬂuence of temperature
+proles and divergence of the wave due to diractiveeects. Experimental results from T-10 and DIII-D arealso shown (marked by rand/A3). Corrections for density
+proles and Zehave been made for both experimental
+results and marked by the corresponding lled symbols(Ref. [28]).
+Full non-inductive ECCD has only been achieved
+on T-10 in the scheme most relevant to ITER [11].The low plasma current in these discharges (75 kA)resulted in high 
+p, such that the bootstrap current
+accounted for a large fraction of the plasma cur-rent ( 50 kA) as seen in Fig. 1, where a compar-
+ison of predicted on-axis current drive and experi-m e n t a lr e s u l t si ss h o w n .T h ec u r v e s( m a r k e db y
+
+and /C6) are simulations showing the inﬂuence of tem-
+perature proles and the divergence of the wave dueto diractive eects. Experimental results from T-10and DIII-D are also shown (marked by rand/A3).
+Corrections for density proles and Zehave been
+made in both cases [28].
+2.2.5. Transport studies
+Because of the highly localized nature of the
+absorption of electron cyclotron waves, ECH hasbeen used as a perturbative technique to study heat
+transport in plasmas on many devices [29{35]. A rel-
+atively small power can generate small perturbations
+in the electron temperature at a desired location onthe radial prole of the temperature, and phase sen-sitive detection can provide information on the loca-tion of the heating and on the transport of heatfrom the deposition site. Detection averaged over arecord of many cycles of the perturbation can greatlyimprove the signal to noise ratio, thereby reducingthe requirement on the power used for the perturba-
+tion. This technique has been employed on several
+devices to study the power deposition prole andtransport.
+2.3. Plasma heating and H-mode access
+Experiments in many tokamaks using ECH have
+demonstrated eective plasma heating [6]. Globalconnement in the L-mode with solely ECH auxil-iary heating has been shown to be consistent withthe ITER-89P scaling relation. In direct comparisonwith neutral beam heating on the DIII-D tokamak,ECH has been shown to have the same global heat-ing eciency as neutral beams at the same power,
+although the range of power for ECH has been lim-
+ited to a small fraction of the available neutral beampower in experiments so far. For a true benchmark,ECH power in the range of at least 5{10 MW isneeded. Reliable access to the H-mode has also beendemonstrated in tokamaks [36{38] and in a stellara-tor [39] using ECH power alone. The power thresh-old for the transition from L-mode to H-mode underECH was found to be about the same for H-mode
+induced by NBI on the DIII-D tokamak [36]. The
+improvement in connement above the L-mode scal-ing is a full factor of 2 in the DIII-D experiments [40].The scaling of connement in the H-mode with ECHhas not been studied in depth so far, as the availableECH power has been only slightly above the thresh-old power. However, some studies do exist, such asthose in ELMy H-mode on COMPASS-D generatedby using both on-axis and o-axis ECH [41].
+2.4. Start-up and wall conditioning
+EC wave power has been used eectively for
+pre-ionization and start-up assist in many toka-
+mak experiments [4, 42] and is used routinely forplasma production in stellarators [4]. In early toka-mak experiments, ECRH pre-ionization typicallyled to a reduction by a factor of 2{5 in the ini-tial loop voltage together with a somewhat smaller
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2501
+
+============================================================
+Page 9
+============================================================
+ITER Physics Basis
+reduction in the overall ﬂux consumption dur-
+ing the current rise phase. Features common to
+many of these early experiments [4, 42] include an
+insensitivity to the wave launching scenario (i.e.inboard/outboard launch, XM/OM polarization),eective pre-ionization at the second harmonic, anda weak dependence on the resonance location. Theeective use of the OM for pre-ionization has beenattributed to the depolarizing eect of wall reﬂec-tions. Various detailed theoretical descriptions ofECRH pre-ionization in tokamaks have been devel-
+oped [43{45].
+A systematic series of experiments was carried out
+on DIII-D in order to study low voltage start-up with
+and without ECRH to provide data that could bereadily extrapolated to ITER [42]. It was shown thatfor low voltage start-up, ECRH not only leads toimproved start-up reliability, but permits operationover a greatly extended range of prell pressure andstray magnetic eld and leads to reduced runawaygeneration. ECRH assisted start-up with an electriceld of 0.15 V m
+−1was demonstrated.
+For ECRH assisted start-up in ITER, the power
+and pulse length requirements will be essentiallydetermined by the need to ensure burnthrough, i.e.
+complete ionization of hydrogen and the transition
+to high ionization states of impurities. A zero dimen-sional code (with inclusion of some one dimensionaleects), incorporating a non-equilibrium impuritymodel, has been developed to study start-up [46].It has been concluded that control of the deuteriumdensity is the key factor for ensuring successful start-up in ITER. Because of the large ratio of vesselvolume to plasma volume during start-up, fuellingby the volume outside the ionization region may be
+an important eect, and the role of neutral screen-
+ing is also crucial. Without ECRH assist, successfulstart-up may only be possible over a restricted rangeof parameters. Although there remain uncertaintiesover exact requirements, it has been estimated that3M W o f absorbed ECRH power will ensure rea-
+sonably robust start-up for a broad range of condi-tions with up to 5% beryllium impurity [46]. Higherpowers are required for carbon impurity, even 5 MW
+being marginal under some conditions. An ECRH
+pulse length of a few seconds is adequate to ensureburnthrough.
+For the proposed start-up scenario, in which a
+poloidal eld null is established close to the outboardlimiter, several frequencies in the range 90{140 GHzmust be provided to accommodate the range oftoroidal elds envisaged in ITER. OM injection fromthe LFS may be envisaged. Due to the low initial
+electron temperature the OM is only weakly damped,
+but by launching the power at an oblique toroidal
+angle signicant conversion of the OM to the XMwill occur upon reﬂection from the inner wall. Afterseveral reﬂections, over 75% of the launched poweris expected to be absorbed by the plasma [46].
+ECRH discharge cleaning is one of the wall con-
+ditioning methods foreseen in ITER to reduce andcontrol outgassing of impurities and hydrogenic fuelfrom the plasma facing components, for the achieve-
+ment of clean and stable plasma operation. The
+eectiveness of ECRH discharge cleaning has beendemonstrated in a number of devices [47]. Boththe main ECRH heating system (170 GHz) and theECRH start-up system may be utilized for this appli-cation, but steady state operation of the start-up sys-tem would be required in this case.
+2.5. MHD stabilization with ECRF
+Tearing modes are resistive MHD instabilities that
+lead to a reconnection of the nested ﬂux surfacesand produce so-called magnetic islands. These leadto regions of enhanced heat diusivity, producing
+ﬂat spots in the temperature prole that reduce the
+stored energy. This mechanism is one of the phe-nomena possibly limiting in long pulse collision-
+less tokamak discharges [48] (see also Section 2.3of Chapter 3). Here, the drive for the instabilitymainly comes from the reduction of bootstrap cur-rent as the island develops and the pressure ﬂattensat the O-point. Besides their role in the beta limit,tearing modes also play a major role in the densitylimit disruption, when, through excessive edge cool-
+ing, the equilibrium current prole shrinks and the
+free energy in the poloidal magnetic eld leads to theformation of magnetic islands [49].
+E C R Fc a nb ea p p l i e di nt w ow a y st oa c to nt h e
+stability of the plasma. The rst involves the shapingof the equilibrium current prole in the vicinity of theresonant surface to decrease the available free energyfor the island to grow. The free energy is given by thestability index
+
+0(W)=( 0= )rres +W=2−( 0= )rres−W=2
+where is the poloidal ﬂux,  0is its derivative with
+respect to minor radius, and Wis the width of the
+island; 0(W)>0 means instability, whereas in the
+case 0(W)<0 the equilibrium conguration resists
+tearing and there is a saturation width for the neo-classical island, W
+sp=(−0). As this scheme
+2502 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 10
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+relies on a purely toroidal current, the injection can
+be continuous and the method is referred to as the
+‘DC scheme’. The other method is to inject directly
+into the O-point of the island and thus restore thelost current locally. This requires phased injectionand is referred to as the ‘AC scheme’. Current canalso be driven outside the island, which will reducethe eciency of either scheme. Note that heating willalso lead to an increase of the local current densitythrough enhanced conductivity.
+For current gradient driven tearing modes, the
+driving energy comes from the gradient in the equi-librium current prole. The DC scheme creates a
+local peak of positive toroidal current centred around
+the resonant surface. This decreases the stabilityindex at the resonant surface when no island ispresent [50]. The DC scheme has successfully beendemonstrated in experiments in JFT-2M [37] andT-10 [51]. The AC scheme works on the non-linearstability of the mode, and thus the requirement incurrent and power diers from the DC scheme by afactor that tends to favour the AC scheme. The eectof phased current drive in a magnetic island has suc-
+cessfully been demonstrated in ASDEX-Upgrade [52]
+and COMPASS-D (where the phase feedback loopwas closed, whereas no radial deposition feedbackwas applied [53]).
+Note that for both schemes, one does not have
+to maximize the total driven current, but rather thenumberI
+ECCD=d2,w h e r edis the ECCD deposition
+width, because the stabilizing eect depends on thegradient of the current density. This allows injec-tion of the ECCD power at relatively small anglesfrom perpendicular, because both driven current anddeposition width increase with angle. With the con-
+straint that the absorption has to be at the q=2
+surface, calculations nd a maximum of the drivencurrent density between 10
+and 20at a frequency of
+130 GHz. However, the absolute value of the drivencurrent strongly depends on the assumed T
+eat the
+q= 2 surface.
+For neoclassical tearing modes in the resistive beta
+limit, the condition 0<0 prevails. With the DC
+scheme, one makes use of the fact that the critical
+pfor non-linear instability scales linearly with 0.
+In ITER, it is expected that the m= 2 mode will be
+the most critical instability for the beta limit. This
+scheme is, in principle, capable of avoiding neoclas-sical tearing modes. The AC scheme again works onthe non-linear stability. Note that, similar to the caseof the current gradient driven tearing mode, only asmall injection angle, and therefore narrow deposi-tion width, is needed. For the reasons stated above,
+the AC scheme is favoured over the DC scheme. Cal-
+culations indicate that stabilization will require a
+driven current of the order of one per cent of thetotal current [54].
+A potential problem for the AC scheme is that
+the stabilization eciency rapidly decreases whenthe deposition width exceeds the island width. Inpractice, this may mean that the island cannot be
+completely removed by the AC scheme, but rather
+that it will be reduced to an island width of theorder of the deposition width. This also favours asmall injection angle and, therefore, small depositionwidth. For complete magnetic island removal, how-ever, other means would have to be invoked.
+A special case occurs when the magnetic islands,
+due to interactions with the conducting vacuum ves-
+sel wall and error elds arising from imperfections ofthe coil system, slow down and reach a stationary(locked) position. In this case, the AC scheme canonly work at full eciency if the EC wave antennais located in front of an island O-point. As has beenshown, counter drive in the X-point will be less eec-tive in removing the island. Thus, it is advisable toensure injection from more than one port, or to com-
+pensate the error eld using external coils that can
+be used to change the phase of the locked mode. Oth-erwise, the stabilization of this kind of locked modeis not dierent from a rotating one.
+A dierent kind of locked mode occurs when exter-
+nal error elds penetrate the plasma and produce amagnetic island. In this case, the equilibrium cur-
+rent prole is stable to tearing, i.e. 
+0(W)<0. This
+kind of locked mode has successfully been removed inCOMPASS-D [5] using ECCD in the island O-point.It was shown that above a critical heating power, theisland spins up to its natural rotation frequency anddecays, due to the fact that 
+0(W)<0.
+2.6. Other results
+2.6.1. ELMs
+Another MHD instability occurring in tokamak
+discharges is the ELM [55] (see also Section 2.6 ofChapter 3). Experiments on DIII-D have shown thatECRF heating of the plasma edge gives rise to a
+noticeable eect on the type I ELM frequency [56]:
+heating inside the separatrix increased the ELM fre-quency (as does any rise in heat ﬂux through the sep-aratrix in the case of type I ELMs), whereas heatingoutside the separatrix decreased the ELM frequency.This may be due either to a decreased resistivity, and
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2503
+
+============================================================
+Page 11
+============================================================
+ITER Physics Basis
+thus a longer current diusion time, or a softening of
+the pressure gradient across the separatrix.
+No experiments exist for the case of type II ELM
+control. However, ECH applied to type III ELMs wasshown to reduce the ELM frequency, consistent withthe other forms of heating power [57]. As the transi-tion from type III to type I ELMs seems to be con-nected to increasing edge temperature, one mightenvisage a separate control mechanism for type IIELMs by using edge heating. The usefulness of this
+eect will depend on the ELM type in ITER, which,
+at the moment, cannot be predicted accurately.
+2.6.2. Eect of ECH on sawteeth
+As in the case of ELM control, sawtooth (see Sec-
+tion 2.2 of Chapter 3) control in ITER will require a
+tailoring of repetition frequency of sawteeth in order
+to maximize their benecial eect in transportingimpurities and the He ash out of the plasma cen-tre. As in tearing mode control, AC and DC schemesare both possible. The DC scheme operates on theequilibrium proles, while the AC scheme inﬂuencesthem=1 ,n= 1 mode connected with the sawtooth.
+Control of the pressure prole inside the q=1s u r -
+face can, in principle, control the sawtooth behaviour
+[58]. However, here one has to compete with the
+300 MW of alpha power, so that this method doesnot seem feasible. On the other hand, a localizedDC current drive at the q= 1 surface has been suc-
+cessfully demonstrated by ion cyclotron heating inJET [59]. Due to the more localized deposition ofEC waves, this heating method will be even bettersuited to this scheme. An AC scheme for sawtoothcontrol might be possible by local current drive in theO-point of the m=1 ,n= 1 precursor mode in order
+to change its growth rate and thus prolong or shorten
+the sawtooth repetition time. Theoretical estimatesshow that this might be more dicult than for them= 2 mode because of the almost ideal character of
+them= 1 resistive kink. However, a way of altering
+ideal stability in order to make the mode grow like aresistive mode, which can then be stabilized like anm= 2 mode, has been proposed in [60]. This area
+requires further theoretical and experimental work.
+2.7. Application to ITER
+2.7.1. Technological issues
+Gyrotrons, a type of millimetre wave oscillator
+[61], are presently unequalled in their ability to gen-erate high power eciently at the frequencies ofinterest to ITER. High power millimetre wave win-
+dows are required to form the vacuum envelope on
+the tube itself, as well as on the torus. Several types
+of window that are potentially capable of steadystate MW level operation include room tempera-ture single disk, edge cooled diamond windows and‘chilled’ high resistivity Au doped silicon windows,cryogenic windows, and distributed windows [62].
+The state of the art in gyrotron and window devel-
+opment establishes constraints on the performancethat can be expected to be available for ITER. The
+development goal is the simultaneous demonstra-
+tion of a 170 GHz, 1 MW, steady state, 50% ecienttube with the use of a single stage depressed collec-tor [63,64]. The choice of frequency is a compromisebetween the state of the art in the technology, theoperational range in magnetic eld, and the heat-ing and current drive physics requirements. Windowperformance generally limits the output power to the1 MW range, although output powers of up to 2 MWmay be possible with diamond windows [65].
+Since electron cyclotron waves propagate in vac-
+uum, the launcher need not be in close proximity tothe plasma to eciently couple to it. However, to pro-vide the required steering capability, neither can thelaunch point be too distant. As a compromise, thelaunch location has been chosen at a point behindthe blanket/back plate, about 1 m distant from theplasma. The LFS midplane has been chosen for thelocation of the launchers. Modelling shows that this
+option is well suited for the intended applications of
+heating and current drive.
+Central heating at full eld both in reference dis-
+charges and in advanced scenarios is possible. O-axis current drive is also possible in almost all casesof interest. Thus, in terms of overall ﬂexibility, theproposed single frequency system is well optimized,particularly given the range of parameters and appli-cations of which it is capable and the variety of engi-
+neering constraints it satises.
+2.7.2. Heating and current drive in the ITER
+reference discharge
+Studies of core current drive in ITER like plasmas
+[16] recommend scenarios based on upshifted absorp-
+tion of elliptically polarized ordinary mode EC waves
+launched from the LFS midplane (see Section 2.2.2).Modelling of the ITER reference discharge has shownthat the current drive eciency depends strongly onboth the EC wave frequency and launch angle. Atthe full eld of 5.7 T, frequencies suitable for cur-
+2504
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 12
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+00.050.10.150.20.250.30.35
+0 1 0 2 03 0 4 05 0 6 0T
+eo = 20 keV<> x 1020 (A·W–1·m–2)
+Toroidal Launch Angle (deg)160 GHz 170 GHz180 GHz200 GHz220 GHz
+00.050.10.150.20.250.30.35
+0 1 02 03 0 4 05 06 0T
+eo = 30 keV
+Toroidal Launch Angle (deg)160 GHz170 GHz180 GHz200 GHz220 GHzh
+<> x 1020 (A·W–1·m–2) h
+Figure 2. The current drive gure of merit for 24 MA, 6 T target plasmas with Te0=2 0k e Va n d Te0=
+30 keV. The gure of merit, hi, is plotted against toroidal launch angle for selected frequencies between 160
+and 220 GHz (Ref. [28]). Note that these calculations were performed for an earlier version of the ITER EDAdesign, but the results are still, in essence, valid.
+rent drive lie in the range 160{230 GHz, as shown in
+Fig. 2. For each frequency there is an optimal toroidallaunch angle. For example, at 230 GHz the predictedcentral current drive eciency at full eld is in therange
+200:28{0.33 A W−1m−2forTe020{
+30 keV and requires a toroidal launch angle of 40.
+At the highest temperature, the dependence of the
+current drive eciency on temperature is weak.
+Eective core heating and core current drive can
+be provided by a single system at 170 GHz, thechoice of the frequency of the gyrotron sources. Thisplaces the heating slightly inboard of the majoraxis, atr=a=0:15, for perpendicular propaga-
+tion. Full absorption is obtained, even in the ini-tial ohmic phase of the discharge ( T
+e05k e V ,
+ne031019m−3), and can be maintained after
+the H-mode transition throughout the density rampup and approach to ignition. Between the ohmicand ignited phases of the discharge, the opacityvaries between 30 and 300, implying strongly local-ized deposition. The optimum toroidal angle for CDis relatively insensitive to temperature in the range5{30 keV. In this case, the predicted current driveeciency is 0.16 A W
+−1m−2atTe0=2 0 k e Va n d
+increases to 0.19 A W−1m−2atTe0=3 0 k e V .
+At reduced magnetic eld, increased current driveeciencies are achievable, since this is analogousto increasing the frequency at xed eld. Thus at170 GHz and B
+4:2 T, current drive eciencies
+200:3AW−1m−2are obtained [28].Rationalizing the technological constraints with
+the proposed heating and current drive missionsfor ITER leads to a system based on 170 GHzxed frequency gyrotrons. With the current design,approximately 50 MW of elliptically polarized O-mode power can be launched over a range of toroidalangles from a single equatorial port. The resulting
+system is ﬂexible in that it can full a wide variety
+of functions under both the reference and advancedtokamak modes of operation.
+3. Fast wave heating and current
+drive
+3.1. Introduction
+After the pioneering work of heating in the ion
+cyclotron range of frequencies (ICRF) in TFR, PLTand a number of smaller machines [66], radio fre-quency (RF) heating is now widely used on existingtokamaks, and includes many systems operating at
+the multi-MW level (Table 2).
+The fast magnetosonic wave can experience a
+large variety of interactions with plasma particles,
+including ion cyclotron fundamental and harmonicdamping, or direct coupling to the electrons’ parallelmotion, when the general resonance condition
+!=p!
+cs+kkvks (1)
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2505
+
+============================================================
+Page 21
+============================================================
+ITER Physics Basis
+quency, plasma density and magnetic eld strength
+{ was soon anticipated to lead to very strong wave{
+particle interaction through linear mode conversion
+to a hot plasma wave (and/or non-linear phenom-ena), and made lower hybrid waves (LHWs) goodcandidates for plasma ion heating (LHIH). Later, thelarge parallel electric eld carried by LHWs was alsoshown to lead to strong quasilinear Landau interac-tion with electrons, through wave{particle resonancein the direction parallel to the static magnetic eld(w=k
+kvk), and consequently to electron heating
+(LHEH) and non-inductive current drive (LHCD).
+Early experiments, performed on Petula, Wega, Ver-s a t o r ,W T - 2 ,A S D E X ,J F T - 2 ,A l c a t o r ,P L T ,F T - 1 ,T-7 and JT-60, yielded important achievements con-cerning the capability of these waves as far as heat-ing and current drive, as well as plasma start-up andcurrent ramp up, are concerned [161]. In present dayexperiments, the main reason for using LHWs is theirsignicant potential for current drive and prole con-trol, and consequently the frequency and antennas
+are generally optimized for electron interaction and
+current drive. Large LH systems now exist on manytokamaks (Table 3).
+The LHR frequency !
+LHis of the order of the ion
+plasma frequency !pi
+!LH=!pi=[1 + (!pe=!ce)2]1=2(!pi!ci):(9)
+This frequency, in the GHz range, is much larger
+than the ion cyclotron frequency and much smallerthan the electron cyclotron frequency. It is of theorder of { but always smaller than { the geomet-ric mean between these two. Somewhat higher fre-quencies (2{10 GHz) are more suitable for present
+day applications, where pure electron interaction is
+desired, whereas lower frequencies (below 1{2 GHz)were used in early ion heating experiments where theLHR was thought to be essential. In fact, as discussedlater, it turns out that even when the LHR does notexist, the perpendicular phase velocity of the LHWswill slow down above some critical density, so thatthe LHWs will interact strongly with plasma ions.
+For a suciently large electron temperature and
+parallel index of refraction N
+k=kkc=!along the
+static magnetic eld, the parallel phase velocity ofthe wave,!=k
+k, is a few times the thermal speed of
+the electrons, ve. As a result, a quasilinear plateau
+tends to build up in the electron velocity distributionfunction over the range of velocities [162]
+v
+kmin=c=Nkmax<ve<vkmax=c=Nkmin (10)corresponding to the local Nkspectrum of the
+absorbed power, with P(Nk)6=0f o rNkmin<N k<
+Nkmax.
+For high eciency current drive purposes, the cen-
+tralNkvalue of the wave spectrum launched by the
+antenna (and quoted in Table 3) is chosen in such away that the wave interacts with a broad range ofweakly collisional suprathermal electrons.
+A strong interaction of the LHWs with the ion
+population is possible when the perpendicular phasevelocity,!=k
+?, decreases to a few times the ion veloc-
+ity [163]. It can be seen from the cold electrostatic
+dispersion relation of the LHWs:
+!2=!2
+LH[1 + (mi=me)(kk=k?)2] (11)
+that the ratio of the perpendicular to the paral-
+lel phase velocities depends only on local plasmaparameters, through the local LHR frequency, andis independent of N
+k. As a consequence, at a given
+frequency the LHW power will be preferentially
+absorbed, either by the electrons or by the ions,depending mainly on the local plasma parametersencountered during the course of propagation, ratherthan the launched wave spectrum. The existence ofa critical density, which scales roughly proportion-ally to!
+2, at which a wave damping switches from
+electrons to ions, follows almost directly from theelectrostatic dispersion relation [164].
+Another basic feature of LHW physics is the acces-
+sibility condition, which has to be met so that the
+LHWs can propagate far enough inside the plasmato reach the wave absorption layers. When consider-ing the full electromagnetic cold plasma dispersion(N
+k1{2), one nds conditions for which the slow
+LHWs merge with a fast wave branch so that lin-ear mode conversion occurs. In order to avoid such amode conversion between the wave launching pointand the wave absorption layer, the following accessi-bility criterion must be satised [165]:
+N
+k>N kacc=!pe=!ce
++[ 1+(!pe=!ce)2−(!pi=!)2]1=2(12)
+where!ciand!ceare the ion and the electron
+cyclotron frequencies, respectively.
+This condition, which mainly depends on the mag-
+netic eld and the plasma density, limits the pene-tration of the wave into the plasma. Strictly speak-ing, it would apply in a separable geometry whereN
+kis a constant of the propagation. In tokamaks,
+toroidal eects and magnetic eld helicity lead to
+2514 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 40
+============================================================
+Chapter 6: Plasma auxiliary heating and current drive
+Recent work has demonstrated that stable long pulse
+operation is not a problem: a source has been oper-
+ated continuously for 140 h without diculty. This
+work has also demonstrated that the consumptionrate of Cs (which is introduced in order to enhancethe yield of negative ions) is suciently low that asingle dosage of 600 mg was sucient for more than120 h of operation. Measurements made after 140 hof continuous operation, and also after 8 monthsof intermittent operation, of the JT-60U N-NB sys-tem revealed that approximately 90% of the Cs was
+retained inside the plasma generator. Surface con-
+tamination was measured to be 1gcm
+−2at a
+distance of 1 m from the source, which is acceptable.
+5.5.2.3. Plasma neutralizer
+The development of a plasma neutralizer for ITER
+is being carried out at the Kurchatov Institute. Ifsuccessful, this would enable the eciency of con-version of the negative ions to fast neutrals to beincreased from the present value of 60% to 80%.
+Plasma production is by a microwave discharge and,following the successful demonstration of the tech-
+nique in a system 0.6 m long, a larger 2.4 m long
+system is being designed. Using a microwave sourceat 7 GHz, the maximum value of target thickness willbe1:510
+14cm−2.
+5.5.2.4. Technology
+The large ion source/accelerator structures re-
+quire very large diameter alumina insulators, whichexceed the presently available manufacturing tech-nology. A new fabrication technique that is scalableto 3 m diameter has been developed. The high volt-age bushing for the 1 MeV transmission line is a
+critical component and a model bushing is therefore
+being fabricated for HV testing.
+5.6. Conclusion
+The kinetic theory of beam plasma heating, cur-
+rent drive and plasma rotation is well developed. Thevalidity of theoretical predictions has been success-fully established by comparison with a large num-ber of experiments, from the rst conrmation ofthe basic eects in the Levitron device, throughdemonstration of quantitative agreement of the the-
+ory with measurements from all the major tokamaks,
+to the most recent results with ITER relevant injec-tor parameters using N-NB on JT-60U. Experimentshave shown that NB plasma heating is generally e-cient. In addition, NB current drive is able to supporta large proportion of the total current, up to 100%in some cases, and it can be used to help sustain
+current proles leading to enhanced plasma perfor-
+mance. The majority of the physics database used to
+design ITER has been acquired from present gen-eration tokamaks using NB based on positive ionsystems. The advances made in the production andacceleration of high energy negative ion systems leadto the conclusion that NB with beam energies inthe region of 1 MeV can play a major role on ITERas a credible and predictable method of heating theplasma to ignition. The provision of central current
+drive by high energy beams has been shown to be
+consistent with predictions and could also be appliedto the advanced scenarios of ITER. An additionalunique capability, which may be crucial to ITER, isthe proven capability of NB to produce rotation ofthe plasma in order to prevent the growth of lockedmodes.
+References
+[1] Ryter, F., H-Mode Database Working Group,
+Nucl. Fusion 36(1996) 1217.
+[2] Wilhelm, R., Plasma Phys. Control. Fusion 40
+(1998) A1.
+[3] Start, D.F.H., et al., Phys. Rev. Lett. 80(1998)
+4681.
+[4] Erckmann, V., Gasparino, U., Plasma Phys. Con-
+trol. Fusion 36(1994) 1869.
+[5] Lloyd, B., in Proc. 10th Joint Workshop on ECE
+and ECH, Ameland, World Scientic, Singapore
+(1997) 443.
+[6] Prater, R., J. Fusion Energy 9(1990) 19.
+[7] Alikaev, V.V., et al., in Plasma Physics and Con-
+trolled Nuclear Fusion Research 1994 (Proc. 15th
+Int. Conf. Seville, 1994), Vol. 1, IAEA, Vienna(1995) 157.
+[8] Bornatici, M., et al., Nucl. Fusion 23(1983) 1153.
+[9] Litvak, A.G., High-Frequency Plasma Heating,
+American Institute of Physics, New York (1992).
+[10] James, R.A., et al., Phys. Rev. A 45(1992) 8783.
+[11] Alikaev, V.V., et al., Nucl. Fusion 32(1992) 1811.
+[12] Gasparino, U., et al., in Proc. Joint Varenna-
+Lausanne Int. Workshop on Theory of FusionPlasmas, Varenna, 1990, Editrice Compositori,
+Bologna (1990) 195.
+[13] Luce, T.C., et al., \Current prole modication
+with electron cyclotron current drive in the DIII-
+D tokamak, IAEA-F1-CN-69/CD2/EX9/5", paper
+presented at 17th IAEA Conf. on Fusion Energy,Yokohama, 1998.
+[14] Cohen, R.H., Phys. Fluids 30(1988) 2442.
+[15] Fisch, N.J., Rev. Mod. Phys. 59(1987) 175.
+[16] Giruzzi, G., et al., Current Drive and Prole Con-
+trol in NET Plasmas, FOM-Instituut voor Plas-
+mafysica, Rijnhuizen, Nieuwegein (1989).
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+2533
+
+============================================================
+Page 41
+============================================================
+ITER Physics Basis
+[17] Smith, G.R., et al., Phys. Fluids 30(1987) 3633.
+[18] Harvey, R.W., et al., Phys. Rev. Lett. 62(1989)
+426.
+[19] Harvey, R.W., McCoy, M.G., The CQL3D Fokker{
+Planck Code, General Atomics (1992).
+[20] O’Brien, M.R., et al., in Proc. IAEA Tech.
+Committee Mtg on Advances in Simulation
+and Modelling of Thermonuclear Plasmas, Mon-
+treal, 1992, Vol. 1, IAEA, Vienna (1992)527.
+[21] Westerhof, E., in Proc. 9th Joint Workshop on
+ECE and ECH, Borrego Springs, World Scientic,
+Singapore (1995) 39.
+[22] Todd, T.N., et al., Plasma Phys. Control. Fusion
+35(1993) B231.
+[23] Polman, R.W., et al., in Controlled Fusion and
+Plasma Physics (Proc. 23rd Eur. Conf. Kiev,1996), Vol. 20C, Part II, European Physical Soci-
+ety, Geneva (1996) 934.
+[24] Alikaev, V.V., et al., Nucl. Fusion 35(1995) 369.
+[25] Polman, R.W., et al., in Controlled Fusion and
+Plasma Physics (Proc. 24th Eur. Conf. Berchtes-
+gaden, 1997), Vol. 21A, Part II, European PhysicalSociety, Geneva (1997) 605.
+[26] Erckmann, V., et al., Plasma Phys. Control. Fusion
+34(1992) 1917.
+[27] Erckmann, V., et al., Fusion Eng. Des. 26(1995)
+141.
+[28] Harvey, R.W., et al., Nucl. Fusion 37(1997) 69.
+[29] Jahns, G.L., et al., Nucl. Fusion 26(1986) 226.
+[30] Bagdasarov, A.A., et al., in Plasma Physics and
+Controlled Nuclear Fusion Research 1990 (Proc.13th Int. Conf. Washington, 1990), Vol. 1, IAEA,
+Vienna (1991) 523.
+[31] Giannone, L., et al., Nucl. Fusion 32(1992) 1985.
+[32] Gorini, G., et al., Phys. Rev. Lett. 71(1993) 2038.
+[33] Luce, T.C., et al., in Local Transport Studies in
+Fusion Plasmas (Proc. Workshop, Varenna, 1993),
+Editrice Compositori, Bologna (1993) 155.
+[34] Ryter, F., et al., in Controlled Fusion and Plasma
+Physics (Proc. 23rd Eur. Conf. Kiev, 1996),
+Vol. 20C, Part I, European Physical Society,
+Geneva (1996) 11.
+[35] Luce, T.C., et al., in Plasma Physics and Con-
+trolled Nuclear Fusion Research 1990 (Proc. 13th
+Int. Conf. Washington, 1990), Vol. 1, IAEA,Vienna (1991) 631.
+[36] Lohr, J., et al., Phys. Rev. Lett. 60(1988) 2630.
+[37] Hoshino, K., et al., Phys. Rev. Lett. 69(1992)
+2208.
+[38] Fielding, S.J., et al., Plasma Phys. Control. Fusion
+38(1996) 1091.
+[39] Erckmann, V., et al., Phys. Rev. Lett. 70(1993)
+2086.
+[40] Prater, R., et al., in Plasma Physics and Con-
+trolled Nuclear Fusion Research 1988 (Proc. 12thInt. Conf. Nice, 1988), Vol. 1, IAEA, Vienna (1989)
+527.
+[41] Fielding, S.J., et al., Plasma Phys. Control. Fusion
+40(1998) 731.
+[42] Lloyd, B., et al., Nucl. Fusion 31(1991) 2031.
+[43] Pereverzev, G.V., in Plasma Physics and Con-
+trolled Nuclear Fusion Research 1988 (Proc. 12th
+Int. Conf. Nice, 1988), Vol. 1, IAEA, Vienna (1989)
+739.
+[44] Maroli, C., Petrillo, V., Nuovo Cimento 10D
+(1988) 677.
+[45] Fidone, I., Granata, G., Nucl. Fusion 34(1994)
+743.
+[46] Lloyd, B., et al., Plasma Phys. Control. Fusion 38
+(1996) 1627.
+[47] Jotaki, E., Itoh, S., ECR Discharge Cleaning
+for TRIAM-1M, Rep. FURKU 97-03(44), KyushuUniversity, Japan (1997).
+[48] Sauter, O., et al., Phys. Plasmas 4(1997) 1654.
+[49] Wesson, J.A., et al., Nucl. Fusion 29(1989) 641.
+[50] Westerhof, E., Nucl. Fusion 30(1990) 1143.
+[51] Kislov, D.A., et al., Nucl. Fusion 37(1997) 339.
+[52] Zohm, H., et al., Nucl. Fusion 39(1999) 577.
+[53] McCardle, G.J., et al., in Proc. 9th Joint Work-
+shop on ECE and ECH, Borrego Springs, World
+Scientic, Singapore (1995) 271.
+[54] Zohm, H., Phys. Plasmas 4(1997) 9.
+[55] Zohm, H., Plasma Phys. Control. Fusion 38(1996)
+105.
+[56] Lohr, J., et al., The Eect of Edge Resonant Elec-
+tron Cyclotron Heating on Edge Localized Modes
+in a Tokamak, General Atomics, San Diego (1991).
+[57] Morris, A.W., et al., in Plasma Physics and Con-
+trolled Nuclear Fusion Research 1994 (Proc. 15th
+Int. Conf. Seville, 1994), Vol. 1, IAEA, Vienna(1995) 365.
+[58] Zakharov, L., et al., The Theory of Stabiliza-
+tion of Sawtooth Oscillations in TFTR Supershots,
+Princeton Plasma Physics Laboratory, NJ (1993).
+[59] Bhatnagar, V.P., et al., Nucl. Fusion 34(1994)
+1579.
+[60] White, R.B., et al., in Magnetic Reconnection and
+Turbulence, Editions de Physique, Orsay (1995).
+[61] Edgecombe, C.J., Gyrotron Oscillators, their Prin-
+ciples and Practice, Taylor and Francis, London
+(1993).
+[62] Nelson, S.D., et al., in Proc. 11th Topical Conf. on
+Radio Frequency Power in Plasmas, Palm Springs,
+AIP, New York (1995) 441.
+[63] Sakamoto, K., et al., Phys. Rev. Lett. 73(1994)
+3532.
+[64] Kosmahl, H.G., Proc. IEEE 70(1982) 1325.
+[65] Braz, O., et al., in Proc. 22nd Int. Conf. on Infrared
+and Millimeter Waves, Wintergreen (1997) 144.
+[66] Adam, J., Plasma Phys. Control. Fusion 29(1987)
+443.
+2534 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+
+================================================================================
+=== CHAPTER 8: Plasma Operation and Control ===
+================================================================================
+
+Total pages: 50
+
+Found 13 pages with ECCD/heating content
+
+
+============================================================
+Page 2
+============================================================
+Chapter 8: Plasma operation and control
+ITER Physics Expert Group on Disruptions, Plasma Control, and MHD
+ITER Physics Expert Group on Energetic Particles,
+Heating and Current Drivey
+ITER Physics Expert Group on Diagnosticsz
+ITER Physics Basis Editorsx
+ITER EDA, Naka Joint Work Site, Mukouyama,Naka-machi, Naka-gun, Ibaraki-ken, Japan
+Abstract. Wall conditioning of fusion devices involves removal of desorbable hydrogen isotopes and
+impurities from interior device surfaces to permit reliable plasma operation. Techniques used in present
+devices include baking, metal lm gettering, deposition of thin lms of low- Zmaterial, pulse discharge
+cleaning, glow discharge cleaning, radio frequency discharge cleaning, and in situ limiter and divertor
+pumping. Although wall conditioning techniques have become increasingly sophisticated, a reactor
+scale facility will involve signicant new challenges, including the development of techniques applicable
+in the presence of a magnetic eld and of methods for ecient removal of tritium incorporated intoco-deposited layers on plasma facing components and their support structures. The current status of
+various approaches is reviewed, and the implications for reactor scale devices are summarized. Creation
+and magnetic control of shaped and vertically unstable elongated plasmas have been mastered in manypresent tokamaks. The physics of equilibrium control for reactor scale plasmas will rely on the same
+principles, but will face additional challenges, exemplied by the ITER/FDR design. The absolute
+positioning of outermost ﬂux surface and divertor strike points will have to be precise and reliable inview of the high heat ﬂuxes at the separatrix. Long pulses will require minimal control actions, to
+reduce accumulation of AC losses in superconducting PF and TF coils. To this end, more complex
+feedback controllers are envisaged, and the experimental validation of the plasma equilibrium response
+models on which such controllers are designed is encouraging. Present simulation codes provide an
+adequate platform on which equilibrium response techniques can be validated. Burning plasmas requirekinetic control in addition to traditional magnetic shape and position control. Kinetic control refers
+to measures controlling density, rotation and temperature in the plasma core as well as in plasma
+periphery and divertor. The planned diagnostics (Chapter 7) serve as sensors for kinetic control,while gas and pellet fuelling, auxiliary power and angular momentum input, impurity injection, and
+non-inductive current drive constitute the control actuators. For example, in an ignited plasma, core
+density controls fusion power output. Kinetic control algorithms vary according to the plasma state,e.g. H- or L-mode. Generally, present facilities have demonstrated the kinetic control methods required
+for a reactor scale device. Plasma initiation { breakdown, burnthrough and initial current ramp { in
+reactor scale tokamaks will not involve physics diering from that found in present day devices. ForITER, the induced electric eld in the chamber will be 0.3 Vm
+−1{ comparable to that required
+by breakdown theory but somewhat smaller than in present devices. Thus, a start-up 3 MW electron
+cyclotron heating system will be employed to assure burnthrough. Simulations show that plasmacurrent ramp up and termination in a reactor scale device can follow procedures developed to avoid
+disruption in present devices. In particular, simulations remain in the stable area of the l
+i{qplane.
+For design purposes, the resistive V s consumed during initiation is found, by experiments, to follow
+the Ejima expression, 0 :450RI p. Advanced tokamak control has two distinct goals. First, control of
+density, auxiliary power, and inductive current ramping to attain reverse shear qproles and internal
+transport barriers, which persist until dissipated by magnetic ﬂux diusion. Such internal transportbarriers can lead to transient ignition. Second, combined use poloidal eld shape control with non-
+inductive current drive and NBI angular momentum injection to create and control steady state, high
+bootstrap fraction, reverse shear discharges. Active n= 1 magnetic feedback and/or driven rotation
+will be required to suppress resistive wall modes for steady state plasmas that must operate in the
+wall stabilized regime for reactor levels of 0:03.
+ITER Physics Expert Group on Disruptions, Plasma
+C o n t r o l ,a n dM H D :S .M i r n o v( T r o i t s k ,c h a i r ) ,J .W e s l e y(ITER JCT, co-chair), N. Fujisawa (ITER JCT), Yu. Gri-bov (ITER JCT), O. Gruber (IPP-Garching), T. Hender
+Nuclear Fusion, Vol. 39, No. 12 c/circlecopyrt1999, IAEA, Vienna 2577
+
+============================================================
+Page 3
+============================================================
+ITER Physics Basis
+Contents
+1. Surface and wall conditioning 2579
+1.1. ITER wall/surface conditioning
+requirements and constraints . . . . . 2579
+1.2. Conditioning methods used in
+present tokamaks . . . . . . . . . . . . 2580
+1.3. Tritium retention and removal . . . . . 2584
+1.4. Implications for ITER: summary . . . 2587
+2. Plasma control 2588
+2.1. Magnetic control and plasma
+disturbances . . . . . . . . . . . . . . . 2590
+2.1.1. Physics basis for plasma control 25902.1.2. Dynamic equilibrium control
+and plasma disturbances . . . . 2591
+2.1.3. Magnetic control in present
+tokamaks and ITER . . . . . . 2592
+2.1.4. Intelligent or adaptive
+magnetics control . . . . . . . . 2595
+2.1.5. ITER controller design
+simulations and predicted
+response . . . . . . . . . . . . . 2595
+2.1.6. Summary and implications
+for ITER . . . . . . . . . . . . 2596
+2.2. Kinetics control and divertor control . 2597
+2.2.1. Introduction and background . 2598
+2.2.2. Kinetics control requirements
+for ITER . . . . . . . . . . . . 2598
+(UKAEA-Culham), N. Ivanov (RRC-Kurchatov), S. Jardin(PPPL), J. Lister (EPFL), F. Perkins (ITER JCT),
+M. Rosenbluth (ITER JCT), N. Sautho (PPPL), T. Tay-lor (General Atomics), S. Tokuda (JAERI), K. Yamazaki(NIFS), R. Yoshino (JAERI). Additional contributing author :
+V. Phillips (TEXTOR-J¨ ulich).
+yITER Physics Expert Group on Energetic Parti-
+cles, Heating and Current Drive: J. Jacquinot (JET, chair),
+S. Putvinski (ITER JCT, co-chair), G. Bosia (ITER JCT),A. Fukuyama (Okayama Univ.), R. Hemsworth (CEA-Cadarache), S. Konovalov (RRC-Kurchatov), W. M. Nevins(LLNL), F. Perkins (ITER JCT), K. Rasumova (RRC-
+Kurchatov), F. Romanelli (ENEA-Frascati), K. Tobita
+(JAERI), K. Ushigusa (JAERI), J. W. Van Dam (Univ.Texas), V. Vdovin (RRC-Kurchatov), S. Zweben (PPPL).
+zITER Physics Expert Group on Diagnostics:
+K.M. Young (PPPL, chair), A.E. Costley (ITER JCT, co-chair), R. Bartiromo (ENEA-Padova), L. de Kock (ITERJ C T ) ,E . S .M a r m a r( M I T ) ,V . S .M u k h o v a t o v( I T E RJ C T ) ,
+K. Muraoka (Kyushu Univ.), A. Nagashima (JAERI),
+M.P. Petrov (Ioe Inst.), P.E. Stott (JET), V. Strelkov (RRC-Kurchatov), S. Yamamoto (ITER JCT).
+xITER Physics Basis Editors: F.W. Perkins (ITER JCT),
+D.E. Post (ITER JCT), N.A. Uckan (ORNL), M. Azumi(JAERI), D.J. Campbell (NET), N. Ivanov (RRC-Kurchatov),
+N. Sautho (PPPL), M. Wakatani (Kyoto Univ.). Addi-
+tional contributing editors : W.M. Nevins (LLNL), M. Shimada
+(JAERI), J. Van Dam (Univ. Texas).2.2.3. Present experience and
+accomplishments . . . . . . . . 2601
+2.2.4. ITER kinetics control
+simulations . . . . . . . . . . . 2604
+2.2.5. Summary and implications
+for ITER . . . . . . . . . . . . 2605
+2.3. Plasma operation scenario and related
+considerations . . . . . . . . . . . . . . 2605
+2.3.1. Plasma initiation . . . . . . . . 26052.3.2. Plasma current ramp up . . . . 2610
+2.3.3. Plasma current ramp down . . 2613
+2.3.4. Fast plasma shutdown:
+requirements and options . . . 2614
+2.3.5. ITER scenario concept
+and simulations . . . . . . . . . 2615
+2.4. Advanced tokamaks: control of the
+current and pressure proles . . . . . . 2617
+2.4.1. Candidate parameters for
+‘advanced performance’operation in ITER . . . . . . . 2618
+2.4.2. Advanced performance control
+in present experiments andprojections to ITER . . . . . . 2621
+2.4.3. Simulations of ITER current
+drive and plasma operatingpoint control . . . . . . . . . . 2622
+2.4.4. Summary and future R&D
+recommendations . . . . . . . . 2622
+Preamble
+Plasma operation and control constitute the ulti-
+mate manifestation of the science of tokamak opera-
+tion, and in the broadest sense encompass the practi-
+cal application of the physics basis knowledge and 30years of plasma operation experience that is embod-ied in Chapters 2{7 of this Article. This Chap-ter addresses the implementation of plasma opera-tion and control means, with emphasis on the oper-ational techniques that are used to create and con-trol plasmas in tokamaks so as to obtain maximumplasma performance or conduct scientic and tech-
+nology validation studies. Assessing how this experi-
+ence will extrapolate to ITER and reactor tokamaksis the rationale for this Chapter.
+Control and monitoring of plasma operation must
+act to eect protection of tokamak systems againstthe normal and abnormal eects of plasma opera-tion. This aspect of plasma control { already of someimport in present tokamaks { will assume a higher
+2578
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 8
+============================================================
+Chapter 8: Plasma operation and control
+Wampler (1989)
+Wampler (1989)
+Hsu (1989)
+DIII-D (graphite)
+0.1 1.0 10 100
+Incident ion energy (keV)Desorbed hydrogen (1016 atoms/cm2)
+0.11.0Hydrogen desorbed by He ions from carbon
+or graphite, normalized to an incident ionfluence of 1016 cm–2 
+Figure 2. Helium induced desorption of hydrogenic
+species from hydrogen saturated carbon lms (labora-tory data, indicated by open symbols, see Ref. [12]) andDIII-D graphite tiles ( in situ glow conditioning data,
+lled symbol) as a function of incident He ion energy.The desorbtion is normalized to a He ion ﬂuence of110
+16ionscm−2.
+maks after boronization. Deposition of silicon (sili-
+conization) has been done in TEXTOR and, recently,in ASDEX-Upgrade and is very eective in reduc-
+ing the oxygen inﬂux and recycling. In TEXTOR,
+it has also increased the edge radiation by phys-ical sputtering of silicon and established radiatedimproved connement conditions (RI-mode) withoutadditional impurity seeding [14]. Lithium has alsobeen used as a wall coating material. The most suc-cessful application of lithium has been on TFTR,where lithium pellet injection increased the fusiontriple product and energy connement time in super-
+shot discharges [15].
+Radio frequency discharge cleaning has been used
+for impurity removal in a limited number of appli-cations, generally as an alternative to more con-ventional glow or pulsed discharge cleaning meth-ods. Electron cyclotron resonant (ECR) heatingwas successfully applied in the Gamma 10 mir-ror device, which has a very complex inner geom-etry, to improve wall conditions [16]. Recently, ECR
+discharges have been used on Alcator C-Mod for
+boronization, and discharges produced by pure ioncyclotron resonant heating have been used in theTEXTOR tokamak for in-vessel conditioning [17].While rf heating discharges can be used basicallyin a magnetic eld, the energy of helium or hydro-gen atoms striking the wall is usually considerably
+lower than glow discharges, and hence, as shown in
+Fig. 2, the desorption eciency is expected to be
+lower. In addition, the uniformity of the incidentparticles produced by these discharges needs to bedetermined.
+The tritium inventory that can accumulate in the
+target surfaces and in the co-deposits in reactor toka-
+maks and in ITER is projected to be appreciable
+(1 kg). For this reason, tritium removal becomes
+an important wall and torus conditioning issue forsuch tokamaks. It may also be needed for isotopiccontrol [18]. For isotopic ‘switchover’ in JET tritiumexperiments, glow preconditioning with the desiredspecies followed by ohmic and low power auxiliaryheated discharges is found to be sucient to obtainadequate ‘isotopic purity’ in subsequent operation
+with 100% T or 50%{50% DT. The physics basis
+for tritium retention and removal in present day andreactor tokamaks is discussed further in Section 1.3below.
+In situ limiter and divertor pumping .A l lo ft h e
+techniques discussed above apply to present daytokamaks, which operate transiently, with plasmaon/o duty cycle ratios 1.In situ pumping can
+remove impurities on a steady state basis and also
+provide recycling control, important for long pulse
+and steady state fusion reactors. Several tokamakshave implemented in situ pumps in conjunction with
+pump limiters (e.g. TEXTOR and Tore-Supra) orin the divertor region (JET, DIII-D and ASDEX-Upgrade). These systems have demonstrated theability to lower the wall inventory of hydrogenic par-ticles, at least in graphite wall machines [19, 20].For example, the in situ cryopump in DIII-D has
+been used in lieu of intershot helium glow discharge
+conditioning to reduce the hydrogenic wall inven-
+tory [19]. Wall inventories as low as those maintainedby the helium glow were obtained. Pumping has thusdemonstrated the ability to achieve low recyclingwall conditions equivalent to other conditioning tech-niques. While reproducible discharges were obtainedwith pumping in DIII-D, the ability of the cryopumpto control impurities, especially after disruptions, isnot addressed in detail and is an area requiring fur-
+ther investigations before in situ pumping can be
+considered as a replacement for other techniques,such as He glow conditioning. Nevertheless, pump-ing is a promising conditioning technique for deviceswith a continuous magnetic eld and long pulses suchas ITER.
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2583
+
+============================================================
+Page 15
+============================================================
+ITER Physics Basis
+iary heating, ignition and burn, fusion power shut-
+down, current ramp down and termination when the
+maximum PF ﬂux is reached, followed by PF reset
+and magnet cool down; each scenario phase mayrequire distinct control methods, with a specic setof quantities to be controlled and a specic set ofcontrol algorithms; the present ITER control strat-egy is a mix of sequencing logic, pre-programmed andclosed loop feedback control of the various hardwaresystems.
+Plasma magnetics control: plasma current con-
+trol, plasma shape control, plus control of selectedplasma to rst wall clearance gaps including thenominal divertor magnetic conguration; also non-axisymmetric error eld compensation; various engi-neering limits of ITER are to be respected.
+Plasma kinetics and divertor control: control of
+the H-mode transition, density, fusion power, impu-rity content and radiated power fraction; pressureand density limits are to be avoided; plasma pro-
+le control using auxiliary heating and current drive,
+divertor control using pumping, divertor gas andimpurity injection; possibly stabilization of certainMHD instabilities, neoclassical modes and sawteeth,to avoid disruptions.
+Fast plasma shutdown: shutdown of fusion power
+and current by means of impurity injection; if dis-ruption does occur, mitigative actions should reducethermal and electromechanical loads on the in-vesselsystems; plasma control system actions will over-lap hardware protection functions that have tradi-tionally been addressed by separate interlock and/orfault detection systems.
+2.1. Magnetic control and plasma
+disturbances
+Magnetic control comprises adjusting the toka-
+mak plasma equilibrium using the currents in the PFcoils. Plasma current, position and shape measure-ments are derived primarily from magnetic diagnos-tics, such as Rogowski coils, magnetic probes, ﬂuxloops and diamagnetic loops. The ability of such a‘magnetic feedback control’ to reliably and preciselyadjust the tokamak discharge equilibrium is already
+a key factor in routine and reliable tokamak per-
+formance. Manipulating the plasma shape and cur-rent has been instrumental in experiments to deter-mine the eect of key plasma parameters such astheq(r)a n d j(r) proles on plasma transport and
+MHD stability (see Section 2.7 of Chapter 3). Mag-netic plasma control has been rened to such a degree
+that it is usually regarded as a domain of engineering
+operation rather than plasma physics.
+Magnetic control has the essential functions of sta-
+bilizing the axisymmetric vertical instability inher-ent in elongated cross-sections, and in keeping theplasma shape, position and current nearly xed evenin the presence of internal plasma disturbances suchas sawteeth, minor disruptions, ELMs and othertransients. Quantifying the expected eects of suchdisturbances and designing an appropriate control
+system to limit them is an important aspect of
+plasma magnetics control.
+The use of superconducting coils in ITER intro-
+duces the further consideration of limiting the ‘aclosses’ that arise from plasma control actions. Thecontinuous dithering of the controlled plasma param-eters around a stable operating point owing to vari-ations in the plasma parameters themselves and torepetitive plasma disturbances lead to heating of the
+superconducting coils and to the cryogenic structures
+in the magnets. The heating resulting from theseeects is grouped together under the heading of ‘aclosses’. Estimates of these losses for typical ITERoperation indicate that they might become impor-tant during long discharges, and in certain scenarioscould become a signicant factor in the long termthermal balance of the coil systems. Accordingly, theITER controller will have to limit cumulative AClosses owing to repetitive disturbances and noise.
+2.1.1. Physics basis for plasma control
+The underlying basis of magnetic plasma con-
+trol in a tokamak is the Grad{Shafranov idealMHD plasma equilibrium equation (see Section 2.1of Chapter 3), which describes two dimensional
+magnetostatic plasma equilibria in the absence of
+signicant mass ﬂow, plasma rotation or pressureanisotropy. With the exception of the TSC code, allwork on ITER magnetics control is based on a mass-less plasma assumption. The Grad{Shafranov equa-tion determines the plasma equilibrium ﬂux surfaceconguration for dened PF coil currents, plasmapressure prole, current prole and toroidal eld.It is possible to determine the normalized plasmapressure, 
+p, and the internal inductance liwhen the
+plasma is elongated [47]. Conversely, specication of
+these two parameters is normally sucient to deter-mine the static ﬂux surface conguration accurately.
+Figure 3 illustrates an ITER plasma equilibrium
+for the 1.5 GW fusion power burn phase. The nom-
+2590
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 23
+============================================================
+ITER Physics Basis
+the core are density, temperature, impurity content,
+current density, and, in the case of a DT plasma,
+fusion power. At the same elementary level, the key
+attributes of the divertor region plasma are tem-perature, density, impurity content and ionizationstate, and the corresponding levels of radiated powerand power conducted and convected to the mate-rial plasma facing surfaces. The physics basis con-siderations that apply to the core and edge/divertorplasma regions are described in Chapter 2 and Chap-ter 4, respectively. The subject of this Section is
+how these attributes are manipulated and controlled
+by external actuators and control algorithms dur-ing the course of a tokamak discharge. Such kineticscontrol now plays an increasingly important role inmodern tokamaks, especially when they are operatedso as to obtain maximum fusion energy gain Q=
+P
+fus=Pin[63]. In ITER, control of the plasma kinetic
+attributes to obtain sustained DT fusion burn at pre-determined fusion power is a central and, arguably,a rst priority plasma operation objective.
+2.2.1. Introduction and background
+Tokamak plasma control encompasses both mag-
+netics control (described in Section 2.1) and kinet-ics control [41]. In most present cases of tokamakcontrol, there is a clear distinction between mag-netics control and kinetics control functions, bothin terms of the actuators used (the PF coil sys-tem for magnetics control versus fuelling, heating
+and pumping systems for kinetics control), and in
+the control algorithms as well as the diagnostic sen-sors employed. But coordinated magnetic and kineticcontrol is proving to be essential in controlling cur-rent ramps to create reverse shear qproles and their
+attendant internal transport barriers.
+The kinetic properties of the plasma { especially
+the electrical conductivity, pressure and current den-sity prole { of course ultimately aect magneticcontrol. Traditionally, however, these parameters arenot directly manipulated for magnetic congurationcontrol purposes. Instead, the PF control system isdesigned to control the plasma position, shape andpoloidal ﬂux content in a manner that endeavours tomaintain acceptable magnetic control despite varia-
+tion in the plasma kinetic parameters. In contrast,
+some degree of direct or ‘active’ kinetics control (e.g.keeping plasma density in a range that avoids dis-ruption) is required for successful tokamak opera-tion. In this sense, kinetics control is ultimately theactive or dominant aspect of plasma scenario con-trol; PF/magnetics control is a reactive or subordi-
+nate aspect.
+Although control is usually viewed as being a
+mathematically linear process, optimization of fusionplasma performance requires non-linear control ofkinetic properties to access plasma states withimproved transport, such as the classic H-mode edgestate [64] or internal transport barriers (ITBs) [65].T h eH - m o d ee d g et r a n s i t i o nr e q u i r e sat h r e s h o l d
+power through the separatrix, whereas ITBs require
+the coordinated use of the nominal magnetics controlhardware and the auxiliary heating system to rampthe plasma current, thereby controlling the currentdensity prole. In both cases, control permits accessto a transport bifurcation. ITB control serves as anexample of integration of magnetic and kinetic con-trol that will likely increase in a reactor scale device.
+Recently, tokamak facilities have installed diverse
+and separately controllable H/D/T and impurityfuelling systems, controllable divertor pumping andneutral particle exhaust systems, between pulse andin pulse wall conditioning, as well as heating andcurrent drive systems with controllable radial andtemporal localization capabilities and with sucientpower to locally modify the inherent plasma currentand temperature proles. The availability of theseincreasingly capable and agile kinetics control actu-
+ators, when combined with the corresponding avail-
+ability of key plasma kinetic diagnostics, has led toan increasing ability to eect more direct controlof the kinetic attributes of the core and divertorplasma. This control has led to improved plasma per-formance as well as sustainment of near optimal per-formance [66]. The same control ability can also pro-vide a basis to avoid MARFEs [67] and to limit theamplitude of deleterious MHD activity to acceptable
+levels [68]. In this sense, kinetics control has begun to
+be proactive rather than just reactive. Specic exam-ples of this type of progression in sophistication inpresent tokamak control practice are presented belowin Section 2.2.3.
+2.2.2. Kinetics control requirements for ITER
+Put in its simplest terms, kinetics control must
+stably regulate three powers: fusion power output,
+power ﬂowing across the separatrix, and power ﬂow-
+ing to the divertor plasma facing components. Thereis also a key, presently empirical, constraint that thedensity not exceed 1.5 times the Greenwald densityofn
+20=IMA=a2. The empirical factor of 1.5 is
+provisional and will hopefully replaced by a physics
+2598 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 27
+============================================================
+ITER Physics Basis
+Table 3. Plasma kinetics control experience in present tokamaks
+Control category or
+controlled plasma attributeControl method and/or procedure:
+sensor/parameter !actuator Example/reference
+Core kinetics
+Electron density
+(neor ne(=
+/CA
+nedl=l))Interferometry or bremsstrahlung !
+fuel gas (H, D or T) injection valveAll major experiments
+Electron density
+(neor ne(=
+/CA
+nedl=l))Bremsstrahlung !bang-bang controller
+!pellet centrifugeASDEX-Upgrade [75]
+DD fusion power
+(via DD neutron yield)DD rate (neutron counter) !
+number of NBI sourcesJT-60U [76]
+WthorN(=aB=I ) Wmhd(diamag.) NBI duty cycle
+N(diamag.) !number NBI sourcesDIII-D [77]
+TFTR [78]
+Core radiation fraction Prad(core) =Pheat!impurity gas injection ASDEX-Upgrade [79]
+Core radiation fraction Prad(core) =Pheat!impurity gas injection TEXTOR [80]
+Central mass and
+electron densityFrequency of Alfv en eigenmode !
+gas injection of H and DTCA [81]
+Current prole j(r)
+or momentsMSE or polarimetry !ECH (planned) DIII-D [82]
+Current prole j(r)
+or momentsli!phasing of LH launcher modules
+(changes nkand current drive prole)Tore-Supra [83]
+Axial safety factor
+(q0)o rj(r)MSE !Paux(heat, current drive) (planned) DIII-D [82]
+neoclassical modes ( q= 2) SXR, ECE or Mirnov island detection ! ASDEX-Upgrade [68]
+ECCD
+Edge kinetics and divertor
+ne(edge) n0(midplane or div.) !gas injection (div.) DIII-D [82]
+Neutral pressure ( n0) n0(div.) !gas injection (div.) ASDEX-Upgrade [79],
+JT-60U [84]
+Neutral pressure ( n0) Langmuir probe div. !gas injection (div) JET [85]
+Edge radiation Bolometer (core) !gas injection (midplane) ASDEX-Upgrade [79]
+In-divertor radiation Bolometer (div.) !gas injection (div.) JT-60U [86]
+In-divertor radiation Bolometer (core) !gas injection (div.) DIII-D [82]
+Wall and limiter
+temperatureIR camera set !plasma control system,
+also protection interlockTore-Supra
+(planned) [87]
+MARFE level MARFE detection (localized bremsstr.) !
+NBI duty cycleASDEX-Upgrade
+Fast plasma shutdown
+Wthand/or Ipshutdown Trigger !massive He injection JT-60U, DIII-D
+WthandIpshutdown
+without VDETrigger !massive He injection JT-60U [88]
+Wthand/or Ipshutdown
+(typically with VDE in
+elongated plasmas, butwith reduced halo current)Trigger !impurity pellet
+(Ne, Ar, D
+2+K r ,D 2+A uo rA g )JT-60U [89,90],
+ASDEX-Upgrade, DIII-D,
+TFTR, Alcator C-Mod [91]
+2602 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+============================================================
+Page 32
+============================================================
+Chapter 8: Plasma operation and control
+In fact, Townsend breakdown at lower Eelds and
+much lower one turn voltages has been demonstrated
+in smaller tokamaks (e.g. 0.25 V m−1and 3 V per
+turn in DIII-D [105]). However, the resulting initialbuildup of ionization under these low Eeld condi-
+tions is relatively slow (30 ms), and careful adjust-ment of the lling gas pressure and eld null geom-etry are required. The addition of modest amountsof electron cyclotron power with a resonance posi-tioned near the centre of breakdown location (multi-pole eld null) results in faster ( <3 ms) and more
+reliable breakdown with greatly increased tolerance
+to eld null quality [105]. This latter advantage issignicant, since it allows the breakdown eld cong-uration to be adjusted to favour optimal radial equi-librium of the initial plasma (which requires a weakvertical eld) rather than the high order multi-polenull that is optimal for initial breakdown. Indeed, thetransformation from a breakdown plasma with neg-ligible current to a very low current tokamak cong-uration has not been the topic of detailed scientic
+study. Nonetheless, this transition is successfully car-
+ried out by all tokamaks. The procedures set forthin [106] are representative and apply to ITER.
+Reduction of the breakdown loop voltage using
+ECH pre-ionization has been investigated in manytokamaks (FT-1, WT-1, ISX-B, Tokapole II, CLEO,WT-2, JFT-2 and DIII-D, see [105] and referencestherein). Reliable breakdown at a minimum electric
+eld of 0.15 V m
+−1(1.6 V per turn) was achieved
+in DIII-D with 700 kW of 60 GHz EC assist power.Alternatively, plasma current start-up without a pri-mary voltage was demonstrated in PLT [107] byinjecting lower hybrid (LH) waves. In these experi-ments, pre-ionization by RF heating played an essen-tial role in reducing the loop voltage, with hydrogengas used as the prell gas. In JT-60U, stable plasmacurrent start-up with 0.08 V m
+−1was obtained with
+helium prell gas and LHRF heating (1.7{2.4 GHz,
+1.5 MW, see [108]) with no pre-ionization. Heliumgas was also used in TEXTOR-94 for low voltagestart-up assisted by ICRF (350{500 kW, 32 MHz,second harmonic frequency regime, see [109]). Asshown below, the use of helium rather than hydrogenor deuterium facilitates initiation at low voltage.
+There are three principal considerations for
+achieving successful plasma start-up: (i) Townsend
+avalanche characteristics; (ii) magnetic connectionlength; and (iii) impurity ionization radiation ‘burn-through’. Considerations (i) and (ii) determinewhether initial breakdown occurs; consideration (iii)determines whether the initial ionization producedplasma current can be sustained and increased by
+application of a nite plasma loop voltage. All of
+these considerations are well known and we nd that
+there are no new physics issues related to achievingplasma initiation in an ITER class tokamak. How-ever, careful design of the start-up strategy basedupon the three considerations above is required. Afourth consideration { that of producing runawayelectrons during low- Eeld/low density start-up {
+has also been identied [105]. However, experimen-tal results to date show little indication that low- E
+eld/low density start-up produces signicant run-
+aways [108].
+In what follows, the four physics design considera-
+tions for plasma initiation are further developed and
+the resulting implications for ITER are evaluated.
+(1) Electric eld and prell gas pressure
+According to Townsend avalanche theory, the ion-
+ization growth rate (ionizations per unit length)
+is=Apexp(−Bp=E ), where pis the neutral
+gas pressure (traditionally measured in Torr; 1 Torr=1=760 atm =131 Pa), Eis the electric eld,
+andAandBare coecients that depend on the
+gas species: A= 510 m
+−1Torr−1,B=1:25
+104Vm−1Torr−1for hydrogen or deuterium (and,
+presumably, for tritium); A= 300 m−1Torr−1,B=
+3:4104Vm−1Torr−1for helium. Setting −1=L,
+where Lis an eective connection length (average
+length of a magnetic eld line between intersections
+with material surfaces; what constitutes ‘eective’
+is addressed below), gives a minimum electric eldE
+min(p;L)f o rb r e a k d o w n
+Emin(Vm−1)=1:25104p(Torr)
+ln[510 p(Torr) L(m)](1a)
+for hydrogen, deuterium or tritium, and
+Emin(Vm−1)=3:4104p(Torr)
+ln[300 p(Torr) L(m)](1b)
+for helium. Figure 12 shows plots of Eqs (1a) and
+(1b) versus pfor eective connection lengths 200 
+L(m)2000. This range is representative of connec-
+tion lengths achieved in present medium to large sizetokamaks and projected for ITER (see below). The
+minimum value of E
+min, i.e. the lowest eld at which
+breakdown is possible at a given L, typically occurs
+for 510−6p(Torr) 510−5. For deuterium,
+and 200 L(m)2000, the corresponding range of
+minimum Eeld is 0 :04Emin(Vm−1)0:4. For
+reliable breakdown, E2Emin(p;L) is desirable.
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2607
+
+============================================================
+Page 36
+============================================================
+Chapter 8: Plasma operation and control
+567891 0 1 1 1 2
+R (m)0
+–1
+–2
+–3
+–4
+–5
+–6123456Z (m)
+Divertor Cassette
+and Internal SurfacesFirst-Wall
+Surface
+–0.4 Wb
+–0.4 Wb+0.4 Wb ~208 Wb
+|B^| < 2 mT~130 GHz 
+ECRH
+567891 0 1 1 1 2
+R (m)0
+–1
+–2
+–3
+–4
+–5
+–6123456Z (m)1 MA2 MA4 MA8 MA14 MA
+0.5 MA16 MA 21 MA (SOF)Plasma Initiation, Current Ramp-up and Divertor Formation;
+Rampdown and Current Termination similar
+First-Wall
+Surface
+Divertor Cassette
+and Internal Surfaces–0.4 Wb+0.4 Wb
+–0.4 Wb
++0.4 WbLimiterInitial Magnetization Flux (static)  
+ 21 MA (EOB)
+Limiter
+Figure 13. Plasma initiation and current ramp up congurations in ITER (Ref. [103]).
+of this Chapter { during the current rise. While this
+portion of the plasma scenario is typically described
+as the ‘current ramp up’ phase, in present divertor
+tokamaks it actually involves a rather carefully coor-dinated sequence of plasma current increase, mag-netic conguration development and plasma den-sication that ensures that the various MHD andkinetic/power balance operational limits that governplasma stability, connement and power and particleexhaust are successfully skirted. During this process,it is also usually necessary to implement a ramp upstrategy that avoids unnecessary plasma resistive loss
+(resistive V-s consumption), and thus arrive at the
+nal ﬂat-top current state with a PF ﬂux variationreserve for inductively sustaining the plasma currentthrough the balance of the scenario.
+The principal physics and plasma operation con-
+siderations that enter into the design of the currentramp up phase of the scenario are (1) MHD stability,(2) plasma densication, and (3) resistive ﬂux (resis-tive V-s) consumption. In addition, it is of course
+necessary for the PF coil system to provide
+(1) the one turn voltage needed to raise the cur-
+rent;(2) ‘slow’ quasi-static equilibrium control to
+achieve the desired plasma conguration evo-
+lution; and
+(3) ‘fast’ dynamic equilibrium control to stabilize
+the plasma vertical position and compensatefor the eects of plasma disturbances (minordisruptions, ELMs, etc.) that occur during the
+current ramp up.
+These plasma magnetic control matters are ad-
+dressed using the same PF system design proceduresand control methods described in Section 2.1.
+The more generic physics issues that apply to the
+design of the current ramp up phase in present toka-
+maks and ITER are addressed below.
+2.3.2.1. MHD stability and operation limits during
+current ramp up
+The immediate requirement is to achieve current
+ramp up without encountering a major disruption.As presented in Chapter 3, there are two causes ofmajor disruption:
+(i) growing internal MHD instability, and
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2611
+
+============================================================
+Page 38
+============================================================
+Chapter 8: Plasma operation and control
+is achieved at start of current ﬂat-top (SOF) and
+maintained during the DT burn phase (SOB to
+EOB). Following end of burn, the internal inductance
+rises but remains within acceptable limits (to avoiddensity limit disruption) during the plasma currentramp down (see Section 2.3.3 below).
+SOF (21 MA)
+XPFto SOB
+Limiter Divertor
+Initiation (0.5 MA)
+Time from Initiation Magnetization (s)0 50 100 150 2005
+010152025Plasma Current (MA)0.2 MA/s0.16 MA/s0.05 MA/s
+0.10 MA/sPlasma Current Waveform and
+Scenario Fiducial Points
+Auxiliary Heating
+123 45 678
+q952.0
+1.6
+1.2
+0.8
+0.4/K6Ci(3)
+SOBSOFEOBTSC Simulation of Reference Scenario
+(Kessel and Jardin, D255 Design Task)
+StartEnd
+Figure 15. Waveform for ITER plasma current ramp
+up to start of ﬂat-top and simulation with a tokamak
+simulation code plasma scenario model of the resultingtrajectory in l
+i{qspace. The simulation also shows the li{
+qvariation during the ignition, burn and current ramp
+down phase. TSC simulation by C. Kessel and S. Jardinfor the ITER Joint Central Team (see Ref. [103]).
+In a given tokamak there is an optimal cur-
+rent ramp up time and/or current rise waveformthat results in reaching a fully penetrated quasi-stationary equilibrium current prole at the end oft h er a m pu pw i t hn e a r - m i n i m u mr e s i s t i v eV - sc o n -sumption (see below). Slower current ramps increase
+resistive losses and, hence, are undesirable; faster
+ramps can achieve current ‘ﬂat-top’, albeit with abroadened non-equilibrium prole, with decreasedinductive and resistive ﬂux consumption. However,the ‘ﬂux savings’ produced by this strategy are ulti-mately expended when the current prole nallyequilibrates, and the use of auxiliary heating dur-
+ing current ramp up serves only to delay rather
+than reduce ultimate resistive V-s consumption. In
+contrast, non-inductive current drive during rampup can reduce net V-s consumption and also relaxthe requirement for fast plasma current ramp up.In JT-60U, plasma current start-up from plasmabreakdown to 1 MA plasma current with a rate of0.2 MA s
+−1has been demonstrated using a low
+electric eld of 0.1 Vm−1[108].
+2.3.2.2. Resistive ﬂux consumption
+The plasma resistive ﬂux consumption (Ψ res)
+during the current ramp up phase is an importantscenario design basis consideration. Here, the under-lying physics basis is well understood: there is anirreducible minimum resistive (Poynting formalism)ﬂux consumption [115] that is described by empirical‘Ejima’ formula
+Ψ
+res=CEjima0R0Ip (6)
+where CEjima is a coecient that depends weakly
+on the precise details of the evolution of the plasmaprole quantities, such as the impurities and theelectron temperature, and R
+0is the plasma major
+radius. The theoretical minimum value of CEjima is
+about 0.4 for a q= 3 plasma and for design pur-
+poses, CEjima =0:45 constitutes a practical esti-
+mate of the minimum ﬂux consumption. Figure 16shows the data that support this basis: ﬂux consump-tion for q= 3 plasmas typically falls in the range
+0:4C
+Ejima 0:5.
+Greater than minimum ﬂux consumption can
+occur in situations where the current ramp rate istoo slow and excessive resistive losses accumulate.Greater than minimum resistive loss ( C
+Ejima >0:45)
+can also occur in large tokamaks (ITER) in start-up
+situations with a non-optimal minor radius expan-sion. Finally, it is worth noting that adding auxiliaryheating during current ramp up does notreduce the
+total resistive loss that is accrued when a fully pene-trated current prole (i.e. l
+i=0:9f o ra q=3p l a s m a )
+is achieved. Heating does delay the accrual of fullresistive loss and, of course, increases the time toachieve full current prole equilibration appropriate
+for ELMy H-mode discharges.
+2.3.3. Plasma current ramp down
+Two types of disruptions are observed during the
+plasma current ramp down. One is the disruption
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2613
+
+============================================================
+Page 41
+============================================================
+ITER Physics Basis
+567891 0 1 1 1 2
+R (m)0
+–1
+–2
+–3
+–4
+–5
+–6123456Z (m)Reference Scenario Fiducial Configurations 
+567891 0 1 1 1 2
+R (m)0
+–1
+–2
+–3
+–4
+–5
+–6123456Z (m) 21 MA (EOB)Burn Plasma and SOL Configuration 
+> 10 cmFW clearance 
+allocation:~35 cm
+SOL 
+allocation
+5 cm
+~ 16 cmDivertor Cassette
+and Internal SurfacesFirst-Wall
+Surface567891 0 1 1 1 2
+R (m)0
+–1
+–2
+–3
+–4
+–5
+–6123456Z (m)0
+–1
+–2
+–3
+–4
+–5
+–6123456Z (m)
+Divertor Cassette
+and Internal Surfaces–0.4 Wb
+–0.4 Wb+0.4 Wb~208 Wb
+|B^| < 2 mT
+567891 0 1 1 1 2
+R (m)1 MA2 MA4 MA8 MA14 MA
+0.5 MA16 MA 21 MA (SOF)Plasma Initiation, Current Ramp-up
+and Divertor Formation; Ramp-downand Current Termination similar
+Divertor Cassette
+and Internal Surfaces–0.4 Wb+0.4 Wb
+–0.4 Wb
++0.4 WbLimiter Limiter
+LimiterLimiterInitial Magnetization Flux (static)  
+ 21 MA (EOB)
+~130 GHz 
+ECRH
+Divertor Cassette
+and Internal Surfaces~ 9 cm
+~22 cmFirst-Wall
+SurfaceEOB
+SOB
+XPF (15 MA)SOF First-Wall
+SurfaceFirst-Wall
+Surface
+Figure 19. Plasma congurations and conguration evolution for the 21 MA sustained
+ignition scenario shown in Fig. 18.
+2616 Nuclear Fusion, Vol. 39, No. 12 (1999)
