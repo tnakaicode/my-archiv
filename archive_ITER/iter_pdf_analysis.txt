@@ -1,0 +1,2228 @@
+ITER Physics Basis PDF 分析結果
+================================================================================
+
+ファイル: c:\Users\Nakai\Daily\arXiv\archive\ITER_Physics_Basis_Editors_1999_Nucl._Fusion_39_2137.pdf
+総ページ数: 39
+
+
+=== 文書の最初の部分 ===
+
+
+=== Page 1 ===
+
+Chapter 1: Overview and summary
+To cite this article: ITER Physics Basis Editors et al 1999 Nucl. Fusion  39 2137 
+ 
+View the article online  for updates and enhancements. You may also like 
+Chapter 8: Plasma operation and control 
+Y. Gribov, D. Humphreys, K. Kajiwara et 
+al.-
+Energetic particle physics: Chapter 7 of 
+the special issue: on the path to tokamak 
+burning plasma operation 
+M. Salewski, D.A. Spong, P. Aleynikov et 
+al.-
+Progress in pedestal and edge physics: 
+Chapter 3 of the special issue: on the path 
+to tokamak burning plasma operation 
+M.E. Fenstermacher, L.R. Baylor, E. de la 
+Luna et al. -
+This content was downloaded from IP address 133.63.21.1 on 02/03/2026 at 00:57
+
+=== Page 2 ===
+
+Chapter 1: Overview and summary
+ITER Physics Basis Editors
+ITER Physics Expert Group Chairs and Co-Chairsy
+ITER Joint Central Team and Physics Integration Unitz
+ITER EDA, Naka Joint Work Site, Mukouyama,
+Naka-machi, Naka-gun, Ibaraki-ken, Japan
+Abstract. The ITER Physics Basis presents and evaluates the physics rules and methodologies for
+plasma performance projections, which provide the basis for the design of a tokamak burning plasmadevice whose goal is to demonstrate the scientic and technological feasibility of fusion energy for
+peaceful purposes. This Chapter summarizes the physics basis for burning plasma projections, which
+is developed in detail by the ITER Physics Expert Groups in subsequent chapters. To set context, thedesign guidelines and requirements established in the report of ITER Special Working Group 1 are
+presented, as are the specics of the tokamak design developed in the Final Design Report of the ITER
+Engineering Design Activities, which exemplies burning tokamak plasma experiments. The behaviourof a tokamak plasma is determined by the interaction of many diverse physics processes, all of which
+bear on projections for both a burning plasma experiment and an eventual tokamak reactor. Key
+processes summarized here are energy and
+
+=== ECH関連キーワード出現回数 ===
+{
+  "electron cyclotron": 2,
+  "ECH": 51,
+  "ECRH": 0,
+  "EC heating": 0,
+  "gyrotron": 0,
+  "170\\s*GHz": 0,
+  "110\\s*GHz": 0
+}
+
+=== 検出されたパラメータ ===
+{
+  "Magnetic Field (T)": [
+    "2.5"
+  ],
+  "Plasma Current (MA)": [
+    "21"
+  ],
+  "Temperature (keV)": [
+    "12.9",
+    "10"
+  ],
+  "Minor Radius (m)": [
+    "8.14"
+  ]
+}
+
+=== 完全なテキスト ===
+
+
+=== Page 1 ===
+
+Chapter 1: Overview and summary
+To cite this article: ITER Physics Basis Editors et al 1999 Nucl. Fusion  39 2137 
+ 
+View the article online  for updates and enhancements. You may also like 
+Chapter 8: Plasma operation and control 
+Y. Gribov, D. Humphreys, K. Kajiwara et 
+al.-
+Energetic particle physics: Chapter 7 of 
+the special issue: on the path to tokamak 
+burning plasma operation 
+M. Salewski, D.A. Spong, P. Aleynikov et 
+al.-
+Progress in pedestal and edge physics: 
+Chapter 3 of the special issue: on the path 
+to tokamak burning plasma operation 
+M.E. Fenstermacher, L.R. Baylor, E. de la 
+Luna et al. -
+This content was downloaded from IP address 133.63.21.1 on 02/03/2026 at 00:57
+
+=== Page 2 ===
+
+Chapter 1: Overview and summary
+ITER Physics Basis Editors
+ITER Physics Expert Group Chairs and Co-Chairsy
+ITER Joint Central Team and Physics Integration Unitz
+ITER EDA, Naka Joint Work Site, Mukouyama,
+Naka-machi, Naka-gun, Ibaraki-ken, Japan
+Abstract. The ITER Physics Basis presents and evaluates the physics rules and methodologies for
+plasma performance projections, which provide the basis for the design of a tokamak burning plasmadevice whose goal is to demonstrate the scientic and technological feasibility of fusion energy for
+peaceful purposes. This Chapter summarizes the physics basis for burning plasma projections, which
+is developed in detail by the ITER Physics Expert Groups in subsequent chapters. To set context, thedesign guidelines and requirements established in the report of ITER Special Working Group 1 are
+presented, as are the specics of the tokamak design developed in the Final Design Report of the ITER
+Engineering Design Activities, which exemplies burning tokamak plasma experiments. The behaviourof a tokamak plasma is determined by the interaction of many diverse physics processes, all of which
+bear on projections for both a burning plasma experiment and an eventual tokamak reactor. Key
+processes summarized here are energy and particle connement and the H-mode power threshold; MHD
+stability, including pressure and density limits, neoclassical islands, error elds, disruptions, sawteeth,
+and ELMs; power and particle exhaust, involving divertor power dispersal, helium exhaust, fuellingand density control, H-mode edge transition region, erosion of plasma facing components, tritium
+retention; energetic particle physics; auxiliary power physics; and the physics of plasma diagnostics.
+Summaries of projection methodologies, together with estimates of their attendant uncertainties, arepresented in each of these areas. Since each physics element has its own scaling properties, an integrated
+experimental demonstration of the balance between the combined processes which obtains in a reactor
+plasma is inaccessible to contemporary experimental facilities: it requires a reactor scale device. It isargued, moreover, that a burning plasma experiment can be suciently ﬂexible to permit operation
+in a steady state mode, with non-inductive plasma current drive, as well as in a pulsed mode where
+current is inductively driven. Overall, the ITER Physics Basis can support a range of candidate designsfor a tokamak burning plasma facility. For each design, there will remain a signicant uncertainty in
+the projected performance, but the projection methodologies outlined here do suce to specify the
+major parameters of such a facility and form the basis for assuring that its phased operation willreturn sucient information to design a prototype commercial fusion power reactor, thus fullling the
+goal of the ITER project.
+ITER Physics Basis Editors: F. W. Perkins (ITER
+JCT), D.E. Post (ITER JCT), N.A. Uckan (ORNL),
+M .A z u m i( J A E R I ) ,D . J .C a m p b e l l( N E T ) ,N .I v a n o v( R R C -
+Kurchatov), N.R. Sautho (PPPL), M. Wakatani (KyotoUniv.). Additional contributing editors : W.M. Nevins (LLNL),
+M. Shimada (JAERI), J. Van Dam (Univ. Texas).
+yITER Physics Expert Group Chairs and Co-Chairs:
+D .B o u c h e r( I T E RJ C T ) ,G .C o r d e y( J E T ) ,A .C o s t l e y(ITER JCT), J. Jacquinot (JET), G. Janeschitz (ITER JCT),
+S. Mirnov (Troitsk), V. Mukhovatov (ITER JCT), G. Porter
+( L L N L ) ,D .P o s t( I T E RJ C T ) ,S .P u t v i n s k i( I T E RJ C T ) ,M. Shimada (JAERI), R. Stambaugh (GA), M. Wakatani(Kyoto Univ.), J. Wesley (ITER JCT), K. Young (PPPL).
+zITER Joint Central Team and Physics Integration
+U n i t :R .A y m a r ,Y .S h i m o m u r a ,D .B o u c h e r ,A .C o s t l e y ,N .
+Fujisawa, Y. Igitkhanov, G. Janeschitz, A. Kukushkin, V.
+Mukhovatov, F. Perkins, D. Post, S. Putvinski, M. Rosen-bluth, J. Wesley.Contents
+1. Introduction 2138
+2. ITER 2139
+2.1. ITER: background and mandate . . . 21392.2. ITER: FDR design . . . . . . . . . . . 2140
+3. Tokamak physics processes and
+projection principles 2142
+3.1. General projection issues . . . . . . . . 2143
+3.2. Core connement and transport . . . . 2145
+3.2.1. Global connement scaling . . 21463.2.2. H-mode power threshold and
+pedestal . . . . . . . . . . . . . 2146
+Nuclear Fusion, Vol. 39, No. 12 c/circlecopyrt1999, IAEA, Vienna 2137
+
+=== Page 3 ===
+
+ITER Physics Basis
+3.2.3. Transport modelling and sim-
+ulation . . . . . . . . . . . . . . 2147
+3.2.4. Connement and magnetic
+conguration . . . . . . . . . . 2148
+3.3. Magnetohydrodynamic phenomena,
+disruptions and operational limits . . . 2149
+3.3.1. Magnetohydrodynamic stability 2149
+3.3.2. Magnetohydrodynamic lim-
+its and neoclassical islands . . 2150
+3.3.3. Error eld criteria . . . . . . . 21513.3.4. Disruptions . . . . . . . . . . . 2151
+3.3.5. Sawteeth . . . . . . . . . . . . 2152
+3.3.6. Edge localized modes . . . . . 21533.3.7. Magnetohydrodynamics of
+reverse shear and steady state
+congurations . . . . . . . . . . 2153
+3.3.8. Density limit physics . . . . . . 2154
+3.4. Particle control and power dispersal . 2155
+3.4.1. Power dispersal in divertor
+plasmas . . . . . . . . . . . . . 2155
+3.4.2. H-mode pedestal and edge
+operational space . . . . . . . . 2156
+3.4.3. Erosion of plasma facing com-
+ponents and tritium retention . 2157
+3.5. Energetic particle physics . . . . . . . 2158
+3.6. Auxiliary power physics . . . . . . . . 21583.7. Physics of plasma diagnostics . . . . . 21593.8. Physics of plasma control and steady
+state operation . . . . . . . . . . . . . 2160
+3.9. Summary . . . . . . . . . . . . . . . . 2161
+4. Reactor scale experimental
+plasma physics 2161
+4.1. Energetic particle physics . . . . . . . 21614.2. Self-heating and thermal stability . . . 21624.3. Scale dependent plasma physics . . . . 2162
+5. Projecting ITER operations 2164
+5.1. Single pulse issues . . . . . . . . . . . 2164
+5.2. Physics performance projections . . . 21655.3. Multiple pulse and erosion issues . . . 2166
+6. Concluding remarks 2166Appendix A 2167
+Appendix B. Article 1, ITER EDA Agree-
+ment 2170
+Appendix C. ITER Special Working
+Group 1 { Review Report 2170
+Preamble . . . . . . . . . . . . . . . . . . . 2170
+General constraints . . . . . . . . . . . . . . 2170Performance and testing . . . . . . . . . . . 2170
+Design requirements . . . . . . . . . . . . . 2171Operation requirements . . . . . . . . . . . 2171
+Final recommendation . . . . . . . . . . . . 2172
+Attachment 1 { Guideline for SWG1 . 2172
+1. Introduction
+Magnetic fusion energy research has reached the
+point where a tokamak burning plasma facility inwhich the thermonuclear heating balances (or is com-parable to) transport and radiation losses for peri-ods of 1000 s or longer can be seriously contem-plated as an appropriate next step. Achieving thisgoal would be a major step forward, both in sci-ence and in technology, towards the ultimate goal ofmagnetic fusion generation of electrical power with
+signicant environmental advantages [1,2]. Overall,
+such a facility would have a size, magnetic eldstrength, physics phenomenology, and technologicalbasis very close to that of an eventual thermonu-clear power reactor, be it a tokamak or some othertoroidal conguration. Indeed, three aspects of theinterplay between physics and technology are com-mon to a burning plasma experiment and a reac-tor. First, the general connement properties of a
+tokamak device that achieves such a thermal balance
+implies a power level of 1G Wa n dan e u t r o nw a l l
+loading of 1M W m
+−2: levels in the range antici-
+pated for commercial power production. Second, inthe proposed tokamak conguration, be it a reac-tor or burning plasma experiment, the magnitude ofthe magnetic eld needed to conne stably a plasmaof sucient pressure to generate 1G W o f f u s i o n
+power is comparable to the limiting magnetic eldsthat a toroidal superconducting magnet can produce.
+Third, the linear size of the plasmas is suciently
+larger than the shield thickness needed to protectsuperconducting magnets from nuclear radiation, sothat the shield occupies only a modest fraction ofthe volume available inside the conning magnetsand does not dominate the design. Appendix A addsdetails to these arguments. As a consequence, datafrom such a burning plasma facility is foreseen torequire little extrapolation to an experimental power
+reactor and is essential to dening its principal oper-
+ational mode. For example, if a steady state opera-tional mode is to be chosen for a commercial tokamakreactor design, then this choice must rest on a robustexperimental demonstration of steady state physicsand operation in a burning plasma experiment.
+2138
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 4 ===
+
+Chapter 1: Overview and summary
+It is, therefore, noteworthy that, in the worldwide
+fusion research programme, tokamak experiments
+have demonstrated a common plasma physics across
+a range of device sizes, magnetic eld strengths, andauxiliary heating powers. This common physics pro-vides the basis for moving ahead with a burningplasma facility by permitting development of extrap-olation principles, both theoretical and empirical,and their application to the projection of burningplasma performance. It is the role of this articleto summarize and assess the qualitative and quan-
+titative aspects of tokamak physics and to develop
+recommended extrapolation methodologies togetherwith uncertainty estimates and physics design spec-ications for use by the designers of the burningplasma facility, which is called ITER: the Interna-tional Thermonuclear Experimental Reactor.
+Assessments of projections for plasma physics per-
+formance carried out by the seven ITER PhysicsExpert Groups in coordination with the ITERPhysics Basis Editors and the Joint Central Team(JCT) form the core of this article: Chapters 2{6. Chapter 7 assesses plasma measurement require-
+ments and the extrapolation of physics principles on
+which diagnostic techniques are based. The nal twochapters look forward to issues impacting the opera-tion of a burning plasma facility and its experimentalphysics programme.
+The ITER Physics Basis has been compiled and
+written by a collaboration of authors that is basedupon the seven ITER Physics Expert Groups, theITER Physics Basis Editors, and physics sta from
+the ITER JCT, supplemented in the various Chap-ters by physics and technology specialists drawn fromthe plasma research programmes of the ITER Par-
+ties. The Expert Group Chairs and Co-chairs and
+the ITER Physics Basis Editors played a key role in
+the nal compilation and editing. Within their ownareas of expertise, each of the Expert Groups hasbeen evaluating progress and recommending priori-ties for physics research in the Four Parties physicsresearch programmes. Consequently, their membershave acquired the physics expertise and burningplasma perspective needed to develop and assess pro-
+jection methodologies.
+The ITER/EDA procedure has been to base
+design choices on the physics principles discussed and
+documented in this article. ITER design issues anddecisions, which are the responsibility of the JCT,are documented in the physics chapter of the ITERFinal Design Report [3,4] and in the Physics DesignDescription Documents [5].This introductory section is written as a sum-
+mary of the entire article and, as such, provides
+an overview and integration of the separate Chap-
+ters. To establish context, Section 2 will describethe ITER Agreement and the current EngineeringDesign Activities (ITER/EDA) as well as the speci-cations that the device under design must full. Thedesign parameters documented in the ITER FinalDesign Report (FDR) are presented as exemplify-ing reactor scale devices. It should be stressed thatthe projection methodologies reported in this arti-
+cle apply to a range of parameters and form a basis
+for assessing tradeos associated with reduced costdesigns relative to the FDR design.
+Section 3 summarizes the main content of this
+article: the identication of the various physics pro-cesses in contemporary tokamaks and their projec-tion principles. Next, Section 4 argues that the dom-inant physics in a reactor scale facility will dier inimportant ways from that in present day devices.
+An example is the integration of core transport and
+edge physics. Our discussion organizes the dierencesinto three elements and outlines the scientic knowl-edge that operation of a reactor scale facility willreturn. This Introduction concludes with an assess-ment of the physics projection methodologies sup-porting design of a reactor scale experiment.
+2. ITER
+The importance of the step to reactor scale devices
+motivated the governments of the Four Parties {
+the European Union, Japan, the Russian Federation
+and the United States { to initiate, in 1987, theInternational Thermonuclear Experimental Reac-tor/Conceptual Design Activities (ITER/CDA). Thepromise of the Conceptual Design, which was com-pleted in 1990 [6], led, in 1992, to the present ITEREngineering Design Activities (ITER/EDA) Agree-ment [7] aimed at developing a detailed engineeringdesign for a reactor scale tokamak facility that wouldachieve controlled ignition and extended burn. As
+envisioned by the Agreement, the ITER device would
+be the central element of an international, ‘one stepto a reactor’ strategy.
+2.1. ITER: background and mandate
+The overall goal of ITER/EDA, as set forth in
+Article 1 of the ITER Agreement (Appendix B), isto demonstrate the scientic and technological fea-sibility of fusion energy for peaceful purposes. Spe-
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2139
+
+=== Page 5 ===
+
+ITER Physics Basis
+cial Working Group 1 (SWG1) was chartered by the
+ITER Council to develop detailed technical objec-
+tives for the ITER design to assure that the design
+would full this overall goal. The report of SWG1 canbe found in Appendix C. This report makes it clearthat the device that results from the EDA should notonly achieve controlled ignition and extended burn inestablished favourable connement modes, but alsoshould be suciently ﬂexible to provide access for theintroduction of advanced features and new capabili-ties and to allow for optimizing plasma performance
+during operation. Steady state experiments should
+aim at a demonstration of steady state operation inplasmas having alpha particle heating power at leastcomparable to externally applied power. The choiceof parameters should be consistent with margins thatgive condence in achieving the required plasma per-formance.
+I nb r i e f ,t h eI T E Rd e v i c ei st ob eaﬂ e x i b l e ,r e a c -
+tor scale experimental facility capable of standard
+and advanced operating modes. It is envisioned to bethe world’s rst reactor scale magnetic fusion exper-iment, and, as such, will be the rst to combine theelements discussed above: a capability for achievingsustained ignition and extended duration fusion burnin DT plasmas with reactor relevant engineeringfeatures that include superconducting magnet sys-tems, remotely maintainable in-vessel nuclear shield-
+ing, and plasma facing components with steady state
+power and particle exhaust capabilities.
+2.2. ITER: FDR design
+The approximate magnitude of the parameters for
+an ignited, reactor scale tokamak can be derived fromsimple arguments, which are set forth in Appendix Aand based on operation in the favourable ELMy H-mode connement regime. In this regime, plasmaturbulent heat conduction spontaneously diminishes
+in a thin, transport barrier layer just inside the mag-
+netic separatrix. This layer is commonly observedto undergo successive relaxations called edge local-ized modes (ELMs). The interest in ELMy H-modesﬂows from experimental observations that show thatthis mode reduces transport throughout the plasmacore. The standard working hypothesis, supportedby many observations, is that H-mode occurs whenthe power transported across the separatrix exceeds
+a threshold value.
+Table 1 and Fig. 1 present the specics of the
+ITER design, which follow from the arguments ofAppendix A and supporting detailed design calcu-lations [4]. Since the arguments are straightforward,
+ITER truly exemplies a tokamak reactor facility.
+Quantitative calculations based on parameters close
+to those of Table 1 will be representative of any reac-tor scale tokamak facility with an ignition capabil-ity. These parameters full a self-consistency checkthat the power transported through the separatrixexceeds the threshold power required to maintain H-mode connement. Table 1 takes into account thefavourable isotope eect on threshold power con-rmed in recent JET DT experiments [8]. One notes
+that the optimized ignition condition depends sen-
+sitively on plasma size and magnetic eld strength(Eq. (A4) of Appendix A), so that fusion perfor-mance degrades for device sizes less than that ofthe FDR design. Increased magnetic eld strengthcan restore performance loss resulting from decreasedplasma size.
+Figure 1. Poloidal plane view of the ITER FDR design.
+Closed curves in the plasma region depict magnetic sur-
+faces; the conning magnetic eld lies on these sur-faces. The separatrix magnetic surface (single red con-tour) denes the boundary between magnetic surfacesthat close within the plasma region and those that inter-sect material walls.
+2140 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 6 ===
+
+Chapter 1: Overview and summary
+Table 1. ITER design features and parameters for reference ignited ELMy H-mode operation
+Parameter Value
+Major/minor radius 8.14 m/2.80 m
+Plasma conguration Single null divertorPlasma vertical elongation/triangularity (at 95% poloidal ﬂux) 1.6/0.24Plasma volume 2000 m
+3
+Plasma surface area 1200 m2
+Nominal plasma current 21 MA
+Electron density 0 :981020m−3
+Volume average temperature 12.9 keV
+Toroidal eld 5.68 T (at R=8:14 m)
+MHD safety factor ( q95) 3.0 (at 21 MA)
+Volume average = N 0.030/2.29
+Fusion power (ignited, nominal) 1.5 GWPlasma thermal energy content 1.07 GJ
+Plasma magnetic energy content 1.1 GJ
+Connement mode ELMy H-modeRadiation from plasma core 118 MWTransport power loss 182 MWTransport energy connement time 
+E 5.9 s
+Ptransport =PL!H 1.4
+Species concentrations % He/Be/Ar 10/2/0.16
+Ze(eective ion charge) 1.9
+Average neutron wall loading 1M W m−2(at 1.5 GW)
+Lifetime neutron ﬂuence 1M W am−2
+Burn duration (ignited, inductive current drive) 1000 s
+Available auxiliary heating power 100{150 MWIn vessel tritium inventory safety limit 1 kg
+While ITER is designed to ignite, i.e. to produce
+enough fusion power to overcome heat losses, auxil-iary power is required to initially raise the plasma
+temperature as well as for control and current drive
+purposes. Auxiliary heating power in the range 50{150 MW can take the form of negative ion based1 MeV neutral beam injection, ion cyclotron heat-ing by the fast magnetosonic Alfv en wave, and elec-
+tron cyclotron heating. These auxiliary heating sys-tems also possess a current drive capability and elec-tron cyclotron heating is notable in that its cur-rent drive can be utilized for current prole control.Lower hybrid current drive is also under study for
+later investigations of steady state operation. Neutral
+beam injection is unique in its capability to introduceangular momentum.
+Figure 1 presents a poloidal plane view of the
+ITER facility and Fig. 2 gives representative den-
+sity and temperature proles for an ignited ITER
+discharge. Because there is essentially no ionizationoccurring inside the separatrix, the density proleis ﬂat. Any density gradient close to the separatrixwould be sensitive to details of fuelling and not essen-tial to performance calculations, which rest on corethermonuclear and auxiliary heating as well as core
+transport.
+How big a step is the ITER FDR device? Fig-
+ure 3 compares the fusion gure of merit M=
+n
+DT(0)Ti(0)Efor present day tokamaks with the
+values computed for ITER under minimum ignition
+conditions, which require M110. Here, Edenotes
+the thermal energy connement time in s, nDT(0)
+the central DT fuel density in units of 1020m−3,
+andTi(0) the central ion temperature in keV. ITER
+FDR parameters lie a factor of 1.5 in magnetic eldstrength, and a factor of 2.9 in linear size, beyond thelatest JET DT ELMy H-mode discharges [9]. Theincrease in the gure of merit from ITER like dis-charges in present day devices to ITER is apprecia-
+ble (a factor of 40), but comparable to the range of
+Mspanned by ITER like ELMy H-mode discharges
+in present day experiments (also a factor of 40). It islikewise in accord with the expected increase result-ing from increases in magnetic eld strength and size,according to Appendix A, Eq. (A5).
+Tokamaks have already entered the regime of
+thermonuclear burning [8{12]. Figure 4 summarizesresults from JET and TFTR. These experiments doc-
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2141
+
+=== Page 7 ===
+
+ITER Physics Basis
+6789 1 0
+Ma j o r  radiu s ( m )05101520253035
+Figure 2. (a) Ion temperature prole (keV) correspond-
+ing to the plasma of Table 1. Electron and ion tempera-tures are close to equal.
+ne
+nD + nT
+n He
+Figure 2. (b) Electron, DT ion and He density proles
+(1019m−3) for the plasma of Table 1.
+ument that the expected heating from thermonuclear
+alpha particles is occurring. We note that long pulseELMy H-mode results from JET are limited by theavailable auxiliary heating power, which is insu-cient, at a toroidal eld strength of 3.8 T, to reach0.010.11101001000
+1 10 100JET
+JET
+TFTR
+TFTR
+DIII-D
+DIII-D
+C-Mod
+ASDEX-U
+JT-60U
+ITER
+TEXTOR
+Ti ( 0 )   - (keV)n (0) T (0) tiiE- (10   m  • keV• s) -320
+Figure 3. Fusion gure of merit M=ni(0)Ti(0)E
+for selected tokamak discharges. Filled symbols repre-
+sent steady discharges with TeTiin H-mode, except
+for TEXTOR, which is in a radiation enhanced mode,and for TFTR in a pellet fuelling mode. Open symbolsrepresent connement modes with T
+iTe, which have
+been optimized for fusion output. The ITER point rep-resents the minimum Mfor steady, ignited burn and is
+insensitive to T
+i(0) because of limits.
+Nvalues characteristic of a reactor. Figure 3 also
+contains points at higher values of Mb a s e do nh o t
+ion and supershot modes especially optimized forpresent day devices such as JET, JT-60U and TFTR.These high- T
+iconnement modes rely on TiTe,
+which, as a rule, is inaccessible to burning plasmas
+because: (1) alpha particles principally heat electrons
+as a result of their high energy; and (2) the electron{ion temperature equilibration time ( 
+eq0:5s ) i s
+shorter than the energy connement time ( E6s )
+in a reactor scale device. In present day experiments,the energy of injected particle beams is such thatthey principally heat ions. Moreover, since the equili-bration time is comparable to the energy connementtime
+Eeq, the resulting plasma has TiTe.
+It follows that an ignited burning plasma objective
+(M>110) for the EDA design is a large step, but one
+that is commensurate with the available database.
+3. Tokamak physics processes
+and projection principles
+Tokamak physics has reached a level that sup-
+ports the detailed design of a new, large facility. To
+2142 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 8 ===
+
+Chapter 1: Overview and summary
+1.0 2.0 3.00 4.0 5.0 6.0051015JET (1997)
+TFTR (1994)
+ JET
+1991JET (1997)Fusion power (MW)
+Time (s)
+Figure 4. Thermonuclear power generation in TFTR
+and JET versus time (arbitrary zero). The long duration
+JET power generation is for an ITER like ELMy H-mode.
+a very good approximation, a tokamak is a gure of
+revolution. The resulting property of axisymmetryreduces computation of the force balance between
+plasma pressure gradients and jBforces to the
+solution of a single two dimensional partial dif-ferential equation called the Grad{Shafranov equa-tion [13]. Sophisticated computational solutions yieldaccurate and experimentally validated descriptionsof a tokamak plasma internal structure and bound-aries, and also predict precisely how they respond toexternally applied shaping elds. Stability of theseplasmas with respect to small, symmetry-breaking
+perturbations can also be accurately assessed by
+highly developed variational techniques provided theperturbations obey the ideal magnetohydrodynamicconstraint, wherein very high plasma conductivitypermits one to neglect the component of the plasmaelectric eld that lies parallel to the magnetic eld.Computation of plasma heating and fuelling is alsostraightforward and sophisticated codes exist thatyield experimentally validated, rst principles pro-les of energetic particle creation, plasma heating,
+non-inductive current drive, and particle deposition.
+Experiment has shown that, once an ideally sta-
+ble equilibrium is assured, the plasma response to
+auxiliary heating and fuelling is governed by trans-
+port introduced by the spontaneous appearance ofboth ne scale and global symmetry-breaking ﬂuc-tuations in which the small but nite parallel com-ponent of the plasma electric eld plays an essentialrole. In the edge region, the additional complexitiesof plasma atomic physics and plasma{surface inter-
+actions enter. Contemporary tokamak physics con-
+cerns itself with the consequences of these small but
+crucial deviations from the fundamental axisymmet-ric equilibrium.
+The physics basis for projecting reactor scale
+plasma performance must begin with identica-tion of the fundamental plasma, atomic and sur-
+face physics phenomena occurring in tokamak plas-
+mas and their supporting qualitative theoreticaldescriptions. Quantication then rests on experi-mental data from the present generation of devices,which has beneted from databases developed dur-ing the EDA. From this, one must develop theo-retical/computational (or at least well documentedempirical) methodologies for extrapolation to areactor scale device. The magnitude of the global
+fusion energy research eort attests to the fact that
+fusion plasmas are complex, with diverse plasmaand plasma{surface interaction phenomena occur-ring simultaneously. Each process requires an extrap-olation to ITER. In these circumstances, we canbring experimental and theoretical information tobear on identifying the qualitative features and scal-ing properties of the fundamental physics phenom-ena. Quantitative predictions ﬂow from the normal-ization of scaling relations to data from a range of
+tokamaks. In systems such as tokamaks where many
+individual process are at work, a second source ofcomplexity associated with the interactions betweenfundamental processes also enters. Examples include(1) the plasma periphery where atomic radiation pro-cesses are a dominant phenomena in the plasma ther-mal balance; and (2) simulations of integrated per-formance. In such cases, modelling codes replace ana-lytic scaling relations as the preferred methodology
+for prediction of reactor plasma performance.
+3.1. General projection issues
+How is condence to be established for projection
+of plasma properties to ITER scale devices? Thereare two fundamental approaches. The rst is theoret-ical, where the qualitative features, and sometimesquantitative aspects, of physics processes can beunderstood in terms of a theoretical model: often in
+the form of a sophisticated code. An example is ener-
+getic particle losses caused by imperfections in theconning magnetic elds. One can then validate themodel by comparison with data from a range of toka-maks. Conversely, the lack of a predictive theoreticalmodel, as is presently the case for the H-mode power
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2143
+
+=== Page 9 ===
+
+ITER Physics Basis
+threshold, is a cause for concern in that unknown
+limitations may apply. The second source of con-
+dence is that projections rest on a common physics
+observed across a range of tokamak discharges span-ning a factor of 6 in linear dimension, a factor of6 in magnetic eld strength, and a factor of 34 inplasma current. Uncertainties in projections can thenbe related to the degree of precision with which scal-ing formulas or predictive codes can quantitativelyrepresent the common physics. Physics that cannotbe reproduced across this spectrum of discharges is
+not appropriate for use in design basis projections
+for next step machines, except when there is a com-pelling theoretical reason to the contrary.
+The starting point for our characterization of
+ITER physics processes is Fig. 5, which portrays
+a representative ‘single null’ divertor plasma equi-l i b r i u m .I nt h i s g u r e ,i ti su s e f u lt oi d e n t i f yf o u rregions in which dierent dominant physics prevails,but where there can be important interactions atthe boundaries. The four regions are: (1) the core;(2) the edge pedestal region just inside the sepa-ratrix; (3) the scrape o layer (SOL) plasma justoutside the separatrix; and (4) the divertor cham-ber plasma region, which is an extension of the SOL
+plasma along eld lines into the divertor chamber.
+Within a given region, a subdivision into short scaleand global processes is also benecial.
+Further insight can be gained by recognizing that
+most of the physics processes are the result of quasi-neutral plasma physics where, to a high degree ofapproximation, rj=0a n de l e c t r o na n di o nc h a r g e
+densities can be taken as equal. Here jdenotes the
+plasma current density. When quasi-neutrality holds,Kadomtsev [14] pointed out that general scalingscould be cast into non-dimensional forms that involveonly three dimensionless plasma quantities, in addi-tion to dimensionless geometric quantities such as
+the inverse rotational transform q, elongation ,e t c .
+The conventional choice for these three parametershas been
+
+=ion gyroradius
+minor radius=2Ti
+Mi1=2Mi
+eBa;
+=plasma pressure
+magnetic pressure=20n(Te+Ti)
+B29
+>>>=
+>>>;(1)
+=connection length
+trapped particle mean free path
+=iiMi
+Ti1=2R
+r3=2
+qR (2)IRegion I
+Region II
+Region III
+Region IVIIBlanket and
+first wall
+Core plasma
+Plasma edge and
+H-mode
+confinement barrier
+Scrape-off layer
+Divertor plasma
+Divertor
+chamber
+Figure 5. Poloidal plane view of ITER, illustrating four
+principal regions where dominant physics diers. Theseparatrix, which forms the boundary between regions IIand III, possesses a point of null poloidal eld strengthwhere it has the ‘X’ crossing. Congurations of this type
+are referred to as ‘single null’ plasmas.
+ii=4p
+3nie4ln 
+M1=2
+iT3=2
+i: (3)
+In these formulas, the temperature is expressed in
+energy units (J). For global parameters, one can useT=2W=3N,w h e r e Wis the plasma energy con-
+tent and Nits particle inventory of electrons and
+ions.
+Because of variations in magnetic eld strength in
+a tokamak, some particles execute a bouncing typetrajectory caused by the magnetic mirroring prop-erty of particle orbits in non-uniform magnetic elds(see [13, p. 42]). Denition (2) emphasizes bounc-ing particles as the key physics that binary colli-sions alter. Other denitions of collisionality involv-ing, for example, temperature equilibration, could
+be used instead. Whenever possible, we cast our
+extrapolations in dimensionless form to assure adher-ence to Kadomtsev’s principle and we refer to theseextrapolations as being ‘dimensionally correct’. Inthe plasma periphery, and especially in the diver-tor plasma, neutral atom and atomic radiation pro-
+2144
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 10 ===
+
+Chapter 1: Overview and summary
+cesses become important and Kadomtsev’s principle
+no longer applies.
+The importance of dimensionless parameters leads
+to the concept of ITER Demonstration Discharges,in which region I physics is matched as closely as pos-sible to a reactor in terms of dimensionless parame-ters, including prole and magnetic geometry param-eters. It is found that discharges in present day toka-
+mak facilities can be formed with values of and
+
+identical to reactor values, but with having a
+value a factor of 5 higher. This reduces the problemof extrapolation from three parameters to a singleparameter, 
+, as discussed in Section 7 of Chap-
+ter 2. Under these constraints, the density and tem-perature scale according to
+n/(
+2)1=3B4=3R−1=3;T/(=)1=3B2=3R1=3:
+(4)
+Figure 6 portrays a JET ELMy H-mode discharge
+with such features and Table 2 gives relevant param-eters. Its connement is very close to that pre-dicted by the latest ELMy H-mode scaling relationto be found in Eq. (5) and Fig. 9 of Chapter 2.The relative plasma pressure, as dened by 
+N=
+100(aB=I p;MA) using MKS units, has a value close
+to that planned for ITER, but the non-dimensionalcollisionality 
+is modestly larger that the nominal
+ITER discharge of Table 1.
+The sudden relaxations of Te(0) are a generic
+tokamak phenomenon called ‘sawteeth’, which are
+explained in Section 3.3.5 of this chapter. Sawteeth
+attest to the fact that the central qvalue is less than
+unity. This discharge is an integrated demonstrationof the compatibility of undegraded core connementwith core 
+Nlimits, including pressure driven modes
+centred on the q= 1 surface [15]. On the other hand,
+the ‘attached’ divertor edge physics regime for thisdischarge diers from that of a reactor, as discussedin Section 4.
+Further evidence for the non-dimensional ap-
+proach lies in the comparison of discharges pre-pared to have identical non-dimensional parameters,but diering magnetic eld, density, auxiliary power,etc. For these discharges, the Kadomtsev principlepredicts that a non-dimensional energy connementtime dened by Ω
+iEshould be identical. Here Ω i
+denotes the ion gyrofrequency and Eis the ther-
+mal energy connement time, E=W=P,w h e r e P
+is the thermal heating power. Section 7.2 of Chap-ter 2 reports a comparison between a DIII-D dis-charge and a non-dimensionally identical JET dis-charge. The dimensionless energy connement timesTable 2. Parameters of a JET DT ITER Demonstration
+Discharge
+Parameter Value
+Shot number 42 756
+B(T) toroidal eld at axis 2.0
+I(MA) plasma current 2.0
+R(m) major radius 2.9
+a(m) minor radius 0.93
+q95measure of magnetic twist 3.4
+=elongation/triangularity 1.76/0.2{0.3
+hni=nGR(1019m−3) 4.7/7.4
+Zeeective ion charge 1.9
+P(MW) auxiliary heating power 17.3
+Pfusion(MW) fusion power 2.1
+Wth(MJ) plasma energy content 4.5
+th(s) heat connement time 0.26
+Bth 0.52
+HH 1.04
+=
+ITER 2.1
+N;thnormalized pressure 2.25
+n(0) (1020m−3) plasma density 0.59
+n(0)ITERy1.6
+Ti(0),Te(0) (keV) 5.5, 5.0
+Ti;ITER ,Te;ITER (keV) 16.0, 14.5
+Divertor status Attached
+Range of values during pulse.
+yScaled at constant and.
+are identical within 5%, which establishes the valid-
+ity of the Kadomtsev scaling principle over the sizerange between DIII-D and JET.
+Next we turn to the central purpose of this Sec-
+tion: identication of the various plasma phenomenaoccurring in tokamaks and of the projection princi-ples that apply to them.
+3.2. Core connement and transport
+Chapter 2 addresses the anomalous core thermal
+transport arising in region I from ne scale plasmaturbulence, whose characteristic scale size is smallcompared to the device size. The working hypothesisis that core transport is governed by core dimension-
+less physics variables through the core density, tem-
+perature, and magnetic eld values. It is recognizedthat the properties of the region II edge plasma couldalso aect core energy content, particularly if thecore logarithmic temperature gradient is constrainedto lie near marginal stability values.
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2145
+
+=== Page 11 ===
+
+ITER Physics Basis
+Figure 6. JET DT ELMy H-mode ITER Demonstration
+Discharge. Normalized , line average electron density
+(1019m−3), central electron temperature Te(0) in keV,
+Dand total power (MW) versus time for JET pulse
+42 756. See Table 2 for parameters. Divertor regime was
+attached.
+3.2.1. Global connement scaling
+Connement properties of tokamak plasmas have
+long been characterized by their global connementtime: the ratio of thermal energy content to heat-ing power (in steady conditions). Two approachesare used to project values measured on present daytokamaks to reactor scale devices: regression anal-ysis of a connement time database; and the 
+
+scaling of ITER Demonstration Discharges. Global
+regression projections for ITER rest on a database
+of ELMy H-mode discharges, which has been con-
+siderably expanded and improved during the EDA.Log-linear (power law) regression analyses appliedto this database generate connement time scal-ing relations. Kadomtsev’s non-dimensional con-siderations impose a constraint equation on thepower law exponents. A free t power law scal-ing relation satises this constraint to within sta-tistical uncertainties. Consequently, this constraint
+is applied to the recommended power law scaling
+relations to assure that they are dimensionally cor-rect. As shown in Section 6 of Chapter 2, the scal-ing relation IPB98(y,1) based on the most com-plete set of ELMy H-mode data from 11 dierenttokamaks, including all heating methods, takes theform
+
+ELMy
+E=0:0503HHI0:91B0:15P−0:65n0:44
+M0:13R2:05"0:570:72(5)
+where the units are s, MA, T, MW, 1019m−3,
+amu and m, respectively. HHdenotes a constant
+normally taken to be unity, and the elongationis dened as =S
+0=(a2)w i t h S0being
+the plasma poloidal cross-section area. Variations
+inHHabout unity are used in modelling stud-
+ies [3] to ascertain the sensitivity of fusion perfor-mance to changes in connement. During the EDA,much attention has been focused on the uncertaintyintervals associated with the recommended scalingrelation. Section 6.4 of Chapter 2 addresses theseissues.
+The ELMy H-mode regression analyses are sup-
+plemented by ITER Demonstration Discharges pre-pared to have core non-dimensional parameters asclose to a reactor as possible. These discharges haveand
+values similar to a reactor but dier in .
+H-mode scaling experiments that vary at xed 
+andnd that connement invariably lies close to
+the regression analysis prediction (5) whose scal-
+ing is almost that of the ‘natural’ gyroBohm scalingtheoretically predicted by simple dimensional anal-
+ysis of equations for microinstability transport. The
+dimensional analysis argument rests on the fact thatthe scale of the turbulent ﬂuctuations will exhibita separation of spatial scale from the overall deviceand vary according to the ion gyroradius. Almostall rst principles microinstability simulations havegyroBohm scaling.
+In addition to heat transport, transport of helium
+ash and angular momentum are important for reac-tor operations. The source of angular momentum istangential neutral beam injection, which, togetherwith the momentum diusivity, determines the dif-ferential toroidal rotation rate. Section 10 of Chap-ter 2 reports that observations suggest that momen-tum diusivity is close to heat diusivity. It is asubject of current research whether dierential rota-tion can then close a loop and inﬂuence the diusiv-
+ity via dierential rotation eects on microinstability
+growth rates and turbulence levels.
+3.2.2. H-mode power threshold and pedestal
+ITER connement projections assume operation
+in the ELMy H-mode. Transport power losses fromregion I must exceed the H-mode threshold power to
+2146
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 12 ===
+
+Chapter 1: Overview and summary
+assure that an edge transport barrier and pressure
+pedestal occur in region II. Such a power thresh-
+old requirement constitutes an important constraint
+on the operational space available to a fusion reac-tor [3,4]. Work during the EDA has created an exten-sive database of H-mode power thresholds [16{18].Section 4 of Chapter 2 presents a resulting fam-ily of empirical scalings, Eq. (10) of Chapter 2, forthe L!H power threshold, which are dimensionally
+correct, but which contain appreciable uncertaintycaused by the necessity to determine a functional
+form for extrapolation from experimental data.
+A considerable reduction in the power threshold
+uncertainty would result if a viable theoretical mech-anism and theory based scaling relation were avail-able for extrapolation. Although half of the H-modepuzzle has been solved (we know that the trans-port reduction in the barrier arises from electric eldshear [19]), these considerations have yet to pro-
+duce a predictive theory for the scaling of the power
+threshold that triggers the evolution from L-mode toH-mode. Recent theoretical and computational sim-ulation work [20{22] has introduced nite- physics
+into threshold physics and the transport physics ofregions II and III in general. Dimensional analysisarguments indicate that this step is essential for the-ory to recover the empirical threshold scalings. Thesimulation models do exhibit qualitative features ofthe region II/III plasma, but do not yet have a full
+separatrix magnetic geometry needed for an accurate
+prediction of the power threshold.
+Pedestal values of density and temperature just
+inside the H-mode transport barrier of region IIserve as boundary conditions for the region I anoma-lous transport process. Transport and turbulencewithin region II, which determine the pedestal den-sity and temperature values, are regarded as part
+of edge physics and treated in Section 3.7 of Chap-
+ter 4, mostly from the perspective of a databaseto determine pedestal values. Pedestal temperaturescan be very important if region I temperature gra-dients are constrained to lie near a marginally sta-ble logarithmic temperature gradient. First princi-ples simulations of ne scale turbulence are currentlyinvestigating whether region I temperatures will beso constrained or will be relatively independent of
+pedestal boundary conditions. Even if region I tem-
+peratures are reasonably independent of pedestaltemperatures, the region II pedestal energy content isgenerally not negligible compared to region I energycontent and can have a scaling that diers from thecore scaling. In particular, pedestal energy contentmay be the source of the ‘isotope’ eect common in
+connement scalings such as (5) [23]. Indeed, work
+during the EDA has led to a greater general appre-
+ciation of the limitations that dierent scalings ofdierent physics in dierent regions inevitably placeon direct experimental investigation of the compati-bility of the desired core and edge physics processesin reactor scale plasmas.
+3.2.3. Transport modelling and simulation
+Figure 1 depicts representative magnetic surfaces
+in a tokamak plasma. The very rapid transport of
+heat and particles along a magnetic surface relativeto the slow transport across surfaces has lead to amodel of plasma transport wherein magnetic surfacesare regarded as iso-density, iso-temperature surfaces,so transport only need be computed across magneticsurfaces. For cross surface transport, the full shapeof the magnetic surface is used in dening the vol-ume element. Codes constructed in this approxima-
+tion are called 1.5 dimensional transport models. Sec-
+tion 8 of Chapter 2 describes two dierent ways topredict the local energy transport coecients (ther-mal diusivity) for ITER from within a 1.5 dimen-sional transport modelling code. The rst way, usedin the PRETOR [24] code for FDR projections [4,5],consists of adjusting the thermal diusivity in sucha manner that the global energy connement timecomputed by the code is constrained to be equal tothat given by a global scaling relation. The spatial
+prole of diusivity is chosen so that temperature
+proles are close to those observed in ITER Demon-stration Discharges. This combined use of local trans-port coecients adjusted to global scaling relationsand of a 1.5 dimensional predictive transport codethat can compute sources, sinks and boundary con-ditions { including some aspects of divertor physics{ self-consistently with the predicted proles is themost direct and reliable way to extrapolate the per-
+formance of a reactor scale tokamak from present day
+experiments.
+A second and more fundamental choice for local
+heat transport coecients consists in using a modelfor the diusivity that does not depend on a globalscaling relation, but instead uses expressions for dif-
+fusivity and other transport coecients that are
+drawn from theory based considerations such asquasi-linear theory, numerical plasma turbulencesimulations, or simply dimensionally correct formu-las motivated by observations. These models, onceimplemented in transport codes, can be used to pre-
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2147
+
+=== Page 13 ===
+
+ITER Physics Basis
+dict temperature proles, which are then compared
+to experimental measurements available in the ITER
+Prole Database created during the EDA [25]. Pre-
+dictions for some models are quite sensitive to thepedestal boundary temperature, because they are‘sti’, meaning that the heat ﬂux increases rapidlyonce the logarithmic temperature gradient exceeds acritical value. Currently, many models are either stillevolving, with new terms being added, or present toolarge a dispersion when compared to experimentalresults to allow reliable projection of ITER perfor-
+mances. On the other hand, a theory based expres-
+sion such as the multi-mode model [26] is shown toachieve reasonable success when compared to exper-imental data and may, therefore, present a crediblealternative to global scaling for ITER predictions.Presently, predictions for ITER using this modelcome close to that using a diusivity normalizedto the global scaling relation, thereby providing anadditional level of condence to the overall perfor-mance projections.
+Still more fundamental is computational simula-
+tion of turbulent transport coecients or, more gen-erally, the non-linear heat ﬂux temperature gradientrelation. Two approaches are used: a straightforwardgyrokinetic particle simulation method [27]; and the
+gyroﬂuid approach [28]. The gyrokinetic approach is
+more fundamental and uses particle simulation com-putational techniques in the ve dimensional phaseof microinstability turbulence: three spatial dimen-sions and two velocity space dimensions, energy andmagnetic moment. Gyroﬂuid computations rest onvelocity space closure schemes that mimic kineticeects and reduce the dimensionality of the compu-tational space to three spatial dimensions. Dierentcomputational domains are used as well [29]. At this
+writing, the various approaches dier by up to a fac-
+tor of eight in the heat ﬂux for a given gradient. Res-olution of these dierences is in the research stage.
+A fundamental understanding is needed to assess
+the prospects of the radiation improved (RI) conne-
+ment mode studied on TEXTOR [30]. These obser-
+vations nd that connement equals or exceeds thatpredicted by scaling relation (5) without the require-ment to establish an H-mode edge barrier. Two cen-tral physics questions are as follows.
+(1) What critical concentration of impurities is
+needed to alter microinstability turbulence toproduce the characteristic RI-mode peakeddensity proles and lower overall thermal lossesthan ordinary L-mode turbulent transport,even while permitting densities in excess of the
+Greenwald value (discussed in Section 3.3.8 of
+this Chapter)?
+(2) Are the high fractional radiated powers asso-
+ciated with RI-mode impurity concentrationsessential to altering the turbulent transport?
+If a specic impurity concentration is required, then,
+in a reactor scale device, radiation from the outerportion of region I, called the mantle, may exceed
+the available power because of the lower heating per
+unit volume associated with a fusion energy sourcecompared with auxiliary power deposition levels inpresent day experiments. Of course, a reactor scalefacility will provide a test bed for experimental inves-tigation of possible connement improvements frominjection of high- Zmaterial, but a common physics
+over a variety of tokamaks remains to be establishedbefore the RI-mode can be used as a design basis for
+a reactor scale facility.
+3.2.4. Connement and magnetic conguration
+Many recent experiments in tokamaks indicate
+that transport arising from ne scale turbulence isstrongly inﬂuenced by the global magnetic congu-ration. Reverse shear congurations are an evidentexample [31, 32]. Even for the ELMy H-mode, theempirical scaling relations indicate a high sensitivityto elongation. Yet more dramatic are the numerousobservations of internal transport barriers (ITBs) {documented in Section 3.4 of Chapter 2 and Sec-
+tion 2.7 of Chapter 3 { whose duration appears to
+be limited by resistive evolution of the qprole. Fig-
+ure 7 portrays a representative example from JT-60Uin an almost steady state, reverse shear operation.
+ r/aITB layer
+024681012
+0123456
+0 0.2 0.4 0.6 0.8 1Te , Ti (keV)
+ne (1019 m-3)neTMS
+TiCXR
+TeTMS
+Figure 7. An ITB in JT-60U. For details, see Figure 8
+of Ref. [31].
+2148 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 14 ===
+
+Chapter 1: Overview and summary
+Experiments must now focus on establishing a
+common ITB physics, consistent with reactor con-
+straints (e.g. TeTi), to provide a basis for con-
+dence that such advanced performance modes can berealized on a reactor scale device. Issues concern therole of plasma shaping by elongation and triangular-ity, velocity shear stabilization of microinstabilities,and the importance of deep interior, neutral beaminjection (NBI) fuelling. The physics of Chapters 2and 3 both bear on the prospects for operation ofITER in a transient transport barrier connement
+mode.
+Similar remarks apply to high bootstrap frac-
+tion, reverse shear, steady state modes, often called‘advanced tokamak’ operation. Ideal magnetohydro-dynamic (MHD) stability calculations nd theseplasmas to be unstable to global, n=1 ,e x t e r n a l
+kink modes for useful values of the plasma pressure
+(>0:03), unless a perfectly conducting shell closely
+surrounds the plasma. In principle, a nitely con-ducting shell will suce, provided the plasma rotatessuciently fast with respect to the shell so that theskin depth is small compared to the shell thickness.Thus, data regarding plasma rotation and the associ-ated wall stabilization of global MHD kink and resis-tive wall modes [33] appears to be essential to demon-strating useful plasma pressures in steady state dis-
+charges. As explained in Section 3.3.7 below, the
+alternative is stabilization by active n= 1 coils [34].
+Section 3.3.7 of this Chapter and Section 2.4 of Chap-ter 3 report the status of this physics; a rm rotationrequirement has yet to emerge.
+3.3. Magnetohydrodynamic phenomena,
+disruptions and operational limits
+In magnetically conned plasmas, MHD phenom-
+ena that have a global character play a dening role
+in determining the accessible parameter space, and,thereby, setting the limits of fusion performance.Global physics processes in region I govern opera-tional limits for the core of a tokamak discharge.Chapter 3 summarizes our current knowledge of suchprocesses, which encompasses ideal MHD stability,determination of the plasma pressure limit via slowgeneration of magnetic island structures driven by
+bootstrap current, as well as potential methods for
+their control, sawtooth relaxations of the inner core,tolerable error eld limits, positional and shape con-trol, and disruption phenomenology, including verti-cal displacement events (VDEs) and runaway elec-tron generation. The steep gradients in region II,which are characteristic of H-mode operation, cause
+a sequence of relaxation phenomena called ELMs,
+which are global on the scale of region II. Section 2.6
+of Chapter 3 addresses their interpretation as MHDphenomena, while Section 3.8 of Chapter 4 evaluatesthe role of ELMs in power and particle control.
+3.3.1. Magnetohydrodynamic stability
+The principal global stability limits relate to
+the maximum plasma current, plasma density andplasma pressure, or , that can be achieved. At-
+tempting to exceed these limits often gives rise to
+major disruptions, which leads to a loss of the plasmathermal energy and a dissipation of magnetic energyon rapid time-scales, typically 100 sa n d1 0 m s ,
+respectively, in present day experiments. In addi-tion, local stability limits give rise to MHD insta-bilities, such as sawteeth in the plasma centre andELMs at the plasma edge, which can have a lesssevere, but nevertheless important, impact on fusion
+performance. In Chapter 3, it is shown that while
+ideal MHD theory, in which parallel electric elds areneglected, is very highly developed and sets the ulti-mate limits on current and (Section 3.2.1), resis-
+tive eects must generally be invoked to describethe global instabilities most commonly observed intokamak experiments. Moreover, additional destabi-lizing or stabilizing eects arising from the presenceof a bootstrap current, interactions with energeticparticle populations, and the existence of low level
+non-axisymmetric error elds, can have a signicant
+inﬂuence on MHD activity in present day tokamaksand are expected to be important in reactor scaleplasmas.
+Although it can be shown that fundamental con-
+siderations deriving from ideal MHD theory deter-
+mine the limiting parameters for the magnetic equi-
+librium, principally the plasma current and verticalelongation, the choice of equilibrium parameters forthe ITER reference scenario, a plasma current, I
+p,
+of 21 MA, and elongation, ,o f1 . 6 ,a r eb a s e do n
+experimental evidence and practical considerationsthat should apply to reactor scale plasmas in general.It is known that a hard disruptive limit exists whenthe edge safety factor q
+952. However, extensive
+operational experience has shown that operation at
+q95= 3, as is foreseen in ITER, is a good compromise
+between the desire to maximize energy connementby operating at high current and the increasing sus-ceptibility to instability as q= 2 is approached. This
+choice, furthermore, allows some margin for increas-
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2149
+
+=== Page 15 ===
+
+ITER Physics Basis
+ing current, if necessary, to oset degraded conne-
+ment close to operating limits. Operation of elon-
+gated plasmas, desirable to increase connement and
+ideallimits, requires continuous feedback control
+of otherwise vertically unstable plasmas. Althoughoperation at higher elongation { 2 { is well
+established in present day experiments, considera-tions relating to power requirements for feedback sta-bilization of vertical displacements, constraints aris-ing from a reactor relevant poloidal eld coil cong-uration, and the limitation of forces in VDEs con-
+strains the choice of .
+3.3.2. Magnetohydrodynamic limits
+and neoclassical islands
+Because fusion power production scales approxi-
+mately as 
+2B4, there is a substantial incentive to
+operate at the highest attainable , a point empha-
+sized by the requirements of steady state opera-tion and attractive economics in a reactor. In Sec-tion 3.2.1 it is shown that the limit arising
+from ideal MHD stability, corresponding to 
+N=
+=(Ip=aB)3:5 for simple, monotonic qproles
+characteristic of inductive operation, is well validatedby existing experiments and allows ITER a consid-erable margin for operation at its design operatingpoint of 
+N=2:2. However, as discussed in detail in
+Section 2.3 of Chapter 3, the observation in numer-ous experiments in recent years of neoclassical tear-ing modes at 
+Nvalues well below the ideal limit
+poses a more signicant constraint for ITER opera-
+tion [35].
+Since the conguration is no longer rigorously
+axisymmetric, these modes can change the topologyof the magnetic eld in the vicinity of low order ratio-nal magnetic surfaces to have an island structure bestrepresented in helical ﬂux [35]. Figure 8 shows theisland topology in helical ﬂux while Fig. 9 portrays a
+representative waveform of neoclassical island devel-
+opment from a sawtooth trigger to a saturated island.
+The growth of neoclassical islands arises from an
+instability caused by a decit of bootstrap currentinside a magnetic island due to the ﬂattening ofthe pressure prole across the island, and is gen-erally initiated by so-called ‘seed’ island topolog-
+ical changes produced by other MHD instabilities
+such as sawteeth or ELMs. Figure 9 portrays a saw-tooth crash triggering growth of an ( m; n)=( 3 ;2)
+island. In general, the seed island needed to initiateisland growth is substantially smaller than the sat-urated island size, which is governed by 
+Nand0.70.80.911.11.21.30.50.40.30.20.100.10.20.30.40.5
+Figure 8. Neoclassical island topology. An ( m;n)=
+(2;1) mode is shown in helical ﬂux [35].
+through their eect on the bootstrap current density.
+Recently, experiments have supported a polarizationdrift theory regarding the ‘onset ’ value at which
+neoclassical islands could grow once the relative seedisland exceeds a value of order 
+[38]. The onset 
+scales as and depends on collisionality through the
+combination =.
+Thus, neoclassical islands occur with a range
+of saturated island sizes corresponding to a rangeof
+Nvalues, but their eect on plasma perfor-
+mance depends on N.I nl o w - Ndischarges with
+small saturated islands characteristic of onset val-
+ues, neoclassical islands do not aect global con-nement, while, in the most severe cases, generally
+those involving m=2 ,n= 1 saturated islands at
+
+N2:5, they satisfy an island overlap criterion,
+which can lead to major disruptions. Although theycan be observed at 
+Nvalues in the vicinity of 2.2
+in existing experiments, the present understandingof connement degradation versus saturated island
+2150
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 16 ===
+
+Chapter 1: Overview and summary
+2.SXRCEN CHOR
+W(CM)3/2
+EFI
+(W) MODSXREDG CHOR8617
+1.
+1.
+0.
+6.
+5.
+4.
+3.
+2.1.0.
+1.25
+1.000.75
+0.50
+0.25
+0.00
+2600 2800 3000 3200
+TIME (ms)3400 3600 38000.
+Figure 9. Time waveform for neoclassical islands from
+DIII-D [36]. At the time of the sawtooth drop in thecentral soft X-ray chord (top panel), an ( m;n)=( 3 ;2)
+magnetic island growth is triggered (middle panel) and
+attains a saturated width, causing a decrease in plasmaenergy content (bottom panel) inferred from 
+pas deter-
+mined by EFIT [37] and modelled by an annular regionof high thermal conductivity.
+size is not adequate to allow an accurate prediction
+of the limiting Nin ITER. Successful operation of
+long pulse discharges in JET at the required valuesof
+N=2:2 and ITER like values (cf. Fig. 6)
+supports the ITER reference scenario. Higher val-ues of 
+N(3:0) are experimentally accessible in the
+absence of sawteeth [39]. Moreover, the slow growthtime of such modes in ITER, 50 s, in principle
+permits stabilization via electron cyclotron currentdrive [40, 41]. Planned experiments will investigate
+this scheme in the near future. Initial results are
+encouraging [42]. Eliminating neoclassical island lim-itations on could permit fusion power levels of up
+to 3000 MW in the ITER FDR facility for periodsof 50{100 s, and establish 
+N3:0 as the nominal
+limit for inductive tokamaks.3.3.3. Error eld criteria
+An operational limit not strictly related to the
+plasma state arises from the existence of small ampli-tude non-axisymmetric error elds, produced byresidual asymmetries in the toroidal and poloidalmagnet sets, which can cause a growth of resistiveislands and lead to major disruptions. This phe-
+nomenon is described in Section 2.5 of Chapter 3.
+The low- m(m=1;2;3),n= 1 components of
+these error elds can instigate the growth of magneticislands in existing experiments when the amplitudeof the total error eld, B
+r,i s10−4of the toroidal
+eld,B. The mechanism for the initial development
+of the islands is understood in terms of magneticbraking of the plasma mode rotation by interactionof the error eld components with the relevant res-
+onant qsurfaces. However, at error eld levels typ-
+ical of moderate to large experiments, only small,essentially harmless, islands should be induced and,to date, there is no satisfactory theoretical explana-tion of why such modes grow to amplitudes capa-ble of causing disruption. An empirical scaling of thethreshold eld, required to initiate island growth inohmic discharges, has been assembled that indicatesthat error elds having B
+r=B510−6{510−5
+may be critical in ITER. Current experiments also
+indicate that the plasma may be most susceptible
+to this eect during the initial low density ohmicphase and at the highest values. Successful cor-
+rection of such eld errors by additional coil setson several tokamaks underpins the proposed installa-tion of a correction coil set capable of cancelling them=1;2;3,n=1e r r o r e l dc o m p o n e n t so nI T E R .
+This, together with the observation that externalmomentum injection by neutral beams improves the
+resilience of plasmas to such modes [43] gives con-
+dence that error eld induced modes will not limitplasma operation in ITER.
+3.3.4. Disruptions
+All tokamaks suer from abrupt, uncontrolled
+events, involving rapid cooling and loss of plasmacurrent, which have come to be known as disrup-tions. Accommodating the consequences of disrup-tions imposes signicant design constraints on reac-
+tor scale tokamaks. Section 4 of Chapter 3 details
+the extensive progress that has been made in under-standing and quantifying the impact of disruptionson a reactor scale device based on data from presentday tokamak facilities. However, modelling studiesindicate that new and signicant aspects of disrup-
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2151
+
+=== Page 17 ===
+
+ITER Physics Basis
+tion physics will arise in reactor scale devices.
+Major disruptions most often occur as a terminat-
+ing event when the growth of resistive MHD modes orthermal instabilities has evolved plasma parametersclose to an ideal MHD limit or stochasticity thresh-old. On occasion, they can occur explosively { with-out a resistive precursor mode { when the axisym-metric equilibrium lies in close proximity to an ideallimit. VDEs resulting from loss of vertical position
+control of the plasma constitute both a cause and aconsequence of major disruptions.
+It is generally accepted that disruptions occur in
+two stages: the thermal quench stage followed by acurrent quench stage [44, 45]. The thermal quenchstage is initiated by the growth of large ampli-tude magnetic islands (often (2 ;1) modes) within
+the plasma, which overlap to produce large scaleergodization of the magnetic structure, leading toa catastrophic loss of connement. This, together
+with a massive inﬂux of impurities [46], produces
+a rapid loss of thermal energy, expected to occuron the 1 ms time-scale in ITER, which causes theplasma temperature to fall to as low as 3 eV. A majorfraction of the plasma thermal energy content isdeposited onto the divertor chamber, causing meltingand vaporization of plasma facing materials, whichserves as a source of impurities for the subsequentcurrent quench stage. In the current quench stage,the plasma current decays, on a predicted time-scale
+of50 ms in ITER, consistent with the very substan-
+tial increase in plasma resistance. Detailed physicsinvestigations and a large scaling database of ther-mal and current quench time-scales, assembled dur-ing the EDA, give condence that these projectionsare well founded.
+A new phenomenon expected to occur in reac-
+tor scale devices is the ablation of signicant mate-rial from the divertor surface in the thermal quench
+stage due to the large thermal energy of the plasma,
+1 GJ [47, 48]. Calculations show that a vapour
+shield should form in front of the divertor targets,dispersing the majority of the incident energy ﬂuxto the divertor chamber walls via radiation, which,in turn, causes thin melt and vaporization layers toform over the entire chamber. Divertor wall vaporiza-tion serves as an impurity source for the subsequentcurrent quench stage.
+Reactor scale plasmas also dier from contempo-
+rary devices in the evolution of runaway electronsduring the current quench phase. Analysis of ener-getic electron behaviour in the cold, highly impureplasmas produced by the disruption predict that asubstantial runaway electron current, possibly reach-
+ing 16 MA, can be generated by an avalanche pro-
+cess involving Coulomb scattering of thermal elec-
+trons [49]. Large skin currents might also form dur-ing this phase at the boundary between eld linesin the plasma and those that contact material sur-faces, giving rise to a potential further source of heli-cal instabilities and magnetic ﬂuctuations that couldserve to inhibit runaway electron generation.
+During the current quench phase, control of the
+plasma vertical position is generally lost and the ver-tical drift of the plasma induces both eddy currentsin the vessel structures and so-called ‘halo’ currents,which ﬂow partly in a ‘halo’ surrounding the plasmaand partly in those elements of the vessel structurein contact with the halo plasma. The resultant elec-tromagnetic forces on the mechanical structure canbe very large, 15000 t in the most severe cases,
+and, in addition to a predominantly vertical force
+component, radial forces and toroidally asymmetric
+forces can occur. An extensive database of halo cur-rent observations from existing experiments has beenassembled during the EDA and has guided the speci-cation of a mechanical design capable of withstand-ing such substantial forces.
+The trigger event for eectively all disruptions can
+be identied [45,50] and disruptions are, therefore,
+potentially avoidable. Various disruption mitigation
+schemes have been studied with the aim of dissipat-ing the thermal and poloidal energies of the plasmain a way that avoids the most serious consequences ofthe disruption. Section 4.6 of Chapter 3 summarizesthese schemes. Several of these have been appliedin present day experiments with some success. Forexample, the recognition that the plasma verticalstability can be maintained following a disruption
+if the plasma is located at the ‘neutral point’ of the
+surrounding conducting structure, has been success-fully exploited in JT-60U to avoid post-disruptiveVDEs [51]. Nevertheless, further R&D is required todevelop mitigation techniques capable of satisfyingthe very demanding requirements imposed by thedisruption consequences on the reactor scale.
+3.3.5. Sawteeth
+More localized MHD instabilities will also occur
+in reactor scale devices that, on the basis of expe-rience in present day experiments, are expected tohave a largely benign inﬂuence. The sawtooth, whichis characterized by periodic relaxations of the cen-tral electron temperature as portrayed in Fig. 6,
+2152
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 18 ===
+
+Chapter 1: Overview and summary
+falls into this class. Sawtooth activity is associated
+with an instability that occurs when the central q
+value falls below unity and that involves a ﬂatten-
+ing of the central plasma proles, but no global lossof plasma energy or particle content. Little impacton global plasma performance is foreseen (Chap-ter 2, Section 5.1), but sawteeth may be the dom-inant mechanism producing seed islands needed totrigger neoclassical tearing modes (as illustrated inFig. 9). A detailed theoretical model of the underly-ingm=n= 1 MHD instability, incorporating non-
+ideal eects such as resistivity and nite ion Larmor
+radius and including the stabilizing role of fast par-ticles and thermal trapped ions, has been developedduring the EDA [15] and is discussed in Section 2.2of Chapter 3. For a reactor scale plasma, this theorypredicts that the relaxation events will occur witha repetition time of 50{100 s. Although such longperiod sawteeth might provide the seed island forneoclassical modes, there exist various approachesto modifying sawtooth behaviour, by exploiting the
+heating and current drive methods available, which
+provide condence that direct sawteeth eects willnot limit plasma performance in ITER. The dis-charge of Fig. 6 presents an example of an ITERDemonstration Discharge whose global propertiesremain unaected by sawteeth.
+3.3.6. Edge localized modes
+ELMs are instabilities of the plasma edge (i.e.
+region II) associated with H-mode connement,which result in regular relaxations of the edge tem-perature and density proles. ELMs limit the maxi-mum pressure gradient that can be reached in thenarrow edge pedestal region that is a distinctivefeature of the H-mode. Section 2.6 of Chapter 3
+details the various forms this instability can take
+{ called type I, type II, type III, ICRF and grassy{ and outlines the various theories that have beenadvanced to explain them [52]. Although a theo-retical description of ELM behaviour is just begin-ning [53,54] and is focusing on moderate- n‘peeling
+modes’, ELMs have been well characterized empir-ically. The most common type of operation is withtype I ELMs and the majority of the connement
+database comes from this operating mode. It has the
+benecial eects of regulating impurity content anddensity rise in a manner that has essentially allowedsteady state operation. The most signicant concernis that the energy pulse produced by type I ELMscan enhance erosion of the divertor targets to thepoint where component lifetime becomes unaccept-
+ably short. The present database on type I ELM
+amplitudes, when projected to ITER, spans a range
+from unacceptable to acceptable in this regard. Sincethe ITER reference operating point has transportlosses close to the H-mode power threshold, the morebenign type III activity, acceptable from an erosionpoint of view, will in all likelihood prevail. Recently,it has been found that the type III regime dividesinto two branches:
+(i) the high density branch of primary interest to
+ITER (DIII-D, ASDEX-Upgrade) has conne-ment quality that is possibly comparable to thetype I regime [55]; and
+(ii) the low density branch (DIII-D, JET) can have
+connement quality strongly diminished from
+type I levels.
+It is also observed that ELMs in ICRF heated plas-
+mas [9] are less severe than with NBI heating andacceptable for ITER operations. Alcator C-Mod,another ICRF heated device, does not observe ELMsat all [56], but rather a region of enhanced D
+
+associated with the edge of H-mode plasmas. Sec-
+tion 3.8 of Chapter 4 evaluates the implications ofELM behaviour for power and particle control.
+3.3.7. Magnetohydrodynamics of reverse shear
+and steady state congurations
+During the course of the EDA there have been
+rapid advances in connement regimes that exploit
+modications of the current density prole { such asreversal of the central shear { to optimize plasmaperformance [57{59]. Two general classes of resultshave been obtained. At moderate qvalues, negative
+central shear operation has stabilized both microin-stabilities and neoclassical tearing modes. The result-ing ITBs (as portrayed in Fig. 7) are quite strikingand could form the basis for transient ignition in areactor scale device. Indeed, recent experiments have
+reported ITBs enduring many energy connement
+times [60].
+Second, the leading scenarios for high- Q,s t e a d y
+state operation of a tokamak reactor are low current,
+high bootstrap fraction, reverse shear discharges. In
+such discharges, the bootstrap current density prolecan be well matched to the desired plasma currentdensity prole. Discharges of this type have been suc-cessfully maintained at low toroidal [60,61]. The
+low current of these discharges acts to increase the
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2153
+
+=== Page 19 ===
+
+ITER Physics Basis
+bootstrap fraction but increases their susceptibility
+to global instabilities, because their internal induc-
+tance and normalized current ( Ip=aB0:8) are low.
+Many of the limitations encountered in plasma per-formance in such regimes are associated with globalMHD modes, both ideal and resistive. The principalMHD modes observed in such regimes are discussedin Section 2.7 of Chapter 3. Infernal modes (corelocalized ideal kink modes), double tearing modes,and global ideal kink modes have all been identi-ed as performance limiting instabilities in present
+day experiments. Attainment of steady state oper-
+ation in these low normalized current dischargesat toroidal values comparable to the ELMy H-
+mode requires high 
+Nvalues, and low- nexternal
+kink modes must be stabilized by nearby conductingshells. This raises the issues of nite shell resistiv-ity and ‘resistive wall modes’. In principle, the low-nkinks can be suppressed by means of suciently
+fast rotation of the plasma. However, the analysisis complicated by the existence of a slowly rotating
+mode whose growth depends on the proximity of a
+resistive shell, hence the nomenclature resistive wallmode (RWM). Recent experiments [62] have foundthat plasmas in this wall stabilized regime sponta-neously lose their rotation, in spite of continuingangular momentum input by NBI, and ultimatelysuer an external kink mode that grows on a wallpenetration time-scale. Active n= 1 feedback coils
+to control the spin-down and/or kink mode appear
+necessary [34]. The physics of this phenomenon and
+its implications for steady state operation are dis-cussed in Section 2.4 of Chapter 3.
+Further experimental investigation is required to
+demonstrate the necessary feedback control of theplasma current and pressure proles necessary to
+avoid such instabilities and to sustain the high per-
+formance in steady state required to meet ITER’sultimate goal of non-inductive steady state opera-tion.
+3.3.8. Density limit physics
+As discussed in Section 3 of Chapter 3, the ulti-
+mate limit for the plasma density is set by the growthof resistive instabilities leading to a major disruption.
+Non-MHD eects, principally the growth of edge
+and divertor radiation, which can produce radiativeinstabilities known as MARFEs, cause cooling of theplasma edge, contraction of the plasma current pro-le, and destabilization of low- m; nMHD activity,
+which causes a major disruption in a well establishedsequence of events. The role of radiation imbalance in
+the limiting process indicates that this limit depends
+on the plasma input power (including fusion power),
+a result demonstrated in several tokamaks. A reac-tor scale plasma will dier from present day exper-iments by highly baed divertor congurations andlarge size, which serve to appreciably reduce neutralparticle densities inside the separatrix and raise theseparatrix electron temperature, thereby potentiallyeliminating MARFE formation, and its eect on thecurrent density prole.
+However, of more relevance to the determina-
+tion of the operating space for ignited operation in
+ITER is the common observation, across many toka-
+maks, that it is dicult to maintain H-mode conne-ment while increasing the density above the so-calledGreenwald value n
+G(1020m−3)=IMA=a2with gas
+pu fuelling [63]. Indeed, the density limit is charac-terized by the lack of response of plasma density toappreciably increased gas pu fuelling rates. Eventhough this limit is empirical, it is a surprisinglyrobust characterization of the experimental operat-ing space. Essentially by coincidence, a reactor scale
+tokamak, operating at an optimum average temper-
+ature of close to 10 keV and at its 
+Nlimit, has a
+density almost equal to the Greenwald value.
+The physics mechanism of the density limit is
+presently not known. Pellet injection, especially higheld side launch, can lead to region I densities 20{50% above the Greenwald value [64] indicating thatthe Greenwald value is not a fundamental limit forthe core. Indeed, on DIII-D, outside pellet launchcoupled with divertor pumping leads to plasmas witha density 50% above the Greenwald value and con-nement somewhat better than the ITER93H scal-
+ing [65]. More recent work points to the importance
+of pumping in the divertor private ﬂux region. There-fore, an understanding is sought in terms of region IIand region III global physics, including atomic radia-tion and ionization processes. Section 3 of Chapter 3reviews the data and conceptual models inﬂuencingdensity limit physics, while Section 3.7 of Chapter 4describes the density limit in terms of an edge opera-tional space. A limit based on reversion from H-mode
+to L-mode is proposed, but, in light of the lack of pre-
+dictive theoretical models for the L !H transition, a
+quantitative scaling is not available.
+Scaling arguments indicate that investigation of
+density limits in present day experiments resultsin core plasmas with collisionalities 
+apprecia-
+bly above ITER values and potentially dierentconnement physics. This serves as an example of
+2154
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 20 ===
+
+Chapter 1: Overview and summary
+the diculties of carrying out integrated core{edge
+experiments in present day machines. The parame-
+ter spaces of interest to ITER for core and diver-
+tor physics are disjoint in density in present daytokamaks. These two lines evidently do meet inITER; there, when the density reaches the Green-wald value, divertor modelling calculations show thatthe divertor detaches, while the core plasma colli-sionality remains in the low regime characteristicof ITER and the database presently being used toproject connement. Establishment of reliable opera-
+tions at trans-Greenwald densities could appreciably
+raise ITER’s fusion power output and neutron wallﬂux, increasing the attractiveness of the inductivelydriven tokamaks as a reactor. Experiments aimed atincreasing density without connement degradationusing inside pellet launch and highly baed diver-tor congurations (the ITER design approach) areneeded to establish a common physics of high densitytokamak operations. The essential dierence foreseenbetween a reactor and present day experiments such
+as ASDEX-Upgrade and JET is a region of nite
+density gradient between the H-mode pedestal andthe plasma core, supported by an inside pellet launchplasma source. The ability of inside pellet launch andshaping of the plasma periphery to support such agradient is an area of crucial research. Reactor scaledensity limits (if any) will be a key output of burningplasma physics studies. This is a rapidly developingsubject.
+3.4. Particle control and power dispersal
+Power and particle control are central to the suc-
+cessful operation of a magnetic fusion reactor and arethe subject of Chapter 4. Control of region I densityis the key method for regulating the fusion poweroutput under ignited conditions. Pellet injection inturn, although it penetrates only into the peripheryof region I, is the principal approach to core den-
+sity control. High eld side pellet launch [64] appears
+preferable, but is only beginning to be exploited on aregular basis. Power dispersal is required as it is wellknown from the ITER/CDA studies [6] that unatten-uated power outﬂow from a fusion reactor will leadto heat ﬂuxes in narrow ribbons around the divertorstrike points that, as a rule, cannot be accommo-dated by material surfaces. The ITER divertor con-guration portrayed below [66] addresses both powerdispersal and particle control issues.
+With respect to particle control, the congura-
+tion features a high degree of baing with the intentFigure 10. The ITER nal design report divertor con-
+guration. The divertor dome is in the private ﬂux regionwhere magnetic eld lines remain in the divertor cham-ber. The dome acts to prevent neutral particles fromentering the xpoint region from the private ﬂux region,
+thus reducing the prospects of xpoint MARFE forma-
+tion.
+of minimizing main chamber neutral gas pressures
+(thereby avoiding a potential source of connementdegradation) while permitting high neutral pressuresin the private ﬂux region (region IV), which serve to
+increase pumping ﬂows and exhaust helium, remove
+momentum from the plasma component, providecontrol over radiating impurity species concentra-tions, and eect detachment of the divertor plasma,wherein heat and particle ﬂuxes to the divertor tar-get plates are greatly reduced in the neighbourhoodof the separatrix strike points. Contemporary exper-iments are moving towards baed divertor congu-rations, although they still lack the long leg lengthexposed to private ﬂux neutral pressure that charac-
+terizes the ITER divertor, even in relative terms.
+3.4.1. Power dispersal in divertor plasmas
+Dispersal of the power outﬂow from a tokamak
+reactor in the region III and IV plasma is requiredto reduce heat ﬂux to a level that material sur-faces designed with adequate erosion lifetime canaccommodate: about 5{10 MW m
+−2. Although high
+heat ﬂux components can be designed to withstand
+up to 20 MW m−2by making the material between
+the plasmas and the coolant thinner, their lifetimeagainst erosion then becomes unsatisfactory. Thestrategy for power dispersal is to introduce impu-rity noble gas ions { such as neon, argon or kryp-ton (via controlled feedback loops for either pellet
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2155
+
+=== Page 21 ===
+
+ITER Physics Basis
+injection into region I or gas pu into region III) {
+with the objective of attenuating the heat ﬂux by
+radiation yet still providing sucient power across
+the separatrix to remain in H-mode connement.Divertor codes nd that carbon impurities, sputteredphysically and chemically from the graphite divertorstrike plates, also radiate as part of an uncontrolledbut self-regulating loop. Power dispersal by impu-rity radiation has been successfully implemented incontemporary tokamak experiments in which con-trolled impurity radiation in the mantle (the outer
+periphery of region I) and in regions II{IV is su-
+cient to partly detach the divertor plasma from thestrike plates, greatly attenuating the heat ﬂow to thestrike plates [67,68]. Instead, the heat ﬂux takes theform of VUV radiation, which impinges more or lessuniformly on the entire divertor chamber wall andthe bae region of the rst wall near the divertorchamber. The acceptable level of mantle radiation isconstrained by a requirement to maintain powerﬂowthrough the separatrix above the H-mode threshold.
+Two dimensional modelling codes applied to
+regions III and IV have shown, for a reasonable rangeof input parameters, excellent agreement with diver-tor region detachment observations and a varietyof other sophisticated divertor diagnostics [69, 70].The codes have even predicted recombination ratesand electron temperature values in advance of theirobservation experimentally. Thus, use of two dimen-
+sional codes constitutes the key method for project-
+ing the performance of reactor scale divertors interms of ‘free’ input parameters, such as the crosseld diusivity and the ‘upstream’ region III den-sity. These same divertor codes predict that ITERwill attain the desired partly detached divertor plas-mas, again for a reasonable range of input parame-ters [71,72]. A theoretical scaling for the regions IIIand IV cross eld diusivity would serve to reduce
+the number of free parameters. A quantitative con-
+nection with region II calls for a model of densitydrop across the H-mode transport barrier, which isnot yet available.
+Because of dierent scaling for core and edge
+physics, the core plasmas associated with detacheddivertor operations in present day devices are usu-ally signicantly colder and more collisional than
+the corresponding reactor cores. In other words,
+the database of plasmas that exhibit detachment islargely disjoint from the database of plasmas havingcore non-dimensional parameters and
+similar to
+those of ITER. As Chapter 9 argues, the issue of inte-gration of edge and core plasma physics can only beaddressed experimentally in a reactor scale device.
+Since direct experimental investigation of integrated
+core{edge physics is not presently possible, it is a spe-
+cial challenge to contemporary experiments and the-ory to provide a suciently detailed physics model sothat the eect of divertor detachment and core den-sity on core connement can be reliably projected forpresent day and reactor scale devices.
+3.4.2. H-mode pedestal and edge operational space
+The physics of region II links the SOL plasma to
+the main core plasma. Under nominal H-mode oper-ations, this region contains high density and temper-ature gradients, which are a manifestation of the H-mode transport barrier. Observations show that thetotal pressure gradient is limited by a criterion toremain approximately stable against ideal MHD bal-looning modes. The width of the high gradient region
+determines the ‘pedestal’ pressure just inside the
+transport barrier [73]. This pressure, in turn, deter-mines the energy content of the region II plasma,which can contribute noticeably to the total plasmaenergy by dint of the large volume associated withﬂux surfaces close to the separatrix. And, as the pre-vious Section indicates, density ﬂow through the highgradient H-mode transport barrier region determinesthe relation between (pellet) fuelling, pedestal den-
+sity, and the region III ‘upstream’ SOL density.
+A key physics issue is: what mechanism sets the
+width of the steep gradient region and therefore thepedestal pressure? Recent data from JET [74] indi-cate that this depends on the hydrogen isotope, asdoes the type 1 ELM frequency. Because theoreti-cal models are just beginning to be developed [75],this issue is being addressed by a database approachdescribed in Sections 3.5{3.7 of Chapter 4. More
+data is required before denitive extrapolations can
+be made, and, therefore, the boundary conditionsfor region I transport calculations remain uncertain.Consequently, results of core transport simulationsare usually presented with edge temperature as aparameter.
+The ASDEX-Upgrade team [76] has recently
+introduced an ‘edge operational space diagram’ (por-trayed in Fig. 11) that depicts the physics phe-nomenology of the pedestal part of region II.
+Regions are identied for various ELM types, H-
+mode transitions, and radiation instabilities such asMARFEs. Evidence for a constant maximum pres-sure pedestal for edge plasmas with type I ELMsand a xed magnetic conguration is quite strong.
+2156
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 22 ===
+
+Chapter 1: Overview and summary
+00.10.20.30.40.50.6
+02468 1 0
+n [1019 m-3]T [keV]ASDEX Upgrade
+Ideal MHD
+unstable
+L - HELM-free
+H-mode
+type III
+ELMs
+Radiation unstable zoneH-mode
+type IELMsB=2.5 T   I=1 MA   d=0.1   D
+exp=2.2 cm
+Figure 11. The edge operational space of ASDEX-
+Upgrade with a triangularity (sep :)<0:1. Squares are
+just after the H-mode transition, triangles are type III
+ELMs, circles are type I ELMs, crosses are radiationunstable.
+A conceptual picture for an H-mode density limit
+is based on the conﬂuence of type I and type IIIELM regions as density increases. However, magneticeld and size scalings for these regions have not yetbeen established. The next step is to construct a non-dimensional edge operational space diagram that willcorrelate several tokamaks, with the aim of establish-
+ing the desired common physics.
+3.4.3. Erosion of plasma facing components
+and tritium retention
+In the present generation of tokamaks, erosion of
+the divertor strike plates serves as a source for impu-
+rities in the discharge, but has minimal impact on the
+lifetime of plasma facing components (PFCs). How-ever, in reactor devices, with their much longer expo-sure time, erosion and redeposition will combine tolimit PFC lifetimes [77]. Erosion/redeposition esti-mates are a major factor in the choice of PFC mate-rials for ITER. Such estimates involve several classesof physics, including steady, partly detached divertoroperation, energy pulses arising from ELMs, vapor-
+ization and melting caused by the disruption ther-
+mal quench, and slow thermal cycles where divertordetachment is lost for 10 s. Figure 12 illustrates the
+choice of plasma facing materials in the ITER FDRdivertor design. Tungsten is the preferred plasma fac-ing material except near the divertor strike platesbecause of its low sputtering rate, while CFC (car-
+bon bre composite) is chosen for the strike point
+region because it sublimes, rather than melts, dur-
+ing disruption thermal quenches, thereby avoidingsurface irregularities that might later form hot-spotsin normal steady heat ﬂux operation. Section 5 ofChapter 4 summarizes our knowledge of this area,which has special impact on design choices.
+Figure 12. Plasma facing materials of the FDR diver-
+tor.
+The ultimate fate of tritium fuelling is of key
+importance to the issues of maintaining the in-vesseltritium inventory below the 1 kg safety limit and
+the sustainment of tritium self-suciency for a reac-tor. Reactor blanket neutronics designs yield a tri-tium breeding capability that assures tritium self-suciency provided 90% of the tritons injected into
+the core are burned, even though they may have to
+go through a pellet{plasma{neutral-gas-pump{pelletcycle several times. Thus, if there is any retention oftritons in the wall or codeposited layers during thesecycles, such as occurred in TFTR [78] and JET [11],tritium recovery and self-suciency become issues.Section 6.6 of Chapter 4 identies codeposition witheroded carbon from the divertor strike points asthe most likely mechanism for tritium retention andoutlines potential tritium recovery techniques. Sec-
+tion 1.3 of Chapter 8 outlines the operational aspects
+of tritium retention.
+At present, our predictive capability regarding
+erosion and tritium retention leaves substantialuncertainties in our estimates of the erosion rates ofplasma facing surfaces and of the level of codepositedtritium in reactor class experiments [79]. We there-fore foresee a signicant experimental programmeduring the EDA transition phase on the present gen-eration of tokamaks and during the initial proton
+plasmas phase of ITER operations, when access to
+the machine is unhampered by activation, to bettercharacterize and understand erosion and hydrogenretention, to develop and test techniques to mini-mize hydrogen retention, and to eciently recoverhydrogen retained in the plasma facing components.
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2157
+
+=== Page 23 ===
+
+ITER Physics Basis
+3.5. Energetic particle physics
+In ITER, it is expected that the dominant heat-
+ing will be via thermonuclear generation of 3.5 MeValpha particles whose energy is well above that asso-ciated with the characteristic Alfv en speed E
+Alf=
+MB2=20nMDT1:3 MeV. A self-heating reac-
+tor must conne these particles, and Chapter 5 dis-
+cusses and evaluates potential loss paths, as well as
+the eect of a dilute energetic particle species indestabilizing or stabilizing collective modes of theplasma. Direct particle loss by toroidal eld rippleappears controllable by design. As noted for otherissues in this Chapter, present day experiments arenot a direct replica of ITER with respect to par-
+ticle eects on collective modes, which range fromsawteeth to Alfv en eigenmodes. (The latter are dis-
+crete modes of the MHD spectrum that arise because
+of the periodic nature of poloidal variations of mag-netic eld strength, such as toroidal Alfv en eigen-
+modes (TAEs)). The general properties are thatunstable Alfv en eigenmodes in ITER will have sig-
+nicantly higher toroidal mode numbers and a rela-tively weaker drive than in current experiments. Dur-ing the EDA, linear stability theory for Alfv en eigen-
+modes has developed to the point where remarkablyaccurate predictions for low toroidal mode number n
+excitations are possible [80,81]. Extensions to higher
+nnd that, in ITER class devices, Alfv en eigenmodes
+are just unstable and become quite stable with minorspreading (involving no losses) of the particle pres-
+sure prole [82]. Non-linear computational programsto fully assess Alfv en eigenmode physics on a reactor
+scale tokamak are under development. ITER classexperiments have the correct parameters to returnimportant new physics needed by reactor designers.
+Experimental evidence also indicates that a related
+m=n= 1 instability, ‘shbone’ activity, which is
+characterized by regular coherent bursts of internalMHD modes and which is destabilized by fast parti-cles, should not prove signicant in ITER [83].
+3.6. Auxiliary power physics
+Reliable and eective sources of auxiliary power
+are an element in almost all the advances in tokamakplasma physics. Not only is the evident heating func-
+tion important, but auxiliary power can also drive
+non-inductive current, which has maintained smalltokamak discharges for more than two hours [84]and is crucial to the realization of steady state toka-mak operation. Dierential toroidal rotation can bedriven by neutral beam angular momentum injec-tion and arguments are advanced that the resulting
+ﬂow shear could play a signicant role in determin-
+ing microinstability turbulence levels and the result-
+ing transport [19,85]. In current experiments, neu-tral injection can also provide signicant fuelling ofhot plasma cores and resultant high density gradi-ents within region I. For ITER, appreciable NBIfuelling at 1 MeV per nucleus is prohibitive froman energy budget point of view. Finally, selectivetransfer of auxiliary power to ions has led, duringthe EDA, to plasmas with T
+iTe, which have
+greatly improved ion thermal connement and high
+thermonuclear fusion rates [86]. Such regimes willbe available to ITER only at low densities wherethe energy connement time is comparable to theelectron{ion temperature equilibration time.
+Chapter 6 describes four approaches to auxiliary
+power in ITER as follows.
+(1) The advantages of fast wave auxiliary power
+systems [87] rest on a well developed commercialpower generation technology in the 40{100 MHz fre-quency range, and a validated ability to calculatewave propagation and absorption by straightforward
+linear and quasi-linear methods, respectively. The
+PION code [88] summarizes this ability and canbe used as a module in transport codes like PRE-TOR, which simulate the entire tokamak plasma.Fast wave current drive capabilities are restrictedto central current drive where attractive eciencieshave been observed. When used in connection withion cyclotron absorption, fast wave methods also pro-duce a good degree of control over heating proles.The principal limitation of the ITER fast wave sys-
+tem is related to the requirement of operating with
+a large gap ( 15 cm) between antenna and plasma
+separatrix, which prevents a close antenna/plasmacoupling, limits the power/area that can be trans-mitted through a port, and enhances the sensitivityof antenna radiation resistance to variation in theregion III density caused by ELMs.
+(2) NBI [89] benets from the spatial separa-
+tion of plasma physics and beam technology. Anattractive feature of NBI is that the beam veloc-ity distribution is known and its power level canbe accurately measured. In reactor scale tokamaks
+that require 1 MeV beams to assure penetration,
+the beam must be created by negative ion beamtechnology. Ionization of beam particles in a toka-mak plasma then leads to sources of density, energyand angular momentum. The cross-section for ioniza-tion processes are known and involve multi-step pro-
+2158
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 24 ===
+
+Chapter 1: Overview and summary
+cesses. Once created in the plasma, ions from neutral
+beams slow down and scatter in angle according to
+classical binary collision physics. Conned ions exe-
+cute conventional banana orbits and toroidal preces-sional drifts. As an energetic particle species, beamions can undergo or excite many of the collective pro-cess identied in Chapter 5. Current drive theory iswell developed. Indeed, the high level of detail withwhich codes can calculate beam interaction with theplasma has made NBI the power source of choice inmany plasma physics experiments. By displacement
+of the target plasma, one can realize a good measure
+of control over the spatial deposition proles. Froma plasma physics viewpoint, neutral beam power isunique in two ways: as a source of angular momen-tum; and as a source for charge exchange processesin region I from which line radiation can be exploitedby diagnostics.
+(3) Electron cyclotron auxiliary power systems
+[90] in the 130{200 GHz frequency range can providereliable and predictive localized heating and currentdrive. Ray tracing wave propagation codes and rel-ativistic quasi-linear wave absorption codes are welldeveloped and validated against experimental data.
+ECH methods are insensitive to region III density
+and the proximity of the plasma to the antennastructure. The resonance nature of the interaction,coupled with the narrow beamwidths of ECH anten-nas leads to very localized wave{plasma interactionregions. This provides the basis for a number ofimportant plasma control functions such as drivingo-axis current density to extend the duration ofreverse shear magnetic congurations and generating
+localized, modulated current density to suppress neo-
+classical tearing modes. At present, ECH is under-utilized in contemporary tokamaks because reliablesources are only just now becoming available. Giventhe slow pace of tokamak upgrades, it will take 5{10years of experimental research before the capabilitiesof ECH on tokamaks are demonstrated at the powerlevels now enjoyed by neutral beam systems.
+(4) In ITER like plasmas, the principal role for
+lower hybrid auxiliary power systems near a fre-quency of 5 GHz is o-axis current drive. A wellknown accessibility criterion prevents wave propa-
+gation into the central regions, basically eliminating
+a heating role for lower hybrid auxiliary power. Thephysics governing lower hybrid/plasma interactionson an ITER scale device is, like ECH, straightforwardray tracing wave propagation and quasi-linear wave{plasma interaction physics. In contrast with presentday experiments, single pass absorption is the norm
+for lower hybrid in reactor scale plasmas. The more
+qualitative stochastic ray formalism is needed only
+for smaller plasmas of current devices, where mul-tipass absorption prevails. A corresponding increasein condence of ray tracing results follows. Becauseboth the frequency and parallel wavenumber arexed in the proposed lower hybrid launching sys-tem [91], and because ﬂat region I density prolesare expected, the temperature prole will determinethe o-axis current drive prole. Driven o-axis cur-
+rent is an essential element in maintaining steady
+state magnetic reverse shear proles.
+Coupling of lower hybrid power from the launcher
+into propagating plasma waves depends on theplasma density prole in the immediate vicinity of
+the launcher. This will be known only after ITER
+operates. Alternative measures to create plasma closeto the antenna, such as local gas pung, must beexamined for compatibility with the general strat-egy of maintaining low neutral densities in the mainchamber. Again, these experiments must be per-formed on ITER itself.
+3.7. Physics of plasma diagnostics
+A dierent set of physics processes, plasma mea-
+surement physics in contrast to plasma performance
+physics, governs our ability to measure plasmaparameters in reactor scale tokamak discharges. TheITER diagnostics programme has established, viaextensive consultation during the EDA, detailedrequirements for plasma measurements, which aresummarized in Chapter 7 [92]. These requirementsreﬂect the higher levels of feedback control loops andinterlocks anticipated for a reactor scale facility. Byand large, the physics processes utilized for diagnos-
+tics on the current generation of tokamaks will trans-
+late to a reactor scale device and full the require-ments. Indeed, most of the diagnostic techniques inroutine use today will be available to ITER. Thereare, of course, substantial technical dierences, forexample radiation hardening of components, protec-tion of mirror systems from plasma erosion and dis-ruption debris, and the need for all in-vessel compo-nents to be maintainable with remote handling tools.
+Nevertheless, there remain some highly desirable, but
+not crucial, measurements, which need new physicsmeasurement principles to full the requirements.The density of light ions, including the thermalizedhelium ash, is an example where, in a reactor scaleplasma, the neutral beams at a velocity appropri-
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2159
+
+=== Page 25 ===
+
+ITER Physics Basis
+ate to charge exchange recombination spectroscopy
+do not penetrate to the plasma core. Other examples
+include the energy and density of conned and escap-
+ing alpha particles. Possible new diagnostic physicsconcepts to meet some of these demands are in theresearch stage.
+3.8. Physics of plasma control
+and steady state operation
+Chapter 8 examines, via integrated modelling
+calculations, the ability of proposed ITER controlcapabilities to implement the intended control [93].The emphasis is on adequate control throughout a
+complete discharge: from breakdown, which initi-
+ates plasma formation, and burn-through, whereinthe plasma becomes completely ionized and fullystripped, to kinetic burn control, which attains adesirable and stable level of fusion power, and nallyto non-disruptive shutdown. While this demonstra-tion is based on the specics of the ITER design, itis exemplary of reactor scale operations. Its successprovides condence that there are no hidden incon-
+sistencies in the ITER operational plans.
+It is a goal of ITER to demonstrate reactor scale
+steady state operation if this proves possible forthe tokamak. General theoretical arguments indicatethat low current, reverse shear, high bootstrap frac-tion discharges are the best approach to steady stateoperation [94]. Figure 13 portrays a representativeequilibrium that is consistent with the ITER poloidaleld coil set and vertical control capabilities [5].
+Use of a non-chamber lling discharge permits
+congurations with high elongation and triangular-ity to investigate the physics of reactor scale steady
+state plasmas without a requirement for high- Q.
+Table 3 lists properties of this equilibrium. One
+notes that only modest improvements in connementmultiplier and normalized are needed to realize
+this state. On the other hand, the density needed toattain the prescribed 
+toris considerably in excess
+of the Greenwald value. This is a general propertyof advanced tokamak scenarios where low current isrequired to reach a high bootstrap fraction.
+It should be stressed that this equilibrium is
+unstable in the absence of a nearby conducting shell,
+and, hence, is subject to the RWM [33] (as dis-
+cussed in Section 3.3.7). Stabilization by rotation orn= 1 internal feedback coils [34] is required. Experi-
+ments on DIII-D have found that plasmas in the ‘wallstabilized’ regime spontaneously lose their rotationand are ultimately subject to an external kink mode
+Figure 13. Calculated high bootstrap fraction, reverse
+shear equilibrium in the ITER FDR plasma chamber.
+Table 3. Properties of a steady state discharge
+H-mode like
+Parameter density prole
+Pfusion =PCD(MW) 1500 =100
+QCD 15
+R0=a(m) 8 :66=2:32
+k95%=95% 2:00=0:44
+fBS 79%
+γCD(1020AW−1m−2)0 . 2 1
+N=toroidal 3:8=3:7%
+hTein=Teo(keV) 12 :5=25:9
+hnei=neo(1020m−3)1 :0=1:1
+hnei=nGR 1.4
+E(s) 2.46
+E=ITER 93H 1.22
+that grows on a wall time-scale [62]. For Table 3,
+the temperature, density and current density pro-
+2160 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 26 ===
+
+Chapter 1: Overview and summary
+les are simply assumed, in lieu of using coupled dif-
+fusion equations based on transport coecients that
+are poorly known in the reverse shear regime and
+can often exhibit spontaneous formation of transportbarriers.
+Nonetheless, Fig. 13 and Table 3 demonstrate that
+a reactor scale device can have sucient ﬂexibil-
+ity to investigate steady state tokamak operationsas its requirements are presently understood pro-vided provisions are made for internal n= 1 feed-
+back coils. Sections 3.2.4 and 3.3.7 discuss the RWMand the need for a more quantitative understandingof rotational or active feedback stabilization require-ments. Lastly, we note again that Table 3 calls for adensity considerably in excess of Greenwald, under-
+scoring the importance of plasma fuelling physics to
+advanced tokamak research.
+3.9. Summary
+This Section has identied a wide range of physics
+processes occurring in present day tokamak plasmas.It is to the credit of the fusion science eort thatalmost all observations can be understood, at leastconceptually and often quantitatively, in terms of
+physics processes. The next Section will examine how
+these processes will be altered and what changes intheir relative importance will occur in the transitionfrom present day devices to reactor scale facilities.
+4. Reactor scale experimental
+plasma physics
+It is illuminating to regard a reactor scale toka-
+mak as a new scientic facility and ask: what physicsissues can we anticipate investigating that are inac-cessible to the current generation of tokamak facili-
+ties? Will plasma based design requirements exceed
+the capability of engineering and technology torespond? The totality of issues raised by these ques-tions comprises reactor scale plasma physics, whichcan be generally dened as the physics that is domi-nant in reactor scale device, with particular emphasison those issues that cannot be investigated with con-temporary tokamaks (and their evident upgrades).Of course, the proposition that there is important
+physics to be learned only from reactor scale devices
+implies that uncertainties exist in our projections forITER plasma performance. In this way, the sources ofuncertainties in plasma performance projections canbe viewed as opportunities for experimental researchon ITER. In the nal analysis, a judicious balancemust be made between projection uncertainty and
+research opportunity in an acceptable and useful
+device design.
+Chapter 9 provides an extensive discussion of
+burning plasma physics in terms of opportuni-ties for new experimental physics that an ITERclass machine will enable. This introduction outlinesour principal arguments and illustrates them with
+selected examples.
+It is useful to divide reactor scale plasma physics
+into three elements: (1) energetic particle physics;(2) self-heating and thermal stability; and (3) scaledependent plasma physics. The last arises from thedierence in physics engendered by the fact that a
+reactor must have a substantially larger magnetic
+eld strength and size than present day devices. Letus turn to a brief description of these three elements.
+4.1. Energetic particle physics
+Supercially, it would appear that the presence of
+energetic particles, specically 3.5 MeV alpha parti-cles, is a key dierence between present day devicesand a burning plasma. These particles have a cen-trally peaked prole, transfer their energy to theambient electrons, and have a characteristic veloc-
+ity that exceeds the Alfv en velocity of the thermal
+plasma. As such, they are capable of interacting withdiscrete stable MHD modes known as Alfv en eigen-
+modes, destabilizing them through particle expan-
+sion free energy. Since present day tokamaks arealso heated by energetic particles, which are createdby fast wave minority ion cyclotron heating or neu-tral beam injection, one must ask: how is it antici-pated that energetic particles physics in reactor scale
+devices will dier from that in contemporary toka-
+maks, when the operational conditions are such thatthe characteristic velocity of the energetic particlesexceeds the Alfv en velocity? (Usually this means neg-
+ative ion beam injection or minority fast wave heat-ing.) First, it is evident that the fundamental drive isweaker in reactor scale devices because the relativefast particle concentration, n
+f=n,i sg i v e nb y
+nf
+n=3T
+Eff
+E(6)
+where fis the fast particle slowing down time and
+Efits characteristic energy. Based on values pre-
+sented in Tables 1 and 2, the relative fast particleenergy density in a reactor scale device is approxi-mately a factor of 10 less than in present day devices.Some dissimilarities arise because the isotropic veloc-ity distribution of the alpha particles diers from the
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2161
+
+=== Page 27 ===
+
+ITER Physics Basis
+anisotropic distribution arising from neutral injec-
+tion or ion cyclotron sources. Theory also permits
+weaker wave particle interactions for v0:3VAlf,
+which can excite Alfv en eigenmodes even when the
+auxiliary heating system fails to produce particleswithvV
+Alf. These dierences can be accounted
+for by theory, which has been a remarkably goodguide [80,81] for linear stability. The key dierence ofenergetic particle physics in burning plasma devicesderives from the third element of burning plasmaphysics { that the scale of the device is larger than
+that of present day devices { and not just from the
+presence of super Alfv enic particles, which are found
+at greater relative densities in current devices. AsChapter 5 explains, the unstable toroidal mode num-bers in reactors are expected to be appreciably higherbecause of the device size, and reactor scale devicesmay exhibit multi-mode Alfv en eigenmode turbu-
+lence.
+The 3.5 MeV energy of alpha particles does have
+the important consequence of transferring theirenergy directly to electrons, which precludes opera-
+tional modes with T
+iTe, often found with neutral
+beam injection heating in current devices.
+4.2. Self-heating and thermal stability
+Controlled, steady state operation of a fusion
+plasma implies that transport power loss from
+region I balances the sum of self-heating from alpha
+particles and auxiliary heating power. A thermallystable solution further requires that the transportpower losses increase more rapidly with tempera-ture than the sum of the fusion power and auxiliarypower, assuming a feedback loop that decreases aux-iliary power (if any) as particle power increases.
+Appendix A derives a formula for the transportpower losses that is equivalent to the ITER98H(y,1)connement scaling relation Eq. (5) and is
+P
+loss(MW) = (1 :8105)n1:6
+20T2:86
+10R0:11
+m0:8
+B3:03
+TM0:37H2:86
+H
+aB
+I2:6a
+R1:49
+(7)
+where nis in units of 1020m−3,Tis the volume aver-
+age temperature in keV, Pis in MW, and Iin MA.
+The strong increase of transport losses with tempera-ture is the factor that permits a stable thermal equi-librium in the presence of a thermonuclear reactionrate that is increasing (but less rapidly) with temper-ature. Since the fusion power increases as n
+2whiletransport losses increase as n1:6, higher density will
+lead to higher fusion powers in thermal steady state.
+For ignited operation with no auxiliary power, the
+relation is approximately P/n3:2.I na c t u a lo p e r a -
+tion, the constant HHcould change abruptly, reﬂect-
+ing a change in connement mode or the creation ofan ITB. In this case, the density will have to respondto maintain a steady fusion power. Clearly, demon-stration of thermal control will be an essential partof burning plasma physics. The characteristic time-scales are the energy connement time and the cen-
+tral density buildup time-scale in response to periph-
+eral plasma fuelling. The latter time-scale is not wellcharacterized by an experimental database and, inall likelihood, depends on the fuelling method.
+For the case of steady state operation of a
+tokamak, self-heating generalizes to self-generationof plasma (bootstrap) current via pressure gradi-ents and the degree of self-consistency between therequired current density prole and the bootstrapcurrent density prole. The current density prole,in turn, controls ITBs that close the loop via theirinﬂuence on pressure gradients and, hence, the boot-
+strap current. Two time-scales exist in this system,
+the energy/density scale and the magnetic ﬂux dif-fusion scale. Only with very long pulses appreciablyexceeding magnetic ﬂux diusion times ( 300 s for
+ITER parameters) will denitive data regarding theprospects for steady state operation of a reactor beavailable.
+4.3. Scale dependent plasma physics
+The size, plasma current, and magnetic eld
+strength of a tokamak device in which fusion powerbalances transport losses can change the relativeimportance of physics processes and can introducequalitatively new physics, which is negligible inpresent day devices. Chapter 9 discusses the conse-quences of scale in considerable detail. This intro-duction gives ve illustrative examples to convey theimportance of size to the investigation of reactorscale plasma physics. We note that we have already
+argued that plasma scale is the dominant parameter
+regarding the dierence in energetic particle, Alfv en
+eigenmode physics between present day devices anda reactor.
+Our rst example concerns the scaling of the
+plasma density relative to the Greenwald value inITER Demonstration Discharges (such as those por-trayed by Fig. 6). The Greenwald normalized density
+2162
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 28 ===
+
+Chapter 1: Overview and summary
+is dened by
+n
+nGR=n20a2
+IMA=4
+10n20Rq
+B(1 +2): (8)
+The combination of denition (8) with the constant
+andscaling of (4) indicates that if a reactor
+is at the Greenwald density value, as ITER param-eters indicate, then Demonstration Discharges inpresent day experiments at identical and
+val-
+ues must have densities appreciably below the Green-wald value. Thus, the integrated system of core con-nement and edge density limit physics can only bedirectly investigated on a reactor scale device.
+The second illustration is again an example of
+the coupling between core and edge physics pro-cesses and involves changes in proximity to opera-tional boundaries. Chapter 2 presents empirical scal-ing relations for two powers: the transport power
+loss from an H-mode discharge and the power ﬂow
+through the separatrix required to maintain H-modeedge conditions. The scaling of these two powersdiers [95]. For ITER Demonstration Discharges inpresent day devices, which are prepared to have corevalues of and
+identical to those anticipated for
+ITER, the transport power loss considerably exceedsthe requisite H-mode power threshold, thereby assur-ing operation in H-mode. For an ITER scale plasma,these two powers are roughly equal and questions
+arise as to whether operation near the threshold
+power boundary will realize the full benets of H-mode connement. Of course, one can always reduceauxiliary power to operate near threshold in presentday devices, but then the core and
+values will
+dier from those of ITER, potentially changing coreconnement.
+The general conclusion is that denitive experi-
+mental investigations of interactions among diverseplasma processes in the core and edge can onlybe achieved in reactor scale devices. Note that thedivertor plasma of the ITER Demonstration Dis-charge in Fig. 6 is attached, not detached. Sec-tion 3.4.1 and Section 3.3 of Chapter 4 remark that
+the present database for core connement is disjoint
+with detached divertor database. Thus, integratedexperimental investigations of core{edge compati-bility constitute an important part of reactor scaleplasma physics.
+The third illustration concerns the thermal
+quench phase of full power ITER disruptions, inwhich the thermal energy content of the plasma israpidly deposited onto the plasma facing componentsin the vicinity of the divertor strike points. The mag-nitude and short duration of the pulse will cause
+vaporization and melting (or sublimation) of divertor
+strike point material as well as a portion of the diver-
+tor chamber wall [47,48]. This regime is not encoun-tered in present day tokamaks, where the thermalpulse associated with the thermal quench can beaccommodated by the heat capacity of solid mate-rial. In the case of ITER, the vaporization occurringat the divertor strike points and surrounding areaswill release carbon and tungsten into the subsequentcurrent quench phase disruption, acting to cool this
+plasma and abet the formation of a runaway electron
+avalanche. In this case, reactor scale plasma physicsincorporates a phenomenology that is unattainablein present day devices. Investigation of such plasmasis also part of burning plasma physics.
+For our fourth example, we turn to the avalanche
+theory of runaway electron generation [49] presentedin Section 4.4 of Chapter 3. The key result is that thenumber of avalanche e foldings in runaway electrondensity is proportional to the plasma current andis of order unity in present day experiments. How-ever, in an ITER class device, the number of e fold-
+ings is large, making runaways generally negligible
+in present day machines but of clear importance toreactors.
+Lastly, we note that many tokamaks with ITBs
+have plasmas with T
+iTe,w h i c hi sk n o w nt o
+reduce microinstability transport [96,97]. This condi-tion arises because, in present day experiments with40{100 keV beams, the neutral beam auxiliary heat-ing power is transferred primarily to the ions. How-ever, in reactor class devices, the beam energy mustexceed 1 MeV to assure adequate penetration. Con-sequently, both auxiliary and thermonuclear parti-
+cle power ﬂows principally to electrons. In any event,
+for reactor plasmas, the electron{ion equilibrationtime will be short compared to the energy conne-ment time, assuring T
+eTi. Direct, central fuelling
+by neutral beams is also negligible in a reactor butoften important in providing peaked density pro-les for ITB discharges in present day experiments.Experimental investigations of ITBs and their powerthreshold scaling relevant to burning plasmas should
+focus on plasmas with negligible beam fuelling, with
+electron heating, and with T
+eTi.
+Taken collectively, these examples illustrate that
+reactor scale plasma physics has fundamental dif-ferences from the plasma physics of present daymachines. Not all plasma regimes found on presentday tokamaks are accessible to reactor class dis-charges. Reactor class discharges can be aected by
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2163
+
+=== Page 29 ===
+
+ITER Physics Basis
+processes negligible in present day devices. Undis-
+ciplined translation of plasma performance from
+present day devices to reactor scale facilities can be
+quite misleading. One can conclude that, in addi-tion to achieving an understanding of individualphysics processes, a reliable reactor physics basismust address issues of reactor relevant integrationof individual processes inaccessible to present dayexperiments. Reactor scale experimental physics hasmuch to teach us.
+5. Projecting ITER operations
+Fundamentally, the ITER Physics Basis is a set of
+projection methodologies with which to extrapolatefrom data provided by the present generation of toka-maks and guide the design of a reactor scale device,as exemplied by the ITER parameters of Table 1.
+Extrapolation methodologies are needed for codes
+and theoretical models as well. The goal is that theresearch facility that results should provide uniqueand essential information needed for the design of asubsequent fusion power station. This goal will bemet if the methodologies are suciently accurateso that tokamak discharges can rstly be reliablyproduced, controlled and diagnosed, and secondlyhave appreciable thermonuclear power and param-
+eters close to those proposed for ITER.
+ITER projection methodologies can be organized
+into three classes:
+1. those which bear on the issue of whether a sin-
+gle pulse can be reliably produced;
+2. classic plasma physics performance projections
+for reactor scale devices; and
+3. multiple pulse, plasma wall erosion and tritium
+retention issues.
+In a number of areas, our predictive ability does
+not suce to permit machine operation at fullparameters immediately. The usual course of gradu-ally increasing experimental parameters and observ-ing plasma physics and machine response should bethe norm. The assessment of projection methodolo-gies then should be based on their ability to guidesuch an experimental campaign and to benet fromthe data returned by the observations.
+5.1. Single pulse issues
+The starting point for an assessment of projections
+regarding single discharge issues is an assumptionthat the nominal plasma performance objectives will
+eventually be reached through a series of shots with
+gradually increasing parameters. The principal single
+shot issues are plasma initiation, control, disruptions,thermal stability, and heat load on the divertors. Thebasic methodology is to use physics information todevelop conservative design requirements that willassure that machine components will survive andfunction, even at extreme limits of projected plasmaperformance. For disruption physics, quantitativestatements rest on databases derived from present
+day devices, extrapolated to a reactor via straightfor-
+ward arguments. In the case of toroidally asymmet-ric halo currents, new and denitive databases havebeen created that adequately bound the problem.To evaluate divertor heat ﬂuxes, results from twodimensional modelling codes, which replicate presentday divertor observations, are invoked. These codesnd the desired partly detached divertor solutionsfor ITER like plasmas.
+Initially, discharges will be in proton plasmas,
+with limited auxiliary heating power (100 MW orless). Breakdown and burnthrough will be fundamen-tally the same in reactor scale plasmas as in presentday tokamaks, with the additional help of electroncyclotron heating to assure breakdown and acceler-ate burnthrough. As has been the case with presentday tokamaks, an experimental period will likely beneeded to understand the specics of the poloidal
+eld null formation and vertical eld ramp up asso-
+ciated with bringing the current up to and past the1 MA level.
+Accurate estimates of power dispersal and diver-
+tor plate heat ﬂuxes will rest on two dimensionaldivertor modelling codes. Based on the impressivesuccesses of divertor modelling codes in presentday plasmas, initial low to moderate power proton
+plasma discharges should suce to calibrate these
+codes and conrm, via density and power scans, theirability to predict detached divertor status for fullparameter shots. The key calibration issue is thescaling of the turbulent cross eld diusivity, whichhas been taken as an adjustable input in simulatingpresent day experiments. The results are sensitiveto the adopted value [72]. Since proton plasmas willlikely be in L-mode, there will be no need to reach
+a prescribed power through the separatrix in cali-
+brating the divertor modelling codes. With a widerange of pellet and gas pu fuelling, impurity injec-tion options, and pumping speeds, a reactor scalefacility will have considerable ﬂexibility to optimizepower dispersal and divertor heat ﬂux solutions. The
+2164
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 30 ===
+
+Chapter 1: Overview and summary
+methodology to assure adequate power dispersal on
+a single shot basis is sound.
+Proton plasma discharges of increasing current
+and energy content will also calibrate our ability toevaluate disruption consequences at full parameters.Our database analyses and modelling indicate thatdisruptions of low energy content discharges withq6 and 100 MJ of thermal energy should be easily
+accommodated by designs such as that presented in
+the ITER Final Design Report [4]. A calibration of
+our estimates of disruption consequences by observa-tions of such discharges should conrm our predic-tions that the FDR design can withstand full param-eter disruptions. Similar remarks apply to verticalposition control, where q6 discharges will require
+smaller control voltages than full parameter q3
+shots.
+Combining our present projection methodologies
+{ which indicate no problems on a single shot basisfor low current, low energy content plasmas { withdata from discharges of increasing performance gen-erates condence that a reactor class device can beoperated at full parameters with no adverse conse-quences on a single shot basis.
+5.2. Physics performance projections
+Section 3 has made it clear that there are many
+plasma processes that require extrapolation fromcontemporary tokamak plasmas to a reactor scaledevice. Our assessment is that, collectively, theextrapolations give suciently accurate guidancethat the major parameters of a reactor scale experi-
+ment can be chosen with condence, that ELMy H-
+mode plasma performance will lie close to the nom-inal projections, and that tradeos made in reach-ing the major design parameters are indeed mean-ingful. Arguably, the major weakness is the fact thata reactor scale tokamak operates close to the Green-wald density value and the H-mode power threshold.But connement degradation near these boundariesis just the issue that Section 4 concludes needs areactor scale device for resolution.
+Let us brieﬂy discuss the major extrapolation
+methodologies for plasma performance.
+1. The global connement scaling relation col-
+lapses data from a quite diverse range of mag-netic eld strengths and sizes to a relation thathas only 15% RSME. A very careful discussion
+of attendant uncertainties is presented.
+2. Neoclassical tearing modes limit the long pulsevalues and the observed magnetic ﬂuctua-
+tions are in accord with theory. Because satu-
+rated islands depend only on and
+,w h i c h
+are similar in present day discharges and ITER,the values of 
+N2:2 found in present dis-
+charges should be attainable in ITER as well.The neoclassical tearing mode limit is not
+‘hard’, and theoretical prospects for stabiliza-tion of neoclassical tearing modes are just nowbeing tested experimentally.
+3. The physics of the density limit is not clear,
+but values in excess of the Greenwald value aredicult to achieve with gas pung. Neverthe-less, pellet injection, particularly inside pelletlaunch [64], has led to discharges with core den-sities exceeding the Greenwald value. Reactorscale devices operate near the Greenwald den-
+sity value and would benet from even higher
+densities.
+4. Experiments have demonstrated, and codes
+have predicted, that divertor detachment canbe attained in present day devices. The samecodes give acceptable power dispersal for reac-
+tor scale experiments. Further code validation
+in initial proton plasmas is planned.
+5. Disruption databases have led to simple ex-
+trapolation principles. The ITER Final DesignReport [4] attests to the fact that a reactorscale device is consistent with engineering solu-
+tions that withstand disruption eects, apart
+from a gradual erosion in the divertor chamber.Replacement of divertor cassettes is a designfeature.
+6. Potential instabilities resulting from energetic
+alpha particles can be stabilized by modest pro-
+le readjustments.
+7. Subject to some uncertainty, transport losses
+from reactor scale experiments will exceed theH-mode power threshold, thereby establishingELMy H-mode operations.
+All of the extrapolations suggest that an ITER
+like experiment will produce a burning plasma and
+will constitute a facility to carry out the research
+needed to support the design of an experimentalpower station. The ITER design has considerableﬂexibility to respond to research results and to opti-mize ELMy H-mode and advanced operations at thereactor scale. A major revision of this conclusion is
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2165
+
+=== Page 31 ===
+
+ITER Physics Basis
+not foreseen as a result of future research in present
+day devices.
+5.3. Multiple pulse and erosion issues
+A reactor scale plasma opens a new design issue
+in which consideration of the erosion of plasma fac-i n gc o m p o n e n t so v e rm a n yp u l s e si sak e ye l e m e n tin materials selection and the design of plasma fac-ing components for the rst wall and divertor cham-ber [98]. Erosion can take place by several pro-cesses: physical and chemical sputtering in steady
+state divertor operation; an increase of these pro-
+cesses under ELM heat loads; and vaporization andmelting of divertor and bae wall as a consequence ofthe heat pulse associated with a disruption thermalquench. Our projection methodologies are again twodimensional divertor codes that build in laboratorymeasurements of sputtering processes. Disruptionthermal quench codes are also under development.On the basis of their predictions, calibrated against
+DIMES [99] and other tokamak measurements [100],
+an initial selection of plasma facing materials hasbeen made for ITER, and is documented in theFinal Design Report [3{5] and Fig. 12. The principalmethodologies for optimizing this choice of plasmafacing materials are associated with the fundamen-tal device design, which has the ﬂexibility to replacethe entire divertor chamber, and in experimentation,especially during the proton plasma stage when thedivertor chamber will be accessible, which will permit
+calibration of divertor erosion and disruption melt
+loss codes as well as assessment of the core concen-tration of impurities. Our present projections suceto bound these issues.
+Moreover, in order that the total in-vessel tritium
+inventory not exceed 1 kg for safety considerations
+(using the ITER design as a guide), tritium should be
+recovered from tritium that has been implanted intoplasma facing components or that resides in code-posited layers along with carbon sputtered or sub-limated from the divertor strike plates [101]. BothTFTR and JET found a secular accumulation of tri-tium during their DT operations [11, 78]. Tritiumrecovery is addressed by design, which provides forhot surfaces in the divertor chamber area, and by
+experimentation with recovery methods using basic
+laboratory studies, present day tokamaks, and theproton plasma phase of a reactor scale tokamak [79].Discharge cleaning techniques involving oxygen havebeen proposed. Because it is dicult to extrapolatea complex surface chemistry from present day toka-maks to an ITER like device with its very long pulse
+(which could self-clean plasma facing components),
+the precise nature of the tritium retention issue and
+its possible resolution must await reactor scale longpulse experiments. A ﬂexible device design, incorpo-rating elements such as the ITER divertor cassettes,divertor chamber access to measure hydrogen depo-sition patterns during proton plasmas, and an abilityto carry out various plasma cleaning techniques withoxygen constitute the elements needed to resolve thetritium retention issue.
+6. Concluding remarks
+Section 4 argues that there are essential physics
+dierences between reactor scale devices and con-temporary tokamak research facilities. It follows thatexperiments on reactor scale devices are required
+to provide data to support design of an experimen-
+tal fusion power station. For the next step device,a judicious balance must be struck between min-imizing project costs, uncertainties in performanceprojections, entering regimes of new plasma physics,and minimal extrapolations to a reactor. One mustkeep in mind that this balance will depend on theoptimization goals and constraints. For example, thedesign that minimizes cost to attain a Q10 burn-
+ing plasma experiment will dier from a design that
+minimizes the cost per unit net power output. Acommon key issue is: can we ascertain whether aproposed design will attain an approximate balancebetween heating by thermonuclear alpha particlesand transport power losses, thus enabling a burn-ing plasma experiment? Based on the arguments pre-sented in this introduction and the material in thebulk of the article, we conclude that the extrap-olation principles now at hand, and set forth in
+this article, provide guidance for a design operat-
+ing with ELMy H-mode plasmas. This guidance isas close to reliable as current facilities permit, andkey boundaries, such as the limit, are described
+accurately enough. With regard to core connementdegradation near the Greenwald density and H-modepower threshold limits, scaling arguments presentedin Section 4 indicate that direct examination of theseissues is possible only in a reactor scale device. We
+note that, in addition to core collisionality, plasma
+fuelling, divertor baing, and edge shape (elongationand triangularity) for reactor scale facilities dierappreciably from present day devices. Establishing acommon physics of inside pellet launch across a spec-trum of tokamak facilities should serve to support
+2166
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 32 ===
+
+Chapter 1: Overview and summary
+planned operating densities. Turning to power dis-
+persal and particle control issues, agreement between
+available two dimensional codes and experiment is
+suciently high so that these codes can determinethe relative variation in divertor performance withrespect to divertor leg length as a function of parame-ters such as the SOL density. Nonetheless, continuedresearch on present day devices is needed to con-rm and strengthen our condence that the picturepresented by the collection of methodologies is accu-rate, as well as to reduce the uncertainties and to
+explore prospects for active control measures such as
+stabilizing neoclassical modes and increasing densityabove the Greenwald value via inside pellet launch.Certain key theoretical and computational advanceswould be highly desirable to narrow uncertainties,for example a predictive theory for the L !Hp o w e r
+threshold, a physics mechanism for the Greenwalddensity limit, and a predictive physics model for theeect of divertor detachment and core density on coreconnement.
+With regard to advanced and steady state opera-
+tional modes, there does not appear to be any crucial
+conﬂict regarding device designs based on ELMy H-
+mode physics and the ﬂexibility foreseen as necessaryto exploit whatever advanced modes future researchuncovers. But the data in hand at the time of writingdo not possess the commonality across tokamaks andperformance duration to make advanced operationsthe design basis for nominal plasma performance.
+Overall, physics research during the ITER/EDA
+project, which is summarized in this article, has pro-vided projection methodologies that permit mean-ingful performance assessments as well as studies
+of cost{performance tradeos of candidate designs
+for a burning plasma facility based on ELMy H-mode physics. It is understood that such a facilitywould return data on both inductive ELMy H-modeand advanced plasma operational scenarios that areessential to the design of a commercial fusion powerstation and cannot be obtained by contemporaryresearch facilities.
+Appendix A
+Although tokamaks are complex systems, the
+basic parameters are determined by simple criteria
+[102]. These criteria are the requirements for ade-quate energy connement, for sucient MHD stabil-ity and plasma control to avoid frequent disruptions,for adequate shielding to protect the superconduct-ing coils from excessive nuclear heating and insulatordamage, and for acceptable stresses in the toroidal
+eld coils.
+Let us turn rst to energy connement and
+develop a simple ignition criterion. The startingpoint is the assumption of ELMy H-mode opera-tion and an energy connement time scaling relation,IPB98(y,1), which places data from a wide range of
+tokamaks onto a common curve with just 15% rms
+deviations. The expression for the energy conne-ment time is
+
+E=( 0:0503 s) HHI0:91
+MAB0:15
+Tn0:44
+19P−0:65
+MW
+R2:05
+m0:72M0:13a
+R0:57
+(A1)
+where the elongation is dened as =S0=(a2)
+withS0being the plasma cross-sectional area. HH
+denotes a connement multiplier, which is intro-
+duced to assess the sensitivity of results to varia-
+tion in connement. This expression can be recast
+to express transport losses as a function of tokamakparameters
+P
+loss(MW) = (1 :8105)n1:6
+20T2:86
+10R0:11
+m0:8
+B3:03
+TM0:37H2:86
+H
+aB
+I2:6a
+R1:49
+(A2)
+where T10denotes the volume average temperature
+in units of 10 keV. Plasma heating by fusion alphaparticles can be represented by
+P
+fusion =( 2:8M W ) ( nDT; 20)2hvi22Ra2(A3)
+where hvi22denotes the volume average fusion
+reactivity, including a negative contribution frombremsstrahlung losses, in units of 10
+−22m3s−1.I t
+is understood that hvi22is a function of volume
+average temperature. For the purposes of elemen-tary estimates, we neglect fuel dilution by impurityatoms and helium ash, and equate n
+DT=n. Ignition
+requires that
+n0:4
+20I
+aB2:6
+R2:89
+ma
+R0:51
+0:2B3:03M0:37H2:86
+H
+maxhvi22
+T2:86
+10
+>6:4104:(A4)
+The indicated maximization over temperature de-
+nes the most favourable temperature for ignition atxed density. The optimized temperature is some-what below 10 keV. For the ITER FDR parameters
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2167
+
+=== Page 33 ===
+
+ITER Physics Basis
+of Table 1, the left hand side achieves a value of
+14104, thus assuring ignition with some margin
+for fuel dilution.
+Fuel dilution and impurity bremsstrahlung do
+play a quantitative role and can be expressed byreplacing hvi
+22by an eective reactivity hvie;22
+in Eqns (A4) and (A8). Figure 14 presents graphs of
+the combinations entering Eqns (A4) and (A8) for arepresentative fuel dilution and Z
+e. Here, hvie;22
+is dened via
+hvie;22=2hvi−(0:12)Zep
+T10
+where hviadenotes the thermonuclear contribution
+to the reactivity, =nDT=ne, and the second term
+gives bremsstrahlung losses.
+00.511.52
+1 10 100n=1, Zeff=1
+n=0.925, Z eff=1.5
+T (keV)
+T (keV)<sv>effT–2.86
+00.511.522.53
+1 10 100n=1, Zeff=1
+n=0.925, Z eff=1.5<sv>effT–3.26
+Figure 14. Plots of the combinations entering Eq. (A4)
+and Eq. (A8) for a pure DT plasma and for fuel dilution
+nDT=ne=0:925 and Ze=1:5.
+Criterion (A4) supposes the density to be xed,
+but indicates that the higher the density, the
+more readily ignition is attained. There are two
+limits on density: the Greenwald limit and thebeta limit. If one assumes the Greenwald limit,the ignition criterion can be expressed entirelyin terms of machine parameters and the non-dimensional plasma performance gure of meritM
+GR=(n=nGR)0:4H2:86
+H(I=aB)3:0:
+MGRB3:43R2:49
+ma
+R0:11
+0:2M0:37
+maxhvi22
+T2:86
+10
+>10:1104:(A5)
+The benets of plasma shaping and elongation are
+contained almost entirely in the normalized currentI
+MA=aB T. An analysis of the H-mode connement
+database has shown no explicit dependence of con-nement on triangularity beyond that implicit in thenormalized current. A simple version of ignition cri-terion (A5) is
+
+I
+MAR
+a
+>46
+HH
+8
+>>><
+>>>:H0:05
+HR0:21
+B0:14a0:040:07M0:12(n=nGR)0:13
+[max(hvi22=T2:86
+10)]0:339
+>>>=
+>>>;(A6)
+where the fgfactor on the right hand side varies
+very slowly and has a value very close to unity. Thus,H
+HIMAR=ais a good gure of merit for ignition in
+ITER class tokamaks. The value for the FDR designisH
+HIMAR=a= 60, which reﬂects fuel dilution, a
+nite operating space, and modest margin. For ana-
+lytic estimates, the formula
+HHIMAR=a
+503
+=Q
+Q+5(A7)
+should provide a relatively transparent way of esti-
+mating fusion performance consequences. The valueofI
+MAR=a= 50 is an ad hoc increase over Eq. (A6)
+and provides for fuel dilution, etc. When the lefthand side of Eq. (A7) exceeds unity, the plasma isignited and thermal balance occurs by decreasingdensity below the Greenwald value or by increasingthe temperature beyond the optimum value, thereby
+decreasing hviT
+−2:86.
+In circumstances where the density is limited by
+N=%(aB=I), the ignition criterion reads
+MB3:83R2:89a
+R0:51
+0:2M0:37
+maxhvi22
+T3:26
+10
+>28104(A8)
+where the plasma performance gure of merit is
+dened by M=0:4
+NH2:86
+H(I=aB)3:0. It is notewor-
+thy that connement performance, as measured by
+2168 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 34 ===
+
+Chapter 1: Overview and summary
+HH, is more important than either the Nlimit or
+Greenwald normalized density in attaining ignition,
+according to (A8) and (A5), respectively
+The purpose of this Appendix is to estimate the
+overall physics parameters of density, temperature,magnetic eld strength, and radial build requiredfor a tokamak to attain ignition. Radial build com-prises the dimensions of the major tokamak compo-nents, central solenoid, toroidal eld coils, vacuumvessel, blanket and shield, and plasma in the equa-torial plane. Figure 15 illustrates the radial build ofa generic tokamak reactor.
+OH 
+CoilTF 
+CoilShield PlasmaTF 
+CoilShieldCenterline
+BcoilSchematic Radial Build of a Tokamak
+Rcoil dBSa
+RBcoil
+Figure 15. Schematic radial build of a tokamak.
+A combination of technological constraints arising
+from the maximum eld permitted for superconduct-ing magnets and the shield thickness needed to pro-tect the magnets with the physics requirements ofsucient energy connement and macroscopic sta-bility determines the radial build. It is fortunate forthe prospects of magnetic fusion energy that the sizeneeded to attain ignition is, in a broad sense, justthe size needed to accommodate the required shield.
+A simple equation can be derived for the size of a
+tokamak based on the build portrayed in Fig. 15, the
+denition of the MHD safety factor q
+95, the depen-
+dence on the plasma shape f, the aspect ratio A
+(A=R=a,w h e r e Ris the major radius and ais
+the minor radius), the distance BSbetween the coil
+and the plasma inner radius including blanket andshield, and the maximum eld at the inner portionof the toroidal eld coil, B
+c, together with the 1 =R
+fall-o of the toroidal eld ( B=BcRc=R), where Rc
+denotes the radius of the inner portion of the toroidal
+eld coil. From Fig. 15, the plasma major radius is
+R=Rc+BS+a: (A9)
+A reasonably good t for q95for an elongated plasma
+is [103]
+q95=5a2BT
+RI MAf (A10)
+where fdescribes the role of plasma shape throughelongation , aspect ratio A, and triangularity :
+f=1+2(1 + 2 2−1:23)
+2(1:17−0:65A−1)
+(1−A−2)2:
+(A11)
+More generally, Eq. (A10) constitutes a denition for
+fin terms of an equilibrium solution to the Grad{
+Shafranov equation, with the other parameters spec-ifying the solution.
+Tokamak connement performance is generally
+enhanced by lowering q
+95and increasing the shap-
+ing function fthrough elongation. Both these steps
+serve to increase the plasma current. However, stabil-ity limits the extent to which q
+95andcan be varied.
+Ifq95<2:5, the disruptions become more frequent
+and connement performance degrades relative to
+scaling expression (A1). Increases in elongation lead
+to vertical positional instabilities that are dicult tocontrol if >1:7 and the poloidal eld control coils
+lie outside the toroidal eld coils as Fig. 1 portrays.Prudent and reliable operation of a tokamak reac-tor suggests the values q
+953a n d f2:3. There
+are also limits on the maximum magnetic eld at thecoil resulting from limiting elds for superconductiv-ity as well as mechanical stress. For Nb
+3Sn, we take
+Bc= 12 T; for NbTi a limit of Bc= 10 T is appro-
+priate. A length of BS=1:3 m is required to shield
+the superconducting magnets from radiation.
+Let us introduce a characteristic length a0
+a0=(IMA[R=a])q95
+5Bcf1:3 m (A12)
+where the numerical value comes from the FDR igni-
+tion condition, IMAR=a= 60, and the limits dis-
+cussed above. Then, using Eqns (A9) to (A12), onecan calculate the size and aspect ratio of a tokamakthat just fulls the ignition condition via
+R
+a=Rc
+a0=A; a =Rc+BS
+Rc−a0
+a0:(A13)
+For an aspect ratio R=a= 3 design, the solution is
+a=2:6m;R c=3:9m;
+BS=1:3m;R =7:8m)
+(A14)
+which lies close to the parameters of Table 1.
+Thus, the size and volume of ITER, or any elon-
+gated tokamak, is determined by the six parameters:plasma current, I
+p,a n d f,q95,A,BcandBS.T h e
+rst ve of these enter through the combination a0,
+which governs the size of the device in terms of its
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2169
+
+=== Page 35 ===
+
+ITER Physics Basis
+performance goals, expressed by IMAR=a,a n di t s
+shaping capability, expressed by f. These parame-
+ters are chosen to reﬂect the goals of ITER, and are
+inﬂuenced by physics and engineering constraints.The combination of aspect ratio and plasma cur-rent is largely determined by energy connementrequirements according to Eq. (A6); MHD stabilityand energy connement requirements determine theedge safety factor, q; the stress limits and thermal
+stability margin for the toroidal eld coils lead toa limit on the maximum eld at the coil, B
+c;t h e
+neutron shielding requirements specify the thickness
+of the shield and blanket, BS. Physics choices for
+each of these parameters have been made by theITER design team based on the information collectedand assessed by the international fusion communitythrough their representatives on the ITER ExpertGroups as described in this article.
+Appendix B. Article 1, ITER EDA
+Agreement
+(1) In accordance with this Agreement, its An-
+nexes and Protocols, the Parties, subject to theirlaws and regulations, shall conduct jointly theEngineering Design Activities (EDA) to produce adetailed, complete, and fully integrated engineeringdesign of ITER and all technical data necessary forfuture decisions on the construction of ITER. Such
+design and technical data shall then be available for
+each of the Parties to use either as part of an interna-tional collaborative programme or in its own domes-tic programme.
+(2) The overall programmatic objective of ITER,
+which shall guide the EDA, is to demonstrate the sci-
+entic and technological feasibility of fusion energyfor peaceful purposes. ITER would accomplish thisobjective by demonstrating controlled ignition andextended burn of deuterium{tritium plasmas, withsteady state as an ultimate goal, by demonstratingtechnologies essential to a reactor in an integratedsystem, and by performing integrated testing of thehigh heat ﬂux and nuclear components required to
+utilize fusion energy for practical purposes.
+Appendix C. ITER Special Working
+Group 1 { Review Report
+Preamble
+In accordance with Article 10 of the ITER EDA
+Agreement,with reference to Sections 1 and 2 of Protocol 1,
+in the light of the Guidelines for SWG1
+imposed by the 1st ITER Council Meeting(Attachment 1),
+on the basis of the ITER Conceptual Design
+Activities Final Report, ITER DocumentationSeries No 16, and the document referred totherein,
+the Special Working Group has agreed as follows.
+General constraints
+The ITER detailed technical objectives and tech-
+nical approaches, including appropriate margins,should be compatible with the aim of maintainingthe cost of the device within the limits comparableto those indicated in the nal report of the ITERCDA as well as keeping its impact in the long rangefusion programme.
+ITER should be designed to operate safely and to
+demonstrate the safety and environmental potentialof fusion power.
+Performance and testing
+ITER should have a connement capability to
+reach controlled ignition. The estimates of conne-ment capability of ITER should be based, as in theCDA procedure, on established favourable modes ofoperation.
+Plasma performance
+ITER should demonstrate controlled ignition
+and extended burn for a duration sucient toachieve stationary conditions on all time-scalescharacteristic of plasma process and plasmawall interactions, and sucient for achievingstationary conditions for nuclear testing of
+blanket components. This can be fullled by
+pulses with ﬂat top duration in the range of1000 s. For testing particular blanket designs,pulses of approximately 2000 s are desirable.
+ITER should also demonstrate steady state
+operation using non-inductive current drive in
+reactor relevant plasmas.
+Engineering performance and testing
+ITER should
+2170
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 36 ===
+
+Chapter 1: Overview and summary
+demonstrate the availability of technologies
+essential for a fusion reactor (such as super-
+conducting magnets and remote maintenance);
+test components for a reactor (such as sys-
+tems to exhaust power and particles from theplasma);
+test design concepts of tritium breeding blan-
+kets relevant to a reactor. The tests foreseen onmodules include the demonstration of a breed-ing capability that would lead to tritium self-suciency in a reactor, the extraction of highgrade heat, and electricity generations.
+Design requirements
+The choice of parameters of the basic device
+should be consistent with margins that give con-dence in achieving the required plasma and engi-neering performance. The design should be su-ciently ﬂexible to provide access for the introduc-tion of advanced features and new capabilities, andto allow for optimizing plasma performance during
+operation. The design should be conrmed by the
+scientic and technological database available at theend of the EDA.
+An inductive pulse ﬂat top capability, under
+ignited conditions, of approximately 1000 s should beprovided. In view of the ultimate goal of steady stateoperation, ITER should be designed to be compat-ible with non-inductive current drive, and the heat-ing system required for ignition in the rst phase ofoperation should have current drive capability.
+To carry out nuclear and high heat ﬂux compo-
+nent testing at conditions relevant to a fusion power
+reactor:
+the average neutron wall loading should be
+about 1 MW m
+−2;
+the machine should be designed to be capable
+of at least 1 MW am−2to carry out longer
+time integral and materials tests.
+It is desirable to operate at higher ﬂux and ﬂuence
+levels. Within the engineering margins the ITERdesigners should examine the implications and pos-
+sibilities of exploiting a wider range of operational
+regimes. The design of the permanent componentsof the machine should not preclude achieving ﬂuencelevels up to 3 MW am
+−2. For the second phase of
+operation, the design should include the capabilityof replacing the shield with a breeding blanket.Operation requirements
+The ITER operation should be divided into two
+phases:
+The rst phase, the Basic Performance Phase,
+is expected to last a decade including a fewthousand hours of full DT operation. This
+phase should address the issues of controlled
+ignition, extended burn, steady state opera-tion, and the testing of blanket modules. Itis assumed that for this phase there will bean adequate supply of tritium from externalsources.
+{Controlled ignition experiments in ITER
+will address connement, stability andimpurity control in alpha particle heatedplasmas. Extended burn experiments willaddress, in addition, the control of fusionpower production and plasma proles,and the exhaust of helium ash.
+{The aim of current drive experiments in
+this phase should be the demonstration of
+steady state operation in plasmas havingalpha particle heating power at least com-parable to the externally applied power.Using the heating systems in their cur-rent drive mode, non-inductive currentdrive should be implemented for proleand burn control, for achieving modes ofimproved connement, and for assessing
+the conditions and power requirements for
+the above type of steady state operation.Depending on the outcome of these exper-iments, additional current drive powermay have to be installed.
+{Functional tests of blanket modules in
+this phase should consist of a few thou-sand hours on integral burn time, in par-allel with the physics programme, includ-ing continuous test campaigns of 3{6days at a neutron wall loading of about
+1M W m
+−2.
+The second phase, Enhanced Performance
+Phase, is also expected to last a decade, with
+emphasis placed on improving overall perfor-
+mance and carrying out a higher ﬂuence com-ponent and materials testing programme. Thisphase should address high availability oper-ation and advanced modes of plasma opera-tion, and may address reactor relevant blanket
+Nuclear Fusion, Vol. 39, No. 12 (1999) 2171
+
+=== Page 37 ===
+
+ITER Physics Basis
+segment demonstration. Operation during this
+phase should include continuous testing cam-
+paigns lasting 1{2 weeks, and should accumu-
+late a ﬂuence of at least 1 MW am−2.
+A decision on incorporating breeding for this
+phase should be decided on the basis of theavailability of tritium from external sources,the results of breeder blanket testing, and expe-rience with plasma and machine performance.
+The implementation of the Enhanced Perfor-
+mance phase should be made following a review of
+the results from the Basic Performance Phase and
+an assessment of the relative value of the proposedelements of the programme.
+Final recommendation
+That the above objectives can be achieved and
+that the ‘Guideline for SWG1’ provided by the ITER
+Council at its rst meeting will be complied withshould be conrmed by the Director in the outline ofthe design referred to in that Guideline.
+Attachment 1 { Guideline for SWG1
+The IC recommends as a general guideline for
+SWG1 that detailed technical objects and techni-cal approaches including appropriate safety margins,should be compatible with the aim of maintainingthe cost of the device within the limits comparableto those indicated in the nal report of the ITERCDA as well as keeping its impact in the long-rangefusion programme.
+The IC asks the Director to present an outline
+of the design within about 10 months, at the timewhen a draft agreement of Protocol 2 should havebeen prepared by SWG-2.
+References
+[1] Holdren, J.P., Ann. Rev. Energy Environ. 16
+(1991) 235.
+[2] Raeder, J., et al., in Safety and Environmental
+Assessment of Fusion Power (SEAFP), EuropeanCommission, Brussels (1995).
+[3] Final Design Report, ITER EDA Documentation
+Series, IAEA, Vienna (1998) (to be published).
+[4] Technical Basis for the Final Design Report, ITER
+EDA Documentation Series, IAEA, Vienna (1998)
+(to be published).[5] ITER EDA Physics Design Description Documents
+(available according to the intellectual property
+provisions of the ITER Agreement), IAEA, Vienna(1998).
+[6] Post, D.E., et al., ITER Physics. ITER Documen-
+tation Series, No. 21, IAEA, Vienna (1991).
+[7] ITER EDA Agreement and Protocol 1, ITER EDA
+Documentation Series No. 1, IAEA, Vienna (1992).
+[8] JET Team (presented by M. Keilhacker), Plasma
+Phys. Control. Fusion 39(1997) B1.
+[9] Start, D.F.H., et al., Phys. Rev. Lett. 80(1998)
+4681.
+[10] Strachan, J.D., et al., Phys. Rev. Lett. 72(1994)
+3526.
+[11] JET Team (presented by A. Gibson), Phys. Plas-
+mas 5(1998) 1839.
+[12] Hawryluk, R.J., Rev. Mod. Phys. 70(1998) 537.
+[13] Wesson, J., Tokamaks, Clarendon Press, Oxford
+(1997) 109.
+[14] Kadomtsev, B.B., Sov. J. Plasma Phys. 1(1975)
+295.
+[15] Porcelli, F., Rosenbluth, M.N., Plasma Phys. Con-
+trol. Fusion 40(1998) 481.
+[16] H-Mode Database Working Group (presented by
+F. Ryter), Plasma Phys. Control. Fusion 38(1996)
+1279.
+[17] Fukuda, T., et al., Nuclear Fusion 37(1997) 1199.
+[18] Righi, E., et al., Plasma Phys. Control Fusion 40
+(1998) 857.
+[19] Burrell, K.H., Phys. Plasmas 4(1997) 1499.
+[20] Zeiler, A., Drake, J.F., Rogers, B., Phys. Plasmas
+4(1997) 2134.
+[21] Scott, B., et al., in Fusion Energy 1998 (Proc.
+17th Fusion Energy Conf. Yokohama, 1999),
+IAEA, Vienna (1999). Paper IAEA-F1-CN-69Th1-05.
+[22] Igitkhanov, Y., Janeschitz, G., Pacher, G.W., et
+al., Plasma Phys. Control. Fusion 40(1998) 845.
+[23] Cordey, J.G., in Fusion Energy 1998 (Proc. 17th
+Fusion Energy Conf. Yokohama, 1999), IAEA,Vienna (1999). Paper IAEA-F1-CN-69 EX7-1.
+[24] Boucher, D., in Proceedings IAEA Technical Com-
+mittee Meeting on Advances in Simulations andModeling of Thermonuclear Plasmas June 1992
+(Montreal, Canada) 142.
+[25] Connor, J.W., et al., in Fusion Energy 1996 (Proc
+16th Int. Conf. Montreal, 1997) Vol. 2, IAEA,
+Vienna (1997) 935.
+[26] Kinsey, J.E., Bateman, G., Phys. Plasmas 3(1997)
+3344.
+[27] Dimits, A.M., Phys. Rev. Lett. 77(1996) 71.
+[28] Beer, M.A., et al., Phys. Plasmas 4(1997) 1792.
+[29] Sydora, R.D., et al., Plasma Phys. Control. Fusion
+38(1996) A281.
+[30] Vandenplas, P.E., et al., J. Plasma Physics 59
+(1998) 587.
+2172 Nuclear Fusion, Vol. 39, No. 12 (1999)
+
+=== Page 38 ===
+
+Chapter 1: Overview and summary
+[31] JT-60U Team (presented by H. Shirai), Phys. Plas-
+mas 5(1998) 1712.
+[32] Rice, B.W., et al., Plasma Phys. Control. Fusion
+38(1996) 869.
+[33] Ward, D.J., Bondeson, A., Phys. Plasmas 2(1995)
+1570.
+[34] Navratril, G.A., et al., Phys. Plasmas 5(1998)
+1855.
+[35] Sauter, O., et al., Phys. Plasmas 4(1997) 1654.
+[36] La Haye, R.J., Sauter, O., Nuclear Fusion 38
+(1998) 987.
+[37] La Haye, R.J., et al., Nuclear Fusion 37(1997) 397.
+[38] Gunter, S., et al., Nuclear Fusion 38(1998) 1431.
+[39] Huysmans, G.T.A., et al., in Controlled Fusion
+and Plasma Physics 1997 (Proc. 24th Eur. Conf.
+Berchtesgaden, 1997), Vol. 21A, Part IV, European
+Physical Society, Geneva (1997) 857.
+[40] Zohm, H., Phys. Plasmas 4(1997) 3433.
+[41] Perkins, F.W., et al., in Controlled Fusion and
+Plasma Physics 1997 (Proc. 24th Eur. Conf.Berchtesgaden, 1997), Vol. 21A, Part III, Euro-
+pean Physical Society, Geneva (1997) 1017.
+[42] Zohm, H., et al., in Fusion Energy 1998 (Proc. 17th
+Int. Conf. Yokohama, 1999), IAEA, Vienna (1999).
+Paper IAEA-F1-CN-69.
+[43] La Haye, R.J., et al., Nuclear Fusion 32(1992)
+2119.
+[44] Schuller, F.C., Plasma Phys. Control. Fusion 37
+(1995) A135.
+[45] Wesson, J. A., et al., Nuclear Fusion 29(1989) 641.
+[46] Wesson, J.A., et al., Phys. Rev. Lett. 79(1997)
+5018.
+[47] Pestchanyi, S., et al., in Controlled Fusion
+and Plasma Physics 1997 (Proc. 24th Eur.
+Conf. Berchtesgaden, 1997), Vol. 21A, Part III,European Physical Society, Geneva (1997)
+981.
+[48] Hassanein, A., et al., J. Nucl. Mater. 241{243
+(1997) 288.
+[49] Rosenbluth, M.N., Putvinski, S.V., Nuclear Fusion
+37(1997) 1355.
+[50] Pautasso, G., et al., in Controlled Fusion and
+Plasma Physics 1998 (Proc. 25th Eur. Conf.Prague, 1998), European Physical Society, Geneva
+(1998). B169PR.
+[51] Yoshino, R., et al., Nuclear Fusion 37(1997) 1161.
+[52] Zohm, H., Plasma Phys. Control. Fusion 38(1996)
+105.
+[53] Connor, J.W., Plasma Phys. Control. Fusion 40
+(1998) 191.
+[54] Connor, J.W., Plasma Phys. Control. Fusion 40
+(1998) 531.
+[55] Osborne, T.H., et al., in Controlled Fusion and
+Plasma Physics 1997 (Proc. 24th Eur. Conf.
+Berchtesgaden, 1997), Vol. 21A, Part III, Euro-pean Physical Society, Geneva (1997) 1101.[56] Takase, Y., et al., Phys. Plasmas 4(1997) 1647.
+[57] Rettig, C.L., et al., Phys. Plasmas 5(1998) 1727.
+[58] Voitsekhovitch, I., et al., Nuclear Fusion 37(1997)
+1715.
+[59] Fujita, T., et al., Nuclear Fusion 38(1998) 207.
+[60] Gruber, O., et al., in Fusion Energy 1998 (Proc.
+17th Int. Conf. Yokohama, 1999), IAEA, Vienna
+(1999). Paper IAEA-CN-69/OV4/3.
+[61] Ide, S., et al., in Fusion Energy 1998 (Proc. 17th
+Int. Conf. Yokohama, 1999), IAEA, Vienna (1999).
+Paper IAEA-CN-69/CD1/4.
+[62] Garofalo, A.M., et al., in Controlled Fusion and
+Plasma Physics 1998 (Proc. 25th Eur. Conf.
+Prague, 1997), European Physical Society, Geneva(1997). B094PR.
+[63] Greenwald, M., et al., Nuclear Fusion 28(1988)
+2199.
+[64] Lang, P.T., et al., Phys. Rev. Lett. 79(1997) 1487.
+[65] Maingi, R., et al., in Fusion Energy 1998 (Proc.
+17th Int. Conf. Yokohama, 1999), IAEA, Vienna(1999). Paper IAEA-CN-69/EXP2/10.
+[66] Janeschitz, G., et al., Fusion Energy 1996, IAEA,
+Vienna 2(1997) 755.
+[67] Mertens, V., et al., Fusion Energy 1996, IAEA,
+Vienna 1(1997) 413.
+[68] Loarte, A., et al., Nuclear Fusion 38(1998) 331.
+[69] Schneider, R., et al., in Fusion Energy 1998 (Proc.
+17th Int. Conf. Yokohama, 1999), IAEA, Vienna
+(1999). Paper IAEA-CN-69/THP2/05.
+[70] Mahdavi, M.A., et al., Fusion Energy 1996, IAEA,
+Vienna 1(1997) 397.
+[71] Kukushkin, A., et al., Fusion Energy 1996, IAEA,
+Vienna 2(1997) 987.
+[72] Kukushkin, A.S., et al., in Fusion Energy 1998
+(Proc. 17th Int. Conf. Yokohama, 1999), IAEAVienna (1999). Paper IAEA-CN-69/ITERP1/13.
+[73] Hubbard, A.E., et al., Phys. Plasmas 5(1998)
+1744.
+[74] Jacquinot, J., et al., Nuclear Fusion 39(1999) 235.
+[75] Miller, R.L., et al., Plasma Phys. Control. Fusion
+40(1998) 753.
+[76] Kaufmann, M., et al., Fusion Energy 1996, IAEA,
+Vienna 1(1997) 79.
+[77] Chiocchio, S., et al., in Fusion Engineering 1997
+(Proc. 17th IEEE/NPSS Symp. San Diego, 1997),
+Vol. 1 (1997) 331.
+[78] Mueller, D., et al., in Fusion Engineering 1997
+(Proc. 17th IEEE/NPSS Symp. San Diego, 1997),
+Vol. 1 (1997) 279.
+[79] Federici, G., Anderl, R.A., Andrew, P., Brooks,
+J.N., Causey, R.A., et al., J. Nucl. Mater. 266{
+269(1999) 14.
+[80] Nazikian, R., Fu, G.Y., et al., Phys. Rev. Lett. 78
+(1997) 2976.
+[81] Kramer, G.J., Saigusa, M., et al., Phys. Rev. Lett.
+80(1998) 2594.
+Nuclear Fusion, Vol. 39, No. 12 (1999)
+2173
+
+=== Page 39 ===
+
+ITER Physics Basis
+[82] Cheng, C.Z., et al., Fusion Energy 1996, IAEA,
+Vienna 2(1997) 953.
+[83] Candy, J., et al., Phys. Plasmas 6(1999) 1822.
+[84] Itoh, S., et al., Fusion Energy 1996, IAEA, Vienna
+3(1997) 351.
+[85] Waltz, R.E., et al., Phys. Plasmas 5(1998) 1784.
+[86] JT-60 Team (presented by T. Fujita), Plasma
+Phys. Control Fusion 39(1997) B75.
+[87] Rogers, J.H., et al., in Radiofrequency Power in
+Plasmas 1997 (Proc. 12th Topical Conf. Savannah,
+1997), AIP, New York (1997) 13.
+[88] Eriksson, L.-G., et al., Nuclear Fusion 33(1993)
+1037.
+[89] Hemsworth, R., et al., in Fusion Energy 1996,
+IAEA, Vienna 2(1997) 927.
+[90] Erckmann, V., Gasparino, U.V., Plasma Phys.
+Control. Fusion 36(1994) 1869.
+[91] Rey, G., et al., in Fusion Engineering 1997 (Proc.
+17th IEEE/NPSS Symp. San Diego, 1997), Vol. 1
+(1997) 433.
+[92] Costley, A.E., et al., Diagnostics for Experimen-
+tal Thermonuclear Fusion Reactors, Plenum Press,
+New York (1998) 41.
+[93] Wesley, J., et al., Fusion Technol. 32(1997) 495.
+[94] Boucher, D., et al., Fusion Energy 1996, IAEA,
+Vienna 2(1997) 945.[95] Petty, C.C., Luce, T.C., Nuclear Fusion 37
+(1997) 1.
+[96] Kotschenreuther, M., et al., Phys. Plasmas 2
+(1995) 2381.
+[97] Petty, C.C., et al., Phys. Rev. Lett. 83(1999) 3661.
+[98] Pacher, H.D., et al., J. Nucl. Mater. 241{243
+(1997) 255.
+[99] Whyte, D.G., et al., J. Nucl. Mater. 241{243
+(1997) 660.
+[100] Guo, H.Y., et al., J. Nucl. Mater. 241{243(1997)
+385.
+[101] Brooks, J.N., et al., J. Nucl. Mater. 241{243
+(1997) 294.
+[102] Post, D.E., Uckan, N.A., Fusion Technol. 21(1992)
+427.
+[103] Uckan, N.A., et al., ITER Physics Design Guide-
+lines, IAEA, Vienna (1990) 10.
+(Manuscript received 8 September 1998
+Final manuscript accepted 25 May 1999)
+E-mail address of F. Perkins:
+perkins@apollo.gat.com
+Subject classication: M0, P0
+2174 Nuclear Fusion, Vol. 39, No. 12 (1999)
